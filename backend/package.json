@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
+    "test:concorrencia": "tsx scripts/concorrencia-checkout.ts",
     "dev": "tsx watch src/server.ts",
     "start": "node dist/src/server.js",
     "build": "tsc",
