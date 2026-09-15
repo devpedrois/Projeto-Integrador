@@ -7,6 +7,13 @@ datasource db {
   provider = "postgresql"
 }
 
+enum StatusIntencao {
+  pendente
+  publicada
+  processada
+  falha
+}
+
 model Produto {
   id                String       @id @default(uuid()) @db.Uuid
   nome              String
@@ -15,10 +22,22 @@ model Produto {
 }
 
 model Pedido {
-  id           String       @id @default(uuid()) @db.Uuid
-  compradorRef String
-  criadoEm     DateTime     @default(now()) @db.Timestamptz(3)
-  itens        ItemPedido[]
+  id                  String               @id @default(uuid()) @db.Uuid
+  compradorRef        String
+  criadoEm            DateTime             @default(now()) @db.Timestamptz(3)
+  itens               ItemPedido[]
+  intencaoNotificacao IntencaoNotificacao?
+}
+
+model IntencaoNotificacao {
+  id           String         @id @default(uuid()) @db.Uuid
+  pedidoId     String         @unique @db.Uuid
+  status       StatusIntencao @default(pendente)
+  tentativas   Int            @default(0)
+  criadoEm     DateTime       @default(now()) @db.Timestamptz(3)
+  atualizadoEm DateTime       @updatedAt @db.Timestamptz(3)
+  processadaEm DateTime?      @db.Timestamptz(3)
+  pedido       Pedido         @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model ItemPedido {

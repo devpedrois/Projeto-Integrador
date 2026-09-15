@@ -50,6 +50,9 @@ export class PrismaPedidoRepository implements PedidoRepository {
       await tx.pedido.create({
         data: { id: pedidoId, compradorRef: input.compradorRef },
       });
+      await tx.intencaoNotificacao.create({
+        data: { id: randomUUID(), pedidoId },
+      });
 
       for (const produtoId of produtoIdsOrdenados) {
         const quantidade = quantidadePorProduto.get(produtoId) ?? 0;
