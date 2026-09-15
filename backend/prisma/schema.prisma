@@ -7,6 +7,27 @@ datasource db {
   provider = "postgresql"
 }
 
+enum PapelUsuario {
+  comprador
+  artesao
+  admin
+}
+
+enum StatusPedido {
+  pendente
+  confirmado
+  cancelado
+}
+
+enum MetodoPagamento {
+  pix_simulado
+}
+
+enum StatusPagamento {
+  aprovado
+  recusado
+}
+
 enum StatusIntencao {
   pendente
   publicada
@@ -14,21 +35,153 @@ enum StatusIntencao {
   falha
 }
 
+model Usuario {
+  id            String         @id @default(uuid()) @db.Uuid
+  nome          String
+  email         String         @unique
+  senhaHash     String
+  papel         PapelUsuario   @default(comprador)
+  ativo         Boolean        @default(true)
+  criadoEm      DateTime       @default(now()) @db.Timestamptz(3)
+  perfilArtesao PerfilArtesao?
+  carrinho      Carrinho?
+  produtos      Produto[]      @relation("ProdutosDoArtesao")
+  pedidos       Pedido[]
+  avaliacoes    Avaliacao[]
+}
+
+// Especializacao 1:0..1 de Usuario (papel = artesao). Chave primaria
+// compartilhada expressa a cardinalidade sem FK redundante.
+model PerfilArtesao {
+  usuarioId        String  @id @db.Uuid
+  historia         String?
+  tecnicaPrincipal String?
+  regiao           String?
+  foto             String?
+  completo         Boolean @default(false)
+  usuario          Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Categoria {
+  id       String    @id @default(uuid()) @db.Uuid
+  nome     String    @unique
+  produtos Produto[]
+}
+
 model Produto {
-  id                String       @id @default(uuid()) @db.Uuid
+  id                String         @id @default(uuid()) @db.Uuid
   nome              String
+  // Campos abaixo evoluem do schema reduzido do FCCPD. Ficam opcionais
+  // nesta fase para permitir backfill seguro antes de virarem obrigatorios
+  // (ver docs/docs auxiliares/DATA_MODEL.md).
+  artesaoId         String?        @db.Uuid
+  categoriaId       String?        @db.Uuid
+  descricao         String?
+  preco             Decimal?       @db.Decimal(10, 2)
   quantidadeEstoque Int
+  ativo             Boolean        @default(true)
+  criadoEm          DateTime       @default(now()) @db.Timestamptz(3)
+  artesao           Usuario?       @relation("ProdutosDoArtesao", fields: [artesaoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  categoria         Categoria?     @relation(fields: [categoriaId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  fotos             ProdutoFoto[]
+  itensCarrinho     ItemCarrinho[]
   itensPedido       ItemPedido[]
+  avaliacoes        Avaliacao[]
+
+  @@index([artesaoId])
+  @@index([categoriaId])
+}
+
+model ProdutoFoto {
+  id        String  @id @default(uuid()) @db.Uuid
+  produtoId String  @db.Uuid
+  url       String
+  ordem     Int     @default(0)
+  produto   Produto @relation(fields: [produtoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([produtoId, ordem])
+}
+
+// Especializacao 1:0..1 de Usuario (papel = comprador), mesmo padrao de
+// chave compartilhada de PerfilArtesao.
+model Carrinho {
+  usuarioId    String         @id @db.Uuid
+  atualizadoEm DateTime       @updatedAt @db.Timestamptz(3)
+  usuario      Usuario        @relation(fields: [usuarioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  itens        ItemCarrinho[]
+}
+
+model ItemCarrinho {
+  id            String   @id @default(uuid()) @db.Uuid
+  carrinhoId    String   @db.Uuid
+  produtoId     String   @db.Uuid
+  quantidade    Int
+  precoUnitario Decimal  @db.Decimal(10, 2)
+  carrinho      Carrinho @relation(fields: [carrinhoId], references: [usuarioId], onDelete: Cascade, onUpdate: Cascade)
+  produto       Produto  @relation(fields: [produtoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@unique([carrinhoId, produtoId])
+  @@index([produtoId])
 }
 
 model Pedido {
   id                  String               @id @default(uuid()) @db.Uuid
+  // Campo sintetico herdado do backend minimo de FCCPD. Preservado para nao
+  // apagar pedidos existentes; compradorId nasce nullable e assume o lugar
+  // de compradorRef apos backfill em migracao futura.
   compradorRef        String
+  compradorId         String?              @db.Uuid
+  numero              String?              @unique
+  status              StatusPedido         @default(pendente)
+  total               Decimal?             @db.Decimal(10, 2)
   criadoEm            DateTime             @default(now()) @db.Timestamptz(3)
+  comprador           Usuario?             @relation(fields: [compradorId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   itens               ItemPedido[]
+  pagamento           Pagamento?
   intencaoNotificacao IntencaoNotificacao?
+
+  @@index([compradorId])
 }
 
+model ItemPedido {
+  id            String   @id @default(uuid()) @db.Uuid
+  pedidoId      String   @db.Uuid
+  produtoId     String   @db.Uuid
+  quantidade    Int
+  precoUnitario Decimal? @db.Decimal(10, 2)
+  subtotal      Decimal? @db.Decimal(10, 2)
+  pedido        Pedido   @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  produto       Produto  @relation(fields: [produtoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@index([pedidoId])
+  @@index([produtoId])
+}
+
+model Pagamento {
+  id            String          @id @default(uuid()) @db.Uuid
+  pedidoId      String          @unique @db.Uuid
+  metodo        MetodoPagamento @default(pix_simulado)
+  valor         Decimal         @db.Decimal(10, 2)
+  status        StatusPagamento
+  dataPagamento DateTime        @default(now()) @db.Timestamptz(3)
+  pedido        Pedido          @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+}
+
+model Avaliacao {
+  id          String   @id @default(uuid()) @db.Uuid
+  compradorId String   @db.Uuid
+  produtoId   String   @db.Uuid
+  nota        Int
+  comentario  String?
+  criadoEm    DateTime @default(now()) @db.Timestamptz(3)
+  comprador   Usuario  @relation(fields: [compradorId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  produto     Produto  @relation(fields: [produtoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@unique([compradorId, produtoId])
+  @@index([produtoId])
+}
+
+// Estrutura tecnica da fila (nao conta entre as onze entidades de dominio).
 model IntencaoNotificacao {
   id           String         @id @default(uuid()) @db.Uuid
   pedidoId     String         @unique @db.Uuid
@@ -38,16 +191,4 @@ model IntencaoNotificacao {
   atualizadoEm DateTime       @updatedAt @db.Timestamptz(3)
   processadaEm DateTime?      @db.Timestamptz(3)
   pedido       Pedido         @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
-}
-
-model ItemPedido {
-  id         String  @id @default(uuid()) @db.Uuid
-  pedidoId   String  @db.Uuid
-  produtoId  String  @db.Uuid
-  quantidade Int
-  pedido     Pedido  @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  produto    Produto @relation(fields: [produtoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
-
-  @@index([pedidoId])
-  @@index([produtoId])
 }
