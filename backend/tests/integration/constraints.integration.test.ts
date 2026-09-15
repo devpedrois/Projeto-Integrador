@@ -1,0 +1,112 @@
+import { randomUUID } from "node:crypto";
+import type { PoolClient } from "pg";
+import { afterAll, afterEach, beforeEach, describe, it } from "vitest";
+import { databasePool } from "../helpers/database.js";
+import { expectPostgresError } from "../helpers/postgres-error.js";
+
+let client: PoolClient;
+
+beforeEach(async () => {
+  client = await databasePool.connect();
+  await client.query("BEGIN");
+});
+
+afterEach(async () => {
+  await client.query("ROLLBACK");
+  client.release();
+});
+
+afterAll(async () => {
+  await databasePool.end();
+});
+
+describe("reduced FCCPD schema constraints", () => {
+  it("rejects negative stock", async () => {
+    await expectPostgresError(
+      client.query(
+        'INSERT INTO "Produto" ("id", "nome", "quantidadeEstoque") VALUES ($1, $2, $3)',
+        [randomUUID(), "Produto invalido", -1],
+      ),
+      "23514",
+    );
+  });
+
+  it("rejects zero item quantity", async () => {
+    const produtoId = randomUUID();
+    const pedidoId = randomUUID();
+    await client.query(
+      'INSERT INTO "Produto" ("id", "nome", "quantidadeEstoque") VALUES ($1, $2, $3)',
+      [produtoId, "Produto valido", 1],
+    );
+    await client.query(
+      'INSERT INTO "Pedido" ("id", "compradorRef") VALUES ($1, $2)',
+      [pedidoId, "comprador-sintetico"],
+    );
+
+    await expectPostgresError(
+      client.query(
+        'INSERT INTO "ItemPedido" ("id", "pedidoId", "produtoId", "quantidade") VALUES ($1, $2, $3, $4)',
+        [randomUUID(), pedidoId, produtoId, 0],
+      ),
+      "23514",
+    );
+  });
+
+  it("rejects missing required relationships", async () => {
+    await expectPostgresError(
+      client.query(
+        'INSERT INTO "ItemPedido" ("id", "pedidoId", "produtoId", "quantidade") VALUES ($1, $2, $3, $4)',
+        [randomUUID(), null, null, 1],
+      ),
+      "23502",
+    );
+  });
+
+  it("rejects unknown relationship references", async () => {
+    await expectPostgresError(
+      client.query(
+        'INSERT INTO "ItemPedido" ("id", "pedidoId", "produtoId", "quantidade") VALUES ($1, $2, $3, $4)',
+        [randomUUID(), randomUUID(), randomUUID(), 1],
+      ),
+      "23503",
+    );
+  });
+
+  it.each([
+    { scenario: "missing", pedidoId: null, code: "23502" },
+    { scenario: "unknown", pedidoId: "22222222-2222-4222-8222-222222222222", code: "23503" },
+  ])("rejects $scenario pedidoId with a valid produtoId", async ({ pedidoId, code }) => {
+    const produtoId = randomUUID();
+    await client.query(
+      'INSERT INTO "Produto" ("id", "nome", "quantidadeEstoque") VALUES ($1, $2, $3)',
+      [produtoId, "Produto sintetico", 1],
+    );
+
+    await expectPostgresError(
+      client.query(
+        'INSERT INTO "ItemPedido" ("id", "pedidoId", "produtoId", "quantidade") VALUES ($1, $2, $3, $4)',
+        [randomUUID(), pedidoId, produtoId, 1],
+      ),
+      code,
+    );
+  });
+
+  it.each([
+    { scenario: "missing", produtoId: null, code: "23502" },
+    { scenario: "unknown", produtoId: "33333333-3333-4333-8333-333333333333", code: "23503" },
+  ])("rejects $scenario produtoId with a valid pedidoId", async ({ produtoId, code }) => {
+    const pedidoId = randomUUID();
+    await client.query(
+      'INSERT INTO "Pedido" ("id", "compradorRef") VALUES ($1, $2)',
+      [pedidoId, "comprador-sintetico"],
+    );
+
+    await expectPostgresError(
+      client.query(
+        'INSERT INTO "ItemPedido" ("id", "pedidoId", "produtoId", "quantidade") VALUES ($1, $2, $3, $4)',
+        [randomUUID(), pedidoId, produtoId, 1],
+      ),
+      code,
+    );
+  });
+});

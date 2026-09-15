@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Produto {
+  id                String       @id @default(uuid()) @db.Uuid
+  nome              String
+  quantidadeEstoque Int
+  itensPedido       ItemPedido[]
+}
+
+model Pedido {
+  id           String       @id @default(uuid()) @db.Uuid
+  compradorRef String
+  criadoEm     DateTime     @default(now()) @db.Timestamptz(3)
+  itens        ItemPedido[]
+}
+
+model ItemPedido {
+  id         String  @id @default(uuid()) @db.Uuid
+  pedidoId   String  @db.Uuid
+  produtoId  String  @db.Uuid
+  quantidade Int
+  pedido     Pedido  @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  produto    Produto @relation(fields: [produtoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@index([pedidoId])
+  @@index([produtoId])
+}

@@ -1,0 +1,12 @@
+node_modules/
+backend/dist/
+backend/coverage/
+backend/src/generated/prisma/
+.env
+.env.*
+!.env.example
+.superpowers/
+docs/
+sprints/
+CLAUDE.md 
+AGENTS.md
