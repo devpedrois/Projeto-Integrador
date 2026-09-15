@@ -48,7 +48,11 @@ export class PrismaPedidoRepository implements PedidoRepository {
 
       const pedidoId = randomUUID();
       await tx.pedido.create({
-        data: { id: pedidoId, compradorRef: input.compradorRef },
+        data: {
+          id: pedidoId,
+          compradorRef: input.compradorRef,
+          compradorId: input.compradorId,
+        },
       });
       await tx.intencaoNotificacao.create({
         data: { id: randomUUID(), pedidoId },

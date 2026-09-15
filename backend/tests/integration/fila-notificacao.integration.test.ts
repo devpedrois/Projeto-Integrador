@@ -15,6 +15,12 @@ import {
 import { publicarIntencoesPendentes } from "../../src/queues/notificacao.publisher.js";
 import { PrismaIntencaoNotificacaoRepository } from "../../src/repositories/intencao-notificacao.repository.js";
 import { PrismaPedidoRepository } from "../../src/repositories/pedido.repository.js";
+import { databasePool } from "../helpers/database.js";
+import {
+  criarCategoria,
+  criarUsuarioArtesao,
+  criarUsuarioComprador,
+} from "../helpers/dominio-fixtures.js";
 
 const databaseUrl = process.env.DATABASE_URL;
 
@@ -28,6 +34,10 @@ const pedidoRepository = new PrismaPedidoRepository(prisma);
 
 let boss: PgBoss;
 
+let artesaoId: string;
+let categoriaId: string;
+let compradorId: string;
+
 const createdProdutoIds: string[] = [];
 const createdPedidoIds: string[] = [];
 const extraBosses: PgBoss[] = [];
@@ -35,7 +45,7 @@ const extraBosses: PgBoss[] = [];
 async function createProduto(quantidadeEstoque: number): Promise<string> {
   const id = randomUUID();
   await prisma.produto.create({
-    data: { id, nome: "Produto de teste", quantidadeEstoque },
+    data: { id, nome: "Produto de teste", artesaoId, categoriaId, quantidadeEstoque },
   });
   createdProdutoIds.push(id);
   return id;
@@ -48,6 +58,7 @@ async function createPedidoComIntencao(quantidadeEstoque = 5): Promise<{
   const produtoId = await createProduto(quantidadeEstoque);
   const pedido = await pedidoRepository.criar({
     compradorRef: "comprador-sintetico-fila",
+    compradorId,
     itens: [{ produtoId, quantidade: 1 }],
   });
   createdPedidoIds.push(pedido.pedidoId);
@@ -94,6 +105,9 @@ beforeAll(async () => {
   boss = createPgBossClient(databaseUrl);
   await boss.start();
   await ensureNotificarArtesaoQueue(boss);
+  artesaoId = await criarUsuarioArtesao(databasePool);
+  categoriaId = await criarCategoria(databasePool);
+  compradorId = await criarUsuarioComprador(databasePool);
 });
 
 afterEach(async () => {
@@ -115,7 +129,12 @@ afterEach(async () => {
 
 afterAll(async () => {
   await boss.stop({ graceful: false });
+  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
+    [artesaoId, compradorId],
+  ]);
+  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = $1', [categoriaId]);
   await prisma.$disconnect();
+  await databasePool.end();
 });
 
 describe("fila de notificacao ao artesao", () => {

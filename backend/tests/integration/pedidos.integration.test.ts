@@ -1,10 +1,15 @@
 import { randomUUID } from "node:crypto";
 import "dotenv/config";
 import request from "supertest";
-import { afterAll, afterEach, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { createApp } from "../../src/app.js";
 import { createPrismaClient } from "../../src/database/prisma/client.js";
 import { databasePool } from "../helpers/database.js";
+import {
+  criarCategoria,
+  criarUsuarioArtesao,
+  criarUsuarioComprador,
+} from "../helpers/dominio-fixtures.js";
 
 const databaseUrl = process.env.DATABASE_URL;
 
@@ -15,11 +20,15 @@ if (databaseUrl === undefined || databaseUrl.length === 0) {
 const prisma = createPrismaClient(databaseUrl);
 const app = createApp(prisma);
 
+let artesaoId: string;
+let categoriaId: string;
+let compradorId: string;
+
 async function createProduto(quantidadeEstoque: number): Promise<string> {
   const id = randomUUID();
   await databasePool.query(
-    'INSERT INTO "Produto" ("id", "nome", "quantidadeEstoque") VALUES ($1, $2, $3)',
-    [id, "Produto de teste", quantidadeEstoque],
+    'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+    [id, "Produto de teste", artesaoId, categoriaId, quantidadeEstoque],
   );
   return id;
 }
@@ -44,6 +53,12 @@ async function countPedidos(): Promise<number> {
 
 const createdProdutoIds: string[] = [];
 
+beforeAll(async () => {
+  artesaoId = await criarUsuarioArtesao(databasePool);
+  categoriaId = await criarCategoria(databasePool);
+  compradorId = await criarUsuarioComprador(databasePool);
+});
+
 afterEach(async () => {
   await databasePool.query(
     'DELETE FROM "IntencaoNotificacao" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorRef" = $1)',
@@ -65,6 +80,10 @@ afterEach(async () => {
 });
 
 afterAll(async () => {
+  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
+    [artesaoId, compradorId],
+  ]);
+  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = $1', [categoriaId]);
   await prisma.$disconnect();
   await databasePool.end();
 });
@@ -78,6 +97,7 @@ describe("POST /pedidos", () => {
       .post("/pedidos")
       .send({
         compradorRef: compradorRefTeste,
+        compradorId,
         itens: [{ produtoId, quantidade: 2 }],
       });
 
@@ -93,6 +113,7 @@ describe("POST /pedidos", () => {
       .post("/pedidos")
       .send({
         compradorRef: compradorRefTeste,
+        compradorId,
         itens: [{ produtoId: randomUUID(), quantidade: 1 }],
       });
 
@@ -109,6 +130,7 @@ describe("POST /pedidos", () => {
       .post("/pedidos")
       .send({
         compradorRef: compradorRefTeste,
+        compradorId,
         itens: [{ produtoId, quantidade: 0 }],
       });
 
@@ -126,6 +148,7 @@ describe("POST /pedidos", () => {
       .post("/pedidos")
       .send({
         compradorRef: compradorRefTeste,
+        compradorId,
         itens: [{ produtoId, quantidade: 2 }],
       });
 
@@ -144,6 +167,7 @@ describe("POST /pedidos", () => {
       .post("/pedidos")
       .send({
         compradorRef: compradorRefTeste,
+        compradorId,
         itens: [
           { produtoId: produtoValido, quantidade: 2 },
           { produtoId: produtoSemEstoque, quantidade: 5 },
@@ -165,6 +189,7 @@ describe("POST /pedidos", () => {
       .post("/pedidos")
       .send({
         compradorRef: compradorRefTeste,
+        compradorId,
         itens: [
           { produtoId, quantidade: 3 },
           { produtoId: produtoId.toUpperCase(), quantidade: 3 },

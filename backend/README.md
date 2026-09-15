@@ -62,6 +62,8 @@ As respostas não incluem mensagens internas ou credenciais.
 
 ## Limites da demonstração
 
-`compradorRef` é sintético e temporário. Autenticação e autorização ainda
-não existem. O modelo `Pagamento` e integrações com gateways financeiros
+`compradorRef` é sintético e temporário. `POST /pedidos` também exige
+`compradorId`, o UUID de um `Usuario` já existente (FK obrigatória desde a
+PI4-19.5) — sem autenticação real, quem chama o endpoint ainda escolhe esse
+UUID livremente. O modelo `Pagamento` e integrações com gateways financeiros
 ficam fora desta demonstração.

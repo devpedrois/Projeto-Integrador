@@ -9,6 +9,7 @@ const itemSchema = z.object({
 
 const criarPedidoSchema = z.object({
   compradorRef: z.string().min(1),
+  compradorId: z.uuid(),
   itens: z.array(itemSchema).min(1).max(20),
 });
 

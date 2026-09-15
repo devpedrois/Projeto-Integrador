@@ -71,18 +71,17 @@ model Categoria {
 model Produto {
   id                String         @id @default(uuid()) @db.Uuid
   nome              String
-  // Campos abaixo evoluem do schema reduzido do FCCPD. Ficam opcionais
-  // nesta fase para permitir backfill seguro antes de virarem obrigatorios
-  // (ver docs/docs auxiliares/DATA_MODEL.md).
-  artesaoId         String?        @db.Uuid
-  categoriaId       String?        @db.Uuid
+  artesaoId         String         @db.Uuid
+  categoriaId       String         @db.Uuid
+  // descricao e preco seguem opcionais: campos ainda nao preenchidos pelo
+  // backend reduzido do FCCPD (ver docs/docs auxiliares/DATA_MODEL.md).
   descricao         String?
   preco             Decimal?       @db.Decimal(10, 2)
   quantidadeEstoque Int
   ativo             Boolean        @default(true)
   criadoEm          DateTime       @default(now()) @db.Timestamptz(3)
-  artesao           Usuario?       @relation("ProdutosDoArtesao", fields: [artesaoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  categoria         Categoria?     @relation(fields: [categoriaId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  artesao           Usuario        @relation("ProdutosDoArtesao", fields: [artesaoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  categoria         Categoria      @relation(fields: [categoriaId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   fotos             ProdutoFoto[]
   itensCarrinho     ItemCarrinho[]
   itensPedido       ItemPedido[]
@@ -126,16 +125,16 @@ model ItemCarrinho {
 
 model Pedido {
   id                  String               @id @default(uuid()) @db.Uuid
-  // Campo sintetico herdado do backend minimo de FCCPD. Preservado para nao
-  // apagar pedidos existentes; compradorId nasce nullable e assume o lugar
-  // de compradorRef apos backfill em migracao futura.
+  // Campo sintetico herdado do backend minimo de FCCPD. Preservado como
+  // referencia legada; compradorId e a FK real e obrigatoria (ver
+  // docs/docs auxiliares/DATA_MODEL.md).
   compradorRef        String
-  compradorId         String?              @db.Uuid
+  compradorId         String               @db.Uuid
   numero              String?              @unique
   status              StatusPedido         @default(pendente)
   total               Decimal?             @db.Decimal(10, 2)
   criadoEm            DateTime             @default(now()) @db.Timestamptz(3)
-  comprador           Usuario?             @relation(fields: [compradorId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  comprador           Usuario              @relation(fields: [compradorId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   itens               ItemPedido[]
   pagamento           Pagamento?
   intencaoNotificacao IntencaoNotificacao?

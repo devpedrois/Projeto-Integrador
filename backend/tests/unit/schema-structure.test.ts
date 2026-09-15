@@ -61,11 +61,11 @@ describe("complete domain schema structure", () => {
     expect(modelBlock("ItemPedido")).toMatch(/quantidade\s+Int\b/);
   });
 
-  it("plans the compradorRef to Usuario transition without dropping the synthetic field", () => {
+  it("keeps compradorRef as a legacy field alongside the required compradorId FK", () => {
     const pedido = modelBlock("Pedido");
     expect(pedido).toMatch(/compradorRef\s+String\b/);
-    expect(pedido).toMatch(/compradorId\s+String\?\s+@db\.Uuid/);
-    expect(pedido).toMatch(/comprador\s+Usuario\?\s+@relation/);
+    expect(pedido).toMatch(/compradorId\s+String\s+@db\.Uuid/);
+    expect(pedido).toMatch(/comprador\s+Usuario\s+@relation/);
   });
 
   it("uses UUID identifiers on every domain model", () => {

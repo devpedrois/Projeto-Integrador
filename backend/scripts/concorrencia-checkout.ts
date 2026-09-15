@@ -22,11 +22,34 @@ interface RoundResult {
   failures: string[];
 }
 
-async function createProduto(pool: Pool, quantidadeEstoque: number): Promise<string> {
+async function createUsuario(pool: Pool, papel: "artesao" | "comprador"): Promise<string> {
   const id = randomUUID();
   await pool.query(
-    'INSERT INTO "Produto" ("id", "nome", "quantidadeEstoque") VALUES ($1, $2, $3)',
-    [id, `Produto concorrencia ${id}`, quantidadeEstoque],
+    'INSERT INTO "Usuario" ("id", "nome", "email", "senhaHash", "papel") VALUES ($1, $2, $3, $4, $5)',
+    [id, `Usuario concorrencia ${id}`, `concorrencia-${id}@teste.origem`, "hash-de-teste", papel],
+  );
+  return id;
+}
+
+async function createCategoria(pool: Pool): Promise<string> {
+  const id = randomUUID();
+  await pool.query('INSERT INTO "Categoria" ("id", "nome") VALUES ($1, $2)', [
+    id,
+    `Categoria concorrencia ${id}`,
+  ]);
+  return id;
+}
+
+async function createProduto(
+  pool: Pool,
+  quantidadeEstoque: number,
+  artesaoId: string,
+  categoriaId: string,
+): Promise<string> {
+  const id = randomUUID();
+  await pool.query(
+    'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+    [id, `Produto concorrencia ${id}`, artesaoId, categoriaId, quantidadeEstoque],
   );
   return id;
 }
@@ -62,12 +85,17 @@ async function limparRodada(pool: Pool, produtoId: string, pedidoIds: string[]):
   await pool.query('DELETE FROM "Produto" WHERE "id" = $1', [produtoId]);
 }
 
-async function postPedido(baseUrl: string, produtoId: string): Promise<PedidoResponse> {
+async function postPedido(
+  baseUrl: string,
+  produtoId: string,
+  compradorId: string,
+): Promise<PedidoResponse> {
   const response = await fetch(`${baseUrl}/pedidos`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       compradorRef: `comprador-concorrencia-${randomUUID()}`,
+      compradorId,
       itens: [{ produtoId, quantidade: 1 }],
     }),
   });
@@ -81,15 +109,26 @@ function assertCondition(condition: boolean, message: string, failures: string[]
   }
 }
 
-async function runRound(round: number, baseUrl: string, pool: Pool): Promise<RoundResult> {
+interface FixturesFCCPD {
+  artesaoId: string;
+  categoriaId: string;
+  compradorId: string;
+}
+
+async function runRound(
+  round: number,
+  baseUrl: string,
+  pool: Pool,
+  fixtures: FixturesFCCPD,
+): Promise<RoundResult> {
   const failures: string[] = [];
-  const produtoId = await createProduto(pool, 1);
+  const produtoId = await createProduto(pool, 1, fixtures.artesaoId, fixtures.categoriaId);
   const pedidoIds: string[] = [];
 
   try {
     const [respA, respB] = await Promise.all([
-      postPedido(baseUrl, produtoId),
-      postPedido(baseUrl, produtoId),
+      postPedido(baseUrl, produtoId, fixtures.compradorId),
+      postPedido(baseUrl, produtoId, fixtures.compradorId),
     ]);
 
     const statuses = [respA.status, respB.status].sort((a, b) => a - b);
@@ -165,11 +204,16 @@ async function main(): Promise<void> {
   });
   const baseUrl = `http://127.0.0.1:${environment.PORT}`;
 
+  const artesaoId = await createUsuario(pool, "artesao");
+  const categoriaId = await createCategoria(pool);
+  const compradorId = await createUsuario(pool, "comprador");
+  const fixtures: FixturesFCCPD = { artesaoId, categoriaId, compradorId };
+
   const allFailures: string[] = [];
 
   try {
     for (let round = 1; round <= ROUNDS; round += 1) {
-      const result = await runRound(round, baseUrl, pool);
+      const result = await runRound(round, baseUrl, pool, fixtures);
       if (result.failures.length === 0) {
         console.log(
           `round ${round}: OK (1x201, 1x409, estoque final 0, 1 pedido persistido)`,
@@ -183,6 +227,10 @@ async function main(): Promise<void> {
       }
     }
   } finally {
+    await pool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
+      [fixtures.artesaoId, fixtures.compradorId],
+    ]);
+    await pool.query('DELETE FROM "Categoria" WHERE "id" = $1', [fixtures.categoriaId]);
     await closeServer(server);
     await prisma.$disconnect();
     await pool.end();
