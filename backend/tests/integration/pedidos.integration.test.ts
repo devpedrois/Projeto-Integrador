@@ -42,6 +42,7 @@ async function countPedidos(): Promise<number> {
 const createdProdutoIds: string[] = [];
 
 afterEach(async () => {
+  await databasePool.query('DELETE FROM "IntencaoNotificacao"');
   await databasePool.query('DELETE FROM "ItemPedido"');
   await databasePool.query('DELETE FROM "Pedido"');
   if (createdProdutoIds.length > 0) {
