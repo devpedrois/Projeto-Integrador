@@ -32,9 +32,12 @@ async function getEstoque(produtoId: string): Promise<number> {
   return result.rows[0]?.quantidadeEstoque ?? -1;
 }
 
+const compradorRefTeste = "comprador-sintetico-a";
+
 async function countPedidos(): Promise<number> {
   const result = await databasePool.query<{ count: string }>(
-    'SELECT COUNT(*)::text AS count FROM "Pedido"',
+    'SELECT COUNT(*)::text AS count FROM "Pedido" WHERE "compradorRef" = $1',
+    [compradorRefTeste],
   );
   return Number(result.rows[0]?.count ?? "0");
 }
@@ -42,9 +45,17 @@ async function countPedidos(): Promise<number> {
 const createdProdutoIds: string[] = [];
 
 afterEach(async () => {
-  await databasePool.query('DELETE FROM "IntencaoNotificacao"');
-  await databasePool.query('DELETE FROM "ItemPedido"');
-  await databasePool.query('DELETE FROM "Pedido"');
+  await databasePool.query(
+    'DELETE FROM "IntencaoNotificacao" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorRef" = $1)',
+    [compradorRefTeste],
+  );
+  await databasePool.query(
+    'DELETE FROM "ItemPedido" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorRef" = $1)',
+    [compradorRefTeste],
+  );
+  await databasePool.query('DELETE FROM "Pedido" WHERE "compradorRef" = $1', [
+    compradorRefTeste,
+  ]);
   if (createdProdutoIds.length > 0) {
     await databasePool.query('DELETE FROM "Produto" WHERE "id" = ANY($1)', [
       createdProdutoIds,
@@ -66,7 +77,7 @@ describe("POST /pedidos", () => {
     const response = await request(app)
       .post("/pedidos")
       .send({
-        compradorRef: "comprador-sintetico-a",
+        compradorRef: compradorRefTeste,
         itens: [{ produtoId, quantidade: 2 }],
       });
 
@@ -81,7 +92,7 @@ describe("POST /pedidos", () => {
     const response = await request(app)
       .post("/pedidos")
       .send({
-        compradorRef: "comprador-sintetico-a",
+        compradorRef: compradorRefTeste,
         itens: [{ produtoId: randomUUID(), quantidade: 1 }],
       });
 
@@ -97,7 +108,7 @@ describe("POST /pedidos", () => {
     const response = await request(app)
       .post("/pedidos")
       .send({
-        compradorRef: "comprador-sintetico-a",
+        compradorRef: compradorRefTeste,
         itens: [{ produtoId, quantidade: 0 }],
       });
 
@@ -114,7 +125,7 @@ describe("POST /pedidos", () => {
     const response = await request(app)
       .post("/pedidos")
       .send({
-        compradorRef: "comprador-sintetico-a",
+        compradorRef: compradorRefTeste,
         itens: [{ produtoId, quantidade: 2 }],
       });
 
@@ -132,7 +143,7 @@ describe("POST /pedidos", () => {
     const response = await request(app)
       .post("/pedidos")
       .send({
-        compradorRef: "comprador-sintetico-a",
+        compradorRef: compradorRefTeste,
         itens: [
           { produtoId: produtoValido, quantidade: 2 },
           { produtoId: produtoSemEstoque, quantidade: 5 },
@@ -153,7 +164,7 @@ describe("POST /pedidos", () => {
     const response = await request(app)
       .post("/pedidos")
       .send({
-        compradorRef: "comprador-sintetico-a",
+        compradorRef: compradorRefTeste,
         itens: [
           { produtoId, quantidade: 3 },
           { produtoId: produtoId.toUpperCase(), quantidade: 3 },
