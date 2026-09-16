@@ -6,6 +6,7 @@ const CHAVE_PADRAO = "origem:v1:usuarios";
 export interface UsuarioRepository {
   seed(): Promise<void>;
   list(): Promise<Usuario[]>;
+  create(usuario: Usuario): Promise<Usuario>;
 }
 
 export class BrowserUsuarioRepository implements UsuarioRepository {
@@ -23,5 +24,12 @@ export class BrowserUsuarioRepository implements UsuarioRepository {
     const bruto = this.storage.getItem(this.chave);
     if (bruto === null) return [];
     return JSON.parse(bruto) as Usuario[];
+  }
+
+  async create(usuario: Usuario): Promise<Usuario> {
+    const usuarios = await this.list();
+    usuarios.push(usuario);
+    this.storage.setItem(this.chave, JSON.stringify(usuarios));
+    return usuario;
   }
 }

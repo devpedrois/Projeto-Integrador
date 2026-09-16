@@ -54,3 +54,68 @@ describe("FakeUsuariosService.list", () => {
     expect(duracao).toBeGreaterThanOrEqual(25);
   });
 });
+
+describe("FakeUsuariosService.register", () => {
+  it("cria um usuario comprador e retorna DTO publico sem senha", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    const criado = await service.register({
+      nome: "Nova Compradora",
+      email: "nova.compradora@origem.test",
+      senha: "senha1234",
+      papel: "comprador",
+    });
+
+    expect(criado.nome).toBe("Nova Compradora");
+    expect(criado.papel).toBe("comprador");
+    expect(criado.ativo).toBe(true);
+    expect("senha" in criado).toBe(false);
+  });
+
+  it("persiste o usuario criado na lista", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    await service.register({
+      nome: "Novo Artesao",
+      email: "novo.artesao@origem.test",
+      senha: "senha1234",
+      papel: "artesao",
+    });
+    const usuarios = await service.list();
+
+    expect(usuarios.some((u) => u.email === "novo.artesao@origem.test")).toBe(
+      true
+    );
+  });
+
+  it("rejeita papel admin", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    await expect(
+      service.register({
+        nome: "Tentativa Admin",
+        email: "tentativa.admin@origem.test",
+        senha: "senha1234",
+        // @ts-expect-error papel admin nao e aceito pelo tipo publico
+        papel: "admin",
+      })
+    ).rejects.toMatchObject({ code: "PAPEL_INVALIDO" });
+  });
+
+  it("rejeita senha curta", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    await expect(
+      service.register({
+        nome: "Senha Curta",
+        email: "senha.curta@origem.test",
+        senha: "curta12",
+        papel: "comprador",
+      })
+    ).rejects.toMatchObject({ code: "CADASTRO_INVALIDO" });
+  });
+});

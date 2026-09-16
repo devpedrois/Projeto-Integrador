@@ -19,7 +19,7 @@
     "incremental": true,
     "allowJs": false,
     "noEmit": true,
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -30,6 +30,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "tests/**/*.ts",
+    "tests/**/*.tsx",
     "vitest.config.ts",
     ".next/types/**/*.ts"
   ],

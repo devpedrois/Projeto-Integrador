@@ -55,4 +55,23 @@ describe("BrowserUsuarioRepository", () => {
 
     expect(window.localStorage.getItem(CHAVE_TESTE)).not.toBeNull();
   });
+
+  it("adiciona um novo usuario e o mantem na listagem seguinte", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    await repo.seed();
+
+    const criado = await repo.create({
+      id: "novo-1",
+      nome: "Novo Usuario",
+      email: "novo.usuario@origem.test",
+      senha: "senha1234",
+      papel: "comprador",
+      ativo: true,
+    });
+    const usuarios = await repo.list();
+
+    expect(criado.id).toBe("novo-1");
+    expect(usuarios).toHaveLength(4);
+    expect(usuarios.some((u) => u.id === "novo-1")).toBe(true);
+  });
 });
