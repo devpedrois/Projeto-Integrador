@@ -112,7 +112,7 @@ function PaginaInicial() {
       />
 
       {algumFiltroAtivo ? (
-        <ResultadoBusca service={produtosService} query={query} />
+        <ResultadoBusca service={produtosService} query={query} onLimpar={limpar} />
       ) : (
         <>
           {estado.status === "carregando" ? (

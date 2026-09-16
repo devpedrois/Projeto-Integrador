@@ -7,9 +7,10 @@ import type { ProdutoQuery } from "@/types/produto-query";
 export interface ResultadoBuscaProps {
   service: ProdutosService | null;
   query: ProdutoQuery;
+  onLimpar(): void;
 }
 
-export function ResultadoBusca({ service, query }: ResultadoBuscaProps) {
+export function ResultadoBusca({ service, query, onLimpar }: ResultadoBuscaProps) {
   const estado = useBuscaProdutos(service, query);
 
   return (
@@ -24,6 +25,21 @@ export function ResultadoBusca({ service, query }: ResultadoBuscaProps) {
         <p role="alert" className="text-sm text-red-700">
           {estado.mensagem}
         </p>
+      ) : null}
+
+      {estado.status === "vazio" ? (
+        <div role="status" aria-label="Nenhum resultado encontrado" className="flex flex-col gap-2">
+          <p className="text-sm text-neutral-600">
+            Nenhum resultado encontrado para essa busca.
+          </p>
+          <button
+            type="button"
+            onClick={onLimpar}
+            className="self-start rounded border border-gray-300 p-2 text-sm"
+          >
+            Limpar filtros
+          </button>
+        </div>
       ) : null}
 
       {estado.status === "sucesso" ? (

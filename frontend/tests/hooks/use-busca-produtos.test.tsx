@@ -85,6 +85,18 @@ describe("useBuscaProdutos", () => {
     await waitFor(() => expect(service.search).toHaveBeenCalledWith(query));
   });
 
+  it("retorna vazio quando a consulta nao encontra produtos", async () => {
+    const service = criarServicoFake({
+      search: vi.fn().mockResolvedValue([]),
+    });
+
+    const { result } = renderHook(() =>
+      useBuscaProdutos(service, { termo: "inexistente" })
+    );
+
+    await waitFor(() => expect(result.current.status).toBe("vazio"));
+  });
+
   it("retorna erro quando o service falha", async () => {
     const service = criarServicoFake({
       search: vi.fn().mockRejectedValue(new Error("falhou")),

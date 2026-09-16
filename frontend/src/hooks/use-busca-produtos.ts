@@ -8,6 +8,7 @@ import type { Produto } from "@/types/produto";
 export type EstadoBuscaProdutos =
   | { status: "carregando" }
   | { status: "sucesso"; produtos: Produto[] }
+  | { status: "vazio" }
   | { status: "erro"; mensagem: string };
 
 const MENSAGEM_ERRO_PADRAO = "Nao foi possivel buscar produtos agora.";
@@ -32,7 +33,9 @@ export function useBuscaProdutos(
       .search(JSON.parse(chaveQuery) as ProdutoQuery)
       .then((produtos) => {
         if (cancelado) return;
-        setEstado({ status: "sucesso", produtos });
+        setEstado(
+          produtos.length === 0 ? { status: "vazio" } : { status: "sucesso", produtos }
+        );
       })
       .catch(() => {
         if (cancelado) return;

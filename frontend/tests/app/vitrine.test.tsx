@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { useEffect, useState } from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
@@ -294,6 +294,31 @@ describe("Vitrine (Home)", () => {
     expect(pushMock).toHaveBeenCalledWith(
       "/?termo=vaso&categoria=categoria-ceramica-barro",
       { scroll: false }
+    );
+  });
+
+  it("busca sem correspondencia mostra estado vazio e limpar filtros pela faixa vazia restaura o catalogo", async () => {
+    searchParamsAtual = new URLSearchParams("termo=vaso");
+    const doCatalogo = produto({ id: "produto-catalogo", nome: "Panela de Barro Vidrada" });
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockResolvedValue([doCatalogo]),
+      search: vi.fn().mockResolvedValue([]),
+    });
+    const { default: Home } = await import("@/app/page");
+    const usuario = userEvent.setup();
+
+    render(<Home />);
+
+    const estadoVazio = await screen.findByRole("status", { name: /nenhum resultado/i });
+    expect(estadoVazio).toBeInTheDocument();
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+
+    const botaoLimpar = within(estadoVazio).getByRole("button", { name: /limpar filtros/i });
+    await usuario.click(botaoLimpar);
+
+    expect(pushMock).toHaveBeenCalledWith("/", { scroll: false });
+    await waitFor(() =>
+      expect(screen.getByText("Panela de Barro Vidrada")).toBeInTheDocument()
     );
   });
 
