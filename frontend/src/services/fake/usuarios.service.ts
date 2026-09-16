@@ -1,4 +1,7 @@
-import type { UsuarioRepository } from "@/fake-api/repositories/usuario.repository";
+import {
+  EmailJaCadastradoError,
+  type UsuarioRepository,
+} from "@/fake-api/repositories/usuario.repository";
 import { paraUsuarioPublico, type UsuarioPublico } from "@/types/usuario";
 import type { CadastroInput } from "@/types/cadastro";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
@@ -42,14 +45,21 @@ export class FakeUsuariosService implements UsuariosService {
 
     await this.repositorio.seed();
     await aguardar(this.latenciaMs);
-    const criado = await this.repositorio.create({
-      id: crypto.randomUUID(),
-      nome: input.nome.trim(),
-      email: input.email.trim(),
-      senha: input.senha,
-      papel: input.papel,
-      ativo: true,
-    });
-    return paraUsuarioPublico(criado);
+    try {
+      const criado = await this.repositorio.create({
+        id: crypto.randomUUID(),
+        nome: input.nome.trim(),
+        email: input.email.trim(),
+        senha: input.senha,
+        papel: input.papel,
+        ativo: true,
+      });
+      return paraUsuarioPublico(criado);
+    } catch (erro) {
+      if (erro instanceof EmailJaCadastradoError) {
+        throw new ServiceError("EMAIL_JA_CADASTRADO", erro.message);
+      }
+      throw erro;
+    }
   }
 }

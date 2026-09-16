@@ -162,6 +162,34 @@ describe("CadastroForm", () => {
     await waitFor(() => expect(pushMock).toHaveBeenCalled());
   });
 
+  it("email ja cadastrado associa a mensagem ao campo email", async () => {
+    const user = userEvent.setup();
+    const registerSpy = vi
+      .fn<UsuariosService["register"]>()
+      .mockRejectedValue(
+        new ServiceError("EMAIL_JA_CADASTRADO", "Este email ja esta cadastrado.")
+      );
+    const service = criarServicoFake(registerSpy);
+    render(<CadastroForm service={service} />);
+
+    const dados = preencher();
+    await user.type(screen.getByLabelText(/nome/i), dados.nome);
+    await user.type(screen.getByLabelText(/email/i), dados.email);
+    await user.type(screen.getByLabelText(/senha/i), dados.senha);
+    await user.selectOptions(screen.getByLabelText(/papel/i), "comprador");
+    await user.click(screen.getByRole("button", { name: /cadastrar/i }));
+
+    const campoEmail = await screen.findByLabelText(/email/i);
+    await waitFor(() => expect(campoEmail).toHaveAttribute("aria-invalid", "true"));
+    const idDescricao = campoEmail.getAttribute("aria-describedby");
+    expect(idDescricao).toBeTruthy();
+    expect(document.getElementById(idDescricao as string)).toHaveTextContent(
+      /ja esta cadastrado/i
+    );
+    expect(campoEmail).toHaveFocus();
+    expect(pushMock).not.toHaveBeenCalled();
+  });
+
   it("mostra erro recuperavel quando o service falha", async () => {
     const user = userEvent.setup();
     const registerSpy = vi

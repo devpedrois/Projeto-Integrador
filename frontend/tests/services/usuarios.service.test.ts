@@ -118,4 +118,79 @@ describe("FakeUsuariosService.register", () => {
       })
     ).rejects.toMatchObject({ code: "CADASTRO_INVALIDO" });
   });
+
+  it("rejeita email identico ao ja cadastrado", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    await service.register({
+      nome: "Primeira Compradora",
+      email: "repetida@origem.test",
+      senha: "senha1234",
+      papel: "comprador",
+    });
+
+    await expect(
+      service.register({
+        nome: "Segunda Compradora",
+        email: "repetida@origem.test",
+        senha: "senha1234",
+        papel: "comprador",
+      })
+    ).rejects.toMatchObject({ code: "EMAIL_JA_CADASTRADO" });
+  });
+
+  it("rejeita email duplicado com diferenca de maiusculas e espacos", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    await service.register({
+      nome: "Primeira Compradora",
+      email: "repetida@origem.test",
+      senha: "senha1234",
+      papel: "comprador",
+    });
+
+    await expect(
+      service.register({
+        nome: "Segunda Compradora",
+        email: "  Repetida@Origem.Test  ",
+        senha: "senha1234",
+        papel: "comprador",
+      })
+    ).rejects.toMatchObject({ code: "EMAIL_JA_CADASTRADO" });
+
+    const usuarios = await service.list();
+    expect(usuarios.filter((u) => u.email === "repetida@origem.test")).toHaveLength(1);
+  });
+
+  it("aceita cadastro com email realmente novo apos tentativa duplicada", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    await service.register({
+      nome: "Primeira Compradora",
+      email: "repetida@origem.test",
+      senha: "senha1234",
+      papel: "comprador",
+    });
+
+    await expect(
+      service.register({
+        nome: "Segunda Compradora",
+        email: "repetida@origem.test",
+        senha: "senha1234",
+        papel: "comprador",
+      })
+    ).rejects.toMatchObject({ code: "EMAIL_JA_CADASTRADO" });
+
+    const criado = await service.register({
+      nome: "Nova Pessoa",
+      email: "email.novo@origem.test",
+      senha: "senha1234",
+      papel: "artesao",
+    });
+
+    expect(criado.email).toBe("email.novo@origem.test");
+  });
 });

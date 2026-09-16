@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
+import { ServiceError } from "@/services/errors";
 import type { CadastroInput, PapelCadastro } from "@/types/cadastro";
 import {
   cadastroValido,
@@ -72,8 +73,14 @@ export function CadastroForm({ service }: CadastroFormProps) {
     try {
       await service.register(entrada);
       router.push("/login?cadastro=sucesso");
-    } catch {
-      setErroServico(MENSAGEM_ERRO_SERVICO);
+    } catch (erro) {
+      if (erro instanceof ServiceError && erro.code === "EMAIL_JA_CADASTRADO") {
+        const errosEmail: ErrosCadastro = { email: erro.message };
+        setErros(errosEmail);
+        focarPrimeiroErro(errosEmail);
+      } else {
+        setErroServico(MENSAGEM_ERRO_SERVICO);
+      }
     } finally {
       setEnviando(false);
     }
