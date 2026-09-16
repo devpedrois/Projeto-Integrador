@@ -45,24 +45,44 @@ describe("useBuscaProdutos", () => {
       search: vi.fn().mockReturnValue(new Promise(() => {})),
     });
 
-    const { result } = renderHook(() => useBuscaProdutos(service, "esculpid"));
+    const { result } = renderHook(() =>
+      useBuscaProdutos(service, { termo: "esculpid" })
+    );
 
     expect(result.current.status).toBe("carregando");
   });
 
-  it("retorna sucesso com os produtos encontrados pelo termo", async () => {
+  it("retorna sucesso com os produtos encontrados pela consulta", async () => {
     const produtos = [produto({ id: "produto-seed-04" }), produto({ id: "produto-seed-14" })];
     const service = criarServicoFake({
       search: vi.fn().mockResolvedValue(produtos),
     });
 
-    const { result } = renderHook(() => useBuscaProdutos(service, "esculpid"));
+    const { result } = renderHook(() =>
+      useBuscaProdutos(service, { termo: "esculpid" })
+    );
 
     await waitFor(() => expect(result.current.status).toBe("sucesso"));
-    expect(service.search).toHaveBeenCalledWith("esculpid");
+    expect(service.search).toHaveBeenCalledWith({ termo: "esculpid" });
     if (result.current.status === "sucesso") {
       expect(result.current.produtos).toHaveLength(2);
     }
+  });
+
+  it("envia tecnica, regiao e categoria juntos na mesma consulta", async () => {
+    const service = criarServicoFake({
+      search: vi.fn().mockResolvedValue([]),
+    });
+    const query = {
+      termo: "renda",
+      categoriaId: "categoria-renda-bordado",
+      tecnicaId: "tecnica-renda-irlandesa",
+      regiaoId: "regiao-pilar-recife",
+    };
+
+    renderHook(() => useBuscaProdutos(service, query));
+
+    await waitFor(() => expect(service.search).toHaveBeenCalledWith(query));
   });
 
   it("retorna erro quando o service falha", async () => {
@@ -70,12 +90,14 @@ describe("useBuscaProdutos", () => {
       search: vi.fn().mockRejectedValue(new Error("falhou")),
     });
 
-    const { result } = renderHook(() => useBuscaProdutos(service, "esculpid"));
+    const { result } = renderHook(() =>
+      useBuscaProdutos(service, { termo: "esculpid" })
+    );
 
     await waitFor(() => expect(result.current.status).toBe("erro"));
   });
 
-  it("refaz a busca quando o termo muda", async () => {
+  it("refaz a busca quando a consulta muda", async () => {
     const search = vi
       .fn()
       .mockResolvedValueOnce([produto({ id: "produto-seed-04" })])
@@ -83,19 +105,19 @@ describe("useBuscaProdutos", () => {
     const service = criarServicoFake({ search });
 
     const { result, rerender } = renderHook(
-      ({ termo }) => useBuscaProdutos(service, termo),
-      { initialProps: { termo: "esculpid" } }
+      ({ query }) => useBuscaProdutos(service, query),
+      { initialProps: { query: { termo: "esculpid" } } }
     );
 
     await waitFor(() => expect(result.current.status).toBe("sucesso"));
 
-    rerender({ termo: "irlandesa" });
+    rerender({ query: { termo: "irlandesa" } });
 
     await waitFor(() => {
       if (result.current.status !== "sucesso") throw new Error("aguardando");
       expect(result.current.produtos[0]?.id).toBe("produto-seed-07");
     });
     expect(search).toHaveBeenCalledTimes(2);
-    expect(search).toHaveBeenNthCalledWith(2, "irlandesa");
+    expect(search).toHaveBeenNthCalledWith(2, { termo: "irlandesa" });
   });
 });

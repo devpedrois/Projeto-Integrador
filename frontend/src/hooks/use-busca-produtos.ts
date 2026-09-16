@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
+import type { ProdutoQuery } from "@/types/produto-query";
 import type { Produto } from "@/types/produto";
 
 export type EstadoBuscaProdutos =
@@ -13,9 +14,10 @@ const MENSAGEM_ERRO_PADRAO = "Nao foi possivel buscar produtos agora.";
 
 export function useBuscaProdutos(
   service: ProdutosService | null,
-  termo: string
+  query: ProdutoQuery
 ): EstadoBuscaProdutos {
   const [estado, setEstado] = useState<EstadoBuscaProdutos>({ status: "carregando" });
+  const chaveQuery = JSON.stringify(query);
 
   useEffect(() => {
     if (!service) {
@@ -27,7 +29,7 @@ export function useBuscaProdutos(
     setEstado({ status: "carregando" });
 
     service
-      .search(termo)
+      .search(JSON.parse(chaveQuery) as ProdutoQuery)
       .then((produtos) => {
         if (cancelado) return;
         setEstado({ status: "sucesso", produtos });
@@ -40,7 +42,7 @@ export function useBuscaProdutos(
     return () => {
       cancelado = true;
     };
-  }, [service, termo]);
+  }, [service, chaveQuery]);
 
   return estado;
 }

@@ -2,6 +2,8 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { BrowserProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import { FakeProdutosService } from "@/services/fake/produtos.service";
 import { CATEGORIA_IDS } from "@/fake-api/seeds/categorias.seed";
+import { TECNICA_IDS } from "@/fake-api/seeds/tecnicas.seed";
+import { REGIAO_IDS } from "@/fake-api/seeds/regioes.seed";
 import { ServiceError } from "@/services/errors";
 import type { NovoProdutoInput } from "@/types/novo-produto";
 
@@ -238,7 +240,7 @@ describe("FakeProdutosService.search", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    const resultado = await service.search("esculpid");
+    const resultado = await service.search({ termo: "esculpid" });
 
     expect(resultado.map((produto) => produto.id).sort()).toEqual(
       ["produto-seed-04", "produto-seed-14", "produto-seed-18"].sort()
@@ -249,7 +251,7 @@ describe("FakeProdutosService.search", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    const resultado = await service.search("ESCULPID");
+    const resultado = await service.search({ termo: "ESCULPID" });
 
     expect(resultado).toHaveLength(3);
   });
@@ -258,7 +260,7 @@ describe("FakeProdutosService.search", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    const resultado = await service.search("ésculpíd");
+    const resultado = await service.search({ termo: "ésculpíd" });
 
     expect(resultado).toHaveLength(3);
   });
@@ -267,7 +269,7 @@ describe("FakeProdutosService.search", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    const resultado = await service.search("esculpidos");
+    const resultado = await service.search({ termo: "esculpidos" });
 
     expect(resultado.map((produto) => produto.id)).toEqual(["produto-seed-18"]);
   });
@@ -276,7 +278,7 @@ describe("FakeProdutosService.search", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    const resultado = await service.search("termo-sem-correspondencia-xyz");
+    const resultado = await service.search({ termo: "termo-sem-correspondencia-xyz" });
 
     expect(resultado).toEqual([]);
   });
@@ -285,9 +287,101 @@ describe("FakeProdutosService.search", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    const resultado = await service.search("   ");
+    const resultado = await service.search({ termo: "   " });
 
     expect(resultado).toHaveLength(30);
+  });
+
+  it("retorna a lista completa quando nenhum filtro esta ativo", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const resultado = await service.search({});
+
+    expect(resultado).toHaveLength(30);
+  });
+
+  describe("cinco combinacoes de filtros ativos (semantica AND)", () => {
+    it("combinacao 1: somente categoria retorna os seis produtos da categoria", async () => {
+      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+      const resultado = await service.search({
+        categoriaId: CATEGORIA_IDS.ceramicaBarro,
+      });
+
+      expect(resultado.map((produto) => produto.id).sort()).toEqual(
+        [
+          "produto-seed-01",
+          "produto-seed-02",
+          "produto-seed-03",
+          "produto-seed-04",
+          "produto-seed-05",
+          "produto-seed-06",
+        ].sort()
+      );
+    });
+
+    it("combinacao 2: somente tecnica retorna os quatro produtos trancados em fibra", async () => {
+      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+      const resultado = await service.search({
+        tecnicaId: TECNICA_IDS.trancadoFibra,
+      });
+
+      expect(resultado.map((produto) => produto.id).sort()).toEqual(
+        [
+          "produto-seed-26",
+          "produto-seed-28",
+          "produto-seed-29",
+          "produto-seed-30",
+        ].sort()
+      );
+    });
+
+    it("combinacao 3: somente regiao retorna os dez produtos de Tracunhaem", async () => {
+      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+      const resultado = await service.search({
+        regiaoId: REGIAO_IDS.tracunhaem,
+      });
+
+      expect(resultado).toHaveLength(10);
+      expect(
+        resultado.every((produto) => produto.regiaoId === REGIAO_IDS.tracunhaem)
+      ).toBe(true);
+    });
+
+    it("combinacao 4: categoria e regiao juntas aplicam AND e restringem para dois produtos", async () => {
+      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+      const resultado = await service.search({
+        categoriaId: CATEGORIA_IDS.madeiraEntalhada,
+        regiaoId: REGIAO_IDS.pilarRecife,
+      });
+
+      expect(resultado.map((produto) => produto.id).sort()).toEqual(
+        ["produto-seed-13", "produto-seed-16"].sort()
+      );
+    });
+
+    it("combinacao 5: termo, categoria e tecnica juntos aplicam AND e restringem para tres produtos", async () => {
+      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+      const resultado = await service.search({
+        termo: "renda",
+        categoriaId: CATEGORIA_IDS.rendaBordado,
+        tecnicaId: TECNICA_IDS.rendaIrlandesa,
+      });
+
+      expect(resultado.map((produto) => produto.id).sort()).toEqual(
+        ["produto-seed-07", "produto-seed-09", "produto-seed-12"].sort()
+      );
+    });
   });
 });
 

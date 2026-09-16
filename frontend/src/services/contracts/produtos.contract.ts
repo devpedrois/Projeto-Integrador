@@ -8,6 +8,7 @@
  */
 import type { Produto } from "@/types/produto";
 import type { NovoProdutoInput } from "@/types/novo-produto";
+import type { ProdutoQuery } from "@/types/produto-query";
 
 export interface ProdutosService {
   list(): Promise<Produto[]>;
@@ -15,5 +16,5 @@ export interface ProdutosService {
   listByArtesao(artesaoId: string): Promise<Produto[]>;
   update(id: string, input: NovoProdutoInput, artesaoId: string): Promise<Produto>;
   remove(id: string, artesaoId: string): Promise<void>;
-  search(termo: string): Promise<Produto[]>;
+  search(query: ProdutoQuery): Promise<Produto[]>;
 }

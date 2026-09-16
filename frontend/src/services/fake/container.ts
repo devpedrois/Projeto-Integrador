@@ -4,16 +4,19 @@ import { BrowserSessaoStorage } from "@/fake-api/storage/sessao.storage";
 import { FakeUsuariosService } from "@/services/fake/usuarios.service";
 import { FakeProdutosService } from "@/services/fake/produtos.service";
 import { FakeRecommendationAdapter } from "@/services/fake/recomendacoes/fake-recommendation.adapter";
+import { FakeOpcoesFiltroService } from "@/services/fake/opcoes-filtro.service";
 import { SessionStore } from "@/store/sessao.store";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
+import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 
 const LATENCIA_PADRAO_MS = 300;
 
 let instancia: UsuariosService | null = null;
 let produtosServiceInstancia: ProdutosService | null = null;
 let recomendacoesServiceInstancia: RecomendacoesService | null = null;
+let opcoesFiltroServiceInstancia: OpcoesFiltroService | null = null;
 let sessionStoreInstancia: SessionStore | null = null;
 
 export function obterUsuariosService(): UsuariosService {
@@ -48,6 +51,15 @@ export function obterRecomendacoesService(): RecomendacoesService {
     recomendacoesServiceInstancia = new FakeRecommendationAdapter(repositorio);
   }
   return recomendacoesServiceInstancia;
+}
+
+export function obterOpcoesFiltroService(): OpcoesFiltroService {
+  if (!opcoesFiltroServiceInstancia) {
+    opcoesFiltroServiceInstancia = new FakeOpcoesFiltroService({
+      latenciaMs: LATENCIA_PADRAO_MS,
+    });
+  }
+  return opcoesFiltroServiceInstancia;
 }
 
 export function obterSessionStore(): SessionStore {

@@ -1,6 +1,7 @@
 import type { ProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import type { Produto } from "@/types/produto";
 import type { NovoProdutoInput } from "@/types/novo-produto";
+import type { ProdutoQuery } from "@/types/produto-query";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import { ServiceError } from "@/services/errors";
 import { produtoValido, validarProduto } from "@/validators/produto.validator";
@@ -121,17 +122,23 @@ export class FakeProdutosService implements ProdutosService {
     }
   }
 
-  async search(termo: string): Promise<Produto[]> {
+  async search(query: ProdutoQuery): Promise<Produto[]> {
     await this.repositorio.seed();
     await aguardar(this.latenciaMs);
 
     const produtos = await this.repositorio.list();
-    const termoNormalizado = normalizarTexto(termo);
-    if (termoNormalizado === "") return produtos;
+    const termoNormalizado = normalizarTexto(query.termo ?? "");
 
-    return produtos.filter((produto) =>
-      normalizarTexto(`${produto.nome} ${produto.descricao}`).includes(termoNormalizado)
-    );
+    return produtos.filter((produto) => {
+      if (termoNormalizado !== "") {
+        const alvo = normalizarTexto(`${produto.nome} ${produto.descricao}`);
+        if (!alvo.includes(termoNormalizado)) return false;
+      }
+      if (query.categoriaId && produto.categoriaId !== query.categoriaId) return false;
+      if (query.tecnicaId && produto.tecnicaId !== query.tecnicaId) return false;
+      if (query.regiaoId && produto.regiaoId !== query.regiaoId) return false;
+      return true;
+    });
   }
 
   private async verificarPropriedade(

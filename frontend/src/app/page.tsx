@@ -1,16 +1,21 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import {
+  obterOpcoesFiltroService,
   obterProdutosService,
   obterRecomendacoesService,
   obterSessionStore,
 } from "@/services/fake/container";
 import { useSessao } from "@/hooks/use-sessao";
+import { useFiltrosUrl } from "@/hooks/use-filtros-url";
+import { useOpcoesFiltro } from "@/hooks/use-opcoes-filtro";
 import { FaixaRecomendacoes } from "@/components/vitrine/FaixaRecomendacoes";
 import { ResultadoBusca } from "@/components/vitrine/ResultadoBusca";
+import { FiltrosProdutos } from "@/components/vitrine/FiltrosProdutos";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
+import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 import type { SessionStore } from "@/store/sessao.store";
 import type { Produto } from "@/types/produto";
 import type { RecomendacaoContexto } from "@/types/recomendacao";
@@ -27,18 +32,36 @@ const STORE_INATIVO: SessionStore = {
 } as unknown as SessionStore;
 
 export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <PaginaInicial />
+    </Suspense>
+  );
+}
+
+function PaginaInicial() {
   const [produtosService, setProdutosService] = useState<ProdutosService | null>(null);
   const [recomendacoesService, setRecomendacoesService] =
     useState<RecomendacoesService | null>(null);
+  const [opcoesFiltroService, setOpcoesFiltroService] =
+    useState<OpcoesFiltroService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [estado, setEstado] = useState<EstadoProdutos>({ status: "carregando" });
-  const [termoBusca, setTermoBusca] = useState("");
+  const { query, atualizar } = useFiltrosUrl();
+  const opcoesFiltro = useOpcoesFiltro(opcoesFiltroService);
 
   useEffect(() => {
     setProdutosService(obterProdutosService());
     setRecomendacoesService(obterRecomendacoesService());
+    setOpcoesFiltroService(obterOpcoesFiltroService());
     setSessionStore(obterSessionStore());
   }, []);
+
+  const algumFiltroAtivo =
+    query.termo !== undefined ||
+    query.categoriaId !== undefined ||
+    query.tecnicaId !== undefined ||
+    query.regiaoId !== undefined;
 
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
 
@@ -81,22 +104,10 @@ export default function Home() {
     <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-8 p-6">
       <h1 className="text-2xl font-semibold">Origem</h1>
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="busca-produtos" className="text-sm font-medium">
-          Buscar produtos
-        </label>
-        <input
-          id="busca-produtos"
-          type="search"
-          value={termoBusca}
-          onChange={(evento) => setTermoBusca(evento.target.value)}
-          className="rounded border border-gray-300 p-2 text-sm"
-          placeholder="Nome ou descricao do produto"
-        />
-      </div>
+      <FiltrosProdutos query={query} opcoes={opcoesFiltro} onAlterar={atualizar} />
 
-      {termoBusca.trim() !== "" ? (
-        <ResultadoBusca service={produtosService} termo={termoBusca} />
+      {algumFiltroAtivo ? (
+        <ResultadoBusca service={produtosService} query={query} />
       ) : (
         <>
           {estado.status === "carregando" ? (

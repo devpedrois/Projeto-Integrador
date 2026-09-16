@@ -2,14 +2,15 @@
 
 import { useBuscaProdutos } from "@/hooks/use-busca-produtos";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
+import type { ProdutoQuery } from "@/types/produto-query";
 
 export interface ResultadoBuscaProps {
   service: ProdutosService | null;
-  termo: string;
+  query: ProdutoQuery;
 }
 
-export function ResultadoBusca({ service, termo }: ResultadoBuscaProps) {
-  const estado = useBuscaProdutos(service, termo);
+export function ResultadoBusca({ service, query }: ResultadoBuscaProps) {
+  const estado = useBuscaProdutos(service, query);
 
   return (
     <section aria-label="Resultado da busca" className="flex flex-col gap-3">
