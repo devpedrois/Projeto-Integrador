@@ -1,5 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { SessionStore } from "@/store/sessao.store";
@@ -45,6 +46,7 @@ function criarProdutosServiceFake(
     listByArtesao: vi.fn().mockResolvedValue([]),
     update: vi.fn(),
     remove: vi.fn(),
+    search: vi.fn().mockResolvedValue([]),
     ...overrides,
   };
 }
@@ -140,5 +142,63 @@ describe("Vitrine (Home)", () => {
     await screen.findByText(/nenhum produto dispon/i);
 
     expect(recomendacoesServiceMock.obter).not.toHaveBeenCalled();
+  });
+
+  it("busca controla o termo e consulta o service ao digitar, mostrando loading e resultado", async () => {
+    const encontrado = produto({ id: "produto-seed-04", nome: "Jarra Ceramica Esculpida" });
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockResolvedValue([]),
+      search: vi.fn().mockResolvedValue([encontrado]),
+    });
+    const { default: Home } = await import("@/app/page");
+    const usuario = userEvent.setup();
+
+    render(<Home />);
+
+    const campoBusca = screen.getByRole("searchbox", { name: /buscar produtos/i });
+    await usuario.type(campoBusca, "esculpida");
+
+    expect(produtosServiceMock.search).toHaveBeenLastCalledWith("esculpida");
+    await waitFor(() =>
+      expect(screen.getByText("Jarra Ceramica Esculpida")).toBeInTheDocument()
+    );
+  });
+
+  it("busca ativa esconde o catalogo completo, mostrando somente o resultado da busca", async () => {
+    const foraDoResultado = produto({ id: "produto-fora", nome: "Panela de Barro Vidrada" });
+    const encontrado = produto({ id: "produto-seed-04", nome: "Jarra Ceramica Esculpida" });
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockResolvedValue([foraDoResultado, encontrado]),
+      search: vi.fn().mockResolvedValue([encontrado]),
+    });
+    const { default: Home } = await import("@/app/page");
+    const usuario = userEvent.setup();
+
+    render(<Home />);
+    await screen.findByText("Panela de Barro Vidrada");
+
+    const campoBusca = screen.getByRole("searchbox", { name: /buscar produtos/i });
+    await usuario.type(campoBusca, "esculpida");
+
+    await waitFor(() =>
+      expect(screen.getByText("Jarra Ceramica Esculpida")).toBeInTheDocument()
+    );
+    expect(screen.queryByText("Panela de Barro Vidrada")).not.toBeInTheDocument();
+  });
+
+  it("busca mostra erro recuperavel quando o service falha", async () => {
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockResolvedValue([]),
+      search: vi.fn().mockRejectedValue(new Error("falhou")),
+    });
+    const { default: Home } = await import("@/app/page");
+    const usuario = userEvent.setup();
+
+    render(<Home />);
+
+    const campoBusca = screen.getByRole("searchbox", { name: /buscar produtos/i });
+    await usuario.type(campoBusca, "esculpida");
+
+    expect(await screen.findByRole("alert")).toBeInTheDocument();
   });
 });

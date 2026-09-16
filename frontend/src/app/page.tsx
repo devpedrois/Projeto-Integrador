@@ -8,6 +8,7 @@ import {
 } from "@/services/fake/container";
 import { useSessao } from "@/hooks/use-sessao";
 import { FaixaRecomendacoes } from "@/components/vitrine/FaixaRecomendacoes";
+import { ResultadoBusca } from "@/components/vitrine/ResultadoBusca";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { SessionStore } from "@/store/sessao.store";
@@ -31,6 +32,7 @@ export default function Home() {
     useState<RecomendacoesService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [estado, setEstado] = useState<EstadoProdutos>({ status: "carregando" });
+  const [termoBusca, setTermoBusca] = useState("");
 
   useEffect(() => {
     setProdutosService(obterProdutosService());
@@ -79,34 +81,54 @@ export default function Home() {
     <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-8 p-6">
       <h1 className="text-2xl font-semibold">Origem</h1>
 
-      {estado.status === "carregando" ? (
-        <p role="status" className="text-sm text-neutral-600">
-          Carregando produtos...
-        </p>
-      ) : null}
+      <div className="flex flex-col gap-1">
+        <label htmlFor="busca-produtos" className="text-sm font-medium">
+          Buscar produtos
+        </label>
+        <input
+          id="busca-produtos"
+          type="search"
+          value={termoBusca}
+          onChange={(evento) => setTermoBusca(evento.target.value)}
+          className="rounded border border-gray-300 p-2 text-sm"
+          placeholder="Nome ou descricao do produto"
+        />
+      </div>
 
-      {estado.status === "erro" ? (
-        <p role="alert" className="text-sm text-red-700">
-          Nao foi possivel carregar os produtos. Tente novamente em instantes.
-        </p>
-      ) : null}
+      {termoBusca.trim() !== "" ? (
+        <ResultadoBusca service={produtosService} termo={termoBusca} />
+      ) : (
+        <>
+          {estado.status === "carregando" ? (
+            <p role="status" className="text-sm text-neutral-600">
+              Carregando produtos...
+            </p>
+          ) : null}
 
-      {estado.status === "vazio" ? (
-        <p className="text-sm text-neutral-600">Nenhum produto disponivel no momento.</p>
-      ) : null}
+          {estado.status === "erro" ? (
+            <p role="alert" className="text-sm text-red-700">
+              Nao foi possivel carregar os produtos. Tente novamente em instantes.
+            </p>
+          ) : null}
 
-      {estado.status === "sucesso" ? (
-        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {estado.produtos.map((produto) => (
-            <li key={produto.id} className="rounded border border-gray-200 p-3">
-              <span className="block text-sm font-medium">{produto.nome}</span>
-              <span className="block text-sm text-neutral-600">
-                R$ {produto.preco.toFixed(2)}
-              </span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+          {estado.status === "vazio" ? (
+            <p className="text-sm text-neutral-600">Nenhum produto disponivel no momento.</p>
+          ) : null}
+
+          {estado.status === "sucesso" ? (
+            <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {estado.produtos.map((produto) => (
+                <li key={produto.id} className="rounded border border-gray-200 p-3">
+                  <span className="block text-sm font-medium">{produto.nome}</span>
+                  <span className="block text-sm text-neutral-600">
+                    R$ {produto.preco.toFixed(2)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </>
+      )}
 
       <FaixaRecomendacoes service={recomendacoesService} contexto={contextoRecomendacao} />
     </main>

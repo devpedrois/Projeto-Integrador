@@ -233,6 +233,64 @@ describe("FakeProdutosService.update", () => {
   });
 });
 
+describe("FakeProdutosService.search", () => {
+  it("retorna exatamente os tres produtos-semente conhecidos para o termo", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const resultado = await service.search("esculpid");
+
+    expect(resultado.map((produto) => produto.id).sort()).toEqual(
+      ["produto-seed-04", "produto-seed-14", "produto-seed-18"].sort()
+    );
+  });
+
+  it("ignora caixa ao buscar", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const resultado = await service.search("ESCULPID");
+
+    expect(resultado).toHaveLength(3);
+  });
+
+  it("ignora acentos ao buscar", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const resultado = await service.search("ésculpíd");
+
+    expect(resultado).toHaveLength(3);
+  });
+
+  it("busca tambem no campo descricao, nao somente no nome", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const resultado = await service.search("esculpidos");
+
+    expect(resultado.map((produto) => produto.id)).toEqual(["produto-seed-18"]);
+  });
+
+  it("retorna array vazio quando nenhum produto corresponde ao termo", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const resultado = await service.search("termo-sem-correspondencia-xyz");
+
+    expect(resultado).toEqual([]);
+  });
+
+  it("retorna a lista completa quando o termo e vazio ou so espacos", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const resultado = await service.search("   ");
+
+    expect(resultado).toHaveLength(30);
+  });
+});
+
 describe("FakeProdutosService.remove", () => {
   it("marca o produto como inativo (remocao logica) sem apagar o registro", async () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);

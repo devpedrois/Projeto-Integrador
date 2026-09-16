@@ -38,6 +38,7 @@ function criarServicoFake(
     listByArtesao: vi.fn().mockResolvedValue([]),
     update: vi.fn().mockResolvedValue(produtoCriado()),
     remove: vi.fn().mockResolvedValue(undefined),
+    search: vi.fn().mockResolvedValue([]),
   };
 }
 

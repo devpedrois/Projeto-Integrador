@@ -4,6 +4,7 @@ import type { NovoProdutoInput } from "@/types/novo-produto";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import { ServiceError } from "@/services/errors";
 import { produtoValido, validarProduto } from "@/validators/produto.validator";
+import { normalizarTexto } from "@/utils/normalizar-texto";
 
 export interface FakeProdutosServiceOpcoes {
   latenciaMs?: number;
@@ -118,6 +119,19 @@ export class FakeProdutosService implements ProdutosService {
     if (!atualizado) {
       throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado.");
     }
+  }
+
+  async search(termo: string): Promise<Produto[]> {
+    await this.repositorio.seed();
+    await aguardar(this.latenciaMs);
+
+    const produtos = await this.repositorio.list();
+    const termoNormalizado = normalizarTexto(termo);
+    if (termoNormalizado === "") return produtos;
+
+    return produtos.filter((produto) =>
+      normalizarTexto(`${produto.nome} ${produto.descricao}`).includes(termoNormalizado)
+    );
   }
 
   private async verificarPropriedade(

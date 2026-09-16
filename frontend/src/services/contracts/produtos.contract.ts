@@ -15,4 +15,5 @@ export interface ProdutosService {
   listByArtesao(artesaoId: string): Promise<Produto[]>;
   update(id: string, input: NovoProdutoInput, artesaoId: string): Promise<Produto>;
   remove(id: string, artesaoId: string): Promise<void>;
+  search(termo: string): Promise<Produto[]>;
 }
