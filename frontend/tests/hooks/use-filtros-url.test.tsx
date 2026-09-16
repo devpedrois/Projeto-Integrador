@@ -73,4 +73,22 @@ describe("useFiltrosUrl", () => {
 
     expect(pushMock).toHaveBeenCalledWith("/", { scroll: false });
   });
+
+  it("limpar() remove termo e todos os filtros da URL de uma vez", () => {
+    searchParamsAtual = new URLSearchParams(
+      "termo=vaso&categoria=categoria-ceramica-barro&tecnica=tecnica-torno-ceramico&regiao=regiao-pilar-recife"
+    );
+
+    const { result } = renderHook(() => useFiltrosUrl());
+    result.current.limpar();
+
+    expect(pushMock).toHaveBeenCalledWith("/", { scroll: false });
+  });
+
+  it("limpar() nao falha quando a URL ja esta sem filtros", () => {
+    const { result } = renderHook(() => useFiltrosUrl());
+    result.current.limpar();
+
+    expect(pushMock).toHaveBeenCalledWith("/", { scroll: false });
+  });
 });

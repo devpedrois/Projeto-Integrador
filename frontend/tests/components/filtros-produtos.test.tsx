@@ -14,7 +14,12 @@ const OPCOES_SUCESSO: EstadoOpcoesFiltro = {
 describe("FiltrosProdutos", () => {
   it("mostra as opcoes de categoria, tecnica e regiao vindas da Fake API", () => {
     render(
-      <FiltrosProdutos query={{}} opcoes={OPCOES_SUCESSO} onAlterar={vi.fn()} />
+      <FiltrosProdutos
+        query={{}}
+        opcoes={OPCOES_SUCESSO}
+        onAlterar={vi.fn()}
+        onLimpar={vi.fn()}
+      />
     );
 
     expect(screen.getByRole("option", { name: "Ceramica e Barro" })).toBeInTheDocument();
@@ -26,7 +31,12 @@ describe("FiltrosProdutos", () => {
 
   it("desabilita os selects enquanto as opcoes ainda carregam", () => {
     render(
-      <FiltrosProdutos query={{}} opcoes={{ status: "carregando" }} onAlterar={vi.fn()} />
+      <FiltrosProdutos
+        query={{}}
+        opcoes={{ status: "carregando" }}
+        onAlterar={vi.fn()}
+        onLimpar={vi.fn()}
+      />
     );
 
     expect(screen.getByLabelText("Categoria")).toBeDisabled();
@@ -36,7 +46,14 @@ describe("FiltrosProdutos", () => {
 
   it("digitar o termo apenas captura a selecao e delega ao callback", async () => {
     const onAlterar = vi.fn();
-    render(<FiltrosProdutos query={{}} opcoes={OPCOES_SUCESSO} onAlterar={onAlterar} />);
+    render(
+      <FiltrosProdutos
+        query={{}}
+        opcoes={OPCOES_SUCESSO}
+        onAlterar={onAlterar}
+        onLimpar={vi.fn()}
+      />
+    );
 
     await userEvent.type(screen.getByLabelText("Buscar produtos"), "v");
 
@@ -45,7 +62,14 @@ describe("FiltrosProdutos", () => {
 
   it("selecionar uma categoria delega ao callback com o id escolhido", async () => {
     const onAlterar = vi.fn();
-    render(<FiltrosProdutos query={{}} opcoes={OPCOES_SUCESSO} onAlterar={onAlterar} />);
+    render(
+      <FiltrosProdutos
+        query={{}}
+        opcoes={OPCOES_SUCESSO}
+        onAlterar={onAlterar}
+        onLimpar={vi.fn()}
+      />
+    );
 
     await userEvent.selectOptions(screen.getByLabelText("Categoria"), "categoria-ceramica-barro");
 
@@ -59,6 +83,7 @@ describe("FiltrosProdutos", () => {
         query={{ tecnicaId: "tecnica-torno-ceramico" }}
         opcoes={OPCOES_SUCESSO}
         onAlterar={onAlterar}
+        onLimpar={vi.fn()}
       />
     );
 
@@ -73,10 +98,48 @@ describe("FiltrosProdutos", () => {
         query={{ termo: "vaso", regiaoId: "regiao-pilar-recife" }}
         opcoes={OPCOES_SUCESSO}
         onAlterar={vi.fn()}
+        onLimpar={vi.fn()}
       />
     );
 
     expect(screen.getByLabelText("Buscar produtos")).toHaveValue("vaso");
     expect(screen.getByLabelText("Regiao")).toHaveValue("regiao-pilar-recife");
+  });
+
+  it("botao Limpar filtros fica desabilitado quando nenhum filtro esta ativo", () => {
+    render(
+      <FiltrosProdutos query={{}} opcoes={OPCOES_SUCESSO} onAlterar={vi.fn()} onLimpar={vi.fn()} />
+    );
+
+    expect(screen.getByRole("button", { name: /limpar filtros/i })).toBeDisabled();
+  });
+
+  it("botao Limpar filtros fica habilitado quando ha ao menos um filtro ativo", () => {
+    render(
+      <FiltrosProdutos
+        query={{ termo: "vaso" }}
+        opcoes={OPCOES_SUCESSO}
+        onAlterar={vi.fn()}
+        onLimpar={vi.fn()}
+      />
+    );
+
+    expect(screen.getByRole("button", { name: /limpar filtros/i })).toBeEnabled();
+  });
+
+  it("clicar em Limpar filtros chama onLimpar", async () => {
+    const onLimpar = vi.fn();
+    render(
+      <FiltrosProdutos
+        query={{ termo: "vaso", categoriaId: "categoria-ceramica-barro" }}
+        opcoes={OPCOES_SUCESSO}
+        onAlterar={vi.fn()}
+        onLimpar={onLimpar}
+      />
+    );
+
+    await userEvent.click(screen.getByRole("button", { name: /limpar filtros/i }));
+
+    expect(onLimpar).toHaveBeenCalledTimes(1);
   });
 });

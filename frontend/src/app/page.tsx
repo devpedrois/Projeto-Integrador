@@ -47,7 +47,7 @@ function PaginaInicial() {
     useState<OpcoesFiltroService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [estado, setEstado] = useState<EstadoProdutos>({ status: "carregando" });
-  const { query, atualizar } = useFiltrosUrl();
+  const { query, atualizar, limpar } = useFiltrosUrl();
   const opcoesFiltro = useOpcoesFiltro(opcoesFiltroService);
 
   useEffect(() => {
@@ -104,7 +104,12 @@ function PaginaInicial() {
     <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-8 p-6">
       <h1 className="text-2xl font-semibold">Origem</h1>
 
-      <FiltrosProdutos query={query} opcoes={opcoesFiltro} onAlterar={atualizar} />
+      <FiltrosProdutos
+        query={query}
+        opcoes={opcoesFiltro}
+        onAlterar={atualizar}
+        onLimpar={limpar}
+      />
 
       {algumFiltroAtivo ? (
         <ResultadoBusca service={produtosService} query={query} />

@@ -7,6 +7,7 @@ export interface FiltrosProdutosProps {
   query: ProdutoQuery;
   opcoes: EstadoOpcoesFiltro;
   onAlterar(alteracoes: Partial<ProdutoQuery>): void;
+  onLimpar(): void;
 }
 
 function valorOuVazio(valor: string | undefined): string {
@@ -17,8 +18,13 @@ function valorOuIndefinido(valor: string): string | undefined {
   return valor === "" ? undefined : valor;
 }
 
-export function FiltrosProdutos({ query, opcoes, onAlterar }: FiltrosProdutosProps) {
+export function FiltrosProdutos({ query, opcoes, onAlterar, onLimpar }: FiltrosProdutosProps) {
   const opcoesCarregadas = opcoes.status === "sucesso" ? opcoes : null;
+  const algumFiltroAtivo =
+    query.termo !== undefined ||
+    query.categoriaId !== undefined ||
+    query.tecnicaId !== undefined ||
+    query.regiaoId !== undefined;
 
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
@@ -101,6 +107,15 @@ export function FiltrosProdutos({ query, opcoes, onAlterar }: FiltrosProdutosPro
           ))}
         </select>
       </div>
+
+      <button
+        type="button"
+        onClick={onLimpar}
+        disabled={!algumFiltroAtivo}
+        className="rounded border border-gray-300 p-2 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        Limpar filtros
+      </button>
     </div>
   );
 }

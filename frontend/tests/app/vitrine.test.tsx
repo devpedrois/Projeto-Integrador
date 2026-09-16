@@ -296,4 +296,27 @@ describe("Vitrine (Home)", () => {
       { scroll: false }
     );
   });
+
+  it("botao Limpar filtros remove termo e filtros da URL e volta ao catalogo completo", async () => {
+    searchParamsAtual = new URLSearchParams(
+      "termo=vaso&categoria=categoria-ceramica-barro"
+    );
+    const doCatalogo = produto({ id: "produto-catalogo", nome: "Panela de Barro Vidrada" });
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockResolvedValue([doCatalogo]),
+      search: vi.fn().mockResolvedValue([]),
+    });
+    const { default: Home } = await import("@/app/page");
+    const usuario = userEvent.setup();
+
+    render(<Home />);
+
+    const botaoLimpar = await screen.findByRole("button", { name: /limpar filtros/i });
+    await usuario.click(botaoLimpar);
+
+    expect(pushMock).toHaveBeenCalledWith("/", { scroll: false });
+    await waitFor(() =>
+      expect(screen.getByText("Panela de Barro Vidrada")).toBeInTheDocument()
+    );
+  });
 });

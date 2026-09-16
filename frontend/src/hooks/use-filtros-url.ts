@@ -10,6 +10,7 @@ import type { ProdutoQuery } from "@/types/produto-query";
 export interface UseFiltrosUrlResultado {
   query: ProdutoQuery;
   atualizar(alteracoes: Partial<ProdutoQuery>): void;
+  limpar(): void;
 }
 
 export function useFiltrosUrl(): UseFiltrosUrlResultado {
@@ -27,5 +28,9 @@ export function useFiltrosUrl(): UseFiltrosUrlResultado {
     });
   }
 
-  return { query, atualizar };
+  function limpar(): void {
+    router.push(pathname, { scroll: false });
+  }
+
+  return { query, atualizar, limpar };
 }
