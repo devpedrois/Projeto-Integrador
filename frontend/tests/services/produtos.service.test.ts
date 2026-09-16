@@ -79,6 +79,28 @@ describe("FakeProdutosService.list", () => {
 
     expect(produtos).toHaveLength(30);
   });
+
+  it("oculta da vitrine produto com estoque zerado", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+    const criado = await service.create(entradaValida(), "artesao-a");
+    await repo.update(criado.id, { quantidadeEstoque: 0 });
+
+    const produtos = await service.list();
+
+    expect(produtos.some((produto) => produto.id === criado.id)).toBe(false);
+  });
+
+  it("oculta da vitrine produto inativo", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+    const criado = await service.create(entradaValida(), "artesao-a");
+    await service.remove(criado.id, "artesao-a");
+
+    const produtos = await service.list();
+
+    expect(produtos.some((produto) => produto.id === criado.id)).toBe(false);
+  });
 });
 
 describe("FakeProdutosService.create", () => {
@@ -151,6 +173,17 @@ describe("FakeProdutosService.listByArtesao", () => {
     const produtos = await service.listByArtesao("artesao-sem-produtos");
 
     expect(produtos).toEqual([]);
+  });
+
+  it("o proprio artesao ainda ve produto com estoque zerado em Meus produtos", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+    const criado = await service.create(entradaValida(), "artesao-a");
+    await repo.update(criado.id, { quantidadeEstoque: 0 });
+
+    const produtos = await service.listByArtesao("artesao-a");
+
+    expect(produtos.some((produto) => produto.id === criado.id)).toBe(true);
   });
 
   it("produto removido logicamente deixa de aparecer na listagem do dono", async () => {
@@ -299,6 +332,34 @@ describe("FakeProdutosService.search", () => {
     const resultado = await service.search({});
 
     expect(resultado).toHaveLength(30);
+  });
+
+  it("oculta da busca produto com estoque zerado", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+    const criado = await service.create(
+      entradaValida({ nome: "Peca Rara Zerada" }),
+      "artesao-a"
+    );
+    await repo.update(criado.id, { quantidadeEstoque: 0 });
+
+    const resultado = await service.search({ termo: "Peca Rara Zerada" });
+
+    expect(resultado).toEqual([]);
+  });
+
+  it("oculta da busca produto inativo", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+    const criado = await service.create(
+      entradaValida({ nome: "Peca Removida" }),
+      "artesao-a"
+    );
+    await service.remove(criado.id, "artesao-a");
+
+    const resultado = await service.search({ termo: "Peca Removida" });
+
+    expect(resultado).toEqual([]);
   });
 
   describe("cinco combinacoes de filtros ativos (semantica AND)", () => {

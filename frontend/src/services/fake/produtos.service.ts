@@ -6,6 +6,7 @@ import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import { ServiceError } from "@/services/errors";
 import { produtoValido, validarProduto } from "@/validators/produto.validator";
 import { normalizarTexto } from "@/utils/normalizar-texto";
+import { filtrarProdutosVisiveis } from "@/domain/produto-visibilidade";
 
 export interface FakeProdutosServiceOpcoes {
   latenciaMs?: number;
@@ -29,7 +30,8 @@ export class FakeProdutosService implements ProdutosService {
   async list(): Promise<Produto[]> {
     await this.repositorio.seed();
     await aguardar(this.latenciaMs);
-    return this.repositorio.list();
+    const produtos = await this.repositorio.list();
+    return filtrarProdutosVisiveis(produtos);
   }
 
   async create(input: NovoProdutoInput, artesaoId: string): Promise<Produto> {
@@ -68,9 +70,8 @@ export class FakeProdutosService implements ProdutosService {
     await this.repositorio.seed();
     await aguardar(this.latenciaMs);
     const produtos = await this.repositorio.list();
-    return produtos.filter(
-      (produto) => produto.artesaoId === artesaoId && produto.ativo
-    );
+    const doArtesao = produtos.filter((produto) => produto.artesaoId === artesaoId);
+    return filtrarProdutosVisiveis(doArtesao, { usuarioId: artesaoId });
   }
 
   async update(
@@ -129,7 +130,7 @@ export class FakeProdutosService implements ProdutosService {
     const produtos = await this.repositorio.list();
     const termoNormalizado = normalizarTexto(query.termo ?? "");
 
-    return produtos.filter((produto) => {
+    const filtrados = produtos.filter((produto) => {
       if (termoNormalizado !== "") {
         const alvo = normalizarTexto(`${produto.nome} ${produto.descricao}`);
         if (!alvo.includes(termoNormalizado)) return false;
@@ -139,6 +140,8 @@ export class FakeProdutosService implements ProdutosService {
       if (query.regiaoId && produto.regiaoId !== query.regiaoId) return false;
       return true;
     });
+
+    return filtrarProdutosVisiveis(filtrados);
   }
 
   private async verificarPropriedade(
