@@ -6,6 +6,7 @@ const CHAVE_PADRAO = "origem:v1:produtos";
 export interface ProdutoRepository {
   seed(): Promise<void>;
   list(): Promise<Produto[]>;
+  create(produto: Produto): Promise<Produto>;
 }
 
 export class BrowserProdutoRepository implements ProdutoRepository {
@@ -23,5 +24,12 @@ export class BrowserProdutoRepository implements ProdutoRepository {
     const bruto = this.storage.getItem(this.chave);
     if (bruto === null) return [];
     return JSON.parse(bruto) as Produto[];
+  }
+
+  async create(produto: Produto): Promise<Produto> {
+    const produtos = await this.list();
+    produtos.push(produto);
+    this.storage.setItem(this.chave, JSON.stringify(produtos));
+    return produto;
   }
 }

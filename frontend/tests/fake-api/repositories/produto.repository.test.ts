@@ -60,4 +60,56 @@ describe("BrowserProdutoRepository", () => {
 
     expect(produtos).toEqual([]);
   });
+
+  it("create adiciona o produto e persiste no storage", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const novo = {
+      id: "produto-teste-1",
+      nome: "Cesto de Fibra",
+      descricao: "Cesto trancado a mao com fibra natural.",
+      preco: 45,
+      categoriaId: "categoria-teste",
+      tecnicaId: "",
+      regiaoId: "",
+      artesaoId: "artesao-teste",
+      fotos: [{ url: "https://origem.test/fotos/cesto.jpg", ordem: 0 }],
+      quantidadeEstoque: 3,
+      quantidadeVendida: 0,
+      notaMedia: 0,
+      ativo: true,
+      criadoEm: new Date().toISOString(),
+    };
+
+    const criado = await repo.create(novo);
+    const produtos = await repo.list();
+
+    expect(criado).toEqual(novo);
+    expect(produtos).toContainEqual(novo);
+  });
+
+  it("create preserva produtos ja existentes", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    await repo.seed();
+    const antes = await repo.list();
+
+    await repo.create({
+      id: "produto-teste-2",
+      nome: "Rede de Palha",
+      descricao: "Rede tecida artesanalmente com palha da regiao.",
+      preco: 120,
+      categoriaId: "categoria-teste",
+      tecnicaId: "",
+      regiaoId: "",
+      artesaoId: "artesao-teste",
+      fotos: [{ url: "https://origem.test/fotos/rede.jpg", ordem: 0 }],
+      quantidadeEstoque: 1,
+      quantidadeVendida: 0,
+      notaMedia: 0,
+      ativo: true,
+      criadoEm: new Date().toISOString(),
+    });
+    const depois = await repo.list();
+
+    expect(depois).toHaveLength(antes.length + 1);
+  });
 });

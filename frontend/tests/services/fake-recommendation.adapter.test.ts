@@ -17,6 +17,11 @@ class ProdutoRepositoryEmMemoria implements ProdutoRepository {
   async list(): Promise<Produto[]> {
     return this.produtos;
   }
+
+  async create(produto: Produto): Promise<Produto> {
+    this.produtos.push(produto);
+    return produto;
+  }
 }
 
 const PRODUTOS_FIXTURE = fixture.produtos as Produto[];

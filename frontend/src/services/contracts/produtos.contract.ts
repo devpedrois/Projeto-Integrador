@@ -7,7 +7,9 @@
  * alterar hooks, stores, componentes ou paginas que dependem deste contrato.
  */
 import type { Produto } from "@/types/produto";
+import type { NovoProdutoInput } from "@/types/novo-produto";
 
 export interface ProdutosService {
   list(): Promise<Produto[]>;
+  create(input: NovoProdutoInput, artesaoId: string): Promise<Produto>;
 }
