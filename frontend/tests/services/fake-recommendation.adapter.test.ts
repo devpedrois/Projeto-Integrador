@@ -22,6 +22,22 @@ class ProdutoRepositoryEmMemoria implements ProdutoRepository {
     this.produtos.push(produto);
     return produto;
   }
+
+  async findById(id: string): Promise<Produto | null> {
+    return this.produtos.find((produto) => produto.id === id) ?? null;
+  }
+
+  async update(
+    id: string,
+    alteracoes: Partial<Omit<Produto, "id" | "artesaoId">>
+  ): Promise<Produto | null> {
+    const indice = this.produtos.findIndex((produto) => produto.id === id);
+    if (indice === -1) return null;
+    const atual = this.produtos[indice] as Produto;
+    const atualizado: Produto = { ...atual, ...alteracoes, id: atual.id, artesaoId: atual.artesaoId };
+    this.produtos[indice] = atualizado;
+    return atualizado;
+  }
 }
 
 const PRODUTOS_FIXTURE = fixture.produtos as Produto[];

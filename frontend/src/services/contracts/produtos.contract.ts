@@ -12,4 +12,7 @@ import type { NovoProdutoInput } from "@/types/novo-produto";
 export interface ProdutosService {
   list(): Promise<Produto[]>;
   create(input: NovoProdutoInput, artesaoId: string): Promise<Produto>;
+  listByArtesao(artesaoId: string): Promise<Produto[]>;
+  update(id: string, input: NovoProdutoInput, artesaoId: string): Promise<Produto>;
+  remove(id: string, artesaoId: string): Promise<void>;
 }

@@ -115,3 +115,157 @@ describe("FakeProdutosService.create", () => {
     expect(produtos).toHaveLength(0);
   });
 });
+
+describe("FakeProdutosService.listByArtesao", () => {
+  it("retorna somente produtos ativos do artesao informado", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const produtoA = await service.create(entradaValida({ nome: "Produto Artesao A" }), "artesao-a");
+    await service.create(entradaValida({ nome: "Produto Artesao B" }), "artesao-b");
+
+    const produtosDoA = await service.listByArtesao("artesao-a");
+
+    expect(produtosDoA).toHaveLength(1);
+    expect(produtosDoA[0]?.id).toBe(produtoA.id);
+  });
+
+  it("nao retorna produtos de outro artesao mesmo com mesmo prefixo de id", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    await service.create(entradaValida(), "artesao-a");
+    await service.create(entradaValida(), "artesao-a-2");
+
+    const produtosDoA = await service.listByArtesao("artesao-a");
+
+    expect(produtosDoA).toHaveLength(1);
+  });
+
+  it("retorna array vazio quando o artesao nao possui produtos", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const produtos = await service.listByArtesao("artesao-sem-produtos");
+
+    expect(produtos).toEqual([]);
+  });
+
+  it("produto removido logicamente deixa de aparecer na listagem do dono", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const criado = await service.create(entradaValida(), "artesao-a");
+    await service.remove(criado.id, "artesao-a");
+
+    const produtos = await service.listByArtesao("artesao-a");
+
+    expect(produtos).toEqual([]);
+  });
+});
+
+describe("FakeProdutosService.update", () => {
+  it("atualiza os campos e preserva o artesaoId original", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const criado = await service.create(entradaValida(), "artesao-a");
+    const atualizado = await service.update(
+      criado.id,
+      entradaValida({ nome: "Nome Atualizado", preco: 120 }),
+      "artesao-a"
+    );
+
+    expect(atualizado.nome).toBe("Nome Atualizado");
+    expect(atualizado.preco).toBe(120);
+    expect(atualizado.artesaoId).toBe("artesao-a");
+    expect(atualizado.id).toBe(criado.id);
+  });
+
+  it("ignora artesaoId manipulado na entrada e preserva o original", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const criado = await service.create(entradaValida(), "artesao-a");
+    const entrada = entradaValida({ nome: "Tentativa de sequestro" });
+    (entrada as unknown as Record<string, unknown>).artesaoId = "artesao-invasor";
+
+    const atualizado = await service.update(criado.id, entrada, "artesao-a");
+
+    expect(atualizado.artesaoId).toBe("artesao-a");
+  });
+
+  it("rejeita atualizacao de produto de outra conta", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const criado = await service.create(entradaValida(), "artesao-dono");
+
+    await expect(
+      service.update(criado.id, entradaValida({ nome: "Invasao" }), "artesao-invasor")
+    ).rejects.toBeInstanceOf(ServiceError);
+
+    const persistido = await repo.findById(criado.id);
+    expect(persistido?.nome).not.toBe("Invasao");
+  });
+
+  it("rejeita atualizacao de produto inexistente", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    await expect(
+      service.update("produto-inexistente", entradaValida(), "artesao-a")
+    ).rejects.toBeInstanceOf(ServiceError);
+  });
+
+  it("rejeita entrada invalida sem alterar o produto", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const criado = await service.create(entradaValida(), "artesao-a");
+
+    await expect(
+      service.update(criado.id, entradaValida({ preco: -1 }), "artesao-a")
+    ).rejects.toBeInstanceOf(ServiceError);
+
+    const persistido = await repo.findById(criado.id);
+    expect(persistido?.preco).toBe(criado.preco);
+  });
+});
+
+describe("FakeProdutosService.remove", () => {
+  it("marca o produto como inativo (remocao logica) sem apagar o registro", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const criado = await service.create(entradaValida(), "artesao-a");
+    await service.remove(criado.id, "artesao-a");
+
+    const persistido = await repo.findById(criado.id);
+    expect(persistido).not.toBeNull();
+    expect(persistido?.ativo).toBe(false);
+  });
+
+  it("rejeita remocao de produto de outra conta e preserva o registro ativo", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const criado = await service.create(entradaValida(), "artesao-dono");
+
+    await expect(
+      service.remove(criado.id, "artesao-invasor")
+    ).rejects.toBeInstanceOf(ServiceError);
+
+    const persistido = await repo.findById(criado.id);
+    expect(persistido?.ativo).toBe(true);
+  });
+
+  it("rejeita remocao de produto inexistente", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    await expect(
+      service.remove("produto-inexistente", "artesao-a")
+    ).rejects.toBeInstanceOf(ServiceError);
+  });
+});

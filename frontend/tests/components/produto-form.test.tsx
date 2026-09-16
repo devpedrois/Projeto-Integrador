@@ -35,6 +35,9 @@ function criarServicoFake(
   return {
     list: vi.fn().mockResolvedValue([]),
     create: createImpl ?? vi.fn().mockResolvedValue(produtoCriado()),
+    listByArtesao: vi.fn().mockResolvedValue([]),
+    update: vi.fn().mockResolvedValue(produtoCriado()),
+    remove: vi.fn().mockResolvedValue(undefined),
   };
 }
 

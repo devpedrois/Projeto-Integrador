@@ -7,6 +7,11 @@ export interface ProdutoRepository {
   seed(): Promise<void>;
   list(): Promise<Produto[]>;
   create(produto: Produto): Promise<Produto>;
+  findById(id: string): Promise<Produto | null>;
+  update(
+    id: string,
+    alteracoes: Partial<Omit<Produto, "id" | "artesaoId">>
+  ): Promise<Produto | null>;
 }
 
 export class BrowserProdutoRepository implements ProdutoRepository {
@@ -31,5 +36,25 @@ export class BrowserProdutoRepository implements ProdutoRepository {
     produtos.push(produto);
     this.storage.setItem(this.chave, JSON.stringify(produtos));
     return produto;
+  }
+
+  async findById(id: string): Promise<Produto | null> {
+    const produtos = await this.list();
+    return produtos.find((produto) => produto.id === id) ?? null;
+  }
+
+  async update(
+    id: string,
+    alteracoes: Partial<Omit<Produto, "id" | "artesaoId">>
+  ): Promise<Produto | null> {
+    const produtos = await this.list();
+    const indice = produtos.findIndex((produto) => produto.id === id);
+    if (indice === -1) return null;
+
+    const atual = produtos[indice] as Produto;
+    const atualizado: Produto = { ...atual, ...alteracoes, id: atual.id, artesaoId: atual.artesaoId };
+    produtos[indice] = atualizado;
+    this.storage.setItem(this.chave, JSON.stringify(produtos));
+    return atualizado;
   }
 }

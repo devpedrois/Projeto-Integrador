@@ -36,6 +36,19 @@ function produto(overrides: Partial<Produto> = {}): Produto {
   };
 }
 
+function criarProdutosServiceFake(
+  overrides: Partial<ProdutosService> = {}
+): ProdutosService {
+  return {
+    create: vi.fn(),
+    list: vi.fn().mockResolvedValue([]),
+    listByArtesao: vi.fn().mockResolvedValue([]),
+    update: vi.fn(),
+    remove: vi.fn(),
+    ...overrides,
+  };
+}
+
 function criarSessionStoreFake(sessao: UsuarioSessao | null): SessionStore {
   return {
     getSnapshot: vi.fn().mockReturnValue(sessao),
@@ -52,10 +65,9 @@ beforeEach(() => {
 
 describe("Vitrine (Home)", () => {
   it("mostra carregando e depois a lista de produtos", async () => {
-    produtosServiceMock = {
-      create: vi.fn(),
+    produtosServiceMock = criarProdutosServiceFake({
       list: vi.fn().mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
-    };
+    });
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
@@ -65,7 +77,7 @@ describe("Vitrine (Home)", () => {
   });
 
   it("mostra estado vazio quando nao ha produtos", async () => {
-    produtosServiceMock = { create: vi.fn(), list: vi.fn().mockResolvedValue([]) };
+    produtosServiceMock = criarProdutosServiceFake();
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
@@ -74,7 +86,9 @@ describe("Vitrine (Home)", () => {
   });
 
   it("mostra erro recuperavel quando o service falha", async () => {
-    produtosServiceMock = { create: vi.fn(), list: vi.fn().mockRejectedValue(new Error("falhou")) };
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockRejectedValue(new Error("falhou")),
+    });
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
@@ -84,7 +98,9 @@ describe("Vitrine (Home)", () => {
 
   it("visitante: usa o produtoId do primeiro produto ativo com estoque como contexto", async () => {
     const destacado = produto({ id: "produto-destacado", ativo: true, quantidadeEstoque: 3 });
-    produtosServiceMock = { create: vi.fn(), list: vi.fn().mockResolvedValue([destacado]) };
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockResolvedValue([destacado]),
+    });
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
@@ -102,10 +118,9 @@ describe("Vitrine (Home)", () => {
       nome: "Ana",
       papel: "comprador",
     });
-    produtosServiceMock = {
-      create: vi.fn(),
+    produtosServiceMock = criarProdutosServiceFake({
       list: vi.fn().mockResolvedValue([produto({ id: "produto-destacado" })]),
-    };
+    });
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
@@ -118,7 +133,7 @@ describe("Vitrine (Home)", () => {
   });
 
   it("nao chama o service de recomendacoes sem contexto real (sem produtos, sem sessao)", async () => {
-    produtosServiceMock = { create: vi.fn(), list: vi.fn().mockResolvedValue([]) };
+    produtosServiceMock = criarProdutosServiceFake();
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);

@@ -18,6 +18,14 @@ export const USUARIOS_SEED: readonly Usuario[] = [
     ativo: true,
   },
   {
+    id: "seed-artesao-02",
+    nome: "Maria Artesa",
+    email: "maria.artesa@origem.test",
+    senha: "senha-sintetica-artesao-02",
+    papel: "artesao",
+    ativo: true,
+  },
+  {
     id: "seed-admin-01",
     nome: "Admin Origem",
     email: "admin@origem.test",

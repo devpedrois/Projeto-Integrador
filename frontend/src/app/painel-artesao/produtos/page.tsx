@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { RouteGuard } from "@/components/layout/RouteGuard";
-import { ProdutoForm } from "@/components/painel-artesao/ProdutoForm";
+import { MeusProdutosList } from "@/components/painel-artesao/MeusProdutosList";
 import { useSessao } from "@/hooks/use-sessao";
 import {
   obterProdutosService,
@@ -17,7 +16,7 @@ const STORE_INATIVO: SessionStore = {
   subscribe: () => () => {},
 } as unknown as SessionStore;
 
-export default function PainelArtesaoPage() {
+export default function MeusProdutosPage() {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [produtosService, setProdutosService] = useState<ProdutosService | null>(
     null
@@ -33,15 +32,8 @@ export default function PainelArtesaoPage() {
   return (
     <RouteGuard sessionStore={sessionStore} papeisPermitidos={["artesao"]}>
       <main className="mx-auto flex min-h-screen max-w-4xl flex-col gap-6 p-6">
-        <h1 className="text-2xl font-semibold">Painel do artesao</h1>
-        <Link
-          href="/painel-artesao/produtos"
-          className="min-h-11 w-fit rounded border border-emerald-700 px-4 py-2 text-sm font-medium text-emerald-700"
-        >
-          Meus produtos
-        </Link>
         {produtosService && sessao ? (
-          <ProdutoForm service={produtosService} artesaoId={sessao.id} />
+          <MeusProdutosList service={produtosService} artesaoId={sessao.id} />
         ) : null}
       </main>
     </RouteGuard>

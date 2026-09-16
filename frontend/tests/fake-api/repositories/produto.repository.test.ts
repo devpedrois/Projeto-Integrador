@@ -112,4 +112,48 @@ describe("BrowserProdutoRepository", () => {
 
     expect(depois).toHaveLength(antes.length + 1);
   });
+
+  it("findById retorna o produto correspondente", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    await repo.seed();
+    const produtos = await repo.list();
+    const alvo = produtos[0];
+    if (!alvo) throw new Error("seed deveria conter ao menos um produto");
+
+    const encontrado = await repo.findById(alvo.id);
+
+    expect(encontrado).toEqual(alvo);
+  });
+
+  it("findById retorna null quando o produto nao existe", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    await repo.seed();
+
+    const encontrado = await repo.findById("produto-inexistente");
+
+    expect(encontrado).toBeNull();
+  });
+
+  it("update altera somente os campos informados e preserva o restante", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    await repo.seed();
+    const produtos = await repo.list();
+    const alvo = produtos[0];
+    if (!alvo) throw new Error("seed deveria conter ao menos um produto");
+
+    const atualizado = await repo.update(alvo.id, { nome: "Nome Editado" });
+
+    expect(atualizado).toEqual({ ...alvo, nome: "Nome Editado" });
+    const persistido = await repo.findById(alvo.id);
+    expect(persistido?.nome).toBe("Nome Editado");
+  });
+
+  it("update retorna null quando o produto nao existe", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    await repo.seed();
+
+    const atualizado = await repo.update("produto-inexistente", { nome: "X" });
+
+    expect(atualizado).toBeNull();
+  });
 });

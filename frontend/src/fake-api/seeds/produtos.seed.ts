@@ -4,14 +4,11 @@ import { REGIAO_IDS } from "@/fake-api/seeds/regioes.seed";
 import { TECNICA_IDS } from "@/fake-api/seeds/tecnicas.seed";
 
 /**
- * Artesaos sinteticos usados apenas para distribuir a titularidade dos
- * produtos-semente nesta massa Fake. Nao correspondem a registros da
- * carga de Usuario (fake-api/seeds/usuarios.seed.ts).
+ * Titularidade dos produtos-semente distribuida entre as duas contas de
+ * artesao da carga de Usuario (fake-api/seeds/usuarios.seed.ts), para que
+ * "Meus produtos" mostre massa real ao logar com qualquer uma delas.
  */
-const ARTESAO_IDS = [
-  "artesao-sintetico-pilar",
-  "artesao-sintetico-caruaru",
-] as const;
+const ARTESAO_IDS = ["seed-artesao-01", "seed-artesao-02"] as const;
 
 const REGIOES_CICLO = [
   REGIAO_IDS.pilarRecife,

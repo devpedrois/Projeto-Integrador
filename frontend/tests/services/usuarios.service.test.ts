@@ -18,15 +18,16 @@ describe("FakeUsuariosService.list", () => {
     expect(resultado).toBeInstanceOf(Promise);
   });
 
-  it("retorna exatamente tres DTOs publicos na primeira execucao", async () => {
+  it("retorna exatamente quatro DTOs publicos na primeira execucao", async () => {
     const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
 
     const usuarios = await service.list();
 
-    expect(usuarios).toHaveLength(3);
+    expect(usuarios).toHaveLength(4);
     expect(usuarios.map((u) => u.papel).sort()).toEqual([
       "admin",
+      "artesao",
       "artesao",
       "comprador",
     ]);

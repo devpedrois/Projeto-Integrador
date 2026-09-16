@@ -61,4 +61,76 @@ export class FakeProdutosService implements ProdutosService {
 
     return this.repositorio.create(produto);
   }
+
+  async listByArtesao(artesaoId: string): Promise<Produto[]> {
+    await this.repositorio.seed();
+    await aguardar(this.latenciaMs);
+    const produtos = await this.repositorio.list();
+    return produtos.filter(
+      (produto) => produto.artesaoId === artesaoId && produto.ativo
+    );
+  }
+
+  async update(
+    id: string,
+    input: NovoProdutoInput,
+    artesaoId: string
+  ): Promise<Produto> {
+    const erros = validarProduto(input);
+    if (!produtoValido(erros)) {
+      throw new ServiceError("PRODUTO_INVALIDO", "Dados do produto invalidos.");
+    }
+
+    await this.repositorio.seed();
+    await aguardar(this.latenciaMs);
+
+    const existente = await this.verificarPropriedade(id, artesaoId);
+
+    const atualizado = await this.repositorio.update(existente.id, {
+      nome: input.nome.trim(),
+      descricao: input.descricao.trim(),
+      preco: input.preco,
+      categoriaId: input.categoriaId,
+      fotos: input.fotos.map((foto, indice) => ({
+        url: foto.url.trim(),
+        ordem: indice,
+      })),
+      quantidadeEstoque: input.quantidadeEstoque,
+    });
+
+    if (!atualizado) {
+      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado.");
+    }
+
+    return atualizado;
+  }
+
+  async remove(id: string, artesaoId: string): Promise<void> {
+    await this.repositorio.seed();
+    await aguardar(this.latenciaMs);
+
+    const existente = await this.verificarPropriedade(id, artesaoId);
+
+    const atualizado = await this.repositorio.update(existente.id, {
+      ativo: false,
+    });
+
+    if (!atualizado) {
+      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado.");
+    }
+  }
+
+  private async verificarPropriedade(
+    id: string,
+    artesaoId: string
+  ): Promise<Produto> {
+    const existente = await this.repositorio.findById(id);
+    if (!existente || existente.artesaoId !== artesaoId) {
+      throw new ServiceError(
+        "ACESSO_NEGADO",
+        "Produto nao encontrado para este artesao."
+      );
+    }
+    return existente;
+  }
 }
