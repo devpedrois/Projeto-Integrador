@@ -37,6 +37,7 @@ function criarServicoFake(
         papel: "comprador",
         ativo: true,
       } satisfies UsuarioPublico),
+    login: vi.fn(),
   };
 }
 

@@ -194,3 +194,94 @@ describe("FakeUsuariosService.register", () => {
     expect(criado.email).toBe("email.novo@origem.test");
   });
 });
+
+describe("FakeUsuariosService.login", () => {
+  it("autentica um usuario do seed com credenciais corretas", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    const sessao = await service.login({
+      email: "ana.compradora@origem.test",
+      senha: "senha-sintetica-comprador",
+    });
+
+    expect(sessao).toEqual({
+      id: "seed-comprador-01",
+      nome: "Ana Comprador",
+      papel: "comprador",
+    });
+  });
+
+  it("nunca inclui a senha no resultado do login", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    const sessao = await service.login({
+      email: "ana.compradora@origem.test",
+      senha: "senha-sintetica-comprador",
+    });
+
+    expect("senha" in sessao).toBe(false);
+  });
+
+  it("rejeita senha incorreta com mensagem generica", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    await expect(
+      service.login({
+        email: "ana.compradora@origem.test",
+        senha: "senha-errada",
+      })
+    ).rejects.toMatchObject({ code: "CREDENCIAIS_INVALIDAS" });
+  });
+
+  it("rejeita email inexistente com a mesma mensagem generica da senha incorreta", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+
+    let erroEmailInexistente: Error | undefined;
+    let erroSenhaIncorreta: Error | undefined;
+
+    try {
+      await service.login({
+        email: "ninguem@origem.test",
+        senha: "qualquer-senha",
+      });
+    } catch (erro) {
+      erroEmailInexistente = erro as Error;
+    }
+
+    try {
+      await service.login({
+        email: "ana.compradora@origem.test",
+        senha: "senha-errada",
+      });
+    } catch (erro) {
+      erroSenhaIncorreta = erro as Error;
+    }
+
+    expect(erroEmailInexistente?.message).toBe(erroSenhaIncorreta?.message);
+    expect((erroEmailInexistente as { code?: string })?.code).toBe(
+      "CREDENCIAIS_INVALIDAS"
+    );
+  });
+
+  it("usuario inativo nao inicia sessao mesmo com credenciais corretas", async () => {
+    const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeUsuariosService(repo, { latenciaMs: 0 });
+    await repo.seed();
+    await repo.create({
+      id: "inativo-01",
+      nome: "Usuario Inativo",
+      email: "inativo@origem.test",
+      senha: "senha1234",
+      papel: "comprador",
+      ativo: false,
+    });
+
+    await expect(
+      service.login({ email: "inativo@origem.test", senha: "senha1234" })
+    ).rejects.toMatchObject({ code: "CREDENCIAIS_INVALIDAS" });
+  });
+});

@@ -7,7 +7,9 @@
  * alterar hooks, stores, componentes ou paginas que dependem deste contrato.
  */
 import type { CadastroInput } from "@/types/cadastro";
+import type { LoginInput } from "@/types/login";
 import type { UsuarioPublico } from "@/types/usuario";
+import type { UsuarioSessao } from "@/types/sessao";
 
 export interface UsuariosService {
   list(): Promise<UsuarioPublico[]>;
@@ -16,4 +18,9 @@ export interface UsuariosService {
    * a autenticacao e a sessao chegam em T02.1.
    */
   register(input: CadastroInput): Promise<UsuarioPublico>;
+  /**
+   * Autentica um usuario ativo. Credenciais incorretas e usuarios inativos
+   * retornam o mesmo erro generico, sem indicar qual credencial falhou.
+   */
+  login(input: LoginInput): Promise<UsuarioSessao>;
 }
