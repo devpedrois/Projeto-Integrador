@@ -6,6 +6,7 @@ import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 import type { SessionStore } from "@/store/sessao.store";
+import type { CartStore } from "@/store/carrinho.store";
 import type { UsuarioSessao } from "@/types/sessao";
 import type { Produto } from "@/types/produto";
 
@@ -13,12 +14,14 @@ let produtosServiceMock: ProdutosService;
 let recomendacoesServiceMock: RecomendacoesService;
 let opcoesFiltroServiceMock: OpcoesFiltroService;
 let sessionStoreMock: SessionStore;
+let carrinhoStoreMock: CartStore;
 
 vi.mock("@/services/fake/container", () => ({
   obterProdutosService: () => produtosServiceMock,
   obterRecomendacoesService: () => recomendacoesServiceMock,
   obterOpcoesFiltroService: () => opcoesFiltroServiceMock,
   obterSessionStore: () => sessionStoreMock,
+  obterCarrinhoStore: () => carrinhoStoreMock,
 }));
 
 const pushMock = vi.fn((url: string) => {
@@ -102,6 +105,13 @@ function criarSessionStoreFake(sessao: UsuarioSessao | null): SessionStore {
 
 beforeEach(() => {
   sessionStoreMock = criarSessionStoreFake(null);
+  carrinhoStoreMock = {
+    getSnapshot: vi.fn().mockReturnValue({ itens: [], total: 0, atualizadoEm: "" }),
+    subscribe: vi.fn().mockReturnValue(() => {}),
+    adicionar: vi.fn(),
+    alterarQuantidade: vi.fn(),
+    remover: vi.fn(),
+  } as unknown as CartStore;
   opcoesFiltroServiceMock = criarOpcoesFiltroServiceFake();
   recomendacoesServiceMock = {
     obter: vi.fn().mockResolvedValue({ estrategia: "categoria", itens: [] }),
