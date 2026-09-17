@@ -1,23 +1,27 @@
 import { BrowserUsuarioRepository } from "@/fake-api/repositories/usuario.repository";
 import { BrowserProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import { BrowserSessaoStorage } from "@/fake-api/storage/sessao.storage";
+import { BrowserCarrinhoStorage } from "@/fake-api/storage/carrinho.storage";
 import { FakeUsuariosService } from "@/services/fake/usuarios.service";
 import { FakeProdutosService } from "@/services/fake/produtos.service";
 import { FakeRecommendationAdapter } from "@/services/fake/recomendacoes/fake-recommendation.adapter";
 import { FakeOpcoesFiltroService } from "@/services/fake/opcoes-filtro.service";
 import { SessionStore } from "@/store/sessao.store";
+import { CartStore } from "@/store/carrinho.store";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 
 const LATENCIA_PADRAO_MS = 300;
+const USUARIO_VISITANTE = "visitante";
 
 let instancia: UsuariosService | null = null;
 let produtosServiceInstancia: ProdutosService | null = null;
 let recomendacoesServiceInstancia: RecomendacoesService | null = null;
 let opcoesFiltroServiceInstancia: OpcoesFiltroService | null = null;
 let sessionStoreInstancia: SessionStore | null = null;
+const carrinhoStoresPorUsuario = new Map<string, CartStore>();
 
 export function obterUsuariosService(): UsuariosService {
   if (!instancia) {
@@ -69,4 +73,14 @@ export function obterSessionStore(): SessionStore {
     );
   }
   return sessionStoreInstancia;
+}
+
+export function obterCarrinhoStore(usuarioId?: string): CartStore {
+  const chave = usuarioId ?? USUARIO_VISITANTE;
+  let store = carrinhoStoresPorUsuario.get(chave);
+  if (!store) {
+    store = new CartStore(new BrowserCarrinhoStorage(window.localStorage, chave));
+    carrinhoStoresPorUsuario.set(chave, store);
+  }
+  return store;
 }
