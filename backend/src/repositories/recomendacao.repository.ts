@@ -38,6 +38,11 @@ function mapearCandidato(row: CandidatoRecomendacaoRow): CandidatoRecomendacao {
   };
 }
 
+export interface ProdutoElegivelRecomendacao {
+  id: string;
+  categoriaId: string;
+}
+
 export interface RecomendacaoRepository {
   buscarProduto(produtoId: string): Promise<ProdutoContextoRecomendacao | null>;
   listarCandidatosPorCategoria(params: {
@@ -50,6 +55,7 @@ export interface RecomendacaoRepository {
     excluirProdutoId: string | null;
     limite: number;
   }): Promise<CandidatoRecomendacao[]>;
+  listarElegiveis(): Promise<ProdutoElegivelRecomendacao[]>;
 }
 
 export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
@@ -178,5 +184,14 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
       LIMIT ${params.limite}
     `;
     return linhas.map(mapearCandidato);
+  }
+
+  public async listarElegiveis(): Promise<ProdutoElegivelRecomendacao[]> {
+    return this.prisma.$queryRaw<ProdutoElegivelRecomendacao[]>`
+      SELECT p."id" AS "id", p."categoriaId" AS "categoriaId"
+      FROM "Produto" p
+      WHERE p."ativo" = true
+        AND p."quantidadeEstoque" > 0
+    `;
   }
 }
