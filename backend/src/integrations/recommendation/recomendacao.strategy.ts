@@ -5,6 +5,12 @@ export interface RecomendacaoContexto {
 
 export interface RecomendacaoItem {
   id: string;
+  nome: string;
+  descricao: string | null;
+  preco: number | null;
+  quantidadeEstoque: number;
+  categoriaId: string;
+  artesaoId: string;
 }
 
 export interface RecomendacaoResultado {

@@ -7,6 +7,34 @@ export interface ProdutoContextoRecomendacao {
 
 export interface CandidatoRecomendacao {
   id: string;
+  nome: string;
+  descricao: string | null;
+  preco: number | null;
+  quantidadeEstoque: number;
+  categoriaId: string;
+  artesaoId: string;
+}
+
+interface CandidatoRecomendacaoRow {
+  id: string;
+  nome: string;
+  descricao: string | null;
+  preco: unknown;
+  quantidadeEstoque: number;
+  categoriaId: string;
+  artesaoId: string;
+}
+
+function mapearCandidato(row: CandidatoRecomendacaoRow): CandidatoRecomendacao {
+  return {
+    id: row.id,
+    nome: row.nome,
+    descricao: row.descricao,
+    preco: row.preco === null ? null : Number(row.preco),
+    quantidadeEstoque: row.quantidadeEstoque,
+    categoriaId: row.categoriaId,
+    artesaoId: row.artesaoId,
+  };
 }
 
 export interface RecomendacaoRepository {
@@ -37,8 +65,14 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
     excluirProdutoId: string;
     limite: number;
   }): Promise<CandidatoRecomendacao[]> {
-    return this.prisma.$queryRaw<CandidatoRecomendacao[]>`
-      SELECT p."id" AS "id"
+    const linhas = await this.prisma.$queryRaw<CandidatoRecomendacaoRow[]>`
+      SELECT p."id" AS "id",
+             p."nome" AS "nome",
+             p."descricao" AS "descricao",
+             p."preco" AS "preco",
+             p."quantidadeEstoque" AS "quantidadeEstoque",
+             p."categoriaId" AS "categoriaId",
+             p."artesaoId" AS "artesaoId"
       FROM "Produto" p
       LEFT JOIN (
         SELECT "produtoId", SUM("quantidade") AS "vendas"
@@ -59,14 +93,21 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
                p."id" ASC
       LIMIT ${params.limite}
     `;
+    return linhas.map(mapearCandidato);
   }
 
   public async listarFallbackGeral(params: {
     excluirProdutoId: string | null;
     limite: number;
   }): Promise<CandidatoRecomendacao[]> {
-    return this.prisma.$queryRaw<CandidatoRecomendacao[]>`
-      SELECT p."id" AS "id"
+    const linhas = await this.prisma.$queryRaw<CandidatoRecomendacaoRow[]>`
+      SELECT p."id" AS "id",
+             p."nome" AS "nome",
+             p."descricao" AS "descricao",
+             p."preco" AS "preco",
+             p."quantidadeEstoque" AS "quantidadeEstoque",
+             p."categoriaId" AS "categoriaId",
+             p."artesaoId" AS "artesaoId"
       FROM "Produto" p
       LEFT JOIN (
         SELECT "produtoId", SUM("quantidade") AS "vendas"
@@ -86,5 +127,6 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
                p."id" ASC
       LIMIT ${params.limite}
     `;
+    return linhas.map(mapearCandidato);
   }
 }
