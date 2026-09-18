@@ -16,10 +16,18 @@ const ESTRATEGIA_FALLBACK = "fallback-geral";
  * nao existe, nao possui candidatos elegiveis, ou o contexto e `usuarioId`
  * na U1, aplica o fallback geral sobre produtos ativos e com estoque,
  * ordenado pelos mesmos criterios, sem consultar historico pessoal
- * (PI4-20.2). Sem endpoint ou reforco regional nesta subtarefa.
+ * (PI4-20.2). Endpoint HTTP em PI4-20.3, sem reforco regional.
+ *
+ * `reforcoRegionalAtivo` (PI4-20.4) e uma opcao interna, nao exposta pela
+ * API publica: quando ligada, insere uma prioridade lexicografica extra
+ * entre categoria e vendas — mesma regiao do artesao do produto de contexto
+ * primeiro — sem tocar no fallback geral nem introduzir peso numerico.
  */
 export class CategoriaRecomendacaoStrategy implements RecomendacaoStrategy {
-  public constructor(private readonly repository: RecomendacaoRepository) {}
+  public constructor(
+    private readonly repository: RecomendacaoRepository,
+    private readonly reforcoRegionalAtivo: boolean = false,
+  ) {}
 
   public async obter(contexto: RecomendacaoContexto): Promise<RecomendacaoResultado> {
     if (contexto.usuarioId !== undefined) {
@@ -39,6 +47,7 @@ export class CategoriaRecomendacaoStrategy implements RecomendacaoStrategy {
       categoriaId: produtoContexto.categoriaId,
       excluirProdutoId: produtoContexto.id,
       limite: LIMITE_ITENS,
+      ...(this.reforcoRegionalAtivo ? { regiaoContexto: produtoContexto.regiao } : {}),
     });
 
     if (candidatos.length === 0) {
