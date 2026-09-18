@@ -1,5 +1,6 @@
 export interface RecomendacaoContexto {
-  produtoId: string;
+  produtoId?: string;
+  usuarioId?: string;
 }
 
 export interface RecomendacaoItem {
