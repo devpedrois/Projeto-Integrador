@@ -198,7 +198,7 @@ async function main(): Promise<void> {
     PORT: process.env.CONCURRENCY_TEST_PORT ?? DEFAULT_PORT,
   });
   const pool = new Pool({ connectionString: environment.DATABASE_URL });
-  const { server, prisma } = await startServer({
+  const { server, prisma, boss } = await startServer({
     ...process.env,
     PORT: String(environment.PORT),
   });
@@ -231,6 +231,9 @@ async function main(): Promise<void> {
       [fixtures.artesaoId, fixtures.compradorId],
     ]);
     await pool.query('DELETE FROM "Categoria" WHERE "id" = $1', [fixtures.categoriaId]);
+    if (boss !== undefined) {
+      await boss.stop({ graceful: false });
+    }
     await closeServer(server);
     await prisma.$disconnect();
     await pool.end();
