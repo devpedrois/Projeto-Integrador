@@ -1,9 +1,16 @@
 import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { createServer } from "node:net";
+import "dotenv/config";
 import { describe, expect, it } from "vitest";
 
-function runServerProcess(port: number, script?: string) {
+const FAKE_DATABASE_URL = "postgresql://user:secret@127.0.0.1:5432/origem";
+
+function runServerProcess(
+  port: number,
+  script?: string,
+  databaseUrl: string = FAKE_DATABASE_URL,
+) {
   const argumentsList = script === undefined
     ? ["--import", "tsx", "src/server.ts"]
     : ["--import", "tsx", "--input-type=module", "--eval", script];
@@ -14,10 +21,11 @@ function runServerProcess(port: number, script?: string) {
         cwd: process.cwd(),
         env: {
           ...process.env,
-          DATABASE_URL: "postgresql://user:secret@127.0.0.1:5432/origem",
-          DIRECT_URL: "postgresql://user:secret@127.0.0.1:5432/origem",
+          DATABASE_URL: databaseUrl,
+          DIRECT_URL: databaseUrl,
           NODE_ENV: "test",
           PORT: String(port),
+          NODE_NO_WARNINGS: "1",
         },
         stdio: ["ignore", "pipe", "pipe"],
       });
@@ -74,16 +82,26 @@ describe("server startup", () => {
   }, 20_000);
 
   it("binds startup explicitly to IPv4 loopback", async () => {
-    const result = await runServerProcess(3109, `
+    const realDatabaseUrl = process.env.DATABASE_URL;
+    if (realDatabaseUrl === undefined || realDatabaseUrl.length === 0) {
+      throw new Error("DATABASE_URL is required for integration tests");
+    }
+
+    const result = await runServerProcess(
+      3109,
+      `
       import { startServer } from "./src/server.ts";
-      const { server, prisma } = await startServer();
+      const { server, prisma, boss } = await startServer();
       try {
         process.stdout.write(server.address().address);
       } finally {
+        await boss.stop({ graceful: false });
         await new Promise((resolve) => server.close(resolve));
         await prisma.$disconnect();
       }
-    `);
+    `,
+      realDatabaseUrl,
+    );
 
     expect(result.code).toBe(0);
     expect(result.stdout).toBe("127.0.0.1");
