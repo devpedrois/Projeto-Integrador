@@ -10,6 +10,7 @@ const environmentSchema = z.object({
   DIRECT_URL: postgresUrl,
   NODE_ENV: z.enum(["development", "test"]).default("development"),
   PORT: z.coerce.number().int().min(1).max(65_535).default(3001),
+  NOTIFICATION_PUBLISHER_INTERVAL_MS: z.coerce.number().int().min(1_000).max(60_000).default(3_000),
 });
 
 export type Environment = z.infer<typeof environmentSchema>;
