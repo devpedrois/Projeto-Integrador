@@ -6,12 +6,14 @@ import { parseEnvironment } from "./config/environment.js";
 import { createPrismaClient } from "./database/prisma/client.js";
 import { registerNotificarArtesaoWorker } from "./jobs/notificar-artesao.worker.js";
 import { createPgBossClient, ensureNotificarArtesaoQueue } from "./queues/pg-boss.client.js";
+import { publicarIntencoesPendentes } from "./queues/notificacao.publisher.js";
 import { PrismaIntencaoNotificacaoRepository } from "./repositories/intencao-notificacao.repository.js";
 
 export async function startServer(input: NodeJS.ProcessEnv = process.env) {
   const environment = parseEnvironment(input);
   const prisma = createPrismaClient(environment.DATABASE_URL);
   let boss: PgBoss | undefined;
+  let publisherInterval: NodeJS.Timeout | undefined;
   try {
     boss = createPgBossClient(environment.DATABASE_URL);
     await boss.start();
@@ -19,14 +21,36 @@ export async function startServer(input: NodeJS.ProcessEnv = process.env) {
     const intencaoNotificacaoRepository = new PrismaIntencaoNotificacaoRepository(prisma);
     await registerNotificarArtesaoWorker(boss, intencaoNotificacaoRepository);
 
+    const activeBoss = boss;
+    let publicacaoEmAndamento = false;
+    publisherInterval = setInterval(() => {
+      if (publicacaoEmAndamento) {
+        return;
+      }
+      publicacaoEmAndamento = true;
+      publicarIntencoesPendentes(activeBoss, intencaoNotificacaoRepository)
+        .catch(() => {
+          process.stderr.write("Failed to publish pending notification intentions\n");
+        })
+        .finally(() => {
+          publicacaoEmAndamento = false;
+        });
+    }, environment.NOTIFICATION_PUBLISHER_INTERVAL_MS);
+
     const app = createApp(prisma);
     const server = app.listen(environment.PORT, "127.0.0.1");
     await new Promise<void>((resolve, reject) => {
       server.once("listening", resolve);
       server.once("error", () => reject(new Error("Backend startup failed")));
     });
+    server.once("close", () => {
+      clearInterval(publisherInterval);
+    });
     return { server, prisma, boss };
   } catch {
+    if (publisherInterval !== undefined) {
+      clearInterval(publisherInterval);
+    }
     if (boss !== undefined) {
       await boss.stop({ graceful: false });
     }
