@@ -6,7 +6,8 @@ backend/src/generated/prisma/
 .env.*
 !.env.example
 .superpowers/
-docs/
+docs/*
+!docs/uso-de-ia.md
 sprints/
 CLAUDE.md 
 AGENTS.md
