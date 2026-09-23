@@ -16,6 +16,10 @@ let storeMock: SessionStore | null = null;
 vi.mock("@/services/fake/container", () => ({
   obterSessionStore: () => storeMock,
   obterProdutosService: () => ({ list: vi.fn(), create: vi.fn() }),
+  obterPerfilArtesaoService: () => ({
+    obter: vi.fn().mockResolvedValue(null),
+    salvar: vi.fn(),
+  }),
 }));
 
 function criarStoreFake(sessao: UsuarioSessao | null): SessionStore {

@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { RouteGuard } from "@/components/layout/RouteGuard";
 import { ProdutoForm } from "@/components/painel-artesao/ProdutoForm";
+import { PendenciaPerfilArtesao } from "@/components/painel-artesao/PendenciaPerfilArtesao";
 import { useSessao } from "@/hooks/use-sessao";
 import {
+  obterPerfilArtesaoService,
   obterProdutosService,
   obterSessionStore,
 } from "@/services/fake/container";
+import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { SessionStore } from "@/store/sessao.store";
 
@@ -22,10 +25,14 @@ export default function PainelArtesaoPage() {
   const [produtosService, setProdutosService] = useState<ProdutosService | null>(
     null
   );
+  const [perfilService, setPerfilService] = useState<PerfilArtesaoService | null>(
+    null
+  );
 
   useEffect(() => {
     setSessionStore(obterSessionStore());
     setProdutosService(obterProdutosService());
+    setPerfilService(obterPerfilArtesaoService());
   }, []);
 
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
@@ -40,6 +47,9 @@ export default function PainelArtesaoPage() {
         >
           Meus produtos
         </Link>
+        {perfilService && sessao ? (
+          <PendenciaPerfilArtesao service={perfilService} artesaoId={sessao.id} />
+        ) : null}
         {produtosService && sessao ? (
           <ProdutoForm service={produtosService} artesaoId={sessao.id} />
         ) : null}
