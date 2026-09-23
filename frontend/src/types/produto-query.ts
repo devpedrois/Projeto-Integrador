@@ -3,4 +3,5 @@ export interface ProdutoQuery {
   categoriaId?: string;
   tecnicaId?: string;
   regiaoId?: string;
+  artesaoId?: string;
 }

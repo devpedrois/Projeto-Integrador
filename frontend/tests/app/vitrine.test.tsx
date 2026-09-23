@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
+import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { SessionStore } from "@/store/sessao.store";
 import type { CartStore } from "@/store/carrinho.store";
 import type { UsuarioSessao } from "@/types/sessao";
@@ -13,6 +14,7 @@ import type { Produto } from "@/types/produto";
 let produtosServiceMock: ProdutosService;
 let recomendacoesServiceMock: RecomendacoesService;
 let opcoesFiltroServiceMock: OpcoesFiltroService;
+let usuariosServiceMock: UsuariosService;
 let sessionStoreMock: SessionStore;
 let carrinhoStoreMock: CartStore;
 
@@ -20,6 +22,7 @@ vi.mock("@/services/fake/container", () => ({
   obterProdutosService: () => produtosServiceMock,
   obterRecomendacoesService: () => recomendacoesServiceMock,
   obterOpcoesFiltroService: () => opcoesFiltroServiceMock,
+  obterUsuariosService: () => usuariosServiceMock,
   obterSessionStore: () => sessionStoreMock,
   obterCarrinhoStore: () => carrinhoStoreMock,
 }));
@@ -115,6 +118,11 @@ beforeEach(() => {
   opcoesFiltroServiceMock = criarOpcoesFiltroServiceFake();
   recomendacoesServiceMock = {
     obter: vi.fn().mockResolvedValue({ estrategia: "categoria", itens: [] }),
+  };
+  usuariosServiceMock = {
+    list: vi.fn().mockResolvedValue([]),
+    register: vi.fn(),
+    login: vi.fn(),
   };
   pushMock.mockClear();
   searchParamsAtual = new URLSearchParams();

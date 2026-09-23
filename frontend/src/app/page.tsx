@@ -10,6 +10,7 @@ import {
   obterProdutosService,
   obterRecomendacoesService,
   obterSessionStore,
+  obterUsuariosService,
 } from "@/services/fake/container";
 import { ServiceError } from "@/services/errors";
 import { useSessao } from "@/hooks/use-sessao";
@@ -17,12 +18,15 @@ import { useCarrinho } from "@/hooks/use-carrinho";
 import type { CartStore } from "@/store/carrinho.store";
 import { useFiltrosUrl } from "@/hooks/use-filtros-url";
 import { useOpcoesFiltro } from "@/hooks/use-opcoes-filtro";
+import { useArtesaosAtivos } from "@/hooks/use-artesaos-ativos";
 import { FaixaRecomendacoes } from "@/components/vitrine/FaixaRecomendacoes";
 import { ResultadoBusca } from "@/components/vitrine/ResultadoBusca";
 import { FiltrosProdutos } from "@/components/vitrine/FiltrosProdutos";
+import { ProdutoCard } from "@/components/vitrine/ProdutoCard";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
+import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { SessionStore } from "@/store/sessao.store";
 import type { Produto } from "@/types/produto";
 import type { RecomendacaoContexto } from "@/types/recomendacao";
@@ -59,12 +63,14 @@ function PaginaInicial() {
     useState<RecomendacoesService | null>(null);
   const [opcoesFiltroService, setOpcoesFiltroService] =
     useState<OpcoesFiltroService | null>(null);
+  const [usuariosService, setUsuariosService] = useState<UsuariosService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
   const [estado, setEstado] = useState<EstadoProdutos>({ status: "carregando" });
   const [errosCarrinho, setErrosCarrinho] = useState<Record<string, string>>({});
   const { query, atualizar, limpar } = useFiltrosUrl();
   const opcoesFiltro = useOpcoesFiltro(opcoesFiltroService);
+  const artesaosAtivos = useArtesaosAtivos(usuariosService);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -72,6 +78,7 @@ function PaginaInicial() {
     setProdutosService(obterProdutosService());
     setRecomendacoesService(obterRecomendacoesService());
     setOpcoesFiltroService(obterOpcoesFiltroService());
+    setUsuariosService(obterUsuariosService());
     setSessionStore(obterSessionStore());
   }, []);
 
@@ -79,7 +86,8 @@ function PaginaInicial() {
     query.termo !== undefined ||
     query.categoriaId !== undefined ||
     query.tecnicaId !== undefined ||
-    query.regiaoId !== undefined;
+    query.regiaoId !== undefined ||
+    query.artesaoId !== undefined;
 
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
 
@@ -160,6 +168,7 @@ function PaginaInicial() {
       <FiltrosProdutos
         query={query}
         opcoes={opcoesFiltro}
+        artesaos={artesaosAtivos}
         onAlterar={atualizar}
         onLimpar={limpar}
       />
@@ -167,6 +176,7 @@ function PaginaInicial() {
       {algumFiltroAtivo ? (
         <ResultadoBusca
           service={produtosService}
+          usuariosService={usuariosService}
           query={query}
           onLimpar={limpar}
           onAdicionarAoCarrinho={adicionarAoCarrinho}
@@ -193,31 +203,13 @@ function PaginaInicial() {
           {estado.status === "sucesso" ? (
             <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
               {estado.produtos.map((produto) => (
-                <li key={produto.id} className="flex flex-col gap-2 rounded border border-gray-200 p-3">
-                  <span className="block text-sm font-medium">{produto.nome}</span>
-                  <span className="block text-sm text-neutral-600">
-                    R$ {produto.preco.toFixed(2)}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => adicionarAoCarrinho(produto)}
-                    aria-describedby={
-                      errosCarrinho[produto.id] ? `erro-carrinho-${produto.id}` : undefined
-                    }
-                    className="self-start rounded border border-gray-300 p-2 text-sm"
-                  >
-                    Adicionar ao carrinho
-                  </button>
-                  {errosCarrinho[produto.id] ? (
-                    <p
-                      id={`erro-carrinho-${produto.id}`}
-                      role="alert"
-                      className="text-sm text-red-700"
-                    >
-                      {errosCarrinho[produto.id]}
-                    </p>
-                  ) : null}
-                </li>
+                <ProdutoCard
+                  key={produto.id}
+                  produto={produto}
+                  usuariosService={usuariosService}
+                  onAdicionarAoCarrinho={adicionarAoCarrinho}
+                  erroCarrinho={errosCarrinho[produto.id]}
+                />
               ))}
             </ul>
           ) : null}

@@ -334,6 +334,16 @@ describe("FakeProdutosService.search", () => {
     expect(resultado).toHaveLength(30);
   });
 
+  it("filtra por artesaoId retornando somente os produtos daquele artesao", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    const resultado = await service.search({ artesaoId: "seed-artesao-01" });
+
+    expect(resultado).toHaveLength(15);
+    expect(resultado.every((produto) => produto.artesaoId === "seed-artesao-01")).toBe(true);
+  });
+
   it("oculta da busca produto com estoque zerado", async () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });

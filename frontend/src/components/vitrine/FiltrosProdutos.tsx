@@ -1,11 +1,13 @@
 "use client";
 
 import type { EstadoOpcoesFiltro } from "@/hooks/use-opcoes-filtro";
+import type { EstadoArtesaosAtivos } from "@/hooks/use-artesaos-ativos";
 import type { ProdutoQuery } from "@/types/produto-query";
 
 export interface FiltrosProdutosProps {
   query: ProdutoQuery;
   opcoes: EstadoOpcoesFiltro;
+  artesaos?: EstadoArtesaosAtivos;
   onAlterar(alteracoes: Partial<ProdutoQuery>): void;
   onLimpar(): void;
 }
@@ -18,13 +20,21 @@ function valorOuIndefinido(valor: string): string | undefined {
   return valor === "" ? undefined : valor;
 }
 
-export function FiltrosProdutos({ query, opcoes, onAlterar, onLimpar }: FiltrosProdutosProps) {
+export function FiltrosProdutos({
+  query,
+  opcoes,
+  artesaos = { status: "carregando" },
+  onAlterar,
+  onLimpar,
+}: FiltrosProdutosProps) {
   const opcoesCarregadas = opcoes.status === "sucesso" ? opcoes : null;
+  const artesaosCarregados = artesaos.status === "sucesso" ? artesaos : null;
   const algumFiltroAtivo =
     query.termo !== undefined ||
     query.categoriaId !== undefined ||
     query.tecnicaId !== undefined ||
-    query.regiaoId !== undefined;
+    query.regiaoId !== undefined ||
+    query.artesaoId !== undefined;
 
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
@@ -103,6 +113,28 @@ export function FiltrosProdutos({ query, opcoes, onAlterar, onLimpar }: FiltrosP
           {opcoesCarregadas?.regioes.map((regiao) => (
             <option key={regiao.id} value={regiao.id}>
               {regiao.nome}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="filtro-artesao" className="text-sm font-medium">
+          Artesao
+        </label>
+        <select
+          id="filtro-artesao"
+          value={valorOuVazio(query.artesaoId)}
+          onChange={(evento) =>
+            onAlterar({ artesaoId: valorOuIndefinido(evento.target.value) })
+          }
+          disabled={!artesaosCarregados}
+          className="rounded border border-gray-300 p-2 text-sm"
+        >
+          <option value="">Todos os artesaos</option>
+          {artesaosCarregados?.artesaos.map((artesao) => (
+            <option key={artesao.id} value={artesao.id}>
+              {artesao.nome}
             </option>
           ))}
         </select>

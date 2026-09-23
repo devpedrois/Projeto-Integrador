@@ -3,12 +3,18 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { FiltrosProdutos } from "@/components/vitrine/FiltrosProdutos";
 import type { EstadoOpcoesFiltro } from "@/hooks/use-opcoes-filtro";
+import type { EstadoArtesaosAtivos } from "@/hooks/use-artesaos-ativos";
 
 const OPCOES_SUCESSO: EstadoOpcoesFiltro = {
   status: "sucesso",
   categorias: [{ id: "categoria-ceramica-barro", nome: "Ceramica e Barro" }],
   tecnicas: [{ id: "tecnica-torno-ceramico", nome: "Torno Ceramico" }],
   regioes: [{ id: "regiao-pilar-recife", nome: "Comunidade do Pilar - Recife" }],
+};
+
+const ARTESAOS_SUCESSO: EstadoArtesaosAtivos = {
+  status: "sucesso",
+  artesaos: [{ id: "seed-artesao-01", nome: "Beto Ceramista" }],
 };
 
 describe("FiltrosProdutos", () => {
@@ -29,11 +35,26 @@ describe("FiltrosProdutos", () => {
     ).toBeInTheDocument();
   });
 
+  it("mostra as opcoes de artesao vindas da Fake API", () => {
+    render(
+      <FiltrosProdutos
+        query={{}}
+        opcoes={OPCOES_SUCESSO}
+        artesaos={ARTESAOS_SUCESSO}
+        onAlterar={vi.fn()}
+        onLimpar={vi.fn()}
+      />
+    );
+
+    expect(screen.getByRole("option", { name: "Beto Ceramista" })).toBeInTheDocument();
+  });
+
   it("desabilita os selects enquanto as opcoes ainda carregam", () => {
     render(
       <FiltrosProdutos
         query={{}}
         opcoes={{ status: "carregando" }}
+        artesaos={{ status: "carregando" }}
         onAlterar={vi.fn()}
         onLimpar={vi.fn()}
       />
@@ -42,6 +63,38 @@ describe("FiltrosProdutos", () => {
     expect(screen.getByLabelText("Categoria")).toBeDisabled();
     expect(screen.getByLabelText("Tecnica")).toBeDisabled();
     expect(screen.getByLabelText("Regiao")).toBeDisabled();
+    expect(screen.getByLabelText("Artesao")).toBeDisabled();
+  });
+
+  it("selecionar um artesao delega ao callback com o id escolhido", async () => {
+    const onAlterar = vi.fn();
+    render(
+      <FiltrosProdutos
+        query={{}}
+        opcoes={OPCOES_SUCESSO}
+        artesaos={ARTESAOS_SUCESSO}
+        onAlterar={onAlterar}
+        onLimpar={vi.fn()}
+      />
+    );
+
+    await userEvent.selectOptions(screen.getByLabelText("Artesao"), "seed-artesao-01");
+
+    expect(onAlterar).toHaveBeenCalledWith({ artesaoId: "seed-artesao-01" });
+  });
+
+  it("botao Limpar filtros fica habilitado quando somente o artesao esta ativo", () => {
+    render(
+      <FiltrosProdutos
+        query={{ artesaoId: "seed-artesao-01" }}
+        opcoes={OPCOES_SUCESSO}
+        artesaos={ARTESAOS_SUCESSO}
+        onAlterar={vi.fn()}
+        onLimpar={vi.fn()}
+      />
+    );
+
+    expect(screen.getByRole("button", { name: /limpar filtros/i })).toBeEnabled();
   });
 
   it("digitar o termo apenas captura a selecao e delega ao callback", async () => {

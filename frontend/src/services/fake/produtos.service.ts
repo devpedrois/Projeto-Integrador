@@ -138,6 +138,7 @@ export class FakeProdutosService implements ProdutosService {
       if (query.categoriaId && produto.categoriaId !== query.categoriaId) return false;
       if (query.tecnicaId && produto.tecnicaId !== query.tecnicaId) return false;
       if (query.regiaoId && produto.regiaoId !== query.regiaoId) return false;
+      if (query.artesaoId && produto.artesaoId !== query.artesaoId) return false;
       return true;
     });
 

@@ -5,6 +5,7 @@ const PARAM_POR_CAMPO: Record<keyof ProdutoQuery, string> = {
   categoriaId: "categoria",
   tecnicaId: "tecnica",
   regiaoId: "regiao",
+  artesaoId: "artesao",
 };
 
 export function parseProdutoQuery(params: URLSearchParams): ProdutoQuery {

@@ -8,7 +8,7 @@ import type { ProdutoQuery } from "@/types/produto-query";
 describe("parseProdutoQuery", () => {
   it("le termo e filtros presentes na URL", () => {
     const params = new URLSearchParams(
-      "termo=esculpida&categoria=categoria-ceramica-barro&tecnica=tecnica-torno-ceramico&regiao=regiao-pilar-recife"
+      "termo=esculpida&categoria=categoria-ceramica-barro&tecnica=tecnica-torno-ceramico&regiao=regiao-pilar-recife&artesao=seed-artesao-01"
     );
 
     expect(parseProdutoQuery(params)).toEqual({
@@ -16,6 +16,7 @@ describe("parseProdutoQuery", () => {
       categoriaId: "categoria-ceramica-barro",
       tecnicaId: "tecnica-torno-ceramico",
       regiaoId: "regiao-pilar-recife",
+      artesaoId: "seed-artesao-01",
     });
   });
 
@@ -60,6 +61,12 @@ describe("serializeProdutoQuery", () => {
     );
   });
 
+  it("inclui o artesao selecionado na querystring", () => {
+    const query: ProdutoQuery = { artesaoId: "seed-artesao-02" };
+
+    expect(serializeProdutoQuery(query)).toBe("artesao=seed-artesao-02");
+  });
+
   it("remove parametros vazios ou ausentes", () => {
     const query: ProdutoQuery = {
       termo: "   ",
@@ -88,6 +95,7 @@ describe("parseProdutoQuery e serializeProdutoQuery", () => {
         categoriaId: "categoria-renda-bordado",
         tecnicaId: "tecnica-renda-irlandesa",
       },
+      { artesaoId: "seed-artesao-01" },
     ];
 
     for (const query of combinacoes) {
