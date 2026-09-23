@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ResultadoBusca } from "@/components/vitrine/ResultadoBusca";
+import type { ResultadoBuscaProps } from "@/components/vitrine/ResultadoBusca";
 import { CATEGORIA_IDS } from "@/fake-api/seeds/categorias.seed";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { Produto } from "@/types/produto";
@@ -40,11 +41,21 @@ function criarServicoFake(
   };
 }
 
+function propsPadrao(
+  overrides: Partial<ResultadoBuscaProps> = {}
+): Pick<ResultadoBuscaProps, "onAdicionarAoCarrinho" | "errosCarrinho"> {
+  return {
+    onAdicionarAoCarrinho: vi.fn(),
+    errosCarrinho: {},
+    ...overrides,
+  };
+}
+
 describe("ResultadoBusca - estado vazio", () => {
   it("mostra estado vazio acessivel e distinto de erro quando a busca nao encontra produtos", async () => {
     const service = criarServicoFake({ search: vi.fn().mockResolvedValue([]) });
 
-    render(<ResultadoBusca service={service} query={{ termo: "zzz-inexistente" }} onLimpar={vi.fn()} />);
+    render(<ResultadoBusca service={service} query={{ termo: "zzz-inexistente" }} onLimpar={vi.fn()} {...propsPadrao()} />);
 
     const vazio = await screen.findByRole("status", { name: /nenhum resultado/i });
     expect(vazio).toBeInTheDocument();
@@ -56,7 +67,7 @@ describe("ResultadoBusca - estado vazio", () => {
       search: vi.fn().mockReturnValue(new Promise(() => {})),
     });
 
-    render(<ResultadoBusca service={service} query={{ termo: "zzz" }} onLimpar={vi.fn()} />);
+    render(<ResultadoBusca service={service} query={{ termo: "zzz" }} onLimpar={vi.fn()} {...propsPadrao()} />);
 
     expect(screen.queryByRole("status", { name: /nenhum resultado/i })).not.toBeInTheDocument();
   });
@@ -66,7 +77,7 @@ describe("ResultadoBusca - estado vazio", () => {
     const onLimpar = vi.fn();
     const usuario = userEvent.setup();
 
-    render(<ResultadoBusca service={service} query={{ termo: "zzz-inexistente" }} onLimpar={onLimpar} />);
+    render(<ResultadoBusca service={service} query={{ termo: "zzz-inexistente" }} onLimpar={onLimpar} {...propsPadrao()} />);
 
     const botao = await screen.findByRole("button", { name: /limpar filtros/i });
     await usuario.click(botao);
@@ -83,7 +94,7 @@ describe("ResultadoBusca - estado vazio", () => {
   ])("mostra estado vazio para a busca sem correspondencia '%s'", async (termo) => {
     const service = criarServicoFake({ search: vi.fn().mockResolvedValue([]) });
 
-    render(<ResultadoBusca service={service} query={{ termo }} onLimpar={vi.fn()} />);
+    render(<ResultadoBusca service={service} query={{ termo }} onLimpar={vi.fn()} {...propsPadrao()} />);
 
     expect(await screen.findByRole("status", { name: /nenhum resultado/i })).toBeInTheDocument();
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();

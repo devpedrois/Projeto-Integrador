@@ -3,14 +3,23 @@
 import { useBuscaProdutos } from "@/hooks/use-busca-produtos";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { ProdutoQuery } from "@/types/produto-query";
+import type { Produto } from "@/types/produto";
 
 export interface ResultadoBuscaProps {
   service: ProdutosService | null;
   query: ProdutoQuery;
   onLimpar(): void;
+  onAdicionarAoCarrinho(produto: Produto): void;
+  errosCarrinho: Record<string, string>;
 }
 
-export function ResultadoBusca({ service, query, onLimpar }: ResultadoBuscaProps) {
+export function ResultadoBusca({
+  service,
+  query,
+  onLimpar,
+  onAdicionarAoCarrinho,
+  errosCarrinho,
+}: ResultadoBuscaProps) {
   const estado = useBuscaProdutos(service, query);
 
   return (
@@ -45,11 +54,30 @@ export function ResultadoBusca({ service, query, onLimpar }: ResultadoBuscaProps
       {estado.status === "sucesso" ? (
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
           {estado.produtos.map((produto) => (
-            <li key={produto.id} className="rounded border border-gray-200 p-3">
+            <li key={produto.id} className="flex flex-col gap-2 rounded border border-gray-200 p-3">
               <span className="block text-sm font-medium">{produto.nome}</span>
               <span className="block text-sm text-neutral-600">
                 R$ {produto.preco.toFixed(2)}
               </span>
+              <button
+                type="button"
+                onClick={() => onAdicionarAoCarrinho(produto)}
+                aria-describedby={
+                  errosCarrinho[produto.id] ? `erro-carrinho-busca-${produto.id}` : undefined
+                }
+                className="self-start rounded border border-gray-300 p-2 text-sm"
+              >
+                Adicionar ao carrinho
+              </button>
+              {errosCarrinho[produto.id] ? (
+                <p
+                  id={`erro-carrinho-busca-${produto.id}`}
+                  role="alert"
+                  className="text-sm text-red-700"
+                >
+                  {errosCarrinho[produto.id]}
+                </p>
+              ) : null}
             </li>
           ))}
         </ul>

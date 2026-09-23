@@ -11,6 +11,7 @@ import {
   obterRecomendacoesService,
   obterSessionStore,
 } from "@/services/fake/container";
+import { ServiceError } from "@/services/errors";
 import { useSessao } from "@/hooks/use-sessao";
 import { useCarrinho } from "@/hooks/use-carrinho";
 import type { CartStore } from "@/store/carrinho.store";
@@ -61,6 +62,7 @@ function PaginaInicial() {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
   const [estado, setEstado] = useState<EstadoProdutos>({ status: "carregando" });
+  const [errosCarrinho, setErrosCarrinho] = useState<Record<string, string>>({});
   const { query, atualizar, limpar } = useFiltrosUrl();
   const opcoesFiltro = useOpcoesFiltro(opcoesFiltroService);
   const router = useRouter();
@@ -122,7 +124,22 @@ function PaginaInicial() {
       router.push(`/login?redirect=${encodeURIComponent(paraDestinoSeguro(pathname))}`);
       return;
     }
-    carrinhoStore?.adicionar(produto, 1);
+
+    try {
+      carrinhoStore?.adicionar(produto, 1);
+      setErrosCarrinho((atual) => {
+        if (!(produto.id in atual)) return atual;
+        const resto = { ...atual };
+        delete resto[produto.id];
+        return resto;
+      });
+    } catch (excecao) {
+      if (excecao instanceof ServiceError) {
+        setErrosCarrinho((atual) => ({ ...atual, [produto.id]: excecao.message }));
+      } else {
+        throw excecao;
+      }
+    }
   }
 
   const contextoRecomendacao: RecomendacaoContexto | null = sessao
@@ -148,7 +165,13 @@ function PaginaInicial() {
       />
 
       {algumFiltroAtivo ? (
-        <ResultadoBusca service={produtosService} query={query} onLimpar={limpar} />
+        <ResultadoBusca
+          service={produtosService}
+          query={query}
+          onLimpar={limpar}
+          onAdicionarAoCarrinho={adicionarAoCarrinho}
+          errosCarrinho={errosCarrinho}
+        />
       ) : (
         <>
           {estado.status === "carregando" ? (
@@ -178,10 +201,22 @@ function PaginaInicial() {
                   <button
                     type="button"
                     onClick={() => adicionarAoCarrinho(produto)}
+                    aria-describedby={
+                      errosCarrinho[produto.id] ? `erro-carrinho-${produto.id}` : undefined
+                    }
                     className="self-start rounded border border-gray-300 p-2 text-sm"
                   >
                     Adicionar ao carrinho
                   </button>
+                  {errosCarrinho[produto.id] ? (
+                    <p
+                      id={`erro-carrinho-${produto.id}`}
+                      role="alert"
+                      className="text-sm text-red-700"
+                    >
+                      {errosCarrinho[produto.id]}
+                    </p>
+                  ) : null}
                 </li>
               ))}
             </ul>

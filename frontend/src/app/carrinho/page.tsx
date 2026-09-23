@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { obterCarrinhoStore, obterSessionStore } from "@/services/fake/container";
 import { useCarrinho } from "@/hooks/use-carrinho";
 import { useSessao } from "@/hooks/use-sessao";
+import { ServiceError } from "@/services/errors";
 import type { CartStore } from "@/store/carrinho.store";
 import type { SessionStore } from "@/store/sessao.store";
 
@@ -43,6 +44,25 @@ export default function CarrinhoPage() {
 
 function Carrinho({ store }: { store: CartStore }) {
   const carrinho = useCarrinho(store);
+  const [errosQuantidade, setErrosQuantidade] = useState<Record<string, string>>({});
+
+  function alterarQuantidade(produtoId: string, valor: number): void {
+    try {
+      store.alterarQuantidade(produtoId, valor);
+      setErrosQuantidade((atual) => {
+        if (!(produtoId in atual)) return atual;
+        const resto = { ...atual };
+        delete resto[produtoId];
+        return resto;
+      });
+    } catch (excecao) {
+      if (excecao instanceof ServiceError) {
+        setErrosQuantidade((atual) => ({ ...atual, [produtoId]: excecao.message }));
+      } else {
+        throw excecao;
+      }
+    }
+  }
 
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 p-4 sm:p-6">
@@ -88,10 +108,15 @@ function Carrinho({ store }: { store: CartStore }) {
                     min={0}
                     step={1}
                     value={item.quantidade}
+                    aria-describedby={
+                      errosQuantidade[item.produtoId]
+                        ? `erro-quantidade-${item.produtoId}`
+                        : undefined
+                    }
                     onChange={(evento) => {
                       const valor = Number(evento.target.value);
                       if (!Number.isInteger(valor) || valor < 0) return;
-                      store.alterarQuantidade(item.produtoId, valor);
+                      alterarQuantidade(item.produtoId, valor);
                     }}
                     className="w-16 rounded border border-gray-300 p-1 text-sm"
                   />
@@ -106,6 +131,15 @@ function Carrinho({ store }: { store: CartStore }) {
                     Remover
                   </button>
                 </div>
+                {errosQuantidade[item.produtoId] ? (
+                  <p
+                    id={`erro-quantidade-${item.produtoId}`}
+                    role="alert"
+                    className="text-sm text-red-700"
+                  >
+                    {errosQuantidade[item.produtoId]}
+                  </p>
+                ) : null}
               </li>
             ))}
           </ul>

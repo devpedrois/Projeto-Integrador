@@ -3,6 +3,7 @@ export interface ItemCarrinho {
   nome: string;
   precoUnitario: number;
   quantidade: number;
+  estoqueDisponivel: number;
 }
 
 export interface Carrinho {

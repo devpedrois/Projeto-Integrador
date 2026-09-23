@@ -1,6 +1,7 @@
 import type { CarrinhoStorage } from "@/fake-api/storage/carrinho.storage";
 import type { Carrinho, ItemCarrinho } from "@/types/carrinho";
 import type { Produto } from "@/types/produto";
+import { ServiceError } from "@/services/errors";
 
 type Ouvinte = () => void;
 
@@ -24,6 +25,21 @@ function calcularTotal(itens: ItemCarrinho[]): number {
   return itens.reduce((soma, item) => soma + item.precoUnitario * item.quantidade, 0);
 }
 
+function validarEstoqueDisponivel(
+  quantidadeSolicitada: number,
+  estoqueDisponivel: number,
+  nomeProduto: string,
+  produtoId: string
+): void {
+  if (quantidadeSolicitada > estoqueDisponivel) {
+    throw new ServiceError(
+      "ESTOQUE_INSUFICIENTE",
+      `Estoque insuficiente para "${nomeProduto}".`,
+      { produtoId, nome: nomeProduto }
+    );
+  }
+}
+
 export class CartStore {
   private carrinho: Carrinho;
   private readonly ouvintes = new Set<Ouvinte>();
@@ -44,6 +60,15 @@ export class CartStore {
 
     const indice = this.carrinho.itens.findIndex((item) => item.produtoId === produto.id);
     const itens = [...this.carrinho.itens];
+    const quantidadeExistente = indice === -1 ? 0 : (itens[indice] as ItemCarrinho).quantidade;
+    const quantidadeFinal = quantidadeExistente + quantidade;
+
+    validarEstoqueDisponivel(
+      quantidadeFinal,
+      produto.quantidadeEstoque,
+      produto.nome,
+      produto.id
+    );
 
     if (indice === -1) {
       itens.push({
@@ -51,10 +76,15 @@ export class CartStore {
         nome: produto.nome,
         precoUnitario: produto.preco,
         quantidade,
+        estoqueDisponivel: produto.quantidadeEstoque,
       });
     } else {
       const existente = itens[indice] as ItemCarrinho;
-      itens[indice] = { ...existente, quantidade: existente.quantidade + quantidade };
+      itens[indice] = {
+        ...existente,
+        quantidade: quantidadeFinal,
+        estoqueDisponivel: produto.quantidadeEstoque,
+      };
     }
 
     this.atualizar(itens);
@@ -66,6 +96,11 @@ export class CartStore {
     if (quantidade === 0) {
       this.remover(produtoId);
       return;
+    }
+
+    const item = this.carrinho.itens.find((item) => item.produtoId === produtoId);
+    if (item) {
+      validarEstoqueDisponivel(quantidade, item.estoqueDisponivel, item.nome, item.produtoId);
     }
 
     const itens = this.carrinho.itens.map((item) =>
