@@ -1,6 +1,7 @@
 import { BrowserUsuarioRepository } from "@/fake-api/repositories/usuario.repository";
 import { BrowserProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import { BrowserPedidoRepository } from "@/fake-api/repositories/pedido.repository";
+import { BrowserPerfilArtesaoRepository } from "@/fake-api/repositories/perfil-artesao.repository";
 import { BrowserSessaoStorage } from "@/fake-api/storage/sessao.storage";
 import { BrowserCarrinhoStorage } from "@/fake-api/storage/carrinho.storage";
 import { SessionModoAcessoStorage } from "@/fake-api/storage/modo-acesso.storage";
@@ -8,6 +9,7 @@ import type { ModoAcessoStorage } from "@/fake-api/storage/modo-acesso.storage";
 import { FakeUsuariosService } from "@/services/fake/usuarios.service";
 import { FakeProdutosService } from "@/services/fake/produtos.service";
 import { FakePedidosService } from "@/services/fake/pedidos.service";
+import { FakePerfilArtesaoService } from "@/services/fake/perfil-artesao.service";
 import { FakeRecommendationAdapter } from "@/services/fake/recomendacoes/fake-recommendation.adapter";
 import { FakeOpcoesFiltroService } from "@/services/fake/opcoes-filtro.service";
 import { SessionStore } from "@/store/sessao.store";
@@ -15,6 +17,7 @@ import { CartStore } from "@/store/carrinho.store";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { PedidosService } from "@/services/contracts/pedidos.contract";
+import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 
@@ -24,6 +27,7 @@ const USUARIO_VISITANTE = "visitante";
 let instancia: UsuariosService | null = null;
 let produtosServiceInstancia: ProdutosService | null = null;
 let pedidosServiceInstancia: PedidosService | null = null;
+let perfilArtesaoServiceInstancia: PerfilArtesaoService | null = null;
 let recomendacoesServiceInstancia: RecomendacoesService | null = null;
 let opcoesFiltroServiceInstancia: OpcoesFiltroService | null = null;
 let sessionStoreInstancia: SessionStore | null = null;
@@ -79,6 +83,22 @@ export function obterRecomendacoesService(): RecomendacoesService {
     recomendacoesServiceInstancia = new FakeRecommendationAdapter(repositorio);
   }
   return recomendacoesServiceInstancia;
+}
+
+/**
+ * Na AV1, `PerfilArtesaoService` e implementado por `FakePerfilArtesaoService`,
+ * sobre o mesmo repositorio local. Na AV2, este ponto de composicao troca para
+ * uma implementacao HTTP consumindo `GET/PATCH /usuarios/:id`, sem alterar
+ * hooks, componentes ou paginas.
+ */
+export function obterPerfilArtesaoService(): PerfilArtesaoService {
+  if (!perfilArtesaoServiceInstancia) {
+    const repositorio = new BrowserPerfilArtesaoRepository(window.localStorage);
+    perfilArtesaoServiceInstancia = new FakePerfilArtesaoService(repositorio, {
+      latenciaMs: LATENCIA_PADRAO_MS,
+    });
+  }
+  return perfilArtesaoServiceInstancia;
 }
 
 export function obterOpcoesFiltroService(): OpcoesFiltroService {
