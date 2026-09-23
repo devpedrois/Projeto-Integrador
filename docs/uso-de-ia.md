@@ -41,6 +41,17 @@ Cada alteração aproveitada permaneceu sujeita à decisão do autor responsáve
 | 17/09/2026 a 18/09/2026 | Recomendação                             | Pedro Monteiro implementou Strategy, endpoint e métricas. Luiza Vieira implementou o fallback geral. Eliziane Mota implementou o reforço regional                                  | Codex revisou consultas e arquitetura Strategy. A IA ajudou a corrigir agregação SQL, ordenação determinística e integração entre camadas              | Pedro, Luiza e Eliziane validaram regras, desempates, fallback, região e métricas com dados reais                                            |
 | 18/09/2026 a 19/09/2026 | Integração real da fila                  | Pedro Monteiro integrou o bootstrap, publicador periódico e encerramento limpo da fila                                                                                             | Claude Code identificou lacunas entre código isolado e servidor real. Também apoiou correções estruturais no bootstrap e ciclo de vida                 | Pedro avaliou e incorporou os ajustes. Testes verificaram reinício, idempotência, retry e publicação automática                              |
 | 20/09/2026              | Declaração de uso de IA                  | Pedro Monteiro revisou os registros e relacionou cada entrega aos membros responsáveis                                                                                             | Codex consolidou o documento e comparou histórico, arquivos e requisitos                                                                               | Informações genéricas ou sem evidência foram descartadas antes da entrega                                                                    |
+| 22/09/2026              | Checkout e confirmação simulada          | Pedro Monteiro implementou e integrou o fluxo. O trabalho reutilizou o carrinho persistente criado anteriormente por Sérgio Chousinho e as regras definidas pela equipe            | IA generativa auxiliou na transformação da subtarefa em prompt, criação inicial de testes, revisão do fluxo e identificação de casos de manipulação    | Pedro decidiu a estrutura final, revisou o código e validou pedido, estoque, confirmação, erros e limpeza do carrinho                        |
+| 23/09/2026              | Limite de estoque no carrinho            | Pedro Monteiro corrigiu o comportamento sobre a implementação existente e integrou mensagens nas telas. O fluxo aproveitou vitrine, busca e carrinho construídos pela equipe       | IA generativa ajudou a localizar o bug, enumerar casos de borda e sugerir correções no store e nos pontos de chamada                                   | Pedro analisou as sugestões e manteve a regra centralizada. Testes comprovaram limites e preservação do estado após bloqueios                |
+| 23/09/2026              | Formulário do perfil do artesão          | Pedro Monteiro implementou repository, service, validação, formulário e persistência. As opções de técnica e região vieram do domínio definido coletivamente                       | IA generativa apoiou o prompt, a estrutura inicial dos arquivos e a revisão de propriedade, validação e acessibilidade                                 | Pedro adaptou o conteúdo ao domínio, impediu alteração de outra conta e validou persistência, campos e navegação por teclado                 |
+| 23/09/2026              | Regra de perfil completo                 | Pedro Monteiro definiu e implementou a função pura, o indicador visual e sua integração ao painel                                                                                  | IA generativa sugeriu combinações de teste e separação da regra fora dos componentes                                                                   | Pedro confirmou quais campos determinam completude e validou os estados completo e incompleto                                                |
+| 23/09/2026              | Página pública do artesão                | Pedro Monteiro implementou rota, hook de composição e estados da página. Produtos, perfis e visibilidade reutilizaram serviços construídos pela equipe                             | IA generativa apoiou a composição inicial, revisão arquitetural e tratamento de loading, erro, vazio, inexistente e sucesso                            | Pedro revisou a integração e validou perfis completos, incompletos, produtos indisponíveis e responsividade                                  |
+| 23/09/2026              | Cards ligados ao perfil do artesão       | Pedro Monteiro integrou a navegação e extraiu o componente compartilhado. A mudança preservou busca, vitrine, recomendação e carrinho desenvolvidos anteriormente                  | IA generativa identificou duplicação estrutural e sugeriu a correção arquitetural com `ProdutoCard`, hooks de nomes e testes de regressão              | Pedro aprovou a refatoração, descartou mudanças fora do escopo e conferiu links, filtros, estoque e comportamento existente                  |
+
+Na Sprint 08-09, os commits 01 a 06 foram integrados por Pedro Monteiro. Eles
+não partiram do zero. O trabalho reutilizou contribuições anteriores de Sérgio
+Chousinho, Andrews Queiroz, Luiz Henrique Rocha e demais integrantes. Os prompts
+organizaram a execução, mas não substituíram autoria, decisões ou validação.
 
 ## 4. Prompts ou descrições relevantes
 
@@ -111,6 +122,27 @@ as mudanças antes da integração. Os testes foram executados novamente após a
 correções. Assim, a IA funcionou como revisora e ferramenta de apoio. A autoria,
 a decisão técnica e a validação permaneceram com a equipe.
 
+### 4.7 Sprint 08-09 até o commit 06
+
+Os prompts generativos foram produzidos a partir do backlog, documentos do
+projeto e código existente. Cada prompt delimitou uma subtarefa. Também indicou
+testes, arquivos relevantes, riscos, evidências e itens fora do escopo.
+
+| Commit | Tarefa delegada à IA                                      | Contribuição humana determinante                                                                                                       |
+| -----: | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+|     01 | Apoiar checkout simulado, criação do pedido e confirmação | Pedro definiu a integração, revisou preços e identidade, executou testes e decidiu manter o carrinho visitante como limitação separada |
+|     02 | Investigar e corrigir quantidades acima do estoque        | Pedro escolheu centralizar a regra no store, revisou mensagens e preservou estado e storage nas falhas                                 |
+|     03 | Apoiar a estrutura do perfil do artesão                   | Pedro alinhou campos ao domínio, conectou opções existentes e validou propriedade, acessibilidade e persistência                       |
+|     04 | Sugerir regra testável para perfil completo               | Pedro confirmou a regra de negócio, aprovou a função pura e integrou o indicador ao painel                                             |
+|     05 | Apoiar a página pública do artesão                        | Pedro compôs serviços existentes, definiu estados da interface e validou visibilidade e responsividade                                 |
+|     06 | Revisar duplicação dos cards e sugerir refatoração        | Pedro aprovou a extração de `ProdutoCard`, preservou comportamentos e validou os links aos perfis corretos                             |
+
+Houve geração de código, testes e sugestões pelos assistentes. Porém, o código
+gerado não foi incorporado automaticamente. Pedro e os demais responsáveis
+leram, adaptaram, corrigiram ou descartaram as sugestões. A IA também foi usada
+para corrigir bugs e problemas estruturais encontrados em código previamente
+produzido pelos membros.
+
 ## 5. Partes apoiadas por IA
 
 - [x] Entendimento do problema
@@ -165,7 +197,7 @@ incluíram credenciais, URLs secretas ou dados pessoais.
 - Saídas documentais precisaram de revisão textual e visual humana.
 - A sessão do frontend permanece sintética nesta avaliação.
 - O adapter local não comprova a baseline oficial do backend.
-- Detalhes do produto, avaliações e deploy continuam incompletos.
+- O carrinho de visitante ainda não migra automaticamente após login.
 
 Esses casos foram corrigidos ou descartados antes da incorporação.
 

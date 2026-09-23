@@ -8,6 +8,7 @@ backend/src/generated/prisma/
 .superpowers/
 docs/*
 !docs/uso-de-ia.md
+!docs/fake-api.md
 sprints/
 CLAUDE.md 
 AGENTS.md

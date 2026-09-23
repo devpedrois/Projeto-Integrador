@@ -4,6 +4,23 @@ Marketplace web full stack que conecta artesãos e produtores criativos de Perna
 
 Projeto Integrador do 4º semestre de Análise e Desenvolvimento de Sistemas — **CESAR School**, 2026.2.
 
+## Acesse a aplicação
+
+**Frontend publicado:** <https://origem-marketplace.vercel.app/>
+
+Na Avaliação 1, o frontend roda com uma Fake API no navegador (detalhes em [`docs/fake-api.md`](docs/fake-api.md)), sem depender do backend. Para avaliar os fluxos, use as credenciais sintéticas abaixo:
+
+| Papel | Email | Senha |
+|---|---|---|
+| Comprador | `ana.compradora@origem.test` | `senha-sintetica-comprador` |
+| Artesão | `joao.artesao@origem.test` | `senha-sintetica-artesao` |
+| Artesã | `maria.artesa@origem.test` | `senha-sintetica-artesao-02` |
+| Admin | `admin@origem.test` | `senha-sintetica-admin` |
+
+> Os dados ficam no `localStorage` de cada navegador: pedidos, cadastros e produtos criados por um visitante não aparecem para outro, e cada acesso começa da mesma massa sintética. Para uma demonstração limpa, use uma janela anônima.
+
+**Branch principal:** `main` (cada push publica automaticamente na Vercel).
+
 ## O problema
 
 Artesãos e produtores criativos têm pouca visibilidade digital, dependem de intermediários e têm gestão precária de catálogo, pedidos e estoque. Falta um canal que conecte essa produção a compradores destacando origem, técnica e o impacto de comprar direto de quem faz.
@@ -92,7 +109,7 @@ Projeto integrador/
 │       ├── services/          # camada de acesso a dados (Fake API / futura API real)
 │       ├── fake-api/          # Fake API estruturada usada na Avaliação 1
 │       ├── domain/, store/, hooks/, types/, validators/
-├── docs/                    # documentação de apoio (domínio, concorrência/IA, especificação da disciplina de Web)
+├── docs/                    # documentação publicada: fake-api.md e uso-de-ia.md
 ├── sprints/                 # entregáveis formais por sprint/checkpoint
 └── CLAUDE.md                # contexto vivo do projeto (decisões, modelo de dados, cronograma)
 ```
@@ -136,6 +153,8 @@ npm run dev         # http://localhost:3000
 ```
 
 Na Avaliação 1, o frontend consome uma **Fake API estruturada** (`src/fake-api/`), com a mesma camada de services/hooks/store que será usada para consumir a API real na Avaliação 2 — a integração real entre as camadas é entregue nessa segunda fase, sem reescrever a estrutura do frontend.
+
+A documentação completa da Fake API (camadas, recursos, contratos, erros, rotas protegidas e plano de troca pelo backend) está em [`docs/fake-api.md`](docs/fake-api.md).
 
 ## Testes de FCCPD
 
@@ -183,9 +202,16 @@ npm run typecheck
 npm run lint
 ```
 
+## Documentação
+
+| Documento | Conteúdo |
+|---|---|
+| [`docs/fake-api.md`](docs/fake-api.md) | Fake API da Avaliação 1: arquitetura, recursos, contratos, erros e troca pelo backend real |
+| [`docs/uso-de-ia.md`](docs/uso-de-ia.md) | Declaração de uso de IA no desenvolvimento |
+
 ## Declaração de uso de IA
 
-O uso de ferramentas de IA no desenvolvimento do projeto está declarado em [`docs/uso-de-ia.md`](docs/uso-de-ia.md)
+O uso de ferramentas de IA no desenvolvimento do projeto está declarado em [`docs/uso-de-ia.md`](docs/uso-de-ia.md).
 
 ## Disciplinas envolvidas
 
