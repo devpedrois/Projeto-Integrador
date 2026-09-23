@@ -99,4 +99,17 @@ describe("CartStore", () => {
     store.remover("p2");
     expect(store.getSnapshot().total).toBe(10);
   });
+
+  it("limpar esvazia o carrinho e persiste o estado vazio", () => {
+    const store = criarStore();
+    store.adicionar(produto("p1", 10), 2);
+
+    store.limpar();
+
+    expect(store.getSnapshot().itens).toEqual([]);
+    expect(store.getSnapshot().total).toBe(0);
+
+    const novaInstancia = criarStore();
+    expect(novaInstancia.getSnapshot().itens).toEqual([]);
+  });
 });

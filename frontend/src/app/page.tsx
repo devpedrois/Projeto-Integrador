@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { paraDestinoSeguro } from "@/utils/rota-segura";
 import {
   obterCarrinhoStore,
   obterOpcoesFiltroService,
@@ -61,6 +63,8 @@ function PaginaInicial() {
   const [estado, setEstado] = useState<EstadoProdutos>({ status: "carregando" });
   const { query, atualizar, limpar } = useFiltrosUrl();
   const opcoesFiltro = useOpcoesFiltro(opcoesFiltroService);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     setProdutosService(obterProdutosService());
@@ -112,6 +116,14 @@ function PaginaInicial() {
     if (estado.status !== "sucesso") return null;
     return estado.produtos.find((produto) => produto.ativo && produto.quantidadeEstoque > 0) ?? null;
   }, [estado]);
+
+  function adicionarAoCarrinho(produto: Produto): void {
+    if (!sessao) {
+      router.push(`/login?redirect=${encodeURIComponent(paraDestinoSeguro(pathname))}`);
+      return;
+    }
+    carrinhoStore?.adicionar(produto, 1);
+  }
 
   const contextoRecomendacao: RecomendacaoContexto | null = sessao
     ? { usuarioId: sessao.id }
@@ -165,7 +177,7 @@ function PaginaInicial() {
                   </span>
                   <button
                     type="button"
-                    onClick={() => carrinhoStore?.adicionar(produto, 1)}
+                    onClick={() => adicionarAoCarrinho(produto)}
                     className="self-start rounded border border-gray-300 p-2 text-sm"
                   >
                     Adicionar ao carrinho

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GateAcesso } from "@/components/layout/GateAcesso";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,7 +12,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <GateAcesso>{children}</GateAcesso>
+      </body>
     </html>
   );
 }

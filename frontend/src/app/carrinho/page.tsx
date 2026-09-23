@@ -114,6 +114,13 @@ function Carrinho({ store }: { store: CartStore }) {
             <span className="text-base font-semibold">Total</span>
             <span className="text-base font-semibold">R$ {carrinho.total.toFixed(2)}</span>
           </div>
+
+          <Link
+            href="/checkout"
+            className="min-h-11 rounded bg-emerald-700 px-4 py-2 text-center text-sm font-medium text-white"
+          >
+            Finalizar compra
+          </Link>
         </>
       )}
     </main>

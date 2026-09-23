@@ -80,6 +80,12 @@ export class CartStore {
     this.atualizar(itens);
   }
 
+  limpar(): void {
+    this.storage.limpar();
+    this.carrinho = carrinhoVazio();
+    this.notificar();
+  }
+
   private atualizar(itens: ItemCarrinho[]): void {
     this.carrinho = {
       itens,

@@ -200,6 +200,38 @@ describe("Vitrine (Home)", () => {
     expect(recomendacoesServiceMock.obter).not.toHaveBeenCalled();
   });
 
+  it("visitante sem sessao e redirecionado ao login ao tentar adicionar ao carrinho", async () => {
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
+    });
+    const { default: Home } = await import("@/app/page");
+    const usuario = userEvent.setup();
+
+    render(<Home />);
+    await screen.findByText("Vaso de Barro");
+    await usuario.click(screen.getByRole("button", { name: /adicionar ao carrinho/i }));
+
+    expect(pushMock).toHaveBeenCalledWith("/login?redirect=%2F");
+    expect(carrinhoStoreMock.adicionar).not.toHaveBeenCalled();
+  });
+
+  it("comprador autenticado adiciona o produto ao carrinho normalmente", async () => {
+    sessionStoreMock = criarSessionStoreFake({ id: "u1", nome: "Ana", papel: "comprador" });
+    produtosServiceMock = criarProdutosServiceFake({
+      list: vi.fn().mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
+    });
+    const { default: Home } = await import("@/app/page");
+    const usuario = userEvent.setup();
+
+    render(<Home />);
+    const produtoEncontrado = await screen.findByText("Vaso de Barro");
+    await usuario.click(screen.getByRole("button", { name: /adicionar ao carrinho/i }));
+
+    expect(carrinhoStoreMock.adicionar).toHaveBeenCalled();
+    expect(pushMock).not.toHaveBeenCalled();
+    expect(produtoEncontrado).toBeInTheDocument();
+  });
+
   it("busca controla o termo e consulta o service ao digitar, mostrando loading e resultado", async () => {
     const encontrado = produto({ id: "produto-seed-04", nome: "Jarra Ceramica Esculpida" });
     produtosServiceMock = criarProdutosServiceFake({
