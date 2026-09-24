@@ -37,6 +37,7 @@ function criarServicoFake(
     update: vi.fn().mockResolvedValue(produto()),
     remove: vi.fn().mockResolvedValue(undefined),
     search: vi.fn().mockResolvedValue([]),
+    obterPublico: vi.fn().mockResolvedValue(null),
     ...overrides,
   };
 }

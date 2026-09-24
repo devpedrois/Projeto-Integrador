@@ -17,4 +17,5 @@ export interface ProdutosService {
   update(id: string, input: NovoProdutoInput, artesaoId: string): Promise<Produto>;
   remove(id: string, artesaoId: string): Promise<void>;
   search(query: ProdutoQuery): Promise<Produto[]>;
+  obterPublico(id: string): Promise<Produto | null>;
 }

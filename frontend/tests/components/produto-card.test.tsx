@@ -96,9 +96,8 @@ describe("ProdutoCard", () => {
         </ul>
       );
 
-      const link = await screen.findByRole("link");
+      const link = await screen.findByRole("link", { name: `Artesao Amostra ${indice}` });
       expect(link).toHaveAttribute("href", `/artesao/${artesaoId}`);
-      expect(link).toHaveAccessibleName(`Artesao Amostra ${indice}`);
     }
   );
 
@@ -115,6 +114,8 @@ describe("ProdutoCard", () => {
     const link = await screen.findByRole("link", { name: /maria da silva/i });
 
     await usuarioTeste.tab();
+    expect(screen.getByRole("link", { name: "Jarra Ceramica Esculpida" })).toHaveFocus();
+    await usuarioTeste.tab();
     expect(link).toHaveFocus();
   });
 
@@ -125,8 +126,40 @@ describe("ProdutoCard", () => {
       </ul>
     );
 
-    const link = screen.getByRole("link");
-    expect(link.textContent).toMatch(/artesao/i);
+    const link = screen.getByRole("link", { name: /artesao/i });
+    expect(link).toHaveAttribute("href", "/artesao/artesao-1");
+  });
+
+  it("imagem e nome abrem a pagina de detalhes do produto", () => {
+    const { container } = render(
+      <ul>
+        <ProdutoCard
+          produto={produto({ id: "produto-77" })}
+          usuariosService={null}
+          onAdicionarAoCarrinho={vi.fn()}
+        />
+      </ul>
+    );
+
+    const linkNome = screen.getByRole("link", { name: "Jarra Ceramica Esculpida" });
+    expect(linkNome).toHaveAttribute("href", "/produto/produto-77");
+    const imagem = container.querySelector("img");
+    expect(imagem).toHaveAttribute("src", "https://origem.test/fotos/jarra.jpg");
+    expect(imagem?.closest("a")).toHaveAttribute("href", "/produto/produto-77");
+  });
+
+  it("nao renderiza imagem com protocolo inseguro", () => {
+    const { container } = render(
+      <ul>
+        <ProdutoCard
+          produto={produto({ fotos: [{ url: "javascript:alert(1)", ordem: 0 }] })}
+          usuariosService={null}
+          onAdicionarAoCarrinho={vi.fn()}
+        />
+      </ul>
+    );
+
+    expect(container.querySelector("img")).toBeNull();
   });
 
   it("aciona onAdicionarAoCarrinho ao clicar no botao", async () => {

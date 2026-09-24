@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useNomeArtesao } from "@/hooks/use-nome-artesao";
+import { fotoUrlSegura } from "@/utils/foto-url-segura";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { Produto } from "@/types/produto";
 
@@ -20,10 +21,24 @@ export function ProdutoCard({
 }: ProdutoCardProps) {
   const nomeArtesao = useNomeArtesao(usuariosService, produto.artesaoId);
   const erroId = `erro-carrinho-${produto.id}`;
+  const hrefProduto = `/produto/${produto.id}`;
+  const capa = [...produto.fotos].sort((a, b) => a.ordem - b.ordem)[0];
+  const capaUrl = fotoUrlSegura(capa?.url);
 
   return (
     <li className="flex flex-col gap-2 rounded border border-gray-200 p-3">
-      <span className="block text-sm font-medium">{produto.nome}</span>
+      {capaUrl ? (
+        <Link href={hrefProduto} tabIndex={-1} aria-hidden="true">
+          <img
+            src={capaUrl}
+            alt=""
+            className="aspect-square w-full rounded object-cover"
+          />
+        </Link>
+      ) : null}
+      <Link href={hrefProduto} className="block text-sm font-medium hover:underline">
+        {produto.nome}
+      </Link>
       <Link
         href={`/artesao/${produto.artesaoId}`}
         className="block text-sm text-neutral-600 underline"

@@ -84,6 +84,7 @@ function criarProdutosServiceFake(
     update: vi.fn(),
     remove: vi.fn(),
     search: vi.fn().mockResolvedValue([]),
+    obterPublico: vi.fn().mockResolvedValue(null),
     ...overrides,
   };
 }

@@ -492,3 +492,47 @@ describe("FakeProdutosService.remove", () => {
     ).rejects.toBeInstanceOf(ServiceError);
   });
 });
+
+describe("FakeProdutosService.obterPublico", () => {
+  it("retorna o produto ativo e com estoque pelo id", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+    const [primeiro] = await service.list();
+
+    const produto = await service.obterPublico((primeiro as { id: string }).id);
+
+    expect(produto).toEqual(primeiro);
+  });
+
+  it("retorna null para produto inexistente", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    await expect(service.obterPublico("produto-que-nao-existe")).resolves.toBeNull();
+  });
+
+  it("retorna null para id vazio", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+
+    await expect(service.obterPublico("   ")).resolves.toBeNull();
+  });
+
+  it("retorna null para produto inativo", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+    const criado = await service.create(entradaValida(), "artesao-teste");
+    await repo.update(criado.id, { ativo: false });
+
+    await expect(service.obterPublico(criado.id)).resolves.toBeNull();
+  });
+
+  it("retorna null para produto sem estoque", async () => {
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const service = new FakeProdutosService(repo, { latenciaMs: 0 });
+    const criado = await service.create(entradaValida(), "artesao-teste");
+    await repo.update(criado.id, { quantidadeEstoque: 0 });
+
+    await expect(service.obterPublico(criado.id)).resolves.toBeNull();
+  });
+});

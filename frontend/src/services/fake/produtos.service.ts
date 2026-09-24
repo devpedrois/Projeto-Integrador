@@ -6,7 +6,10 @@ import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import { ServiceError } from "@/services/errors";
 import { produtoValido, validarProduto } from "@/validators/produto.validator";
 import { normalizarTexto } from "@/utils/normalizar-texto";
-import { filtrarProdutosVisiveis } from "@/domain/produto-visibilidade";
+import {
+  filtrarProdutosVisiveis,
+  produtoVisivelPublicamente,
+} from "@/domain/produto-visibilidade";
 
 export interface FakeProdutosServiceOpcoes {
   latenciaMs?: number;
@@ -143,6 +146,16 @@ export class FakeProdutosService implements ProdutosService {
     });
 
     return filtrarProdutosVisiveis(filtrados);
+  }
+
+  async obterPublico(id: string): Promise<Produto | null> {
+    if (id.trim().length === 0) return null;
+
+    await this.repositorio.seed();
+    await aguardar(this.latenciaMs);
+
+    const produto = await this.repositorio.findById(id);
+    return produto && produtoVisivelPublicamente(produto) ? produto : null;
   }
 
   private async verificarPropriedade(
