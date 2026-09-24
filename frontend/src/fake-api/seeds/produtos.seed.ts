@@ -2,6 +2,8 @@ import type { Produto } from "@/types/produto";
 import { CATEGORIA_IDS } from "@/fake-api/seeds/categorias.seed";
 import { REGIAO_IDS } from "@/fake-api/seeds/regioes.seed";
 import { TECNICA_IDS } from "@/fake-api/seeds/tecnicas.seed";
+import { AVALIACOES_SEED } from "@/fake-api/seeds/avaliacoes.seed";
+import { calcularResumoAvaliacoes } from "@/domain/resumo-avaliacoes";
 
 /**
  * Titularidade dos produtos-semente distribuida entre as duas contas de
@@ -196,6 +198,11 @@ const FOTO_POR_CATEGORIA: Record<string, string> = {
 const BASE_CRIADO_EM_MS = Date.UTC(2026, 7, 1);
 const UM_DIA_MS = 24 * 60 * 60 * 1000;
 
+function notaMediaSemeada(produtoId: string): number {
+  const avaliacoes = AVALIACOES_SEED.filter((avaliacao) => avaliacao.produtoId === produtoId);
+  return calcularResumoAvaliacoes(produtoId, avaliacoes).media;
+}
+
 function gerarProdutosSeed(): Produto[] {
   const produtos: Produto[] = [];
   let indiceGlobal = 0;
@@ -205,12 +212,12 @@ function gerarProdutosSeed(): Produto[] {
     if (!modelos) continue;
 
     modelos.forEach((modelo, indiceNaCategoria) => {
-      const numero = indiceGlobal + 1;
+      const id = `produto-seed-${String(indiceGlobal + 1).padStart(2, "0")}`;
       const regiaoId = REGIOES_CICLO[indiceGlobal % REGIOES_CICLO.length] as string;
       const artesaoId = ARTESAO_IDS[indiceGlobal % ARTESAO_IDS.length] as string;
 
       produtos.push({
-        id: `produto-seed-${String(numero).padStart(2, "0")}`,
+        id,
         nome: modelo.nome,
         descricao: modelo.descricao,
         preco: 39.9 + indiceNaCategoria * 15 + (indiceGlobal % 3) * 4.5,
@@ -221,7 +228,7 @@ function gerarProdutosSeed(): Produto[] {
         fotos: [{ url: FOTO_POR_CATEGORIA[categoriaId] as string, ordem: 0 }],
         quantidadeEstoque: 3 + ((indiceGlobal * 5) % 40),
         quantidadeVendida: (indiceGlobal * 13) % 97,
-        notaMedia: Number((((indiceGlobal * 7) % 50) / 10).toFixed(1)),
+        notaMedia: notaMediaSemeada(id),
         ativo: true,
         criadoEm: new Date(BASE_CRIADO_EM_MS + indiceGlobal * UM_DIA_MS).toISOString(),
       });

@@ -2,6 +2,7 @@ import { BrowserUsuarioRepository } from "@/fake-api/repositories/usuario.reposi
 import { BrowserProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import { BrowserPedidoRepository } from "@/fake-api/repositories/pedido.repository";
 import { BrowserPerfilArtesaoRepository } from "@/fake-api/repositories/perfil-artesao.repository";
+import { BrowserAvaliacaoRepository } from "@/fake-api/repositories/avaliacao.repository";
 import { BrowserSessaoStorage } from "@/fake-api/storage/sessao.storage";
 import { BrowserCarrinhoStorage } from "@/fake-api/storage/carrinho.storage";
 import { SessionModoAcessoStorage } from "@/fake-api/storage/modo-acesso.storage";
@@ -10,6 +11,7 @@ import { FakeUsuariosService } from "@/services/fake/usuarios.service";
 import { FakeProdutosService } from "@/services/fake/produtos.service";
 import { FakePedidosService } from "@/services/fake/pedidos.service";
 import { FakePerfilArtesaoService } from "@/services/fake/perfil-artesao.service";
+import { FakeAvaliacoesService } from "@/services/fake/avaliacoes.service";
 import { FakeRecommendationAdapter } from "@/services/fake/recomendacoes/fake-recommendation.adapter";
 import { FakeOpcoesFiltroService } from "@/services/fake/opcoes-filtro.service";
 import { SessionStore } from "@/store/sessao.store";
@@ -18,6 +20,7 @@ import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { PedidosService } from "@/services/contracts/pedidos.contract";
 import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
+import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 
@@ -25,6 +28,7 @@ const LATENCIA_PADRAO_MS = 300;
 const USUARIO_VISITANTE = "visitante";
 
 let instancia: UsuariosService | null = null;
+let avaliacoesServiceInstancia: AvaliacoesService | null = null;
 let produtosServiceInstancia: ProdutosService | null = null;
 let pedidosServiceInstancia: PedidosService | null = null;
 let perfilArtesaoServiceInstancia: PerfilArtesaoService | null = null;
@@ -99,6 +103,23 @@ export function obterPerfilArtesaoService(): PerfilArtesaoService {
     });
   }
   return perfilArtesaoServiceInstancia;
+}
+
+/**
+ * Na AV1, `AvaliacoesService` e implementado por `FakeAvaliacoesService` sobre
+ * o repositorio local. Na AV2, este ponto de composicao troca para uma
+ * implementacao HTTP consumindo `GET/POST /avaliacoes`, sem alterar hooks,
+ * componentes ou paginas.
+ */
+export function obterAvaliacoesService(): AvaliacoesService {
+  if (!avaliacoesServiceInstancia) {
+    const repositorio = new BrowserAvaliacaoRepository(window.localStorage);
+    const produtoRepositorio = new BrowserProdutoRepository(window.localStorage);
+    avaliacoesServiceInstancia = new FakeAvaliacoesService(repositorio, produtoRepositorio, {
+      latenciaMs: LATENCIA_PADRAO_MS,
+    });
+  }
+  return avaliacoesServiceInstancia;
 }
 
 export function obterOpcoesFiltroService(): OpcoesFiltroService {

@@ -10,6 +10,14 @@ export const USUARIOS_SEED: readonly Usuario[] = [
     ativo: true,
   },
   {
+    id: "seed-comprador-02",
+    nome: "Bruno Comprador",
+    email: "bruno.comprador@origem.test",
+    senha: "senha-sintetica-comprador-02",
+    papel: "comprador",
+    ativo: true,
+  },
+  {
     id: "seed-artesao-01",
     nome: "Joao Artesao",
     email: "joao.artesao@origem.test",

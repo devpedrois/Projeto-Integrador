@@ -8,17 +8,18 @@ beforeEach(() => {
 });
 
 describe("BrowserUsuarioRepository", () => {
-  it("semeia exatamente quatro usuarios na primeira execucao", async () => {
+  it("semeia exatamente cinco usuarios na primeira execucao", async () => {
     const repo = new BrowserUsuarioRepository(window.localStorage, CHAVE_TESTE);
 
     await repo.seed();
     const usuarios = await repo.list();
 
-    expect(usuarios).toHaveLength(4);
+    expect(usuarios).toHaveLength(5);
     expect(usuarios.map((u) => u.papel).sort()).toEqual([
       "admin",
       "artesao",
       "artesao",
+      "comprador",
       "comprador",
     ]);
   });
@@ -47,7 +48,7 @@ describe("BrowserUsuarioRepository", () => {
     const alterado = usuarios.find((u) => u.id === primeiro.id);
 
     expect(alterado?.nome).toBe("Nome Alterado");
-    expect(usuarios).toHaveLength(4);
+    expect(usuarios).toHaveLength(5);
   });
 
   it("armazena os usuarios sob chave versionada", async () => {
@@ -72,7 +73,7 @@ describe("BrowserUsuarioRepository", () => {
     const usuarios = await repo.list();
 
     expect(criado.id).toBe("novo-1");
-    expect(usuarios).toHaveLength(5);
+    expect(usuarios).toHaveLength(6);
     expect(usuarios.some((u) => u.id === "novo-1")).toBe(true);
   });
 });
