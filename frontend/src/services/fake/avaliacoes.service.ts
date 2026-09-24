@@ -1,13 +1,19 @@
 import type { AvaliacaoRepository } from "@/fake-api/repositories/avaliacao.repository";
 import type { ProdutoRepository } from "@/fake-api/repositories/produto.repository";
+import type { UsuarioRepository } from "@/fake-api/repositories/usuario.repository";
 import type { Avaliacao, NovaAvaliacaoInput, ResumoAvaliacoes } from "@/types/avaliacao";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import { ServiceError } from "@/services/errors";
 import { calcularResumoAvaliacoes } from "@/domain/resumo-avaliacoes";
+import {
+  idsArtesaosInativos,
+  produtoDisponivelParaVenda,
+} from "@/domain/produto-visibilidade";
 import { avaliacaoValida, validarAvaliacao } from "@/validators/avaliacao.validator";
 
 export interface FakeAvaliacoesServiceOpcoes {
   latenciaMs?: number;
+  usuarioRepositorio?: UsuarioRepository;
 }
 
 function aguardar(ms: number): Promise<void> {
@@ -22,6 +28,7 @@ function maisRecentePrimeiro(a: Avaliacao, b: Avaliacao): number {
 
 export class FakeAvaliacoesService implements AvaliacoesService {
   private readonly latenciaMs: number;
+  private readonly usuarioRepositorio: UsuarioRepository | null;
 
   constructor(
     private readonly repositorio: AvaliacaoRepository,
@@ -29,6 +36,7 @@ export class FakeAvaliacoesService implements AvaliacoesService {
     opcoes: FakeAvaliacoesServiceOpcoes = {}
   ) {
     this.latenciaMs = opcoes.latenciaMs ?? 0;
+    this.usuarioRepositorio = opcoes.usuarioRepositorio ?? null;
   }
 
   async listByProduto(produtoId: string): Promise<Avaliacao[]> {
@@ -60,7 +68,10 @@ export class FakeAvaliacoesService implements AvaliacoesService {
     await aguardar(this.latenciaMs);
 
     const produto = await this.produtoRepositorio.findById(input.produtoId);
-    if (!produto || !produto.ativo) {
+    const artesaosInativos = this.usuarioRepositorio
+      ? idsArtesaosInativos(await this.usuarioRepositorio.list())
+      : new Set<string>();
+    if (!produto || !produtoDisponivelParaVenda(produto, artesaosInativos)) {
       throw new ServiceError(
         "PRODUTO_NAO_ENCONTRADO",
         "Produto nao encontrado.",

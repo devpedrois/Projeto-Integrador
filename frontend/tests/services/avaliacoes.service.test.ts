@@ -1,17 +1,23 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { BrowserAvaliacaoRepository } from "@/fake-api/repositories/avaliacao.repository";
 import { BrowserProdutoRepository } from "@/fake-api/repositories/produto.repository";
+import { BrowserUsuarioRepository } from "@/fake-api/repositories/usuario.repository";
 import { FakeAvaliacoesService } from "@/services/fake/avaliacoes.service";
 import { AVALIACOES_SEED } from "@/fake-api/seeds/avaliacoes.seed";
 import { ServiceError } from "@/services/errors";
 
 const CHAVE_TESTE = "origem:test:avaliacoes:service:v1";
 const CHAVE_PRODUTOS_TESTE = "origem:test:avaliacoes:service:produtos:v1";
+const CHAVE_USUARIOS_TESTE = "origem:test:avaliacoes:service:usuarios:v1";
 
 function criarService(latenciaMs = 0): FakeAvaliacoesService {
   const repo = new BrowserAvaliacaoRepository(window.localStorage, CHAVE_TESTE);
   const produtos = new BrowserProdutoRepository(window.localStorage, CHAVE_PRODUTOS_TESTE);
-  return new FakeAvaliacoesService(repo, produtos, { latenciaMs });
+  const usuarios = new BrowserUsuarioRepository(window.localStorage, CHAVE_USUARIOS_TESTE);
+  return new FakeAvaliacoesService(repo, produtos, {
+    latenciaMs,
+    usuarioRepositorio: usuarios,
+  });
 }
 
 function produtosAvaliadosNoSeed(): string[] {
@@ -21,6 +27,7 @@ function produtosAvaliadosNoSeed(): string[] {
 beforeEach(() => {
   window.localStorage.removeItem(CHAVE_TESTE);
   window.localStorage.removeItem(CHAVE_PRODUTOS_TESTE);
+  window.localStorage.removeItem(CHAVE_USUARIOS_TESTE);
 });
 
 describe("FakeAvaliacoesService.listByProduto", () => {
@@ -170,5 +177,36 @@ describe("FakeAvaliacoesService.create", () => {
     await expect(
       service.create({ produtoId: existente.produtoId, nota: 5 }, existente.compradorId)
     ).rejects.toMatchObject({ code: "AVALIACAO_DUPLICADA" });
+  });
+});
+
+describe("FakeAvaliacoesService.create - produto fora da vitrine por moderacao", () => {
+  it("rejeita produto desativado pelo admin sem gravar avaliacao", async () => {
+    const produtos = new BrowserProdutoRepository(window.localStorage, CHAVE_PRODUTOS_TESTE);
+    await produtos.seed();
+    await produtos.update("produto-seed-30", { desativadoPorAdmin: true });
+    const service = criarService();
+    const antes = await service.resumo("produto-seed-30");
+
+    await expect(
+      service.create({ produtoId: "produto-seed-30", nota: 1 }, "seed-comprador-01")
+    ).rejects.toMatchObject({ code: "PRODUTO_NAO_ENCONTRADO" });
+    expect(await service.resumo("produto-seed-30")).toEqual(antes);
+  });
+
+  it("rejeita produto de artesao desativado sem gravar avaliacao", async () => {
+    const produtos = new BrowserProdutoRepository(window.localStorage, CHAVE_PRODUTOS_TESTE);
+    await produtos.seed();
+    const alvo = await produtos.findById("produto-seed-30");
+    const usuarios = new BrowserUsuarioRepository(window.localStorage, CHAVE_USUARIOS_TESTE);
+    await usuarios.seed();
+    await usuarios.update(alvo!.artesaoId, { ativo: false });
+    const service = criarService();
+    const antes = await service.resumo("produto-seed-30");
+
+    await expect(
+      service.create({ produtoId: "produto-seed-30", nota: 1 }, "seed-comprador-01")
+    ).rejects.toMatchObject({ code: "PRODUTO_NAO_ENCONTRADO" });
+    expect(await service.resumo("produto-seed-30")).toEqual(antes);
   });
 });

@@ -1,9 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   filtrarProdutosVisiveis,
+  idsArtesaosInativos,
+  produtoDisponivelParaVenda,
   produtoVisivelPublicamente,
 } from "@/domain/produto-visibilidade";
 import type { Produto } from "@/types/produto";
+import type { Usuario } from "@/types/usuario";
 
 function produto(overrides: Partial<Produto> = {}): Produto {
   return {
@@ -94,5 +97,100 @@ describe("filtrarProdutosVisiveis - contexto dono", () => {
     const resultado = filtrarProdutosVisiveis(produtos);
 
     expect(resultado.map((p) => p.id)).toEqual(["a"]);
+  });
+});
+
+describe("visibilidade com artesao desativado", () => {
+  const inativos = new Set(["artesao-1"]);
+
+  it("produto de artesao desativado nao aparece publicamente", () => {
+    expect(produtoVisivelPublicamente(produto(), inativos)).toBe(false);
+  });
+
+  it("produto de artesao ativo continua visivel", () => {
+    expect(produtoVisivelPublicamente(produto({ artesaoId: "artesao-2" }), inativos)).toBe(
+      true
+    );
+  });
+
+  it("visitante nao ve produtos de artesao desativado", () => {
+    const produtos = [
+      produto({ id: "a", artesaoId: "artesao-1" }),
+      produto({ id: "b", artesaoId: "artesao-2" }),
+    ];
+
+    const resultado = filtrarProdutosVisiveis(produtos, { artesaosInativos: inativos });
+
+    expect(resultado.map((p) => p.id)).toEqual(["b"]);
+  });
+
+  it("dono continua vendo os proprios produtos ativos", () => {
+    const produtos = [
+      produto({ id: "a", artesaoId: "artesao-1" }),
+      produto({ id: "b", artesaoId: "artesao-1", ativo: false }),
+    ];
+
+    const resultado = filtrarProdutosVisiveis(produtos, {
+      usuarioId: "artesao-1",
+      artesaosInativos: inativos,
+    });
+
+    expect(resultado.map((p) => p.id)).toEqual(["a"]);
+  });
+});
+
+describe("idsArtesaosInativos", () => {
+  function usuario(overrides: Partial<Usuario>): Usuario {
+    return {
+      id: "u",
+      nome: "Usuario",
+      email: "u@origem.test",
+      senha: "senha-sintetica",
+      papel: "artesao",
+      ativo: true,
+      ...overrides,
+    };
+  }
+
+  it("retorna somente artesaos desativados", () => {
+    const ids = idsArtesaosInativos([
+      usuario({ id: "a1", ativo: false }),
+      usuario({ id: "a2", ativo: true }),
+      usuario({ id: "c1", papel: "comprador", ativo: false }),
+    ]);
+
+    expect([...ids]).toEqual(["a1"]);
+  });
+});
+
+describe("produto desativado pela moderacao", () => {
+  it("nao aparece publicamente", () => {
+    expect(produtoVisivelPublicamente(produto({ desativadoPorAdmin: true }))).toBe(false);
+  });
+
+  it("continua no painel do dono", () => {
+    const produtos = [produto({ id: "a", desativadoPorAdmin: true })];
+
+    const resultado = filtrarProdutosVisiveis(produtos, { usuarioId: "artesao-1" });
+
+    expect(resultado.map((p) => p.id)).toEqual(["a"]);
+  });
+});
+
+describe("produtoDisponivelParaVenda", () => {
+  it("aceita produto ativo de artesao ativo mesmo sem estoque", () => {
+    expect(produtoDisponivelParaVenda(produto({ quantidadeEstoque: 0 }))).toBe(true);
+  });
+
+  it("rejeita produto removido pelo dono", () => {
+    expect(produtoDisponivelParaVenda(produto({ ativo: false }))).toBe(false);
+  });
+
+  it("rejeita produto desativado pela moderacao", () => {
+    expect(produtoDisponivelParaVenda(produto({ desativadoPorAdmin: true }))).toBe(false);
+  });
+
+  it("rejeita produto de artesao desativado", () => {
+    expect(produtoDisponivelParaVenda(produto(), new Set(["artesao-1"]))).toBe(false);
   });
 });

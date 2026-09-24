@@ -20,6 +20,10 @@ vi.mock("@/services/fake/container", () => ({
     obter: vi.fn().mockResolvedValue(null),
     salvar: vi.fn(),
   }),
+  obterModeracaoService: () => ({
+    listarArtesaos: vi.fn().mockReturnValue(new Promise(() => {})),
+    listarProdutos: vi.fn().mockReturnValue(new Promise(() => {})),
+  }),
 }));
 
 function criarStoreFake(sessao: UsuarioSessao | null): SessionStore {

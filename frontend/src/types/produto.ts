@@ -17,5 +17,6 @@ export interface Produto {
   quantidadeVendida: number;
   notaMedia: number;
   ativo: boolean;
+  desativadoPorAdmin?: boolean;
   criadoEm: string;
 }

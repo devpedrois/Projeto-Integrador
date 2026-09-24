@@ -138,6 +138,11 @@ export function MeusProdutosList({ service, artesaoId }: MeusProdutosListProps) 
                       R$ {produto.preco.toFixed(2)} · Estoque:{" "}
                       {produto.quantidadeEstoque}
                     </span>
+                    {produto.desativadoPorAdmin ? (
+                      <span className="text-xs font-medium text-amber-800">
+                        Desativado pela moderacao: fora da vitrine.
+                      </span>
+                    ) : null}
                   </div>
                   <div className="flex gap-2">
                     <button

@@ -193,3 +193,68 @@ describe("FakePedidosService.confirmar — produto inativo", () => {
     expect(pedidos).toEqual([]);
   });
 });
+
+describe("FakePedidosService.confirmar — itens adulterados", () => {
+  it.each([
+    ["zero", 0],
+    ["negativa", -3],
+    ["fracionada", 1.5],
+    ["NaN", Number.NaN],
+    ["infinita", Number.POSITIVE_INFINITY],
+    ["texto", "2" as unknown as number],
+  ])("rejeita quantidade %s sem gravar pedido nem alterar estoque", async (_caso, quantidade) => {
+    const { produtoRepository, pedidoRepository, service } = criarContexto();
+    const alvo = await produtoRepository.create(produto({ quantidadeEstoque: 5 }));
+
+    await expect(
+      service.confirmar([{ produtoId: alvo.id, quantidade }], COMPRADOR_TESTE)
+    ).rejects.toMatchObject({ code: "QUANTIDADE_INVALIDA" });
+
+    expect(await pedidoRepository.list()).toEqual([]);
+    const persistido = await produtoRepository.findById(alvo.id);
+    expect(persistido?.quantidadeEstoque).toBe(5);
+    expect(persistido?.quantidadeVendida).toBe(0);
+  });
+
+  it("rejeita o mesmo produto repetido sem vender acima do estoque", async () => {
+    const { produtoRepository, pedidoRepository, service } = criarContexto();
+    const alvo = await produtoRepository.create(produto({ quantidadeEstoque: 3 }));
+
+    await expect(
+      service.confirmar(
+        [
+          { produtoId: alvo.id, quantidade: 3 },
+          { produtoId: alvo.id, quantidade: 3 },
+        ],
+        COMPRADOR_TESTE
+      )
+    ).rejects.toMatchObject({ code: "ITEM_DUPLICADO" });
+
+    expect(await pedidoRepository.list()).toEqual([]);
+    expect((await produtoRepository.findById(alvo.id))?.quantidadeEstoque).toBe(3);
+  });
+
+  it("rejeita item invalido mesmo quando os demais sao validos", async () => {
+    const { produtoRepository, pedidoRepository, service } = criarContexto();
+    const valido = await produtoRepository.create(
+      produto({ id: "produto-valido", quantidadeEstoque: 5 })
+    );
+    const outro = await produtoRepository.create(
+      produto({ id: "produto-outro", quantidadeEstoque: 5 })
+    );
+
+    await expect(
+      service.confirmar(
+        [
+          { produtoId: valido.id, quantidade: 1 },
+          { produtoId: outro.id, quantidade: -1 },
+        ],
+        COMPRADOR_TESTE
+      )
+    ).rejects.toMatchObject({ code: "QUANTIDADE_INVALIDA" });
+
+    expect(await pedidoRepository.list()).toEqual([]);
+    expect((await produtoRepository.findById(valido.id))?.quantidadeEstoque).toBe(5);
+    expect((await produtoRepository.findById(outro.id))?.quantidadeEstoque).toBe(5);
+  });
+});

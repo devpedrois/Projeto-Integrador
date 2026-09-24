@@ -1,4 +1,5 @@
 import type { ProdutoRepository } from "@/fake-api/repositories/produto.repository";
+import type { UsuarioRepository } from "@/fake-api/repositories/usuario.repository";
 import type { Produto } from "@/types/produto";
 import type { NovoProdutoInput } from "@/types/novo-produto";
 import type { ProdutoQuery } from "@/types/produto-query";
@@ -8,11 +9,13 @@ import { produtoValido, validarProduto } from "@/validators/produto.validator";
 import { normalizarTexto } from "@/utils/normalizar-texto";
 import {
   filtrarProdutosVisiveis,
+  idsArtesaosInativos,
   produtoVisivelPublicamente,
 } from "@/domain/produto-visibilidade";
 
 export interface FakeProdutosServiceOpcoes {
   latenciaMs?: number;
+  usuarioRepositorio?: UsuarioRepository;
 }
 
 function aguardar(ms: number): Promise<void> {
@@ -22,19 +25,23 @@ function aguardar(ms: number): Promise<void> {
 
 export class FakeProdutosService implements ProdutosService {
   private readonly latenciaMs: number;
+  private readonly usuarioRepositorio: UsuarioRepository | null;
 
   constructor(
     private readonly repositorio: ProdutoRepository,
     opcoes: FakeProdutosServiceOpcoes = {}
   ) {
     this.latenciaMs = opcoes.latenciaMs ?? 0;
+    this.usuarioRepositorio = opcoes.usuarioRepositorio ?? null;
   }
 
   async list(): Promise<Produto[]> {
     await this.repositorio.seed();
     await aguardar(this.latenciaMs);
     const produtos = await this.repositorio.list();
-    return filtrarProdutosVisiveis(produtos);
+    return filtrarProdutosVisiveis(produtos, {
+      artesaosInativos: await this.artesaosInativos(),
+    });
   }
 
   async create(input: NovoProdutoInput, artesaoId: string): Promise<Produto> {
@@ -145,7 +152,9 @@ export class FakeProdutosService implements ProdutosService {
       return true;
     });
 
-    return filtrarProdutosVisiveis(filtrados);
+    return filtrarProdutosVisiveis(filtrados, {
+      artesaosInativos: await this.artesaosInativos(),
+    });
   }
 
   async obterPublico(id: string): Promise<Produto | null> {
@@ -155,7 +164,15 @@ export class FakeProdutosService implements ProdutosService {
     await aguardar(this.latenciaMs);
 
     const produto = await this.repositorio.findById(id);
-    return produto && produtoVisivelPublicamente(produto) ? produto : null;
+    if (!produto) return null;
+    return produtoVisivelPublicamente(produto, await this.artesaosInativos())
+      ? produto
+      : null;
+  }
+
+  private async artesaosInativos(): Promise<Set<string>> {
+    if (!this.usuarioRepositorio) return new Set();
+    return idsArtesaosInativos(await this.usuarioRepositorio.list());
   }
 
   private async verificarPropriedade(

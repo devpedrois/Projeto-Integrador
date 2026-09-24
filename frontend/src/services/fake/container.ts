@@ -12,6 +12,7 @@ import { FakeProdutosService } from "@/services/fake/produtos.service";
 import { FakePedidosService } from "@/services/fake/pedidos.service";
 import { FakePerfilArtesaoService } from "@/services/fake/perfil-artesao.service";
 import { FakeAvaliacoesService } from "@/services/fake/avaliacoes.service";
+import { FakeModeracaoService } from "@/services/fake/moderacao.service";
 import { FakeRecommendationAdapter } from "@/services/fake/recomendacoes/fake-recommendation.adapter";
 import { FakeOpcoesFiltroService } from "@/services/fake/opcoes-filtro.service";
 import { SessionStore } from "@/store/sessao.store";
@@ -23,6 +24,7 @@ import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.c
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
+import type { ModeracaoService } from "@/services/contracts/moderacao.contract";
 
 const LATENCIA_PADRAO_MS = 300;
 const USUARIO_VISITANTE = "visitante";
@@ -34,6 +36,7 @@ let pedidosServiceInstancia: PedidosService | null = null;
 let perfilArtesaoServiceInstancia: PerfilArtesaoService | null = null;
 let recomendacoesServiceInstancia: RecomendacoesService | null = null;
 let opcoesFiltroServiceInstancia: OpcoesFiltroService | null = null;
+let moderacaoServiceInstancia: ModeracaoService | null = null;
 let sessionStoreInstancia: SessionStore | null = null;
 let modoAcessoStorageInstancia: ModoAcessoStorage | null = null;
 const carrinhoStoresPorUsuario = new Map<string, CartStore>();
@@ -53,6 +56,7 @@ export function obterProdutosService(): ProdutosService {
     const repositorio = new BrowserProdutoRepository(window.localStorage);
     produtosServiceInstancia = new FakeProdutosService(repositorio, {
       latenciaMs: LATENCIA_PADRAO_MS,
+      usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
     });
   }
   return produtosServiceInstancia;
@@ -70,6 +74,7 @@ export function obterPedidosService(): PedidosService {
     const pedidoRepositorio = new BrowserPedidoRepository(window.localStorage);
     pedidosServiceInstancia = new FakePedidosService(produtoRepositorio, pedidoRepositorio, {
       latenciaMs: LATENCIA_PADRAO_MS,
+      usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
     });
   }
   return pedidosServiceInstancia;
@@ -84,7 +89,10 @@ export function obterPedidosService(): PedidosService {
 export function obterRecomendacoesService(): RecomendacoesService {
   if (!recomendacoesServiceInstancia) {
     const repositorio = new BrowserProdutoRepository(window.localStorage);
-    recomendacoesServiceInstancia = new FakeRecommendationAdapter(repositorio);
+    recomendacoesServiceInstancia = new FakeRecommendationAdapter(
+      repositorio,
+      new BrowserUsuarioRepository(window.localStorage)
+    );
   }
   return recomendacoesServiceInstancia;
 }
@@ -117,9 +125,27 @@ export function obterAvaliacoesService(): AvaliacoesService {
     const produtoRepositorio = new BrowserProdutoRepository(window.localStorage);
     avaliacoesServiceInstancia = new FakeAvaliacoesService(repositorio, produtoRepositorio, {
       latenciaMs: LATENCIA_PADRAO_MS,
+      usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
     });
   }
   return avaliacoesServiceInstancia;
+}
+
+/**
+ * Na AV1, `ModeracaoService` e implementado por `FakeModeracaoService` sobre os
+ * repositorios locais. Na AV2, este ponto de composicao troca para uma
+ * implementacao HTTP consumindo as rotas `/admin/.../moderar`, sem alterar
+ * hooks, componentes ou paginas.
+ */
+export function obterModeracaoService(): ModeracaoService {
+  if (!moderacaoServiceInstancia) {
+    moderacaoServiceInstancia = new FakeModeracaoService(
+      new BrowserUsuarioRepository(window.localStorage),
+      new BrowserProdutoRepository(window.localStorage),
+      { latenciaMs: LATENCIA_PADRAO_MS }
+    );
+  }
+  return moderacaoServiceInstancia;
 }
 
 export function obterOpcoesFiltroService(): OpcoesFiltroService {

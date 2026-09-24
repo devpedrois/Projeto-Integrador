@@ -134,6 +134,17 @@ describe("MeusProdutosList", () => {
     expect(await screen.findByText("Vaso de Barro Editado")).toBeInTheDocument();
   });
 
+  it("sinaliza produto desativado pela moderacao", async () => {
+    const service = criarServicoFake({
+      listByArtesao: vi.fn().mockResolvedValue([produto({ desativadoPorAdmin: true })]),
+    });
+
+    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+
+    const item = await screen.findByRole("listitem", { name: "Vaso de Barro" });
+    expect(item).toHaveTextContent(/desativado pela moderacao/i);
+  });
+
   it("remover exige confirmacao antes de chamar o service", async () => {
     const user = userEvent.setup();
     const remove = vi.fn().mockResolvedValue(undefined);

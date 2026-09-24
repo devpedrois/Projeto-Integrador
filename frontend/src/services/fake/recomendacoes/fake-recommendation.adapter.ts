@@ -1,15 +1,16 @@
 import type { ProdutoRepository } from "@/fake-api/repositories/produto.repository";
+import type { UsuarioRepository } from "@/fake-api/repositories/usuario.repository";
 import type { Produto } from "@/types/produto";
 import type { RecomendacaoContexto, RecomendacaoResultado } from "@/types/recomendacao";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
+import {
+  idsArtesaosInativos,
+  produtoVisivelPublicamente,
+} from "@/domain/produto-visibilidade";
 
 const LIMITE_ITENS = 8;
 const ESTRATEGIA_CATEGORIA = "categoria";
 const ESTRATEGIA_FALLBACK = "fallback-geral";
-
-function elegivel(produto: Produto, excluirId: string): boolean {
-  return produto.id !== excluirId && produto.ativo && produto.quantidadeEstoque > 0;
-}
 
 function compararIdAsc(a: Produto, b: Produto): number {
   if (a.id < b.id) return -1;
@@ -51,29 +52,36 @@ function ordenarPorCategoriaERegiao(
  * alterar o contrato `RecomendacoesService`, hooks, componentes ou paginas.
  */
 export class FakeRecommendationAdapter implements RecomendacoesService {
-  constructor(private readonly repositorio: ProdutoRepository) {}
+  constructor(
+    private readonly repositorio: ProdutoRepository,
+    private readonly usuarioRepositorio: UsuarioRepository | null = null
+  ) {}
 
   async obter(contexto: RecomendacaoContexto): Promise<RecomendacaoResultado> {
     await this.repositorio.seed();
     const produtos = await this.repositorio.list();
+    const artesaosInativos = await this.artesaosInativos();
+    const visiveis = produtos.filter((produto) =>
+      produtoVisivelPublicamente(produto, artesaosInativos)
+    );
 
     if ("usuarioId" in contexto && contexto.usuarioId !== undefined) {
-      return this.fallbackGeral(produtos, null);
+      return this.fallbackGeral(visiveis, null);
     }
 
     const produtoContexto = produtos.find((produto) => produto.id === contexto.produtoId);
     if (!produtoContexto) {
-      return this.fallbackGeral(produtos, contexto.produtoId);
+      return this.fallbackGeral(visiveis, contexto.produtoId);
     }
 
-    const candidatos = produtos.filter(
+    const candidatos = visiveis.filter(
       (produto) =>
-        elegivel(produto, produtoContexto.id) &&
+        produto.id !== produtoContexto.id &&
         produto.categoriaId === produtoContexto.categoriaId
     );
 
     if (candidatos.length === 0) {
-      return this.fallbackGeral(produtos, produtoContexto.id);
+      return this.fallbackGeral(visiveis, produtoContexto.id);
     }
 
     const ordenados = ordenarPorCategoriaERegiao(candidatos, produtoContexto);
@@ -85,17 +93,20 @@ export class FakeRecommendationAdapter implements RecomendacoesService {
   }
 
   private fallbackGeral(
-    produtos: Produto[],
+    visiveis: Produto[],
     excluirId: string | null
   ): RecomendacaoResultado {
-    const candidatos = produtos.filter(
-      (produto) => produto.ativo && produto.quantidadeEstoque > 0 && produto.id !== excluirId
-    );
+    const candidatos = visiveis.filter((produto) => produto.id !== excluirId);
     const ordenados = ordenarPorPopularidade(candidatos);
 
     return {
       estrategia: ESTRATEGIA_FALLBACK,
       itens: ordenados.slice(0, LIMITE_ITENS),
     };
+  }
+
+  private async artesaosInativos(): Promise<Set<string>> {
+    if (!this.usuarioRepositorio) return new Set();
+    return idsArtesaosInativos(await this.usuarioRepositorio.list());
   }
 }

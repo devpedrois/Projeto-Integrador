@@ -20,6 +20,10 @@ export interface UsuarioRepository {
   seed(): Promise<void>;
   list(): Promise<Usuario[]>;
   create(usuario: Usuario): Promise<Usuario>;
+  update(
+    id: string,
+    alteracoes: Partial<Omit<Usuario, "id" | "email" | "senha" | "papel">>
+  ): Promise<Usuario | null>;
 }
 
 export class BrowserUsuarioRepository implements UsuarioRepository {
@@ -51,5 +55,27 @@ export class BrowserUsuarioRepository implements UsuarioRepository {
     usuarios.push(usuarioNormalizado);
     this.storage.setItem(this.chave, JSON.stringify(usuarios));
     return usuarioNormalizado;
+  }
+
+  async update(
+    id: string,
+    alteracoes: Partial<Omit<Usuario, "id" | "email" | "senha" | "papel">>
+  ): Promise<Usuario | null> {
+    const usuarios = await this.list();
+    const indice = usuarios.findIndex((usuario) => usuario.id === id);
+    if (indice === -1) return null;
+
+    const atual = usuarios[indice] as Usuario;
+    const atualizado: Usuario = {
+      ...atual,
+      ...alteracoes,
+      id: atual.id,
+      email: atual.email,
+      senha: atual.senha,
+      papel: atual.papel,
+    };
+    usuarios[indice] = atualizado;
+    this.storage.setItem(this.chave, JSON.stringify(usuarios));
+    return atualizado;
   }
 }

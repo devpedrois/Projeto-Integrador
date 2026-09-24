@@ -1,12 +1,19 @@
 import type { ProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import type { PedidoRepository } from "@/fake-api/repositories/pedido.repository";
+import type { UsuarioRepository } from "@/fake-api/repositories/usuario.repository";
 import type { ItemPedido, ItemPedidoInput, Pedido } from "@/types/pedido";
 import type { Produto } from "@/types/produto";
 import type { PedidosService } from "@/services/contracts/pedidos.contract";
 import { ServiceError } from "@/services/errors";
+import { validarItensPedido } from "@/validators/pedido.validator";
+import {
+  idsArtesaosInativos,
+  produtoDisponivelParaVenda,
+} from "@/domain/produto-visibilidade";
 
 export interface FakePedidosServiceOpcoes {
   latenciaMs?: number;
+  usuarioRepositorio?: UsuarioRepository;
 }
 
 function aguardar(ms: number): Promise<void> {
@@ -16,6 +23,7 @@ function aguardar(ms: number): Promise<void> {
 
 export class FakePedidosService implements PedidosService {
   private readonly latenciaMs: number;
+  private readonly usuarioRepositorio: UsuarioRepository | null;
 
   constructor(
     private readonly produtoRepository: ProdutoRepository,
@@ -23,6 +31,7 @@ export class FakePedidosService implements PedidosService {
     opcoes: FakePedidosServiceOpcoes = {}
   ) {
     this.latenciaMs = opcoes.latenciaMs ?? 0;
+    this.usuarioRepositorio = opcoes.usuarioRepositorio ?? null;
   }
 
   async confirmar(itens: ItemPedidoInput[], compradorId: string): Promise<Pedido> {
@@ -32,10 +41,21 @@ export class FakePedidosService implements PedidosService {
       throw new ServiceError("CARRINHO_VAZIO", "O carrinho esta vazio.");
     }
 
+    const erroItens = validarItensPedido(itens);
+    if (erroItens === "QUANTIDADE_INVALIDA") {
+      throw new ServiceError(erroItens, "Quantidade invalida no carrinho.");
+    }
+    if (erroItens === "ITEM_DUPLICADO") {
+      throw new ServiceError(erroItens, "Produto repetido no carrinho.");
+    }
+
+    const artesaosInativos = this.usuarioRepositorio
+      ? idsArtesaosInativos(await this.usuarioRepositorio.list())
+      : new Set<string>();
     const produtosValidados: Produto[] = [];
     for (const item of itens) {
       const produto = await this.produtoRepository.findById(item.produtoId);
-      if (!produto || !produto.ativo) {
+      if (!produto || !produtoDisponivelParaVenda(produto, artesaosInativos)) {
         throw new ServiceError(
           "PRODUTO_INDISPONIVEL",
           "Um dos produtos do carrinho nao esta mais disponivel.",

@@ -87,7 +87,9 @@ export function usePerfilPublicoArtesao(
           return;
         }
 
-        const produtosVisiveis = produtos.filter(produtoVisivelPublicamente);
+        const produtosVisiveis = produtos.filter((produto) =>
+          produtoVisivelPublicamente(produto)
+        );
         const { completo } = verificarPerfilCompleto(perfil);
         const tecnicaNome =
           tecnicas.find((tecnica) => tecnica.id === perfil?.tecnicaId)?.nome ?? null;
