@@ -27,8 +27,8 @@ interface ModeloProduto {
 const MODELOS_POR_CATEGORIA: Record<string, ModeloProduto[]> = {
   [CATEGORIA_IDS.ceramicaBarro]: [
     {
-      nome: "Vaso de Barro Trancado",
-      descricao: "Vaso modelado a mao com argila da regiao, acabamento fosco natural.",
+      nome: "Vaso de Barro Trançado",
+      descricao: "Vaso modelado à mão com argila da região, acabamento fosco natural.",
       tecnicaId: TECNICA_IDS.modelagemArgila,
     },
     {
@@ -42,18 +42,18 @@ const MODELOS_POR_CATEGORIA: Record<string, ModeloProduto[]> = {
       tecnicaId: TECNICA_IDS.modelagemArgila,
     },
     {
-      nome: "Jarra Ceramica Esculpida",
-      descricao: "Jarra utilitaria com relevos entalhados a mao no torno.",
+      nome: "Jarra Cerâmica Esculpida",
+      descricao: "Jarra utilitária com relevos entalhados à mão no torno.",
       tecnicaId: TECNICA_IDS.tornoCeramico,
     },
     {
       nome: "Prato Decorativo em Barro",
-      descricao: "Prato decorativo com pintura mineral aplicada apos a queima.",
+      descricao: "Prato decorativo com pintura mineral aplicada após a queima.",
       tecnicaId: TECNICA_IDS.modelagemArgila,
     },
     {
-      nome: "Conjunto de Xicaras de Barro",
-      descricao: "Conjunto de quatro xicaras torneadas e queimadas em forno a lenha.",
+      nome: "Conjunto de Xícaras de Barro",
+      descricao: "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
       tecnicaId: TECNICA_IDS.tornoCeramico,
     },
   ],
@@ -64,8 +64,8 @@ const MODELOS_POR_CATEGORIA: Record<string, ModeloProduto[]> = {
       tecnicaId: TECNICA_IDS.rendaIrlandesa,
     },
     {
-      nome: "Blusa Bordada a Mao",
-      descricao: "Blusa em algodao com bordado floral feito ponto a ponto.",
+      nome: "Blusa Bordada à Mão",
+      descricao: "Blusa em algodão com bordado floral feito ponto a ponto.",
       tecnicaId: TECNICA_IDS.bordadoMao,
     },
     {
@@ -80,24 +80,24 @@ const MODELOS_POR_CATEGORIA: Record<string, ModeloProduto[]> = {
     },
     {
       nome: "Toalha de Banho Bordada",
-      descricao: "Toalha de banho com barrado bordado a mao em fio natural.",
+      descricao: "Toalha de banho com barrado bordado à mão em fio natural.",
       tecnicaId: TECNICA_IDS.bordadoMao,
     },
     {
       nome: "Colcha em Renda Artesanal",
-      descricao: "Colcha de solteiro trancada em renda de bilros tradicional.",
+      descricao: "Colcha de solteiro trançada em renda de bilros tradicional.",
       tecnicaId: TECNICA_IDS.rendaIrlandesa,
     },
   ],
   [CATEGORIA_IDS.madeiraEntalhada]: [
     {
       nome: "Caixa Entalhada em Madeira",
-      descricao: "Caixa decorativa entalhada a mao com motivos regionais.",
+      descricao: "Caixa decorativa entalhada à mão com motivos regionais.",
       tecnicaId: TECNICA_IDS.entalheMadeira,
     },
     {
       nome: "Colher de Pau Esculpida",
-      descricao: "Colher utilitaria esculpida em madeira de reflorestamento.",
+      descricao: "Colher utilitária esculpida em madeira de reflorestamento.",
       tecnicaId: TECNICA_IDS.entalheMadeira,
     },
     {
@@ -106,8 +106,8 @@ const MODELOS_POR_CATEGORIA: Record<string, ModeloProduto[]> = {
       tecnicaId: TECNICA_IDS.entalheMadeira,
     },
     {
-      nome: "Banco Rustico de Marcenaria",
-      descricao: "Banco baixo produzido em marcenaria artesanal solida.",
+      nome: "Banco Rústico de Marcenaria",
+      descricao: "Banco baixo produzido em marcenaria artesanal sólida.",
       tecnicaId: TECNICA_IDS.marcenariaArtesanal,
     },
     {
@@ -124,17 +124,17 @@ const MODELOS_POR_CATEGORIA: Record<string, ModeloProduto[]> = {
   [CATEGORIA_IDS.textilCostura]: [
     {
       nome: "Bolsa em Tecido Autoral",
-      descricao: "Bolsa costurada em tecido estampado de producao autoral.",
+      descricao: "Bolsa costurada em tecido estampado de produção autoral.",
       tecnicaId: TECNICA_IDS.costuraAutoral,
     },
     {
       nome: "Manta em Tear Manual",
-      descricao: "Manta tecida a mao em tear manual com fios naturais.",
+      descricao: "Manta tecida à mão em tear manual com fios naturais.",
       tecnicaId: TECNICA_IDS.tecelagemManual,
     },
     {
-      nome: "Camisa de Algodao Costurada",
-      descricao: "Camisa de corte reto costurada em algodao organico.",
+      nome: "Camisa de Algodão Costurada",
+      descricao: "Camisa de corte reto costurada em algodão orgânico.",
       tecnicaId: TECNICA_IDS.costuraAutoral,
     },
     {
@@ -143,8 +143,8 @@ const MODELOS_POR_CATEGORIA: Record<string, ModeloProduto[]> = {
       tecnicaId: TECNICA_IDS.costuraAutoral,
     },
     {
-      nome: "Tapete Tecido a Mao",
-      descricao: "Tapete de fibra tecido a mao em tear artesanal.",
+      nome: "Tapete Tecido à Mão",
+      descricao: "Tapete de fibra tecido à mão em tear artesanal.",
       tecnicaId: TECNICA_IDS.tecelagemManual,
     },
     {
@@ -160,28 +160,28 @@ const MODELOS_POR_CATEGORIA: Record<string, ModeloProduto[]> = {
       tecnicaId: TECNICA_IDS.bijuteriaSementes,
     },
     {
-      nome: "Brinco Trancado em Fibra",
-      descricao: "Brinco leve trancado em fibra natural de carnauba.",
+      nome: "Brinco Trançado em Fibra",
+      descricao: "Brinco leve trançado em fibra natural de carnaúba.",
       tecnicaId: TECNICA_IDS.trancadoFibra,
     },
     {
-      nome: "Pulseira em Micangas",
-      descricao: "Pulseira artesanal com micangas coloridas trancadas.",
+      nome: "Pulseira em Miçangas",
+      descricao: "Pulseira artesanal com miçangas coloridas trançadas.",
       tecnicaId: TECNICA_IDS.bijuteriaSementes,
     },
     {
-      nome: "Anel em Fibra Trancada",
-      descricao: "Anel confeccionado em fibra natural trancada a mao.",
+      nome: "Anel em Fibra Trançada",
+      descricao: "Anel confeccionado em fibra natural trançada à mão.",
       tecnicaId: TECNICA_IDS.trancadoFibra,
     },
     {
-      nome: "Bolsa de Palha Trancada",
-      descricao: "Pequena bolsa em palha trancada com fechamento em madeira.",
+      nome: "Bolsa de Palha Trançada",
+      descricao: "Pequena bolsa em palha trançada com fechamento em madeira.",
       tecnicaId: TECNICA_IDS.trancadoFibra,
     },
     {
-      nome: "Chapeu de Palha Artesanal",
-      descricao: "Chapeu confeccionado em palha trancada da regiao.",
+      nome: "Chapéu de Palha Artesanal",
+      descricao: "Chapéu confeccionado em palha trançada da região.",
       tecnicaId: TECNICA_IDS.trancadoFibra,
     },
   ],

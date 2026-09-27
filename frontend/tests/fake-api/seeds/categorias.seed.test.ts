@@ -13,7 +13,7 @@ describe("CATEGORIAS_SEED", () => {
 
   it("inclui Arte Reciclada e Sustentavel como sexta categoria", () => {
     expect(CATEGORIAS_SEED.map((categoria) => categoria.nome)).toContain(
-      "Arte Reciclada e Sustentavel"
+      "Arte Reciclada e Sustentável"
     );
   });
 });

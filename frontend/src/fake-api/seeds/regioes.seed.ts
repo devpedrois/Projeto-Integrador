@@ -9,5 +9,5 @@ export const REGIAO_IDS = {
 export const REGIOES_SEED: readonly Regiao[] = [
   { id: REGIAO_IDS.pilarRecife, nome: "Comunidade do Pilar - Recife" },
   { id: REGIAO_IDS.altoMouraCaruaru, nome: "Alto do Moura - Caruaru" },
-  { id: REGIAO_IDS.tracunhaem, nome: "Tracunhaem" },
+  { id: REGIAO_IDS.tracunhaem, nome: "Tracunhaém" },
 ];

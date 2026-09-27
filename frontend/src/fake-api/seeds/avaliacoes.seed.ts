@@ -6,7 +6,7 @@ export const AVALIACOES_SEED: readonly Avaliacao[] = [
     produtoId: "produto-seed-01",
     compradorId: "seed-comprador-01",
     nota: 5,
-    comentario: "Vaso lindo, acabamento impecavel e chegou bem embalado.",
+    comentario: "Vaso lindo, acabamento impecável e chegou bem embalado.",
     criadoEm: "2026-08-20T13:00:00.000Z",
   },
   {
@@ -14,7 +14,7 @@ export const AVALIACOES_SEED: readonly Avaliacao[] = [
     produtoId: "produto-seed-01",
     compradorId: "seed-comprador-02",
     nota: 4,
-    comentario: "Peca bonita, um pouco menor do que eu imaginava.",
+    comentario: "Peça bonita, um pouco menor do que eu imaginava.",
     criadoEm: "2026-08-22T15:30:00.000Z",
   },
   {
@@ -29,7 +29,7 @@ export const AVALIACOES_SEED: readonly Avaliacao[] = [
     produtoId: "produto-seed-07",
     compradorId: "seed-comprador-01",
     nota: 5,
-    comentario: "Renda delicada, da para ver o cuidado em cada ponto.",
+    comentario: "Renda delicada, dá para ver o cuidado em cada ponto.",
     criadoEm: "2026-08-25T18:45:00.000Z",
   },
   {
@@ -37,7 +37,7 @@ export const AVALIACOES_SEED: readonly Avaliacao[] = [
     produtoId: "produto-seed-07",
     compradorId: "seed-comprador-02",
     nota: 5,
-    comentario: "Presente perfeito, minha mae adorou.",
+    comentario: "Presente perfeito, minha mãe adorou.",
     criadoEm: "2026-08-27T09:20:00.000Z",
   },
   {

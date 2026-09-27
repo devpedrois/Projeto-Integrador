@@ -10,16 +10,16 @@ export const CATEGORIA_IDS = {
 } as const;
 
 export const CATEGORIAS_SEED: readonly Categoria[] = [
-  { id: CATEGORIA_IDS.ceramicaBarro, nome: "Ceramica e Barro" },
+  { id: CATEGORIA_IDS.ceramicaBarro, nome: "Cerâmica e Barro" },
   { id: CATEGORIA_IDS.rendaBordado, nome: "Renda e Bordado" },
   {
     id: CATEGORIA_IDS.madeiraEntalhada,
     nome: "Madeira Entalhada e Marcenaria Artesanal",
   },
-  { id: CATEGORIA_IDS.textilCostura, nome: "Textil e Costura Autoral" },
+  { id: CATEGORIA_IDS.textilCostura, nome: "Têxtil e Costura Autoral" },
   {
     id: CATEGORIA_IDS.bijuteriaAcessorios,
-    nome: "Bijuteria e Acessorios Artesanais",
+    nome: "Bijuteria e Acessórios Artesanais",
   },
-  { id: CATEGORIA_IDS.arteReciclada, nome: "Arte Reciclada e Sustentavel" },
+  { id: CATEGORIA_IDS.arteReciclada, nome: "Arte Reciclada e Sustentável" },
 ];

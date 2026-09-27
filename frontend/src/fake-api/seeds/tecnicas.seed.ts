@@ -15,13 +15,13 @@ export const TECNICA_IDS = {
 
 export const TECNICAS_SEED: readonly Tecnica[] = [
   { id: TECNICA_IDS.modelagemArgila, nome: "Modelagem em Argila" },
-  { id: TECNICA_IDS.tornoCeramico, nome: "Torno Ceramico" },
+  { id: TECNICA_IDS.tornoCeramico, nome: "Torno Cerâmico" },
   { id: TECNICA_IDS.rendaIrlandesa, nome: "Renda Irlandesa" },
-  { id: TECNICA_IDS.bordadoMao, nome: "Bordado a Mao" },
+  { id: TECNICA_IDS.bordadoMao, nome: "Bordado à Mão" },
   { id: TECNICA_IDS.entalheMadeira, nome: "Entalhe em Madeira" },
   { id: TECNICA_IDS.marcenariaArtesanal, nome: "Marcenaria Artesanal" },
   { id: TECNICA_IDS.costuraAutoral, nome: "Costura Autoral" },
   { id: TECNICA_IDS.tecelagemManual, nome: "Tecelagem Manual" },
   { id: TECNICA_IDS.bijuteriaSementes, nome: "Bijuteria em Sementes Naturais" },
-  { id: TECNICA_IDS.trancadoFibra, nome: "Trancado em Fibra Natural" },
+  { id: TECNICA_IDS.trancadoFibra, nome: "Trançado em Fibra Natural" },
 ];
