@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Icone } from "@/components/vitrine/Icone";
+import { LayoutAutenticacao } from "@/components/autenticacao/LayoutAutenticacao";
+import { Icone, type NomeIcone } from "@/components/vitrine/Icone";
 import { useSessao } from "@/hooks/use-sessao";
 import { useCarrinho } from "@/hooks/use-carrinho";
 import {
@@ -38,9 +39,17 @@ const LINKS_POR_PAPEL: Record<Papel, { href: string; rotulo: string }[]> = {
 const BOTAO_BASE =
   "inline-flex items-center justify-center rounded-control font-semibold leading-tight whitespace-nowrap no-underline transition-colors duration-[var(--dur-fast)] ease-out active:translate-y-px";
 
-const BOTAO_PRIMARIO = `${BOTAO_BASE} h-[var(--control-h-md)] w-full border border-transparent bg-action-primary px-5 text-button text-fg-on-brand hover:bg-action-primary-hover hover:text-fg-on-brand active:bg-action-primary-press`;
+const BOTAO_PRIMARIO = `${BOTAO_BASE} h-[var(--control-h-lg)] w-full gap-2 border border-transparent bg-action-primary px-6 text-base text-fg-on-brand hover:bg-action-primary-hover hover:text-fg-on-brand active:bg-action-primary-press`;
 
-const BOTAO_SECUNDARIO = `${BOTAO_BASE} h-[var(--control-h-md)] w-full border border-border-strong bg-surface-card px-5 text-button text-fg-strong hover:bg-action-secondary-hover hover:text-fg-strong active:bg-linho-200`;
+const BOTAO_SECUNDARIO = `${BOTAO_BASE} h-[var(--control-h-lg)] w-full gap-2 border border-border-strong bg-surface-card px-6 text-base text-fg-strong hover:bg-action-secondary-hover hover:text-fg-strong active:bg-linho-200`;
+
+const ROTAS_AUTENTICACAO = ["/login", "/cadastro"];
+
+const OPCOES_LOGIN: { rotulo: string; icone: NomeIcone }[] = [
+  { rotulo: "Entrar como comprador", icone: "sacola" },
+  { rotulo: "Entrar como artesão", icone: "mao" },
+  { rotulo: "Entrar como administrador", icone: "escudo" },
+];
 
 const BOTAO_SECUNDARIO_PEQUENO = `${BOTAO_BASE} h-[var(--control-h-sm)] border border-border-strong bg-surface-card px-3.5 text-sm text-fg-strong hover:bg-action-secondary-hover hover:text-fg-strong active:bg-linho-200`;
 
@@ -82,8 +91,8 @@ export function GateAcesso({ children }: GateAcessoProps) {
 
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
   const restaurando = sessionStore === null || modoAcessoStorage === null;
-  const naPaginaDeLogin = pathname === "/login";
-  const liberado = !restaurando && (sessao !== null || modoVisitante || naPaginaDeLogin);
+  const naRotaDeAutenticacao = ROTAS_AUTENTICACAO.includes(pathname);
+  const liberado = !restaurando && (sessao !== null || modoVisitante || naRotaDeAutenticacao);
 
   function escolherVisitante(): void {
     modoAcessoStorage?.definirVisitante();
@@ -94,39 +103,41 @@ export function GateAcesso({ children }: GateAcessoProps) {
 
   if (!liberado) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-surface-page px-4 py-12">
-        <div className="flex w-full max-w-md flex-col items-center gap-6 rounded-card border border-border-default bg-surface-card p-8 text-center shadow-card sm:p-10">
-          <span className="font-display text-h2 font-semibold tracking-display text-fg-strong">
-            Origem
-          </span>
-          <div className="flex flex-col gap-2">
-            <h1 className="text-h1">Entrar como</h1>
-            <p className="text-body-sm text-fg-muted">
-              Escolha como deseja acessar o Origem.
+      <LayoutAutenticacao imagemNoMobile="destaque">
+        <div className="flex max-w-[460px] flex-col gap-6 md:gap-10">
+          <div className="flex flex-col gap-3 px-1 md:gap-5 md:px-0">
+            <span className="text-overline font-semibold tracking-[0.1em] text-fg-brand uppercase">
+              Boas-vindas ao Origem
+            </span>
+            <h1 className="m-0 text-[34px] leading-[1.1] tracking-[-0.015em] text-balance md:text-[60px] md:leading-[1.04]">
+              Peças feitas à mão, direto de quem faz.
+            </h1>
+            <p className="m-0 text-body text-fg-muted md:text-body-lg">
+              O Origem conecta artesãos da Comunidade do Pilar, do Alto do Moura e de
+              Tracunhaém a compradores de todo o Brasil.
             </p>
           </div>
-          <div className="flex w-full flex-col gap-3">
+          <div className="hidden h-px bg-border-default md:block" />
+          <div className="flex flex-col gap-2.5 md:gap-3">
             <button type="button" onClick={escolherVisitante} className={BOTAO_PRIMARIO}>
               Continuar como visitante
+              <Icone nome="avancar" className="flex-none" />
             </button>
-            <Link href="/login" className={BOTAO_SECUNDARIO}>
-              Entrar como comprador
-            </Link>
-            <Link href="/login" className={BOTAO_SECUNDARIO}>
-              Entrar como artesao
-            </Link>
-            <Link href="/login" className={BOTAO_SECUNDARIO}>
-              Entrar como administrador
-            </Link>
+            {OPCOES_LOGIN.map((opcao) => (
+              <Link key={opcao.rotulo} href="/login" className={BOTAO_SECUNDARIO}>
+                <Icone nome={opcao.icone} className="flex-none" />
+                {opcao.rotulo}
+              </Link>
+            ))}
           </div>
         </div>
-      </main>
+      </LayoutAutenticacao>
     );
   }
 
   return (
     <>
-      {!naPaginaDeLogin ? <BarraDeConta sessionStore={sessionStore} /> : null}
+      {!naRotaDeAutenticacao ? <BarraDeConta sessionStore={sessionStore} /> : null}
       {children}
     </>
   );

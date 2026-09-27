@@ -51,7 +51,7 @@ describe("RouteGuard", () => {
   });
 
   it("papel incorreto nao acessa o conteudo protegido", () => {
-    const store = criarStoreFake({ id: "u1", nome: "Ana", papel: "comprador" });
+    const store = criarStoreFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" });
 
     render(
       <RouteGuard sessionStore={store} papeisPermitidos={["artesao"]}>
@@ -65,7 +65,7 @@ describe("RouteGuard", () => {
   });
 
   it("papel correto acessa a area protegida", () => {
-    const store = criarStoreFake({ id: "u2", nome: "Bia", papel: "artesao" });
+    const store = criarStoreFake({ id: "u2", nome: "Bia", email: "u2@origem.test", papel: "artesao" });
 
     render(
       <RouteGuard sessionStore={store} papeisPermitidos={["artesao"]}>
@@ -77,7 +77,7 @@ describe("RouteGuard", () => {
   });
 
   it("qualquer usuario autenticado acessa rota sem restricao de papel", () => {
-    const store = criarStoreFake({ id: "u3", nome: "Caio", papel: "admin" });
+    const store = criarStoreFake({ id: "u3", nome: "Caio", email: "u3@origem.test", papel: "admin" });
 
     render(
       <RouteGuard sessionStore={store}>

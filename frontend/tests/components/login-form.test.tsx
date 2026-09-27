@@ -13,7 +13,7 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: pushMock }),
 }));
 
-const SESSAO: UsuarioSessao = { id: "u1", nome: "Ana", papel: "comprador" };
+const SESSAO: UsuarioSessao = { id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" };
 
 function criarServicoFake(loginImpl?: UsuariosService["login"]): UsuariosService {
   return {
@@ -42,8 +42,8 @@ describe("LoginForm", () => {
       <LoginForm service={criarServicoFake()} sessionStore={criarSessionStoreFake()} />
     );
 
-    expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/senha/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument();
+    expect(screen.getByLabelText("Senha")).toBeInTheDocument();
   });
 
   it("login valido chama o service, cria a sessao e redireciona", async () => {
@@ -53,8 +53,8 @@ describe("LoginForm", () => {
     const sessionStore = criarSessionStoreFake();
     render(<LoginForm service={service} sessionStore={sessionStore} />);
 
-    await user.type(screen.getByLabelText(/email/i), "ana@origem.test");
-    await user.type(screen.getByLabelText(/senha/i), "senha1234");
+    await user.type(screen.getByLabelText(/e-mail/i), "ana@origem.test");
+    await user.type(screen.getByLabelText("Senha"), "senha1234");
     await user.click(screen.getByRole("button", { name: /entrar/i }));
 
     await waitFor(() => expect(loginSpy).toHaveBeenCalledTimes(1));
@@ -79,18 +79,18 @@ describe("LoginForm", () => {
     const sessionStore = criarSessionStoreFake();
     render(<LoginForm service={service} sessionStore={sessionStore} />);
 
-    await user.type(screen.getByLabelText(/email/i), "ana@origem.test");
-    await user.type(screen.getByLabelText(/senha/i), "senha-errada");
+    await user.type(screen.getByLabelText(/e-mail/i), "ana@origem.test");
+    await user.type(screen.getByLabelText("Senha"), "senha-errada");
     await user.click(screen.getByRole("button", { name: /entrar/i }));
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
-      /email ou senha invalidos/i
+      "E-mail ou senha incorretos. Confira os dados e tente de novo."
     );
-    expect(screen.getByLabelText(/email/i)).toHaveAttribute(
+    expect(screen.getByLabelText(/e-mail/i)).toHaveAttribute(
       "aria-invalid",
       "false"
     );
-    expect(screen.getByLabelText(/senha/i)).toHaveAttribute(
+    expect(screen.getByLabelText("Senha")).toHaveAttribute(
       "aria-invalid",
       "false"
     );
@@ -109,8 +109,8 @@ describe("LoginForm", () => {
     const sessionStore = criarSessionStoreFake();
     render(<LoginForm service={service} sessionStore={sessionStore} />);
 
-    await user.type(screen.getByLabelText(/email/i), "ana@origem.test");
-    await user.type(screen.getByLabelText(/senha/i), "senha1234");
+    await user.type(screen.getByLabelText(/e-mail/i), "ana@origem.test");
+    await user.type(screen.getByLabelText("Senha"), "senha1234");
     const botao = screen.getByRole("button", { name: /entrar/i });
     await user.click(botao);
 
@@ -129,11 +129,37 @@ describe("LoginForm", () => {
       <LoginForm service={service} sessionStore={criarSessionStoreFake()} />
     );
 
-    await user.type(screen.getByLabelText(/email/i), "nao-e-email");
-    await user.type(screen.getByLabelText(/senha/i), "senha1234");
+    await user.type(screen.getByLabelText(/e-mail/i), "nao-e-email");
+    await user.type(screen.getByLabelText("Senha"), "senha1234");
     await user.click(screen.getByRole("button", { name: /entrar/i }));
 
     expect(await screen.findByText(/email valido/i)).toBeInTheDocument();
     expect(loginSpy).not.toHaveBeenCalled();
+  });
+
+  it("oferece link para criar cadastro", () => {
+    render(
+      <LoginForm service={criarServicoFake()} sessionStore={criarSessionStoreFake()} />
+    );
+
+    expect(screen.getByRole("link", { name: /criar cadastro/i })).toHaveAttribute(
+      "href",
+      "/cadastro"
+    );
+  });
+
+  it("alterna a visibilidade da senha", async () => {
+    const user = userEvent.setup();
+    render(
+      <LoginForm service={criarServicoFake()} sessionStore={criarSessionStoreFake()} />
+    );
+
+    const campoSenha = screen.getByLabelText("Senha");
+    expect(campoSenha).toHaveAttribute("type", "password");
+
+    await user.click(screen.getByRole("button", { name: /mostrar senha/i }));
+
+    expect(campoSenha).toHaveAttribute("type", "text");
+    expect(screen.getByRole("button", { name: /ocultar senha/i })).toBeInTheDocument();
   });
 });

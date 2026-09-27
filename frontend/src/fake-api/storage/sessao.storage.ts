@@ -18,15 +18,16 @@ export class BrowserSessaoStorage implements SessaoStorage {
     const bruto = this.storage.getItem(this.chave);
     if (bruto === null) return null;
     try {
-      return JSON.parse(bruto) as UsuarioSessao;
+      const sessao = JSON.parse(bruto) as Partial<UsuarioSessao>;
+      return typeof sessao.email === "string" ? (sessao as UsuarioSessao) : null;
     } catch {
       return null;
     }
   }
 
   salvar(sessao: UsuarioSessao): void {
-    const { id, nome, papel } = sessao;
-    this.storage.setItem(this.chave, JSON.stringify({ id, nome, papel }));
+    const { id, nome, email, papel } = sessao;
+    this.storage.setItem(this.chave, JSON.stringify({ id, nome, email, papel }));
   }
 
   limpar(): void {

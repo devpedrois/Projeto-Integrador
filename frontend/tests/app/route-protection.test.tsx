@@ -52,7 +52,7 @@ describe("protecao de rotas", () => {
 
   it("/painel-artesao nega papel incorreto", async () => {
     pathnameAtual = "/painel-artesao";
-    storeMock = criarStoreFake({ id: "u1", nome: "Ana", papel: "comprador" });
+    storeMock = criarStoreFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" });
     const { default: PainelArtesaoPage } = await import("@/app/painel-artesao/page");
 
     render(<PainelArtesaoPage />);
@@ -62,7 +62,7 @@ describe("protecao de rotas", () => {
 
   it("/painel-artesao aceita papel artesao", async () => {
     pathnameAtual = "/painel-artesao";
-    storeMock = criarStoreFake({ id: "u2", nome: "Bia", papel: "artesao" });
+    storeMock = criarStoreFake({ id: "u2", nome: "Bia", email: "u2@origem.test", papel: "artesao" });
     const { default: PainelArtesaoPage } = await import("@/app/painel-artesao/page");
 
     render(<PainelArtesaoPage />);
@@ -84,7 +84,7 @@ describe("protecao de rotas", () => {
 
   it("/admin nega papel incorreto", async () => {
     pathnameAtual = "/admin";
-    storeMock = criarStoreFake({ id: "u3", nome: "Caio", papel: "artesao" });
+    storeMock = criarStoreFake({ id: "u3", nome: "Caio", email: "u3@origem.test", papel: "artesao" });
     const { default: AdminPage } = await import("@/app/admin/page");
 
     render(<AdminPage />);
@@ -94,7 +94,7 @@ describe("protecao de rotas", () => {
 
   it("/admin aceita papel admin", async () => {
     pathnameAtual = "/admin";
-    storeMock = criarStoreFake({ id: "u4", nome: "Dora", papel: "admin" });
+    storeMock = criarStoreFake({ id: "u4", nome: "Dora", email: "u4@origem.test", papel: "admin" });
     const { default: AdminPage } = await import("@/app/admin/page");
 
     render(<AdminPage />);
@@ -116,11 +116,11 @@ describe("protecao de rotas", () => {
 
   it("/minha-conta aceita qualquer papel autenticado", async () => {
     pathnameAtual = "/minha-conta";
-    storeMock = criarStoreFake({ id: "u5", nome: "Elis", papel: "comprador" });
+    storeMock = criarStoreFake({ id: "u5", nome: "Elis", email: "u5@origem.test", papel: "comprador" });
     const { default: MinhaContaPage } = await import("@/app/minha-conta/page");
 
     render(<MinhaContaPage />);
 
-    expect(await screen.findByRole("heading")).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Minha conta" })).toBeInTheDocument();
   });
 });

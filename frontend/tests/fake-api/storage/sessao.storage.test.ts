@@ -17,18 +17,19 @@ describe("BrowserSessaoStorage", () => {
 
   it("persiste e le a sessao salva", () => {
     const storage = new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE);
-    const sessao: UsuarioSessao = { id: "u1", nome: "Ana", papel: "comprador" };
+    const sessao: UsuarioSessao = { id: "u1", nome: "Ana", email: "ana@origem.test", papel: "comprador" };
 
     storage.salvar(sessao);
 
     expect(storage.ler()).toEqual(sessao);
   });
 
-  it("persiste somente id, nome e papel mesmo com campos extras no objeto", () => {
+  it("persiste somente id, nome, email e papel mesmo com campos extras no objeto", () => {
     const storage = new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE);
     const sessaoComExtra = {
       id: "u1",
       nome: "Ana",
+      email: "ana@origem.test",
       papel: "comprador",
       senha: "nunca-deveria-persistir",
     } as UsuarioSessao;
@@ -40,18 +41,29 @@ describe("BrowserSessaoStorage", () => {
     expect(JSON.parse(bruto as string)).toEqual({
       id: "u1",
       nome: "Ana",
+      email: "ana@origem.test",
       papel: "comprador",
     });
   });
 
   it("limpar remove a sessao salva", () => {
     const storage = new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE);
-    storage.salvar({ id: "u1", nome: "Ana", papel: "comprador" });
+    storage.salvar({ id: "u1", nome: "Ana", email: "ana@origem.test", papel: "comprador" });
 
     storage.limpar();
 
     expect(storage.ler()).toBeNull();
     expect(window.localStorage.getItem(CHAVE_TESTE)).toBeNull();
+  });
+
+  it("descarta sessao antiga salva sem email", () => {
+    window.localStorage.setItem(
+      CHAVE_TESTE,
+      JSON.stringify({ id: "u1", nome: "Ana", papel: "comprador" })
+    );
+    const storage = new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE);
+
+    expect(storage.ler()).toBeNull();
   });
 
   it("nao quebra ao ler um valor corrompido no storage", () => {

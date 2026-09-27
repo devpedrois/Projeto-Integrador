@@ -85,6 +85,11 @@ export class FakeUsuariosService implements UsuariosService {
       );
     }
 
-    return { id: encontrado.id, nome: encontrado.nome, papel: encontrado.papel };
+    return {
+      id: encontrado.id,
+      nome: encontrado.nome,
+      email: encontrado.email,
+      papel: encontrado.papel,
+    };
   }
 }

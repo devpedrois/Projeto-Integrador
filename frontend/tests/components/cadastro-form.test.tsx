@@ -50,23 +50,47 @@ describe("CadastroForm", () => {
     render(<CadastroForm service={criarServicoFake()} />);
 
     expect(screen.getByLabelText(/nome/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/senha/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/papel/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument();
+    expect(screen.getByLabelText("Senha")).toBeInTheDocument();
+    expect(screen.getByRole("radiogroup", { name: /papel/i })).toBeInTheDocument();
   });
 
-  it("o seletor de papel oferece somente comprador e artesao", () => {
+  it("o seletor de papel oferece somente comprador e artesao, com comprador marcado", () => {
     render(<CadastroForm service={criarServicoFake()} />);
 
-    const seletor = screen.getByLabelText(/papel/i);
-    const opcoes = within(seletor).getAllByRole("option");
-    const valoresSelecionaveis = opcoes
-      .map((opcao) => opcao as HTMLOptionElement)
-      .filter((opcao) => !opcao.disabled)
-      .map((opcao) => opcao.value);
+    const grupo = screen.getByRole("radiogroup", { name: /papel/i });
+    const opcoes = within(grupo).getAllByRole("radio");
 
-    expect(valoresSelecionaveis).toEqual(["comprador", "artesao"]);
-    expect(valoresSelecionaveis).not.toContain("admin");
+    expect(opcoes.map((opcao) => opcao.textContent)).toEqual(["Comprador", "Artesão"]);
+    expect(within(grupo).getByRole("radio", { name: "Comprador" })).toHaveAttribute(
+      "aria-checked",
+      "true"
+    );
+  });
+
+  it("escolher artesao envia o papel artesao", async () => {
+    const user = userEvent.setup();
+    const registerSpy = vi.fn<UsuariosService["register"]>().mockResolvedValue({
+      id: "novo-2",
+      nome: "Maria Artesa",
+      email: "maria@origem.test",
+      papel: "artesao",
+      ativo: true,
+    });
+    render(<CadastroForm service={criarServicoFake(registerSpy)} />);
+
+    const dados = preencher();
+    await user.type(screen.getByLabelText(/nome/i), dados.nome);
+    await user.type(screen.getByLabelText(/e-mail/i), dados.email);
+    await user.type(screen.getByLabelText("Senha"), dados.senha);
+    await user.click(screen.getByRole("radio", { name: "Artesão" }));
+
+    expect(screen.getByRole("radio", { name: "Artesão" })).toHaveAttribute("aria-checked", "true");
+    await user.click(screen.getByRole("button", { name: /cadastrar/i }));
+
+    await waitFor(() =>
+      expect(registerSpy).toHaveBeenCalledWith(expect.objectContaining({ papel: "artesao" }))
+    );
   });
 
   it("cadastro valido chama o service e redireciona para login com confirmacao", async () => {
@@ -83,9 +107,8 @@ describe("CadastroForm", () => {
 
     const dados = preencher();
     await user.type(screen.getByLabelText(/nome/i), dados.nome);
-    await user.type(screen.getByLabelText(/email/i), dados.email);
-    await user.type(screen.getByLabelText(/senha/i), dados.senha);
-    await user.selectOptions(screen.getByLabelText(/papel/i), "comprador");
+    await user.type(screen.getByLabelText(/e-mail/i), dados.email);
+    await user.type(screen.getByLabelText("Senha"), dados.senha);
     await user.click(screen.getByRole("button", { name: /cadastrar/i }));
 
     await waitFor(() => expect(registerSpy).toHaveBeenCalledTimes(1));
@@ -108,9 +131,8 @@ describe("CadastroForm", () => {
 
     const dados = preencher("curta12");
     await user.type(screen.getByLabelText(/nome/i), dados.nome);
-    await user.type(screen.getByLabelText(/email/i), dados.email);
-    await user.type(screen.getByLabelText(/senha/i), dados.senha);
-    await user.selectOptions(screen.getByLabelText(/papel/i), "comprador");
+    await user.type(screen.getByLabelText(/e-mail/i), dados.email);
+    await user.type(screen.getByLabelText("Senha"), dados.senha);
     await user.click(screen.getByRole("button", { name: /cadastrar/i }));
 
     expect(
@@ -143,9 +165,8 @@ describe("CadastroForm", () => {
 
     const dados = preencher();
     await user.type(screen.getByLabelText(/nome/i), dados.nome);
-    await user.type(screen.getByLabelText(/email/i), dados.email);
-    await user.type(screen.getByLabelText(/senha/i), dados.senha);
-    await user.selectOptions(screen.getByLabelText(/papel/i), "comprador");
+    await user.type(screen.getByLabelText(/e-mail/i), dados.email);
+    await user.type(screen.getByLabelText("Senha"), dados.senha);
 
     const botao = screen.getByRole("button", { name: /cadastrar/i });
     await user.click(botao);
@@ -175,17 +196,16 @@ describe("CadastroForm", () => {
 
     const dados = preencher();
     await user.type(screen.getByLabelText(/nome/i), dados.nome);
-    await user.type(screen.getByLabelText(/email/i), dados.email);
-    await user.type(screen.getByLabelText(/senha/i), dados.senha);
-    await user.selectOptions(screen.getByLabelText(/papel/i), "comprador");
+    await user.type(screen.getByLabelText(/e-mail/i), dados.email);
+    await user.type(screen.getByLabelText("Senha"), dados.senha);
     await user.click(screen.getByRole("button", { name: /cadastrar/i }));
 
-    const campoEmail = await screen.findByLabelText(/email/i);
+    const campoEmail = await screen.findByLabelText(/e-mail/i);
     await waitFor(() => expect(campoEmail).toHaveAttribute("aria-invalid", "true"));
     const idDescricao = campoEmail.getAttribute("aria-describedby");
     expect(idDescricao).toBeTruthy();
     expect(document.getElementById(idDescricao as string)).toHaveTextContent(
-      /ja esta cadastrado/i
+      "Este e-mail já está cadastrado. Use outro e-mail."
     );
     expect(campoEmail).toHaveFocus();
     expect(pushMock).not.toHaveBeenCalled();
@@ -203,13 +223,12 @@ describe("CadastroForm", () => {
 
     const dados = preencher();
     await user.type(screen.getByLabelText(/nome/i), dados.nome);
-    await user.type(screen.getByLabelText(/email/i), dados.email);
-    await user.type(screen.getByLabelText(/senha/i), dados.senha);
-    await user.selectOptions(screen.getByLabelText(/papel/i), "comprador");
+    await user.type(screen.getByLabelText(/e-mail/i), dados.email);
+    await user.type(screen.getByLabelText("Senha"), dados.senha);
     await user.click(screen.getByRole("button", { name: /cadastrar/i }));
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
-      /nao foi possivel concluir o cadastro/i
+      "Não foi possível concluir o cadastro. Tente novamente em instantes."
     );
     const botao = screen.getByRole("button", { name: /cadastrar/i });
     expect(botao).not.toBeDisabled();

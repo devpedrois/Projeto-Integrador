@@ -7,7 +7,7 @@ import type { UsuarioSessao } from "@/types/sessao";
 
 const CHAVE_TESTE = "origem:test:sessao:hook:v1";
 
-const SESSAO: UsuarioSessao = { id: "u1", nome: "Ana", papel: "comprador" };
+const SESSAO: UsuarioSessao = { id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" };
 
 describe("useSessao", () => {
   it("retorna a sessao ja restaurada no primeiro render, sem piscar null", () => {

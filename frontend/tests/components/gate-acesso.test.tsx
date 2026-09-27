@@ -56,7 +56,7 @@ describe("GateAcesso", () => {
       </GateAcesso>
     );
 
-    expect(await screen.findByRole("heading", { name: /entrar como/i })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: /peças feitas à mão/i })).toBeInTheDocument();
     expect(screen.queryByText("Conteudo da aplicacao")).not.toBeInTheDocument();
   });
 
@@ -76,7 +76,7 @@ describe("GateAcesso", () => {
 
   it("usuario ja autenticado pula a tela de escolha e ve o conteudo direto", async () => {
     sessionStoreMock = new SessionStore(
-      criarSessaoStorageFake({ id: "u1", nome: "Ana", papel: "comprador" })
+      criarSessaoStorageFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" })
     );
 
     render(
@@ -86,7 +86,7 @@ describe("GateAcesso", () => {
     );
 
     expect(await screen.findByText("Conteudo da aplicacao")).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: /entrar como/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /peças feitas à mão/i })).not.toBeInTheDocument();
   });
 
   it("escolha de visitante anterior (mesma aba) libera o conteudo sem mostrar a tela de novo", async () => {
@@ -103,7 +103,7 @@ describe("GateAcesso", () => {
 
   it("clicar em sair pede confirmacao antes de deslogar", async () => {
     sessionStoreMock = new SessionStore(
-      criarSessaoStorageFake({ id: "u1", nome: "Ana", papel: "comprador" })
+      criarSessaoStorageFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" })
     );
     const usuario = userEvent.setup();
 
@@ -121,7 +121,7 @@ describe("GateAcesso", () => {
 
   it("cancelar a confirmacao mantem a sessao ativa", async () => {
     sessionStoreMock = new SessionStore(
-      criarSessaoStorageFake({ id: "u1", nome: "Ana", papel: "comprador" })
+      criarSessaoStorageFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" })
     );
     const usuario = userEvent.setup();
 
@@ -141,7 +141,7 @@ describe("GateAcesso", () => {
 
   it("confirmar a saida desloga e volta a pedir a escolha", async () => {
     sessionStoreMock = new SessionStore(
-      criarSessaoStorageFake({ id: "u1", nome: "Ana", papel: "comprador" })
+      criarSessaoStorageFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" })
     );
     const usuario = userEvent.setup();
 
@@ -154,14 +154,14 @@ describe("GateAcesso", () => {
     await usuario.click(await screen.findByRole("button", { name: /^sair$/i }));
     await usuario.click(screen.getByRole("button", { name: /sim, sair/i }));
 
-    expect(await screen.findByRole("heading", { name: /entrar como/i })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: /peças feitas à mão/i })).toBeInTheDocument();
     expect(screen.queryByText("Conteudo da aplicacao")).not.toBeInTheDocument();
   });
 
   it("confirmar a saida a partir do carrinho redireciona para a vitrine", async () => {
     pathnameAtual = "/carrinho";
     sessionStoreMock = new SessionStore(
-      criarSessaoStorageFake({ id: "u1", nome: "Ana", papel: "comprador" })
+      criarSessaoStorageFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" })
     );
     const usuario = userEvent.setup();
 
@@ -179,7 +179,7 @@ describe("GateAcesso", () => {
 
   it("artesao autenticado ve links para o painel e para meus produtos", async () => {
     sessionStoreMock = new SessionStore(
-      criarSessaoStorageFake({ id: "u1", nome: "Bia", papel: "artesao" })
+      criarSessaoStorageFake({ id: "u1", nome: "Bia", email: "u1@origem.test", papel: "artesao" })
     );
 
     render(
@@ -202,7 +202,7 @@ describe("GateAcesso", () => {
 
   it("admin autenticado ve link para o painel administrativo", async () => {
     sessionStoreMock = new SessionStore(
-      criarSessaoStorageFake({ id: "u1", nome: "Caio", papel: "admin" })
+      criarSessaoStorageFake({ id: "u1", nome: "Caio", email: "u1@origem.test", papel: "admin" })
     );
 
     render(
@@ -221,7 +221,7 @@ describe("GateAcesso", () => {
 
   it("comprador autenticado nao ve links de artesao nem de admin", async () => {
     sessionStoreMock = new SessionStore(
-      criarSessaoStorageFake({ id: "u1", nome: "Ana", papel: "comprador" })
+      criarSessaoStorageFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" })
     );
 
     render(
@@ -277,7 +277,7 @@ describe("GateAcesso", () => {
     );
 
     expect(await screen.findByText("Formulario de login")).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: /entrar como/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /peças feitas à mão/i })).not.toBeInTheDocument();
   });
 
   it("nao mostra a barra de conta na propria pagina de login", async () => {
@@ -292,5 +292,31 @@ describe("GateAcesso", () => {
 
     await screen.findByText("Conteudo da aplicacao");
     expect(screen.queryByRole("link", { name: /entrar/i })).not.toBeInTheDocument();
+  });
+
+  it("na pagina de cadastro, mostra o formulario sem sessao e sem a barra de conta", async () => {
+    pathnameAtual = "/cadastro";
+
+    render(
+      <GateAcesso>
+        <div>Formulario de cadastro</div>
+      </GateAcesso>
+    );
+
+    expect(await screen.findByText("Formulario de cadastro")).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /peças feitas à mão/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /^entrar$/i })).not.toBeInTheDocument();
+  });
+
+  it("a tela de escolha leva comprador, artesao e administrador ao login", async () => {
+    render(
+      <GateAcesso>
+        <div>Conteudo da aplicacao</div>
+      </GateAcesso>
+    );
+
+    for (const papel of [/entrar como comprador/i, /entrar como artesão/i, /entrar como administrador/i]) {
+      expect(await screen.findByRole("link", { name: papel })).toHaveAttribute("href", "/login");
+    }
   });
 });

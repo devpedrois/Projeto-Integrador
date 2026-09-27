@@ -1,7 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { AlertaErro } from "@/components/feedback/AlertaErro";
+import { BotaoEnviar } from "@/components/formulario/BotaoEnviar";
+import { CampoTexto } from "@/components/formulario/CampoTexto";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { SessionStore } from "@/store/sessao.store";
 import { ServiceError } from "@/services/errors";
@@ -20,8 +24,11 @@ export interface LoginFormProps {
 
 const ORDEM_CAMPOS: CampoLogin[] = ["email", "senha"];
 
+const MENSAGEM_CREDENCIAIS_INVALIDAS =
+  "E-mail ou senha incorretos. Confira os dados e tente de novo.";
+
 const MENSAGEM_ERRO_SERVICO =
-  "Nao foi possivel entrar. Tente novamente em instantes.";
+  "Não foi possível entrar. Tente novamente em instantes.";
 
 export function LoginForm({ service, sessionStore }: LoginFormProps) {
   const router = useRouter();
@@ -67,7 +74,7 @@ export function LoginForm({ service, sessionStore }: LoginFormProps) {
       router.push("/");
     } catch (erro) {
       if (erro instanceof ServiceError && erro.code === "CREDENCIAIS_INVALIDAS") {
-        setErroServico(erro.message);
+        setErroServico(MENSAGEM_CREDENCIAIS_INVALIDAS);
       } else {
         setErroServico(MENSAGEM_ERRO_SERVICO);
       }
@@ -77,66 +84,45 @@ export function LoginForm({ service, sessionStore }: LoginFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-      {erroServico ? (
-        <p role="alert" className="rounded border border-red-300 bg-red-50 p-3 text-sm text-red-700">
-          {erroServico}
-        </p>
-      ) : null}
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+      {erroServico ? <AlertaErro>{erroServico}</AlertaErro> : null}
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="login-email" className="text-sm font-medium">
-          Email
-        </label>
-        <input
-          id="login-email"
-          ref={refEmail}
-          name="email"
-          type="email"
-          autoComplete="email"
-          value={email}
-          onChange={(evento) => setEmail(evento.target.value)}
-          aria-invalid={Boolean(erros.email)}
-          aria-describedby={erros.email ? "login-email-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
-        />
-        {erros.email ? (
-          <p id="login-email-erro" className="text-sm text-red-700">
-            {erros.email}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="login-senha" className="text-sm font-medium">
-          Senha
-        </label>
-        <input
-          id="login-senha"
-          ref={refSenha}
-          name="senha"
-          type="password"
-          autoComplete="current-password"
-          value={senha}
-          onChange={(evento) => setSenha(evento.target.value)}
-          aria-invalid={Boolean(erros.senha)}
-          aria-describedby={erros.senha ? "login-senha-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
-        />
-        {erros.senha ? (
-          <p id="login-senha-erro" className="text-sm text-red-700">
-            {erros.senha}
-          </p>
-        ) : null}
-      </div>
-
-      <button
-        type="submit"
+      <CampoTexto
+        id="login-email"
+        ref={refEmail}
+        rotulo="E-mail"
+        name="email"
+        type="email"
+        placeholder="nome@email.com"
+        autoComplete="email"
+        value={email}
+        onChange={(evento) => setEmail(evento.target.value)}
         disabled={enviando}
-        className="min-h-11 min-w-11 rounded bg-emerald-700 px-4 py-2 font-medium text-white disabled:opacity-60"
-      >
-        {enviando ? "Entrando..." : "Entrar"}
-      </button>
+        erro={erros.email}
+      />
+
+      <CampoTexto
+        id="login-senha"
+        ref={refSenha}
+        rotulo="Senha"
+        name="senha"
+        type="password"
+        autoComplete="current-password"
+        value={senha}
+        onChange={(evento) => setSenha(evento.target.value)}
+        disabled={enviando}
+        erro={erros.senha}
+      />
+
+      <BotaoEnviar enviando={enviando}>{enviando ? "Entrando…" : "Entrar"}</BotaoEnviar>
+
+      <div className="mt-2 h-px bg-border-default" />
+      <p className="m-0 text-center text-[15px] text-fg-muted">
+        Ainda não tem conta?{" "}
+        <Link href="/cadastro" className="font-semibold">
+          Criar cadastro
+        </Link>
+      </p>
     </form>
   );
 }

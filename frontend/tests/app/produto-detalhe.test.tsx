@@ -117,7 +117,7 @@ describe("Pagina de detalhes do produto", () => {
   });
 
   it("comprador adiciona ate o limite do estoque e recebe erro acima dele", async () => {
-    sessionStoreMock = criarSessionStoreFake({ id: "u1", nome: "Ana", papel: "comprador" });
+    sessionStoreMock = criarSessionStoreFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" });
     const { default: PaginaProduto } = await import("@/app/produto/[id]/page");
     const usuario = userEvent.setup();
 
