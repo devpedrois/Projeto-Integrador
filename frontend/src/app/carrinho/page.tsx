@@ -104,7 +104,7 @@ function Carrinho({
         <div className={CLASSE_VAZIO}>
           <IconeVazio nome="sacola" />
           <p className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
-            Seu carrinho esta vazio.
+            Seu carrinho está vazio.
           </p>
           <Link href="/" className={BOTAO_SECUNDARIO}>
             Ver produtos

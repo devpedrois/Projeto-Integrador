@@ -142,7 +142,7 @@ describe("Pagina de detalhes do produto", () => {
 
     render(<PaginaProduto />);
 
-    expect(await screen.findByText(/produto indisponivel ou nao encontrado/i)).toBeInTheDocument();
+    expect(await screen.findByText(/produto indisponível ou não encontrado/i)).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /adicionar ao carrinho/i })).not.toBeInTheDocument();
   });
 });

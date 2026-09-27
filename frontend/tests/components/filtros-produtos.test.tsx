@@ -61,9 +61,9 @@ describe("FiltrosProdutos", () => {
     );
 
     expect(screen.getByLabelText("Categoria")).toBeDisabled();
-    expect(screen.getByLabelText("Tecnica")).toBeDisabled();
-    expect(screen.getByLabelText("Regiao")).toBeDisabled();
-    expect(screen.getByLabelText("Artesao")).toBeDisabled();
+    expect(screen.getByLabelText("Técnica")).toBeDisabled();
+    expect(screen.getByLabelText("Região")).toBeDisabled();
+    expect(screen.getByLabelText("Artesão")).toBeDisabled();
   });
 
   it("selecionar um artesao delega ao callback com o id escolhido", async () => {
@@ -78,7 +78,7 @@ describe("FiltrosProdutos", () => {
       />
     );
 
-    await userEvent.selectOptions(screen.getByLabelText("Artesao"), "seed-artesao-01");
+    await userEvent.selectOptions(screen.getByLabelText("Artesão"), "seed-artesao-01");
 
     expect(onAlterar).toHaveBeenCalledWith({ artesaoId: "seed-artesao-01" });
   });
@@ -140,7 +140,7 @@ describe("FiltrosProdutos", () => {
       />
     );
 
-    await userEvent.selectOptions(screen.getByLabelText("Tecnica"), "");
+    await userEvent.selectOptions(screen.getByLabelText("Técnica"), "");
 
     expect(onAlterar).toHaveBeenCalledWith({ tecnicaId: undefined });
   });
@@ -156,7 +156,7 @@ describe("FiltrosProdutos", () => {
     );
 
     expect(screen.getByLabelText("Buscar produtos")).toHaveValue("vaso");
-    expect(screen.getByLabelText("Regiao")).toHaveValue("regiao-pilar-recife");
+    expect(screen.getByLabelText("Região")).toHaveValue("regiao-pilar-recife");
   });
 
   it("botao Limpar filtros fica desabilitado quando nenhum filtro esta ativo", () => {

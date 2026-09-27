@@ -107,7 +107,7 @@ function Checkout({
       if (excecao instanceof ServiceError) {
         setErro(excecao.message);
       } else {
-        setErro("Nao foi possivel concluir o pedido. Tente novamente.");
+        setErro("Não foi possível concluir o pedido. Tente novamente.");
       }
     } finally {
       setEnviando(false);
@@ -148,7 +148,7 @@ function Checkout({
         <div className={CLASSE_VAZIO}>
           <IconeVazio nome="sacola" />
           <p className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
-            Seu carrinho esta vazio.
+            Seu carrinho está vazio.
           </p>
           <Link href="/" className={BOTAO_SECUNDARIO}>
             Ver produtos

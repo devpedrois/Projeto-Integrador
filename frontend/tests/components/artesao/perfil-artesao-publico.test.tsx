@@ -212,7 +212,7 @@ describe("PerfilArtesaoPublico", () => {
     );
 
     await waitFor(() =>
-      expect(screen.getByText(/Nenhum produto disponivel/)).toBeInTheDocument()
+      expect(screen.getByText(/Nenhum produto disponível/)).toBeInTheDocument()
     );
   });
 
@@ -230,7 +230,7 @@ describe("PerfilArtesaoPublico", () => {
     );
 
     await waitFor(() =>
-      expect(screen.getByText(/Artesao nao encontrado/)).toBeInTheDocument()
+      expect(screen.getByText(/Artesão não encontrado/)).toBeInTheDocument()
     );
   });
 

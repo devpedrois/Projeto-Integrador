@@ -53,7 +53,7 @@ export function PerfilArtesaoPublico({
           />
           <div className="flex max-w-[560px] min-w-0 flex-[1_1_320px] flex-col gap-3.5 pb-1">
             <p role="status" className={CLASSE_STATUS}>
-              Carregando perfil do artesao...
+              Carregando perfil do artesão...
             </p>
             <span aria-hidden="true" className={`${BLOCO} h-11 w-3/5`} />
             <span aria-hidden="true" className={`${BLOCO} h-4 w-2/5`} />
@@ -71,7 +71,7 @@ export function PerfilArtesaoPublico({
         <div className={CLASSE_VAZIO}>
           <IconeVazio nome="usuario" />
           <p role="status" className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
-            Artesao nao encontrado.
+            Artesão não encontrado.
           </p>
         </div>
       </div>
@@ -134,7 +134,7 @@ export function PerfilArtesaoPublico({
       </header>
 
       <div className="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20">
-        <section aria-label="Produtos do artesao" className="flex flex-col gap-5">
+        <section aria-label="Produtos do artesão" className="flex flex-col gap-5">
           <h2 className="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]">
             Produtos
           </h2>
@@ -143,7 +143,7 @@ export function PerfilArtesaoPublico({
             <div className={CLASSE_VAZIO}>
               <IconeVazio nome="pacote" />
               <p role="status" className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
-                Nenhum produto disponivel no momento.
+                Nenhum produto disponível no momento.
               </p>
             </div>
           ) : (

@@ -192,7 +192,7 @@ function PaginaInicial() {
                 {estado.status === "erro" ? (
                   <p role="alert" className={CLASSE_ALERTA}>
                     <Icone nome="alerta" className="mt-0.5 flex-none" />
-                    Nao foi possivel carregar os produtos. Tente novamente em instantes.
+                    Não foi possível carregar os produtos. Tente novamente em instantes.
                   </p>
                 ) : null}
 
@@ -200,7 +200,7 @@ function PaginaInicial() {
                   <div className={CLASSE_VAZIO}>
                     <IconeVazio nome="pacote" />
                     <p className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
-                      Nenhum produto disponivel no momento.
+                      Nenhum produto disponível no momento.
                     </p>
                   </div>
                 ) : null}

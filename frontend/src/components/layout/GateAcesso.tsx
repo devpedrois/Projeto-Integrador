@@ -24,7 +24,7 @@ const LINKS_POR_PAPEL: Record<Papel, { href: string; rotulo: string }[]> = {
     { href: "/minha-conta", rotulo: "Minha conta" },
   ],
   artesao: [
-    { href: "/painel-artesao", rotulo: "Painel do artesao" },
+    { href: "/painel-artesao", rotulo: "Painel do artesão" },
     { href: "/painel-artesao/produtos", rotulo: "Meus produtos" },
     { href: "/painel-artesao/perfil", rotulo: "Meu perfil" },
     { href: "/", rotulo: "Vitrine" },
@@ -220,7 +220,7 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
                 Comprador
               </Link>
               <Link href="/login" className={BOTAO_SECUNDARIO_PEQUENO}>
-                Artesao
+                Artesão
               </Link>
               <Link href="/login" className={BOTAO_SECUNDARIO_PEQUENO}>
                 Administrador

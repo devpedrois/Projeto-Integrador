@@ -55,13 +55,13 @@ function iniciais(nome: string | null | undefined): string {
 }
 
 function textoEstoque(quantidade: number): string {
-  return quantidade === 1 ? "1 disponivel" : `${quantidade} disponiveis`;
+  return quantidade === 1 ? "1 disponível" : `${quantidade} disponíveis`;
 }
 
 function textoAvaliacoes({ media, quantidade }: ResumoAvaliacoes): string {
-  if (quantidade === 0) return "Sem avaliacoes ainda";
-  const rotulo = quantidade === 1 ? "1 avaliacao" : `${quantidade} avaliacoes`;
-  return `Nota ${media.toFixed(1)} de 5 (${rotulo})`;
+  if (quantidade === 0) return "Sem avaliações ainda";
+  const rotulo = quantidade === 1 ? "1 avaliação" : `${quantidade} avaliações`;
+  return `Nota ${media.toFixed(1).replace(".", ",")} de 5 (${rotulo})`;
 }
 
 export function DetalheProduto({
@@ -141,7 +141,7 @@ export function DetalheProduto({
         <div className={CLASSE_VAZIO}>
           <IconeVazio nome="pacote" />
           <p role="status" className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
-            Produto indisponivel ou nao encontrado.
+            Produto indisponível ou não encontrado.
           </p>
         </div>
       ) : null}
@@ -240,17 +240,17 @@ export function DetalheProduto({
                 ) : null}
                 {estado.tecnicaNome ? (
                   <>
-                    <dt className={CLASSE_DT}>Tecnica</dt>
+                    <dt className={CLASSE_DT}>Técnica</dt>
                     <dd className={CLASSE_DD}>{estado.tecnicaNome}</dd>
                   </>
                 ) : null}
                 {estado.regiaoNome ? (
                   <>
-                    <dt className={CLASSE_DT}>Regiao</dt>
+                    <dt className={CLASSE_DT}>Região</dt>
                     <dd className={CLASSE_DD}>{estado.regiaoNome}</dd>
                   </>
                 ) : null}
-                <dt className={`${CLASSE_DT} flex items-center`}>Artesao</dt>
+                <dt className={`${CLASSE_DT} flex items-center`}>Artesão</dt>
                 <dd className={`${CLASSE_DD} flex items-center gap-3 py-3`}>
                   {nomeArtesao ? (
                     <span
@@ -264,7 +264,7 @@ export function DetalheProduto({
                     href={`/artesao/${produto.artesaoId}`}
                     className="text-[15px] font-semibold text-fg-link hover:text-fg-link-hover"
                   >
-                    {nomeArtesao ?? "Ver perfil do artesao"}
+                    {nomeArtesao ?? "Ver perfil do artesão"}
                   </Link>
                 </dd>
               </dl>

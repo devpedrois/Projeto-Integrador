@@ -86,7 +86,7 @@ export function FiltrosProdutos({
               value={valorOuVazio(query.termo)}
               onChange={(evento) => onAlterar({ termo: valorOuIndefinido(evento.target.value) })}
               className={`${CONTROLE} pr-3.5 pl-[42px] placeholder:text-fg-subtle`}
-              placeholder="Nome ou descricao do produto"
+              placeholder="Nome ou descrição do produto"
             />
           </div>
         </div>
@@ -170,7 +170,7 @@ export function FiltrosProdutos({
 
         <div className={CAMPO}>
           <label htmlFor="filtro-tecnica" className={ROTULO}>
-            Tecnica
+            Técnica
           </label>
           <div className="relative">
             <select
@@ -182,7 +182,7 @@ export function FiltrosProdutos({
               disabled={!opcoesCarregadas}
               className={SELECT}
             >
-              <option value="">Todas as tecnicas</option>
+              <option value="">Todas as técnicas</option>
               {opcoesCarregadas?.tecnicas.map((tecnica) => (
                 <option key={tecnica.id} value={tecnica.id}>
                   {tecnica.nome}
@@ -195,7 +195,7 @@ export function FiltrosProdutos({
 
         <div className={CAMPO}>
           <label htmlFor="filtro-regiao" className={ROTULO}>
-            Regiao
+            Região
           </label>
           <div className="relative">
             <select
@@ -207,7 +207,7 @@ export function FiltrosProdutos({
               disabled={!opcoesCarregadas}
               className={SELECT}
             >
-              <option value="">Todas as regioes</option>
+              <option value="">Todas as regiões</option>
               {opcoesCarregadas?.regioes.map((regiao) => (
                 <option key={regiao.id} value={regiao.id}>
                   {regiao.nome}
@@ -220,7 +220,7 @@ export function FiltrosProdutos({
 
         <div className={CAMPO}>
           <label htmlFor="filtro-artesao" className={ROTULO}>
-            Artesao
+            Artesão
           </label>
           <div className="relative">
             <select
@@ -232,7 +232,7 @@ export function FiltrosProdutos({
               disabled={!artesaosCarregados}
               className={SELECT}
             >
-              <option value="">Todos os artesaos</option>
+              <option value="">Todos os artesãos</option>
               {artesaosCarregados?.artesaos.map((artesao) => (
                 <option key={artesao.id} value={artesao.id}>
                   {artesao.nome}

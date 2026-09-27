@@ -126,7 +126,7 @@ describe("ProdutoCard", () => {
       </ul>
     );
 
-    const link = screen.getByRole("link", { name: /artesao/i });
+    const link = screen.getByRole("link", { name: /artesão/i });
     expect(link).toHaveAttribute("href", "/artesao/artesao-1");
   });
 

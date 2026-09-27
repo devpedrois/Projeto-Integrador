@@ -61,7 +61,7 @@ export function ProdutoCard({
             href={`/artesao/${produto.artesaoId}`}
             className="text-fg-body underline decoration-border-strong hover:text-fg-link-hover"
           >
-            {nomeArtesao ?? "Ver perfil do artesao"}
+            {nomeArtesao ?? "Ver perfil do artesão"}
           </Link>
         </span>
         <span className="mt-1.5 block text-price font-bold tracking-tight text-fg-strong tabular-nums">

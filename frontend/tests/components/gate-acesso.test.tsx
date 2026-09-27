@@ -188,7 +188,7 @@ describe("GateAcesso", () => {
       </GateAcesso>
     );
 
-    expect(await screen.findByRole("link", { name: /painel do artesao/i })).toHaveAttribute(
+    expect(await screen.findByRole("link", { name: /painel do artesão/i })).toHaveAttribute(
       "href",
       "/painel-artesao"
     );
@@ -231,7 +231,7 @@ describe("GateAcesso", () => {
     );
 
     await screen.findByText("Ana (comprador)");
-    expect(screen.queryByRole("link", { name: /painel do artesao/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /painel do artesão/i })).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /painel admin/i })).not.toBeInTheDocument();
   });
 
@@ -262,7 +262,7 @@ describe("GateAcesso", () => {
     await usuario.click(await screen.findByRole("button", { name: /^entrar$/i }));
 
     expect(screen.getByRole("link", { name: /comprador/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /artesao/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /artesão/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /administrador/i })).toBeInTheDocument();
     expect(screen.getByText("Conteudo da aplicacao")).toBeInTheDocument();
   });

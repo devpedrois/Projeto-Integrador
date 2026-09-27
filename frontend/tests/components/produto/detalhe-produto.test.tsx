@@ -113,7 +113,7 @@ describe("DetalheProduto", () => {
     expect(await screen.findByRole("heading", { level: 1, name: "Toalha de Renda" })).toBeInTheDocument();
     expect(screen.getByText("Toalha feita a mao com linha de algodao.")).toBeInTheDocument();
     expect(screen.getByText("R$ 59,90")).toBeInTheDocument();
-    expect(screen.getByText(/3 disponiveis/i)).toBeInTheDocument();
+    expect(screen.getByText(/3 disponíveis/i)).toBeInTheDocument();
     expect(screen.getByText("Renda e Bordado")).toBeInTheDocument();
     expect(screen.getByText("Renda de Bilro")).toBeInTheDocument();
     expect(screen.getByText("Pilar, Recife")).toBeInTheDocument();
@@ -156,8 +156,8 @@ describe("DetalheProduto", () => {
   it("mostra nota media e quantidade vindas do AvaliacoesService", async () => {
     const props = renderizar();
 
-    expect(await screen.findByText(/nota 4\.5 de 5/i)).toBeInTheDocument();
-    expect(screen.getByText(/2 avaliacoes/i)).toBeInTheDocument();
+    expect(await screen.findByText(/nota 4,5 de 5/i)).toBeInTheDocument();
+    expect(screen.getByText(/2 avaliações/i)).toBeInTheDocument();
     expect(props.avaliacoesService?.resumo).toHaveBeenCalledWith("produto-1");
   });
 
@@ -168,7 +168,7 @@ describe("DetalheProduto", () => {
       }),
     });
 
-    expect(await screen.findByText(/sem avaliacoes/i)).toBeInTheDocument();
+    expect(await screen.findByText(/sem avaliações/i)).toBeInTheDocument();
   });
 
   it("linka para o perfil publico do artesao", async () => {
@@ -215,7 +215,7 @@ describe("DetalheProduto", () => {
       produtosService: criarProdutosServiceFake({ obterPublico: vi.fn().mockResolvedValue(null) }),
     });
 
-    expect(await screen.findByText(/produto indisponivel ou nao encontrado/i)).toBeInTheDocument();
+    expect(await screen.findByText(/produto indisponível ou não encontrado/i)).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /adicionar ao carrinho/i })).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /voltar para a vitrine/i })).toHaveAttribute("href", "/");
     expect(props.recomendacoesService?.obter).not.toHaveBeenCalled();

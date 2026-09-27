@@ -28,13 +28,13 @@ export function FaixaRecomendacoes({ service, contexto }: FaixaRecomendacoesProp
   return (
     <section aria-label="Recomendacoes de produtos" className="mt-16 flex flex-col gap-4">
       <h2 className="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]">
-        Recomendado para voce
+        Recomendado para você
       </h2>
 
       {estado.status === "carregando" ? (
         <>
           <p role="status" className={CLASSE_STATUS}>
-            Carregando recomendacoes...
+            Carregando recomendações...
           </p>
           <div className={TRILHO}>
             <EsqueletoCompacto />
@@ -51,7 +51,7 @@ export function FaixaRecomendacoes({ service, contexto }: FaixaRecomendacoesProp
 
       {estado.status === "vazio" ? (
         <p className={CLASSE_STATUS}>
-          Nenhuma recomendacao disponivel no momento.
+          Nenhuma recomendação disponível no momento.
         </p>
       ) : null}
 

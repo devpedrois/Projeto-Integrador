@@ -58,7 +58,7 @@ describe("FaixaRecomendacoes", () => {
     render(<FaixaRecomendacoes service={service} contexto={{ produtoId: "contexto" }} />);
 
     await waitFor(() =>
-      expect(screen.getByText(/nenhuma recomendacao/i)).toBeInTheDocument()
+      expect(screen.getByText(/nenhuma recomendação/i)).toBeInTheDocument()
     );
   });
 
