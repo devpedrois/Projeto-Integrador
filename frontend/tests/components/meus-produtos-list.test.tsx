@@ -116,10 +116,11 @@ describe("MeusProdutosList", () => {
     const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
 
     await user.click(within(item).getByRole("button", { name: /editar/i }));
-    const campoNome = within(item).getByLabelText(/nome/i);
+    const painel = screen.getByRole("dialog", { name: /editar produto/i });
+    const campoNome = within(painel).getByLabelText(/nome/i);
     await user.clear(campoNome);
     await user.type(campoNome, "Vaso de Barro Editado");
-    await user.click(within(item).getByRole("button", { name: /salvar/i }));
+    await user.click(within(painel).getByRole("button", { name: /salvar/i }));
 
     await waitFor(() => expect(update).toHaveBeenCalledTimes(1));
     const [idChamado, entradaChamada, artesaoIdChamado] = update.mock.calls[0] as [
@@ -142,7 +143,7 @@ describe("MeusProdutosList", () => {
     render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
 
     const item = await screen.findByRole("listitem", { name: "Vaso de Barro" });
-    expect(item).toHaveTextContent(/desativado pela moderacao/i);
+    expect(item).toHaveTextContent(/desativado pela moderação/i);
   });
 
   it("remover exige confirmacao antes de chamar o service", async () => {
@@ -157,7 +158,7 @@ describe("MeusProdutosList", () => {
 
     expect(remove).not.toHaveBeenCalled();
     expect(
-      within(item).getByRole("button", { name: /confirmar remocao/i })
+      within(item).getByRole("button", { name: /confirmar remoção/i })
     ).toBeInTheDocument();
   });
 
@@ -176,7 +177,7 @@ describe("MeusProdutosList", () => {
 
     await user.click(within(item).getByRole("button", { name: /remover/i }));
     await user.click(
-      within(item).getByRole("button", { name: /confirmar remocao/i })
+      within(item).getByRole("button", { name: /confirmar remoção/i })
     );
 
     await waitFor(() =>
@@ -214,12 +215,70 @@ describe("MeusProdutosList", () => {
 
     await user.click(within(item).getByRole("button", { name: /remover/i }));
     await user.click(
-      within(item).getByRole("button", { name: /confirmar remocao/i })
+      within(item).getByRole("button", { name: /confirmar remoção/i })
     );
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
-      /nao foi possivel/i
+      /não foi possível/i
     );
     expect(screen.getByText("Vaso de Barro")).toBeInTheDocument();
+  });
+
+  it("painel de edicao mostra o preco com virgula e salva o numero correto", async () => {
+    const user = userEvent.setup();
+    const update = vi.fn().mockResolvedValue(produto({ preco: 45.5 }));
+    const service = criarServicoFake({
+      listByArtesao: vi.fn().mockResolvedValue([produto({ preco: 39.9 })]),
+      update,
+    });
+
+    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+
+    await user.click(within(item).getByRole("button", { name: /editar/i }));
+    const painel = screen.getByRole("dialog", { name: /editar produto/i });
+    const campoPreco = within(painel).getByLabelText(/preço/i);
+    expect(campoPreco).toHaveValue("39,90");
+
+    await user.clear(campoPreco);
+    await user.type(campoPreco, "45,50");
+    await user.click(within(painel).getByRole("button", { name: /salvar/i }));
+
+    await waitFor(() => expect(update).toHaveBeenCalledTimes(1));
+    const [, entrada] = update.mock.calls[0] as [string, { preco: number }];
+    expect(entrada.preco).toBe(45.5);
+  });
+
+  it("fechar o painel de edicao descarta as alteracoes sem chamar o service", async () => {
+    const user = userEvent.setup();
+    const update = vi.fn();
+    const service = criarServicoFake({ update });
+
+    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+
+    await user.click(within(item).getByRole("button", { name: /editar/i }));
+    const painel = screen.getByRole("dialog", { name: /editar produto/i });
+    await user.type(within(painel).getByLabelText(/nome/i), " alterado");
+    await user.click(within(painel).getByRole("button", { name: /fechar/i }));
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(update).not.toHaveBeenCalled();
+  });
+
+  it("mostra erro no painel quando a edicao falha e mantem o painel aberto", async () => {
+    const user = userEvent.setup();
+    const update = vi.fn().mockRejectedValue(new Error("falhou"));
+    const service = criarServicoFake({ update });
+
+    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+
+    await user.click(within(item).getByRole("button", { name: /editar/i }));
+    const painel = screen.getByRole("dialog", { name: /editar produto/i });
+    await user.click(within(painel).getByRole("button", { name: /salvar/i }));
+
+    expect(await within(painel).findByRole("alert")).toHaveTextContent(/não foi possível/i);
+    expect(within(painel).getByRole("button", { name: /salvar/i })).not.toBeDisabled();
   });
 });

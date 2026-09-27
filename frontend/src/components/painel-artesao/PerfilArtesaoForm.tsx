@@ -1,11 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { RetratoArtesao } from "@/components/artesao/RetratoArtesao";
+import { Alerta } from "@/components/feedback/Alerta";
+import { CampoAreaTexto } from "@/components/formulario/CampoAreaTexto";
+import { CampoSelecao } from "@/components/formulario/CampoSelecao";
+import { CampoTexto } from "@/components/formulario/CampoTexto";
+import { Giro } from "@/components/formulario/Giro";
+import { BOTAO_PRIMARIO_GRANDE, BOTAO_SECUNDARIO } from "@/components/formulario/estilos-botao";
+import { Icone } from "@/components/vitrine/Icone";
 import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 import type { PerfilArtesaoInput } from "@/types/perfil-artesao";
 import type { Tecnica } from "@/types/tecnica";
 import type { Regiao } from "@/types/regiao";
+import { fotoUrlSegura } from "@/utils/foto-url-segura";
 import {
   HISTORIA_LIMITE_CARACTERES,
   perfilArtesaoValido,
@@ -18,6 +27,7 @@ export interface PerfilArtesaoFormProps {
   service: PerfilArtesaoService;
   opcoesFiltroService: OpcoesFiltroService;
   artesaoId: string;
+  nomeArtesao?: string;
 }
 
 type EstadoCarregamento =
@@ -27,14 +37,15 @@ type EstadoCarregamento =
 
 const ORDEM_CAMPOS: CampoPerfilArtesao[] = ["historia", "tecnicaId", "regiaoId", "fotoUrl"];
 
-const MENSAGEM_ERRO_CARREGAMENTO = "Nao foi possivel carregar seu perfil agora.";
+const MENSAGEM_ERRO_CARREGAMENTO = "Não foi possível carregar seu perfil.";
 const MENSAGEM_ERRO_SALVAR =
-  "Nao foi possivel salvar seu perfil. Tente novamente em instantes.";
+  "Não foi possível salvar seu perfil. Tente novamente em instantes.";
 
 export function PerfilArtesaoForm({
   service,
   opcoesFiltroService,
   artesaoId,
+  nomeArtesao = "Artesão",
 }: PerfilArtesaoFormProps) {
   const [estadoCarregamento, setEstadoCarregamento] = useState<EstadoCarregamento>({
     status: "carregando",
@@ -135,7 +146,7 @@ export function PerfilArtesaoForm({
 
   if (estadoCarregamento.status === "carregando") {
     return (
-      <p role="status" className="text-sm text-neutral-600">
+      <p role="status" className="m-0 text-body-sm text-fg-muted">
         Carregando seu perfil...
       </p>
     );
@@ -143,156 +154,155 @@ export function PerfilArtesaoForm({
 
   if (estadoCarregamento.status === "erro") {
     return (
-      <div className="flex flex-col gap-3">
-        <p role="alert" className="rounded border border-red-300 bg-red-50 p-3 text-sm text-red-700">
-          {estadoCarregamento.mensagem}
-        </p>
+      <div className="flex max-w-[640px] flex-col items-start gap-4">
+        <div className="w-full">
+          <Alerta tom="erro" titulo={estadoCarregamento.mensagem}>
+            Tente novamente em instantes.
+          </Alerta>
+        </div>
         <button
           type="button"
           onClick={() => setTentativa((atual) => atual + 1)}
-          className="min-h-11 min-w-11 self-start rounded border border-gray-300 px-4 py-2 text-sm font-medium"
+          className={BOTAO_SECUNDARIO}
         >
+          <Icone nome="recarregar" className="flex-none" />
           Tentar novamente
         </button>
       </div>
     );
   }
 
-  const contador = `${historia.length}/${HISTORIA_LIMITE_CARACTERES}`;
+  const tecnicaSelecionada = tecnicas.find((tecnica) => tecnica.id === tecnicaId);
+  const regiaoSelecionada = regioes.find((regiao) => regiao.id === regiaoId);
+
+  function alterarCampo(definir: (valor: string) => void) {
+    return (evento: { target: { value: string } }) => {
+      definir(evento.target.value);
+      setMensagemSucesso(null);
+    };
+  }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-      {erroServico ? (
-        <p role="alert" className="rounded border border-red-300 bg-red-50 p-3 text-sm text-red-700">
-          {erroServico}
-        </p>
-      ) : null}
-
-      {mensagemSucesso ? (
-        <p role="status" className="rounded border border-emerald-300 bg-emerald-50 p-3 text-sm text-emerald-700">
-          {mensagemSucesso}
-        </p>
-      ) : null}
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="perfil-historia" className="text-sm font-medium">
-          Historia
-        </label>
-        <textarea
+    <div className="flex flex-wrap items-start gap-6">
+      <form
+        onSubmit={handleSubmit}
+        noValidate
+        className="flex min-w-0 flex-[1_1_440px] flex-col gap-5 rounded-card border border-border-subtle bg-surface-card p-5 shadow-sm sm:p-8"
+      >
+        <CampoAreaTexto
           id="perfil-historia"
           ref={refHistoria}
           name="historia"
+          rotulo="História"
+          rows={5}
+          limite={HISTORIA_LIMITE_CARACTERES}
           value={historia}
-          onChange={(evento) => setHistoria(evento.target.value)}
-          aria-invalid={Boolean(erros.historia)}
-          aria-describedby={erros.historia ? "perfil-historia-erro" : undefined}
-          className="min-h-32 rounded border border-gray-300 px-3 py-2"
+          onChange={alterarCampo(setHistoria)}
+          disabled={enviando}
+          erro={erros.historia}
         />
-        <span
-          className={
-            historia.length > HISTORIA_LIMITE_CARACTERES
-              ? "text-sm text-red-700"
-              : "text-sm text-neutral-500"
-          }
-        >
-          {contador}
-        </span>
-        {erros.historia ? (
-          <p id="perfil-historia-erro" className="text-sm text-red-700">
-            {erros.historia}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="perfil-tecnica" className="text-sm font-medium">
-          Tecnica principal
-        </label>
-        <select
+        <CampoSelecao
           id="perfil-tecnica"
           ref={refTecnica}
           name="tecnicaId"
+          rotulo="Técnica principal"
+          opcoes={tecnicas.map((tecnica) => ({ valor: tecnica.id, rotulo: tecnica.nome }))}
           value={tecnicaId}
-          onChange={(evento) => setTecnicaId(evento.target.value)}
-          aria-invalid={Boolean(erros.tecnicaId)}
-          aria-describedby={erros.tecnicaId ? "perfil-tecnica-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
-        >
-          <option value="" disabled>
-            Selecione
-          </option>
-          {tecnicas.map((tecnica) => (
-            <option key={tecnica.id} value={tecnica.id}>
-              {tecnica.nome}
-            </option>
-          ))}
-        </select>
-        {erros.tecnicaId ? (
-          <p id="perfil-tecnica-erro" className="text-sm text-red-700">
-            {erros.tecnicaId}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="perfil-regiao" className="text-sm font-medium">
-          Regiao
-        </label>
-        <select
+          onChange={alterarCampo(setTecnicaId)}
+          disabled={enviando}
+          erro={erros.tecnicaId}
+        />
+        <CampoSelecao
           id="perfil-regiao"
           ref={refRegiao}
           name="regiaoId"
+          rotulo="Região"
+          opcoes={regioes.map((regiao) => ({ valor: regiao.id, rotulo: regiao.nome }))}
           value={regiaoId}
-          onChange={(evento) => setRegiaoId(evento.target.value)}
-          aria-invalid={Boolean(erros.regiaoId)}
-          aria-describedby={erros.regiaoId ? "perfil-regiao-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
-        >
-          <option value="" disabled>
-            Selecione
-          </option>
-          {regioes.map((regiao) => (
-            <option key={regiao.id} value={regiao.id}>
-              {regiao.nome}
-            </option>
-          ))}
-        </select>
-        {erros.regiaoId ? (
-          <p id="perfil-regiao-erro" className="text-sm text-red-700">
-            {erros.regiaoId}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="perfil-foto" className="text-sm font-medium">
-          URL da foto (opcional)
-        </label>
-        <input
+          onChange={alterarCampo(setRegiaoId)}
+          disabled={enviando}
+          erro={erros.regiaoId}
+        />
+        <CampoTexto
           id="perfil-foto"
           ref={refFoto}
           name="fotoUrl"
-          type="text"
+          rotulo="URL da foto"
+          opcional
+          type="url"
+          icone="imagem"
           value={fotoUrl}
-          onChange={(evento) => setFotoUrl(evento.target.value)}
-          aria-invalid={Boolean(erros.fotoUrl)}
-          aria-describedby={erros.fotoUrl ? "perfil-foto-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
+          onChange={alterarCampo(setFotoUrl)}
+          disabled={enviando}
+          erro={erros.fotoUrl}
         />
-        {erros.fotoUrl ? (
-          <p id="perfil-foto-erro" className="text-sm text-red-700">
-            {erros.fotoUrl}
-          </p>
-        ) : null}
-      </div>
 
-      <button
-        type="submit"
-        disabled={enviando}
-        className="min-h-11 min-w-11 rounded bg-emerald-700 px-4 py-2 font-medium text-white disabled:opacity-60"
+        <div className="flex flex-col gap-3 border-t border-border-subtle pt-5">
+          {mensagemSucesso ? (
+            <Alerta
+              tom="sucesso"
+              titulo={mensagemSucesso}
+              onFechar={() => setMensagemSucesso(null)}
+            />
+          ) : null}
+          {erroServico ? (
+            <Alerta tom="erro" onFechar={() => setErroServico(null)}>
+              {erroServico}
+            </Alerta>
+          ) : null}
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              disabled={enviando}
+              aria-busy={enviando || undefined}
+              className={`${BOTAO_PRIMARIO_GRANDE} w-full sm:w-auto sm:min-w-[200px]`}
+            >
+              {enviando ? <Giro /> : <Icone nome="confirmar" className="flex-none" />}
+              {enviando ? "Salvando..." : "Salvar perfil"}
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <aside
+        aria-label="Prévia do perfil público"
+        className="flex min-w-0 flex-[1_1_300px] flex-col gap-3 lg:sticky lg:top-24 lg:max-w-[400px]"
       >
-        {enviando ? "Salvando..." : "Salvar perfil"}
-      </button>
-    </form>
+        <div className="flex items-center gap-2 text-overline font-semibold tracking-[0.1em] text-fg-muted uppercase">
+          <Icone nome="olho" tamanho={16} className="flex-none" />
+          Prévia do perfil público
+        </div>
+        <div className="overflow-hidden rounded-card border border-border-subtle bg-surface-card shadow-sm">
+          <div className="flex justify-center bg-linho-100 px-6 pt-6">
+            <div className="-mb-10">
+              <RetratoArtesao
+                key={fotoUrl}
+                nome={nomeArtesao}
+                fotoUrl={fotoUrlSegura(fotoUrl.trim())}
+                variante="previa"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-2.5 px-6 pt-14 pb-6 text-center">
+            {regiaoSelecionada ? (
+              <span className="text-overline font-semibold tracking-[0.1em] text-fg-brand uppercase">
+                {regiaoSelecionada.nome.replace(" - ", " · ")}
+              </span>
+            ) : null}
+            <span className="font-display text-[28px] leading-[1.15] font-semibold tracking-[-0.015em] text-fg-strong">
+              {nomeArtesao}
+            </span>
+            {tecnicaSelecionada ? (
+              <span className="inline-flex h-[26px] items-center rounded-pill bg-linho-100 px-2.5 text-[13px] leading-none font-semibold whitespace-nowrap text-linho-700">
+                {tecnicaSelecionada.nome}
+              </span>
+            ) : null}
+            <p className="m-0 mt-1.5 text-[15px] leading-[1.6] text-pretty whitespace-pre-line text-fg-body">
+              {historia.trim() || "Sua história aparece aqui."}
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
   );
 }

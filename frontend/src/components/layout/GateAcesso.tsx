@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { LayoutAutenticacao } from "@/components/autenticacao/LayoutAutenticacao";
 import { Icone, type NomeIcone } from "@/components/vitrine/Icone";
@@ -166,20 +166,7 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
         </Link>
 
         {sessao ? (
-          <nav className="order-last -mx-1 flex w-full items-center gap-6 overflow-x-auto px-1 md:order-none md:h-[var(--header-h)] md:w-auto md:gap-7">
-            {LINKS_POR_PAPEL[sessao.papel].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={pathname === link.href ? LINK_NAV_ATIVO : LINK_NAV}
-              >
-                {link.rotulo}
-                {link.href === "/carrinho" ? (
-                  <ContadorCarrinho usuarioId={sessao?.id} />
-                ) : null}
-              </Link>
-            ))}
-          </nav>
+          <NavegacaoPrincipal papel={sessao.papel} usuarioId={sessao.id} pathname={pathname} />
         ) : null}
 
         <div className="ml-auto flex items-center gap-2 text-body-sm">
@@ -251,6 +238,59 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
         </div>
       </div>
     </header>
+  );
+}
+
+function NavegacaoPrincipal({
+  papel,
+  usuarioId,
+  pathname,
+}: {
+  papel: Papel;
+  usuarioId: string;
+  pathname: string;
+}) {
+  const refNav = useRef<HTMLElement>(null);
+  const [haMaisItens, setHaMaisItens] = useState(false);
+
+  function atualizarFade(): void {
+    const nav = refNav.current;
+    if (!nav) return;
+    setHaMaisItens(nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 1);
+  }
+
+  useEffect(() => {
+    const ativo = refNav.current?.querySelector<HTMLElement>("[data-ativo]");
+    ativo?.scrollIntoView?.({ block: "nearest", inline: "nearest" });
+    atualizarFade();
+    window.addEventListener("resize", atualizarFade);
+    return () => window.removeEventListener("resize", atualizarFade);
+  }, [pathname]);
+
+  return (
+    <div className="relative order-last -mx-1 w-full min-w-0 md:order-none md:h-[var(--header-h)] md:w-auto">
+      <nav
+        ref={refNav}
+        onScroll={atualizarFade}
+        className="flex items-center gap-6 overflow-x-auto px-1 [scrollbar-width:none] md:h-full md:gap-7 [&::-webkit-scrollbar]:hidden"
+      >
+        {LINKS_POR_PAPEL[papel].map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            data-ativo={pathname === link.href || undefined}
+            className={pathname === link.href ? LINK_NAV_ATIVO : LINK_NAV}
+          >
+            {link.rotulo}
+            {link.href === "/carrinho" ? <ContadorCarrinho usuarioId={usuarioId} /> : null}
+          </Link>
+        ))}
+      </nav>
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-y-0 right-0 w-10 bg-linear-to-l from-linho-25 to-transparent transition-opacity duration-[var(--dur-fast)] ${haMaisItens ? "opacity-100" : "opacity-0"}`}
+      />
+    </div>
   );
 }
 

@@ -11,12 +11,32 @@ function iniciais(nome: string): string {
     .join("");
 }
 
-export function RetratoArtesao({ nome, fotoUrl }: { nome: string; fotoUrl: string | null }) {
+const VARIANTES = {
+  destaque: {
+    moldura: "w-[148px] shadow-md sm:w-[200px] lg:w-[240px]",
+    iniciais: "text-[44px] text-barro-700 sm:text-[64px]",
+  },
+  previa: {
+    moldura: "w-[148px] shadow-[0_0_0_4px_var(--color-surface-card)]",
+    iniciais: "text-[44px] text-barro-800",
+  },
+};
+
+interface RetratoArtesaoProps {
+  nome: string;
+  fotoUrl: string | null;
+  variante?: keyof typeof VARIANTES;
+}
+
+export function RetratoArtesao({ nome, fotoUrl, variante = "destaque" }: RetratoArtesaoProps) {
   const [falhou, setFalhou] = useState(false);
   const mostrarFoto = fotoUrl !== null && !falhou;
+  const estilo = VARIANTES[variante];
 
   return (
-    <div className="aspect-[4/5] w-[148px] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 shadow-md sm:w-[200px] lg:w-[240px]">
+    <div
+      className={`aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 ${estilo.moldura}`}
+    >
       {mostrarFoto ? (
         <img
           src={fotoUrl}
@@ -27,7 +47,7 @@ export function RetratoArtesao({ nome, fotoUrl }: { nome: string; fotoUrl: strin
       ) : (
         <span
           aria-hidden="true"
-          className="grid size-full place-items-center font-display text-[44px] font-semibold tracking-tight text-barro-700 sm:text-[64px]"
+          className={`grid size-full place-items-center font-display font-semibold tracking-tight ${estilo.iniciais}`}
         >
           {iniciais(nome)}
         </span>

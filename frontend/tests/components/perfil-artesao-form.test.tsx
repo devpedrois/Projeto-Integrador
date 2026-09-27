@@ -42,14 +42,14 @@ function criarOpcoesServicoFake(): OpcoesFiltroService {
 
 async function preencherFormularioValido(user: ReturnType<typeof userEvent.setup>) {
   await user.type(
-    screen.getByLabelText(/historia/i),
+    screen.getByLabelText(/história/i),
     "Historia com detalhes suficientes sobre a origem da peca."
   );
   await user.selectOptions(
-    screen.getByLabelText(/tecnica/i),
+    screen.getByLabelText(/técnica/i),
     TECNICA_IDS.marcenariaArtesanal
   );
-  await user.selectOptions(screen.getByLabelText(/regiao/i), REGIAO_IDS.pilarRecife);
+  await user.selectOptions(screen.getByLabelText(/região/i), REGIAO_IDS.pilarRecife);
 }
 
 describe("PerfilArtesaoForm", () => {
@@ -77,7 +77,7 @@ describe("PerfilArtesaoForm", () => {
       />
     );
 
-    await waitFor(() => expect(screen.getByLabelText(/historia/i)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByLabelText(/história/i)).toBeInTheDocument());
     await preencherFormularioValido(user);
     await user.click(screen.getByRole("button", { name: /salvar perfil/i }));
 
@@ -99,9 +99,9 @@ describe("PerfilArtesaoForm", () => {
       />
     );
 
-    await waitFor(() => expect(screen.getByLabelText(/historia/i)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByLabelText(/história/i)).toBeInTheDocument());
     await user.type(
-      screen.getByLabelText(/historia/i),
+      screen.getByLabelText(/história/i),
       "Historia preenchida mas sem tecnica nem regiao selecionadas."
     );
     await user.click(screen.getByRole("button", { name: /salvar perfil/i }));
@@ -109,7 +109,7 @@ describe("PerfilArtesaoForm", () => {
     expect(await screen.findByText(/tecnica valida/i)).toBeInTheDocument();
     expect(screen.getByText(/regiao valida/i)).toBeInTheDocument();
     expect(salvarSpy).not.toHaveBeenCalled();
-    expect(document.activeElement).toBe(screen.getByLabelText(/tecnica/i));
+    expect(document.activeElement).toBe(screen.getByLabelText(/técnica/i));
   });
 
   it("pre-preenche os campos quando o artesao ja possui perfil salvo", async () => {
@@ -126,10 +126,10 @@ describe("PerfilArtesaoForm", () => {
     expect(
       await screen.findByDisplayValue(/historia previamente salva/i)
     ).toBeInTheDocument();
-    expect(screen.getByLabelText(/tecnica/i)).toHaveValue(
+    expect(screen.getByLabelText(/técnica/i)).toHaveValue(
       TECNICA_IDS.marcenariaArtesanal
     );
-    expect(screen.getByLabelText(/regiao/i)).toHaveValue(REGIAO_IDS.pilarRecife);
+    expect(screen.getByLabelText(/região/i)).toHaveValue(REGIAO_IDS.pilarRecife);
   });
 
   it("mostra contador de caracteres da historia e bloqueia acima de 1000 caracteres", async () => {
@@ -143,21 +143,48 @@ describe("PerfilArtesaoForm", () => {
       />
     );
 
-    await waitFor(() => expect(screen.getByLabelText(/historia/i)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByLabelText(/história/i)).toBeInTheDocument());
     expect(screen.getByText("0/1000")).toBeInTheDocument();
 
-    const campoHistoria = screen.getByLabelText(/historia/i);
+    const campoHistoria = screen.getByLabelText(/história/i);
     fireEvent.change(campoHistoria, { target: { value: "a".repeat(1001) } });
     await user.selectOptions(
-      screen.getByLabelText(/tecnica/i),
+      screen.getByLabelText(/técnica/i),
       TECNICA_IDS.marcenariaArtesanal
     );
-    await user.selectOptions(screen.getByLabelText(/regiao/i), REGIAO_IDS.pilarRecife);
+    await user.selectOptions(screen.getByLabelText(/região/i), REGIAO_IDS.pilarRecife);
     await user.click(screen.getByRole("button", { name: /salvar perfil/i }));
 
     expect(await screen.findByText(/ate 1000 caracteres/i)).toBeInTheDocument();
     expect(screen.getByText("1001/1000")).toBeInTheDocument();
     expect(salvarSpy).not.toHaveBeenCalled();
+  });
+
+  it("previa do perfil publico mostra nome, tecnica e a historia digitada", async () => {
+    const user = userEvent.setup();
+    render(
+      <PerfilArtesaoForm
+        service={criarPerfilServicoFake()}
+        opcoesFiltroService={criarOpcoesServicoFake()}
+        artesaoId={ARTESAO_ID_SESSAO}
+        nomeArtesao="João Artesão"
+      />
+    );
+
+    const previa = await screen.findByRole("complementary", {
+      name: /prévia do perfil público/i,
+    });
+    expect(previa).toHaveTextContent("João Artesão");
+    expect(previa).toHaveTextContent(/sua história aparece aqui/i);
+
+    await user.type(screen.getByLabelText(/história/i), "Aprendi com meu pai.");
+    await user.selectOptions(
+      screen.getByLabelText(/técnica/i),
+      TECNICA_IDS.marcenariaArtesanal
+    );
+
+    expect(previa).toHaveTextContent("Aprendi com meu pai.");
+    expect(previa).toHaveTextContent("Marcenaria Artesanal");
   });
 
   it("mostra erro recuperavel quando o carregamento falha e permite tentar novamente", async () => {
@@ -174,10 +201,10 @@ describe("PerfilArtesaoForm", () => {
       />
     );
 
-    expect(await screen.findByRole("alert")).toHaveTextContent(/nao foi possivel/i);
+    expect(await screen.findByRole("alert")).toHaveTextContent(/não foi possível/i);
     await user.click(screen.getByRole("button", { name: /tentar novamente/i }));
 
-    await waitFor(() => expect(screen.getByLabelText(/historia/i)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByLabelText(/história/i)).toBeInTheDocument());
   });
 
   it("mostra erro recuperavel quando salvar falha e mantem o botao habilitado", async () => {
@@ -195,11 +222,11 @@ describe("PerfilArtesaoForm", () => {
       />
     );
 
-    await waitFor(() => expect(screen.getByLabelText(/historia/i)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByLabelText(/história/i)).toBeInTheDocument());
     await preencherFormularioValido(user);
     await user.click(screen.getByRole("button", { name: /salvar perfil/i }));
 
-    expect(await screen.findByRole("alert")).toHaveTextContent(/nao foi possivel salvar/i);
+    expect(await screen.findByRole("alert")).toHaveTextContent(/não foi possível salvar/i);
     expect(screen.getByRole("button", { name: /salvar perfil/i })).not.toBeDisabled();
   });
 });

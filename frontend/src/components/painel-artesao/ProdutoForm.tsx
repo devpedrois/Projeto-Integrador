@@ -1,6 +1,13 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
+import { Alerta } from "@/components/feedback/Alerta";
+import { CampoAreaTexto } from "@/components/formulario/CampoAreaTexto";
+import { CampoSelecao } from "@/components/formulario/CampoSelecao";
+import { CampoTexto } from "@/components/formulario/CampoTexto";
+import { Giro } from "@/components/formulario/Giro";
+import { BOTAO_PRIMARIO_GRANDE } from "@/components/formulario/estilos-botao";
+import { Icone } from "@/components/vitrine/Icone";
 import { CATEGORIAS_SEED } from "@/fake-api/seeds/categorias.seed";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { NovoProdutoInput } from "@/types/novo-produto";
@@ -10,6 +17,7 @@ import {
   type CampoProduto,
   type ErrosProduto,
 } from "@/validators/produto.validator";
+import { lerPrecoCampo } from "@/utils/preco-campo";
 
 export interface ProdutoFormProps {
   service: ProdutosService;
@@ -26,7 +34,12 @@ const ORDEM_CAMPOS: CampoProduto[] = [
 ];
 
 const MENSAGEM_ERRO_SERVICO =
-  "Nao foi possivel cadastrar o produto. Tente novamente em instantes.";
+  "Não foi possível cadastrar o produto. Tente novamente em instantes.";
+
+const OPCOES_CATEGORIA = CATEGORIAS_SEED.map((categoria) => ({
+  valor: categoria.id,
+  rotulo: categoria.nome,
+}));
 
 export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
   const [nome, setNome] = useState("");
@@ -37,7 +50,7 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
   const [quantidadeEstoque, setQuantidadeEstoque] = useState("");
   const [erros, setErros] = useState<ErrosProduto>({});
   const [erroServico, setErroServico] = useState<string | null>(null);
-  const [mensagemSucesso, setMensagemSucesso] = useState<string | null>(null);
+  const [produtoCadastrado, setProdutoCadastrado] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
 
   const refNome = useRef<HTMLInputElement>(null);
@@ -69,7 +82,7 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
     const entrada: NovoProdutoInput = {
       nome,
       descricao,
-      preco: Number(preco),
+      preco: lerPrecoCampo(preco),
       categoriaId,
       fotos: fotoUrl.trim().length > 0 ? [{ url: fotoUrl }] : [],
       quantidadeEstoque: Number(quantidadeEstoque),
@@ -78,7 +91,7 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
     const errosValidacao = validarProduto(entrada);
     setErros(errosValidacao);
     setErroServico(null);
-    setMensagemSucesso(null);
+    setProdutoCadastrado(null);
 
     if (!produtoValido(errosValidacao)) {
       focarPrimeiroErro(errosValidacao);
@@ -88,7 +101,7 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
     setEnviando(true);
     try {
       await service.create(entrada, artesaoId);
-      setMensagemSucesso("Produto cadastrado com sucesso.");
+      setProdutoCadastrado(entrada.nome.trim());
       setNome("");
       setDescricao("");
       setPreco("");
@@ -103,171 +116,109 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-      {erroServico ? (
-        <p role="alert" className="rounded border border-red-300 bg-red-50 p-3 text-sm text-red-700">
-          {erroServico}
-        </p>
-      ) : null}
-
-      {mensagemSucesso ? (
-        <p role="status" className="rounded border border-emerald-300 bg-emerald-50 p-3 text-sm text-emerald-700">
-          {mensagemSucesso}
-        </p>
-      ) : null}
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="produto-nome" className="text-sm font-medium">
-          Nome
-        </label>
-        <input
-          id="produto-nome"
-          ref={refNome}
-          name="nome"
-          type="text"
-          value={nome}
-          onChange={(evento) => setNome(evento.target.value)}
-          aria-invalid={Boolean(erros.nome)}
-          aria-describedby={erros.nome ? "produto-nome-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
-        />
-        {erros.nome ? (
-          <p id="produto-nome-erro" className="text-sm text-red-700">
-            {erros.nome}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="produto-descricao" className="text-sm font-medium">
-          Descricao
-        </label>
-        <textarea
-          id="produto-descricao"
-          ref={refDescricao}
-          name="descricao"
-          value={descricao}
-          onChange={(evento) => setDescricao(evento.target.value)}
-          aria-invalid={Boolean(erros.descricao)}
-          aria-describedby={erros.descricao ? "produto-descricao-erro" : undefined}
-          className="min-h-24 rounded border border-gray-300 px-3 py-2"
-        />
-        {erros.descricao ? (
-          <p id="produto-descricao-erro" className="text-sm text-red-700">
-            {erros.descricao}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="produto-preco" className="text-sm font-medium">
-          Preco
-        </label>
-        <input
-          id="produto-preco"
-          ref={refPreco}
-          name="preco"
-          type="number"
-          step="0.01"
-          inputMode="decimal"
-          value={preco}
-          onChange={(evento) => setPreco(evento.target.value)}
-          aria-invalid={Boolean(erros.preco)}
-          aria-describedby={erros.preco ? "produto-preco-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
-        />
-        {erros.preco ? (
-          <p id="produto-preco-erro" className="text-sm text-red-700">
-            {erros.preco}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <label htmlFor="produto-categoria" className="text-sm font-medium">
-          Categoria
-        </label>
-        <select
-          id="produto-categoria"
-          ref={refCategoria}
-          name="categoriaId"
-          value={categoriaId}
-          onChange={(evento) => setCategoriaId(evento.target.value)}
-          aria-invalid={Boolean(erros.categoriaId)}
-          aria-describedby={erros.categoriaId ? "produto-categoria-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
+      {produtoCadastrado !== null ? (
+        <Alerta
+          tom="sucesso"
+          titulo="Produto cadastrado!"
+          onFechar={() => setProdutoCadastrado(null)}
         >
-          <option value="" disabled>
-            Selecione
-          </option>
-          {CATEGORIAS_SEED.map((categoria) => (
-            <option key={categoria.id} value={categoria.id}>
-              {categoria.nome}
-            </option>
-          ))}
-        </select>
-        {erros.categoriaId ? (
-          <p id="produto-categoria-erro" className="text-sm text-red-700">
-            {erros.categoriaId}
-          </p>
-        ) : null}
-      </div>
+          {produtoCadastrado} já está em Meus produtos.
+        </Alerta>
+      ) : null}
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="produto-foto" className="text-sm font-medium">
-          URL da foto
-        </label>
-        <input
-          id="produto-foto"
-          ref={refFoto}
-          name="foto"
-          type="text"
-          value={fotoUrl}
-          onChange={(evento) => setFotoUrl(evento.target.value)}
-          aria-invalid={Boolean(erros.fotos)}
-          aria-describedby={erros.fotos ? "produto-foto-erro" : undefined}
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
-        />
-        {erros.fotos ? (
-          <p id="produto-foto-erro" className="text-sm text-red-700">
-            {erros.fotos}
-          </p>
-        ) : null}
-      </div>
+      {erroServico ? <Alerta tom="erro">{erroServico}</Alerta> : null}
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="produto-estoque" className="text-sm font-medium">
-          Estoque
-        </label>
-        <input
-          id="produto-estoque"
-          ref={refEstoque}
-          name="quantidadeEstoque"
-          type="number"
-          step="1"
-          inputMode="numeric"
-          value={quantidadeEstoque}
-          onChange={(evento) => setQuantidadeEstoque(evento.target.value)}
-          aria-invalid={Boolean(erros.quantidadeEstoque)}
-          aria-describedby={
-            erros.quantidadeEstoque ? "produto-estoque-erro" : undefined
-          }
-          className="min-h-11 rounded border border-gray-300 px-3 py-2"
-        />
-        {erros.quantidadeEstoque ? (
-          <p id="produto-estoque-erro" className="text-sm text-red-700">
-            {erros.quantidadeEstoque}
-          </p>
-        ) : null}
-      </div>
+      <div className="flex flex-col gap-6 rounded-card border border-border-subtle bg-surface-card p-5 shadow-sm sm:p-8">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="sm:col-span-2">
+            <CampoTexto
+              id="produto-nome"
+              ref={refNome}
+              name="nome"
+              rotulo="Nome"
+              value={nome}
+              onChange={(evento) => setNome(evento.target.value)}
+              disabled={enviando}
+              erro={erros.nome}
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <CampoAreaTexto
+              id="produto-descricao"
+              ref={refDescricao}
+              name="descricao"
+              rotulo="Descrição"
+              value={descricao}
+              onChange={(evento) => setDescricao(evento.target.value)}
+              disabled={enviando}
+              erro={erros.descricao}
+            />
+          </div>
+          <CampoTexto
+            id="produto-preco"
+            ref={refPreco}
+            name="preco"
+            rotulo="Preço"
+            inputMode="decimal"
+            placeholder="0,00"
+            icone="cedula"
+            value={preco}
+            onChange={(evento) => setPreco(evento.target.value)}
+            disabled={enviando}
+            erro={erros.preco}
+          />
+          <CampoSelecao
+            id="produto-categoria"
+            ref={refCategoria}
+            name="categoriaId"
+            rotulo="Categoria"
+            opcoes={OPCOES_CATEGORIA}
+            value={categoriaId}
+            onChange={(evento) => setCategoriaId(evento.target.value)}
+            disabled={enviando}
+            erro={erros.categoriaId}
+          />
+          <CampoTexto
+            id="produto-foto"
+            ref={refFoto}
+            name="foto"
+            rotulo="URL da foto"
+            type="url"
+            placeholder="https://"
+            icone="imagem"
+            value={fotoUrl}
+            onChange={(evento) => setFotoUrl(evento.target.value)}
+            disabled={enviando}
+            erro={erros.fotos}
+          />
+          <CampoTexto
+            id="produto-estoque"
+            ref={refEstoque}
+            name="quantidadeEstoque"
+            rotulo="Estoque"
+            type="number"
+            step="1"
+            inputMode="numeric"
+            value={quantidadeEstoque}
+            onChange={(evento) => setQuantidadeEstoque(evento.target.value)}
+            disabled={enviando}
+            erro={erros.quantidadeEstoque}
+          />
+        </div>
 
-      <button
-        type="submit"
-        disabled={enviando}
-        className="min-h-11 min-w-11 rounded bg-emerald-700 px-4 py-2 font-medium text-white disabled:opacity-60"
-      >
-        {enviando ? "Enviando..." : "Cadastrar produto"}
-      </button>
+        <div className="flex justify-end border-t border-border-subtle pt-5">
+          <button
+            type="submit"
+            disabled={enviando}
+            aria-busy={enviando || undefined}
+            className={`${BOTAO_PRIMARIO_GRANDE} w-full sm:w-auto sm:min-w-[220px]`}
+          >
+            {enviando ? <Giro /> : <Icone nome="confirmar" className="flex-none" />}
+            {enviando ? "Cadastrando…" : "Cadastrar produto"}
+          </button>
+        </div>
+      </div>
     </form>
   );
 }

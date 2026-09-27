@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { BOTAO_SECUNDARIO } from "@/components/formulario/estilos-botao";
 import { RouteGuard } from "@/components/layout/RouteGuard";
 import { ProdutoForm } from "@/components/painel-artesao/ProdutoForm";
 import { PendenciaPerfilArtesao } from "@/components/painel-artesao/PendenciaPerfilArtesao";
+import { Icone } from "@/components/vitrine/Icone";
 import { useSessao } from "@/hooks/use-sessao";
 import {
   obterPerfilArtesaoService,
@@ -39,14 +41,16 @@ export default function PainelArtesaoPage() {
 
   return (
     <RouteGuard sessionStore={sessionStore} papeisPermitidos={["artesao"]}>
-      <main className="mx-auto flex min-h-screen max-w-4xl flex-col gap-6 p-6">
-        <h1 className="text-2xl font-semibold">Painel do artesao</h1>
-        <Link
-          href="/painel-artesao/produtos"
-          className="min-h-11 w-fit rounded border border-emerald-700 px-4 py-2 text-sm font-medium text-emerald-700"
-        >
-          Meus produtos
-        </Link>
+      <main className="mx-auto flex w-full max-w-[928px] flex-col gap-6 px-[var(--container-pad)] pt-8 pb-20 md:pt-12">
+        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+          <h1 className="m-0 font-display text-[30px] leading-[1.12] font-semibold tracking-[-0.015em] text-fg-strong md:text-[40px]">
+            Painel do artesão
+          </h1>
+          <Link href="/painel-artesao/produtos" className={BOTAO_SECUNDARIO}>
+            <Icone nome="pacote" className="flex-none" />
+            Meus produtos
+          </Link>
+        </div>
         {perfilService && sessao ? (
           <PendenciaPerfilArtesao service={perfilService} artesaoId={sessao.id} />
         ) : null}
@@ -54,6 +58,7 @@ export default function PainelArtesaoPage() {
           <ProdutoForm service={produtosService} artesaoId={sessao.id} />
         ) : null}
       </main>
+
     </RouteGuard>
   );
 }

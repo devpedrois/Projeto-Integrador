@@ -31,7 +31,7 @@ export default function MeusProdutosPage() {
 
   return (
     <RouteGuard sessionStore={sessionStore} papeisPermitidos={["artesao"]}>
-      <main className="mx-auto flex min-h-screen max-w-4xl flex-col gap-6 p-6">
+      <main className="mx-auto w-full max-w-[1008px] px-[var(--container-pad)] pt-8 pb-20 md:pt-12">
         {produtosService && sessao ? (
           <MeusProdutosList service={produtosService} artesaoId={sessao.id} />
         ) : null}

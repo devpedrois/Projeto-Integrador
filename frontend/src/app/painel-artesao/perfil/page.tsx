@@ -36,13 +36,16 @@ export default function PerfilArtesaoPage() {
 
   return (
     <RouteGuard sessionStore={sessionStore} papeisPermitidos={["artesao"]}>
-      <main className="mx-auto flex min-h-screen max-w-2xl flex-col gap-6 p-6">
-        <h1 className="text-2xl font-semibold">Meu perfil</h1>
+      <main className="mx-auto flex w-full max-w-[1128px] flex-col gap-6 px-[var(--container-pad)] pt-8 pb-20 md:pt-12">
+        <h1 className="m-0 font-display text-[30px] leading-[1.12] font-semibold tracking-[-0.015em] text-fg-strong md:text-[40px]">
+          Meu perfil
+        </h1>
         {perfilService && opcoesFiltroService && sessao ? (
           <PerfilArtesaoForm
             service={perfilService}
             opcoesFiltroService={opcoesFiltroService}
             artesaoId={sessao.id}
+            nomeArtesao={sessao.nome}
           />
         ) : null}
       </main>

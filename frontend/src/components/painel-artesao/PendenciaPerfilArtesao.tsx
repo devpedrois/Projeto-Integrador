@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Alerta } from "@/components/feedback/Alerta";
+import { Icone } from "@/components/vitrine/Icone";
 import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
 import {
   verificarPerfilCompleto,
@@ -20,9 +22,9 @@ type Estado =
   | { status: "erro" };
 
 const ROTULOS_CAMPO: Record<CampoPerfilArtesaoPendente, string> = {
-  historia: "historia",
-  tecnicaId: "tecnica principal",
-  regiaoId: "regiao",
+  historia: "história",
+  tecnicaId: "técnica principal",
+  regiaoId: "região",
 };
 
 export function PendenciaPerfilArtesao({
@@ -58,18 +60,14 @@ export function PendenciaPerfilArtesao({
 
   if (estado.status === "carregando") {
     return (
-      <p role="status" className="text-sm text-neutral-600">
+      <p role="status" className="m-0 text-body-sm text-fg-muted">
         Verificando seu perfil...
       </p>
     );
   }
 
   if (estado.status === "erro") {
-    return (
-      <p role="alert" className="rounded border border-red-300 bg-red-50 p-3 text-sm text-red-700">
-        Nao foi possivel verificar seu perfil agora.
-      </p>
-    );
+    return <Alerta tom="erro">Não foi possível verificar seu perfil agora.</Alerta>;
   }
 
   if (estado.status === "completo") {
@@ -77,16 +75,20 @@ export function PendenciaPerfilArtesao({
   }
 
   return (
-    <div className="rounded border border-amber-300 bg-amber-50 p-3 text-sm text-amber-800">
-      <p>
-        Seu perfil esta incompleto. Faltam: {estado.camposPendentes
-          .map((campo) => ROTULOS_CAMPO[campo])
-          .join(", ")}
-        .
-      </p>
-      <Link href="/painel-artesao/perfil" className="font-medium underline">
-        Completar perfil
-      </Link>
-    </div>
+    <Alerta tom="aviso" titulo="Complete seu perfil">
+      <div className="flex flex-col items-start gap-1.5">
+        <span>
+          Antes de cadastrar produtos, preencha as informações de Meu perfil. Faltam:{" "}
+          {estado.camposPendentes.map((campo) => ROTULOS_CAMPO[campo]).join(", ")}.
+        </span>
+        <Link
+          href="/painel-artesao/perfil"
+          className="inline-flex items-center gap-1.5 font-semibold text-fg-link underline-offset-2 hover:text-fg-link-hover hover:underline"
+        >
+          Ir para Meu perfil
+          <Icone nome="avancar" tamanho={16} className="flex-none" />
+        </Link>
+      </div>
+    </Alerta>
   );
 }
