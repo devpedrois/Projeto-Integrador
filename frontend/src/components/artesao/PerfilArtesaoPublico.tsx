@@ -1,6 +1,15 @@
 "use client";
 
 import { usePerfilPublicoArtesao } from "@/hooks/use-perfil-publico-artesao";
+import { RetratoArtesao } from "@/components/artesao/RetratoArtesao";
+import { Icone } from "@/components/vitrine/Icone";
+import {
+  BLOCO,
+  CLASSE_ALERTA,
+  CLASSE_STATUS,
+  CLASSE_VAZIO,
+  IconeVazio,
+} from "@/components/vitrine/EsqueletoProdutos";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
@@ -15,6 +24,9 @@ function fotoUrlSegura(fotoUrl: string | undefined): string | null {
     return null;
   }
 }
+
+const CLASSE_FAIXA =
+  "mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12";
 
 export interface PerfilArtesaoPublicoProps {
   usuariosService: UsuariosService | null;
@@ -41,30 +53,50 @@ export function PerfilArtesaoPublico({
 
   if (estado.status === "carregando") {
     return (
-      <p role="status" className="text-sm text-neutral-600">
-        Carregando perfil do artesao...
-      </p>
+      <section className="border-b border-border-default bg-linho-100">
+        <div className={CLASSE_FAIXA}>
+          <span
+            aria-hidden="true"
+            className={`${BLOCO} aspect-[4/5] w-[148px] flex-none rounded-[999px_999px_14px_14px] sm:w-[200px] lg:w-[240px]`}
+          />
+          <div className="flex max-w-[560px] min-w-0 flex-[1_1_320px] flex-col gap-3.5 pb-1">
+            <p role="status" className={CLASSE_STATUS}>
+              Carregando perfil do artesao...
+            </p>
+            <span aria-hidden="true" className={`${BLOCO} h-11 w-3/5`} />
+            <span aria-hidden="true" className={`${BLOCO} h-4 w-2/5`} />
+            <span aria-hidden="true" className={`${BLOCO} mt-2 h-3.5 w-full`} />
+            <span aria-hidden="true" className={`${BLOCO} h-3.5 w-11/12`} />
+          </div>
+        </div>
+      </section>
     );
   }
 
   if (estado.status === "naoEncontrado") {
     return (
-      <p role="status" className="text-sm text-neutral-600">
-        Artesao nao encontrado.
-      </p>
+      <div className="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-16 sm:pb-24">
+        <div className={CLASSE_VAZIO}>
+          <IconeVazio nome="usuario" />
+          <p role="status" className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
+            Artesao nao encontrado.
+          </p>
+        </div>
+      </div>
     );
   }
 
   if (estado.status === "erro") {
     return (
-      <div className="flex flex-col gap-3">
-        <p role="alert" className="rounded border border-red-300 bg-red-50 p-3 text-sm text-red-700">
+      <div className="mx-auto flex max-w-[var(--container-max)] flex-col items-start gap-3 px-[var(--container-pad)] pt-8 pb-16">
+        <p role="alert" className={CLASSE_ALERTA}>
+          <Icone nome="alerta" className="mt-0.5 flex-none" />
           {estado.mensagem}
         </p>
         <button
           type="button"
           onClick={recarregar}
-          className="min-h-11 min-w-11 self-start rounded border border-gray-300 px-4 py-2 text-sm font-medium"
+          className="inline-flex min-h-[var(--control-h-md)] items-center justify-center rounded-control border border-border-strong bg-surface-card px-4 text-button font-semibold text-fg-strong transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover"
         >
           Tentar novamente
         </button>
@@ -76,55 +108,88 @@ export function PerfilArtesaoPublico({
   const fotoUrl = fotoUrlSegura(perfil?.fotoUrl);
 
   return (
-    <div className="mx-auto flex max-w-4xl flex-col gap-6 p-4 sm:p-6">
-      <header className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        {fotoUrl ? (
-          <img
-            src={fotoUrl}
-            alt={usuario.nome}
-            className="h-24 w-24 rounded-full object-cover"
-          />
-        ) : null}
-        <div className="flex flex-col gap-1">
-          <h1 className="text-2xl font-semibold">{usuario.nome}</h1>
-          {tecnicaNome ? (
-            <span className="text-sm text-neutral-600">{tecnicaNome}</span>
-          ) : null}
-          {regiaoNome ? (
-            <span className="text-sm text-neutral-600">{regiaoNome}</span>
-          ) : null}
+    <>
+      <header className="border-b border-border-default bg-linho-100">
+        <div className={CLASSE_FAIXA}>
+          <RetratoArtesao key={fotoUrl ?? ""} nome={usuario.nome} fotoUrl={fotoUrl} />
+          <div className="flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1">
+            <h1 className="m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]">
+              {usuario.nome}
+            </h1>
+            {tecnicaNome || regiaoNome ? (
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body">
+                {tecnicaNome ? (
+                  <span className="inline-flex items-center gap-2">
+                    <Icone nome="martelo" className="flex-none text-fg-brand" />
+                    {tecnicaNome}
+                  </span>
+                ) : null}
+                {regiaoNome ? (
+                  <span className="inline-flex items-center gap-2">
+                    <Icone nome="pino" className="flex-none text-fg-brand" />
+                    {regiaoNome}
+                  </span>
+                ) : null}
+              </div>
+            ) : null}
+            {perfil?.historia ? (
+              <p className="m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg">
+                {perfil.historia}
+              </p>
+            ) : null}
+          </div>
         </div>
       </header>
 
-      {perfil?.historia ? (
-        <p className="whitespace-pre-line text-sm text-neutral-700">
-          {perfil.historia}
-        </p>
-      ) : null}
+      <div className="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20">
+        <section aria-label="Produtos do artesao" className="flex flex-col gap-5">
+          <h2 className="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]">
+            Produtos
+          </h2>
 
-      <section aria-label="Produtos do artesao" className="flex flex-col gap-3">
-        <h2 className="text-xl font-semibold">Produtos</h2>
+          {produtos.length === 0 ? (
+            <div className={CLASSE_VAZIO}>
+              <IconeVazio nome="pacote" />
+              <p role="status" className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
+                Nenhum produto disponivel no momento.
+              </p>
+            </div>
+          ) : (
+            <ul className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-3">
+              {produtos.map((produto) => {
+                const capa = [...produto.fotos].sort((a, b) => a.ordem - b.ordem)[0];
+                const capaUrl = fotoUrlSegura(capa?.url);
 
-        {produtos.length === 0 ? (
-          <p role="status" className="text-sm text-neutral-600">
-            Nenhum produto disponivel no momento.
-          </p>
-        ) : (
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {produtos.map((produto) => (
-              <li
-                key={produto.id}
-                className="flex flex-col gap-2 rounded border border-gray-200 p-3"
-              >
-                <span className="block text-sm font-medium">{produto.nome}</span>
-                <span className="block text-sm text-neutral-600">
-                  R$ {produto.preco.toFixed(2)}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-    </div>
+                return (
+                  <li
+                    key={produto.id}
+                    className="flex items-center gap-3 rounded-md border border-border-subtle bg-surface-card p-2.5 transition-[box-shadow,border-color] duration-[var(--dur-base)] ease-out hover:border-border-default hover:shadow-sm"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="grid size-16 flex-none place-items-center overflow-hidden rounded-sm bg-linho-100 text-fg-subtle"
+                    >
+                      {capaUrl ? (
+                        <img src={capaUrl} alt="" className="size-full object-cover" />
+                      ) : (
+                        <Icone nome="pacote" tamanho={20} className="opacity-75" />
+                      )}
+                    </span>
+                    <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                      <span className="block truncate text-[15px] leading-[1.3] font-semibold text-fg-strong">
+                        {produto.nome}
+                      </span>
+                      <span className="mt-0.5 block text-[15px] font-bold text-fg-strong tabular-nums">
+                        R$ {produto.preco.toFixed(2)}
+                      </span>
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </section>
+      </div>
+    </>
   );
 }

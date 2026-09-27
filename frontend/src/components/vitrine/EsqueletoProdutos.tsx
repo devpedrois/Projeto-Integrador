@@ -1,7 +1,7 @@
 import { Icone } from "@/components/vitrine/Icone";
 import type { NomeIcone } from "@/components/vitrine/Icone";
 
-const BLOCO =
+export const BLOCO =
   "block rounded-sm bg-[linear-gradient(90deg,var(--color-linho-100)_0px,var(--color-linho-50)_160px,var(--color-linho-100)_320px)] bg-[length:800px_100%] animate-og-shimmer motion-reduce:animate-none";
 
 export function EsqueletoProdutos({ quantidade = 6 }: { quantidade?: number }) {

@@ -3,6 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { RouteGuard } from "@/components/layout/RouteGuard";
+import { Icone } from "@/components/vitrine/Icone";
+import {
+  CLASSE_ALERTA,
+  CLASSE_STATUS,
+  CLASSE_VAZIO,
+  IconeVazio,
+} from "@/components/vitrine/EsqueletoProdutos";
 import { useCarrinho } from "@/hooks/use-carrinho";
 import { useSessao } from "@/hooks/use-sessao";
 import {
@@ -20,6 +27,15 @@ const STORE_INATIVO: SessionStore = {
   getSnapshot: () => null,
   subscribe: () => () => {},
 } as unknown as SessionStore;
+
+const CLASSE_MAIN =
+  "mx-auto min-h-screen w-full max-w-[720px] px-4 pt-6 pb-16 sm:px-6 sm:pt-12 sm:pb-24";
+
+const CLASSE_TITULO =
+  "m-0 mb-5 font-display text-[30px] leading-[1.1] font-semibold tracking-display text-balance text-fg-strong sm:mb-7 sm:text-[40px]";
+
+const BOTAO_SECUNDARIO =
+  "inline-flex min-h-[var(--control-h-md)] items-center justify-center gap-2 rounded-control border border-border-strong bg-surface-card px-4 text-button font-semibold text-fg-strong no-underline transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover hover:text-fg-strong";
 
 export default function CheckoutPage() {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
@@ -47,8 +63,8 @@ export default function CheckoutPage() {
           compradorId={sessao.id}
         />
       ) : (
-        <main className="mx-auto flex min-h-screen max-w-2xl flex-col gap-6 p-6">
-          <p role="status" className="text-sm text-neutral-600">
+        <main className={CLASSE_MAIN}>
+          <p role="status" className={CLASSE_STATUS}>
             Carregando checkout...
           </p>
         </main>
@@ -99,78 +115,113 @@ function Checkout({
 
   if (pedidoConfirmado) {
     return (
-      <main className="mx-auto flex min-h-screen max-w-2xl flex-col gap-6 p-6 text-center">
-        <h1 className="text-2xl font-semibold">Pedido confirmado</h1>
-        <p className="text-sm text-neutral-600">
-          Numero de confirmacao:{" "}
-          <span className="font-mono font-medium">{pedidoConfirmado.numeroConfirmacao}</span>
-        </p>
-        <Link
-          href="/"
-          className="self-center rounded border border-gray-300 p-2 text-sm"
-        >
-          Voltar para a vitrine
-        </Link>
+      <main className={CLASSE_MAIN}>
+        <section className="flex flex-col items-center gap-4 rounded-lg border border-border-subtle bg-surface-card px-5 py-10 text-center shadow-card sm:px-8 sm:py-14">
+          <span
+            aria-hidden="true"
+            className="mb-1 grid h-[98px] w-[84px] place-items-center rounded-[999px_999px_14px_14px] bg-sucesso-50 text-sucesso-700"
+          >
+            <Icone nome="confirmar" tamanho={36} />
+          </span>
+          <h1 className="m-0 font-display text-[30px] leading-[1.1] font-semibold tracking-display text-fg-strong sm:text-[40px]">
+            Pedido confirmado
+          </h1>
+          <p className="m-0 text-body text-fg-muted">
+            Numero de confirmacao:{" "}
+            <span className="rounded-sm bg-linho-100 px-2 py-0.5 font-mono font-semibold text-fg-strong">
+              {pedidoConfirmado.numeroConfirmacao}
+            </span>
+          </p>
+          <Link href="/" className={`${BOTAO_SECUNDARIO} mt-2`}>
+            <Icone nome="voltar" className="flex-none" />
+            Voltar para a vitrine
+          </Link>
+        </section>
       </main>
     );
   }
 
   if (carrinho.itens.length === 0) {
     return (
-      <main className="mx-auto flex min-h-screen max-w-2xl flex-col gap-4 p-6 text-center">
-        <p className="text-sm text-neutral-600">Seu carrinho esta vazio.</p>
-        <Link
-          href="/"
-          className="self-center rounded border border-gray-300 p-2 text-sm"
-        >
-          Ver produtos
-        </Link>
+      <main className={CLASSE_MAIN}>
+        <div className={CLASSE_VAZIO}>
+          <IconeVazio nome="sacola" />
+          <p className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
+            Seu carrinho esta vazio.
+          </p>
+          <Link href="/" className={BOTAO_SECUNDARIO}>
+            Ver produtos
+          </Link>
+        </div>
       </main>
     );
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-2xl flex-col gap-6 p-4 sm:p-6">
-      <h1 className="text-2xl font-semibold">Revisar e confirmar pedido</h1>
+    <main className={CLASSE_MAIN}>
+      <h1 className={CLASSE_TITULO}>Revisar e confirmar pedido</h1>
 
-      <ul className="flex flex-col gap-3">
-        {carrinho.itens.map((item) => (
-          <li
-            key={item.produtoId}
-            className="flex items-center justify-between gap-3 rounded border border-gray-200 p-3"
-          >
-            <div className="flex flex-col">
-              <span className="text-sm font-medium">{item.nome}</span>
-              <span className="text-sm text-neutral-600">
-                {item.quantidade} x R$ {item.precoUnitario.toFixed(2)}
-              </span>
-            </div>
-            <span className="text-sm font-semibold">
-              R$ {(item.precoUnitario * item.quantidade).toFixed(2)}
+      <div className="flex flex-col gap-5">
+        {erro ? (
+          <p role="alert" className={CLASSE_ALERTA}>
+            <Icone nome="alerta" className="mt-0.5 flex-none" />
+            {erro}
+          </p>
+        ) : null}
+
+        <section className="rounded-card border border-border-subtle bg-surface-card px-4 pt-1 pb-4 shadow-card sm:px-6 sm:pb-5">
+          <ul className="m-0 flex list-none flex-col p-0">
+            {carrinho.itens.map((item) => (
+              <li
+                key={item.produtoId}
+                className="flex items-center gap-3.5 border-b border-border-subtle py-4"
+              >
+                <span
+                  aria-hidden="true"
+                  className="grid size-[52px] flex-none place-items-center rounded-sm bg-linho-100 text-fg-subtle sm:size-16"
+                >
+                  <Icone nome="pacote" tamanho={20} className="opacity-75" />
+                </span>
+                <div className="flex min-w-0 flex-1 flex-col gap-1">
+                  <span className="text-base leading-[1.3] font-semibold text-pretty text-fg-strong">
+                    {item.nome}
+                  </span>
+                  <span className="text-body-sm text-fg-muted tabular-nums">
+                    {item.quantidade} x R$ {item.precoUnitario.toFixed(2)}
+                  </span>
+                </div>
+                <span className="flex-none text-base font-bold whitespace-nowrap text-fg-strong tabular-nums">
+                  R$ {(item.precoUnitario * item.quantidade).toFixed(2)}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-baseline justify-between gap-3 pt-5 pb-1">
+            <span className="font-display text-[22px] font-semibold text-fg-strong">Total</span>
+            <span className="text-[26px] font-bold tracking-tight text-fg-strong tabular-nums">
+              R$ {carrinho.total.toFixed(2)}
             </span>
-          </li>
-        ))}
-      </ul>
+          </div>
+        </section>
 
-      <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-        <span className="text-base font-semibold">Total</span>
-        <span className="text-base font-semibold">R$ {carrinho.total.toFixed(2)}</span>
+        <button
+          type="button"
+          onClick={confirmarPedido}
+          disabled={enviando}
+          className="inline-flex min-h-[var(--control-h-lg)] w-full items-center justify-center gap-2 rounded-control bg-action-primary px-6 text-base font-semibold text-fg-on-brand transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-primary-hover active:translate-y-px active:bg-action-primary-press disabled:cursor-progress disabled:bg-barro-400 disabled:active:translate-y-0"
+        >
+          {enviando ? (
+            <span
+              aria-hidden="true"
+              className="size-[18px] flex-none animate-og-spin rounded-pill border-2 border-white/40 border-t-white motion-reduce:animate-none"
+            />
+          ) : (
+            <Icone nome="confirmar" className="flex-none" />
+          )}
+          {enviando ? "Confirmando..." : "Confirmar pedido"}
+        </button>
       </div>
-
-      {erro ? (
-        <p role="alert" className="text-sm text-red-700">
-          {erro}
-        </p>
-      ) : null}
-
-      <button
-        type="button"
-        onClick={confirmarPedido}
-        disabled={enviando}
-        className="min-h-11 rounded bg-emerald-700 px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
-      >
-        {enviando ? "Confirmando..." : "Confirmar pedido"}
-      </button>
     </main>
   );
 }

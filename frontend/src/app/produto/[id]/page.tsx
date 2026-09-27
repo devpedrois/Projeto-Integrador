@@ -100,8 +100,11 @@ export default function PaginaProduto() {
 
   return (
     <main className="min-h-screen">
-      <div className="mx-auto flex w-full max-w-5xl justify-end px-4 pt-4 sm:px-6">
-        <Link href="/carrinho" className="text-sm underline">
+      <div className="mx-auto flex w-full max-w-[var(--container-max)] justify-end px-[var(--container-pad)] pt-4">
+        <Link
+          href="/carrinho"
+          className="inline-flex min-h-[var(--control-h-sm)] items-center rounded-control px-2.5 text-body-sm font-semibold text-fg-muted no-underline transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover hover:text-fg-strong"
+        >
           Carrinho ({carrinho.itens.length})
         </Link>
       </div>
