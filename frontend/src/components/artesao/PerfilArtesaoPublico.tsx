@@ -3,7 +3,7 @@
 import { usePerfilPublicoArtesao } from "@/hooks/use-perfil-publico-artesao";
 import { RetratoArtesao } from "@/components/artesao/RetratoArtesao";
 import { Icone } from "@/components/vitrine/Icone";
-import { fotoUrlSegura as capaUrlSegura } from "@/utils/foto-url-segura";
+import { fotoUrlSegura } from "@/utils/foto-url-segura";
 import {
   BLOCO,
   CLASSE_ALERTA,
@@ -15,16 +15,6 @@ import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
-
-function fotoUrlSegura(fotoUrl: string | undefined): string | null {
-  if (!fotoUrl) return null;
-  try {
-    const url = new URL(fotoUrl);
-    return url.protocol === "http:" || url.protocol === "https:" ? fotoUrl : null;
-  } catch {
-    return null;
-  }
-}
 
 const CLASSE_FAIXA =
   "mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12";
@@ -159,7 +149,7 @@ export function PerfilArtesaoPublico({
             <ul className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-3">
               {produtos.map((produto) => {
                 const capa = [...produto.fotos].sort((a, b) => a.ordem - b.ordem)[0];
-                const capaUrl = capaUrlSegura(capa?.url);
+                const capaUrl = fotoUrlSegura(capa?.url);
 
                 return (
                   <li

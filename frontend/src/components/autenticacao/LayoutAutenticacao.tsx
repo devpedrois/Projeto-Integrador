@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type ImagemNoMobile = "compacta" | "destaque" | "oculta";
@@ -30,11 +31,16 @@ export function LayoutAutenticacao({ imagemNoMobile, children }: LayoutAutentica
         <div
           className={`${CLASSE_IMAGEM_MOBILE[imagemNoMobile]} rounded-card border border-border-subtle bg-surface-card p-2 shadow-card md:order-last md:h-[min(740px,calc(100svh-120px))] md:min-h-[480px] md:p-3`}
         >
-          <div
-            role="img"
-            aria-label="Mãos modelando barro no torno"
-            className="size-full rounded-md bg-[url(/maos-barro.png),linear-gradient(160deg,var(--color-barro-300),var(--color-barro-700))] bg-cover bg-center"
-          />
+          <div className="relative size-full overflow-hidden rounded-md bg-[linear-gradient(160deg,var(--color-barro-300),var(--color-barro-700))]">
+            <Image
+              src="/imagens/maos-barro.webp"
+              alt="Mãos modelando barro no torno"
+              fill
+              priority
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
         </div>
         {children}
       </main>

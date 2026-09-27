@@ -42,7 +42,7 @@ export function RetratoArtesao({ nome, fotoUrl, variante = "destaque" }: Retrato
           src={fotoUrl}
           alt={nome}
           onError={() => setFalhou(true)}
-          className="block size-full object-cover"
+          className="block size-full object-cover object-[50%_65%]"
         />
       ) : (
         <span

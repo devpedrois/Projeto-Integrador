@@ -9,7 +9,7 @@ export const PERFIS_ARTESAO_SEED: readonly PerfilArtesao[] = [
       "Joao aprendeu marcenaria artesanal observando o pai na Comunidade do Pilar. Cada peca carrega tecnicas passadas por tres geracoes.",
     tecnicaId: TECNICA_IDS.marcenariaArtesanal,
     regiaoId: REGIAO_IDS.pilarRecife,
-    fotoUrl: "https://origem.test/perfis/joao-artesao.jpg",
+    fotoUrl: "/imagens/entalhe-luz.webp",
   },
   {
     artesaoId: "seed-artesao-02",

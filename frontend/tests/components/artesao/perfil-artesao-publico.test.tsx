@@ -128,6 +128,29 @@ describe("PerfilArtesaoPublico", () => {
     expect(screen.queryByText("Renda de Bilro")).not.toBeInTheDocument();
   });
 
+  it("renderiza fotoUrl com caminho local do proprio site", async () => {
+    render(
+      <PerfilArtesaoPublico
+        usuariosService={criarUsuariosServiceFake()}
+        perfilArtesaoService={criarPerfilServiceFake({
+          obter: vi.fn().mockResolvedValue({
+            artesaoId: "artesao-1",
+            historia: "Historia valida.",
+            tecnicaId: "tecnica-1",
+            regiaoId: "regiao-1",
+            fotoUrl: "/imagens/entalhe-luz.webp",
+          }),
+        })}
+        produtosService={criarProdutosServiceFake()}
+        opcoesFiltroService={criarOpcoesFiltroServiceFake()}
+        artesaoId="artesao-1"
+      />
+    );
+
+    const retrato = await screen.findByRole("img", { name: "Maria das Rendas" });
+    expect(retrato).toHaveAttribute("src", "/imagens/entalhe-luz.webp");
+  });
+
   it("nao renderiza fotoUrl com esquema diferente de http(s)", async () => {
     render(
       <PerfilArtesaoPublico

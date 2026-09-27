@@ -156,6 +156,8 @@ Na Avaliação 1, o frontend consome uma **Fake API estruturada** (`src/fake-api
 
 A documentação completa da Fake API (camadas, recursos, contratos, erros, rotas protegidas e plano de troca pelo backend) está em [`docs/fake-api.md`](docs/fake-api.md).
 
+Imagens ilustrativas geradas com IA (Gemini).
+
 ## Testes de FCCPD
 
 Seção dedicada aos dois critérios centrais da rubrica de FCCPD — controle de concorrência no checkout e fila assíncrona — com o que rodar para gerar evidência real, não só descrita.
