@@ -13,7 +13,7 @@ export type EstadoArtesaosAtivos =
   | { status: "sucesso"; artesaos: readonly ArtesaoAtivo[] }
   | { status: "erro"; mensagem: string };
 
-const MENSAGEM_ERRO_PADRAO = "Nao foi possivel carregar os artesaos agora.";
+const MENSAGEM_ERRO_PADRAO = "Não foi possível carregar os artesãos agora.";
 
 export function useArtesaosAtivos(
   service: UsuariosService | null

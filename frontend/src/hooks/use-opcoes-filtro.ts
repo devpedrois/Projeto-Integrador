@@ -16,7 +16,7 @@ export type EstadoOpcoesFiltro =
     }
   | { status: "erro"; mensagem: string };
 
-const MENSAGEM_ERRO_PADRAO = "Nao foi possivel carregar os filtros agora.";
+const MENSAGEM_ERRO_PADRAO = "Não foi possível carregar os filtros agora.";
 
 export function useOpcoesFiltro(
   service: OpcoesFiltroService | null

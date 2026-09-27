@@ -11,7 +11,7 @@ import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import { ServiceError } from "@/services/errors";
 import { validarCadastro } from "@/validators/cadastro.validator";
 
-const MENSAGEM_CREDENCIAIS_INVALIDAS = "Email ou senha invalidos.";
+const MENSAGEM_CREDENCIAIS_INVALIDAS = "Email ou senha inválidos.";
 
 export interface FakeUsuariosServiceOpcoes {
   latenciaMs?: number;
@@ -45,7 +45,7 @@ export class FakeUsuariosService implements UsuariosService {
       throw new ServiceError("PAPEL_INVALIDO", erros.papel);
     }
     if (Object.keys(erros).length > 0) {
-      throw new ServiceError("CADASTRO_INVALIDO", "Dados de cadastro invalidos.");
+      throw new ServiceError("CADASTRO_INVALIDO", "Dados de cadastro inválidos.");
     }
 
     await this.repositorio.seed();

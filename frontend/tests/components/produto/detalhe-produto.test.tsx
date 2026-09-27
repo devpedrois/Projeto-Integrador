@@ -229,7 +229,7 @@ describe("DetalheProduto", () => {
       .mockResolvedValue(produto());
     renderizar({ produtosService: criarProdutosServiceFake({ obterPublico }) });
 
-    expect(await screen.findByRole("alert")).toHaveTextContent(/nao foi possivel carregar este produto/i);
+    expect(await screen.findByRole("alert")).toHaveTextContent(/não foi possível carregar este produto/i);
     expect(screen.queryByRole("button", { name: /adicionar ao carrinho/i })).not.toBeInTheDocument();
 
     await usuarioTeste.click(screen.getByRole("button", { name: /tentar novamente/i }));

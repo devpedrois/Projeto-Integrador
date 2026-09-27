@@ -60,7 +60,7 @@ export class FakeAvaliacoesService implements AvaliacoesService {
 
     const erros = validarAvaliacao(input);
     if (!avaliacaoValida(erros)) {
-      throw new ServiceError("AVALIACAO_INVALIDA", "Dados da avaliacao invalidos.", { erros });
+      throw new ServiceError("AVALIACAO_INVALIDA", "Dados da avaliação inválidos.", { erros });
     }
 
     await this.repositorio.seed();
@@ -74,7 +74,7 @@ export class FakeAvaliacoesService implements AvaliacoesService {
     if (!produto || !produtoDisponivelParaVenda(produto, artesaosInativos)) {
       throw new ServiceError(
         "PRODUTO_NAO_ENCONTRADO",
-        "Produto nao encontrado.",
+        "Produto não encontrado.",
         { produtoId: input.produtoId }
       );
     }
@@ -83,7 +83,7 @@ export class FakeAvaliacoesService implements AvaliacoesService {
     if (existentes.some((avaliacao) => avaliacao.compradorId === compradorId)) {
       throw new ServiceError(
         "AVALIACAO_DUPLICADA",
-        "Voce ja avaliou este produto.",
+        "Você já avaliou este produto.",
         { produtoId: input.produtoId }
       );
     }

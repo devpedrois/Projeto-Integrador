@@ -11,7 +11,7 @@ export type EstadoBuscaProdutos =
   | { status: "vazio" }
   | { status: "erro"; mensagem: string };
 
-const MENSAGEM_ERRO_PADRAO = "Nao foi possivel buscar produtos agora.";
+const MENSAGEM_ERRO_PADRAO = "Não foi possível buscar produtos agora.";
 
 export function useBuscaProdutos(
   service: ProdutosService | null,

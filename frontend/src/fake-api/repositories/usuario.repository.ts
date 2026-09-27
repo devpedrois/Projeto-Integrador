@@ -7,7 +7,7 @@ export class EmailJaCadastradoError extends Error {
   public readonly code = "EMAIL_JA_CADASTRADO";
 
   constructor() {
-    super("Este email ja esta cadastrado.");
+    super("Este email já está cadastrado.");
     this.name = "EmailJaCadastradoError";
   }
 }

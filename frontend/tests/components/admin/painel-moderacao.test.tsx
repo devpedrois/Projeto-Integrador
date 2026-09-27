@@ -76,7 +76,7 @@ describe("PainelModeracao", () => {
 
     render(<PainelModeracao service={service} adminId={ADMIN_ID} />);
 
-    expect(await screen.findByRole("alert")).toHaveTextContent(/nao foi possivel/i);
+    expect(await screen.findByRole("alert")).toHaveTextContent(/não foi possível/i);
     await userEvent.click(screen.getByRole("button", { name: /tentar novamente/i }));
     expect(await screen.findByRole("tabpanel", { name: /artesãos/i })).toBeInTheDocument();
   });

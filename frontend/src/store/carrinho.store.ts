@@ -17,7 +17,7 @@ function validarQuantidadePositiva(quantidade: number): void {
 
 function validarQuantidadeNaoNegativa(quantidade: number): void {
   if (!Number.isInteger(quantidade) || quantidade < 0) {
-    throw new RangeError("Quantidade deve ser inteira e nao negativa.");
+    throw new RangeError("Quantidade deve ser inteira e não negativa.");
   }
 }
 

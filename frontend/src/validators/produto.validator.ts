@@ -17,29 +17,29 @@ export function validarProduto(input: NovoProdutoInput): ErrosProduto {
   }
 
   if (input.descricao.trim().length < 10) {
-    erros.descricao = "Informe uma descricao com ao menos 10 caracteres.";
+    erros.descricao = "Informe uma descrição com ao menos 10 caracteres.";
   }
 
   if (!Number.isFinite(input.preco) || input.preco <= 0) {
-    erros.preco = "Informe um preco maior que zero.";
+    erros.preco = "Informe um preço maior que zero.";
   }
 
   if (!CATEGORIA_IDS_VALIDAS.has(input.categoriaId)) {
-    erros.categoriaId = "Selecione uma categoria valida.";
+    erros.categoriaId = "Selecione uma categoria válida.";
   }
 
   if (
     input.fotos.length === 0 ||
     input.fotos.some((foto) => foto.url.trim().length === 0)
   ) {
-    erros.fotos = "Informe ao menos uma foto valida.";
+    erros.fotos = "Informe ao menos uma foto válida.";
   }
 
   if (
     !Number.isInteger(input.quantidadeEstoque) ||
     input.quantidadeEstoque < 0
   ) {
-    erros.quantidadeEstoque = "Informe um estoque inteiro nao negativo.";
+    erros.quantidadeEstoque = "Informe um estoque inteiro não negativo.";
   }
 
   return erros;

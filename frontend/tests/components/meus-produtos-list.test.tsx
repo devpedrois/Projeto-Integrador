@@ -73,7 +73,7 @@ describe("MeusProdutosList", () => {
     render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
-      /nao foi possivel/i
+      /não foi possível/i
     );
   });
 

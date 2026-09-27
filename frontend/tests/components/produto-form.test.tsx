@@ -88,9 +88,9 @@ describe("ProdutoForm", () => {
     await user.click(screen.getByRole("button", { name: /cadastrar produto/i }));
 
     expect(await screen.findByText(/nome com ao menos/i)).toBeInTheDocument();
-    expect(screen.getByText(/descricao com ao menos/i)).toBeInTheDocument();
-    expect(screen.getByText(/preco maior que zero/i)).toBeInTheDocument();
-    expect(screen.getByText(/categoria valida/i)).toBeInTheDocument();
+    expect(screen.getByText(/descrição com ao menos/i)).toBeInTheDocument();
+    expect(screen.getByText(/preço maior que zero/i)).toBeInTheDocument();
+    expect(screen.getByText(/categoria válida/i)).toBeInTheDocument();
     expect(screen.getByText(/ao menos uma foto/i)).toBeInTheDocument();
     expect(createSpy).not.toHaveBeenCalled();
   });
@@ -116,7 +116,7 @@ describe("ProdutoForm", () => {
     await user.type(screen.getByLabelText(/preço/i), valorDigitado);
     await user.click(screen.getByRole("button", { name: /cadastrar produto/i }));
 
-    expect(await screen.findByText(/preco maior que zero/i)).toBeInTheDocument();
+    expect(await screen.findByText(/preço maior que zero/i)).toBeInTheDocument();
     expect(createSpy).not.toHaveBeenCalled();
   });
 

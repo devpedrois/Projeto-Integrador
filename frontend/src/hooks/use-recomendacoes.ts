@@ -10,7 +10,7 @@ export type EstadoRecomendacoes =
   | { status: "vazio" }
   | { status: "erro"; mensagem: string };
 
-const MENSAGEM_ERRO_PADRAO = "Nao foi possivel carregar as recomendacoes agora.";
+const MENSAGEM_ERRO_PADRAO = "Não foi possível carregar as recomendações agora.";
 
 /**
  * Consome `RecomendacoesService` sem aplicar nenhuma regra de ranking aqui:

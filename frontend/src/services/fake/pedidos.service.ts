@@ -38,12 +38,12 @@ export class FakePedidosService implements PedidosService {
     await aguardar(this.latenciaMs);
 
     if (itens.length === 0) {
-      throw new ServiceError("CARRINHO_VAZIO", "O carrinho esta vazio.");
+      throw new ServiceError("CARRINHO_VAZIO", "O carrinho está vazio.");
     }
 
     const erroItens = validarItensPedido(itens);
     if (erroItens === "QUANTIDADE_INVALIDA") {
-      throw new ServiceError(erroItens, "Quantidade invalida no carrinho.");
+      throw new ServiceError(erroItens, "Quantidade inválida no carrinho.");
     }
     if (erroItens === "ITEM_DUPLICADO") {
       throw new ServiceError(erroItens, "Produto repetido no carrinho.");
@@ -58,7 +58,7 @@ export class FakePedidosService implements PedidosService {
       if (!produto || !produtoDisponivelParaVenda(produto, artesaosInativos)) {
         throw new ServiceError(
           "PRODUTO_INDISPONIVEL",
-          "Um dos produtos do carrinho nao esta mais disponivel.",
+          "Um dos produtos do carrinho não está mais disponível.",
           { produtoId: item.produtoId }
         );
       }

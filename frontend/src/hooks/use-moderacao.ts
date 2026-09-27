@@ -16,7 +16,7 @@ export interface UseModeracaoResultado {
 }
 
 const MENSAGEM_ERRO_PADRAO =
-  "Nao foi possivel carregar os cadastros para moderacao agora.";
+  "Não foi possível carregar os cadastros para moderação agora.";
 
 export function useModeracao(
   service: ModeracaoService | null,

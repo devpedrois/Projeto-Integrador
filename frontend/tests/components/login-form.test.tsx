@@ -133,7 +133,7 @@ describe("LoginForm", () => {
     await user.type(screen.getByLabelText("Senha"), "senha1234");
     await user.click(screen.getByRole("button", { name: /entrar/i }));
 
-    expect(await screen.findByText(/email valido/i)).toBeInTheDocument();
+    expect(await screen.findByText(/email válido/i)).toBeInTheDocument();
     expect(loginSpy).not.toHaveBeenCalled();
   });
 

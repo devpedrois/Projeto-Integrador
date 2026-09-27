@@ -35,7 +35,7 @@ export class FakePerfilArtesaoService implements PerfilArtesaoService {
   async salvar(input: PerfilArtesaoInput, artesaoId: string): Promise<PerfilArtesao> {
     const erros = validarPerfilArtesao(input);
     if (!perfilArtesaoValido(erros)) {
-      throw new ServiceError("PERFIL_ARTESAO_INVALIDO", "Dados do perfil invalidos.");
+      throw new ServiceError("PERFIL_ARTESAO_INVALIDO", "Dados do perfil inválidos.");
     }
 
     await this.repositorio.seed();

@@ -47,7 +47,7 @@ export class FakeProdutosService implements ProdutosService {
   async create(input: NovoProdutoInput, artesaoId: string): Promise<Produto> {
     const erros = validarProduto(input);
     if (!produtoValido(erros)) {
-      throw new ServiceError("PRODUTO_INVALIDO", "Dados do produto invalidos.");
+      throw new ServiceError("PRODUTO_INVALIDO", "Dados do produto inválidos.");
     }
 
     await this.repositorio.seed();
@@ -91,7 +91,7 @@ export class FakeProdutosService implements ProdutosService {
   ): Promise<Produto> {
     const erros = validarProduto(input);
     if (!produtoValido(erros)) {
-      throw new ServiceError("PRODUTO_INVALIDO", "Dados do produto invalidos.");
+      throw new ServiceError("PRODUTO_INVALIDO", "Dados do produto inválidos.");
     }
 
     await this.repositorio.seed();
@@ -112,7 +112,7 @@ export class FakeProdutosService implements ProdutosService {
     });
 
     if (!atualizado) {
-      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado.");
+      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto não encontrado.");
     }
 
     return atualizado;
@@ -129,7 +129,7 @@ export class FakeProdutosService implements ProdutosService {
     });
 
     if (!atualizado) {
-      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado.");
+      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto não encontrado.");
     }
   }
 
@@ -183,7 +183,7 @@ export class FakeProdutosService implements ProdutosService {
     if (!existente || existente.artesaoId !== artesaoId) {
       throw new ServiceError(
         "ACESSO_NEGADO",
-        "Produto nao encontrado para este artesao."
+        "Produto não encontrado para este artesão."
       );
     }
     return existente;

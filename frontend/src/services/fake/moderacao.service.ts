@@ -69,7 +69,7 @@ export class FakeModeracaoService implements ModeracaoService {
     if (artesaoId === adminId) {
       throw new ServiceError(
         "OPERACAO_NAO_PERMITIDA",
-        "O administrador nao pode moderar a propria conta."
+        "O administrador não pode moderar a própria conta."
       );
     }
 
@@ -78,12 +78,12 @@ export class FakeModeracaoService implements ModeracaoService {
       ? usuarios.find((usuario) => usuario.id === artesaoId)
       : undefined;
     if (!alvo || alvo.papel !== "artesao") {
-      throw new ServiceError("ARTESAO_NAO_ENCONTRADO", "Artesao nao encontrado.");
+      throw new ServiceError("ARTESAO_NAO_ENCONTRADO", "Artesão não encontrado.");
     }
 
     const atualizado = await this.usuarioRepositorio.update(alvo.id, { ativo });
     if (!atualizado) {
-      throw new ServiceError("ARTESAO_NAO_ENCONTRADO", "Artesao nao encontrado.");
+      throw new ServiceError("ARTESAO_NAO_ENCONTRADO", "Artesão não encontrado.");
     }
     return paraUsuarioPublico(atualizado);
   }
@@ -100,7 +100,7 @@ export class FakeModeracaoService implements ModeracaoService {
       ? await this.produtoRepositorio.update(produtoId, { desativadoPorAdmin: !ativo })
       : null;
     if (!atualizado) {
-      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado.");
+      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto não encontrado.");
     }
     return atualizado;
   }

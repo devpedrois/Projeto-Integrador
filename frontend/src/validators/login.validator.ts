@@ -10,7 +10,7 @@ export function validarLogin(input: LoginInput): ErrosLogin {
   const erros: ErrosLogin = {};
 
   if (!REGEX_EMAIL.test(input.email.trim())) {
-    erros.email = "Informe um email valido.";
+    erros.email = "Informe um email válido.";
   }
 
   if (input.senha.length === 0) {

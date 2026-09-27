@@ -106,8 +106,8 @@ describe("PerfilArtesaoForm", () => {
     );
     await user.click(screen.getByRole("button", { name: /salvar perfil/i }));
 
-    expect(await screen.findByText(/tecnica valida/i)).toBeInTheDocument();
-    expect(screen.getByText(/regiao valida/i)).toBeInTheDocument();
+    expect(await screen.findByText(/técnica válida/i)).toBeInTheDocument();
+    expect(screen.getByText(/região válida/i)).toBeInTheDocument();
     expect(salvarSpy).not.toHaveBeenCalled();
     expect(document.activeElement).toBe(screen.getByLabelText(/técnica/i));
   });
@@ -155,7 +155,7 @@ describe("PerfilArtesaoForm", () => {
     await user.selectOptions(screen.getByLabelText(/região/i), REGIAO_IDS.pilarRecife);
     await user.click(screen.getByRole("button", { name: /salvar perfil/i }));
 
-    expect(await screen.findByText(/ate 1000 caracteres/i)).toBeInTheDocument();
+    expect(await screen.findByText(/até 1000 caracteres/i)).toBeInTheDocument();
     expect(screen.getByText("1001/1000")).toBeInTheDocument();
     expect(salvarSpy).not.toHaveBeenCalled();
   });

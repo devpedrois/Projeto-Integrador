@@ -26,7 +26,7 @@ export interface UseDetalheProdutoResultado {
   recarregar: () => void;
 }
 
-const MENSAGEM_ERRO_PADRAO = "Nao foi possivel carregar este produto agora.";
+const MENSAGEM_ERRO_PADRAO = "Não foi possível carregar este produto agora.";
 
 function nomePorId(opcoes: readonly { id: string; nome: string }[], id: string): string | null {
   return opcoes.find((opcao) => opcao.id === id)?.nome ?? null;

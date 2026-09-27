@@ -16,7 +16,7 @@ export function validarCadastro(input: CadastroInput): ErrosCadastro {
   }
 
   if (!REGEX_EMAIL.test(input.email.trim())) {
-    erros.email = "Informe um email valido.";
+    erros.email = "Informe um email válido.";
   }
 
   if (input.senha.length < 8) {
@@ -28,7 +28,7 @@ export function validarCadastro(input: CadastroInput): ErrosCadastro {
       input.papel as (typeof PAPEIS_PERMITIDOS)[number]
     )
   ) {
-    erros.papel = "Selecione comprador ou artesao.";
+    erros.papel = "Selecione comprador ou artesão.";
   }
 
   return erros;

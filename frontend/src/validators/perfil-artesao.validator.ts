@@ -18,21 +18,21 @@ export function validarPerfilArtesao(
 
   const historia = input.historia.trim();
   if (historia.length === 0) {
-    erros.historia = "Conte a historia da sua producao.";
+    erros.historia = "Conte a história da sua produção.";
   } else if (historia.length > HISTORIA_LIMITE_CARACTERES) {
-    erros.historia = `A historia deve ter ate ${HISTORIA_LIMITE_CARACTERES} caracteres.`;
+    erros.historia = `A história deve ter até ${HISTORIA_LIMITE_CARACTERES} caracteres.`;
   }
 
   if (!TECNICA_IDS_VALIDAS.has(input.tecnicaId)) {
-    erros.tecnicaId = "Selecione uma tecnica valida.";
+    erros.tecnicaId = "Selecione uma técnica válida.";
   }
 
   if (!REGIAO_IDS_VALIDAS.has(input.regiaoId)) {
-    erros.regiaoId = "Selecione uma regiao valida.";
+    erros.regiaoId = "Selecione uma região válida.";
   }
 
   if (input.fotoUrl !== undefined && input.fotoUrl.trim().length === 0) {
-    erros.fotoUrl = "Informe uma URL valida ou deixe o campo vazio.";
+    erros.fotoUrl = "Informe uma URL válida ou deixe o campo vazio.";
   }
 
   return erros;

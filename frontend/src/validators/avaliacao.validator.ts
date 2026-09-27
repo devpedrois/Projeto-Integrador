@@ -12,7 +12,7 @@ export function validarAvaliacao(input: NovaAvaliacaoInput): ErrosAvaliacao {
   const erros: ErrosAvaliacao = {};
 
   if (typeof input.produtoId !== "string" || input.produtoId.trim().length === 0) {
-    erros.produtoId = "Produto invalido.";
+    erros.produtoId = "Produto inválido.";
   }
 
   if (
@@ -20,14 +20,14 @@ export function validarAvaliacao(input: NovaAvaliacaoInput): ErrosAvaliacao {
     input.nota < NOTA_MINIMA ||
     input.nota > NOTA_MAXIMA
   ) {
-    erros.nota = `A nota deve ser um numero inteiro de ${NOTA_MINIMA} a ${NOTA_MAXIMA}.`;
+    erros.nota = `A nota deve ser um número inteiro de ${NOTA_MINIMA} a ${NOTA_MAXIMA}.`;
   }
 
   if (input.comentario !== undefined) {
     if (typeof input.comentario !== "string") {
-      erros.comentario = "Comentario invalido.";
+      erros.comentario = "Comentário inválido.";
     } else if (input.comentario.trim().length > COMENTARIO_LIMITE_CARACTERES) {
-      erros.comentario = `O comentario deve ter ate ${COMENTARIO_LIMITE_CARACTERES} caracteres.`;
+      erros.comentario = `O comentário deve ter até ${COMENTARIO_LIMITE_CARACTERES} caracteres.`;
     }
   }
 

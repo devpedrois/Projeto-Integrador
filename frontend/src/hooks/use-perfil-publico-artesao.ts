@@ -36,7 +36,7 @@ export interface UsePerfilPublicoArtesaoResultado {
 }
 
 const MENSAGEM_ERRO_PADRAO =
-  "Nao foi possivel carregar o perfil deste artesao agora.";
+  "Não foi possível carregar o perfil deste artesão agora.";
 
 export function usePerfilPublicoArtesao(
   usuariosService: UsuariosService | null,

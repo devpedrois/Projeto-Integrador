@@ -16,7 +16,7 @@ export interface UseMeusProdutosResultado {
 }
 
 const MENSAGEM_ERRO_PADRAO =
-  "Nao foi possivel carregar seus produtos agora.";
+  "Não foi possível carregar seus produtos agora.";
 
 export function useMeusProdutos(
   service: ProdutosService | null,
