@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { BOTAO_SECUNDARIO } from "@/components/formulario/estilos-botao";
+import { CLASSE_VAZIO, IconeVazio } from "@/components/vitrine/EsqueletoProdutos";
 import { useSessao } from "@/hooks/use-sessao";
 import type { SessionStore } from "@/store/sessao.store";
 import type { Papel } from "@/types/usuario";
@@ -11,6 +14,12 @@ const STORE_INATIVO: SessionStore = {
   getSnapshot: () => null,
   subscribe: () => () => {},
 } as unknown as SessionStore;
+
+const SAIDA_POR_PAPEL: Record<Papel, { href: string; rotulo: string }> = {
+  comprador: { href: "/", rotulo: "Voltar para a vitrine" },
+  artesao: { href: "/painel-artesao", rotulo: "Ir para o painel do artesão" },
+  admin: { href: "/admin", rotulo: "Ir para o painel admin" },
+};
 
 interface RouteGuardProps {
   sessionStore: SessionStore | null;
@@ -46,13 +55,23 @@ export function RouteGuard({
   // backend final, que ainda validara papel/sessao no servidor.
   if (restaurando || semSessao) return null;
 
-  if (papelNegado) {
+  if (papelNegado && sessao) {
+    const saida = SAIDA_POR_PAPEL[sessao.papel];
+
     return (
-      <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-4 p-6 text-center">
-        <h1 className="text-2xl font-semibold">Acesso negado</h1>
-        <p className="text-sm text-neutral-600">
-          Seu usuário não tem permissão para acessar esta área.
-        </p>
+      <main className="mx-auto min-h-screen w-full max-w-[720px] px-4 pt-10 pb-16 sm:px-6 sm:pt-16 sm:pb-24">
+        <div className={CLASSE_VAZIO}>
+          <IconeVazio nome="escudo" />
+          <h1 className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
+            Acesso negado
+          </h1>
+          <p className="m-0 max-w-[420px] text-body-sm text-fg-muted">
+            Seu usuário não tem permissão para acessar esta área.
+          </p>
+          <Link href={saida.href} className={BOTAO_SECUNDARIO}>
+            {saida.rotulo}
+          </Link>
+        </div>
       </main>
     );
   }

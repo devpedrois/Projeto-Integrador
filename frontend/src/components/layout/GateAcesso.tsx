@@ -13,6 +13,7 @@ import {
   obterSessionStore,
 } from "@/services/fake/container";
 import type { SessionStore } from "@/store/sessao.store";
+import { ROTULO_PAPEL } from "@/utils/rotulo-papel";
 import type { CartStore } from "@/store/carrinho.store";
 import type { ModoAcessoStorage } from "@/fake-api/storage/modo-acesso.storage";
 import type { Papel } from "@/types/usuario";
@@ -202,8 +203,9 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
               >
                 {sessao.nome.slice(0, 1).toUpperCase()}
               </span>
-              <span className="font-semibold text-fg-strong">
-                {sessao.nome} ({sessao.papel})
+              <span className="flex flex-col leading-tight">
+                <span className="font-semibold text-fg-strong">{sessao.nome}</span>
+                <span className="text-[12px] font-medium text-fg-muted">{ROTULO_PAPEL[sessao.papel]}</span>
               </span>
               <button
                 type="button"

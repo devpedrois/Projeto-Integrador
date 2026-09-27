@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { RouteGuard } from "@/components/layout/RouteGuard";
+import { MiniaturaProduto } from "@/components/carrinho/MiniaturaProduto";
 import { Icone } from "@/components/vitrine/Icone";
 import {
   CLASSE_ALERTA,
@@ -15,6 +16,7 @@ import { useSessao } from "@/hooks/use-sessao";
 import {
   obterCarrinhoStore,
   obterPedidosService,
+  obterProdutosService,
   obterSessionStore,
 } from "@/services/fake/container";
 import { ServiceError } from "@/services/errors";
@@ -22,6 +24,7 @@ import { formatarMoeda } from "@/utils/formatar-moeda";
 import type { CartStore } from "@/store/carrinho.store";
 import type { SessionStore } from "@/store/sessao.store";
 import type { PedidosService } from "@/services/contracts/pedidos.contract";
+import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { Pedido } from "@/types/pedido";
 
 const STORE_INATIVO: SessionStore = {
@@ -40,6 +43,7 @@ const BOTAO_SECUNDARIO =
 
 export default function CheckoutPage() {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
+  const [produtosService, setProdutosService] = useState<ProdutosService | null>(null);
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
 
   useEffect(() => {
@@ -53,6 +57,7 @@ export default function CheckoutPage() {
     if (!sessionStore) return;
     setCarrinhoStore(obterCarrinhoStore(sessao?.id));
     setPedidosService(obterPedidosService());
+    setProdutosService(obterProdutosService());
   }, [sessionStore, sessao?.id]);
 
   return (
@@ -61,6 +66,7 @@ export default function CheckoutPage() {
         <Checkout
           carrinhoStore={carrinhoStore}
           pedidosService={pedidosService}
+          produtosService={produtosService}
           compradorId={sessao.id}
         />
       ) : (
@@ -77,10 +83,12 @@ export default function CheckoutPage() {
 function Checkout({
   carrinhoStore,
   pedidosService,
+  produtosService,
   compradorId,
 }: {
   carrinhoStore: CartStore;
   pedidosService: PedidosService;
+  produtosService: ProdutosService | null;
   compradorId: string;
 }) {
   const carrinho = useCarrinho(carrinhoStore);
@@ -177,12 +185,7 @@ function Checkout({
                 key={item.produtoId}
                 className="flex items-center gap-3.5 border-b border-border-subtle py-4"
               >
-                <span
-                  aria-hidden="true"
-                  className="grid size-[52px] flex-none place-items-center rounded-sm bg-linho-100 text-fg-subtle sm:size-16"
-                >
-                  <Icone nome="pacote" tamanho={20} className="opacity-75" />
-                </span>
+                <MiniaturaProduto produtoId={item.produtoId} produtosService={produtosService} />
                 <div className="flex min-w-0 flex-1 flex-col gap-1">
                   <span className="text-base leading-[1.3] font-semibold text-pretty text-fg-strong">
                     {item.nome}

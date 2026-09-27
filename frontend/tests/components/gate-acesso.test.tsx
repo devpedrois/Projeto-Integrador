@@ -230,7 +230,9 @@ describe("GateAcesso", () => {
       </GateAcesso>
     );
 
-    await screen.findByText("Ana (comprador)");
+    await screen.findByText("Ana");
+    expect(screen.getByText("Comprador")).toBeInTheDocument();
+    expect(screen.queryByText(/\(comprador\)/)).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /painel do artesão/i })).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /painel admin/i })).not.toBeInTheDocument();
   });

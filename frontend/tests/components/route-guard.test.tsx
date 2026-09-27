@@ -60,8 +60,36 @@ describe("RouteGuard", () => {
     );
 
     expect(screen.queryByText("Conteudo protegido")).not.toBeInTheDocument();
-    expect(screen.getByText(/acesso negado/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /acesso negado/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Voltar para a vitrine" })).toHaveAttribute("href", "/");
     expect(replaceMock).not.toHaveBeenCalled();
+  });
+
+  it("artesao negado recebe atalho para o proprio painel", () => {
+    const store = criarStoreFake({ id: "u5", nome: "Bia", email: "u5@origem.test", papel: "artesao" });
+
+    render(
+      <RouteGuard sessionStore={store} papeisPermitidos={["admin"]}>
+        <div>Conteudo protegido</div>
+      </RouteGuard>
+    );
+
+    expect(screen.getByRole("link", { name: "Ir para o painel do artesão" })).toHaveAttribute(
+      "href",
+      "/painel-artesao"
+    );
+  });
+
+  it("admin negado recebe atalho para o painel admin", () => {
+    const store = criarStoreFake({ id: "u6", nome: "Dora", email: "u6@origem.test", papel: "admin" });
+
+    render(
+      <RouteGuard sessionStore={store} papeisPermitidos={["artesao"]}>
+        <div>Conteudo protegido</div>
+      </RouteGuard>
+    );
+
+    expect(screen.getByRole("link", { name: "Ir para o painel admin" })).toHaveAttribute("href", "/admin");
   });
 
   it("papel correto acessa a area protegida", () => {

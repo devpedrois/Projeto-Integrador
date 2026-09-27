@@ -4,13 +4,7 @@ import { useRouter } from "next/navigation";
 import { Icone } from "@/components/vitrine/Icone";
 import { useSessao } from "@/hooks/use-sessao";
 import type { SessionStore } from "@/store/sessao.store";
-import type { Papel } from "@/types/usuario";
-
-const ROTULO_PAPEL: Record<Papel, string> = {
-  comprador: "Comprador",
-  artesao: "Artesão",
-  admin: "Administrador",
-};
+import { ROTULO_PAPEL } from "@/utils/rotulo-papel";
 
 const CLASSE_ROTULO = "text-[13px] font-semibold text-fg-muted";
 
