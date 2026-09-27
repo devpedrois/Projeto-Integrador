@@ -15,7 +15,7 @@ import type { ModeracaoService } from "@/services/contracts/moderacao.contract";
 import type { Produto } from "@/types/produto";
 import type { UsuarioPublico } from "@/types/usuario";
 import { normalizarTexto } from "@/utils/normalizar-texto";
-import { formatarPrecoCampo } from "@/utils/preco-campo";
+import { formatarMoeda } from "@/utils/formatar-moeda";
 
 export interface PainelModeracaoProps {
   service: ModeracaoService;
@@ -93,10 +93,6 @@ const AJUSTE_BOTAO_LINHA =
 
 function chave(registro: RegistroModeravel): string {
   return `${registro.tipo}:${registro.id}`;
-}
-
-function formatarPreco(valor: number): string {
-  return `R$ ${formatarPrecoCampo(valor)}`;
 }
 
 function verbo(registro: RegistroModeravel): string {
@@ -505,7 +501,7 @@ function LinhaRegistro({
   const acao = registro.ativo ? "Desativar" : "Ativar";
   const meta =
     registro.tipo === "produto"
-      ? `${registro.artesao} · ${formatarPreco(registro.preco)} · Estoque: ${registro.estoque}`
+      ? `${registro.artesao} · ${formatarMoeda(registro.preco)} · Estoque: ${registro.estoque}`
       : registro.email;
 
   return (
@@ -532,7 +528,7 @@ function LinhaRegistro({
         <>
           <span className="hidden break-words text-fg-body md:block">{registro.artesao}</span>
           <span className="hidden text-right font-semibold text-fg-strong tabular-nums md:block">
-            {formatarPreco(registro.preco)}
+            {formatarMoeda(registro.preco)}
           </span>
           <span className="hidden text-right tabular-nums md:block">{registro.estoque}</span>
         </>

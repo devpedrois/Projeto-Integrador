@@ -58,7 +58,7 @@ describe("ProdutoCard", () => {
     );
 
     expect(screen.getByText("Jarra Ceramica Esculpida")).toBeInTheDocument();
-    expect(screen.getByText("R$ 89.90")).toBeInTheDocument();
+    expect(screen.getByText("R$ 89,90")).toBeInTheDocument();
   });
 
   it("linka o card ao perfil publico do artesao correto", async () => {

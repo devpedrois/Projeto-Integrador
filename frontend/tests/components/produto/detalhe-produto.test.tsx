@@ -112,7 +112,7 @@ describe("DetalheProduto", () => {
 
     expect(await screen.findByRole("heading", { level: 1, name: "Toalha de Renda" })).toBeInTheDocument();
     expect(screen.getByText("Toalha feita a mao com linha de algodao.")).toBeInTheDocument();
-    expect(screen.getByText("R$ 59.90")).toBeInTheDocument();
+    expect(screen.getByText("R$ 59,90")).toBeInTheDocument();
     expect(screen.getByText(/3 disponiveis/i)).toBeInTheDocument();
     expect(screen.getByText("Renda e Bordado")).toBeInTheDocument();
     expect(screen.getByText("Renda de Bilro")).toBeInTheDocument();

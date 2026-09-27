@@ -10,6 +10,7 @@ import {
 import { useCarrinho } from "@/hooks/use-carrinho";
 import { useSessao } from "@/hooks/use-sessao";
 import { ServiceError } from "@/services/errors";
+import { formatarMoeda } from "@/utils/formatar-moeda";
 import { Icone } from "@/components/vitrine/Icone";
 import { MiniaturaProduto } from "@/components/carrinho/MiniaturaProduto";
 import { CLASSE_STATUS, CLASSE_VAZIO, IconeVazio } from "@/components/vitrine/EsqueletoProdutos";
@@ -129,7 +130,7 @@ function Carrinho({
                         {item.nome}
                       </span>
                       <span className="text-body-sm text-fg-muted tabular-nums">
-                        R$ {item.precoUnitario.toFixed(2)} cada
+                        {formatarMoeda(item.precoUnitario)} cada
                       </span>
                     </div>
                   </div>
@@ -161,7 +162,7 @@ function Carrinho({
                     </div>
                     <div className="flex min-w-0 items-center gap-2.5 sm:gap-4">
                       <span className="text-right text-[17px] font-bold whitespace-nowrap text-fg-strong tabular-nums sm:min-w-24">
-                        R$ {(item.precoUnitario * item.quantidade).toFixed(2)}
+                        {formatarMoeda(item.precoUnitario * item.quantidade)}
                       </span>
                       <button
                         type="button"
@@ -192,7 +193,7 @@ function Carrinho({
             <div className="flex items-baseline justify-between gap-3">
               <span className="font-display text-[22px] font-semibold text-fg-strong">Total</span>
               <span className="text-[26px] font-bold tracking-tight text-fg-strong tabular-nums">
-                R$ {carrinho.total.toFixed(2)}
+                {formatarMoeda(carrinho.total)}
               </span>
             </div>
 

@@ -14,6 +14,7 @@ import {
   IconeVazio,
 } from "@/components/vitrine/EsqueletoProdutos";
 import { fotoUrlSegura } from "@/utils/foto-url-segura";
+import { formatarMoeda } from "@/utils/formatar-moeda";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
@@ -206,7 +207,7 @@ export function DetalheProduto({
 
               <div className="flex flex-wrap items-center gap-x-4 gap-y-3 border-y border-border-default py-[18px]">
                 <p className="m-0 text-[32px] leading-none font-bold tracking-tight text-fg-strong tabular-nums">
-                  R$ {produto.preco.toFixed(2)}
+                  {formatarMoeda(produto.preco)}
                 </p>
 
                 <p

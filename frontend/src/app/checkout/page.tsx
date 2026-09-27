@@ -18,6 +18,7 @@ import {
   obterSessionStore,
 } from "@/services/fake/container";
 import { ServiceError } from "@/services/errors";
+import { formatarMoeda } from "@/utils/formatar-moeda";
 import type { CartStore } from "@/store/carrinho.store";
 import type { SessionStore } from "@/store/sessao.store";
 import type { PedidosService } from "@/services/contracts/pedidos.contract";
@@ -187,11 +188,11 @@ function Checkout({
                     {item.nome}
                   </span>
                   <span className="text-body-sm text-fg-muted tabular-nums">
-                    {item.quantidade} x R$ {item.precoUnitario.toFixed(2)}
+                    {item.quantidade} x {formatarMoeda(item.precoUnitario)}
                   </span>
                 </div>
                 <span className="flex-none text-base font-bold whitespace-nowrap text-fg-strong tabular-nums">
-                  R$ {(item.precoUnitario * item.quantidade).toFixed(2)}
+                  {formatarMoeda(item.precoUnitario * item.quantidade)}
                 </span>
               </li>
             ))}
@@ -200,7 +201,7 @@ function Checkout({
           <div className="flex items-baseline justify-between gap-3 pt-5 pb-1">
             <span className="font-display text-[22px] font-semibold text-fg-strong">Total</span>
             <span className="text-[26px] font-bold tracking-tight text-fg-strong tabular-nums">
-              R$ {carrinho.total.toFixed(2)}
+              {formatarMoeda(carrinho.total)}
             </span>
           </div>
         </section>

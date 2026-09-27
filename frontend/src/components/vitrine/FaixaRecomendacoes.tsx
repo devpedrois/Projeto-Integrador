@@ -4,6 +4,7 @@ import { useRecomendacoes } from "@/hooks/use-recomendacoes";
 import { Icone } from "@/components/vitrine/Icone";
 import { CLASSE_ALERTA, CLASSE_STATUS, EsqueletoCompacto } from "@/components/vitrine/EsqueletoProdutos";
 import { fotoUrlSegura } from "@/utils/foto-url-segura";
+import { formatarMoeda } from "@/utils/formatar-moeda";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { RecomendacaoContexto } from "@/types/recomendacao";
 
@@ -80,7 +81,7 @@ export function FaixaRecomendacoes({ service, contexto }: FaixaRecomendacoesProp
                     {produto.nome}
                   </span>
                   <span className="mt-0.5 text-[15px] font-bold text-fg-strong tabular-nums">
-                    R$ {produto.preco.toFixed(2)}
+                    {formatarMoeda(produto.preco)}
                   </span>
                 </span>
               </li>

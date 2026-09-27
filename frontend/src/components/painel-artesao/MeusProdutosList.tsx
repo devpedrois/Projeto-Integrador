@@ -21,6 +21,7 @@ import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { NovoProdutoInput } from "@/types/novo-produto";
 import type { Produto } from "@/types/produto";
 import { fotoUrlSegura } from "@/utils/foto-url-segura";
+import { formatarMoeda } from "@/utils/formatar-moeda";
 import { formatarPrecoCampo, lerPrecoCampo } from "@/utils/preco-campo";
 import {
   produtoValido,
@@ -255,7 +256,7 @@ interface LinhaProdutoProps {
 }
 
 function LinhaProduto({ produto, onEditar, onRemover }: LinhaProdutoProps) {
-  const preco = `R$ ${produto.preco.toFixed(2)}`;
+  const preco = formatarMoeda(produto.preco);
 
   return (
     <div className="flex flex-col gap-3.5 p-4 md:grid md:grid-cols-[minmax(0,1fr)_140px_110px_212px] md:items-center md:gap-4 md:px-5 md:py-3">

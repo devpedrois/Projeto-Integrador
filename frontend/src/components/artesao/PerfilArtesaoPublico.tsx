@@ -4,6 +4,7 @@ import { usePerfilPublicoArtesao } from "@/hooks/use-perfil-publico-artesao";
 import { RetratoArtesao } from "@/components/artesao/RetratoArtesao";
 import { Icone } from "@/components/vitrine/Icone";
 import { fotoUrlSegura } from "@/utils/foto-url-segura";
+import { formatarMoeda } from "@/utils/formatar-moeda";
 import {
   BLOCO,
   CLASSE_ALERTA,
@@ -171,7 +172,7 @@ export function PerfilArtesaoPublico({
                         {produto.nome}
                       </span>
                       <span className="mt-0.5 block text-[15px] font-bold text-fg-strong tabular-nums">
-                        R$ {produto.preco.toFixed(2)}
+                        {formatarMoeda(produto.preco)}
                       </span>
                     </span>
                   </li>

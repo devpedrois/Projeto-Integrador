@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Icone } from "@/components/vitrine/Icone";
 import { useNomeArtesao } from "@/hooks/use-nome-artesao";
 import { fotoUrlSegura } from "@/utils/foto-url-segura";
+import { formatarMoeda } from "@/utils/formatar-moeda";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { Produto } from "@/types/produto";
 
@@ -64,7 +65,7 @@ export function ProdutoCard({
           </Link>
         </span>
         <span className="mt-1.5 block text-price font-bold tracking-tight text-fg-strong tabular-nums">
-          R$ {produto.preco.toFixed(2)}
+          {formatarMoeda(produto.preco)}
         </span>
       </div>
 
