@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { Icone } from "@/components/vitrine/Icone";
 import { useSessao } from "@/hooks/use-sessao";
 import { obterModoAcessoStorage, obterSessionStore } from "@/services/fake/container";
 import type { SessionStore } from "@/store/sessao.store";
@@ -158,6 +159,16 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
         ) : null}
 
         <div className="ml-auto flex items-center gap-2 text-body-sm">
+          {!sessao ? (
+            <Link
+              href="/carrinho"
+              className="flex h-11 items-center gap-2 rounded-md px-2.5 text-button font-semibold text-fg-strong no-underline transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover hover:text-fg-strong"
+            >
+              <Icone nome="sacola" tamanho={22} />
+              Carrinho
+              <span id="contador-carrinho-slot" className="contents" />
+            </Link>
+          ) : null}
           {sessao && confirmandoSaida ? (
             <div className="flex flex-wrap items-center justify-end gap-2">
               <span className="text-fg-muted">Tem certeza que quer sair?</span>

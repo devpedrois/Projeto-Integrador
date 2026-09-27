@@ -72,9 +72,9 @@ export function ProdutoCard({
         type="button"
         onClick={() => onAdicionarAoCarrinho(produto)}
         aria-describedby={erroCarrinho ? erroId : undefined}
-        className="inline-flex h-[var(--control-h-sm)] w-full items-center justify-center gap-2 rounded-control border border-border-strong bg-surface-card px-3.5 text-sm font-semibold whitespace-nowrap text-fg-strong transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover active:translate-y-px"
+        className="inline-flex min-h-[var(--control-h-sm)] w-full items-center justify-center gap-1.5 rounded-control border border-border-strong bg-surface-card px-2 py-1.5 text-center text-[13px] leading-tight font-semibold text-balance text-fg-strong sm:gap-2 sm:px-3.5 sm:text-sm transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover active:translate-y-px"
       >
-        <Icone nome="sacola" tamanho={16} />
+        <Icone nome="sacola" tamanho={16} className="flex-none" />
         Adicionar ao carrinho
       </button>
       {erroCarrinho ? (
