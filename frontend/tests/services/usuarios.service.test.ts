@@ -209,7 +209,7 @@ describe("FakeUsuariosService.login", () => {
 
     expect(sessao).toEqual({
       id: "seed-comprador-01",
-      nome: "Ana Comprador",
+      nome: "Ana Souza",
       email: "ana.compradora@origem.test",
       papel: "comprador",
     });

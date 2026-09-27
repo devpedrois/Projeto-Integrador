@@ -3,7 +3,7 @@ import type { Usuario } from "@/types/usuario";
 export const USUARIOS_SEED: readonly Usuario[] = [
   {
     id: "seed-comprador-01",
-    nome: "Ana Comprador",
+    nome: "Ana Souza",
     email: "ana.compradora@origem.test",
     senha: "senha-sintetica-comprador",
     papel: "comprador",
@@ -11,7 +11,7 @@ export const USUARIOS_SEED: readonly Usuario[] = [
   },
   {
     id: "seed-comprador-02",
-    nome: "Bruno Comprador",
+    nome: "Bruno Lima",
     email: "bruno.comprador@origem.test",
     senha: "senha-sintetica-comprador-02",
     papel: "comprador",
