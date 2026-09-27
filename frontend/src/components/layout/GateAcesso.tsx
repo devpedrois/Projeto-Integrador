@@ -40,7 +40,7 @@ const BOTAO_SECUNDARIO_PEQUENO = `${BOTAO_BASE} h-[var(--control-h-sm)] border b
 const BOTAO_PERIGO_PEQUENO = `${BOTAO_BASE} h-[var(--control-h-sm)] border border-transparent bg-action-danger px-3.5 text-sm text-white hover:bg-action-danger-hover`;
 
 const LINK_NAV =
-  "flex h-11 shrink-0 items-center px-0.5 text-button font-medium whitespace-nowrap text-fg-muted no-underline transition-colors duration-[var(--dur-fast)] ease-out hover:text-fg-strong md:h-full";
+  "flex h-11 gap-2 shrink-0 items-center px-0.5 text-button font-medium whitespace-nowrap text-fg-muted no-underline transition-colors duration-[var(--dur-fast)] ease-out hover:text-fg-strong md:h-full";
 
 const LINK_NAV_ATIVO = `${LINK_NAV} font-semibold text-fg-strong shadow-[inset_0_-2px_0_var(--color-barro-500)]`;
 
@@ -149,6 +149,9 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
                 className={pathname === link.href ? LINK_NAV_ATIVO : LINK_NAV}
               >
                 {link.rotulo}
+                {link.href === "/carrinho" ? (
+                  <span id="contador-carrinho-slot" className="contents" />
+                ) : null}
               </Link>
             ))}
           </nav>

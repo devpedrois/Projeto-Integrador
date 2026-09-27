@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Icone } from "@/components/vitrine/Icone";
 import { useNomeArtesao } from "@/hooks/use-nome-artesao";
 import { fotoUrlSegura } from "@/utils/foto-url-segura";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
@@ -26,36 +27,59 @@ export function ProdutoCard({
   const capaUrl = fotoUrlSegura(capa?.url);
 
   return (
-    <li className="flex flex-col gap-2 rounded border border-gray-200 p-3">
+    <li className="group flex min-w-0 flex-col gap-3 rounded-card border border-border-subtle bg-surface-card p-3 shadow-card transition-shadow duration-[var(--dur-base)] ease-out hover:shadow-card-hover">
       {capaUrl ? (
-        <Link href={hrefProduto} tabIndex={-1} aria-hidden="true">
+        <Link
+          href={hrefProduto}
+          tabIndex={-1}
+          aria-hidden="true"
+          className="block aspect-[4/5] overflow-hidden rounded-media bg-linho-100"
+        >
           <img
             src={capaUrl}
             alt=""
-            className="aspect-square w-full rounded object-cover"
+            className="size-full object-cover transition-transform duration-[var(--dur-slow)] ease-out group-hover:scale-[1.035] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
         </Link>
-      ) : null}
-      <Link href={hrefProduto} className="block text-sm font-medium hover:underline">
-        {produto.nome}
-      </Link>
-      <Link
-        href={`/artesao/${produto.artesaoId}`}
-        className="block text-sm text-neutral-600 underline"
-      >
-        {nomeArtesao ?? "Ver perfil do artesao"}
-      </Link>
-      <span className="block text-sm text-neutral-600">R$ {produto.preco.toFixed(2)}</span>
+      ) : (
+        <div aria-hidden="true" className="grid aspect-[4/5] place-items-center rounded-media bg-linho-100 text-fg-subtle">
+          <Icone nome="pacote" tamanho={28} className="opacity-75" />
+        </div>
+      )}
+
+      <div className="flex flex-1 flex-col gap-1 px-0.5">
+        <Link
+          href={hrefProduto}
+          className="block text-base leading-[1.3] font-semibold text-pretty text-fg-strong no-underline hover:text-fg-strong hover:underline"
+        >
+          {produto.nome}
+        </Link>
+        <span className="text-body-sm text-fg-muted">
+          por{" "}
+          <Link
+            href={`/artesao/${produto.artesaoId}`}
+            className="text-fg-body underline decoration-border-strong hover:text-fg-link-hover"
+          >
+            {nomeArtesao ?? "Ver perfil do artesao"}
+          </Link>
+        </span>
+        <span className="mt-1.5 block text-price font-bold tracking-tight text-fg-strong tabular-nums">
+          R$ {produto.preco.toFixed(2)}
+        </span>
+      </div>
+
       <button
         type="button"
         onClick={() => onAdicionarAoCarrinho(produto)}
         aria-describedby={erroCarrinho ? erroId : undefined}
-        className="self-start rounded border border-gray-300 p-2 text-sm"
+        className="inline-flex h-[var(--control-h-sm)] w-full items-center justify-center gap-2 rounded-control border border-border-strong bg-surface-card px-3.5 text-sm font-semibold whitespace-nowrap text-fg-strong transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover active:translate-y-px"
       >
+        <Icone nome="sacola" tamanho={16} />
         Adicionar ao carrinho
       </button>
       {erroCarrinho ? (
-        <p id={erroId} role="alert" className="text-sm text-red-700">
+        <p id={erroId} role="alert" className="flex items-start gap-1.5 text-caption text-erro-700">
+          <Icone nome="alerta" tamanho={14} className="mt-px flex-none" />
           {erroCarrinho}
         </p>
       ) : null}

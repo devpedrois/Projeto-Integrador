@@ -1,6 +1,9 @@
 "use client";
 
 import { useRecomendacoes } from "@/hooks/use-recomendacoes";
+import { Icone } from "@/components/vitrine/Icone";
+import { CLASSE_ALERTA, CLASSE_STATUS, EsqueletoCompacto } from "@/components/vitrine/EsqueletoProdutos";
+import { fotoUrlSegura } from "@/utils/foto-url-segura";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { RecomendacaoContexto } from "@/types/recomendacao";
 
@@ -8,6 +11,9 @@ export interface FaixaRecomendacoesProps {
   service: RecomendacoesService | null;
   contexto: RecomendacaoContexto | null;
 }
+
+const TRILHO =
+  "-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pt-0.5 pb-2 sm:mx-0 sm:grid sm:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] sm:overflow-visible sm:p-0";
 
 /**
  * Apenas exibe o resultado ja ordenado pelo service. Nenhuma regra de
@@ -19,40 +25,67 @@ export function FaixaRecomendacoes({ service, contexto }: FaixaRecomendacoesProp
   const estado = useRecomendacoes(service, contexto);
 
   return (
-    <section aria-label="Recomendacoes de produtos" className="flex flex-col gap-3">
-      <h2 className="text-lg font-semibold">Recomendado para voce</h2>
+    <section aria-label="Recomendacoes de produtos" className="mt-16 flex flex-col gap-4">
+      <h2 className="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]">
+        Recomendado para voce
+      </h2>
 
       {estado.status === "carregando" ? (
-        <p role="status" className="text-sm text-neutral-600">
-          Carregando recomendacoes...
-        </p>
+        <>
+          <p role="status" className={CLASSE_STATUS}>
+            Carregando recomendacoes...
+          </p>
+          <div className={TRILHO}>
+            <EsqueletoCompacto />
+          </div>
+        </>
       ) : null}
 
       {estado.status === "erro" ? (
-        <p role="alert" className="text-sm text-red-700">
+        <p role="alert" className={CLASSE_ALERTA}>
+          <Icone nome="alerta" className="mt-0.5 flex-none" />
           {estado.mensagem}
         </p>
       ) : null}
 
       {estado.status === "vazio" ? (
-        <p className="text-sm text-neutral-600">
+        <p className={CLASSE_STATUS}>
           Nenhuma recomendacao disponivel no momento.
         </p>
       ) : null}
 
       {estado.status === "sucesso" ? (
-        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {estado.resultado.itens.map((produto) => (
-            <li
-              key={produto.id}
-              className="flex flex-col gap-1 rounded border border-gray-200 p-3"
-            >
-              <span className="text-sm font-medium">{produto.nome}</span>
-              <span className="text-sm text-neutral-600">
-                R$ {produto.preco.toFixed(2)}
-              </span>
-            </li>
-          ))}
+        <ul className={TRILHO}>
+          {estado.resultado.itens.map((produto) => {
+            const capa = [...produto.fotos].sort((a, b) => a.ordem - b.ordem)[0];
+            const capaUrl = fotoUrlSegura(capa?.url);
+
+            return (
+              <li
+                key={produto.id}
+                className="flex w-[260px] flex-none snap-start items-center gap-3 rounded-md border border-border-subtle bg-surface-card p-2.5 transition-[box-shadow,border-color] duration-[var(--dur-base)] ease-out hover:border-border-default hover:shadow-sm sm:w-auto"
+              >
+                <span
+                  aria-hidden="true"
+                  className="grid size-16 flex-none place-items-center overflow-hidden rounded-sm bg-linho-100 text-fg-subtle"
+                >
+                  {capaUrl ? (
+                    <img src={capaUrl} alt="" className="size-full object-cover" />
+                  ) : (
+                    <Icone nome="pacote" tamanho={20} className="opacity-75" />
+                  )}
+                </span>
+                <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                  <span className="truncate text-[15px] leading-[1.3] font-semibold text-fg-strong">
+                    {produto.nome}
+                  </span>
+                  <span className="mt-0.5 text-[15px] font-bold text-fg-strong tabular-nums">
+                    R$ {produto.preco.toFixed(2)}
+                  </span>
+                </span>
+              </li>
+            );
+          })}
         </ul>
       ) : null}
     </section>

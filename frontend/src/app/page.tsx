@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
 import { paraDestinoSeguro } from "@/utils/rota-segura";
 import {
@@ -23,6 +23,15 @@ import { FaixaRecomendacoes } from "@/components/vitrine/FaixaRecomendacoes";
 import { ResultadoBusca } from "@/components/vitrine/ResultadoBusca";
 import { FiltrosProdutos } from "@/components/vitrine/FiltrosProdutos";
 import { ProdutoCard } from "@/components/vitrine/ProdutoCard";
+import { HeroVaso } from "@/components/vitrine/HeroVaso";
+import { Icone } from "@/components/vitrine/Icone";
+import {
+  CLASSE_ALERTA,
+  CLASSE_STATUS,
+  CLASSE_VAZIO,
+  EsqueletoProdutos,
+  IconeVazio,
+} from "@/components/vitrine/EsqueletoProdutos";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
@@ -97,6 +106,11 @@ function PaginaInicial() {
   }, [sessionStore, sessao?.id]);
 
   const carrinho = useCarrinho(carrinhoStore ?? CARRINHO_STORE_INATIVO);
+  const [slotContador, setSlotContador] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setSlotContador(document.getElementById("contador-carrinho-slot"));
+  }, [sessao?.id]);
 
   useEffect(() => {
     if (!produtosService) return;
@@ -157,66 +171,91 @@ function PaginaInicial() {
       : null;
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-8 p-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Origem</h1>
-        <Link href="/carrinho" className="text-sm underline">
-          Carrinho ({carrinho.itens.length})
-        </Link>
+    <main className="min-h-screen">
+      {slotContador
+        ? createPortal(
+            <span
+              className={`grid h-[22px] min-w-[22px] place-items-center rounded-pill px-[7px] text-caption font-bold tabular-nums ${
+                carrinho.itens.length > 0
+                  ? "bg-barro-500 text-fg-on-brand"
+                  : "bg-linho-100 text-fg-muted"
+              }`}
+            >
+              {carrinho.itens.length}
+            </span>,
+            slotContador
+          )
+        : null}
+
+      <HeroVaso />
+
+      <div className="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pb-20">
+        <div className="grid gap-5 border-t border-border-default pt-7 lg:grid-cols-[264px_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:gap-x-8">
+          <FiltrosProdutos
+            query={query}
+            opcoes={opcoesFiltro}
+            artesaos={artesaosAtivos}
+            onAlterar={atualizar}
+            onLimpar={limpar}
+          />
+
+          <div className="flex min-w-0 flex-col gap-5 lg:col-start-2 lg:row-start-2">
+            {algumFiltroAtivo ? (
+              <ResultadoBusca
+                service={produtosService}
+                usuariosService={usuariosService}
+                query={query}
+                onLimpar={limpar}
+                onAdicionarAoCarrinho={adicionarAoCarrinho}
+                errosCarrinho={errosCarrinho}
+              />
+            ) : (
+              <>
+                {estado.status === "carregando" ? (
+                  <>
+                    <p role="status" className={CLASSE_STATUS}>
+                      Carregando produtos...
+                    </p>
+                    <EsqueletoProdutos />
+                  </>
+                ) : null}
+
+                {estado.status === "erro" ? (
+                  <p role="alert" className={CLASSE_ALERTA}>
+                    <Icone nome="alerta" className="mt-0.5 flex-none" />
+                    Nao foi possivel carregar os produtos. Tente novamente em instantes.
+                  </p>
+                ) : null}
+
+                {estado.status === "vazio" ? (
+                  <div className={CLASSE_VAZIO}>
+                    <IconeVazio nome="pacote" />
+                    <p className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
+                      Nenhum produto disponivel no momento.
+                    </p>
+                  </div>
+                ) : null}
+
+                {estado.status === "sucesso" ? (
+                  <ul className="grid grid-cols-2 gap-[var(--grid-gap)] md:grid-cols-3">
+                    {estado.produtos.map((produto) => (
+                      <ProdutoCard
+                        key={produto.id}
+                        produto={produto}
+                        usuariosService={usuariosService}
+                        onAdicionarAoCarrinho={adicionarAoCarrinho}
+                        erroCarrinho={errosCarrinho[produto.id]}
+                      />
+                    ))}
+                  </ul>
+                ) : null}
+              </>
+            )}
+          </div>
+        </div>
+
+        <FaixaRecomendacoes service={recomendacoesService} contexto={contextoRecomendacao} />
       </div>
-
-      <FiltrosProdutos
-        query={query}
-        opcoes={opcoesFiltro}
-        artesaos={artesaosAtivos}
-        onAlterar={atualizar}
-        onLimpar={limpar}
-      />
-
-      {algumFiltroAtivo ? (
-        <ResultadoBusca
-          service={produtosService}
-          usuariosService={usuariosService}
-          query={query}
-          onLimpar={limpar}
-          onAdicionarAoCarrinho={adicionarAoCarrinho}
-          errosCarrinho={errosCarrinho}
-        />
-      ) : (
-        <>
-          {estado.status === "carregando" ? (
-            <p role="status" className="text-sm text-neutral-600">
-              Carregando produtos...
-            </p>
-          ) : null}
-
-          {estado.status === "erro" ? (
-            <p role="alert" className="text-sm text-red-700">
-              Nao foi possivel carregar os produtos. Tente novamente em instantes.
-            </p>
-          ) : null}
-
-          {estado.status === "vazio" ? (
-            <p className="text-sm text-neutral-600">Nenhum produto disponivel no momento.</p>
-          ) : null}
-
-          {estado.status === "sucesso" ? (
-            <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-              {estado.produtos.map((produto) => (
-                <ProdutoCard
-                  key={produto.id}
-                  produto={produto}
-                  usuariosService={usuariosService}
-                  onAdicionarAoCarrinho={adicionarAoCarrinho}
-                  erroCarrinho={errosCarrinho[produto.id]}
-                />
-              ))}
-            </ul>
-          ) : null}
-        </>
-      )}
-
-      <FaixaRecomendacoes service={recomendacoesService} contexto={contextoRecomendacao} />
     </main>
   );
 }
