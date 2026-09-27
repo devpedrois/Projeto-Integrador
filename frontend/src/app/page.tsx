@@ -1,7 +1,6 @@
 "use client";
 
 import { Suspense, useEffect, useMemo, useState } from "react";
-import { createPortal } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
 import { paraDestinoSeguro } from "@/utils/rota-segura";
 import {
@@ -14,7 +13,6 @@ import {
 } from "@/services/fake/container";
 import { ServiceError } from "@/services/errors";
 import { useSessao } from "@/hooks/use-sessao";
-import { useCarrinho } from "@/hooks/use-carrinho";
 import type { CartStore } from "@/store/carrinho.store";
 import { useFiltrosUrl } from "@/hooks/use-filtros-url";
 import { useOpcoesFiltro } from "@/hooks/use-opcoes-filtro";
@@ -50,13 +48,6 @@ const STORE_INATIVO: SessionStore = {
   getSnapshot: () => null,
   subscribe: () => () => {},
 } as unknown as SessionStore;
-
-const CARRINHO_VAZIO = { itens: [], total: 0, atualizadoEm: "" };
-
-const CARRINHO_STORE_INATIVO: CartStore = {
-  getSnapshot: () => CARRINHO_VAZIO,
-  subscribe: () => () => {},
-} as unknown as CartStore;
 
 export default function Home() {
   return (
@@ -104,13 +95,6 @@ function PaginaInicial() {
     if (!sessionStore) return;
     setCarrinhoStore(obterCarrinhoStore(sessao?.id));
   }, [sessionStore, sessao?.id]);
-
-  const carrinho = useCarrinho(carrinhoStore ?? CARRINHO_STORE_INATIVO);
-  const [slotContador, setSlotContador] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    setSlotContador(document.getElementById("contador-carrinho-slot"));
-  }, [sessao?.id]);
 
   useEffect(() => {
     if (!produtosService) return;
@@ -172,21 +156,6 @@ function PaginaInicial() {
 
   return (
     <main className="min-h-screen">
-      {slotContador
-        ? createPortal(
-            <span
-              className={`grid h-[22px] min-w-[22px] place-items-center rounded-pill px-[7px] text-caption font-bold tabular-nums ${
-                carrinho.itens.length > 0
-                  ? "bg-barro-500 text-fg-on-brand"
-                  : "bg-linho-100 text-fg-muted"
-              }`}
-            >
-              {carrinho.itens.length}
-            </span>,
-            slotContador
-          )
-        : null}
-
       <HeroVaso />
 
       <div className="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pb-20">

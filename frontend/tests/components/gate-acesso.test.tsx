@@ -3,6 +3,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { GateAcesso } from "@/components/layout/GateAcesso";
 import { SessionStore } from "@/store/sessao.store";
+import { CartStore } from "@/store/carrinho.store";
+import { BrowserCarrinhoStorage } from "@/fake-api/storage/carrinho.storage";
 import { SessionModoAcessoStorage } from "@/fake-api/storage/modo-acesso.storage";
 import type { SessaoStorage } from "@/fake-api/storage/sessao.storage";
 import type { UsuarioSessao } from "@/types/sessao";
@@ -20,6 +22,10 @@ vi.mock("@/services/fake/container", () => ({
   obterSessionStore: () => sessionStoreMock,
   obterModoAcessoStorage: () =>
     new SessionModoAcessoStorage(window.sessionStorage, "origem:test:gate:modo-acesso"),
+  obterCarrinhoStore: (usuarioId?: string) =>
+    new CartStore(
+      new BrowserCarrinhoStorage(window.localStorage, usuarioId ?? "visitante", "origem:test:gate:carrinho")
+    ),
 }));
 
 function criarSessaoStorageFake(sessaoInicial: UsuarioSessao | null): SessaoStorage {

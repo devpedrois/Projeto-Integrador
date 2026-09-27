@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { DetalheProduto } from "@/components/produto/DetalheProduto";
@@ -15,7 +14,6 @@ import {
 } from "@/services/fake/container";
 import { ServiceError } from "@/services/errors";
 import { useSessao } from "@/hooks/use-sessao";
-import { useCarrinho } from "@/hooks/use-carrinho";
 import { paraDestinoSeguro } from "@/utils/rota-segura";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
@@ -30,13 +28,6 @@ const STORE_INATIVO: SessionStore = {
   getSnapshot: () => null,
   subscribe: () => () => {},
 } as unknown as SessionStore;
-
-const CARRINHO_VAZIO = { itens: [], total: 0, atualizadoEm: "" };
-
-const CARRINHO_STORE_INATIVO: CartStore = {
-  getSnapshot: () => CARRINHO_VAZIO,
-  subscribe: () => () => {},
-} as unknown as CartStore;
 
 const MENSAGEM_ADICIONADO = "Produto adicionado ao carrinho.";
 
@@ -79,8 +70,6 @@ export default function PaginaProduto() {
     setCarrinhoStore(obterCarrinhoStore(sessao?.id));
   }, [sessionStore, sessao?.id]);
 
-  const carrinho = useCarrinho(carrinhoStore ?? CARRINHO_STORE_INATIVO);
-
   function adicionarAoCarrinho(produto: Produto): void {
     if (!sessao) {
       router.push(`/login?redirect=${encodeURIComponent(paraDestinoSeguro(pathname))}`);
@@ -100,14 +89,6 @@ export default function PaginaProduto() {
 
   return (
     <main className="min-h-screen">
-      <div className="mx-auto flex w-full max-w-[var(--container-max)] justify-end px-[var(--container-pad)] pt-4">
-        <Link
-          href="/carrinho"
-          className="inline-flex min-h-[var(--control-h-sm)] items-center rounded-control px-2.5 text-body-sm font-semibold text-fg-muted no-underline transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover hover:text-fg-strong"
-        >
-          Carrinho ({carrinho.itens.length})
-        </Link>
-      </div>
       <DetalheProduto
         key={produtoId ?? ""}
         produtoId={produtoId}

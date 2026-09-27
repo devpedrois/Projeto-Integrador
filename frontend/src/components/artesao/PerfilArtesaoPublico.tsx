@@ -3,6 +3,7 @@
 import { usePerfilPublicoArtesao } from "@/hooks/use-perfil-publico-artesao";
 import { RetratoArtesao } from "@/components/artesao/RetratoArtesao";
 import { Icone } from "@/components/vitrine/Icone";
+import { fotoUrlSegura as capaUrlSegura } from "@/utils/foto-url-segura";
 import {
   BLOCO,
   CLASSE_ALERTA,
@@ -158,7 +159,7 @@ export function PerfilArtesaoPublico({
             <ul className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-3">
               {produtos.map((produto) => {
                 const capa = [...produto.fotos].sort((a, b) => a.ordem - b.ordem)[0];
-                const capaUrl = fotoUrlSegura(capa?.url);
+                const capaUrl = capaUrlSegura(capa?.url);
 
                 return (
                   <li

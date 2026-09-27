@@ -5,8 +5,14 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Icone } from "@/components/vitrine/Icone";
 import { useSessao } from "@/hooks/use-sessao";
-import { obterModoAcessoStorage, obterSessionStore } from "@/services/fake/container";
+import { useCarrinho } from "@/hooks/use-carrinho";
+import {
+  obterCarrinhoStore,
+  obterModoAcessoStorage,
+  obterSessionStore,
+} from "@/services/fake/container";
 import type { SessionStore } from "@/store/sessao.store";
+import type { CartStore } from "@/store/carrinho.store";
 import type { ModoAcessoStorage } from "@/fake-api/storage/modo-acesso.storage";
 import type { Papel } from "@/types/usuario";
 
@@ -49,6 +55,13 @@ const STORE_INATIVO: SessionStore = {
   getSnapshot: () => null,
   subscribe: () => () => {},
 } as unknown as SessionStore;
+
+const CARRINHO_VAZIO = { itens: [], total: 0, atualizadoEm: "" };
+
+const CARRINHO_STORE_INATIVO: CartStore = {
+  getSnapshot: () => CARRINHO_VAZIO,
+  subscribe: () => () => {},
+} as unknown as CartStore;
 
 interface GateAcessoProps {
   children: React.ReactNode;
@@ -151,7 +164,7 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
               >
                 {link.rotulo}
                 {link.href === "/carrinho" ? (
-                  <span id="contador-carrinho-slot" className="contents" />
+                  <ContadorCarrinho usuarioId={sessao?.id} />
                 ) : null}
               </Link>
             ))}
@@ -166,7 +179,7 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
             >
               <Icone nome="sacola" tamanho={22} />
               Carrinho
-              <span id="contador-carrinho-slot" className="contents" />
+              <ContadorCarrinho />
             </Link>
           ) : null}
           {sessao && confirmandoSaida ? (
@@ -227,5 +240,25 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
         </div>
       </div>
     </header>
+  );
+}
+
+function ContadorCarrinho({ usuarioId }: { usuarioId?: string }) {
+  const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
+
+  useEffect(() => {
+    setCarrinhoStore(obterCarrinhoStore(usuarioId));
+  }, [usuarioId]);
+
+  const quantidade = useCarrinho(carrinhoStore ?? CARRINHO_STORE_INATIVO).itens.length;
+
+  return (
+    <span
+      className={`grid h-[22px] min-w-[22px] place-items-center rounded-pill px-[7px] text-caption font-bold tabular-nums ${
+        quantidade > 0 ? "bg-barro-500 text-fg-on-brand" : "bg-linho-100 text-fg-muted"
+      }`}
+    >
+      {quantidade}
+    </span>
   );
 }

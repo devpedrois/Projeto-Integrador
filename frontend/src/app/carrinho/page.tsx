@@ -2,14 +2,20 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { obterCarrinhoStore, obterSessionStore } from "@/services/fake/container";
+import {
+  obterCarrinhoStore,
+  obterProdutosService,
+  obterSessionStore,
+} from "@/services/fake/container";
 import { useCarrinho } from "@/hooks/use-carrinho";
 import { useSessao } from "@/hooks/use-sessao";
 import { ServiceError } from "@/services/errors";
 import { Icone } from "@/components/vitrine/Icone";
+import { MiniaturaProduto } from "@/components/carrinho/MiniaturaProduto";
 import { CLASSE_STATUS, CLASSE_VAZIO, IconeVazio } from "@/components/vitrine/EsqueletoProdutos";
 import type { CartStore } from "@/store/carrinho.store";
 import type { SessionStore } from "@/store/sessao.store";
+import type { ProdutosService } from "@/services/contracts/produtos.contract";
 
 const STORE_INATIVO: SessionStore = {
   getSnapshot: () => null,
@@ -23,8 +29,11 @@ export default function CarrinhoPage() {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
 
+  const [produtosService, setProdutosService] = useState<ProdutosService | null>(null);
+
   useEffect(() => {
     setSessionStore(obterSessionStore());
+    setProdutosService(obterProdutosService());
   }, []);
 
   const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
@@ -44,10 +53,16 @@ export default function CarrinhoPage() {
     );
   }
 
-  return <Carrinho store={carrinhoStore} />;
+  return <Carrinho store={carrinhoStore} produtosService={produtosService} />;
 }
 
-function Carrinho({ store }: { store: CartStore }) {
+function Carrinho({
+  store,
+  produtosService,
+}: {
+  store: CartStore;
+  produtosService: ProdutosService | null;
+}) {
   const carrinho = useCarrinho(store);
   const [errosQuantidade, setErrosQuantidade] = useState<Record<string, string>>({});
 
@@ -108,12 +123,7 @@ function Carrinho({ store }: { store: CartStore }) {
                   }`}
                 >
                   <div className="flex min-w-0 flex-[1_1_240px] items-center gap-3.5">
-                    <span
-                      aria-hidden="true"
-                      className="grid size-[60px] flex-none place-items-center rounded-sm bg-linho-100 text-fg-subtle sm:size-[72px]"
-                    >
-                      <Icone nome="pacote" tamanho={22} className="opacity-75" />
-                    </span>
+                    <MiniaturaProduto produtoId={item.produtoId} produtosService={produtosService} />
                     <div className="flex min-w-0 flex-col gap-1">
                       <span className="text-base leading-[1.3] font-semibold text-pretty text-fg-strong">
                         {item.nome}
