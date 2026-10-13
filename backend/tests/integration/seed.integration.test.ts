@@ -1,102 +1,123 @@
+import { readFileSync } from "node:fs";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { runSeed, seedIds } from "../../prisma/seed.js";
-import { createPrismaClient } from "../../src/database/prisma/client.js";
+import { runSeed } from "../../prisma/seed.js";
+import { DEMO } from "../../prisma/seeds/demo.js";
+import { seedUuid } from "../../prisma/seeds/id.js";
+import { compararSenha } from "../../src/utils/senha.js";
+import { criarBancoSeed, contagensSeed } from "../helpers/seed-database.js";
 
-const databaseUrl = process.env.DATABASE_URL;
-
-if (databaseUrl === undefined || databaseUrl.length === 0) {
-  throw new Error("DATABASE_URL is required for integration tests");
-}
-
-const prisma = createPrismaClient(databaseUrl);
+let banco: Awaited<ReturnType<typeof criarBancoSeed>>;
+let primeiraContagem: Awaited<ReturnType<typeof contagensSeed>>;
 
 beforeAll(async () => {
-  await runSeed(prisma);
-  await runSeed(prisma);
+  banco = await criarBancoSeed();
+  await runSeed(banco.prisma);
+  primeiraContagem = await contagensSeed(banco.prisma);
+  await runSeed(banco.prisma);
 }, 60000);
 
 afterAll(async () => {
-  await prisma.$disconnect();
+  await banco?.fechar();
 });
 
-describe("database seed: carga sintetica representativa", () => {
-  it("mantem contagens estaveis apos execucao repetida (idempotencia)", async () => {
-    await expect(prisma.categoria.count()).resolves.toBe(6);
-    await expect(prisma.tecnica.count()).resolves.toBe(10);
-    await expect(prisma.regiao.count()).resolves.toBe(3);
-    await expect(prisma.usuario.count()).resolves.toBe(5);
-    await expect(prisma.perfilArtesao.count()).resolves.toBe(2);
-    await expect(prisma.carrinho.count()).resolves.toBe(1);
-    await expect(prisma.itemCarrinho.count()).resolves.toBe(1);
-    await expect(prisma.produto.count()).resolves.toBe(9);
-    await expect(prisma.produtoFoto.count()).resolves.toBe(10);
-    await expect(prisma.pedido.count()).resolves.toBe(3);
-    await expect(prisma.itemPedido.count()).resolves.toBe(6);
-    await expect(prisma.pagamento.count()).resolves.toBe(3);
-    await expect(prisma.avaliacao.count()).resolves.toBe(4);
-  });
-
-  it("distribui produtos pelas seis categorias oficiais", async () => {
-    const categorias = await prisma.categoria.findMany({
-      select: { nome: true, _count: { select: { produtos: true } } },
+describe("BD-05 demo no PostgreSQL real", () => {
+  it("mantem contagens apos duas execucoes", async () => {
+    expect(await contagensSeed(banco.prisma)).toEqual(primeiraContagem);
+    expect(primeiraContagem).toEqual({
+      usuarios: 5,
+      artesaos: 2,
+      compradores: 2,
+      perfis: 2,
+      carrinhos: 2,
+      categorias: 6,
+      tecnicas: 10,
+      regioes: 3,
+      produtos: 30,
+      fotos: 30,
+      pedidos: 3,
+      itens: 3,
+      pagamentos: 3,
+      avaliacoes: 10,
     });
-
-    expect(categorias).toHaveLength(6);
-    for (const categoria of categorias) {
-      expect(categoria._count.produtos).toBeGreaterThan(0);
+  });
+  it("autentica todas as contas documentadas", async () => {
+    const documento = readFileSync(
+      new URL("../../../docs/docs auxiliares/LOGINS_TESTE.md", import.meta.url),
+      "utf8",
+    );
+    const contas = [
+      ...documento.matchAll(
+        /\| (?:Comprador|Artesao|Admin) \| ([^|]+) \| ([^|]+) \|/g,
+      ),
+    ];
+    expect(contas.length).toBeGreaterThanOrEqual(4);
+    for (const conta of contas) {
+      const email = conta[1]?.trim();
+      const senha = conta[2]?.trim();
+      if (!email || !senha) throw new Error("Conta documentada invalida");
+      const usuario = await banco.prisma.usuario.findUniqueOrThrow({
+        where: { email },
+      });
+      expect(await compararSenha(senha, usuario.senhaHash)).toBe(true);
+      expect(/^\$2[ab]\$10\$/.test(usuario.senhaHash)).toBe(true);
     }
   });
-
-  it("inclui um produto sem estoque, visivel apenas para o artesao dono", async () => {
-    const produto = await prisma.produto.findUniqueOrThrow({
-      where: { id: seedIds.produtos.colchaBordada },
-    });
-
-    expect(produto.quantidadeEstoque).toBe(0);
-    expect(produto.ativo).toBe(true);
-  });
-
-  it("inclui um produto inativo", async () => {
-    const produto = await prisma.produto.findUniqueOrThrow({
-      where: { id: seedIds.produtos.cestoFibra },
-    });
-
-    expect(produto.ativo).toBe(false);
-  });
-
-  it("inclui um produto sem nenhuma venda registrada", async () => {
-    const totalVendido = await prisma.itemPedido.aggregate({
-      where: { produtoId: seedIds.produtos.jarraFosca },
-      _sum: { quantidade: true },
-    });
-
-    expect(totalVendido._sum.quantidade).toBeNull();
-  });
-
-  it("distribui artesaos por regioes diferentes", async () => {
-    const perfis = await prisma.perfilArtesao.findMany({
-      select: { regiaoId: true },
-    });
-    const regioes = new Set(perfis.map((perfil) => perfil.regiaoId));
-
-    expect(regioes.size).toBe(2);
-  });
-
-  it("nunca grava senha em texto plano reconhecivel como credencial real", async () => {
-    const usuarios = await prisma.usuario.findMany({
-      select: { senhaHash: true },
-    });
-
-    for (const usuario of usuarios) {
-      expect(usuario.senhaHash.startsWith("seed$demo$")).toBe(true);
+  it("preserva catalogo, fotos e referencias da Fake API", async () => {
+    for (const produto of DEMO.produtos) {
+      const salvo = await banco.prisma.produto.findUniqueOrThrow({
+        where: { id: seedUuid(produto.id) },
+        include: { fotos: true },
+      });
+      expect({
+        nome: salvo.nome,
+        descricao: salvo.descricao,
+        preco: Number(salvo.preco),
+        estoque: salvo.quantidadeEstoque,
+        tecnica: salvo.tecnicaId,
+        ativo: salvo.ativo,
+        criadoEm: salvo.criadoEm.toISOString(),
+      }).toEqual({
+        nome: produto.nome,
+        descricao: produto.descricao,
+        preco: produto.preco,
+        estoque: produto.quantidadeEstoque,
+        tecnica: produto.tecnicaId,
+        ativo: produto.ativo,
+        criadoEm: produto.criadoEm,
+      });
+      expect(salvo.artesaoId).toBe(seedUuid(produto.artesaoId));
+      expect(salvo.categoriaId).toBe(seedUuid(produto.categoriaId));
+      expect(salvo.fotos.map(({ url, ordem }) => ({ url, ordem }))).toEqual(
+        produto.fotos,
+      );
+    }
+    for (const perfil of DEMO.perfis_artesao) {
+      const salvo = await banco.prisma.perfilArtesao.findUniqueOrThrow({
+        where: { usuarioId: seedUuid(perfil.artesaoId) },
+      });
+      expect(salvo.tecnicaPrincipalId).toBe(perfil.tecnicaId);
+      expect(salvo.regiaoId).toBe(perfil.regiaoId || null);
+    }
+    for (const avaliacao of DEMO.avaliacoes) {
+      const salvo = await banco.prisma.avaliacao.findUniqueOrThrow({
+        where: { id: seedUuid(avaliacao.id) },
+      });
+      expect(salvo.nota).toBe(avaliacao.nota);
+      expect(salvo.produtoId).toBe(seedUuid(avaliacao.produtoId));
     }
   });
-
-  it("admin so existe via carga sintetica, nunca via cadastro publico simulado", async () => {
-    const admin = await prisma.usuario.findUniqueOrThrow({
-      where: { id: seedIds.usuarios.admin },
+  it("confirma pedidos com itens e pagamento coerente", async () => {
+    const pedidos = await banco.prisma.pedido.findMany({
+      include: { pagamento: true, itens: true },
     });
-
-    expect(admin.papel).toBe("admin");
+    for (const pedido of pedidos) {
+      expect(pedido.status).toBe("confirmado");
+      expect(pedido.pagamento?.metodo).toBe("pix_simulado");
+      expect(pedido.pagamento?.status).toBe("aprovado");
+      expect(Number(pedido.pagamento?.valor)).toBe(Number(pedido.total));
+      expect(
+        pedido.itens.reduce((total, item) => total + Number(item.subtotal), 0),
+      ).toBe(Number(pedido.total));
+    }
   });
 });

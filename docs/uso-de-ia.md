@@ -255,3 +255,16 @@ A revisao de seguranca segue local, conforme escolha do responsavel.
 Evidencias desta subtarefa ficam em `evidencias/BD-06/`.
 Lint, typecheck e 154 testes do backend passaram. A revisao local de
 seguranca foi concluida. O schema aplicado esta alinhado ao Prisma.
+
+## Registro de apoio em 13/10/2026 — BD-05
+
+Codex apoiou somente a carga demo, a carga de volume e o util de senha.
+Testes precederam a implementacao. O bcrypt nativo usa custo 10.
+O catalogo demo preserva os seeds frontais por snapshot verificavel.
+IDs textuais recebem UUIDs determinísticos; UUIDs validos sao preservados.
+O campo vazio de regiao da Maria permanece nulo, sem dado inventado.
+O gerador de volume usa seed fixa e insercoes em lote.
+As guardas impedem execucao sem opt-in e no endpoint do deploy.
+O responsavel confirmou a branch Neon de teste para schemas isolados.
+A revisao de seguranca foi local, conforme escolha explicita.
+Resultados e limites constam em `evidencias/BD-05/bd05-validacao.md`.
