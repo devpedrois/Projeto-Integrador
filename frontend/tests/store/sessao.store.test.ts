@@ -104,7 +104,7 @@ describe("SessionStore", () => {
 
     await store.revalidar(verificar);
 
-    expect(verificar).toHaveBeenCalledWith("u1");
+    expect(verificar).toHaveBeenCalledWith(SESSAO);
     expect(store.getSnapshot()).toEqual(SESSAO);
   });
 
@@ -128,5 +128,16 @@ describe("SessionStore", () => {
     });
 
     expect(store.getSnapshot()).toEqual(outra);
+  });
+
+  it("revalidar encerra a sessao quando a verificacao falha", async () => {
+    const store = criarStore();
+    store.login(SESSAO);
+
+    await store.revalidar(async () => {
+      throw new Error("storage indisponivel");
+    });
+
+    expect(store.getSnapshot()).toBeNull();
   });
 });
