@@ -1,5 +1,6 @@
 import type { Avaliacao } from "@/types/avaliacao";
 import { AVALIACOES_SEED } from "@/fake-api/seeds/avaliacoes.seed";
+import { lerListaPersistida } from "@/fake-api/storage/lista-persistida";
 
 const CHAVE_PADRAO = "origem:v1:avaliacoes";
 
@@ -17,14 +18,12 @@ export class BrowserAvaliacaoRepository implements AvaliacaoRepository {
   ) {}
 
   async seed(): Promise<void> {
-    if (this.storage.getItem(this.chave) !== null) return;
+    if (lerListaPersistida(this.storage, this.chave) !== null) return;
     this.storage.setItem(this.chave, JSON.stringify(AVALIACOES_SEED));
   }
 
   async list(): Promise<Avaliacao[]> {
-    const bruto = this.storage.getItem(this.chave);
-    if (bruto === null) return [];
-    return JSON.parse(bruto) as Avaliacao[];
+    return lerListaPersistida<Avaliacao>(this.storage, this.chave) ?? [];
   }
 
   async listByProdutoId(produtoId: string): Promise<Avaliacao[]> {

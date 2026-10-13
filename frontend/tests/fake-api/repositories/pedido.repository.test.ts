@@ -61,3 +61,16 @@ describe("BrowserPedidoRepository", () => {
     expect(pedidos).toHaveLength(1);
   });
 });
+
+describe("BrowserPedidoRepository com valor corrompido", () => {
+  it.each(["{json-invalido", '{"nao":"lista"}', "null"])(
+    "descarta %s e segue com lista vazia",
+    async (bruto) => {
+      window.localStorage.setItem(CHAVE_TESTE, bruto);
+      const repo = new BrowserPedidoRepository(window.localStorage, CHAVE_TESTE);
+
+      await expect(repo.list()).resolves.toEqual([]);
+      expect(window.localStorage.getItem(CHAVE_TESTE)).toBeNull();
+    }
+  );
+});

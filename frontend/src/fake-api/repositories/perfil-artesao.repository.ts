@@ -1,5 +1,6 @@
 import type { PerfilArtesao } from "@/types/perfil-artesao";
 import { PERFIS_ARTESAO_SEED } from "@/fake-api/seeds/perfis-artesao.seed";
+import { lerListaPersistida } from "@/fake-api/storage/lista-persistida";
 
 const CHAVE_PADRAO = "origem:v1:perfis-artesao";
 
@@ -17,14 +18,12 @@ export class BrowserPerfilArtesaoRepository implements PerfilArtesaoRepository {
   ) {}
 
   async seed(): Promise<void> {
-    if (this.storage.getItem(this.chave) !== null) return;
+    if (lerListaPersistida(this.storage, this.chave) !== null) return;
     this.storage.setItem(this.chave, JSON.stringify(PERFIS_ARTESAO_SEED));
   }
 
   async list(): Promise<PerfilArtesao[]> {
-    const bruto = this.storage.getItem(this.chave);
-    if (bruto === null) return [];
-    return JSON.parse(bruto) as PerfilArtesao[];
+    return lerListaPersistida<PerfilArtesao>(this.storage, this.chave) ?? [];
   }
 
   async findByArtesaoId(artesaoId: string): Promise<PerfilArtesao | null> {

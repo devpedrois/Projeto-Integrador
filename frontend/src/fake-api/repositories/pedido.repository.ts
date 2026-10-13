@@ -1,4 +1,5 @@
 import type { Pedido } from "@/types/pedido";
+import { lerListaPersistida } from "@/fake-api/storage/lista-persistida";
 
 const CHAVE_PADRAO = "origem:v1:pedidos";
 
@@ -14,9 +15,7 @@ export class BrowserPedidoRepository implements PedidoRepository {
   ) {}
 
   async list(): Promise<Pedido[]> {
-    const bruto = this.storage.getItem(this.chave);
-    if (bruto === null) return [];
-    return JSON.parse(bruto) as Pedido[];
+    return lerListaPersistida<Pedido>(this.storage, this.chave) ?? [];
   }
 
   async create(pedido: Pedido): Promise<Pedido> {

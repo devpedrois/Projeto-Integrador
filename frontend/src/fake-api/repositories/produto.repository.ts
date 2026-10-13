@@ -1,5 +1,6 @@
 import type { Produto } from "@/types/produto";
 import { PRODUTOS_SEED } from "@/fake-api/seeds/produtos.seed";
+import { lerListaPersistida } from "@/fake-api/storage/lista-persistida";
 
 const CHAVE_PADRAO = "origem:v1:produtos";
 
@@ -21,14 +22,12 @@ export class BrowserProdutoRepository implements ProdutoRepository {
   ) {}
 
   async seed(): Promise<void> {
-    if (this.storage.getItem(this.chave) !== null) return;
+    if (lerListaPersistida(this.storage, this.chave) !== null) return;
     this.storage.setItem(this.chave, JSON.stringify(PRODUTOS_SEED));
   }
 
   async list(): Promise<Produto[]> {
-    const bruto = this.storage.getItem(this.chave);
-    if (bruto === null) return [];
-    return JSON.parse(bruto) as Produto[];
+    return lerListaPersistida<Produto>(this.storage, this.chave) ?? [];
   }
 
   async create(produto: Produto): Promise<Produto> {

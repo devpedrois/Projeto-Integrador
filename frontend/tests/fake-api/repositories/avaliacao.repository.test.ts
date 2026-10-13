@@ -62,3 +62,25 @@ describe("BrowserAvaliacaoRepository", () => {
     expect(await outraInstancia.listByProdutoId("produto-seed-30")).toContainEqual(nova);
   });
 });
+
+describe("BrowserAvaliacaoRepository com valor corrompido", () => {
+  it.each(["{json-invalido", '{"nao":"lista"}', "null"])(
+    "descarta %s e segue com lista vazia",
+    async (bruto) => {
+      window.localStorage.setItem(CHAVE_TESTE, bruto);
+      const repo = new BrowserAvaliacaoRepository(window.localStorage, CHAVE_TESTE);
+
+      await expect(repo.list()).resolves.toEqual([]);
+      expect(window.localStorage.getItem(CHAVE_TESTE)).toBeNull();
+    }
+  );
+
+  it("seed repopula depois de descartar valor corrompido", async () => {
+    window.localStorage.setItem(CHAVE_TESTE, "{json-invalido");
+    const repo = new BrowserAvaliacaoRepository(window.localStorage, CHAVE_TESTE);
+
+    await repo.seed();
+
+    expect((await repo.list()).length).toBeGreaterThan(0);
+  });
+});

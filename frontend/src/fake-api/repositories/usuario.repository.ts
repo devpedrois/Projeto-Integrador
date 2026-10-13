@@ -1,5 +1,6 @@
 import type { Usuario } from "@/types/usuario";
 import { USUARIOS_SEED } from "@/fake-api/seeds/usuarios.seed";
+import { lerListaPersistida } from "@/fake-api/storage/lista-persistida";
 
 const CHAVE_PADRAO = "origem:v1:usuarios";
 
@@ -33,14 +34,12 @@ export class BrowserUsuarioRepository implements UsuarioRepository {
   ) {}
 
   async seed(): Promise<void> {
-    if (this.storage.getItem(this.chave) !== null) return;
+    if (lerListaPersistida(this.storage, this.chave) !== null) return;
     this.storage.setItem(this.chave, JSON.stringify(USUARIOS_SEED));
   }
 
   async list(): Promise<Usuario[]> {
-    const bruto = this.storage.getItem(this.chave);
-    if (bruto === null) return [];
-    return JSON.parse(bruto) as Usuario[];
+    return lerListaPersistida<Usuario>(this.storage, this.chave) ?? [];
   }
 
   async create(usuario: Usuario): Promise<Usuario> {
