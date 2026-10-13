@@ -20,6 +20,11 @@ vi.mock("@/services/fake/container", () => ({
     obter: vi.fn().mockResolvedValue(null),
     salvar: vi.fn(),
   }),
+  obterCarrinhoStore: () => ({
+    getSnapshot: vi.fn().mockReturnValue({ itens: [] }),
+    subscribe: vi.fn().mockReturnValue(() => {}),
+  }),
+  obterPedidosService: () => ({ create: vi.fn() }),
   obterModeracaoService: () => ({
     listarArtesaos: vi.fn().mockReturnValue(new Promise(() => {})),
     listarProdutos: vi.fn().mockReturnValue(new Promise(() => {})),
@@ -122,5 +127,38 @@ describe("protecao de rotas", () => {
     render(<MinhaContaPage />);
 
     expect(await screen.findByRole("heading", { name: "Minha conta" })).toBeInTheDocument();
+  });
+
+  it("/checkout nega visitante e preserva destino de retorno", async () => {
+    pathnameAtual = "/checkout";
+    storeMock = criarStoreFake(null);
+    const { default: CheckoutPage } = await import("@/app/checkout/page");
+
+    render(<CheckoutPage />);
+
+    await waitFor(() =>
+      expect(replaceMock).toHaveBeenCalledWith("/login?redirect=%2Fcheckout")
+    );
+  });
+
+  it.each(["artesao", "admin"] as const)("/checkout nega papel %s", async (papel) => {
+    pathnameAtual = "/checkout";
+    storeMock = criarStoreFake({ id: "u6", nome: "Fabi", email: "u6@origem.test", papel });
+    const { default: CheckoutPage } = await import("@/app/checkout/page");
+
+    render(<CheckoutPage />);
+
+    expect(await screen.findByText(/acesso negado/i)).toBeInTheDocument();
+  });
+
+  it("/checkout aceita papel comprador", async () => {
+    pathnameAtual = "/checkout";
+    storeMock = criarStoreFake({ id: "u7", nome: "Gil", email: "u7@origem.test", papel: "comprador" });
+    const { default: CheckoutPage } = await import("@/app/checkout/page");
+
+    render(<CheckoutPage />);
+
+    await waitFor(() => expect(screen.queryByText(/acesso negado/i)).not.toBeInTheDocument());
+    expect(screen.getByRole("main")).toBeInTheDocument();
   });
 });

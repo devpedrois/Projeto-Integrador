@@ -61,7 +61,7 @@ export default function CheckoutPage() {
   }, [sessionStore, sessao?.id]);
 
   return (
-    <RouteGuard sessionStore={sessionStore}>
+    <RouteGuard sessionStore={sessionStore} papeisPermitidos={["comprador"]}>
       {carrinhoStore && pedidosService && sessao ? (
         <Checkout
           carrinhoStore={carrinhoStore}
