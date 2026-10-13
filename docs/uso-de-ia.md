@@ -240,3 +240,18 @@ Backend: lint, typecheck e 148 testes passaram. Frontend: typecheck e
 669 testes passaram; lint apontou erro preexistente no arquivo gerado
 `next-env.d.ts`. A migration foi aplicada no Neon apos autorizacao explicita.
 Este registro nao atribui revisao humana ainda nao realizada.
+
+## Registro de apoio em 13/10/2026 — BD-06
+
+O responsavel solicitou somente a tabela tecnica `Notificacao`, seu
+repository e testes de idempotencia. Codex apoiou testes escritos antes
+da implementacao, migration transacional, modelo Prisma e insercao com
+`skipDuplicates`. O handler da fila nao foi alterado.
+
+A migration foi validada em schema isolado, com PostgreSQL real.
+O responsavel autorizou sua aplicacao no Neon de desenvolvimento.
+Os testes verificam reentrega, preservacao de dados e FKs inexistentes.
+A revisao de seguranca segue local, conforme escolha do responsavel.
+Evidencias desta subtarefa ficam em `evidencias/BD-06/`.
+Lint, typecheck e 154 testes do backend passaram. A revisao local de
+seguranca foi concluida. O schema aplicado esta alinhado ao Prisma.
