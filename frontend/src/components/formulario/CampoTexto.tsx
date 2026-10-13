@@ -13,6 +13,7 @@ interface CampoTextoProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "i
   id: string;
   rotulo: string;
   erro?: string;
+  ajuda?: string;
   icone?: NomeIcone;
   opcional?: boolean;
   ref?: Ref<HTMLInputElement>;
@@ -22,6 +23,7 @@ export function CampoTexto({
   id,
   rotulo,
   erro,
+  ajuda,
   icone,
   opcional,
   type = "text",
@@ -31,6 +33,8 @@ export function CampoTexto({
   const [senhaVisivel, setSenhaVisivel] = useState(false);
   const ehSenha = type === "password";
   const idErro = `${id}-erro`;
+  const idAjuda = `${id}-ajuda`;
+  const descritores = [ajuda ? idAjuda : null, erro ? idErro : null].filter(Boolean).join(" ");
   const recuoEsquerdo = icone ? "pl-[42px]" : "pl-3.5";
 
   return (
@@ -45,7 +49,7 @@ export function CampoTexto({
           ref={ref}
           type={ehSenha && senhaVisivel ? "text" : type}
           aria-invalid={Boolean(erro)}
-          aria-describedby={erro ? idErro : undefined}
+          aria-describedby={descritores || undefined}
           className={`${CLASSE_CONTROLE} ${classeBordaControle(erro)} h-[var(--control-h-md)] ${recuoEsquerdo} ${ehSenha ? "pr-11" : "pr-3.5"}`}
           {...resto}
         />
@@ -60,6 +64,11 @@ export function CampoTexto({
           </button>
         ) : null}
       </div>
+      {ajuda ? (
+        <p id={idAjuda} className="m-0 text-[13px] leading-[1.4] text-fg-muted">
+          {ajuda}
+        </p>
+      ) : null}
       {erro ? <ErroCampo id={idErro} erro={erro} /> : null}
     </div>
   );

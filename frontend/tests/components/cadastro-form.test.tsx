@@ -46,6 +46,17 @@ beforeEach(() => {
 });
 
 describe("CadastroForm", () => {
+  it("exibe aviso de protótipo associado ao campo de senha", () => {
+    render(<CadastroForm service={criarServicoFake()} />);
+
+    const aviso = screen.getByText(
+      "Protótipo acadêmico: não use uma senha que você usa em outros sites."
+    );
+    const campoSenha = screen.getByLabelText("Senha");
+
+    expect(campoSenha.getAttribute("aria-describedby")).toContain(aviso.id);
+  });
+
   it("possui labels associadas a cada campo", () => {
     render(<CadastroForm service={criarServicoFake()} />);
 

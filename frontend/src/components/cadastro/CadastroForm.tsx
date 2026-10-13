@@ -142,6 +142,7 @@ export function CadastroForm({ service }: CadastroFormProps) {
         onChange={(evento) => setSenha(evento.target.value)}
         disabled={enviando}
         erro={erros.senha}
+        ajuda="Protótipo acadêmico: não use uma senha que você usa em outros sites."
       />
 
       <div className={`flex flex-col gap-2 ${enviando ? "opacity-60" : ""}`}>
