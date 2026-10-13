@@ -178,4 +178,11 @@ describe("BrowserProdutoRepository com valor corrompido", () => {
 
     expect((await repo.list()).length).toBeGreaterThan(0);
   });
+
+  it("ignora entradas que nao sao objetos", async () => {
+    window.localStorage.setItem(CHAVE_TESTE, '[null, 1, "x", {"id":"a"}]');
+    const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+
+    await expect(repo.list()).resolves.toEqual([{ id: "a" }]);
+  });
 });

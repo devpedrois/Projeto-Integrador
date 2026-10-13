@@ -1,12 +1,15 @@
 import type { Carrinho } from "@/types/carrinho";
+import { ehObjeto } from "@/fake-api/storage/lista-persistida";
 
 const PREFIXO_PADRAO = "origem:v1:carrinho";
 
 function interpretarCarrinho(bruto: string): Carrinho | null {
   try {
     const valor: unknown = JSON.parse(bruto);
-    if (typeof valor !== "object" || valor === null || Array.isArray(valor)) return null;
-    return Array.isArray((valor as Carrinho).itens) ? (valor as Carrinho) : null;
+    if (!ehObjeto(valor)) return null;
+    const { itens } = valor as Carrinho;
+    if (!Array.isArray(itens)) return null;
+    return { ...(valor as Carrinho), itens: itens.filter(ehObjeto) };
   } catch {
     return null;
   }

@@ -73,4 +73,11 @@ describe("BrowserPedidoRepository com valor corrompido", () => {
       expect(window.localStorage.getItem(CHAVE_TESTE)).toBeNull();
     }
   );
+
+  it("ignora entradas que nao sao objetos", async () => {
+    window.localStorage.setItem(CHAVE_TESTE, '[null, 1, "x", {"id":"a"}]');
+    const repo = new BrowserPedidoRepository(window.localStorage, CHAVE_TESTE);
+
+    await expect(repo.list()).resolves.toEqual([{ id: "a" }]);
+  });
 });

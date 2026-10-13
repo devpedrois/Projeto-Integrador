@@ -37,4 +37,13 @@ describe("BrowserCarrinhoStorage", () => {
       expect(window.localStorage.getItem(CHAVE_TESTE)).toBeNull();
     }
   );
+
+  it("ignora itens que nao sao objetos", () => {
+    window.localStorage.setItem(
+      CHAVE_TESTE,
+      JSON.stringify({ itens: [null, 7, { produtoId: "p1" }], total: 0, atualizadoEm: "x" })
+    );
+
+    expect(criarStorage().ler()?.itens).toEqual([{ produtoId: "p1" }]);
+  });
 });

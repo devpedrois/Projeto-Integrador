@@ -1,7 +1,11 @@
+export function ehObjeto(valor: unknown): valor is object {
+  return typeof valor === "object" && valor !== null && !Array.isArray(valor);
+}
+
 function interpretarLista<T>(bruto: string): T[] | null {
   try {
     const valor: unknown = JSON.parse(bruto);
-    return Array.isArray(valor) ? (valor as T[]) : null;
+    return Array.isArray(valor) ? (valor.filter(ehObjeto) as T[]) : null;
   } catch {
     return null;
   }
