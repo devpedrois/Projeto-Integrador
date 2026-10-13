@@ -83,4 +83,50 @@ describe("SessionStore", () => {
       expect(novaInstancia.getSnapshot()).toEqual(SESSAO);
     }
   });
+
+  it("revalidar encerra a sessao quando o usuario esta desativado", async () => {
+    const store = criarStore();
+    store.login(SESSAO);
+    const ouvinte = vi.fn();
+    store.subscribe(ouvinte);
+
+    await store.revalidar(async () => false);
+
+    expect(store.getSnapshot()).toBeNull();
+    expect(new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE).ler()).toBeNull();
+    expect(ouvinte).toHaveBeenCalledTimes(1);
+  });
+
+  it("revalidar mantem a sessao quando o usuario esta ativo", async () => {
+    const store = criarStore();
+    store.login(SESSAO);
+    const verificar = vi.fn(async () => true);
+
+    await store.revalidar(verificar);
+
+    expect(verificar).toHaveBeenCalledWith("u1");
+    expect(store.getSnapshot()).toEqual(SESSAO);
+  });
+
+  it("revalidar nao consulta nada quando nao ha sessao", async () => {
+    const store = criarStore();
+    const verificar = vi.fn(async () => false);
+
+    await store.revalidar(verificar);
+
+    expect(verificar).not.toHaveBeenCalled();
+  });
+
+  it("revalidar nao encerra sessao trocada durante a verificacao", async () => {
+    const store = criarStore();
+    store.login(SESSAO);
+    const outra: UsuarioSessao = { ...SESSAO, id: "u2", email: "u2@origem.test" };
+
+    await store.revalidar(async () => {
+      store.login(outra);
+      return false;
+    });
+
+    expect(store.getSnapshot()).toEqual(outra);
+  });
 });

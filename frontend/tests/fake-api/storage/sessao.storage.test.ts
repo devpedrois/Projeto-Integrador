@@ -72,4 +72,48 @@ describe("BrowserSessaoStorage", () => {
 
     expect(storage.ler()).toBeNull();
   });
+
+  it.each([
+    ["id vazio", { id: "", nome: "Ana", email: "ana@origem.test", papel: "comprador" }],
+    ["id ausente", { nome: "Ana", email: "ana@origem.test", papel: "comprador" }],
+    ["id nao string", { id: 1, nome: "Ana", email: "ana@origem.test", papel: "comprador" }],
+    ["email vazio", { id: "u1", nome: "Ana", email: "", papel: "comprador" }],
+    ["email nao string", { id: "u1", nome: "Ana", email: 42, papel: "comprador" }],
+    ["papel desconhecido", { id: "u1", nome: "Ana", email: "ana@origem.test", papel: "superadmin" }],
+    ["papel ausente", { id: "u1", nome: "Ana", email: "ana@origem.test" }],
+    ["valor nao objeto", "texto"],
+    ["valor nulo", null],
+  ])("descarta e limpa sessao com %s", (_caso, valor) => {
+    window.localStorage.setItem(CHAVE_TESTE, JSON.stringify(valor));
+    const storage = new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE);
+
+    expect(storage.ler()).toBeNull();
+    expect(window.localStorage.getItem(CHAVE_TESTE)).toBeNull();
+  });
+
+  it("limpa o storage quando o valor esta corrompido", () => {
+    window.localStorage.setItem(CHAVE_TESTE, "{json-invalido");
+    const storage = new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE);
+
+    storage.ler();
+
+    expect(window.localStorage.getItem(CHAVE_TESTE)).toBeNull();
+  });
+
+  it.each(["comprador", "artesao", "admin"] as const)("aceita papel %s", (papel) => {
+    const storage = new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE);
+    storage.salvar({ id: "u1", nome: "Ana", email: "ana@origem.test", papel });
+
+    expect(storage.ler()?.papel).toBe(papel);
+  });
+
+  it("restaura somente os campos conhecidos da sessao", () => {
+    window.localStorage.setItem(
+      CHAVE_TESTE,
+      JSON.stringify({ id: "u1", nome: "Ana", email: "ana@origem.test", papel: "comprador", extra: "x" })
+    );
+    const storage = new BrowserSessaoStorage(window.localStorage, CHAVE_TESTE);
+
+    expect(storage.ler()).toEqual({ id: "u1", nome: "Ana", email: "ana@origem.test", papel: "comprador" });
+  });
 });

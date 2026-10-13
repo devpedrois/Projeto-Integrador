@@ -15,6 +15,7 @@ import { FakeAvaliacoesService } from "@/services/fake/avaliacoes.service";
 import { FakeModeracaoService } from "@/services/fake/moderacao.service";
 import { FakeRecommendationAdapter } from "@/services/fake/recomendacoes/fake-recommendation.adapter";
 import { FakeOpcoesFiltroService } from "@/services/fake/opcoes-filtro.service";
+import { criarVerificadorUsuarioAtivo } from "@/services/fake/verificar-usuario-ativo";
 import { SessionStore } from "@/store/sessao.store";
 import { CartStore } from "@/store/carrinho.store";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
@@ -161,6 +162,9 @@ export function obterSessionStore(): SessionStore {
   if (!sessionStoreInstancia) {
     sessionStoreInstancia = new SessionStore(
       new BrowserSessaoStorage(window.localStorage)
+    );
+    void sessionStoreInstancia.revalidar(
+      criarVerificadorUsuarioAtivo(new BrowserUsuarioRepository(window.localStorage))
     );
   }
   return sessionStoreInstancia;

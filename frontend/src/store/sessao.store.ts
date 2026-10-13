@@ -2,6 +2,7 @@ import type { SessaoStorage } from "@/fake-api/storage/sessao.storage";
 import type { UsuarioSessao } from "@/types/sessao";
 
 type Ouvinte = () => void;
+export type VerificadorUsuarioAtivo = (usuarioId: string) => Promise<boolean>;
 
 export class SessionStore {
   private sessao: UsuarioSessao | null;
@@ -28,6 +29,13 @@ export class SessionStore {
     this.sessao = null;
     this.storage.limpar();
     this.notificar();
+  }
+
+  async revalidar(verificarAtivo: VerificadorUsuarioAtivo): Promise<void> {
+    const sessaoVerificada = this.sessao;
+    if (!sessaoVerificada) return;
+    const ativo = await verificarAtivo(sessaoVerificada.id);
+    if (!ativo && this.sessao === sessaoVerificada) this.logout();
   }
 
   private notificar(): void {
