@@ -109,4 +109,41 @@ describe("validarProduto", () => {
 
     expect(erros.quantidadeEstoque).toBeUndefined();
   });
+
+  it.each(["https://origem.test/fotos/vaso.jpg", "/fotos/vaso.jpg"])(
+    "aceita foto %s",
+    (url) => {
+      const erros = validarProduto(entradaValida({ fotos: [{ url }] }));
+
+      expect(erros.fotos).toBeUndefined();
+    }
+  );
+
+  it.each([
+    "http://origem.test/foto.jpg",
+    "javascript:alert(1)",
+    "data:image/png;base64,AAAA",
+    "//evil.com/foto.jpg",
+    "/%5Cevil.com/foto.jpg",
+    "ftp://origem.test/foto.jpg",
+    "foto.jpg",
+  ])("rejeita foto %s", (url) => {
+    const erros = validarProduto(entradaValida({ fotos: [{ url }] }));
+
+    expect(erros.fotos).toBeDefined();
+  });
+
+  it("rejeita foto com barra invertida", () => {
+    const erros = validarProduto(entradaValida({ fotos: [{ url: "/\\evil.com/foto.jpg" }] }));
+
+    expect(erros.fotos).toBeDefined();
+  });
+
+  it("rejeita quando qualquer uma das fotos e insegura", () => {
+    const erros = validarProduto(
+      entradaValida({ fotos: [{ url: "/fotos/vaso.jpg" }, { url: "javascript:alert(1)" }] })
+    );
+
+    expect(erros.fotos).toBeDefined();
+  });
 });

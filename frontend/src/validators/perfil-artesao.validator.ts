@@ -1,6 +1,7 @@
 import { TECNICAS_SEED } from "@/fake-api/seeds/tecnicas.seed";
 import { REGIOES_SEED } from "@/fake-api/seeds/regioes.seed";
 import type { PerfilArtesaoInput } from "@/types/perfil-artesao";
+import { fotoUrlAceita } from "@/utils/foto-url-segura";
 
 export const HISTORIA_LIMITE_CARACTERES = 1000;
 
@@ -31,8 +32,8 @@ export function validarPerfilArtesao(
     erros.regiaoId = "Selecione uma região válida.";
   }
 
-  if (input.fotoUrl !== undefined && input.fotoUrl.trim().length === 0) {
-    erros.fotoUrl = "Informe uma URL válida ou deixe o campo vazio.";
+  if (input.fotoUrl !== undefined && !fotoUrlAceita(input.fotoUrl.trim())) {
+    erros.fotoUrl = "Informe uma URL https:// ou um caminho local, ou deixe o campo vazio.";
   }
 
   return erros;

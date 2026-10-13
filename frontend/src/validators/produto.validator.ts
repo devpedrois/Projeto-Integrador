@@ -1,5 +1,6 @@
 import { CATEGORIAS_SEED } from "@/fake-api/seeds/categorias.seed";
 import type { NovoProdutoInput } from "@/types/novo-produto";
+import { fotoUrlAceita } from "@/utils/foto-url-segura";
 
 export type CampoProduto = keyof NovoProdutoInput;
 
@@ -30,9 +31,9 @@ export function validarProduto(input: NovoProdutoInput): ErrosProduto {
 
   if (
     input.fotos.length === 0 ||
-    input.fotos.some((foto) => foto.url.trim().length === 0)
+    input.fotos.some((foto) => !fotoUrlAceita(foto.url.trim()))
   ) {
-    erros.fotos = "Informe ao menos uma foto válida.";
+    erros.fotos = "Informe ao menos uma foto com URL https:// ou caminho local.";
   }
 
   if (

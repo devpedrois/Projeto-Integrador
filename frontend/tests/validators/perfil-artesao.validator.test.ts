@@ -73,4 +73,33 @@ describe("validarPerfilArtesao", () => {
 
     expect(erros.fotoUrl).toBeDefined();
   });
+
+  it.each(["https://origem.test/fotos/ana.jpg", "/fotos/ana.jpg"])(
+    "aceita fotoUrl %s",
+    (fotoUrl) => {
+      const erros = validarPerfilArtesao({ ...ENTRADA_VALIDA, fotoUrl });
+
+      expect(erros.fotoUrl).toBeUndefined();
+    }
+  );
+
+  it.each([
+    "http://origem.test/foto.jpg",
+    "javascript:alert(1)",
+    "data:image/png;base64,AAAA",
+    "//evil.com/foto.jpg",
+    "/%5Cevil.com/foto.jpg",
+    "ftp://origem.test/foto.jpg",
+    "foto.jpg",
+  ])("rejeita fotoUrl %s", (fotoUrl) => {
+    const erros = validarPerfilArtesao({ ...ENTRADA_VALIDA, fotoUrl });
+
+    expect(erros.fotoUrl).toBeDefined();
+  });
+
+  it("rejeita fotoUrl com barra invertida", () => {
+    const erros = validarPerfilArtesao({ ...ENTRADA_VALIDA, fotoUrl: "/\\evil.com/ana.jpg" });
+
+    expect(erros.fotoUrl).toBeDefined();
+  });
 });
