@@ -39,7 +39,7 @@ async function inserirProduto(overrides: {
   const artesaoId = await criarUsuarioArtesao(client);
   const categoriaId = await criarCategoria(client);
   return client.query(
-    'INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5, $6, $7)',
+    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "tecnicaId") VALUES ($1, $2, $3, $4, $5, $6, $7, 'tecnica-modelagem-argila')`,
     [
       randomUUID(),
       "Produto de teste",

@@ -22,8 +22,8 @@ const repository = new PrismaRecomendacaoRepository(prisma);
 const strategySemReforco = new CategoriaRecomendacaoStrategy(repository);
 const strategyComReforco = new CategoriaRecomendacaoStrategy(repository, true);
 
-const REGIAO_CONTEXTO = "Recife - Comunidade do Pilar";
-const REGIAO_OUTRA = "Caruaru - Alto do Moura";
+const REGIAO_CONTEXTO = "regiao-pilar-recife";
+const REGIAO_OUTRA = "regiao-alto-moura-caruaru";
 
 const idsUsuarioCriados: string[] = [];
 const idsCategoriaCriados: string[] = [];
@@ -50,7 +50,7 @@ async function criarProduto(params: {
 }): Promise<string> {
   const id = randomUUID();
   await databasePool.query(
-    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
+    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "tecnicaId") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, 'tecnica-modelagem-argila')`,
     [id, `Reforco regional ${id}`, params.artesaoId, params.categoriaId, 10],
   );
   idsProdutoCriados.push(id);

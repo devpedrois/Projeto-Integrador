@@ -64,7 +64,7 @@ async function criarProdutoComVendasENota(params: {
 }): Promise<string> {
   const id = randomUUID();
   await databasePool.query(
-    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "ativo") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, $6)`,
+    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "ativo", "tecnicaId") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, $6, 'tecnica-modelagem-argila')`,
     [
       id,
       `Fallback ${id}`,

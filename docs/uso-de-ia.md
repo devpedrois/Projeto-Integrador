@@ -223,3 +223,20 @@ entregues. O uso das ferramentas não substituiu compreensão, revisão, testes 
 validação humana.
 
 Este documento deve permanecer atualizado durante o semestre.
+
+## Registro de apoio em 13/10/2026 — BD-03
+
+O responsavel solicitou somente a normalizacao de tecnica e regiao.
+Depois da consulta aos textos reais, autorizou definir mapeamentos
+para valores legados sem correspondencia nos seeds. Codex apoiou os
+testes contra PostgreSQL, a migration transacional, o schema Prisma,
+os seeds, as fixtures e a consulta regional por FK.
+
+As escolhas sinteticas estao registradas em `DATA_MODEL.md`.
+A fixture contratual e o ranking esperado foram preservados.
+A revisao de seguranca foi local por escolha explicita do responsavel.
+Resultados constam em `backend/prisma/evidence/bd03-validacao.md`.
+Backend: lint, typecheck e 148 testes passaram. Frontend: typecheck e
+669 testes passaram; lint apontou erro preexistente no arquivo gerado
+`next-env.d.ts`. A migration foi aplicada no Neon apos autorizacao explicita.
+Este registro nao atribui revisao humana ainda nao realizada.

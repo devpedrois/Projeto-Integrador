@@ -71,7 +71,7 @@ async function semearProdutoFixture(produtoFixture: FixtureProduto): Promise<str
 
   const produtoId = randomUUID();
   await databasePool.query(
-    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "ativo") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, $6)`,
+    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "ativo", "tecnicaId") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, $6, 'tecnica-modelagem-argila')`,
     [
       produtoId,
       `Fixture ${produtoFixture.id}`,
@@ -211,7 +211,7 @@ describe("CategoriaRecomendacaoStrategy - desempate deterministico por UUID", ()
     idsCategoriaCriados.push(categoriaId);
     const contextoId = randomUUID();
     await databasePool.query(
-      `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
+      `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "tecnicaId") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, 'tecnica-modelagem-argila')`,
       [contextoId, "Contexto desempate", artesaoId, categoriaId, 5],
     );
     idsProdutoCriados.push(contextoId);
@@ -222,7 +222,7 @@ describe("CategoriaRecomendacaoStrategy - desempate deterministico por UUID", ()
 
     for (const id of [candidatoA, candidatoB]) {
       await databasePool.query(
-        `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
+        `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "tecnicaId") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, 'tecnica-modelagem-argila')`,
         [id, "Candidato empatado", artesaoId, categoriaId, 5],
       );
       idsProdutoCriados.push(id);

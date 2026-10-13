@@ -15,12 +15,12 @@ export async function criarUsuarioArtesao(client: Queryable): Promise<string> {
 
 export async function criarUsuarioArtesaoComRegiao(
   client: Queryable,
-  regiao: string,
+  regiaoId: string,
 ): Promise<string> {
   const id = await criarUsuarioArtesao(client);
-  await client.query('INSERT INTO "PerfilArtesao" ("usuarioId", "regiao") VALUES ($1, $2)', [
+  await client.query('INSERT INTO "PerfilArtesao" ("usuarioId", "regiaoId") VALUES ($1, $2)', [
     id,
-    regiao,
+    regiaoId,
   ]);
   return id;
 }
@@ -49,7 +49,7 @@ export async function criarProduto(
 ): Promise<string> {
   const id = randomUUID();
   await client.query(
-    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
+    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "tecnicaId") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, 'tecnica-modelagem-argila')`,
     [
       id,
       "Produto de teste",

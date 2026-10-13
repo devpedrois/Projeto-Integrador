@@ -52,6 +52,7 @@ async function createProduto(quantidadeEstoque: number): Promise<string> {
       preco: "10.00",
       artesaoId,
       categoriaId,
+      tecnicaId: "tecnica-modelagem-argila",
       quantidadeEstoque,
     },
   });

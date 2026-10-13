@@ -22,6 +22,8 @@ afterAll(async () => {
 describe("database seed: carga sintetica representativa", () => {
   it("mantem contagens estaveis apos execucao repetida (idempotencia)", async () => {
     await expect(prisma.categoria.count()).resolves.toBe(6);
+    await expect(prisma.tecnica.count()).resolves.toBe(10);
+    await expect(prisma.regiao.count()).resolves.toBe(3);
     await expect(prisma.usuario.count()).resolves.toBe(5);
     await expect(prisma.perfilArtesao.count()).resolves.toBe(2);
     await expect(prisma.carrinho.count()).resolves.toBe(1);
@@ -73,9 +75,9 @@ describe("database seed: carga sintetica representativa", () => {
 
   it("distribui artesaos por regioes diferentes", async () => {
     const perfis = await prisma.perfilArtesao.findMany({
-      select: { regiao: true },
+      select: { regiaoId: true },
     });
-    const regioes = new Set(perfis.map((perfil) => perfil.regiao));
+    const regioes = new Set(perfis.map((perfil) => perfil.regiaoId));
 
     expect(regioes.size).toBe(2);
   });

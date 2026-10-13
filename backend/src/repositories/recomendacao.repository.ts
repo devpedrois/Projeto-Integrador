@@ -67,7 +67,7 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
     >`
       SELECT p."id" AS "id",
              p."categoriaId" AS "categoriaId",
-             pa."regiao" AS "regiao"
+             pa."regiaoId" AS "regiao"
       FROM "Produto" p
       LEFT JOIN "PerfilArtesao" pa ON pa."usuarioId" = p."artesaoId"
       WHERE p."id" = ${produtoId}::uuid
@@ -112,7 +112,7 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
           AND p."quantidadeEstoque" > 0
           AND p."categoriaId" = ${params.categoriaId}::uuid
           AND p."id" <> ${params.excluirProdutoId}::uuid
-        ORDER BY (pa."regiao" IS NOT DISTINCT FROM ${params.regiaoContexto}) DESC,
+        ORDER BY (pa."regiaoId" IS NOT DISTINCT FROM ${params.regiaoContexto}) DESC,
                  COALESCE(vendas."vendas", 0) DESC,
                  COALESCE(notas."notaMedia", 0) DESC,
                  p."id" ASC

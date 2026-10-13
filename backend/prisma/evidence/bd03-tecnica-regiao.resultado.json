@@ -1,0 +1,92 @@
+[
+  {
+    "id": "b0000000-0000-4000-8000-000000000001",
+    "nome": "Vaso de Barro Trancoso",
+    "tecnicaId": "tecnica-torno-ceramico",
+    "tecnica": "Torno Cerâmico",
+    "tecnicaPrincipalId": "tecnica-modelagem-argila",
+    "tecnicaPrincipal": "Modelagem em Argila",
+    "regiaoId": "regiao-pilar-recife",
+    "regiao": "Comunidade do Pilar - Recife"
+  },
+  {
+    "id": "b0000000-0000-4000-8000-000000000002",
+    "nome": "Jarra de Barro Fosca",
+    "tecnicaId": "tecnica-modelagem-argila",
+    "tecnica": "Modelagem em Argila",
+    "tecnicaPrincipalId": "tecnica-modelagem-argila",
+    "tecnicaPrincipal": "Modelagem em Argila",
+    "regiaoId": "regiao-pilar-recife",
+    "regiao": "Comunidade do Pilar - Recife"
+  },
+  {
+    "id": "b0000000-0000-4000-8000-000000000003",
+    "nome": "Toalha de Renda File",
+    "tecnicaId": "tecnica-renda-irlandesa",
+    "tecnica": "Renda Irlandesa",
+    "tecnicaPrincipalId": "tecnica-marcenaria-artesanal",
+    "tecnicaPrincipal": "Marcenaria Artesanal",
+    "regiaoId": "regiao-alto-moura-caruaru",
+    "regiao": "Alto do Moura - Caruaru"
+  },
+  {
+    "id": "b0000000-0000-4000-8000-000000000004",
+    "nome": "Colcha Bordada Ponto Cruz",
+    "tecnicaId": "tecnica-bordado-mao",
+    "tecnica": "Bordado à Mão",
+    "tecnicaPrincipalId": "tecnica-modelagem-argila",
+    "tecnicaPrincipal": "Modelagem em Argila",
+    "regiaoId": "regiao-pilar-recife",
+    "regiao": "Comunidade do Pilar - Recife"
+  },
+  {
+    "id": "b0000000-0000-4000-8000-000000000005",
+    "nome": "Fruteira Entalhada",
+    "tecnicaId": "tecnica-entalhe-madeira",
+    "tecnica": "Entalhe em Madeira",
+    "tecnicaPrincipalId": "tecnica-marcenaria-artesanal",
+    "tecnicaPrincipal": "Marcenaria Artesanal",
+    "regiaoId": "regiao-alto-moura-caruaru",
+    "regiao": "Alto do Moura - Caruaru"
+  },
+  {
+    "id": "b0000000-0000-4000-8000-000000000006",
+    "nome": "Camisa Autoral Origem",
+    "tecnicaId": "tecnica-costura-autoral",
+    "tecnica": "Costura Autoral",
+    "tecnicaPrincipalId": "tecnica-modelagem-argila",
+    "tecnicaPrincipal": "Modelagem em Argila",
+    "regiaoId": "regiao-pilar-recife",
+    "regiao": "Comunidade do Pilar - Recife"
+  },
+  {
+    "id": "b0000000-0000-4000-8000-000000000007",
+    "nome": "Brinco de Semente Regional",
+    "tecnicaId": "tecnica-bijuteria-sementes",
+    "tecnica": "Bijuteria em Sementes Naturais",
+    "tecnicaPrincipalId": "tecnica-marcenaria-artesanal",
+    "tecnicaPrincipal": "Marcenaria Artesanal",
+    "regiaoId": "regiao-alto-moura-caruaru",
+    "regiao": "Alto do Moura - Caruaru"
+  },
+  {
+    "id": "b0000000-0000-4000-8000-000000000008",
+    "nome": "Luminaria PET Reciclada",
+    "tecnicaId": "tecnica-tecelagem-manual",
+    "tecnica": "Tecelagem Manual",
+    "tecnicaPrincipalId": "tecnica-modelagem-argila",
+    "tecnicaPrincipal": "Modelagem em Argila",
+    "regiaoId": "regiao-pilar-recife",
+    "regiao": "Comunidade do Pilar - Recife"
+  },
+  {
+    "id": "b0000000-0000-4000-8000-000000000009",
+    "nome": "Cesto de Fibra Descontinuado",
+    "tecnicaId": "tecnica-trancado-fibra",
+    "tecnica": "Trançado em Fibra Natural",
+    "tecnicaPrincipalId": "tecnica-marcenaria-artesanal",
+    "tecnicaPrincipal": "Marcenaria Artesanal",
+    "regiaoId": "regiao-alto-moura-caruaru",
+    "regiao": "Alto do Moura - Caruaru"
+  }
+]

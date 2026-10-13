@@ -27,7 +27,7 @@ let compradorId: string;
 async function createProduto(quantidadeEstoque: number): Promise<string> {
   const id = randomUUID();
   await databasePool.query(
-    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
+    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "tecnicaId") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, 'tecnica-modelagem-argila')`,
     [id, "Produto de teste", artesaoId, categoriaId, quantidadeEstoque],
   );
   return id;

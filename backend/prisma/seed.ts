@@ -3,6 +3,7 @@ import { pathToFileURL } from "node:url";
 import type { PrismaClient } from "../src/generated/prisma/client.js";
 import { parseEnvironment } from "../src/config/environment.js";
 import { createPrismaClient } from "../src/database/prisma/client.js";
+import { TECNICAS_SEED, REGIOES_SEED } from "./seeds/referencias.js";
 
 function syntheticPasswordHash(label: string): string {
   return `seed$demo$${label}`;
@@ -45,6 +46,21 @@ export const seedIds = {
 export async function runSeed(prisma: PrismaClient): Promise<void> {
   const { usuarios, categorias, produtos, pedidos } = seedIds;
   const tx = prisma;
+
+  for (const tecnica of TECNICAS_SEED) {
+    await tx.tecnica.upsert({
+      where: { id: tecnica.id },
+      update: { nome: tecnica.nome },
+      create: tecnica,
+    });
+  }
+  for (const regiao of REGIOES_SEED) {
+    await tx.regiao.upsert({
+      where: { id: regiao.id },
+      update: { nome: regiao.nome },
+      create: regiao,
+    });
+  }
 
   {
     await tx.usuario.upsert({
@@ -109,8 +125,8 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       create: {
         usuarioId: usuarios.artesao1,
         historia: "Ceramista da Comunidade do Pilar, Recife, ha tres geracoes.",
-        tecnicaPrincipal: "Ceramica em barro",
-        regiao: "Recife - Comunidade do Pilar",
+        tecnicaPrincipalId: "tecnica-modelagem-argila",
+        regiaoId: "regiao-pilar-recife",
         completo: true,
       },
     });
@@ -120,8 +136,8 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       create: {
         usuarioId: usuarios.artesao2,
         historia: "Marceneiro e bordador do Alto do Moura, Caruaru.",
-        tecnicaPrincipal: "Marcenaria e renda",
-        regiao: "Caruaru - Alto do Moura",
+        tecnicaPrincipalId: "tecnica-marcenaria-artesanal",
+        regiaoId: "regiao-alto-moura-caruaru",
         completo: true,
       },
     });
@@ -145,6 +161,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.vasoBarro,
+        tecnicaId: "tecnica-torno-ceramico",
         nome: "Vaso de Barro Trancoso",
         descricao: "Vaso torneado a mao com barro da regiao do Pilar.",
         preco: "89.90",
@@ -159,6 +176,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.jarraFosca,
+        tecnicaId: "tecnica-modelagem-argila",
         nome: "Jarra de Barro Fosca",
         descricao: "Jarra de acabamento fosco, sem vendas ate o momento.",
         preco: "64.50",
@@ -173,6 +191,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.toalhaRenda,
+        tecnicaId: "tecnica-renda-irlandesa",
         nome: "Toalha de Renda File",
         descricao: "Toalha de mesa em renda file artesanal.",
         preco: "149.90",
@@ -187,6 +206,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.colchaBordada,
+        tecnicaId: "tecnica-bordado-mao",
         nome: "Colcha Bordada Ponto Cruz",
         descricao: "Colcha bordada a mao, atualmente sem estoque.",
         preco: "199.90",
@@ -201,6 +221,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.fruteiraEntalhada,
+        tecnicaId: "tecnica-entalhe-madeira",
         nome: "Fruteira Entalhada",
         descricao: "Fruteira em madeira de reflorestamento, entalhe manual.",
         preco: "219.90",
@@ -215,6 +236,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.camisaAutoral,
+        tecnicaId: "tecnica-costura-autoral",
         nome: "Camisa Autoral Origem",
         descricao: "Camisa de algodao com estampa autoral pernambucana.",
         preco: "129.90",
@@ -229,6 +251,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.brincoSemente,
+        tecnicaId: "tecnica-bijuteria-sementes",
         nome: "Brinco de Semente Regional",
         descricao: "Brinco artesanal com sementes nativas de Pernambuco.",
         preco: "39.90",
@@ -243,6 +266,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.luminariaPet,
+        tecnicaId: "tecnica-tecelagem-manual",
         nome: "Luminaria PET Reciclada",
         descricao: "Luminaria feita com garrafas PET recicladas, sem vendas ate o momento.",
         preco: "74.90",
@@ -257,6 +281,7 @@ export async function runSeed(prisma: PrismaClient): Promise<void> {
       update: {},
       create: {
         id: produtos.cestoFibra,
+        tecnicaId: "tecnica-trancado-fibra",
         nome: "Cesto de Fibra Descontinuado",
         descricao: "Cesto de fibra natural, produto inativo nesta carga.",
         preco: "54.90",

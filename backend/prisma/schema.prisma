@@ -55,13 +55,15 @@ model Usuario {
 // Especializacao 1:0..1 de Usuario (papel = artesao). Chave primaria
 // compartilhada expressa a cardinalidade sem FK redundante.
 model PerfilArtesao {
-  usuarioId        String  @id @db.Uuid
-  historia         String?
-  tecnicaPrincipal String?
-  regiao           String?
-  foto             String?
-  completo         Boolean @default(false)
-  usuario          Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  usuarioId          String   @id @db.Uuid
+  historia           String?
+  tecnicaPrincipalId String?
+  regiaoId           String?
+  tecnicaPrincipal   Tecnica? @relation(fields: [tecnicaPrincipalId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  regiao             Regiao?  @relation(fields: [regiaoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  foto               String?
+  completo           Boolean  @default(false)
+  usuario            Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Categoria {
@@ -70,11 +72,26 @@ model Categoria {
   produtos Produto[]
 }
 
+model Tecnica {
+  id       String          @id
+  nome     String          @unique
+  produtos Produto[]
+  perfis   PerfilArtesao[]
+}
+
+model Regiao {
+  id     String          @id
+  nome   String          @unique
+  perfis PerfilArtesao[]
+}
+
 model Produto {
   id                 String         @id @default(uuid()) @db.Uuid
   nome               String
   artesaoId          String         @db.Uuid
   categoriaId        String         @db.Uuid
+  tecnicaId          String
+  tecnica            Tecnica        @relation(fields: [tecnicaId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   descricao          String
   preco              Decimal        @db.Decimal(10, 2)
   quantidadeEstoque  Int
