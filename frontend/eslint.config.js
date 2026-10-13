@@ -5,6 +5,6 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    ignores: [".next/**", "node_modules/**", "dist/**"],
+    ignores: [".next/**", "node_modules/**", "dist/**", "next-env.d.ts"],
   }
 );

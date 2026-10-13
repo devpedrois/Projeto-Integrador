@@ -7,6 +7,20 @@ describe("environment validation", () => {
     DIRECT_URL: "postgresql://user:secret@localhost:5432/origem",
   };
 
+  it("desativa o probe de cookie por padrão", () => {
+    expect(parseEnvironment(databaseEnvironment).ENABLE_COOKIE_PROBE).toBe(false);
+  });
+
+  it.each(["true", "false"])("interpreta ENABLE_COOKIE_PROBE=%s estritamente", (value) => {
+    expect(parseEnvironment({ ...databaseEnvironment, ENABLE_COOKIE_PROBE: value }).ENABLE_COOKIE_PROBE)
+      .toBe(value === "true");
+  });
+
+  it.each(["", "1", "0", "TRUE", "yes"])("rejeita ENABLE_COOKIE_PROBE=%s inválido", (value) => {
+    expect(() => parseEnvironment({ ...databaseEnvironment, ENABLE_COOKIE_PROBE: value }))
+      .toThrow(/^Invalid environment variables: ENABLE_COOKIE_PROBE$/);
+  });
+
   it("accepts production with an explicit host and a valid JWT secret", () => {
     const environment = parseEnvironment({
       ...databaseEnvironment,

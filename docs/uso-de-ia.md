@@ -303,3 +303,33 @@ O curl confirmou novamente health em produção com PostgreSQL.
 A imagem foi inspecionada visualmente, sem credenciais reais.
 Ela é uma transcrição identificada, sem simular captura de terminal.
 O gerador e os registros ficam na pasta WEB-01.
+
+## Registro de apoio em 13/10/2026: WEB-02
+
+O responsável solicitou somente código e instruções manuais de deploy.
+Codex escreveu testes antes do rewrite e do probe temporário.
+BACKEND_URL permanece exclusiva do servidor, com ausência permitida.
+Destinos inválidos recebem erro sanitizado, sem valores do ambiente.
+ENABLE_COOKIE_PROBE exige boolean textual estrito e inicia desativado.
+O cookie sintético usa HttpOnly, SameSite=Lax e Secure configurável.
+Ele não define Domain e expira em cinco minutos.
+O bootstrap pg-boss foi preservado.
+
+O README frontal foi criado, incluindo variáveis e plano B.
+O exemplo frontal permite desenvolvimento sem proxy configurado.
+O contrato temporário foi registrado no módulo API.
+O lint apontou somente erro preexistente em next-env.d.ts gerado.
+O arquivo gerado passou a ser ignorado pelo ESLint.
+Nenhuma regra de lint para código de produção foi desativada.
+
+Frontend: build, lint, typecheck e 683 testes passaram.
+Backend: build, lint, typecheck e 44 testes aplicáveis passaram.
+O proxy Next.js real preservou Set-Cookie, com resposta local 200.
+Essa verificação usou Express e Prisma reais, sem mocks.
+O probe não consulta banco; nenhum banco remoto foi acessado.
+Nenhum seed, deployment, commit ou push foi executado.
+A revisão de segurança permaneceu local, conforme escolha anterior.
+O plano B não foi aplicado.
+A validação pública e a persistência na Vercel permanecem pendentes.
+Evidências locais constam em
+`evidencias/PI4-27-W10-Integracao-Camadas/WEB-02-deploy-proxy/`.

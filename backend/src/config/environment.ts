@@ -17,6 +17,7 @@ const environmentSchema = z.object({
     return ["http:", "https:"].includes(url.protocol) && url.origin === value;
   })).default("http://localhost:3000"),
   COOKIE_SECURE: z.enum(["true", "false"]).transform((value) => value === "true"),
+  ENABLE_COOKIE_PROBE: z.enum(["true", "false"]).default("false").transform((value) => value === "true"),
   CACHE_TTL_SECONDS: z.coerce.number().int().positive().default(60),
   NOTIFICATION_PUBLISHER_INTERVAL_MS: z.coerce.number().int().min(1_000).max(60_000).default(3_000),
 }).superRefine((environment, context) => {

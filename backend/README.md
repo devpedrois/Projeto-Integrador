@@ -106,6 +106,7 @@ Nunca reutilize seu `JWT_SECRET` em produção.
 | `JWT_SECRET` | Obrigatória em produção | Mínimo de 32 caracteres úteis quando fornecida |
 | `FRONTEND_ORIGIN` | `http://localhost:3000` | Origem HTTP ou HTTPS, sem caminho, barra final ou credenciais |
 | `COOKIE_SECURE` | `true` em produção; `false` nos outros ambientes | Aceita somente textos `true` e `false`, convertidos para boolean |
+| `ENABLE_COOKIE_PROBE` | `false` | `true` registra a rota temporária `/health/cookie` da WEB-02 |
 | `CACHE_TTL_SECONDS` | `60` | Inteiro positivo, em segundos |
 | `NOTIFICATION_PUBLISHER_INTERVAL_MS` | `3000` | Publicação periódica; inteiro entre 1000 e 60000 |
 | `ALLOW_VOLUME_SEED` | Opt-in desativado no exemplo | `1` autoriza a carga de volume na branch de teste |
@@ -224,6 +225,19 @@ Se o banco não estiver disponível, retorna `503`:
 ```
 
 As respostas não incluem mensagens internas ou credenciais.
+
+### Probe temporário WEB-02
+
+`ENABLE_COOKIE_PROBE=true` habilita `GET /health/cookie` no boot.
+A configuração aceita somente textos `true` e `false`.
+Sem opt-in, a rota não é registrada e retorna 404.
+A resposta emite `origem_cookie_probe=ok`, sem atributo Domain.
+O cookie usa HttpOnly, SameSite=Lax e validade de cinco minutos.
+Secure segue COOKIE_SECURE; no Render HTTPS, use `true`.
+A resposta usa Cache-Control: no-store e não consulta o banco.
+O probe não representa login ou sessão autenticada.
+Desative a variável após validar o domínio Vercel.
+A rota será removida no commit 07.
 
 ## Limitações atuais
 

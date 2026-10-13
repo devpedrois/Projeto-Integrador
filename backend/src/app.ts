@@ -1,6 +1,7 @@
 import express, { type Express } from "express";
 import helmet from "helmet";
 import type { PrismaClient } from "./generated/prisma/client.js";
+import type { Environment } from "./config/environment.js";
 import { HealthController } from "./controllers/health.controller.js";
 import { PedidoController } from "./controllers/pedido.controller.js";
 import { RecomendacaoController } from "./controllers/recomendacao.controller.js";
@@ -16,10 +17,16 @@ import { HealthService } from "./services/health.service.js";
 import { PedidoService } from "./services/pedido.service.js";
 import { RecomendacaoService } from "./services/recomendacao.service.js";
 
-export function createApp(prisma: PrismaClient): Express {
+export function createApp(
+  prisma: PrismaClient,
+  environment: Pick<Environment, "ENABLE_COOKIE_PROBE" | "COOKIE_SECURE"> = {
+    ENABLE_COOKIE_PROBE: false,
+    COOKIE_SECURE: false,
+  },
+): Express {
   const healthRepository = new PrismaHealthRepository(prisma);
   const healthService = new HealthService(healthRepository);
-  const healthController = new HealthController(healthService);
+  const healthController = new HealthController(healthService, environment.COOKIE_SECURE);
 
   const pedidoRepository = new PrismaPedidoRepository(prisma);
   const pedidoService = new PedidoService(pedidoRepository);
@@ -35,7 +42,7 @@ export function createApp(prisma: PrismaClient): Express {
   app.disable("x-powered-by");
   app.use(helmet());
   app.use(express.json({ limit: "16kb" }));
-  app.use(createHealthRouter(healthController));
+  app.use(createHealthRouter(healthController, environment.ENABLE_COOKIE_PROBE));
   app.use(createPedidoRouter(pedidoController));
   app.use(createRecomendacaoRouter(recomendacaoController));
   app.use(errorMiddleware);

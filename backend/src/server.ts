@@ -37,7 +37,7 @@ export async function startServer(input: NodeJS.ProcessEnv = process.env) {
         });
     }, environment.NOTIFICATION_PUBLISHER_INTERVAL_MS);
 
-    const app = createApp(prisma);
+    const app = createApp(prisma, environment);
     const server = app.listen(environment.PORT, environment.HOST);
     await new Promise<void>((resolve, reject) => {
       server.once("listening", resolve);
