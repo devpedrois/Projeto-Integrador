@@ -1,4 +1,5 @@
 import express, { type Express } from "express";
+import helmet from "helmet";
 import type { PrismaClient } from "./generated/prisma/client.js";
 import { HealthController } from "./controllers/health.controller.js";
 import { PedidoController } from "./controllers/pedido.controller.js";
@@ -32,6 +33,7 @@ export function createApp(prisma: PrismaClient): Express {
   const app = express();
 
   app.disable("x-powered-by");
+  app.use(helmet());
   app.use(express.json({ limit: "16kb" }));
   app.use(createHealthRouter(healthController));
   app.use(createPedidoRouter(pedidoController));

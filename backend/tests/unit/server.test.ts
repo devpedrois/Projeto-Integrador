@@ -10,6 +10,7 @@ function runServerProcess(
   port: number,
   script?: string,
   databaseUrl: string = FAKE_DATABASE_URL,
+  environment: NodeJS.ProcessEnv = {},
 ) {
   const argumentsList = script === undefined
     ? ["--import", "tsx", "src/server.ts"]
@@ -26,6 +27,7 @@ function runServerProcess(
           NODE_ENV: "test",
           PORT: String(port),
           NODE_NO_WARNINGS: "1",
+          ...environment,
         },
         stdio: ["ignore", "pipe", "pipe"],
       });
@@ -54,6 +56,21 @@ function runServerProcess(
 }
 
 describe("server startup", () => {
+  it.each([
+    { JWT_SECRET: "synthetic-short-secret" },
+    { JWT_SECRET: undefined },
+  ])("fails production boot with a clear sanitized JWT validation error", async (environment) => {
+    const result = await runServerProcess(3113, undefined, FAKE_DATABASE_URL, {
+      NODE_ENV: "production",
+      HOST: "0.0.0.0",
+      ...environment,
+    });
+
+    expect(result.code).toBe(1);
+    expect(result.stdout).toBe("");
+    expect(result.stderr).toBe("Invalid environment variables: JWT_SECRET\n");
+  }, 20_000);
+
   it("sanitizes asynchronous listen failure on an occupied loopback port", async () => {
     const occupied = createServer();
     occupied.listen(0, "127.0.0.1");

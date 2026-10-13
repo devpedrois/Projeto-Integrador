@@ -18,6 +18,21 @@ afterAll(async () => {
 });
 
 describe("GET /health", () => {
+  it.each(["/health", "/recomendacoes", "/missing-route"])(
+    "sets security headers on %s without advertising Express",
+    async (path) => {
+      const response = await request(app).get(path);
+
+      expect(response.headers["x-powered-by"]).toBeUndefined();
+      expect(response.headers["x-content-type-options"]).toBe("nosniff");
+      expect(response.headers["x-frame-options"]).toBe("SAMEORIGIN");
+      expect(response.headers["content-security-policy"]).toContain(
+        response.status === 404 ? "default-src 'none'" : "default-src 'self'",
+      );
+      expect(response.headers["strict-transport-security"]).toContain("max-age=");
+    },
+  );
+
   it("confirms access to the real PostgreSQL database", async () => {
     const response = await request(app).get("/health");
 

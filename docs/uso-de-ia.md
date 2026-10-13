@@ -268,3 +268,38 @@ As guardas impedem execucao sem opt-in e no endpoint do deploy.
 O responsavel confirmou a branch Neon de teste para schemas isolados.
 A revisao de seguranca foi local, conforme escolha explicita.
 Resultados e limites constam em `evidencias/BD-05/bd05-validacao.md`.
+
+## Registro de apoio em 13/10/2026: WEB-01
+
+O responsável delimitou a preparação do backend para produção.
+Codex apoiou testes escritos antes da implementação e validação zod.
+Também ajustou HOST, Helmet, build, start:prod e documentação.
+O diretório `src/utils/` existente foi preservado.
+O bootstrap pg-boss e as rotas existentes foram mantidos.
+As novas variáveis preparam subtarefas posteriores, sem antecipá-las.
+
+Build, lint e typecheck passaram.
+A suíte passou com 198 testes em 29 arquivos.
+Integrações utilizaram PostgreSQL real, sem mocks de repositories.
+O binário compilado respondeu HTTP 200 via curl em produção.
+Segredos JWT curtos ou ausentes impediram o boot.
+As mensagens informaram somente nomes das variáveis inválidas.
+O exemplo e as evidências não contêm credenciais reais.
+
+O responsável escolheu revisão local equivalente ao security-auditor.
+A revisão verificou diff, headers, boot e exposição de segredos.
+O npm audit identificou seis vulnerabilidades preexistentes.
+As versões afetadas foram comparadas com o lockfile original.
+Correções dessas dependências ficaram fora da WEB-01.
+Evidências constam em
+`evidencias/PI4-27-W10-Integracao-Camadas/WEB-01-backend-producao/`.
+Não houve deploy remoto, commit ou push nesta subtarefa.
+Este registro não atribui revisão humana ainda não realizada.
+
+O responsável também solicitou evidência visual da WEB-01.
+Codex gerou um PNG usando saídas reais capturadas.
+Build, lint, typecheck e testes de ambiente foram reexecutados.
+O curl confirmou novamente health em produção com PostgreSQL.
+A imagem foi inspecionada visualmente, sem credenciais reais.
+Ela é uma transcrição identificada, sem simular captura de terminal.
+O gerador e os registros ficam na pasta WEB-01.

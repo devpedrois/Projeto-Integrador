@@ -42,6 +42,32 @@ afterAll(async () => {
 });
 
 describe("startServer bootstraps the notification queue", () => {
+  it("serves health in production on the configured wildcard host", async () => {
+    const { server, prisma, boss } = await startServer({
+      ...process.env,
+      NODE_ENV: "production",
+      HOST: "0.0.0.0",
+      JWT_SECRET: "synthetic-jwt-secret-for-tests-only",
+      PORT: "3113",
+    });
+
+    try {
+      const address = server.address();
+      if (address === null || typeof address === "string") {
+        throw new Error("Expected a TCP address");
+      }
+      expect(address.address).toBe("0.0.0.0");
+      const response = await fetch(`http://127.0.0.1:${address.port}/health`);
+      expect(response.status).toBe(200);
+      expect(await response.json()).toEqual({ status: "ok", database: "reachable" });
+      expect(await boss.getQueue(NOTIFICAR_ARTESAO_QUEUE)).not.toBeNull();
+    } finally {
+      await boss.stop({ graceful: false });
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      await prisma.$disconnect();
+    }
+  }, 20_000);
+
   it("accepts and processes a job right after the backend boots, without a manual worker registration", async () => {
     const { server, prisma, boss } = await startServer({
       ...process.env,

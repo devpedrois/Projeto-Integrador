@@ -2,7 +2,7 @@ import "dotenv/config";
 import { pathToFileURL } from "node:url";
 import type { PgBoss } from "pg-boss";
 import { createApp } from "./app.js";
-import { parseEnvironment } from "./config/environment.js";
+import { EnvironmentValidationError, parseEnvironment } from "./config/environment.js";
 import { createPrismaClient } from "./database/prisma/client.js";
 import { registerNotificarArtesaoWorker } from "./jobs/notificar-artesao.worker.js";
 import { createPgBossClient, ensureNotificarArtesaoQueue } from "./queues/pg-boss.client.js";
@@ -38,7 +38,7 @@ export async function startServer(input: NodeJS.ProcessEnv = process.env) {
     }, environment.NOTIFICATION_PUBLISHER_INTERVAL_MS);
 
     const app = createApp(prisma);
-    const server = app.listen(environment.PORT, "127.0.0.1");
+    const server = app.listen(environment.PORT, environment.HOST);
     await new Promise<void>((resolve, reject) => {
       server.once("listening", resolve);
       server.once("error", () => reject(new Error("Backend startup failed")));
@@ -64,8 +64,11 @@ if (
   executedFile !== undefined &&
   import.meta.url === pathToFileURL(executedFile).href
 ) {
-  startServer().catch(() => {
-    process.stderr.write("Backend startup failed\n");
+  startServer().catch((error: unknown) => {
+    const message = error instanceof EnvironmentValidationError
+      ? error.message
+      : "Backend startup failed";
+    process.stderr.write(`${message}\n`);
     process.exitCode = 1;
   });
 }
