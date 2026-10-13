@@ -65,8 +65,8 @@ describe("GET /recomendacoes", () => {
     expect(item).toEqual({
       id: produtoRelacionadoId,
       nome: expect.any(String),
-      descricao: null,
-      preco: null,
+      descricao: "Descricao de teste",
+      preco: 10,
       quantidadeEstoque: expect.any(Number),
       categoriaId,
       artesaoId,

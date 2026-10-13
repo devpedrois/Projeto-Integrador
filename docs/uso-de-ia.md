@@ -143,6 +143,21 @@ leram, adaptaram, corrigiram ou descartaram as sugestões. A IA também foi usad
 para corrigir bugs e problemas estruturais encontrados em código previamente
 produzido pelos membros.
 
+### 4.8 Sprint 10-11, BD-02
+
+Pedro definiu o escopo e a ordem da migration `reconciliar_modelo_logico`.
+O assistente inspecionou schema, migrations e dados do Neon de
+desenvolvimento. Ele escreveu primeiro os testes que falhavam. Depois gerou a
+migration com SQL manual para checks e o índice funcional `lower(email)`.
+Também criou `UsuarioService` com normalização de email, sem rota nova, e
+ajustou as fixtures de teste para os novos `NOT NULL`. O `security-auditor`
+apontou riscos com dados legados. A pedido de Pedro, a migration ganhou
+preflight, desativação dos produtos preenchidos pelo backfill e normalização
+dos emails existentes. Os cenários foram testados em transação com rollback.
+Lint, typecheck, a
+suíte completa e o script de concorrência passaram. A revisão humana do diff
+fica com Pedro antes do commit.
+
 ## 5. Partes apoiadas por IA
 
 - [x] Entendimento do problema

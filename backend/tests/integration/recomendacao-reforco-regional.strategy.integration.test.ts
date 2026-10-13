@@ -50,7 +50,7 @@ async function criarProduto(params: {
 }): Promise<string> {
   const id = randomUUID();
   await databasePool.query(
-    'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
     [id, `Reforco regional ${id}`, params.artesaoId, params.categoriaId, 10],
   );
   idsProdutoCriados.push(id);

@@ -45,7 +45,15 @@ const extraBosses: PgBoss[] = [];
 async function createProduto(quantidadeEstoque: number): Promise<string> {
   const id = randomUUID();
   await prisma.produto.create({
-    data: { id, nome: "Produto de teste", artesaoId, categoriaId, quantidadeEstoque },
+    data: {
+      id,
+      nome: "Produto de teste",
+      descricao: "Descricao de teste",
+      preco: "10.00",
+      artesaoId,
+      categoriaId,
+      quantidadeEstoque,
+    },
   });
   createdProdutoIds.push(id);
   return id;

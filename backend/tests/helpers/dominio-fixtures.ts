@@ -49,7 +49,7 @@ export async function criarProduto(
 ): Promise<string> {
   const id = randomUUID();
   await client.query(
-    'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
     [
       id,
       "Produto de teste",

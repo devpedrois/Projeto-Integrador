@@ -61,9 +61,9 @@ describe("complete domain schema structure", () => {
     expect(modelBlock("ItemPedido")).toMatch(/quantidade\s+Int\b/);
   });
 
-  it("keeps compradorRef as a legacy field alongside the required compradorId FK", () => {
+  it("keeps compradorRef as an optional legacy field alongside the required compradorId FK", () => {
     const pedido = modelBlock("Pedido");
-    expect(pedido).toMatch(/compradorRef\s+String\b/);
+    expect(pedido).toMatch(/compradorRef\s+String\?/);
     expect(pedido).toMatch(/compradorId\s+String\s+@db\.Uuid/);
     expect(pedido).toMatch(/comprador\s+Usuario\s+@relation/);
   });
@@ -76,7 +76,7 @@ describe("complete domain schema structure", () => {
   });
 
   it("uses Decimal for monetary fields", () => {
-    expect(modelBlock("Produto")).toMatch(/preco\s+Decimal\?\s+@db\.Decimal\(10,\s*2\)/);
+    expect(modelBlock("Produto")).toMatch(/preco\s+Decimal\s+@db\.Decimal\(10,\s*2\)/);
     expect(modelBlock("ItemCarrinho")).toMatch(
       /precoUnitario\s+Decimal\s+@db\.Decimal\(10,\s*2\)/,
     );
@@ -89,6 +89,14 @@ describe("complete domain schema structure", () => {
   it("uses timezone-aware timestamps for creation dates", () => {
     expect(modelBlock("Usuario")).toMatch(/criadoEm\s+DateTime\s+@default\(now\(\)\)\s+@db\.Timestamptz/);
     expect(modelBlock("Avaliacao")).toMatch(/criadoEm\s+DateTime\s+@default\(now\(\)\)\s+@db\.Timestamptz/);
+  });
+
+  it("requires descricao on Produto", () => {
+    expect(modelBlock("Produto")).toMatch(/descricao\s+String\s*\n/);
+  });
+
+  it("separates admin moderation from the artisan soft delete on Produto", () => {
+    expect(modelBlock("Produto")).toMatch(/desativadoPorAdmin\s+Boolean\s+@default\(false\)/);
   });
 
   it("marks Usuario email as unique", () => {

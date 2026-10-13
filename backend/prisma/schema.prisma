@@ -35,6 +35,8 @@ enum StatusIntencao {
   falha
 }
 
+// CHECKs de dominio e o indice unico funcional lower(email) vivem em SQL
+// manual nas migrations: o Prisma 7.10 nao os expressa no schema.
 model Usuario {
   id            String         @id @default(uuid()) @db.Uuid
   nome          String
@@ -69,23 +71,22 @@ model Categoria {
 }
 
 model Produto {
-  id                String         @id @default(uuid()) @db.Uuid
-  nome              String
-  artesaoId         String         @db.Uuid
-  categoriaId       String         @db.Uuid
-  // descricao e preco seguem opcionais: campos ainda nao preenchidos pelo
-  // backend reduzido do FCCPD (ver docs/docs auxiliares/DATA_MODEL.md).
-  descricao         String?
-  preco             Decimal?       @db.Decimal(10, 2)
-  quantidadeEstoque Int
-  ativo             Boolean        @default(true)
-  criadoEm          DateTime       @default(now()) @db.Timestamptz(3)
-  artesao           Usuario        @relation("ProdutosDoArtesao", fields: [artesaoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  categoria         Categoria      @relation(fields: [categoriaId], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  fotos             ProdutoFoto[]
-  itensCarrinho     ItemCarrinho[]
-  itensPedido       ItemPedido[]
-  avaliacoes        Avaliacao[]
+  id                 String         @id @default(uuid()) @db.Uuid
+  nome               String
+  artesaoId          String         @db.Uuid
+  categoriaId        String         @db.Uuid
+  descricao          String
+  preco              Decimal        @db.Decimal(10, 2)
+  quantidadeEstoque  Int
+  ativo              Boolean        @default(true)
+  desativadoPorAdmin Boolean        @default(false)
+  criadoEm           DateTime       @default(now()) @db.Timestamptz(3)
+  artesao            Usuario        @relation("ProdutosDoArtesao", fields: [artesaoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  categoria          Categoria      @relation(fields: [categoriaId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  fotos              ProdutoFoto[]
+  itensCarrinho      ItemCarrinho[]
+  itensPedido        ItemPedido[]
+  avaliacoes         Avaliacao[]
 
   @@index([artesaoId])
   @@index([categoriaId])
@@ -125,10 +126,9 @@ model ItemCarrinho {
 
 model Pedido {
   id                  String               @id @default(uuid()) @db.Uuid
-  // Campo sintetico herdado do backend minimo de FCCPD. Preservado como
-  // referencia legada; compradorId e a FK real e obrigatoria (ver
-  // docs/docs auxiliares/DATA_MODEL.md).
-  compradorRef        String
+  // Legado do backend minimo de FCCPD, a remover na Sprint 6. compradorId e
+  // a FK real e obrigatoria (ver docs/docs auxiliares/DATA_MODEL.md).
+  compradorRef        String?
   compradorId         String               @db.Uuid
   numero              String?              @unique
   status              StatusPedido         @default(pendente)

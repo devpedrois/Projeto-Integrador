@@ -33,7 +33,7 @@ describe("reduced FCCPD schema constraints", () => {
 
     await expectPostgresError(
       client.query(
-        'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+        `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
         [randomUUID(), "Produto invalido", artesaoId, categoriaId, -1],
       ),
       "23514",
@@ -46,7 +46,7 @@ describe("reduced FCCPD schema constraints", () => {
     const compradorId = await criarUsuarioComprador(client);
     const produtoId = randomUUID();
     await client.query(
-      'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+      `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
       [produtoId, "Produto valido", artesaoId, categoriaId, 1],
     );
     const pedidoId = await criarPedido(client, { compradorId });
@@ -88,7 +88,7 @@ describe("reduced FCCPD schema constraints", () => {
     const categoriaId = await criarCategoria(client);
     const produtoId = randomUUID();
     await client.query(
-      'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+      `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
       [produtoId, "Produto sintetico", artesaoId, categoriaId, 1],
     );
 

@@ -70,7 +70,7 @@ describe("full domain schema constraints (PI4-19.5)", () => {
 
     await expectPostgresError(
       client.query(
-        'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+        `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
         [randomUUID(), "Produto sem artesao", null, categoriaId, 1],
       ),
       "23502",
@@ -82,7 +82,7 @@ describe("full domain schema constraints (PI4-19.5)", () => {
 
     await expectPostgresError(
       client.query(
-        'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+        `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
         [randomUUID(), "Produto sem categoria", artesaoId, null, 1],
       ),
       "23502",
@@ -111,7 +111,7 @@ describe("full domain schema constraints (PI4-19.5)", () => {
 
     await expectPostgresError(
       client.query(
-        'INSERT INTO "Produto" ("id", "nome", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, $3, $4, $5)',
+        `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5)`,
         [randomUUID(), "Produto com estoque invalido", artesaoId, categoriaId, -1],
       ),
       "23514",
