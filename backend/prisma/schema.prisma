@@ -69,6 +69,8 @@ model PerfilArtesao {
   foto               String?
   completo           Boolean  @default(false)
   usuario            Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([regiaoId])
 }
 
 model Categoria {
@@ -112,6 +114,9 @@ model Produto {
 
   @@index([artesaoId])
   @@index([categoriaId])
+  @@index([tecnicaId])
+  @@index([nome(ops: raw("public.gin_trgm_ops"))], type: Gin, map: "Produto_nome_trgm_idx")
+  @@index([descricao(ops: raw("public.gin_trgm_ops"))], type: Gin, map: "Produto_descricao_trgm_idx")
 }
 
 model ProdutoFoto {
@@ -162,7 +167,7 @@ model Pedido {
   intencaoNotificacao IntencaoNotificacao?
   notificacoes        Notificacao[]
 
-  @@index([compradorId])
+  @@index([compradorId, criadoEm(sort: Desc)])
 }
 
 model ItemPedido {
@@ -213,6 +218,8 @@ model IntencaoNotificacao {
   atualizadoEm DateTime       @updatedAt @db.Timestamptz(3)
   processadaEm DateTime?      @db.Timestamptz(3)
   pedido       Pedido         @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@index([status])
 }
 
 // Estrutura tecnica de notificacao (fora das onze entidades de dominio).
@@ -228,4 +235,5 @@ model Notificacao {
 
   @@unique([usuarioId, pedidoId, tipo])
   @@index([pedidoId])
+  @@index([usuarioId, lida, criadoEm(sort: Desc)])
 }

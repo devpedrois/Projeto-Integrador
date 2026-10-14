@@ -310,3 +310,24 @@ Gateways financeiros reais permanecem fora do escopo.
 Execute essas rotas somente em ambiente controlado nesta etapa.
 O modo produção permite validar boot, health e headers.
 Esta entrega ainda não representa a aplicação final autenticada.
+
+## Indices e EXPLAIN BD-04
+
+`npm run db:explain` mede nove consultas em leitura somente.
+Usa DIRECT_URL e grava planos JSON em pasta nova.
+Tabelas operacionais vazias tambem recebem sua captura.
+O script aceita `--schema`, `--phase`, `--termo` e `--output`.
+Termos possuem entre tres e 120 caracteres.
+Nao sobrescreve arquivos existentes nem expoe credenciais em erros.
+
+Para comparar, autorize somente uma branch Neon de teste.
+Defina EXPLAIN_ISOLATED=1 e execute `npm run db:explain -- --compare`.
+Esse modo recria a carga BD-05 em schema temporario.
+Aplica os indices entre capturas antes/depois e termina com rollback.
+Nao execute essa comparacao no banco de deploy.
+
+Consulte [SQL e justificativas](prisma/consultas/README.md).
+Veja [planos e tempos](../evidencias/PI4-28-W10-Modelo-Fisico/BD-04-indices/01-resumo-indices.md).
+As escolhas naturais do planner estao documentadas nessa evidencia.
+Categoria e carrinho aproveitam indices preexistentes.
+O parcial da vitrine permanece definido na migration SQL.

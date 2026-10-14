@@ -441,3 +441,72 @@ Cinco PNGs renderizam esses resultados, identificados como renderizações.
 As imagens não representam capturas do site ou Neon.
 Scripts e evidências adicionais estão na pasta WEB-04-autorizacao.
 Esta coleta não alterou código produtivo nem o script legado.
+
+## Registro de apoio em 13/10/2026: BD-04
+
+O responsavel delimitou indices, consultas e evidencias PostgreSQL.
+Codex leu AGENTS.md, BD-04, WEB-06 e os contratos indicados.
+Tambem inspecionou schema, repositories e a branch Neon configurada.
+As skills PostgreSQL, TDD e verificacao orientaram a implementacao.
+A documentacao primaria confirmou pg_trgm e EXPLAIN com buffers.
+
+O Neon publico tinha nove produtos, sem volume persistido.
+As evidencias BD-05 registravam cargas em testes com rollback.
+O responsavel autorizou recriar volume em schema isolado.
+O script reaproveita a carga BD-05 sem alterar seus produtos.
+Complementa intencoes, notificacoes e carrinhos originalmente vazios.
+As medicoes criam e aplicam indices dentro da transacao.
+Todas as comparacoes encerram com rollback integral.
+
+Dez testes falharam inicialmente pelas consultas e indices ausentes.
+Outros 17 falharam antes da implementacao do coletor.
+Um teste adicional detectou termo inexistente na carga sintetica.
+Outro detectou recusa indevida de tabelas operacionais vazias.
+As correcoes passaram pelos respectivos testes de regressao.
+Nenhum banco ou repository foi mockado.
+
+Nove consultas SQL parametrizadas justificam os indices.
+Categoria e carrinho preservam os indices preexistentes.
+O indice simples de compradorId foi substituido pelo composto.
+O parcial da vitrine permanece definido em migration SQL.
+Os demais novos indices tambem constam no schema Prisma.
+O script db:explain grava planos, buffers, parametros e tempos.
+Ele recusa pasta ocupada e nao sobrescreve evidencias.
+O modo padrao usa somente leitura e erros sanitizados.
+
+A busca seletiva observou BitmapOr com ambos os GIN.
+A busca por vaso preferiu o parcial e apresentou regressao.
+Essa regressao e as escolhas naturais foram registradas integralmente.
+Nenhuma medicao forca enable_seqscan=off.
+Esses tempos isolados nao representam p95 ou latencia HTTP.
+
+A primeira suite completa passou 300 testes e falhou num.
+O retry da fila compartilhada observou tentativas insuficientes.
+Sessoes pg-boss externas estavam ativas na mesma base.
+O responsavel autorizou isolar somente esse teste.
+O schema proprio preserva retry, restart e codigo produtivo.
+A execucao isolada passou nos sete cenarios existentes.
+
+A revisao de seguranca foi local, conforme escolha explicita.
+Verificou inputs, parametros, isolamento, erros e ausencia de segredos.
+Evidencias constam em evidencias/PI4-28-W10-Modelo-Fisico/BD-04-indices/.
+Nao houve commit, push ou deploy permanente dos indices.
+
+Lint, typecheck, build e formatacao passaram.
+A suite final passou: 302 testes em 35 arquivos.
+A CLI padrao executou as nove consultas em leitura somente.
+Os schemas BD-04 e fila_test foram removidos ao terminar.
+Nenhum indice BD-04 foi aplicado nas tabelas publicas.
+pg_trgm permanece instalado pelo preparo dos testes de migrations.
+
+O responsavel solicitou centralizar as evidencias junto das demais.
+Codex moveu os arquivos para BD-04-indices, preservando os conteudos.
+Atualizou links, comandos documentados e destino padrao do coletor.
+
+O responsavel restringiu a entrega a tres itens.
+A pasta BD-04-indices agora contem 18 TXT antes/depois.
+Tambem contem 01-resumo-indices.md e 02-migration-indices.sql.
+Os TXT preservam a saida PostgreSQL original em FORMAT JSON.
+Todos os pares usam a mesma coleta seletiva existente.
+Os arquivos adicionais foram preservados em evidencias/.historico/.
+Nao houve nova medicao, alteracao de tempos ou acesso ao Neon.

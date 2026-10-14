@@ -17,7 +17,8 @@
     "prisma:validate": "prisma validate",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "prisma db seed",
-    "db:seed:volume": "tsx prisma/seed-volume.ts"
+    "db:seed:volume": "tsx prisma/seed-volume.ts",
+    "db:explain": "tsx scripts/db-explain.ts"
   },
   "keywords": [],
   "author": "",

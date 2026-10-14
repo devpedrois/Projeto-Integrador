@@ -41,6 +41,7 @@ let compradorId: string;
 const createdProdutoIds: string[] = [];
 const createdPedidoIds: string[] = [];
 const extraBosses: PgBoss[] = [];
+const queueSchema = `fila_test_${randomUUID().replaceAll("-", "")}`;
 
 async function createProduto(quantidadeEstoque: number): Promise<string> {
   const id = randomUUID();
@@ -110,7 +111,7 @@ async function waitForStatus(pedidoId: string, status: StatusIntencao) {
 const FAST_POLLING = { pollingIntervalSeconds: 0.5 };
 
 beforeAll(async () => {
-  boss = createPgBossClient(databaseUrl);
+  boss = createPgBossClient(databaseUrl, { schema: queueSchema });
   await boss.start();
   await ensureNotificarArtesaoQueue(boss);
   artesaoId = await criarUsuarioArtesao(databasePool);
@@ -137,6 +138,7 @@ afterEach(async () => {
 
 afterAll(async () => {
   await boss.stop({ graceful: false });
+  await databasePool.query(`DROP SCHEMA IF EXISTS "${queueSchema}" CASCADE`);
   await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
     [artesaoId, compradorId],
   ]);
@@ -204,7 +206,7 @@ describe("fila de notificacao ao artesao", () => {
   it("recovers a pending intention after a simulated restart", async () => {
     const { pedidoId } = await createPedidoComIntencao();
 
-    const restartedBoss = createPgBossClient(databaseUrl);
+    const restartedBoss = createPgBossClient(databaseUrl, { schema: queueSchema });
     extraBosses.push(restartedBoss);
     await restartedBoss.start();
     await ensureNotificarArtesaoQueue(restartedBoss);
