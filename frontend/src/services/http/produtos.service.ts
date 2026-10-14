@@ -51,7 +51,11 @@ export class HttpProdutosService implements ProdutosService {
   }
 
   create: ProdutosService["create"] = async () => this.pendente();
-  listByArtesao: ProdutosService["listByArtesao"] = async () => this.pendente();
+  listByArtesao(artesaoId: string): Promise<Produto[]> {
+    if (!artesaoId.trim())
+      throw new ServiceError("ENTRADA_INVALIDA", "Artesão inválido.");
+    return this.search({ artesaoId });
+  }
   update: ProdutosService["update"] = async () => this.pendente();
   remove: ProdutosService["remove"] = async () => this.pendente();
 

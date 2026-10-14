@@ -5,24 +5,32 @@ import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 
 export function useNomeArtesao(
   service: UsuariosService | null,
-  artesaoId: string
+  artesaoId: string,
 ): string | null {
   const [nome, setNome] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!service) {
+    if (!service || !artesaoId) {
       setNome(null);
       return;
     }
 
     let cancelado = false;
+    setNome(null);
 
-    service
-      .list()
-      .then((usuarios) => {
+    const carregar = service.obterNomeArtesao
+      ? service.obterNomeArtesao(artesaoId)
+      : service
+          .list()
+          .then(
+            (usuarios) =>
+              usuarios.find((candidato) => candidato.id === artesaoId)?.nome ??
+              null,
+          );
+    carregar
+      .then((nomeCarregado) => {
         if (cancelado) return;
-        const usuario = usuarios.find((candidato) => candidato.id === artesaoId);
-        setNome(usuario?.nome ?? null);
+        setNome(nomeCarregado);
       })
       .catch(() => {
         if (cancelado) return;

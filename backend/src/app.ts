@@ -29,6 +29,10 @@ import { CatalogoController } from "./controllers/catalogo.controller.js";
 import { PrismaCatalogoRepository } from "./repositories/catalogo.repository.js";
 import { CatalogoService } from "./services/catalogo.service.js";
 import { createCatalogoRouter } from "./routes/catalogo.routes.js";
+import { PerfilArtesaoController } from "./controllers/perfil-artesao.controller.js";
+import { PrismaPerfilArtesaoRepository } from "./repositories/perfil-artesao.repository.js";
+import { PerfilArtesaoService } from "./services/perfil-artesao.service.js";
+import { createPerfilArtesaoRouter } from "./routes/perfil-artesao.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -75,6 +79,14 @@ export function createApp(
   app.use(createAuthRouter(authController));
   app.use(createPedidoRouter(pedidoController, autenticarUsuario));
   app.use(createUsuarioRouter(usuarioController, autenticarUsuario));
+  app.use(
+    createPerfilArtesaoRouter(
+      new PerfilArtesaoController(
+        new PerfilArtesaoService(new PrismaPerfilArtesaoRepository(prisma)),
+      ),
+      autenticarUsuario,
+    ),
+  );
   app.use(createRecomendacaoRouter(recomendacaoController));
   app.use(
     createCatalogoRouter(

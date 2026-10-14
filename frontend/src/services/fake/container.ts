@@ -27,6 +27,7 @@ import type { RecomendacoesService } from "@/services/contracts/recomendacoes.co
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 import type { ModeracaoService } from "@/services/contracts/moderacao.contract";
 import { HttpUsuariosService } from "@/services/http/usuarios.service";
+import { HttpPerfilArtesaoService } from "@/services/http/perfil-artesao.service";
 import { HttpProdutosService } from "@/services/http/produtos.service";
 import { HttpOpcoesFiltroService } from "@/services/http/opcoes-filtro.service";
 import { HttpAvaliacoesService } from "@/services/http/avaliacoes.service";
@@ -35,9 +36,8 @@ import { obterFonteDados } from "@/services/data-source";
 import { ServiceError } from "@/services/errors";
 
 export const PENDENTES_HTTP = [
-  "ProdutosService.create/update/remove/listByArtesao",
+  "ProdutosService.create/update/remove",
   "PedidosService",
-  "PerfilArtesaoService",
   "AvaliacoesService.create",
   "ModeracaoService",
   "CarrinhoStore",
@@ -63,10 +63,7 @@ async function pendente(): Promise<never> {
 
 const produtosHttp: ProdutosService = new HttpProdutosService();
 const pedidosHttpPendentes: PedidosService = { confirmar: pendente };
-const perfilHttpPendente: PerfilArtesaoService = {
-  obter: pendente,
-  salvar: pendente,
-};
+const perfilHttp: PerfilArtesaoService = new HttpPerfilArtesaoService();
 const avaliacoesHttp: AvaliacoesService = new HttpAvaliacoesService();
 const recomendacoesHttp: RecomendacoesService = new HttpRecommendationAdapter();
 const opcoesHttp: OpcoesFiltroService = new HttpOpcoesFiltroService();
@@ -198,11 +195,12 @@ export function obterRecomendacoesService(): RecomendacoesService {
 /**
  * Na AV1, `PerfilArtesaoService` e implementado por `FakePerfilArtesaoService`,
  * sobre o mesmo repositorio local. Na AV2, este ponto de composicao troca para
- * uma implementacao HTTP consumindo `GET/PATCH /usuarios/:id`, sem alterar
+ * `HttpPerfilArtesaoService`, consumindo `GET/PATCH /usuarios/:id/perfil-artesao`.
+ * Preserva os contratos de
  * hooks, componentes ou paginas.
  */
 export function obterPerfilArtesaoService(): PerfilArtesaoService {
-  if (modoHttp()) return perfilHttpPendente;
+  if (modoHttp()) return perfilHttp;
   if (!perfilArtesaoServiceInstancia) {
     const repositorio = new BrowserPerfilArtesaoRepository(window.localStorage);
     perfilArtesaoServiceInstancia = new FakePerfilArtesaoService(repositorio, {

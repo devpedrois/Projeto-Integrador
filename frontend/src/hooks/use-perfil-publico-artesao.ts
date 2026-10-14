@@ -43,7 +43,7 @@ export function usePerfilPublicoArtesao(
   perfilArtesaoService: PerfilArtesaoService | null,
   produtosService: ProdutosService | null,
   opcoesFiltroService: OpcoesFiltroService | null,
-  artesaoId: string | null
+  artesaoId: string | null,
 ): UsePerfilPublicoArtesaoResultado {
   const [estado, setEstado] = useState<EstadoPerfilPublicoArtesao>({
     status: "carregando",
@@ -66,7 +66,9 @@ export function usePerfilPublicoArtesao(
     setEstado({ status: "carregando" });
 
     Promise.all([
-      usuariosService.list(),
+      usuariosService.obterNomeArtesao
+        ? Promise.resolve(null)
+        : usuariosService.list(),
       perfilArtesaoService.obter(artesaoId),
       produtosService.listByArtesao(artesaoId),
       opcoesFiltroService.tecnicas(),
@@ -75,12 +77,14 @@ export function usePerfilPublicoArtesao(
       .then(([usuarios, perfil, produtos, tecnicas, regioes]) => {
         if (cancelado) return;
 
-        const usuario = usuarios.find(
-          (candidato) =>
-            candidato.id === artesaoId &&
-            candidato.papel === "artesao" &&
-            candidato.ativo
-        );
+        const usuario = perfil?.nome
+          ? { id: artesaoId, nome: perfil.nome }
+          : usuarios?.find(
+              (candidato) =>
+                candidato.id === artesaoId &&
+                candidato.papel === "artesao" &&
+                candidato.ativo,
+            );
 
         if (!usuario) {
           setEstado({ status: "naoEncontrado" });
@@ -88,13 +92,15 @@ export function usePerfilPublicoArtesao(
         }
 
         const produtosVisiveis = produtos.filter((produto) =>
-          produtoVisivelPublicamente(produto)
+          produtoVisivelPublicamente(produto),
         );
         const { completo } = verificarPerfilCompleto(perfil);
         const tecnicaNome =
-          tecnicas.find((tecnica) => tecnica.id === perfil?.tecnicaId)?.nome ?? null;
+          tecnicas.find((tecnica) => tecnica.id === perfil?.tecnicaId)?.nome ??
+          null;
         const regiaoNome =
-          regioes.find((regiao) => regiao.id === perfil?.regiaoId)?.nome ?? null;
+          regioes.find((regiao) => regiao.id === perfil?.regiaoId)?.nome ??
+          null;
 
         setEstado({
           status: "sucesso",

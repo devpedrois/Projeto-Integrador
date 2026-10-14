@@ -605,6 +605,47 @@ O GIF foi extraido do video real via ffmpeg bundled.
 Pillow apenas converteu seus quadros em animacao GIF.
 Nao houve commit, push ou deploy.
 
+### WEB-07: perfil do artesao integrado em HTTP
+
+Codex implementou WEB-07 com testes escritos antes das rotas.
+Leu AGENTS.md, WEB-07, US03 e US09.
+Inspecionou contratos, fake, dominio, hooks e paginas existentes.
+A branch codex/web-07-perfil-artesao isola a subtarefa.
+
+A rodada inicial confirmou 21 falhas nas rotas ausentes.
+Nove testes de adapters e tres de hooks falharam.
+Restricoes locais exigiram permissao para Git e testes reais.
+O PostgreSQL usou schema temporario com migrations existentes.
+Nao houve mocks de banco nem de repositories.
+
+GET publico projeta somente nome e campos do perfil.
+PATCH autentica, exige artesao e confere propriedade pelo token.
+Admin e terceiro recebem 403 nesta rota.
+Schemas estritos limitam historia e validam IDs e foto.
+O service porta a regra de completude do frontend.
+Uma transacao preserva campos omitidos durante edicoes concorrentes.
+
+O adapter HTTP entrou no container e saiu das pendencias.
+Nomes usam a rota publica, evitando listar usuarios no perfil.
+Produtos reutilizam o filtro artesaoId do catalogo existente.
+A listagem geral da vitrine permanece fora desta subtarefa.
+
+Playwright validou Next.js, Express e PostgreSQL reais.
+Confirmou produto, perfil, produtos dele e exclusao de terceiros.
+O formulario salvou e a pendencia desapareceu ao retornar.
+PATCH de outro perfil retornou 403, preservando o banco.
+As larguras 360, 768 e 1280 nao tiveram overflow.
+O painel Network das capturas foi inserido pela automacao.
+Ele apresenta chamadas reais, sem representar DevTools nativo.
+
+O usuario escolheu revisao equivalente nesta conversa, sem delegacao.
+A revisao conferiu projecao publica, propriedade, inputs e transacao.
+Nao encontrou vazamento de credenciais nem elevacao de privilegios.
+Suite completa: 367 testes backend e 773 frontend passaram.
+Avisos preexistentes: SSL do pg e act no hook de artesaos.
+Evidencias: evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/.
+Nao houve commit, push ou deploy.
+
 ### 14/10/2026: IA-01, contrato publico de recomendacoes
 
 Codex implementou somente IA-01 usando TDD e regras PostgreSQL.

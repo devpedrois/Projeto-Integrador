@@ -1,5 +1,7 @@
 export interface PerfilArtesao {
   artesaoId: string;
+  nome?: string;
+  completo?: boolean;
   historia: string;
   tecnicaId: string;
   regiaoId: string;

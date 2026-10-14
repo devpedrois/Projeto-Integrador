@@ -13,6 +13,7 @@ import type { UsuarioSessao } from "@/types/sessao";
 
 export interface UsuariosService {
   list(): Promise<UsuarioPublico[]>;
+  obterNomeArtesao?(artesaoId: string): Promise<string | null>;
   /**
    * Cria um usuario comprador ou artesao. Retorna o DTO publico, sem sessao:
    * a autenticacao e a sessao chegam em T02.1.

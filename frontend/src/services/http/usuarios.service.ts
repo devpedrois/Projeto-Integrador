@@ -1,6 +1,7 @@
 import type { UsuariosSessaoService } from "@/services/contracts/usuarios.contract";
 import { ServiceError } from "@/services/errors";
 import { ApiClient } from "@/services/http/api-client";
+import { HttpPerfilArtesaoService } from "@/services/http/perfil-artesao.service";
 import type { CadastroInput } from "@/types/cadastro";
 import type { LoginInput } from "@/types/login";
 import type { UsuarioPublico, Papel } from "@/types/usuario";
@@ -45,6 +46,13 @@ function credenciaisValidas(input: LoginInput): boolean {
 
 export class HttpUsuariosService implements UsuariosSessaoService {
   constructor(private readonly api = new ApiClient()) {}
+
+  async obterNomeArtesao(artesaoId: string): Promise<string | null> {
+    return (
+      (await new HttpPerfilArtesaoService(this.api).obter(artesaoId))?.nome ??
+      null
+    );
+  }
 
   async list(): Promise<UsuarioPublico[]> {
     throw new ServiceError(

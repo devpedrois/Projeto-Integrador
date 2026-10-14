@@ -108,13 +108,10 @@ describe("HTTP catalogo", () => {
     });
   });
 
-  it("escritas e listagem privada continuam explicitamente pendentes", async () => {
+  it("escritas continuam explicitamente pendentes", async () => {
     const fetchMock = vi.fn();
     vi.stubGlobal("fetch", fetchMock);
     const service = await produtosService();
-    await expect(
-      service.listByArtesao(produto.artesaoId),
-    ).rejects.toMatchObject({ code: "HTTP_NAO_IMPLEMENTADO" });
     await expect(
       service.remove(produto.id, produto.artesaoId),
     ).rejects.toMatchObject({ code: "HTTP_NAO_IMPLEMENTADO" });
