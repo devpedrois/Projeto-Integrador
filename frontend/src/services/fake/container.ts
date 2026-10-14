@@ -154,6 +154,10 @@ export function obterPedidosService(): PedidosService {
       {
         latenciaMs: LATENCIA_PADRAO_MS,
         usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
+        obterCompradorId: () => {
+          const sessao = obterSessionStore().getSnapshot();
+          return sessao?.papel === "comprador" ? sessao.id : null;
+        },
       },
     );
   }

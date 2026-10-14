@@ -947,3 +947,44 @@ Lint e typecheck passaram.
 Prettier e verificação do diff passaram.
 A suíte emitiu aviso de act em use-artesaos-ativos.test.tsx.
 O checklist ainda não comprova aceite em produção.
+
+## 2026-10-14: WEB-11, histórico e detalhe dos pedidos
+
+Codex implementou somente a leitura dos pedidos do comprador.
+Leu AGENTS.md, WEB-11, US13, US20 e os arquivos indicados.
+Usou TDD, PostgreSQL real e schema isolado.
+Dezoito testes iniciais falharam pelas rotas ainda ausentes.
+Vinte e cinco testes frontais detectaram métodos e estados ausentes.
+Cinco testes da Fake API falharam antes da extensão.
+
+Criou GET /pedidos e GET /pedidos/:id nas camadas existentes.
+O comprador vem somente da sessão autenticada.
+A listagem usa data decrescente e paginação simples validada.
+Pedido de terceiro e inexistente retornam exatamente o mesmo 404.
+O contrato ganhou listarMeus e obter, com pagamento persistido.
+Minha conta mostra lista, detalhe, loading, vazio e erro recuperável.
+Status pendente, confirmado e cancelado possuem estilos distintos.
+Pagamento mostra aprovado, recusado ou ausência de registro.
+A Fake API preserva o contrato e filtra a sessão atual.
+Pedidos legados não recebem pagamentos inventados.
+API.md documenta os novos endpoints e DTOs.
+
+Conferiu três pedidos e seis itens contra PostgreSQL.
+As evidências usam Next.js, Express e banco reais.
+Lista e detalhe passaram em 360, 768 e 1280px.
+Capturou PNGs, vídeo, chamadas HTTP e SELECT sanitizado.
+Um seletor ambíguo de preço foi corrigido no roteiro.
+O mock antigo de proteção de rotas recebeu o novo contrato.
+
+Revisão equivalente de segurança realizada nesta conversa.
+Verificou autenticação, papel atual, propriedade, paginação e campos retornados.
+Nenhum achado de segurança permaneceu no escopo.
+Não expôs credenciais, cookies, hashes ou URLs de conexão.
+Não houve delegação, commit, push ou deploy.
+
+Passaram 436 testes backend e 824 testes frontend.
+Também passaram lint, typecheck, Prettier e build Next.js.
+O diff foi validado preservando CRLF com core.whitespace=cr-at-eol.
+Permaneceram avisos existentes de SSL, act e plugin ESLint Next.js.
+Evidências: evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/.
+Branch: codex/web11-meus-pedidos.

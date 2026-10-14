@@ -2,6 +2,13 @@ import type { PedidosService } from "@/services/contracts/pedidos.contract";
 import type { ItemPedido, ItemPedidoInput, Pedido } from "@/types/pedido";
 import { ServiceError } from "@/services/errors";
 import { ApiClient } from "./api-client";
+import type {
+  DetalhePedido,
+  PaginaPedidos,
+  PaginacaoPedidos,
+} from "@/types/pedido";
+import { validarPaginacaoPedidos } from "@/domain/paginacao-pedidos";
+import { lerDetalhePedido, lerPaginaPedidos } from "./pedido-response";
 
 function invalidar(): never {
   throw new ServiceError("RESPOSTA_INVALIDA", "Resposta de pedido inválida.");
@@ -83,6 +90,36 @@ function lerPedido(value: unknown): Pedido {
 
 export class HttpPedidosService implements PedidosService {
   constructor(private readonly client = new ApiClient()) {}
+
+  async listarMeus(input: PaginacaoPedidos = {}): Promise<PaginaPedidos> {
+    const { pagina, limite } = validarPaginacaoPedidos(input);
+    const params = new URLSearchParams({
+      pagina: String(pagina),
+      limite: String(limite),
+    });
+    const result = lerPaginaPedidos(
+      await this.client.request<unknown>(`/pedidos?${params}`),
+    );
+    if (result.pagina !== pagina || result.limite !== limite) invalidar();
+    return result;
+  }
+
+  async obter(id: string): Promise<DetalhePedido> {
+    if (
+      typeof id !== "string" ||
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+        id,
+      )
+    )
+      throw new ServiceError(
+        "ENTRADA_INVALIDA",
+        "Identificador de pedido inválido.",
+      );
+    return lerDetalhePedido(
+      await this.client.request<unknown>(`/pedidos/${encodeURIComponent(id)}`),
+      id,
+    );
+  }
 
   async confirmar(itens: ItemPedidoInput[]): Promise<Pedido> {
     if (

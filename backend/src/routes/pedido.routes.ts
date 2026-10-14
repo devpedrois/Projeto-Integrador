@@ -1,6 +1,10 @@
 import { Router, type RequestHandler } from "express";
 import type { PedidoController } from "../controllers/pedido.controller.js";
-import { validateCriarPedido } from "../validators/pedido.validator.js";
+import {
+  validateCriarPedido,
+  validateListarPedidos,
+  validateObterPedido,
+} from "../validators/pedido.validator.js";
 import { exigirPapel } from "../middlewares/role.middleware.js";
 
 export function createPedidoRouter(
@@ -8,6 +12,20 @@ export function createPedidoRouter(
   autenticarUsuario: RequestHandler,
 ): Router {
   const router = Router();
+  router.get(
+    "/pedidos",
+    autenticarUsuario,
+    exigirPapel("comprador"),
+    validateListarPedidos,
+    controller.listarMeus,
+  );
+  router.get(
+    "/pedidos/:id",
+    autenticarUsuario,
+    exigirPapel("comprador"),
+    validateObterPedido,
+    controller.obter,
+  );
   router.post(
     "/pedidos",
     autenticarUsuario,

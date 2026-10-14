@@ -18,6 +18,7 @@ const CODIGOS_HTTP: Readonly<Record<number, readonly string[]>> = {
     "USUARIO_NAO_ENCONTRADO",
     "PRODUTO_NAO_ENCONTRADO",
     "ARTESAO_NAO_ENCONTRADO",
+    "PEDIDO_NAO_ENCONTRADO",
   ],
   409: [
     "CONFLITO",

@@ -13,8 +13,16 @@
  * formulario. Preco e total nunca sao aceitos do chamador: o service
  * recalcula ambos a partir do produto persistido no momento da confirmacao.
  */
-import type { ItemPedidoInput, Pedido } from "@/types/pedido";
+import type {
+  DetalhePedido,
+  ItemPedidoInput,
+  Pedido,
+  PaginaPedidos,
+  PaginacaoPedidos,
+} from "@/types/pedido";
 
 export interface PedidosService {
   confirmar(itens: ItemPedidoInput[], compradorId: string): Promise<Pedido>;
+  listarMeus(paginacao?: PaginacaoPedidos): Promise<PaginaPedidos>;
+  obter(id: string): Promise<DetalhePedido>;
 }

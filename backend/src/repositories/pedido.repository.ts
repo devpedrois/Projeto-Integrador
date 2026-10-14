@@ -2,6 +2,79 @@ import { randomUUID } from "node:crypto";
 import { Prisma, type PrismaClient } from "../generated/prisma/client.js";
 import { AppError } from "../errors/app-error.js";
 import type { CriarPedidoInput } from "../validators/pedido.validator.js";
+import type { PaginacaoPedidos } from "../validators/pedido.validator.js";
+
+const resumoPedidoSelect = {
+  id: true,
+  numero: true,
+  total: true,
+  status: true,
+  criadoEm: true,
+  pagamento: {
+    select: {
+      id: true,
+      metodo: true,
+      valor: true,
+      status: true,
+      dataPagamento: true,
+    },
+  },
+} satisfies Prisma.PedidoSelect;
+
+type RegistroResumo = Prisma.PedidoGetPayload<{
+  select: typeof resumoPedidoSelect;
+}>;
+
+export interface ResumoPedido {
+  id: string;
+  numero: string | null;
+  total: number | null;
+  status: RegistroResumo["status"];
+  criadoEm: string;
+  pagamento: {
+    id: string;
+    metodo: "pix_simulado";
+    valor: number;
+    status: "aprovado" | "recusado";
+    dataPagamento: string;
+  } | null;
+}
+
+export interface PaginaPedidos extends PaginacaoPedidos {
+  itens: ResumoPedido[];
+  total: number;
+}
+
+export interface DetalhePedido extends ResumoPedido {
+  compradorId: string;
+  itens: Array<{
+    produtoId: string;
+    nome: string;
+    quantidade: number;
+    precoUnitario: number | null;
+    subtotal: number | null;
+  }>;
+}
+
+function mapearResumo(registro: RegistroResumo): ResumoPedido {
+  const pagamento = registro.pagamento;
+  return {
+    id: registro.id,
+    numero: registro.numero,
+    total: registro.total?.toNumber() ?? null,
+    status: registro.status,
+    criadoEm: registro.criadoEm.toISOString(),
+    pagamento: pagamento
+      ? {
+          id: pagamento.id,
+          metodo: pagamento.metodo,
+          status: pagamento.status,
+          valor: pagamento.valor.toNumber(),
+          dataPagamento: pagamento.dataPagamento.toISOString(),
+        }
+      : null,
+  };
+}
 
 export interface PedidoCriado {
   pedidoId: string;
@@ -25,6 +98,11 @@ export interface NovoPedido extends CriarPedidoInput {
 
 export interface PedidoRepository {
   criar(input: NovoPedido): Promise<PedidoCriado>;
+  listarMeus(
+    compradorId: string,
+    paginacao: PaginacaoPedidos,
+  ): Promise<PaginaPedidos>;
+  obter(id: string, compradorId: string): Promise<DetalhePedido | null>;
 }
 
 interface EstoqueRow {
@@ -39,6 +117,63 @@ interface EstoqueRow {
 
 export class PrismaPedidoRepository implements PedidoRepository {
   public constructor(private readonly prisma: PrismaClient) {}
+
+  public async listarMeus(
+    compradorId: string,
+    paginacao: PaginacaoPedidos,
+  ): Promise<PaginaPedidos> {
+    const { pagina, limite } = paginacao;
+    const where = { compradorId };
+    const [registros, total] = await this.prisma.$transaction(
+      [
+        this.prisma.pedido.findMany({
+          where,
+          select: resumoPedidoSelect,
+          orderBy: [{ criadoEm: "desc" }, { id: "desc" }],
+          skip: (pagina - 1) * limite,
+          take: limite,
+        }),
+        this.prisma.pedido.count({ where }),
+      ],
+      { isolationLevel: "RepeatableRead" },
+    );
+    return { itens: registros.map(mapearResumo), pagina, limite, total };
+  }
+
+  public async obter(
+    id: string,
+    compradorId: string,
+  ): Promise<DetalhePedido | null> {
+    const registro = await this.prisma.pedido.findFirst({
+      where: { id, compradorId },
+      select: {
+        ...resumoPedidoSelect,
+        compradorId: true,
+        itens: {
+          orderBy: { id: "asc" },
+          select: {
+            produtoId: true,
+            quantidade: true,
+            precoUnitario: true,
+            subtotal: true,
+            produto: { select: { nome: true } },
+          },
+        },
+      },
+    });
+    if (!registro) return null;
+    return {
+      ...mapearResumo(registro),
+      compradorId: registro.compradorId,
+      itens: registro.itens.map((item) => ({
+        produtoId: item.produtoId,
+        nome: item.produto.nome,
+        quantidade: item.quantidade,
+        precoUnitario: item.precoUnitario?.toNumber() ?? null,
+        subtotal: item.subtotal?.toNumber() ?? null,
+      })),
+    };
+  }
 
   public async criar(input: NovoPedido): Promise<PedidoCriado> {
     return this.prisma.$transaction(async (tx) => {

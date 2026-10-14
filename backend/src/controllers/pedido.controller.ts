@@ -1,10 +1,58 @@
 import type { NextFunction, Request, Response } from "express";
 import type { PedidoService } from "../services/pedido.service.js";
 import type { CriarPedidoInput } from "../validators/pedido.validator.js";
+import type { PaginacaoPedidos } from "../validators/pedido.validator.js";
 import { AppError } from "../errors/app-error.js";
 
 export class PedidoController {
   public constructor(private readonly service: PedidoService) {}
+
+  public listarMeus = async (
+    _request: Request,
+    response: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const usuario = response.locals.usuario;
+      if (!usuario)
+        throw new AppError(
+          401,
+          "NAO_AUTENTICADO",
+          "Sessao invalida ou ausente.",
+        );
+      response.json(
+        await this.service.listarMeus(
+          usuario.id,
+          response.locals.paginacaoPedidos as PaginacaoPedidos,
+        ),
+      );
+    } catch (error: unknown) {
+      next(error);
+    }
+  };
+
+  public obter = async (
+    _request: Request,
+    response: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const usuario = response.locals.usuario;
+      if (!usuario)
+        throw new AppError(
+          401,
+          "NAO_AUTENTICADO",
+          "Sessao invalida ou ausente.",
+        );
+      const { itens, pagamento, ...pedido } = await this.service.obter(
+        response.locals.pedidoId as string,
+        usuario.id,
+      );
+      response.json({ pedido, itens, pagamento });
+    } catch (error: unknown) {
+      next(error);
+    }
+  };
 
   public criar = async (
     request: Request,

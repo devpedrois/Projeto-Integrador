@@ -1,9 +1,10 @@
-import { describe, expect, it, vi, beforeEach } from "vitest";
+import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SessionStore } from "@/store/sessao.store";
 import type { SessaoStorage } from "@/fake-api/storage/sessao.storage";
 import type { UsuarioSessao } from "@/types/sessao";
+import { HttpPedidosService } from "@/services/http/pedidos.service";
 
 const pushMock = vi.fn();
 const replaceMock = vi.fn();
@@ -16,6 +17,7 @@ vi.mock("next/navigation", () => ({
 
 vi.mock("@/services/fake/container", () => ({
   obterSessionStore: () => storeMock,
+  obterPedidosService: () => new HttpPedidosService(),
 }));
 
 function criarStore(sessao: UsuarioSessao | null): SessionStore {
@@ -40,6 +42,15 @@ async function renderizarPagina() {
 beforeEach(() => {
   pushMock.mockClear();
   replaceMock.mockClear();
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () =>
+      Response.json({ itens: [], pagina: 1, limite: 10, total: 0 }),
+    ),
+  );
+});
+afterEach(() => {
+  vi.unstubAllGlobals();
 });
 
 describe("Minha conta", () => {
@@ -53,23 +64,39 @@ describe("Minha conta", () => {
 
     await renderizarPagina();
 
-    expect(await screen.findByRole("heading", { name: "Minha conta" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { name: "Minha conta" }),
+    ).toBeInTheDocument();
     expect(screen.getByText("Maria Artesã")).toBeInTheDocument();
     expect(screen.getByText("maria@email.com")).toBeInTheDocument();
     expect(screen.getByText("Artesão")).toBeInTheDocument();
   });
 
   it("mostra estado vazio em Meus pedidos", async () => {
-    storeMock = criarStore({ id: "u1", nome: "Ana", email: "ana@email.com", papel: "comprador" });
+    storeMock = criarStore({
+      id: "u1",
+      nome: "Ana",
+      email: "ana@email.com",
+      papel: "comprador",
+    });
 
     await renderizarPagina();
 
-    expect(await screen.findByRole("heading", { name: "Meus pedidos" })).toBeInTheDocument();
-    expect(screen.getByText("Seus pedidos vão aparecer aqui")).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { name: "Meus pedidos" }),
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByText("Seus pedidos vão aparecer aqui"),
+    ).toBeInTheDocument();
   });
 
   it("rotula o papel admin como Administrador", async () => {
-    storeMock = criarStore({ id: "u9", nome: "Admin", email: "admin@email.com", papel: "admin" });
+    storeMock = criarStore({
+      id: "u9",
+      nome: "Admin",
+      email: "admin@email.com",
+      papel: "admin",
+    });
 
     await renderizarPagina();
 
@@ -78,7 +105,12 @@ describe("Minha conta", () => {
 
   it("sair encerra a sessao e volta para a vitrine", async () => {
     const user = userEvent.setup();
-    storeMock = criarStore({ id: "u1", nome: "Ana", email: "ana@email.com", papel: "comprador" });
+    storeMock = criarStore({
+      id: "u1",
+      nome: "Ana",
+      email: "ana@email.com",
+      papel: "comprador",
+    });
 
     await renderizarPagina();
     await user.click(await screen.findByRole("button", { name: /sair/i }));
@@ -93,7 +125,9 @@ describe("Minha conta", () => {
     await renderizarPagina();
 
     await waitFor(() =>
-      expect(replaceMock).toHaveBeenCalledWith("/login?redirect=%2Fminha-conta")
+      expect(replaceMock).toHaveBeenCalledWith(
+        "/login?redirect=%2Fminha-conta",
+      ),
     );
   });
 });

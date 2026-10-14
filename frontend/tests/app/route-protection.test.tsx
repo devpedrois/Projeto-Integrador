@@ -24,7 +24,13 @@ vi.mock("@/services/fake/container", () => ({
     getSnapshot: vi.fn().mockReturnValue({ itens: [] }),
     subscribe: vi.fn().mockReturnValue(() => {}),
   }),
-  obterPedidosService: () => ({ create: vi.fn() }),
+  obterPedidosService: () => ({
+    confirmar: vi.fn(),
+    listarMeus: vi
+      .fn()
+      .mockResolvedValue({ itens: [], pagina: 1, limite: 10, total: 0 }),
+    obter: vi.fn(),
+  }),
   obterModeracaoService: () => ({
     listarArtesaos: vi.fn().mockReturnValue(new Promise(() => {})),
     listarProdutos: vi.fn().mockReturnValue(new Promise(() => {})),
@@ -46,19 +52,28 @@ describe("protecao de rotas", () => {
   it("/painel-artesao nega visitante e preserva destino de retorno", async () => {
     pathnameAtual = "/painel-artesao";
     storeMock = criarStoreFake(null);
-    const { default: PainelArtesaoPage } = await import("@/app/painel-artesao/page");
+    const { default: PainelArtesaoPage } =
+      await import("@/app/painel-artesao/page");
 
     render(<PainelArtesaoPage />);
 
     await waitFor(() =>
-      expect(replaceMock).toHaveBeenCalledWith("/login?redirect=%2Fpainel-artesao")
+      expect(replaceMock).toHaveBeenCalledWith(
+        "/login?redirect=%2Fpainel-artesao",
+      ),
     );
   });
 
   it("/painel-artesao nega papel incorreto", async () => {
     pathnameAtual = "/painel-artesao";
-    storeMock = criarStoreFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" });
-    const { default: PainelArtesaoPage } = await import("@/app/painel-artesao/page");
+    storeMock = criarStoreFake({
+      id: "u1",
+      nome: "Ana",
+      email: "u1@origem.test",
+      papel: "comprador",
+    });
+    const { default: PainelArtesaoPage } =
+      await import("@/app/painel-artesao/page");
 
     render(<PainelArtesaoPage />);
 
@@ -67,8 +82,14 @@ describe("protecao de rotas", () => {
 
   it("/painel-artesao aceita papel artesao", async () => {
     pathnameAtual = "/painel-artesao";
-    storeMock = criarStoreFake({ id: "u2", nome: "Bia", email: "u2@origem.test", papel: "artesao" });
-    const { default: PainelArtesaoPage } = await import("@/app/painel-artesao/page");
+    storeMock = criarStoreFake({
+      id: "u2",
+      nome: "Bia",
+      email: "u2@origem.test",
+      papel: "artesao",
+    });
+    const { default: PainelArtesaoPage } =
+      await import("@/app/painel-artesao/page");
 
     render(<PainelArtesaoPage />);
 
@@ -83,13 +104,18 @@ describe("protecao de rotas", () => {
     render(<AdminPage />);
 
     await waitFor(() =>
-      expect(replaceMock).toHaveBeenCalledWith("/login?redirect=%2Fadmin")
+      expect(replaceMock).toHaveBeenCalledWith("/login?redirect=%2Fadmin"),
     );
   });
 
   it("/admin nega papel incorreto", async () => {
     pathnameAtual = "/admin";
-    storeMock = criarStoreFake({ id: "u3", nome: "Caio", email: "u3@origem.test", papel: "artesao" });
+    storeMock = criarStoreFake({
+      id: "u3",
+      nome: "Caio",
+      email: "u3@origem.test",
+      papel: "artesao",
+    });
     const { default: AdminPage } = await import("@/app/admin/page");
 
     render(<AdminPage />);
@@ -99,7 +125,12 @@ describe("protecao de rotas", () => {
 
   it("/admin aceita papel admin", async () => {
     pathnameAtual = "/admin";
-    storeMock = criarStoreFake({ id: "u4", nome: "Dora", email: "u4@origem.test", papel: "admin" });
+    storeMock = criarStoreFake({
+      id: "u4",
+      nome: "Dora",
+      email: "u4@origem.test",
+      papel: "admin",
+    });
     const { default: AdminPage } = await import("@/app/admin/page");
 
     render(<AdminPage />);
@@ -115,18 +146,27 @@ describe("protecao de rotas", () => {
     render(<MinhaContaPage />);
 
     await waitFor(() =>
-      expect(replaceMock).toHaveBeenCalledWith("/login?redirect=%2Fminha-conta")
+      expect(replaceMock).toHaveBeenCalledWith(
+        "/login?redirect=%2Fminha-conta",
+      ),
     );
   });
 
   it("/minha-conta aceita qualquer papel autenticado", async () => {
     pathnameAtual = "/minha-conta";
-    storeMock = criarStoreFake({ id: "u5", nome: "Elis", email: "u5@origem.test", papel: "comprador" });
+    storeMock = criarStoreFake({
+      id: "u5",
+      nome: "Elis",
+      email: "u5@origem.test",
+      papel: "comprador",
+    });
     const { default: MinhaContaPage } = await import("@/app/minha-conta/page");
 
     render(<MinhaContaPage />);
 
-    expect(await screen.findByRole("heading", { name: "Minha conta" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { name: "Minha conta" }),
+    ).toBeInTheDocument();
   });
 
   it("/checkout nega visitante e preserva destino de retorno", async () => {
@@ -137,28 +177,43 @@ describe("protecao de rotas", () => {
     render(<CheckoutPage />);
 
     await waitFor(() =>
-      expect(replaceMock).toHaveBeenCalledWith("/login?redirect=%2Fcheckout")
+      expect(replaceMock).toHaveBeenCalledWith("/login?redirect=%2Fcheckout"),
     );
   });
 
-  it.each(["artesao", "admin"] as const)("/checkout nega papel %s", async (papel) => {
-    pathnameAtual = "/checkout";
-    storeMock = criarStoreFake({ id: "u6", nome: "Fabi", email: "u6@origem.test", papel });
-    const { default: CheckoutPage } = await import("@/app/checkout/page");
+  it.each(["artesao", "admin"] as const)(
+    "/checkout nega papel %s",
+    async (papel) => {
+      pathnameAtual = "/checkout";
+      storeMock = criarStoreFake({
+        id: "u6",
+        nome: "Fabi",
+        email: "u6@origem.test",
+        papel,
+      });
+      const { default: CheckoutPage } = await import("@/app/checkout/page");
 
-    render(<CheckoutPage />);
+      render(<CheckoutPage />);
 
-    expect(await screen.findByText(/acesso negado/i)).toBeInTheDocument();
-  });
+      expect(await screen.findByText(/acesso negado/i)).toBeInTheDocument();
+    },
+  );
 
   it("/checkout aceita papel comprador", async () => {
     pathnameAtual = "/checkout";
-    storeMock = criarStoreFake({ id: "u7", nome: "Gil", email: "u7@origem.test", papel: "comprador" });
+    storeMock = criarStoreFake({
+      id: "u7",
+      nome: "Gil",
+      email: "u7@origem.test",
+      papel: "comprador",
+    });
     const { default: CheckoutPage } = await import("@/app/checkout/page");
 
     render(<CheckoutPage />);
 
-    await waitFor(() => expect(screen.queryByText(/acesso negado/i)).not.toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.queryByText(/acesso negado/i)).not.toBeInTheDocument(),
+    );
     expect(screen.getByRole("main")).toBeInTheDocument();
   });
 });
