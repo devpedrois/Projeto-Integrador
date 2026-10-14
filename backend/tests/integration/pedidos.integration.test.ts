@@ -4,6 +4,7 @@ import request from "supertest";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { createApp } from "../../src/app.js";
 import { createPrismaClient } from "../../src/database/prisma/client.js";
+import { gerarHash } from "../../src/utils/senha.js";
 import { databasePool } from "../helpers/database.js";
 import {
   criarCategoria,
@@ -18,11 +19,15 @@ if (databaseUrl === undefined || databaseUrl.length === 0) {
 }
 
 const prisma = createPrismaClient(databaseUrl);
-const app = createApp(prisma);
+const app = createApp(prisma, {
+  JWT_SECRET: "segredo-sintetico-testes-checkout-web04",
+  COOKIE_SECURE: false,
+});
 
 let artesaoId: string;
 let categoriaId: string;
 let compradorId: string;
+let cookieComprador: string;
 
 async function createProduto(quantidadeEstoque: number): Promise<string> {
   const id = randomUUID();
@@ -41,12 +46,10 @@ async function getEstoque(produtoId: string): Promise<number> {
   return result.rows[0]?.quantidadeEstoque ?? -1;
 }
 
-const compradorRefTeste = "comprador-sintetico-a";
-
 async function countPedidos(): Promise<number> {
   const result = await databasePool.query<{ count: string }>(
-    'SELECT COUNT(*)::text AS count FROM "Pedido" WHERE "compradorRef" = $1',
-    [compradorRefTeste],
+    'SELECT COUNT(*)::text AS count FROM "Pedido" WHERE "compradorId" = $1',
+    [compradorId],
   );
   return Number(result.rows[0]?.count ?? "0");
 }
@@ -57,19 +60,32 @@ beforeAll(async () => {
   artesaoId = await criarUsuarioArtesao(databasePool);
   categoriaId = await criarCategoria(databasePool);
   compradorId = await criarUsuarioComprador(databasePool);
+  const senha = "SenhaSinteticaCheckout!";
+  await prisma.usuario.update({
+    where: { id: compradorId },
+    data: { senhaHash: await gerarHash(senha) },
+  });
+  const login = await request(app)
+    .post("/auth/login")
+    .send({ email: `comprador-${compradorId}@teste.origem`, senha });
+  expect(login.status).toBe(200);
+  const cookies = login.headers["set-cookie"] as string[] | undefined;
+  const cookie = cookies?.[0]?.split(";")[0];
+  if (!cookie) throw new Error("Login nao emitiu cookie de comprador");
+  cookieComprador = cookie;
 });
 
 afterEach(async () => {
   await databasePool.query(
-    'DELETE FROM "IntencaoNotificacao" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorRef" = $1)',
-    [compradorRefTeste],
+    'DELETE FROM "IntencaoNotificacao" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorId" = $1)',
+    [compradorId],
   );
   await databasePool.query(
-    'DELETE FROM "ItemPedido" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorRef" = $1)',
-    [compradorRefTeste],
+    'DELETE FROM "ItemPedido" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorId" = $1)',
+    [compradorId],
   );
-  await databasePool.query('DELETE FROM "Pedido" WHERE "compradorRef" = $1', [
-    compradorRefTeste,
+  await databasePool.query('DELETE FROM "Pedido" WHERE "compradorId" = $1', [
+    compradorId,
   ]);
   if (createdProdutoIds.length > 0) {
     await databasePool.query('DELETE FROM "Produto" WHERE "id" = ANY($1)', [
@@ -83,21 +99,37 @@ afterAll(async () => {
   await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
     [artesaoId, compradorId],
   ]);
-  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = $1', [categoriaId]);
+  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = $1', [
+    categoriaId,
+  ]);
   await prisma.$disconnect();
   await databasePool.end();
 });
 
 describe("POST /pedidos", () => {
+  it("mantem checkout concorrente com cookie: uma criacao e um conflito", async () => {
+    const produtoId = await createProduto(1);
+    createdProdutoIds.push(produtoId);
+    const responses = await Promise.all(
+      [1, 2].map(() =>
+        request(app)
+          .post("/pedidos")
+          .set("Cookie", cookieComprador)
+          .send({ itens: [{ produtoId, quantidade: 1 }] }),
+      ),
+    );
+    expect(responses.map(({ status }) => status).sort()).toEqual([201, 409]);
+    expect(await getEstoque(produtoId)).toBe(0);
+    expect(await countPedidos()).toBe(1);
+  });
   it("creates an order and decrements stock exactly by the requested quantity", async () => {
     const produtoId = await createProduto(5);
     createdProdutoIds.push(produtoId);
 
     const response = await request(app)
       .post("/pedidos")
+      .set("Cookie", cookieComprador)
       .send({
-        compradorRef: compradorRefTeste,
-        compradorId,
         itens: [{ produtoId, quantidade: 2 }],
       });
 
@@ -111,9 +143,8 @@ describe("POST /pedidos", () => {
   it("rejects an order referencing a missing product", async () => {
     const response = await request(app)
       .post("/pedidos")
+      .set("Cookie", cookieComprador)
       .send({
-        compradorRef: compradorRefTeste,
-        compradorId,
         itens: [{ produtoId: randomUUID(), quantidade: 1 }],
       });
 
@@ -128,9 +159,8 @@ describe("POST /pedidos", () => {
 
     const response = await request(app)
       .post("/pedidos")
+      .set("Cookie", cookieComprador)
       .send({
-        compradorRef: compradorRefTeste,
-        compradorId,
         itens: [{ produtoId, quantidade: 0 }],
       });
 
@@ -146,9 +176,8 @@ describe("POST /pedidos", () => {
 
     const response = await request(app)
       .post("/pedidos")
+      .set("Cookie", cookieComprador)
       .send({
-        compradorRef: compradorRefTeste,
-        compradorId,
         itens: [{ produtoId, quantidade: 2 }],
       });
 
@@ -165,9 +194,8 @@ describe("POST /pedidos", () => {
 
     const response = await request(app)
       .post("/pedidos")
+      .set("Cookie", cookieComprador)
       .send({
-        compradorRef: compradorRefTeste,
-        compradorId,
         itens: [
           { produtoId: produtoValido, quantidade: 2 },
           { produtoId: produtoSemEstoque, quantidade: 5 },
@@ -187,9 +215,8 @@ describe("POST /pedidos", () => {
 
     const response = await request(app)
       .post("/pedidos")
+      .set("Cookie", cookieComprador)
       .send({
-        compradorRef: compradorRefTeste,
-        compradorId,
         itens: [
           { produtoId, quantidade: 3 },
           { produtoId: produtoId.toUpperCase(), quantidade: 3 },

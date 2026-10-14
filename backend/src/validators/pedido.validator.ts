@@ -2,14 +2,12 @@ import type { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 import { AppError } from "../errors/app-error.js";
 
-const itemSchema = z.object({
+const itemSchema = z.strictObject({
   produtoId: z.uuid().transform((value) => value.toLowerCase()),
   quantidade: z.number().int().positive(),
 });
 
-const criarPedidoSchema = z.object({
-  compradorRef: z.string().min(1),
-  compradorId: z.uuid(),
+const criarPedidoSchema = z.strictObject({
   itens: z.array(itemSchema).min(1).max(20),
 });
 

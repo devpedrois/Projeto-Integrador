@@ -8,8 +8,12 @@ export interface PedidoCriado {
   itens: Array<{ produtoId: string; quantidade: number }>;
 }
 
+export interface NovoPedido extends CriarPedidoInput {
+  compradorId: string;
+}
+
 export interface PedidoRepository {
-  criar(input: CriarPedidoInput): Promise<PedidoCriado>;
+  criar(input: NovoPedido): Promise<PedidoCriado>;
 }
 
 interface EstoqueRow {
@@ -19,7 +23,7 @@ interface EstoqueRow {
 export class PrismaPedidoRepository implements PedidoRepository {
   public constructor(private readonly prisma: PrismaClient) {}
 
-  public async criar(input: CriarPedidoInput): Promise<PedidoCriado> {
+  public async criar(input: NovoPedido): Promise<PedidoCriado> {
     return this.prisma.$transaction(async (tx) => {
       const quantidadePorProduto = new Map<string, number>();
       for (const item of input.itens) {
@@ -37,12 +41,20 @@ export class PrismaPedidoRepository implements PedidoRepository {
         `;
         const produto = rows[0];
         if (produto === undefined) {
-          throw new AppError(404, "PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado.");
+          throw new AppError(
+            404,
+            "PRODUTO_NAO_ENCONTRADO",
+            "Produto nao encontrado.",
+          );
         }
 
         const quantidadeSolicitada = quantidadePorProduto.get(produtoId) ?? 0;
         if (produto.quantidadeEstoque < quantidadeSolicitada) {
-          throw new AppError(409, "ESTOQUE_INSUFICIENTE", "Estoque insuficiente.");
+          throw new AppError(
+            409,
+            "ESTOQUE_INSUFICIENTE",
+            "Estoque insuficiente.",
+          );
         }
       }
 
@@ -50,7 +62,6 @@ export class PrismaPedidoRepository implements PedidoRepository {
       await tx.pedido.create({
         data: {
           id: pedidoId,
-          compradorRef: input.compradorRef,
           compradorId: input.compradorId,
         },
       });

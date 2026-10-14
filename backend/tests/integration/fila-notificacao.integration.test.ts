@@ -66,7 +66,6 @@ async function createPedidoComIntencao(quantidadeEstoque = 5): Promise<{
 }> {
   const produtoId = await createProduto(quantidadeEstoque);
   const pedido = await pedidoRepository.criar({
-    compradorRef: "comprador-sintetico-fila",
     compradorId,
     itens: [{ produtoId, quantidade: 1 }],
   });

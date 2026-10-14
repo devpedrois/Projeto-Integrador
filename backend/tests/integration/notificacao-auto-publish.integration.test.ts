@@ -3,6 +3,7 @@ import request from "supertest";
 import { afterAll, describe, expect, it } from "vitest";
 import { StatusIntencao } from "../../src/generated/prisma/enums.js";
 import { startServer } from "../../src/server.js";
+import { gerarHash } from "../../src/utils/senha.js";
 import { databasePool } from "../helpers/database.js";
 import {
   criarCategoria,
@@ -34,10 +35,14 @@ const createdCategoriaIds: string[] = [];
 
 afterAll(async () => {
   if (createdUsuarioIds.length > 0) {
-    await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [createdUsuarioIds]);
+    await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
+      createdUsuarioIds,
+    ]);
   }
   if (createdCategoriaIds.length > 0) {
-    await databasePool.query('DELETE FROM "Categoria" WHERE "id" = ANY($1)', [createdCategoriaIds]);
+    await databasePool.query('DELETE FROM "Categoria" WHERE "id" = ANY($1)', [
+      createdCategoriaIds,
+    ]);
   }
 });
 
@@ -46,6 +51,8 @@ describe("auto-publish of pending notification intentions", () => {
     const { server, prisma, boss } = await startServer({
       ...process.env,
       PORT: "3112",
+      JWT_SECRET: "segredo-sintetico-auto-publish-web04",
+      COOKIE_SECURE: "false",
       NOTIFICATION_PUBLISHER_INTERVAL_MS: "1000",
     });
 
@@ -56,14 +63,28 @@ describe("auto-publish of pending notification intentions", () => {
       createdUsuarioIds.push(artesaoId, compradorId);
       createdCategoriaIds.push(categoriaId);
 
-      const produtoId = await criarProduto(databasePool, { artesaoId, categoriaId });
+      const produtoId = await criarProduto(databasePool, {
+        artesaoId,
+        categoriaId,
+      });
 
       try {
+        const senha = "SenhaSinteticaAutoPublish!";
+        await prisma.usuario.update({
+          where: { id: compradorId },
+          data: { senhaHash: await gerarHash(senha) },
+        });
+        const login = await request(server)
+          .post("/auth/login")
+          .send({ email: `comprador-${compradorId}@teste.origem`, senha });
+        expect(login.status).toBe(200);
+        const cookies = login.headers["set-cookie"] as string[] | undefined;
+        const cookie = cookies?.[0]?.split(";")[0];
+        if (!cookie) throw new Error("Login nao emitiu cookie de comprador");
         const response = await request(server)
           .post("/pedidos")
+          .set("Cookie", cookie)
           .send({
-            compradorRef: "comprador-sintetico-auto-publish",
-            compradorId,
             itens: [{ produtoId, quantidade: 1 }],
           });
 
@@ -75,7 +96,9 @@ describe("auto-publish of pending notification intentions", () => {
             const atual = await prisma.intencaoNotificacao.findUniqueOrThrow({
               where: { pedidoId },
             });
-            return atual.status === StatusIntencao.processada ? atual : undefined;
+            return atual.status === StatusIntencao.processada
+              ? atual
+              : undefined;
           });
           expect(processada.processadaEm).not.toBeNull();
         } finally {

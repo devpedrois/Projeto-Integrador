@@ -18,6 +18,10 @@ export interface UsuarioCriado {
 
 export interface UsuarioRepository {
   criar(usuario: NovoUsuario): Promise<UsuarioCriado>;
+  alterarPapel(
+    id: string,
+    papel: "comprador" | "artesao",
+  ): Promise<UsuarioCriado>;
 }
 
 export interface NovoCadastroUsuario extends NovoUsuario {
@@ -105,5 +109,30 @@ export class PrismaUsuarioRepository implements AuthUsuarioRepository {
       where: { id, ativo: true },
       select: usuarioPublicoSelect,
     });
+  }
+
+  public async alterarPapel(
+    id: string,
+    papel: "comprador" | "artesao",
+  ): Promise<UsuarioCriado> {
+    try {
+      return await this.prisma.usuario.update({
+        where: { id },
+        data: { papel },
+        select: usuarioPublicoSelect,
+      });
+    } catch (error: unknown) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === "P2025"
+      ) {
+        throw new AppError(
+          404,
+          "USUARIO_NAO_ENCONTRADO",
+          "Usuario nao encontrado.",
+        );
+      }
+      throw error;
+    }
   }
 }

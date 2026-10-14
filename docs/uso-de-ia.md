@@ -387,3 +387,57 @@ Não houve commit, push ou deploy nesta entrega.
 Evidências constam em
 `evidencias/PI4-27-W10-Integracao-Camadas/WEB-03-autenticacao/`.
 Este registro não atribui revisão humana ainda não realizada.
+
+## Registro de apoio em 13/10/2026: WEB-04
+
+O responsável delimitou middlewares e duas rotas protegidas.
+Codex leu AGENTS.md, D6, WEB-04 e US01 cenário quatro.
+Também leu SECURITY, CONCURRENCY e os componentes envolvidos.
+TDD e regras PostgreSQL orientaram a implementação.
+A branch codex/web-04-authorization isola a subtarefa.
+
+A matriz supertest foi escrita antes do código.
+Sua primeira execução apresentou 26 falhas e quatro sucessos.
+Checkout concorrente com cookie recebeu 400 e 400 inicialmente.
+Após implementar, 38 testes direcionados passaram.
+A suíte completa passou: 273 testes em 32 arquivos.
+Os testes usaram PostgreSQL real, sem mocks de repositories.
+
+Autenticar valida JWT e popula res.locals.usuario com dados públicos.
+Usuario ativo e papel atual são reconsultados no banco.
+Sessão ausente, inválida, expirada ou desativada recebe 401.
+ExigirPapel restringe checkout a comprador e alteração a admin.
+O checkout aceita somente itens; compradorId vem da sessão.
+A rota administrativa valida UUID e body estrito.
+O alvo pode mudar entre comprador e artesao.
+Admin não altera o próprio papel, inclusive UUID maiúsculo.
+Nenhuma resposta inclui senhaHash.
+
+Checkout e publicação automática foram adaptados para login real.
+O teste concorrente preserva 201, 409 e estoque final zero.
+Locks ordenados, transação e intenção persistente foram mantidos.
+O script de concorrência não foi alterado nem executado.
+Sua adaptação permanece no commit 17, conforme pedido direto.
+
+Lint, typecheck, build e formatação aplicável passaram.
+Nenhuma migration ou nova dependência foi introduzida.
+Contratos e documentação registram a nova proteção.
+A revisão de segurança permaneceu nesta conversa, conforme preferência.
+Ela verificou identidade, papéis, JWT, schemas e exposição de dados.
+A saída real e matriz estão na pasta WEB-04-autorizacao.
+Não houve commit, push ou merge nesta subtarefa.
+
+### Evidências adicionais da WEB-04
+
+Codex coletou respostas reais com curl e PostgreSQL.
+A coleta usou fixtures em schema temporário isolado.
+O schema foi removido após as verificações.
+A matriz confirmou oito respostas esperadas das rotas.
+Sessões desativadas, inválidas e expiradas receberam 401.
+Entradas extras e autoalteração administrativa foram rejeitadas.
+Checkout concorrente confirmou 201, 409 e estoque zero.
+TXT e JSON preservam resultados com cookies redigidos.
+Cinco PNGs renderizam esses resultados, identificados como renderizações.
+As imagens não representam capturas do site ou Neon.
+Scripts e evidências adicionais estão na pasta WEB-04-autorizacao.
+Esta coleta não alterou código produtivo nem o script legado.

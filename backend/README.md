@@ -10,6 +10,7 @@ Funcionalidades atuais:
 - `GET /health`: verifica acesso ao PostgreSQL real.
 - `POST /auth/register`, `/auth/login`, `/auth/logout` e `GET /auth/me`.
 - `POST /pedidos`: cria pedidos com controle transacional de estoque.
+- `PATCH /admin/usuarios/:id/papel`: alteração administrativa de papel.
 - `GET /recomendacoes`: consulta recomendações pelo produto ou usuário.
 - Fila persistente `pg-boss`, iniciada junto ao servidor.
 - Worker `notificar-artesao` e publicação periódica das intenções pendentes.
@@ -84,7 +85,7 @@ Outras falhas de boot retornam `Backend startup failed`.
 | `npm run db:migrate` | Aplica migrations pendentes usando `DIRECT_URL` |
 | `npm run db:seed` | Executa a carga demo sintética |
 | `npm run db:seed:volume` | Executa a carga de volume mediante opt-in |
-| `npm run test:concorrencia` | Verifica checkout concorrente no PostgreSQL real |
+| `npm run test:concorrencia` | Script legado; adaptação ao login prevista no commit 17 |
 | `npm run metricas:recomendacao` | Calcula métricas da recomendação no PostgreSQL real |
 
 `start:prod` não define `NODE_ENV` automaticamente.
@@ -265,12 +266,44 @@ O probe `/health/cookie` foi retirado na WEB-03.
 Sua antiga variável ENABLE_COOKIE_PROBE não tem efeito.
 Valide o cookie real usando login pelo proxy frontend.
 
+## Autorização WEB-04
+
+`autenticar` valida o JWT do cookie e consulta o usuário.
+O resultado público popula `res.locals.usuario` com tipagem explícita.
+Sessão ausente, inválida ou expirada recebe 401.
+Usuário desativado após o login também recebe 401.
+`exigirPapel(...papeis)` usa o papel atual do banco.
+Sem permissão, retorna 403 e `ACESSO_NEGADO`.
+Mudanças de papel valem também para tokens já emitidos.
+
+`POST /pedidos` exige sessão ativa de comprador.
+O body aceita somente `{ itens }`.
+Campos extras também são rejeitados dentro dos itens.
+`compradorId` vem da sessão validada; nunca do body.
+`compradorRef` permanece nullable no banco como legado.
+Pedidos novos deixam esse campo nulo.
+Os locks, transação de estoque e outbox foram preservados.
+
+`PATCH /admin/usuarios/:id/papel` exige admin ativo.
+UUID do alvo é validado e normalizado para minúsculas.
+O body aceita somente `{ papel: "comprador" | "artesao" }`.
+Campos extras ou papel inválido recebem 400.
+Admin tentando alterar o próprio papel recebe 403.
+Alvo ausente recebe 404 e `USUARIO_NAO_ENCONTRADO`.
+Sucesso retorna 200 com o usuário público, sem senhaHash.
+A operação altera somente o papel do usuário.
+
+Os testes de checkout usam login real e cookie.
+Isso inclui concorrência e processamento automático da fila.
+O script `scripts/concorrencia-checkout.ts` permanece no protocolo antigo.
+Sua execução agora recebe 401, pois não realiza login.
+A atualização desse script pertence ao commit 17.
+
 ## Limitações atuais
 
-`compradorRef` é sintético e temporário. `POST /pedidos` também exige
-`compradorId`, o UUID de um `Usuario` já existente (FK obrigatória desde a
-PI4-19.5). Sem autenticação real, quem chama o endpoint ainda escolhe esse
-UUID livremente. A proteção de pedidos pertence à WEB-04.
+`compradorRef` permanece como campo legado, fora do contrato HTTP.
+O checkout ainda utiliza os valores reduzidos da demonstração FCCPD.
+Totais, pagamento e carrinho serão integrados nas respectivas subtarefas.
 O modelo `Pagamento` já existe para dados simulados.
 Gateways financeiros reais permanecem fora do escopo.
 
