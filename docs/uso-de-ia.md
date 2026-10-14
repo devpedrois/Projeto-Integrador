@@ -836,3 +836,38 @@ Schema, navegador e servidores temporarios foram encerrados.
 Pasta: WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/.
 Nenhum codigo da aplicacao foi alterado nesta coleta.
 Nao houve commit, push ou deploy.
+
+## 2026-10-14 — WEB-10: concorrencia autenticada em comando unico
+
+Codex leu AGENTS.md, WEB-10, CONCURRENCY.md e o script existente.
+O roteiro FCCPD solicitado nao existia neste checkout.
+Criou o caminho indicado com o procedimento executavel validado.
+Usou TDD e PostgreSQL real, sem mocks de banco ou repositories.
+Nove testes falharam antes da implementacao, incluindo respostas 401 antigas.
+
+O script cria schema temporario com as migrations existentes.
+Sobe a aplicacao Express real em loopback, com segredo efemero.
+Cria N compradores via cadastro publico e autentica cada conta.
+Os emails seguem concorrencia+N@origem.test; cookies ficam em memoria.
+Tres rodadas disputam estoque um com Promise.all.
+SELECTs conferem estoque final e pedidos por produto.
+O padrao com 50 compradores confirmou 1 sucesso e 49 conflitos por rodada.
+O encerramento limpa somente o schema e o servidor da propria execucao.
+
+Uma verificacao inicial de limpeza observou outra execucao simultanea.
+O teste passou a conferir somente o schema registrado pelo proprio CLI.
+Outro teste confere limpeza quando a porta ja esta ocupada.
+O script recusa production, base de deploy e configuracao invalida.
+Nao imprime senhas, cookies, hashes ou URLs de conexao.
+Revisao equivalente de seguranca mantida nesta conversa, conforme escolha previa.
+Nao houve delegacao, commit, push ou deploy.
+
+Suite final: 412 testes backend em 43 arquivos passaram.
+Lint, typecheck, Prettier e verificacao do diff passaram.
+O comando unico foi executado com 50 compradores e tres rodadas.
+Cada rodada confirmou 1 sucesso, 49 conflitos, estoque zero e 1 pedido.
+Uma consulta adicional confirmou ausencia do schema depois do comando.
+A saida e o exit code ficaram salvos na pasta WEB-10-concorrencia.
+Um resumo PNG usa somente metricas dessa saida verificada.
+Ele nao representa captura nativa do terminal.
+Nao houve alteracao de frontend ou antecipacao de outras subtarefas.

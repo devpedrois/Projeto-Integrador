@@ -1,261 +1,340 @@
 import "dotenv/config";
-import { randomUUID } from "node:crypto";
+import { randomBytes } from "node:crypto";
 import type { Server } from "node:http";
-import { Pool } from "pg";
-import { parseEnvironment } from "../src/config/environment.js";
-import { startServer } from "../src/server.js";
+import { pathToFileURL } from "node:url";
+import { parseArgs } from "node:util";
+import { z } from "zod";
+import { createApp } from "../src/app.js";
+import { criarBancoConcorrencia } from "./helpers/concorrencia-database.js";
 
-const ROUNDS = 3;
-const DEFAULT_PORT = "3910";
+const RODADAS = 3;
+const TIMEOUT_HTTP_MS = 90_000;
 
-interface PedidoResponseBody {
-  pedido?: { id?: string; status?: string };
+interface Opcoes {
+  clientes: number;
+  port: number;
 }
 
-interface PedidoResponse {
-  status: number;
-  body: PedidoResponseBody | undefined;
+export interface ResultadoRodada {
+  sucessos: number;
+  conflitos409: number;
+  estoqueFinal: number;
+  pedidosProduto: number;
 }
 
-interface RoundResult {
-  round: number;
-  failures: string[];
-}
+class ErroConcorrencia extends Error {}
 
-async function createUsuario(pool: Pool, papel: "artesao" | "comprador"): Promise<string> {
-  const id = randomUUID();
-  await pool.query(
-    'INSERT INTO "Usuario" ("id", "nome", "email", "senhaHash", "papel") VALUES ($1, $2, $3, $4, $5)',
-    [id, `Usuario concorrencia ${id}`, `concorrencia-${id}@teste.origem`, "hash-de-teste", papel],
-  );
-  return id;
-}
-
-async function createCategoria(pool: Pool): Promise<string> {
-  const id = randomUUID();
-  await pool.query('INSERT INTO "Categoria" ("id", "nome") VALUES ($1, $2)', [
-    id,
-    `Categoria concorrencia ${id}`,
-  ]);
-  return id;
-}
-
-async function createProduto(
-  pool: Pool,
-  quantidadeEstoque: number,
-  artesaoId: string,
-  categoriaId: string,
-): Promise<string> {
-  const id = randomUUID();
-  await pool.query(
-    `INSERT INTO "Produto" ("id", "nome", "descricao", "preco", "artesaoId", "categoriaId", "quantidadeEstoque", "tecnicaId") VALUES ($1, $2, 'Descricao de teste', 10.00, $3, $4, $5, 'tecnica-modelagem-argila')`,
-    [id, `Produto concorrencia ${id}`, artesaoId, categoriaId, quantidadeEstoque],
-  );
-  return id;
-}
-
-async function getEstoque(pool: Pool, produtoId: string): Promise<number> {
-  const result = await pool.query<{ quantidadeEstoque: number }>(
-    'SELECT "quantidadeEstoque" FROM "Produto" WHERE "id" = $1',
-    [produtoId],
-  );
-  const row = result.rows[0];
-  if (row === undefined) {
-    throw new Error("produto not found while reading final stock");
-  }
-  return row.quantidadeEstoque;
-}
-
-async function countPedidosPersistidos(pool: Pool, produtoId: string): Promise<number> {
-  const result = await pool.query<{ count: string }>(
-    'SELECT COUNT(DISTINCT "pedidoId")::text AS count FROM "ItemPedido" WHERE "produtoId" = $1',
-    [produtoId],
-  );
-  return Number(result.rows[0]?.count ?? "0");
-}
-
-async function limparRodada(pool: Pool, produtoId: string, pedidoIds: string[]): Promise<void> {
-  if (pedidoIds.length > 0) {
-    await pool.query('DELETE FROM "IntencaoNotificacao" WHERE "pedidoId" = ANY($1)', [pedidoIds]);
-  }
-  await pool.query('DELETE FROM "ItemPedido" WHERE "produtoId" = $1', [produtoId]);
-  if (pedidoIds.length > 0) {
-    await pool.query('DELETE FROM "Pedido" WHERE "id" = ANY($1)', [pedidoIds]);
-  }
-  await pool.query('DELETE FROM "Produto" WHERE "id" = $1', [produtoId]);
-}
-
-async function postPedido(
-  baseUrl: string,
-  produtoId: string,
-  compradorId: string,
-): Promise<PedidoResponse> {
-  const response = await fetch(`${baseUrl}/pedidos`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      compradorRef: `comprador-concorrencia-${randomUUID()}`,
-      compradorId,
-      itens: [{ produtoId, quantidade: 1 }],
-    }),
-  });
-  const body = (await response.json().catch(() => undefined)) as PedidoResponseBody | undefined;
-  return { status: response.status, body };
-}
-
-function assertCondition(condition: boolean, message: string, failures: string[]): void {
-  if (!condition) {
-    failures.push(message);
-  }
-}
-
-interface FixturesFCCPD {
-  artesaoId: string;
-  categoriaId: string;
-  compradorId: string;
-}
-
-async function runRound(
-  round: number,
-  baseUrl: string,
-  pool: Pool,
-  fixtures: FixturesFCCPD,
-): Promise<RoundResult> {
-  const failures: string[] = [];
-  const produtoId = await createProduto(pool, 1, fixtures.artesaoId, fixtures.categoriaId);
-  const pedidoIds: string[] = [];
-
+export function lerOpcoes(args: string[], env: NodeJS.ProcessEnv): Opcoes {
+  let values;
   try {
-    const [respA, respB] = await Promise.all([
-      postPedido(baseUrl, produtoId, fixtures.compradorId),
-      postPedido(baseUrl, produtoId, fixtures.compradorId),
-    ]);
-
-    const statuses = [respA.status, respB.status].sort((a, b) => a - b);
-    assertCondition(
-      statuses[0] === 201 && statuses[1] === 409,
-      `round ${round}: expected statuses [201,409], got ${JSON.stringify(statuses)}`,
-      failures,
+    ({ values } = parseArgs({
+      args,
+      options: { clientes: { type: "string" }, port: { type: "string" } },
+      allowPositionals: false,
+    }));
+  } catch {
+    throw new ErroConcorrencia(
+      "Argumentos invalidos: confira CONCURRENCY_TEST_CLIENTS e CONCURRENCY_TEST_PORT.",
     );
+  }
+  const clientes = Number(
+    values.clientes ?? env.CONCURRENCY_TEST_CLIENTS ?? "50",
+  );
+  const port = Number(values.port ?? env.CONCURRENCY_TEST_PORT ?? "3910");
+  if (!Number.isSafeInteger(clientes) || clientes < 2 || clientes > 100) {
+    throw new ErroConcorrencia(
+      "CONCURRENCY_TEST_CLIENTS deve ser inteiro entre 2 e 100.",
+    );
+  }
+  if (!Number.isSafeInteger(port) || port < 0 || port > 65_535) {
+    throw new ErroConcorrencia(
+      "CONCURRENCY_TEST_PORT deve ser inteiro entre 0 e 65535.",
+    );
+  }
+  return { clientes, port };
+}
 
-    const winner = respA.status === 201 ? respA : respB.status === 201 ? respB : undefined;
-    if (winner === undefined) {
-      failures.push(`round ${round}: no response returned 201`);
-    } else {
-      const pedidoId = winner.body?.pedido?.id;
-      if (typeof pedidoId === "string") {
-        pedidoIds.push(pedidoId);
-      } else {
-        failures.push(`round ${round}: winning response missing pedido.id`);
-      }
-      assertCondition(
-        winner.body?.pedido?.status === "confirmado",
-        `round ${round}: winning order missing status confirmado`,
-        failures,
+function identidadeBanco(value: string, nome: string): string {
+  try {
+    const url = new URL(value);
+    if (
+      !["postgres:", "postgresql:"].includes(url.protocol) ||
+      !url.hostname ||
+      url.pathname.length < 2
+    )
+      throw new Error();
+    return `${url.hostname.replace(/-pooler(?=\.)/, "")}:${url.port || "5432"}${url.pathname}`;
+  } catch {
+    throw new ErroConcorrencia(`${nome} invalida.`);
+  }
+}
+
+export function validarAmbiente(env: NodeJS.ProcessEnv): string {
+  if (
+    env.NODE_ENV !== undefined &&
+    !["development", "test"].includes(env.NODE_ENV)
+  ) {
+    throw new ErroConcorrencia("NODE_ENV deve ser development ou test.");
+  }
+  if (!env.DIRECT_URL)
+    throw new ErroConcorrencia(
+      "DIRECT_URL obrigatoria para a branch de teste.",
+    );
+  const identity = identidadeBanco(env.DIRECT_URL, "DIRECT_URL");
+  if (new URL(env.DIRECT_URL).hostname.includes("-pooler."))
+    throw new ErroConcorrencia("DIRECT_URL deve usar conexao direta.");
+  if (
+    env.DATABASE_URL &&
+    identidadeBanco(env.DATABASE_URL, "DATABASE_URL") !== identity
+  ) {
+    throw new ErroConcorrencia(
+      "DATABASE_URL e DIRECT_URL devem apontar para a mesma branch de teste.",
+    );
+  }
+  if (
+    env.DATABASE_URL_DEPLOY &&
+    identidadeBanco(env.DATABASE_URL_DEPLOY, "DATABASE_URL_DEPLOY") === identity
+  ) {
+    throw new ErroConcorrencia(
+      "DATABASE_URL_DEPLOY nao pode ser a base usada neste teste.",
+    );
+  }
+  return env.DIRECT_URL;
+}
+
+export function validarRodada(
+  result: ResultadoRodada,
+  clientes: number,
+): string[] {
+  const falhas: string[] = [];
+  if (result.sucessos !== 1) falhas.push("Esperado exatamente um sucesso.");
+  if (result.conflitos409 !== clientes - 1)
+    falhas.push("Esperados N-1 conflitos 409.");
+  if (result.estoqueFinal !== 0) falhas.push("Esperado estoque final zero.");
+  if (result.estoqueFinal < 0) falhas.push("Estoque negativo.");
+  if (result.pedidosProduto !== 1)
+    falhas.push("Esperado exatamente um pedido do produto.");
+  return falhas;
+}
+
+async function post(
+  baseUrl: string,
+  caminho: string,
+  body: unknown,
+  cookie?: string,
+): Promise<Response> {
+  return fetch(`${baseUrl}${caminho}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(cookie ? { Cookie: cookie } : {}),
+    },
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(TIMEOUT_HTTP_MS),
+  });
+}
+
+const usuarioSchema = z.object({ id: z.uuid() });
+const pedidoSchema = z.object({
+  pedido: z.object({ id: z.uuid(), status: z.literal("confirmado") }),
+});
+const conflitoSchema = z.object({
+  error: z.object({
+    code: z.literal("ESTOQUE_INSUFICIENTE"),
+    details: z.object({ produtoId: z.uuid(), nome: z.string().min(1) }),
+  }),
+});
+
+async function cadastrar(
+  baseUrl: string,
+  email: string,
+  senha: string,
+  papel: "comprador" | "artesao",
+): Promise<string> {
+  const response = await post(baseUrl, "/auth/register", {
+    nome: "Usuario sintetico concorrencia",
+    email,
+    senha,
+    papel,
+  });
+  if (response.status !== 201)
+    throw new ErroConcorrencia(`Falha no cadastro: HTTP ${response.status}.`);
+  const result = usuarioSchema.safeParse(await response.json());
+  if (!result.success)
+    throw new ErroConcorrencia("Resposta de cadastro invalida.");
+  return result.data.id;
+}
+
+async function fecharServidor(server: Server): Promise<void> {
+  await new Promise<void>((resolve, reject) => {
+    server.close((error) => (error ? reject(error) : resolve()));
+    server.closeIdleConnections();
+  });
+}
+
+export async function executarConcorrencia(
+  args: string[] = process.argv.slice(2),
+  env: NodeJS.ProcessEnv = process.env,
+): Promise<void> {
+  const options = lerOpcoes(args, env);
+  const connectionString = validarAmbiente(env);
+  const banco = await criarBancoConcorrencia(connectionString);
+  console.log(`Schema temporario: ${banco.schema}`);
+  let server: Server | undefined;
+  const resumo = {
+    compradores: options.clientes,
+    cadastros: 0,
+    logins: 0,
+    schemaRemovido: false,
+  };
+  const falhas: string[] = [];
+  try {
+    const app = createApp(banco.prisma, {
+      JWT_SECRET: randomBytes(48).toString("hex"),
+      COOKIE_SECURE: false,
+    });
+    server = app.listen(options.port, "127.0.0.1");
+    const ativo = server;
+    await new Promise<void>((resolve, reject) => {
+      ativo.once("listening", resolve);
+      ativo.once("error", () =>
+        reject(new ErroConcorrencia("CONCURRENCY_TEST_PORT indisponivel.")),
+      );
+    });
+    const address = server.address();
+    if (!address || typeof address === "string")
+      throw new ErroConcorrencia("Servidor de teste indisponivel.");
+    const baseUrl = `http://127.0.0.1:${address.port}`;
+    const senha = `Concorrencia!${randomBytes(16).toString("hex")}`;
+    const compradores = await Promise.all(
+      Array.from({ length: options.clientes }, async (_, indice) => {
+        const email = `concorrencia+${indice + 1}@origem.test`;
+        const id = await cadastrar(baseUrl, email, senha, "comprador");
+        resumo.cadastros += 1;
+        const response = await post(baseUrl, "/auth/login", { email, senha });
+        if (response.status !== 200)
+          throw new ErroConcorrencia(
+            `Falha no login: HTTP ${response.status}.`,
+          );
+        const cookie = response.headers.getSetCookie()[0]?.split(";")[0];
+        if (!cookie?.startsWith("origem_sessao="))
+          throw new ErroConcorrencia("Cookie de sessao ausente.");
+        resumo.logins += 1;
+        return { id, cookie };
+      }),
+    );
+    const registrados = await banco.prisma.usuario.count({
+      where: {
+        id: { in: compradores.map(({ id }) => id) },
+        papel: "comprador",
+      },
+    });
+    if (
+      registrados !== options.clientes ||
+      new Set(compradores.map(({ id }) => id)).size !== options.clientes
+    ) {
+      throw new ErroConcorrencia(
+        "Compradores de teste nao foram persistidos corretamente.",
       );
     }
-
-    const estoqueFinal = await getEstoque(pool, produtoId);
-    assertCondition(
-      estoqueFinal === 0,
-      `round ${round}: expected final stock 0, got ${estoqueFinal}`,
-      failures,
+    console.log(`Compradores sinteticos autenticados: ${registrados}`);
+    const artesaoId = await cadastrar(
+      baseUrl,
+      "concorrencia+artesao@origem.test",
+      senha,
+      "artesao",
     );
-    assertCondition(
-      estoqueFinal >= 0,
-      `round ${round}: stock went negative (${estoqueFinal})`,
-      failures,
-    );
-
-    const pedidosPersistidos = await countPedidosPersistidos(pool, produtoId);
-    assertCondition(
-      pedidosPersistidos === 1,
-      `round ${round}: expected exactly 1 persisted order, found ${pedidosPersistidos}`,
-      failures,
-    );
-  } finally {
-    await limparRodada(pool, produtoId, pedidoIds);
-  }
-
-  return { round, failures };
-}
-
-function closeServer(server: Server): Promise<void> {
-  return new Promise((resolve, reject) => {
-    server.close((error) => {
-      if (error) {
-        reject(error);
-        return;
-      }
-      resolve();
+    const categoria = await banco.prisma.categoria.create({
+      data: { nome: "Categoria sintetica concorrencia" },
     });
-  });
-}
-
-async function main(): Promise<void> {
-  const environment = parseEnvironment({
-    ...process.env,
-    PORT: process.env.CONCURRENCY_TEST_PORT ?? DEFAULT_PORT,
-  });
-  const pool = new Pool({ connectionString: environment.DATABASE_URL });
-  const { server, prisma, boss } = await startServer({
-    ...process.env,
-    PORT: String(environment.PORT),
-  });
-  const baseUrl = `http://127.0.0.1:${environment.PORT}`;
-
-  const artesaoId = await createUsuario(pool, "artesao");
-  const categoriaId = await createCategoria(pool);
-  const compradorId = await createUsuario(pool, "comprador");
-  const fixtures: FixturesFCCPD = { artesaoId, categoriaId, compradorId };
-
-  const allFailures: string[] = [];
-
-  try {
-    for (let round = 1; round <= ROUNDS; round += 1) {
-      const result = await runRound(round, baseUrl, pool, fixtures);
-      if (result.failures.length === 0) {
-        console.log(
-          `round ${round}: OK (1x201, 1x409, estoque final 0, 1 pedido persistido)`,
-        );
-      } else {
-        console.error(`round ${round}: FAIL`);
-        for (const failure of result.failures) {
-          console.error(`  - ${failure}`);
-        }
-        allFailures.push(...result.failures);
-      }
+    for (let rodada = 1; rodada <= RODADAS; rodada += 1) {
+      const produto = await banco.prisma.produto.create({
+        data: {
+          nome: `Produto concorrencia rodada ${rodada}`,
+          descricao: "Produto sintetico para concorrencia",
+          preco: "10.00",
+          quantidadeEstoque: 0,
+          artesaoId,
+          categoriaId: categoria.id,
+          tecnicaId: "tecnica-modelagem-argila",
+        },
+      });
+      await banco.prisma.produto.update({
+        where: { id: produto.id },
+        data: { quantidadeEstoque: 1 },
+      });
+      const responses = await Promise.all(
+        compradores.map(async ({ cookie }) => {
+          const response = await post(
+            baseUrl,
+            "/pedidos",
+            { itens: [{ produtoId: produto.id, quantidade: 1 }] },
+            cookie,
+          );
+          const body: unknown = await response.json();
+          if (response.status === 201 && !pedidoSchema.safeParse(body).success)
+            falhas.push(`Rodada ${rodada}: resposta de pedido invalida.`);
+          if (response.status === 409) {
+            const result = conflitoSchema.safeParse(body);
+            if (
+              !result.success ||
+              result.data.error.details.produtoId !== produto.id ||
+              result.data.error.details.nome !== produto.nome
+            )
+              falhas.push(`Rodada ${rodada}: conflito de estoque invalido.`);
+          }
+          return response.status;
+        }),
+      );
+      const rows = await banco.prisma.$queryRaw<
+        { quantidadeEstoque: number; pedidosProduto: number }[]
+      >`
+        SELECT p."quantidadeEstoque",
+          (SELECT COUNT(DISTINCT i."pedidoId")::integer FROM "ItemPedido" i WHERE i."produtoId" = p."id") AS "pedidosProduto"
+        FROM "Produto" p WHERE p."id" = ${produto.id}::uuid
+      `;
+      const row = rows[0];
+      if (!row)
+        throw new ErroConcorrencia("Produto ausente na consulta final.");
+      const result: ResultadoRodada = {
+        sucessos: responses.filter((status) => status === 201).length,
+        conflitos409: responses.filter((status) => status === 409).length,
+        estoqueFinal: row.quantidadeEstoque,
+        pedidosProduto: row.pedidosProduto,
+      };
+      console.log(`Rodada ${rodada}: ${JSON.stringify(result)}`);
+      falhas.push(
+        ...validarRodada(result, options.clientes).map(
+          (falha) => `Rodada ${rodada}: ${falha}`,
+        ),
+      );
     }
   } finally {
-    await pool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
-      [fixtures.artesaoId, fixtures.compradorId],
-    ]);
-    await pool.query('DELETE FROM "Categoria" WHERE "id" = $1', [fixtures.categoriaId]);
-    if (boss !== undefined) {
-      await boss.stop({ graceful: false });
+    try {
+      if (server?.listening) await fecharServidor(server);
+    } finally {
+      await banco.fechar();
+      resumo.schemaRemovido = true;
     }
-    await closeServer(server);
-    await prisma.$disconnect();
-    await pool.end();
   }
+  console.log(`Resumo: ${JSON.stringify(resumo)}`);
+  if (falhas.length > 0) throw new ErroConcorrencia(falhas.join(" "));
+  console.log(
+    "Concorrencia validada: 3/3 rodadas. Dados sinteticos removidos.",
+  );
+}
 
-  if (allFailures.length > 0) {
+const executedFile = process.argv[1];
+if (
+  executedFile !== undefined &&
+  import.meta.url === pathToFileURL(executedFile).href
+) {
+  executarConcorrencia().catch((error: unknown) => {
     console.error(
-      `Concurrency check failed: ${allFailures.length} assertion(s) did not hold.`,
+      error instanceof ErroConcorrencia
+        ? error.message
+        : "Falha no teste de concorrencia.",
     );
     process.exitCode = 1;
-    return;
-  }
-
-  console.log(
-    "Concurrency check passed: 3/3 rounds confirmed exclusive checkout under stock=1.",
-  );
+  });
 }
-
-main().catch((error: unknown) => {
-  console.error(
-    "Concurrency check crashed:",
-    error instanceof Error ? error.message : "unknown error",
-  );
-  process.exitCode = 1;
-});
