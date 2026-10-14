@@ -35,6 +35,18 @@ Para desenvolver offline, configure NEXT_PUBLIC_DATA_SOURCE=fake.
 | `npm run typecheck` | Verificação TypeScript |
 | `npm test` | Suíte Vitest |
 
+O build usa `tsconfig.build.json` para verificar a aplicação.
+Essa configuração inclui páginas, middleware e configuração Next.js.
+Testes e configuração Vitest ficam fora do build de produção.
+A verificação estrita de tipos continua habilitada.
+O deploy frontend não exige gerar o cliente Prisma.
+
+`npm run typecheck` continua usando `tsconfig.json`.
+Ele verifica também testes e contratos entre frontend e backend.
+Esses contratos exigem o cliente Prisma gerado localmente.
+Prepare-o com `npm --prefix ../backend run prisma:generate`.
+Execute esse comando a partir de `frontend/`.
+
 ## Variáveis
 
 | Variável | Local | Deploy |

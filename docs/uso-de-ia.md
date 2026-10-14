@@ -988,3 +988,42 @@ O diff foi validado preservando CRLF com core.whitespace=cr-at-eol.
 Permaneceram avisos existentes de SSL, act e plugin ESLint Next.js.
 Evidências: evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/.
 Branch: codex/web11-meus-pedidos.
+
+## 2026-10-14: correção do build frontend na Vercel
+
+Codex investigou a falha de tipos relatada no deploy.
+Aguardou a conclusão de WEB-11 antes de alterar arquivos.
+Criou a branch codex/fix-vercel-build-isolation a partir da main limpa.
+
+O tsconfig original incluía testes e configuração Vitest.
+Dois testes importavam tipos de services e DTOs backend.
+Esses imports alcançavam repositories e o cliente Prisma gerado.
+O cliente existe localmente, mas não integra o checkout versionado.
+
+O teste de regressão detectou essa dependência antes da correção.
+Um checkout extraído do Git reproduziu exatamente o erro informado.
+Ele não possuía o cliente Prisma gerado nem arquivos .env.
+
+Foi criado tsconfig.build.json para a aplicação Next.js.
+NextConfig.typescript.tsconfigPath seleciona essa configuração no build.
+Páginas, middleware, tipos Next e configuração permanecem verificados.
+Testes e Vitest ficam fora da compilação de produção.
+Strict e as verificações TypeScript continuam habilitados.
+Não foi utilizado ignoreBuildErrors.
+
+O comando typecheck mantém o tsconfig original e verifica os testes.
+Os contratos entre as camadas permanecem preservados.
+README documenta a configuração e a geração local do Prisma.
+Nenhum schema, migration ou dependência foi alterado.
+
+O build corrigido passou no checkout sem Prisma gerado.
+Gerou treze páginas estáticas em modo HTTP.
+Também passaram 826 testes frontend, lint, typecheck e Prettier.
+O aviso preexistente do plugin ESLint Next.js não bloqueia o build.
+
+Revisão equivalente de segurança mantida conforme autorização nesta conversa.
+Verificou checagem estrita, imports, proxy e ausência de credenciais.
+Não houve delegação ou achados de segurança no escopo.
+
+Evidências: evidencias/correcao-vercel-build-2026-10-14/.
+Não houve commit, push ou publicação na Vercel.

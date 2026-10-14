@@ -1,13 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  typescript: {
+    tsconfigPath: "tsconfig.build.json",
+  },
   async rewrites() {
     const backendUrl = process.env.BACKEND_URL?.trim();
     if (!backendUrl) {
       return [];
     }
 
-    const invalidOrigin = "BACKEND_URL inválida: informe uma origem HTTP ou HTTPS.";
+    const invalidOrigin =
+      "BACKEND_URL inválida: informe uma origem HTTP ou HTTPS.";
     let origin: URL;
     try {
       origin = new URL(backendUrl);
@@ -16,7 +20,10 @@ const nextConfig: NextConfig = {
     }
     if (
       !["http:", "https:"].includes(origin.protocol) ||
-      origin.username || origin.password || origin.search || origin.hash ||
+      origin.username ||
+      origin.password ||
+      origin.search ||
+      origin.hash ||
       origin.pathname !== "/"
     ) {
       throw new Error(invalidOrigin);
