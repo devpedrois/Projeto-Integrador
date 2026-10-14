@@ -916,3 +916,34 @@ Lint, typecheck, Prettier e validação Prisma passaram.
 Evidências: evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/.
 Branch: codex/bd01-modelo-fisico.
 Não houve commit, push ou deploy.
+
+## 2026-10-14: WEB-16, preparação do smoke em produção
+
+Codex leu AGENTS.md e os documentos solicitados.
+Inspecionou o container, os adapters e as rotas existentes.
+Adicionou uma allowlist de pendências no teste do container.
+Também verificou a seleção HTTP dos services do comprador.
+O teste inicial falhou por `AvaliacoesService.create`.
+Essa escrita permanece explicitamente indisponível, fora do checkpoint.
+Sua retirada da lista não implementa avaliações nem fallback fake.
+O teste focado passou após o ajuste mínimo da lista.
+
+Preparou o checklist dos passos 0–10 na Vercel.
+Resultados e datas permanecem pendentes da execução manual de Pedro.
+A gravação do vídeo também cabe a Pedro.
+Documentou a ausência atual de `GET /pedidos` neste checkout.
+HTTP 404 reprova o passo 10; a exceção vale apenas para 9.
+Não antecipou a implementação de WEB-11.
+Liberou somente TESTING_AND_EVIDENCE.md na regra de documentação ignorada.
+
+Pedro escolheu revisão equivalente de segurança nesta conversa.
+A revisão verificou escopo, ausência de credenciais e chamadas documentadas.
+O exemplo admin utiliza UUID sintético e retorna apenas status.
+Nenhum teste automatizado acessou o ambiente publicado.
+Não houve delegação, commit, push ou deploy.
+
+Passaram 794 testes de frontend em 83 arquivos.
+Lint e typecheck passaram.
+Prettier e verificação do diff passaram.
+A suíte emitiu aviso de act em use-artesaos-ativos.test.tsx.
+O checklist ainda não comprova aceite em produção.

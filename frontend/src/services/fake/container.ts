@@ -39,7 +39,6 @@ import { ServiceError } from "@/services/errors";
 
 export const PENDENTES_HTTP = [
   "ProdutosService.create/update/remove",
-  "AvaliacoesService.create",
   "ModeracaoService",
   "UsuariosService.list",
 ] as const;

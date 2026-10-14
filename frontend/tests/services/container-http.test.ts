@@ -1,4 +1,56 @@
 import { afterEach, expect, it, vi } from "vitest";
+
+it("HTTP permite somente pendencias de artesao e admin no checkpoint WEB-16", async () => {
+  vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
+  vi.resetModules();
+  const container = await import("@/services/fake/container");
+  const permitidas = new Set<string>([
+    "ProdutosService.create/update/remove",
+    "ModeracaoService",
+    "UsuariosService.list",
+  ]);
+
+  expect(
+    container.PENDENTES_HTTP.filter((pendencia) => !permitidas.has(pendencia)),
+  ).toEqual([]);
+});
+
+it("HTTP seleciona adapters reais para todos os services do fluxo comprador", async () => {
+  vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
+  vi.resetModules();
+  const container = await import("@/services/fake/container");
+  const { HttpUsuariosService } =
+    await import("@/services/http/usuarios.service");
+  const { HttpProdutosService } =
+    await import("@/services/http/produtos.service");
+  const { HttpOpcoesFiltroService } =
+    await import("@/services/http/opcoes-filtro.service");
+  const { HttpAvaliacoesService } =
+    await import("@/services/http/avaliacoes.service");
+  const { HttpPerfilArtesaoService } =
+    await import("@/services/http/perfil-artesao.service");
+  const { HttpRecommendationAdapter } =
+    await import("@/services/http/recomendacoes.adapter");
+  const { HttpPedidosService } =
+    await import("@/services/http/pedidos.service");
+
+  expect(container.obterUsuariosService()).toBeInstanceOf(HttpUsuariosService);
+  expect(container.obterProdutosService()).toBeInstanceOf(HttpProdutosService);
+  expect(container.obterOpcoesFiltroService()).toBeInstanceOf(
+    HttpOpcoesFiltroService,
+  );
+  expect(container.obterAvaliacoesService()).toBeInstanceOf(
+    HttpAvaliacoesService,
+  );
+  expect(container.obterPerfilArtesaoService()).toBeInstanceOf(
+    HttpPerfilArtesaoService,
+  );
+  expect(container.obterRecomendacoesService()).toBeInstanceOf(
+    HttpRecommendationAdapter,
+  );
+  expect(container.obterPedidosService()).toBeInstanceOf(HttpPedidosService);
+});
+
 afterEach(() => {
   vi.unstubAllEnvs();
   vi.unstubAllGlobals();
