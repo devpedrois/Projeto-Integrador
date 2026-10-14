@@ -38,3 +38,16 @@ Termos e IDs seguem como parametros do driver PostgreSQL.
 IDs de usuario dos endpoints futuros devem vir da sessao.
 
 Planos e tempos estao em [evidencias BD-04](../../../evidencias/PI4-28-W10-Modelo-Fisico/BD-04-indices/01-resumo-indices.md).
+
+## Consumo na WEB-06
+
+`src/repositories/catalogo.repository.ts` consolida os cinco SELECTs publicos
+acima numa consulta estatica. Preserva ILIKE, filtros por FK, join regional
+e predicados do indice parcial. Acrescenta artesao ativo, filtro por artesao,
+detalhe por ID, pagina limitada e desempate por ID.
+O SQL permanece fixo, sem interpolacao. Oito valores seguem separados
+por parametros `$1` a `$8`, inclusive limit e offset.
+`$queryRawUnsafe` recebe exclusivamente essa constante e valores vinculados.
+Nenhum valor controlado pelo usuario forma texto SQL.
+Fotos, notas e vendas confirmadas usam agregacoes laterais apos paginacao.
+As consultas historicas de BD-04 permanecem reproduziveis.

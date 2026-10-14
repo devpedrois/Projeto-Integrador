@@ -567,3 +567,40 @@ A revisao equivalente de seguranca ocorreu nesta conversa.
 Verificou inputs, DTOs, cookies, papéis, redirects e falhas recuperaveis.
 Nao houve commit, push, deploy ou mudanca de backend.
 Evidencias ficam em evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/.
+
+### 14/10/2026: WEB-06, catalogo publico HTTP
+
+Codex implementou somente WEB-06, com TDD nas duas camadas.
+Leu AGENTS.md, D3, WEB-06, US08, contratos, consultas BD-04,
+types, services, hooks e regras de visibilidade/resumo existentes.
+Usou skills de TDD, PostgreSQL, verificacao e testes web.
+As consultas BD-04 foram consolidadas em SQL estatico parametrizado.
+Implementou filtros, paginacao, detalhe, opcoes e leitura de avaliacoes.
+ProdutoDTO centraliza Decimal, fotos, regiao, notas e vendas confirmadas.
+O container registra os tres adapters HTTP de leitura.
+PENDENTES_HTTP preserva escritas e listagem privada ainda nao implementadas.
+Assinaturas dos hooks e componentes permaneceram iguais.
+
+Testes de integracao usaram PostgreSQL real em schema isolado.
+O helper configurou search_path para isolar tambem SQL parametrizado.
+Nenhum banco ou repository foi mockado.
+No frontend, fetch foi substituido apenas nos testes unitarios.
+Um teste adicional comprovou no-store antes da correcao.
+O contrato de tipos confirma compatibilidade ProdutoDTO/Produto.
+
+Playwright Node.js validou Next.js, Express e PostgreSQL reais.
+Comprovou busca com dois filtros e igualdade API/tela.
+A URL copiada reproduziu o resultado em outra aba.
+Verificou mobile, detalhe, estado vazio, moderacao e estoque zero.
+A primeira tentativa parou na escolha de visitante.
+O diagnostico ajustou somente a automacao ao fluxo existente.
+Servidores locais e schema temporario foram encerrados no finally.
+
+Pedro escolheu revisao equivalente de seguranca nesta conversa.
+Foram revisados inputs, SQL, visibilidade, DTOs, cache e adapters.
+Evidencias: evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/.
+Validacao final: 329 testes backend e 734 testes frontend.
+Lint, typecheck e Prettier passaram nos dois projetos.
+O GIF foi extraido do video real via ffmpeg bundled.
+Pillow apenas converteu seus quadros em animacao GIF.
+Nao houve commit, push ou deploy.

@@ -7,7 +7,11 @@ import { PrismaClient } from "../../src/generated/prisma/client.js";
 
 export async function criarBancoAuth() {
   const schema = `web03_${randomUUID().replaceAll("-", "")}`;
-  const pool = new Pool({ connectionString: process.env.DIRECT_URL, max: 2 });
+  const pool = new Pool({
+    connectionString: process.env.DIRECT_URL,
+    max: 2,
+    options: `-c search_path=${schema},public`,
+  });
   const client = await pool.connect();
   try {
     await client.query("BEGIN");

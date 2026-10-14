@@ -22,9 +22,25 @@ it("HTTP nao consulta localStorage nem substitui adapters por fake", async () =>
     ),
   );
   const container = await import("@/services/fake/container");
-  expect(container.PENDENTES_HTTP).toContain("ProdutosService");
-  await expect(container.obterProdutosService().list()).rejects.toMatchObject({
-    code: "HTTP_NAO_IMPLEMENTADO",
+  for (const nome of [
+    "ProdutosService",
+    "AvaliacoesService",
+    "OpcoesFiltroService",
+  ]) {
+    expect(container.PENDENTES_HTTP).not.toContain(nome);
+  }
+  const fetchMock = vi.mocked(fetch);
+  fetchMock.mockResolvedValueOnce(Response.json([]));
+  expect(await container.obterProdutosService().list()).toEqual([]);
+  fetchMock.mockResolvedValueOnce(Response.json([]));
+  expect(await container.obterOpcoesFiltroService().categorias()).toEqual([]);
+  fetchMock.mockResolvedValueOnce(
+    Response.json({ itens: [], resumo: { media: 0, total: 0 } }),
+  );
+  expect(await container.obterAvaliacoesService().resumo("p1")).toEqual({
+    produtoId: "p1",
+    media: 0,
+    quantidade: 0,
   });
   const store = container.obterSessionStore();
   await store.hidratar();

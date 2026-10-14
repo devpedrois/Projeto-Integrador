@@ -27,16 +27,18 @@ import type { RecomendacoesService } from "@/services/contracts/recomendacoes.co
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 import type { ModeracaoService } from "@/services/contracts/moderacao.contract";
 import { HttpUsuariosService } from "@/services/http/usuarios.service";
+import { HttpProdutosService } from "@/services/http/produtos.service";
+import { HttpOpcoesFiltroService } from "@/services/http/opcoes-filtro.service";
+import { HttpAvaliacoesService } from "@/services/http/avaliacoes.service";
 import { obterFonteDados } from "@/services/data-source";
 import { ServiceError } from "@/services/errors";
 
 export const PENDENTES_HTTP = [
-  "ProdutosService",
+  "ProdutosService.create/update/remove/listByArtesao",
   "PedidosService",
   "PerfilArtesaoService",
-  "AvaliacoesService",
+  "AvaliacoesService.create",
   "RecomendacoesService",
-  "OpcoesFiltroService",
   "ModeracaoService",
   "CarrinhoStore",
   "UsuariosService.list",
@@ -59,31 +61,15 @@ async function pendente(): Promise<never> {
   );
 }
 
-const produtosHttpPendentes: ProdutosService = {
-  list: pendente,
-  create: pendente,
-  listByArtesao: pendente,
-  update: pendente,
-  remove: pendente,
-  search: pendente,
-  obterPublico: pendente,
-};
+const produtosHttp: ProdutosService = new HttpProdutosService();
 const pedidosHttpPendentes: PedidosService = { confirmar: pendente };
 const perfilHttpPendente: PerfilArtesaoService = {
   obter: pendente,
   salvar: pendente,
 };
-const avaliacoesHttpPendentes: AvaliacoesService = {
-  listByProduto: pendente,
-  resumo: pendente,
-  create: pendente,
-};
+const avaliacoesHttp: AvaliacoesService = new HttpAvaliacoesService();
 const recomendacoesHttpPendentes: RecomendacoesService = { obter: pendente };
-const opcoesHttpPendentes: OpcoesFiltroService = {
-  categorias: pendente,
-  tecnicas: pendente,
-  regioes: pendente,
-};
+const opcoesHttp: OpcoesFiltroService = new HttpOpcoesFiltroService();
 const moderacaoHttpPendente: ModeracaoService = {
   listarArtesaos: pendente,
   listarProdutos: pendente,
@@ -155,7 +141,7 @@ export function obterUsuariosService(): UsuariosService {
 }
 
 export function obterProdutosService(): ProdutosService {
-  if (modoHttp()) return produtosHttpPendentes;
+  if (modoHttp()) return produtosHttp;
   if (!produtosServiceInstancia) {
     const repositorio = new BrowserProdutoRepository(window.localStorage);
     produtosServiceInstancia = new FakeProdutosService(repositorio, {
@@ -233,7 +219,7 @@ export function obterPerfilArtesaoService(): PerfilArtesaoService {
  * componentes ou paginas.
  */
 export function obterAvaliacoesService(): AvaliacoesService {
-  if (modoHttp()) return avaliacoesHttpPendentes;
+  if (modoHttp()) return avaliacoesHttp;
   if (!avaliacoesServiceInstancia) {
     const repositorio = new BrowserAvaliacaoRepository(window.localStorage);
     const produtoRepositorio = new BrowserProdutoRepository(
@@ -270,7 +256,7 @@ export function obterModeracaoService(): ModeracaoService {
 }
 
 export function obterOpcoesFiltroService(): OpcoesFiltroService {
-  if (modoHttp()) return opcoesHttpPendentes;
+  if (modoHttp()) return opcoesHttp;
   if (!opcoesFiltroServiceInstancia) {
     opcoesFiltroServiceInstancia = new FakeOpcoesFiltroService({
       latenciaMs: LATENCIA_PADRAO_MS,

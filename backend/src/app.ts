@@ -25,6 +25,10 @@ import { AuthService } from "./services/auth.service.js";
 import { PedidoService } from "./services/pedido.service.js";
 import { RecomendacaoService } from "./services/recomendacao.service.js";
 import { UsuarioService } from "./services/usuario.service.js";
+import { CatalogoController } from "./controllers/catalogo.controller.js";
+import { PrismaCatalogoRepository } from "./repositories/catalogo.repository.js";
+import { CatalogoService } from "./services/catalogo.service.js";
+import { createCatalogoRouter } from "./routes/catalogo.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -68,6 +72,13 @@ export function createApp(
   app.use(createPedidoRouter(pedidoController, autenticarUsuario));
   app.use(createUsuarioRouter(usuarioController, autenticarUsuario));
   app.use(createRecomendacaoRouter(recomendacaoController));
+  app.use(
+    createCatalogoRouter(
+      new CatalogoController(
+        new CatalogoService(new PrismaCatalogoRepository(prisma)),
+      ),
+    ),
+  );
   app.use(errorMiddleware);
 
   return app;
