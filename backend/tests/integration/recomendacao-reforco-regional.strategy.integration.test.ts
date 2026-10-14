@@ -79,12 +79,28 @@ async function criarProduto(params: {
 }
 
 beforeAll(async () => {
-  artesaoContextoId = await criarUsuarioArtesaoComRegiao(databasePool, REGIAO_CONTEXTO);
-  artesaoMesmaRegiaoId = await criarUsuarioArtesaoComRegiao(databasePool, REGIAO_CONTEXTO);
-  artesaoOutraRegiaoId = await criarUsuarioArtesaoComRegiao(databasePool, REGIAO_OUTRA);
-  idsUsuarioCriados.push(artesaoContextoId, artesaoMesmaRegiaoId, artesaoOutraRegiaoId);
+  artesaoContextoId = await criarUsuarioArtesaoComRegiao(
+    databasePool,
+    REGIAO_CONTEXTO,
+  );
+  artesaoMesmaRegiaoId = await criarUsuarioArtesaoComRegiao(
+    databasePool,
+    REGIAO_CONTEXTO,
+  );
+  artesaoOutraRegiaoId = await criarUsuarioArtesaoComRegiao(
+    databasePool,
+    REGIAO_OUTRA,
+  );
+  idsUsuarioCriados.push(
+    artesaoContextoId,
+    artesaoMesmaRegiaoId,
+    artesaoOutraRegiaoId,
+  );
 
-  compradores = [await criarUsuarioComprador(databasePool), await criarUsuarioComprador(databasePool)];
+  compradores = [
+    await criarUsuarioComprador(databasePool),
+    await criarUsuarioComprador(databasePool),
+  ];
   idsUsuarioCriados.push(...compradores);
 
   categoriaId = await criarCategoria(databasePool);
@@ -126,28 +142,41 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await databasePool.query('DELETE FROM "Avaliacao" WHERE "produtoId" = ANY($1)', [
+  await databasePool.query(
+    'DELETE FROM "Avaliacao" WHERE "produtoId" = ANY($1)',
+    [idsProdutoCriados],
+  );
+  await databasePool.query(
+    'DELETE FROM "ItemPedido" WHERE "produtoId" = ANY($1)',
+    [idsProdutoCriados],
+  );
+  await databasePool.query('DELETE FROM "Pedido" WHERE "id" = ANY($1)', [
+    idsPedidoCriados,
+  ]);
+  await databasePool.query('DELETE FROM "Produto" WHERE "id" = ANY($1)', [
     idsProdutoCriados,
   ]);
-  await databasePool.query('DELETE FROM "ItemPedido" WHERE "produtoId" = ANY($1)', [
-    idsProdutoCriados,
+  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = ANY($1)', [
+    idsCategoriaCriados,
   ]);
-  await databasePool.query('DELETE FROM "Pedido" WHERE "id" = ANY($1)', [idsPedidoCriados]);
-  await databasePool.query('DELETE FROM "Produto" WHERE "id" = ANY($1)', [idsProdutoCriados]);
-  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = ANY($1)', [idsCategoriaCriados]);
-  await databasePool.query('DELETE FROM "PerfilArtesao" WHERE "usuarioId" = ANY($1)', [
+  await databasePool.query(
+    'DELETE FROM "PerfilArtesao" WHERE "usuarioId" = ANY($1)',
+    [idsUsuarioCriados],
+  );
+  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
     idsUsuarioCriados,
   ]);
-  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [idsUsuarioCriados]);
   await prisma.$disconnect();
   await databasePool.end();
 });
 
 describe("CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4)", () => {
   it("sem reforco, preserva a ordenacao baseline por vendas, ignorando regiao", async () => {
-    const resultado = await strategySemReforco.obter({ produtoId: produtoContextoId });
+    const resultado = await strategySemReforco.obter({
+      produtoId: produtoContextoId,
+    });
 
-    expect(resultado.itens.map((item) => item.id)).toEqual([
+    expect(resultado.produtoIds).toEqual([
       outraRegiaoAltaId,
       outraRegiaoBaixaId,
       mesmaRegiaoAltaId,
@@ -156,9 +185,11 @@ describe("CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4)", () => {
   });
 
   it("com reforco, prioriza candidatos da mesma regiao do contexto antes de olhar vendas", async () => {
-    const resultado = await strategyComReforco.obter({ produtoId: produtoContextoId });
+    const resultado = await strategyComReforco.obter({
+      produtoId: produtoContextoId,
+    });
 
-    expect(resultado.itens.map((item) => item.id)).toEqual([
+    expect(resultado.produtoIds).toEqual([
       mesmaRegiaoAltaId,
       mesmaRegiaoBaixaId,
       outraRegiaoAltaId,
@@ -189,14 +220,18 @@ describe("CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4)", () => {
     });
     const [menorId, maiorId] = [candidatoA, candidatoB].sort();
 
-    const resultado = await strategyComReforco.obter({ produtoId: produtoContextoEmpateId });
+    const resultado = await strategyComReforco.obter({
+      produtoId: produtoContextoEmpateId,
+    });
 
-    expect(resultado.itens.map((item) => item.id)).toEqual([menorId, maiorId]);
+    expect(resultado.produtoIds).toEqual([menorId, maiorId]);
   });
 
   it("com reforco, o limite de oito itens permanece respeitado", async () => {
-    const resultado = await strategyComReforco.obter({ produtoId: produtoContextoId });
+    const resultado = await strategyComReforco.obter({
+      produtoId: produtoContextoId,
+    });
 
-    expect(resultado.itens.length).toBeLessThanOrEqual(8);
+    expect(resultado.produtoIds.length).toBeLessThanOrEqual(8);
   });
 });

@@ -3,21 +3,11 @@ export interface RecomendacaoContexto {
   usuarioId?: string;
 }
 
-export interface RecomendacaoItem {
-  id: string;
-  nome: string;
-  descricao: string | null;
-  preco: number | null;
-  quantidadeEstoque: number;
-  categoriaId: string;
-  artesaoId: string;
-}
-
-export interface RecomendacaoResultado {
+export interface RecomendacaoSelecao {
   estrategia: string;
-  itens: RecomendacaoItem[];
+  produtoIds: string[];
 }
 
 export interface RecomendacaoStrategy {
-  obter(contexto: RecomendacaoContexto): Promise<RecomendacaoResultado>;
+  obter(contexto: RecomendacaoContexto): Promise<RecomendacaoSelecao>;
 }

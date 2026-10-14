@@ -5,7 +5,11 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createApp } from "../../src/app.js";
 import { createPrismaClient } from "../../src/database/prisma/client.js";
 import { databasePool } from "../helpers/database.js";
-import { criarCategoria, criarProduto, criarUsuarioArtesao } from "../helpers/dominio-fixtures.js";
+import {
+  criarCategoria,
+  criarProduto,
+  criarUsuarioArtesao,
+} from "../helpers/dominio-fixtures.js";
 
 const databaseUrl = process.env.DATABASE_URL;
 
@@ -31,15 +35,27 @@ beforeAll(async () => {
   categoriaId = await criarCategoria(databasePool);
   idsCategoriaCriados.push(categoriaId);
 
-  produtoContextoId = await criarProduto(databasePool, { artesaoId, categoriaId });
-  produtoRelacionadoId = await criarProduto(databasePool, { artesaoId, categoriaId });
+  produtoContextoId = await criarProduto(databasePool, {
+    artesaoId,
+    categoriaId,
+  });
+  produtoRelacionadoId = await criarProduto(databasePool, {
+    artesaoId,
+    categoriaId,
+  });
   idsProdutoCriados.push(produtoContextoId, produtoRelacionadoId);
 });
 
 afterAll(async () => {
-  await databasePool.query('DELETE FROM "Produto" WHERE "id" = ANY($1)', [idsProdutoCriados]);
-  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = ANY($1)', [idsCategoriaCriados]);
-  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [idsUsuarioCriados]);
+  await databasePool.query('DELETE FROM "Produto" WHERE "id" = ANY($1)', [
+    idsProdutoCriados,
+  ]);
+  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = ANY($1)', [
+    idsCategoriaCriados,
+  ]);
+  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
+    idsUsuarioCriados,
+  ]);
   await prisma.$disconnect();
   await databasePool.end();
 });
@@ -55,9 +71,11 @@ describe("GET /recomendacoes", () => {
     expect(Array.isArray(response.body.itens)).toBe(true);
     expect(response.body.itens.length).toBeGreaterThan(0);
     expect(response.body.itens.length).toBeLessThanOrEqual(8);
-    expect(response.body.itens.some((item: { id: string }) => item.id === produtoContextoId)).toBe(
-      false,
-    );
+    expect(
+      response.body.itens.some(
+        (item: { id: string }) => item.id === produtoContextoId,
+      ),
+    ).toBe(false);
 
     const item = response.body.itens.find(
       (candidato: { id: string }) => candidato.id === produtoRelacionadoId,
@@ -70,6 +88,14 @@ describe("GET /recomendacoes", () => {
       quantidadeEstoque: expect.any(Number),
       categoriaId,
       artesaoId,
+      tecnicaId: "tecnica-modelagem-argila",
+      regiaoId: "",
+      fotos: [],
+      quantidadeVendida: 0,
+      notaMedia: 0,
+      ativo: true,
+      desativadoPorAdmin: false,
+      criadoEm: expect.any(String),
     });
   });
 

@@ -6,38 +6,6 @@ export interface ProdutoContextoRecomendacao {
   regiao: string | null;
 }
 
-export interface CandidatoRecomendacao {
-  id: string;
-  nome: string;
-  descricao: string | null;
-  preco: number | null;
-  quantidadeEstoque: number;
-  categoriaId: string;
-  artesaoId: string;
-}
-
-interface CandidatoRecomendacaoRow {
-  id: string;
-  nome: string;
-  descricao: string | null;
-  preco: unknown;
-  quantidadeEstoque: number;
-  categoriaId: string;
-  artesaoId: string;
-}
-
-function mapearCandidato(row: CandidatoRecomendacaoRow): CandidatoRecomendacao {
-  return {
-    id: row.id,
-    nome: row.nome,
-    descricao: row.descricao,
-    preco: row.preco === null ? null : Number(row.preco),
-    quantidadeEstoque: row.quantidadeEstoque,
-    categoriaId: row.categoriaId,
-    artesaoId: row.artesaoId,
-  };
-}
-
 export interface ProdutoElegivelRecomendacao {
   id: string;
   categoriaId: string;
@@ -50,18 +18,20 @@ export interface RecomendacaoRepository {
     excluirProdutoId: string;
     limite: number;
     regiaoContexto?: string | null;
-  }): Promise<CandidatoRecomendacao[]>;
+  }): Promise<string[]>;
   listarFallbackGeral(params: {
     excluirProdutoId: string | null;
     limite: number;
-  }): Promise<CandidatoRecomendacao[]>;
+  }): Promise<string[]>;
   listarElegiveis(): Promise<ProdutoElegivelRecomendacao[]>;
 }
 
 export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
   public constructor(private readonly prisma: PrismaClient) {}
 
-  public async buscarProduto(produtoId: string): Promise<ProdutoContextoRecomendacao | null> {
+  public async buscarProduto(
+    produtoId: string,
+  ): Promise<ProdutoContextoRecomendacao | null> {
     const linhas = await this.prisma.$queryRaw<
       { id: string; categoriaId: string; regiao: string | null }[]
     >`
@@ -81,21 +51,15 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
     excluirProdutoId: string;
     limite: number;
     regiaoContexto?: string | null;
-  }): Promise<CandidatoRecomendacao[]> {
+  }): Promise<string[]> {
     // Reforco regional (PI4-20.4, docs/docs auxiliares/RECOMMENDATION.md):
     // prioridade lexicografica entre categoria e vendas, nunca peso numerico.
     // `regiaoContexto` so chega definido quando a opcao interna esta ligada;
     // por isso duas consultas SQL distintas, e nao uma coluna condicional,
     // preservam byte a byte o comportamento anterior quando desligada.
     if (params.regiaoContexto !== undefined) {
-      const linhas = await this.prisma.$queryRaw<CandidatoRecomendacaoRow[]>`
-        SELECT p."id" AS "id",
-               p."nome" AS "nome",
-               p."descricao" AS "descricao",
-               p."preco" AS "preco",
-               p."quantidadeEstoque" AS "quantidadeEstoque",
-               p."categoriaId" AS "categoriaId",
-               p."artesaoId" AS "artesaoId"
+      const linhas = await this.prisma.$queryRaw<{ id: string }[]>`
+        SELECT p."id" AS "id"
         FROM "Produto" p
         LEFT JOIN "PerfilArtesao" pa ON pa."usuarioId" = p."artesaoId"
         LEFT JOIN (
@@ -118,17 +82,11 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
                  p."id" ASC
         LIMIT ${params.limite}
       `;
-      return linhas.map(mapearCandidato);
+      return linhas.map(({ id }) => id);
     }
 
-    const linhas = await this.prisma.$queryRaw<CandidatoRecomendacaoRow[]>`
-      SELECT p."id" AS "id",
-             p."nome" AS "nome",
-             p."descricao" AS "descricao",
-             p."preco" AS "preco",
-             p."quantidadeEstoque" AS "quantidadeEstoque",
-             p."categoriaId" AS "categoriaId",
-             p."artesaoId" AS "artesaoId"
+    const linhas = await this.prisma.$queryRaw<{ id: string }[]>`
+      SELECT p."id" AS "id"
       FROM "Produto" p
       LEFT JOIN (
         SELECT "produtoId", SUM("quantidade") AS "vendas"
@@ -149,21 +107,15 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
                p."id" ASC
       LIMIT ${params.limite}
     `;
-    return linhas.map(mapearCandidato);
+    return linhas.map(({ id }) => id);
   }
 
   public async listarFallbackGeral(params: {
     excluirProdutoId: string | null;
     limite: number;
-  }): Promise<CandidatoRecomendacao[]> {
-    const linhas = await this.prisma.$queryRaw<CandidatoRecomendacaoRow[]>`
-      SELECT p."id" AS "id",
-             p."nome" AS "nome",
-             p."descricao" AS "descricao",
-             p."preco" AS "preco",
-             p."quantidadeEstoque" AS "quantidadeEstoque",
-             p."categoriaId" AS "categoriaId",
-             p."artesaoId" AS "artesaoId"
+  }): Promise<string[]> {
+    const linhas = await this.prisma.$queryRaw<{ id: string }[]>`
+      SELECT p."id" AS "id"
       FROM "Produto" p
       LEFT JOIN (
         SELECT "produtoId", SUM("quantidade") AS "vendas"
@@ -183,7 +135,7 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
                p."id" ASC
       LIMIT ${params.limite}
     `;
-    return linhas.map(mapearCandidato);
+    return linhas.map(({ id }) => id);
   }
 
   public async listarElegiveis(): Promise<ProdutoElegivelRecomendacao[]> {

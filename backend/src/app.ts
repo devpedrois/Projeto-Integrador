@@ -56,7 +56,11 @@ export function createApp(
   const recomendacaoStrategy = new CategoriaRecomendacaoStrategy(
     recomendacaoRepository,
   );
-  const recomendacaoService = new RecomendacaoService(recomendacaoStrategy);
+  const catalogoRepository = new PrismaCatalogoRepository(prisma);
+  const recomendacaoService = new RecomendacaoService(
+    recomendacaoStrategy,
+    catalogoRepository,
+  );
   const recomendacaoController = new RecomendacaoController(
     recomendacaoService,
   );
@@ -74,9 +78,7 @@ export function createApp(
   app.use(createRecomendacaoRouter(recomendacaoController));
   app.use(
     createCatalogoRouter(
-      new CatalogoController(
-        new CatalogoService(new PrismaCatalogoRepository(prisma)),
-      ),
+      new CatalogoController(new CatalogoService(catalogoRepository)),
     ),
   );
   app.use(errorMiddleware);

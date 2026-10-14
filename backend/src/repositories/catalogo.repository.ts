@@ -19,6 +19,7 @@ const SQL_CATALOGO = `
       AND ($4::text IS NULL OR pa."regiaoId" = $4::text)
       AND ($5::uuid IS NULL OR p."artesaoId" = $5::uuid)
       AND ($6::uuid IS NULL OR p."id" = $6::uuid)
+      AND ($9::uuid[] IS NULL OR p."id" = ANY($9::uuid[]))
     ORDER BY p."criadoEm" DESC, p."id" ASC
     LIMIT $7::integer OFFSET $8::integer
   )
@@ -42,6 +43,7 @@ const SQL_CATALOGO = `
 `;
 
 export interface CatalogoRepository {
+  carregarVisiveisPorIds(ids: string[]): Promise<ProdutoDTOOrigem[]>;
   listar(query: CatalogoQuery): Promise<ProdutoDTO[]>;
   obter(id: string): Promise<ProdutoDTO | null>;
   categorias(): Promise<{ id: string; nome: string }[]>;
@@ -63,14 +65,15 @@ export interface CatalogoRepository {
 export class PrismaCatalogoRepository implements CatalogoRepository {
   constructor(private readonly prisma: PrismaClient) {}
 
-  private async consultar(
+  private async consultarOrigem(
     query: CatalogoQuery,
     id: string | null = null,
-  ): Promise<ProdutoDTO[]> {
+    ids: string[] | null = null,
+  ): Promise<ProdutoDTOOrigem[]> {
     const termo = query.termo
       ? `%${query.termo.replace(/[\\%_]/g, "\\$&")}%`
       : null;
-    const produtos = await this.prisma.$queryRawUnsafe<ProdutoDTOOrigem[]>(
+    return this.prisma.$queryRawUnsafe<ProdutoDTOOrigem[]>(
       SQL_CATALOGO,
       termo,
       query.categoriaId ?? null,
@@ -80,16 +83,24 @@ export class PrismaCatalogoRepository implements CatalogoRepository {
       id,
       query.limit,
       query.offset,
+      ids,
     );
-    return produtos.map(mapearProdutoDTO);
   }
 
-  listar(query: CatalogoQuery): Promise<ProdutoDTO[]> {
-    return this.consultar(query);
+  async listar(query: CatalogoQuery): Promise<ProdutoDTO[]> {
+    return (await this.consultarOrigem(query)).map(mapearProdutoDTO);
   }
 
   async obter(id: string): Promise<ProdutoDTO | null> {
-    return (await this.consultar({ limit: 1, offset: 0 }, id))[0] ?? null;
+    const produto = (
+      await this.consultarOrigem({ limit: 1, offset: 0 }, id)
+    )[0];
+    return produto ? mapearProdutoDTO(produto) : null;
+  }
+
+  carregarVisiveisPorIds(ids: string[]): Promise<ProdutoDTOOrigem[]> {
+    if (ids.length === 0) return Promise.resolve([]);
+    return this.consultarOrigem({ limit: ids.length, offset: 0 }, null, ids);
   }
 
   categorias() {

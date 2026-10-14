@@ -604,3 +604,38 @@ Lint, typecheck e Prettier passaram nos dois projetos.
 O GIF foi extraido do video real via ffmpeg bundled.
 Pillow apenas converteu seus quadros em animacao GIF.
 Nao houve commit, push ou deploy.
+
+### 14/10/2026: IA-01, contrato publico de recomendacoes
+
+Codex implementou somente IA-01 usando TDD e regras PostgreSQL.
+Leu AGENTS.md, secao quatro, IA-01 e RECOMMENDATION.md.
+Inspecionou Strategy, fallback, repository, service, controller e ProdutoDTO.
+Tambem leu tipos frontais e a fixture contratual compartilhada.
+A branch codex/ia-01-recommendation-payload isola esta subtarefa.
+
+Antes da implementacao, 12 testes falharam e cinco passaram.
+O typecheck frontal comprovou incompatibilidade com RecomendacaoResultado.
+Strategy agora retorna somente IDs ordenados e nome da estrategia.
+O service hidrata produtos visiveis pela consulta publica existente.
+Reconstroi a ordem e aplica exclusivamente mapearProdutoDTO.
+Remove IDs repetidos e o proprio produto de contexto.
+Resposta publica continua contendo estrategia e itens Produto completos.
+Ranking da fixture, fallback e regras regionais foram preservados.
+Metricas existentes foram adaptadas ao retorno de IDs.
+Nenhuma metrica nova ou adapter HTTP foi implementado.
+
+Testes novos usam PostgreSQL real em schema temporario isolado.
+Nenhum banco ou repository foi mockado.
+Contrato de tipos frontal e schema estrito validam o payload.
+Testes comparam cada item ao detalhe publico do catalogo.
+Cobrem fotos, Decimal, regiao, notas e vendas confirmadas.
+Tambem verificam visibilidade, ordem e ausencia de autorrecomendacao.
+
+Pedro escolheu revisao equivalente de seguranca nesta conversa.
+A revisao conferiu inputs, SQL parametrizado, visibilidade e DTOs.
+Nao houve achados de seguranca no diff revisado.
+Evidencias ficam em evidencias/PI4-29-W10-Recomendacao-Integrada/IA-01-payload/.
+Validacao final: 340 testes backend e 735 testes frontend.
+Lint, typecheck e Prettier passaram nos dois projetos.
+PostgreSQL emitiu aviso preexistente sobre sslmode=require.
+Nao houve commit, push ou deploy.

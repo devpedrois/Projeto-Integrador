@@ -45,6 +45,9 @@ export async function calcularMetricasBaseline(
   strategy: RecomendacaoStrategy,
 ): Promise<MetricasRecomendacao> {
   const elegiveis = await repository.listarElegiveis();
+  const categoriaPorId = new Map(
+    elegiveis.map((produto) => [produto.id, produto.categoriaId]),
+  );
 
   let produtosElegiveisComRecomendacao = 0;
   let totalRecomendacoes = 0;
@@ -53,13 +56,13 @@ export async function calcularMetricasBaseline(
   for (const produto of elegiveis) {
     const resultado = await strategy.obter({ produtoId: produto.id });
 
-    if (resultado.itens.length > 0) {
+    if (resultado.produtoIds.length > 0) {
       produtosElegiveisComRecomendacao += 1;
     }
 
-    for (const item of resultado.itens) {
+    for (const id of resultado.produtoIds) {
       totalRecomendacoes += 1;
-      if (item.categoriaId === produto.categoriaId) {
+      if (categoriaPorId.get(id) === produto.categoriaId) {
         recomendacoesComMesmaCategoria += 1;
       }
     }
@@ -71,12 +74,18 @@ export async function calcularMetricasBaseline(
     cobertura: {
       numerador: produtosElegiveisComRecomendacao,
       denominador: produtosElegiveis,
-      percentual: calcularCobertura(produtosElegiveisComRecomendacao, produtosElegiveis),
+      percentual: calcularCobertura(
+        produtosElegiveisComRecomendacao,
+        produtosElegiveis,
+      ),
     },
     acertoCategoria: {
       numerador: recomendacoesComMesmaCategoria,
       denominador: totalRecomendacoes,
-      percentual: calcularAcertoCategoria(recomendacoesComMesmaCategoria, totalRecomendacoes),
+      percentual: calcularAcertoCategoria(
+        recomendacoesComMesmaCategoria,
+        totalRecomendacoes,
+      ),
     },
   };
 }

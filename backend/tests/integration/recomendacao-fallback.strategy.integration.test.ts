@@ -5,7 +5,11 @@ import { createPrismaClient } from "../../src/database/prisma/client.js";
 import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
 import { CategoriaRecomendacaoStrategy } from "../../src/integrations/recommendation/categoria-recomendacao.strategy.js";
 import { databasePool } from "../helpers/database.js";
-import { criarCategoria, criarUsuarioArtesao, criarUsuarioComprador } from "../helpers/dominio-fixtures.js";
+import {
+  criarCategoria,
+  criarUsuarioArtesao,
+  criarUsuarioComprador,
+} from "../helpers/dominio-fixtures.js";
 
 const databaseUrl = process.env.DATABASE_URL;
 
@@ -102,7 +106,9 @@ async function criarProdutoComVendasENota(params: {
 
 function ordemEsperadaUniverso(): string[] {
   const chavesEmOrdem = ["a", "b", "c", "d", "e", "h", "i", "j"];
-  const idsBrutos = chavesEmOrdem.map((chave) => produtoIdPorChave.get(chave) as string);
+  const idsBrutos = chavesEmOrdem.map(
+    (chave) => produtoIdPorChave.get(chave) as string,
+  );
   const parA = [idsBrutos[0], idsBrutos[1]].sort();
   const parI = [idsBrutos[6], idsBrutos[7]].sort();
   return [
@@ -134,7 +140,11 @@ beforeAll(async () => {
     const id = await criarProdutoComVendasENota(
       especificacao.nota === undefined
         ? { categoriaId: categoriaUniversoId, vendas: especificacao.vendas }
-        : { categoriaId: categoriaUniversoId, vendas: especificacao.vendas, nota: especificacao.nota },
+        : {
+            categoriaId: categoriaUniversoId,
+            vendas: especificacao.vendas,
+            nota: especificacao.nota,
+          },
     );
     produtoIdPorChave.set(especificacao.chave, id);
   }
@@ -161,18 +171,26 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await databasePool.query('DELETE FROM "Avaliacao" WHERE "produtoId" = ANY($1)', [
+  await databasePool.query(
+    'DELETE FROM "Avaliacao" WHERE "produtoId" = ANY($1)',
+    [idsProdutoCriados],
+  );
+  await databasePool.query(
+    'DELETE FROM "ItemPedido" WHERE "produtoId" = ANY($1)',
+    [idsProdutoCriados],
+  );
+  await databasePool.query('DELETE FROM "Pedido" WHERE "id" = ANY($1)', [
+    idsPedidoCriados,
+  ]);
+  await databasePool.query('DELETE FROM "Produto" WHERE "id" = ANY($1)', [
     idsProdutoCriados,
   ]);
-  await databasePool.query('DELETE FROM "ItemPedido" WHERE "produtoId" = ANY($1)', [
-    idsProdutoCriados,
-  ]);
-  await databasePool.query('DELETE FROM "Pedido" WHERE "id" = ANY($1)', [idsPedidoCriados]);
-  await databasePool.query('DELETE FROM "Produto" WHERE "id" = ANY($1)', [idsProdutoCriados]);
   await databasePool.query('DELETE FROM "Categoria" WHERE "id" = ANY($1)', [
     idsCategoriaCriados,
   ]);
-  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [idsUsuarioCriados]);
+  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
+    idsUsuarioCriados,
+  ]);
   await prisma.$disconnect();
   await databasePool.end();
 });
@@ -182,13 +200,13 @@ describe("CategoriaRecomendacaoStrategy - fallback geral", () => {
     const resultado = await strategy.obter({ produtoId: produtoIsoladoId });
 
     expect(resultado.estrategia).toBe(ESTRATEGIA_FALLBACK);
-    expect(resultado.itens.map((item) => item.id)).toEqual(ordemEsperadaUniverso());
+    expect(resultado.produtoIds).toEqual(ordemEsperadaUniverso());
   });
 
   it("nunca repete IDs e nunca supera oito itens", async () => {
     const resultado = await strategy.obter({ produtoId: produtoIsoladoId });
 
-    const ids = resultado.itens.map((item) => item.id);
+    const ids = resultado.produtoIds;
     expect(ids.length).toBeLessThanOrEqual(8);
     expect(new Set(ids).size).toBe(ids.length);
   });
@@ -196,7 +214,7 @@ describe("CategoriaRecomendacaoStrategy - fallback geral", () => {
   it("nunca inclui produto inativo ou sem estoque", async () => {
     const resultado = await strategy.obter({ produtoId: produtoIsoladoId });
 
-    const ids = resultado.itens.map((item) => item.id);
+    const ids = resultado.produtoIds;
     expect(ids).not.toContain(inativoId);
     expect(ids).not.toContain(semEstoqueId);
   });
@@ -205,22 +223,24 @@ describe("CategoriaRecomendacaoStrategy - fallback geral", () => {
     const resultado = await strategy.obter({ produtoId: produtoIsoladoId });
 
     expect(resultado.estrategia).toBe(ESTRATEGIA_FALLBACK);
-    expect(resultado.itens.map((item) => item.id)).not.toContain(produtoIsoladoId);
+    expect(resultado.produtoIds).not.toContain(produtoIsoladoId);
   });
 
   it("aciona o fallback quando o produto de contexto nao existe", async () => {
     const resultado = await strategy.obter({ produtoId: randomUUID() });
 
     expect(resultado.estrategia).toBe(ESTRATEGIA_FALLBACK);
-    expect(resultado.itens.map((item) => item.id)).toEqual(ordemEsperadaUniverso());
+    expect(resultado.produtoIds).toEqual(ordemEsperadaUniverso());
   });
 
   it("aciona o fallback sintetico para contexto usuarioId na U1, sem consultar historico pessoal", async () => {
     const usuarioSemHistoricoId = randomUUID();
 
-    const resultado = await strategy.obter({ usuarioId: usuarioSemHistoricoId });
+    const resultado = await strategy.obter({
+      usuarioId: usuarioSemHistoricoId,
+    });
 
     expect(resultado.estrategia).toBe(ESTRATEGIA_FALLBACK);
-    expect(resultado.itens.map((item) => item.id)).toEqual(ordemEsperadaUniverso());
+    expect(resultado.produtoIds).toEqual(ordemEsperadaUniverso());
   });
 });
