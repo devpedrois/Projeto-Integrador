@@ -333,3 +333,57 @@ O plano B não foi aplicado.
 A validação pública e a persistência na Vercel permanecem pendentes.
 Evidências locais constam em
 `evidencias/PI4-27-W10-Integracao-Camadas/WEB-02-deploy-proxy/`.
+
+## Registro de apoio em 13/10/2026: WEB-03
+
+O responsável delimitou cadastro, login, logout e consulta da sessão.
+Codex leu AGENTS.md, D1, D6, WEB-03 e US01/US02.
+Também consultou os contratos, SECURITY e o código existente.
+As skills TDD, PostgreSQL e verificação orientaram a execução.
+Documentação primária confirmou as APIs de JWT e transações.
+
+Os testes supertest foram escritos antes da implementação.
+Inicialmente, 33 cenários falharam pelas rotas ainda ausentes.
+Dois testes do probe falharam por receberem HTTP 200.
+Outros testes detectaram configuração legada e JSON malformado.
+As correções passaram pelos respectivos testes de regressão.
+
+Cadastro normaliza email, usa bcrypt custo 10 e restringe papel.
+Usuário e especialização nascem na mesma transação PostgreSQL.
+Triggers temporários forçam falha no segundo insert dos dois papéis.
+Os testes confirmam rollback e permitem repetir o cadastro.
+As fixtures usam schema isolado, removido após os testes.
+Nenhum banco ou repository foi mockado.
+
+Login emite JWT HS256 de 24h no cookie origem_sessao.
+As três falhas exigidas possuem resposta idêntica byte a byte.
+Email inexistente executa bcrypt real contra hash fixo sintético.
+Sessão inválida, expirada ou de usuário desativado recebe 401.
+Logout expira o cookie; consulta posterior recebe 401.
+Nenhuma resposta contém senhaHash.
+O cadastro não inicia sessão automaticamente.
+O probe e ENABLE_COOKIE_PROBE foram retirados.
+As instruções de proxy agora utilizam o login real.
+
+Prettier, lint, typecheck e build passaram usando Node.js 24.
+A suíte completa passou: 242 testes em 31 arquivos.
+A nova suíte de autenticação cobre 36 cenários.
+O PostgreSQL emitiu aviso preexistente sobre sslmode=require.
+As credenciais locais não foram modificadas nem registradas.
+
+O responsável recusou delegação e escolheu revisão nesta conversa.
+A revisão equivalente verificou JWT, cookies, inputs e transações.
+Também conferiu respostas públicas e o diff da subtarefa.
+O npm audit identificou sete alertas em dependências preexistentes.
+As versões afetadas coincidem com o lockfile anterior.
+Nenhuma dependência de autenticação nova apareceu nos alertas.
+Os metadados libc existentes foram preservados no lockfile.
+
+JWT_SECRET é necessário para emitir sessão também em desenvolvimento.
+Sem segredo válido, a autenticação falha de forma segura.
+Logout descarta o cookie, sem revogação central de tokens copiados.
+A proteção de pedidos permanece na WEB-04, conforme escopo.
+Não houve commit, push ou deploy nesta entrega.
+Evidências constam em
+`evidencias/PI4-27-W10-Integracao-Camadas/WEB-03-autenticacao/`.
+Este registro não atribui revisão humana ainda não realizada.

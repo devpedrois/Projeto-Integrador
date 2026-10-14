@@ -65,26 +65,18 @@ HttpOnly impede leitura pelo JavaScript da página.
 Confira sua persistência em DevTools, não em `document.cookie`.
 Não é necessário CORS com credenciais para esse proxy.
 
-## Probe temporário de cookie
+## Validação do cookie real
 
-No backend, habilite `ENABLE_COOKIE_PROBE=true` e reinicie o servidor.
-Acesse `/api/health/cookie` pelo frontend.
-A resposta esperada é:
-
-```json
-{ "status": "ok", "cookie": "origem_cookie_probe" }
-```
-
-O cookie `origem_cookie_probe` contém somente o valor sintético `ok`.
-Ele recebe `HttpOnly`, `SameSite=Lax`, `Path=/` e validade de cinco minutos.
-O atributo `Secure` segue a variável backend `COOKIE_SECURE`.
-Use `COOKIE_SECURE=false` no HTTP local.
-Use `COOKIE_SECURE=true` no deploy HTTPS.
-Sem ENABLE_COOKIE_PROBE ou com `false`, a rota retorna 404.
-O probe não autentica usuários nem cria sessões reais.
-A resposta usa `Cache-Control: no-store`.
-Desative ENABLE_COOKIE_PROBE após capturar a evidência.
-A rota será removida no commit 07.
+O probe `/api/health/cookie` foi removido na WEB-03.
+Agora valide com `POST /api/auth/login` e credenciais sintéticas.
+Configure JWT_SECRET no backend antes de iniciar.
+O cookie `origem_sessao` contém o JWT e expira em 24h.
+Ele usa HttpOnly, SameSite=Lax e Path=/.
+Secure segue COOKIE_SECURE: false no HTTP, true no HTTPS.
+`GET /api/auth/me` deve retornar o usuário autenticado.
+`POST /api/auth/logout` retorna 204 e expira o cookie.
+Depois do logout, `/api/auth/me` deve retornar 401.
+A interface permanece na Fake API até WEB-05.
 
 ## Deploy e validação manual
 
@@ -99,22 +91,22 @@ Nenhum desses passos foi executado pela WEB-02 local.
    Defina JWT_SECRET aleatório exclusivo, com pelo menos 32 caracteres.
    FRONTEND_ORIGIN deve corresponder à origem HTTPS publicada na Vercel.
    Respeite PORT fornecida pelo Render; configure health check `/health`.
-   Habilite ENABLE_COOKIE_PROBE temporariamente.
 2. Rode `npm run db:seed` uma vez na base de deploy.
    Confirme DATABASE_URL e DIRECT_URL dessa base antes da execução.
    Não execute a carga de volume no deploy.
 3. Configure BACKEND_URL na Vercel com a origem Render.
    Selecione o ambiente correto e faça novo deploy.
    Confira `https://<vercel>/api/health`: resposta 200 e banco acessível.
-4. Abra `https://<vercel>/api/health/cookie` em janela anônima.
+4. Envie `POST /api/auth/login` pelo domínio Vercel.
+   Use uma conta sintética já cadastrada e ativa.
    Em DevTools > Application > Cookies, selecione o domínio Vercel.
-   Confira `origem_cookie_probe`, HttpOnly, SameSite=Lax, Secure e Path=/.
-   Recarregue e confirme o envio do cookie em Network.
+   Confira `origem_sessao`, HttpOnly, SameSite=Lax, Secure e Path=/.
+   Consulte `/api/auth/me` e confirme envio em Network.
    Capture status 200, Set-Cookie e a tabela de cookies.
 
 Se o passo 4 falhar, pare e avise o responsável.
 Não aplique o plano B automaticamente.
-Após sucesso, desative o probe e guarde as evidências.
+Após sucesso, guarde evidências sem credenciais ou tokens.
 
 ## Plano B, condicionado à falha e autorização
 

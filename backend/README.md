@@ -8,6 +8,7 @@ O módulo de recomendação utiliza Strategy.
 Funcionalidades atuais:
 
 - `GET /health`: verifica acesso ao PostgreSQL real.
+- `POST /auth/register`, `/auth/login`, `/auth/logout` e `GET /auth/me`.
 - `POST /pedidos`: cria pedidos com controle transacional de estoque.
 - `GET /recomendacoes`: consulta recomendações pelo produto ou usuário.
 - Fila persistente `pg-boss`, iniciada junto ao servidor.
@@ -106,15 +107,14 @@ Nunca reutilize seu `JWT_SECRET` em produção.
 | `JWT_SECRET` | Obrigatória em produção | Mínimo de 32 caracteres úteis quando fornecida |
 | `FRONTEND_ORIGIN` | `http://localhost:3000` | Origem HTTP ou HTTPS, sem caminho, barra final ou credenciais |
 | `COOKIE_SECURE` | `true` em produção; `false` nos outros ambientes | Aceita somente textos `true` e `false`, convertidos para boolean |
-| `ENABLE_COOKIE_PROBE` | `false` | `true` registra a rota temporária `/health/cookie` da WEB-02 |
 | `CACHE_TTL_SECONDS` | `60` | Inteiro positivo, em segundos |
 | `NOTIFICATION_PUBLISHER_INTERVAL_MS` | `3000` | Publicação periódica; inteiro entre 1000 e 60000 |
 | `ALLOW_VOLUME_SEED` | Opt-in desativado no exemplo | `1` autoriza a carga de volume na branch de teste |
 | `DATABASE_URL_DEPLOY` | Opcional, fictícia no exemplo | Identifica o banco de deploy bloqueado para volume |
 | `CONCURRENCY_TEST_PORT` | `3910` | Porta exclusiva do script de concorrência |
 
-JWT, origem, cookie e TTL ficam preparados nesta subtarefa.
-Autenticação, CORS e cache serão implementados nas respectivas subtarefas.
+JWT e cookie sustentam a autenticação da WEB-03.
+CORS e cache pertencem às respectivas subtarefas.
 `COOKIE_SECURE=false` é aceito explicitamente, inclusive em produção.
 No deploy HTTPS, configure sempre `COOKIE_SECURE=true`.
 
@@ -226,25 +226,51 @@ Se o banco não estiver disponível, retorna `503`:
 
 As respostas não incluem mensagens internas ou credenciais.
 
-### Probe temporário WEB-02
+## Autenticação WEB-03
 
-`ENABLE_COOKIE_PROBE=true` habilita `GET /health/cookie` no boot.
-A configuração aceita somente textos `true` e `false`.
-Sem opt-in, a rota não é registrada e retorna 404.
-A resposta emite `origem_cookie_probe=ok`, sem atributo Domain.
-O cookie usa HttpOnly, SameSite=Lax e validade de cinco minutos.
-Secure segue COOKIE_SECURE; no Render HTTPS, use `true`.
-A resposta usa Cache-Control: no-store e não consulta o banco.
-O probe não representa login ou sessão autenticada.
-Desative a variável após validar o domínio Vercel.
-A rota será removida no commit 07.
+Configure JWT_SECRET também para login em desenvolvimento.
+Sem segredo válido, a emissão de sessão retorna 503.
+Não existe segredo padrão para assinar tokens.
+
+`POST /auth/register` recebe nome, email, senha e papel.
+Nome exige entre 3 e 120 caracteres após trim.
+Email normalizado exige formato válido e até 254 caracteres.
+Senha exige oito caracteres, limitada a 72 bytes UTF-8.
+O limite evita truncamento silencioso pelo bcrypt.
+Somente `comprador` e `artesao` podem ser cadastrados publicamente.
+Campos extras são rejeitados com 400.
+Email em uso retorna 409, inclusive cadastros simultâneos.
+Usuário e Carrinho ou PerfilArtesao nascem na mesma transação.
+O perfil inicial tem `completo=false` e campos opcionais nulos.
+Cadastro retorna 201 sem cookie ou login automático.
+
+`POST /auth/login` recebe somente email e senha.
+Login retorna o usuário público e cookie `origem_sessao`.
+JWT HS256 expira em 24h, com sub, papel e nome.
+O cookie usa HttpOnly, SameSite=Lax, Path=/ e Max-Age=86400.
+Secure segue COOKIE_SECURE; Domain não é definido.
+As respostas de autenticação usam Cache-Control: no-store.
+Credenciais inválidas ou usuário inativo recebem a mesma resposta 401.
+Email inexistente executa bcrypt.compare contra hash fixo custo 10.
+
+`GET /auth/me` valida assinatura, claims e expiração.
+Também reconsulta o usuário ativo no banco.
+Retorna somente `{ id, nome, email, papel }`.
+Sessão ausente, inválida ou usuário indisponível retorna 401.
+`POST /auth/logout` expira o cookie e retorna 204.
+O cliente descarta o JWT; não existe revogação central nesta etapa.
+Nenhuma resposta de autenticação contém senhaHash.
+
+O probe `/health/cookie` foi retirado na WEB-03.
+Sua antiga variável ENABLE_COOKIE_PROBE não tem efeito.
+Valide o cookie real usando login pelo proxy frontend.
 
 ## Limitações atuais
 
 `compradorRef` é sintético e temporário. `POST /pedidos` também exige
 `compradorId`, o UUID de um `Usuario` já existente (FK obrigatória desde a
 PI4-19.5). Sem autenticação real, quem chama o endpoint ainda escolhe esse
-UUID livremente. Autenticação e autorização reais permanecem pendentes.
+UUID livremente. A proteção de pedidos pertence à WEB-04.
 O modelo `Pagamento` já existe para dados simulados.
 Gateways financeiros reais permanecem fora do escopo.
 

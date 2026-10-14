@@ -9,6 +9,17 @@ export function errorMiddleware(
 ): void {
   void _next;
 
+  if (
+    error instanceof Error &&
+    "type" in error &&
+    error.type === "entity.parse.failed"
+  ) {
+    response.status(400).json({
+      error: { code: "VALIDACAO", message: "JSON invalido." },
+    });
+    return;
+  }
+
   if (error instanceof AppError) {
     response.status(error.status).json({
       error: { code: error.code, message: error.message },
