@@ -1,8 +1,8 @@
 # Frontend Origem
 
 Marketplace da economia criativa pernambucana, usando Next.js e React.
-A interface atual consome a Fake API da AV1.
-A WEB-02 prepara o proxy para a integração posterior.
+A interface escolhe Fake API ou HTTP pela configuração.
+A WEB-05 integra autenticação real pelo proxy da WEB-02.
 
 ## Execução local
 
@@ -17,11 +17,12 @@ Para ativar o proxy local, crie `.env.local`:
 
 ```dotenv
 BACKEND_URL=http://127.0.0.1:3001
+NEXT_PUBLIC_DATA_SOURCE=http
 ```
 
 O backend deve estar rodando separadamente nessa porta.
 Reinicie o Next.js depois de alterar a variável.
-O desenvolvimento sem BACKEND_URL mantém a Fake API disponível.
+Para desenvolver offline, configure NEXT_PUBLIC_DATA_SOURCE=fake.
 
 ## Scripts
 
@@ -39,6 +40,7 @@ O desenvolvimento sem BACKEND_URL mantém a Fake API disponível.
 | Variável | Local | Deploy |
 |---|---|---|
 | `BACKEND_URL` | `http://127.0.0.1:3001` | Origem HTTPS do backend Render |
+| `NEXT_PUBLIC_DATA_SOURCE` | `fake` ou `http` | `http` para integração real |
 
 BACKEND_URL pertence ao servidor, sem prefixo `NEXT_PUBLIC_`.
 Ela não é exposta pelo campo `env` do NextConfig.
@@ -56,8 +58,9 @@ O Next.js encaminha `/api/:path*` para `${BACKEND_URL}/:path*`.
 Por exemplo, `/api/health` chega ao backend como `/health`.
 O navegador continua usando o domínio do frontend.
 O backend conserva suas rotas sem prefixo `/api`.
-O proxy não troca automaticamente os services da Fake API.
-Essa integração pertence às subtarefas seguintes.
+NEXT_PUBLIC_DATA_SOURCE seleciona os adapters, independentemente do rewrite.
+HTTP exige BACKEND_URL configurada para um backend disponível.
+Erros HTTP nunca acionam fallback para a Fake API.
 
 O backend emite cookies sem atributo Domain explícito.
 Assim, o cookie recebido pelo proxy usa a origem frontend.
@@ -76,7 +79,7 @@ Secure segue COOKIE_SECURE: false no HTTP, true no HTTPS.
 `GET /api/auth/me` deve retornar o usuário autenticado.
 `POST /api/auth/logout` retorna 204 e expira o cookie.
 Depois do logout, `/api/auth/me` deve retornar 401.
-A interface permanece na Fake API até WEB-05.
+A interface consome esses endpoints quando configurada em HTTP.
 
 ## Deploy e validação manual
 
@@ -120,3 +123,47 @@ Preflights, proteção CSRF e bloqueios de terceiros exigiriam validação.
 O Safari pode bloquear cookies entre esses domínios.
 Nesse cenário, o cookie pertenceria ao domínio backend.
 Este plano permanece documentado, sem implementação nesta subtarefa.
+
+## Sessão real WEB-05
+
+Sem NEXT_PUBLIC_DATA_SOURCE, o padrão permanece fake, inclusive nos testes.
+Valores desconhecidos falham explicitamente, sem selecionar outra fonte.
+Variáveis NEXT_PUBLIC exigem reinício local ou novo build no deploy.
+
+O cliente usa /api, credentials include e cache no-store.
+O timeout padrão é dez segundos, com AbortController.
+A espera abrange fetch e leitura do JSON.
+Erros possuem ServiceError, código conhecido e mensagem sanitizada.
+401 representa sessão ausente, preservando CREDENCIAIS_INVALIDAS no login.
+Erros de rede, timeout e resposta inválida são recuperáveis.
+
+HttpUsuariosService implementa register, login, logout e me.
+O SessionStore hidrata em GET /auth/me no modo HTTP.
+Ele não lê nem grava sessão em localStorage nesse modo.
+Respostas atrasadas não sobrescrevem login ou logout posteriores.
+Falhas de hidratação exibem recuperação, sem assumir sessão anônima.
+Logout aguarda confirmação do backend antes de encerrar e navegar.
+
+O middleware exige cookie nas três áreas protegidas em HTTP.
+Sem cookie, redireciona para /login?retorno=<destino local>.
+Em fake, a navegação continua usando a guarda existente.
+Presença de cookie não comprova identidade ou papel.
+RouteGuard consulta a sessão hidratada e controla a apresentação.
+A autorização real permanece no backend, incluindo papel atual.
+Login aceita retorno e redirect legados, validando destino local.
+
+PENDENTES_HTTP identifica adapters ainda não implementados.
+Em desenvolvimento, suas pendências aparecem uma vez no console.
+Operações pendentes rejeitam com HTTP_NAO_IMPLEMENTADO, sem dados fake.
+UsuariosService.list também permanece pendente nesta subtarefa.
+O contador de carrinho usa estado inicial vazio, sem persistência.
+Mutações do carrinho HTTP são bloqueadas antes de alterar estado.
+Catálogo, carrinho, checkout e demais adapters ficam nas próximas subtarefas.
+
+O contrato preserva list, register e login existentes.
+logout e me opcionais preservam os consumidores e fixtures anteriores.
+UsuariosSessaoService exige esses métodos no adapter HTTP.
+Hooks, componentes e páginas preservam suas assinaturas públicas.
+
+Evidências e gravação local ficam em
+[WEB-05](../evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/README.md).

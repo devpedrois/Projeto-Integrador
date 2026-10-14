@@ -5,7 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { LayoutAutenticacao } from "@/components/autenticacao/LayoutAutenticacao";
 import { Icone, type NomeIcone } from "@/components/vitrine/Icone";
-import { useSessao } from "@/hooks/use-sessao";
+import { useSessao, useEstadoSessao } from "@/hooks/use-sessao";
+import { SessaoIndisponivel } from "@/components/layout/SessaoIndisponivel";
+import { AlertaErro } from "@/components/feedback/AlertaErro";
 import { useCarrinho } from "@/hooks/use-carrinho";
 import {
   obterCarrinhoStore,
@@ -79,7 +81,8 @@ interface GateAcessoProps {
 
 export function GateAcesso({ children }: GateAcessoProps) {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
-  const [modoAcessoStorage, setModoAcessoStorage] = useState<ModoAcessoStorage | null>(null);
+  const [modoAcessoStorage, setModoAcessoStorage] =
+    useState<ModoAcessoStorage | null>(null);
   const [modoVisitante, setModoVisitante] = useState(false);
   const pathname = usePathname();
 
@@ -91,9 +94,12 @@ export function GateAcesso({ children }: GateAcessoProps) {
   }, []);
 
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
-  const restaurando = sessionStore === null || modoAcessoStorage === null;
+  const estado = useEstadoSessao(sessionStore ?? STORE_INATIVO);
+  const restaurando =
+    sessionStore === null || modoAcessoStorage === null || estado.restaurando;
   const naRotaDeAutenticacao = ROTAS_AUTENTICACAO.includes(pathname);
-  const liberado = !restaurando && (sessao !== null || modoVisitante || naRotaDeAutenticacao);
+  const liberado =
+    !restaurando && (sessao !== null || modoVisitante || naRotaDeAutenticacao);
 
   function escolherVisitante(): void {
     modoAcessoStorage?.definirVisitante();
@@ -101,6 +107,8 @@ export function GateAcesso({ children }: GateAcessoProps) {
   }
 
   if (restaurando) return null;
+  if (estado.erro && !naRotaDeAutenticacao && sessionStore)
+    return <SessaoIndisponivel store={sessionStore} />;
 
   if (!liberado) {
     return (
@@ -114,18 +122,26 @@ export function GateAcesso({ children }: GateAcessoProps) {
               Peças feitas à mão, direto de quem faz.
             </h1>
             <p className="m-0 text-body text-fg-muted md:text-body-lg">
-              O Origem conecta artesãos da Comunidade do Pilar, do Alto do Moura e de
-              Tracunhaém a compradores de todo o Brasil.
+              O Origem conecta artesãos da Comunidade do Pilar, do Alto do Moura
+              e de Tracunhaém a compradores de todo o Brasil.
             </p>
           </div>
           <div className="hidden h-px bg-border-default md:block" />
           <div className="flex flex-col gap-2.5 md:gap-3">
-            <button type="button" onClick={escolherVisitante} className={BOTAO_PRIMARIO}>
+            <button
+              type="button"
+              onClick={escolherVisitante}
+              className={BOTAO_PRIMARIO}
+            >
               Continuar como visitante
               <Icone nome="avancar" className="flex-none" />
             </button>
             {OPCOES_LOGIN.map((opcao) => (
-              <Link key={opcao.rotulo} href="/login" className={BOTAO_SECUNDARIO}>
+              <Link
+                key={opcao.rotulo}
+                href="/login"
+                className={BOTAO_SECUNDARIO}
+              >
                 <Icone nome={opcao.icone} className="flex-none" />
                 {opcao.rotulo}
               </Link>
@@ -138,7 +154,9 @@ export function GateAcesso({ children }: GateAcessoProps) {
 
   return (
     <>
-      {!naRotaDeAutenticacao ? <BarraDeConta sessionStore={sessionStore} /> : null}
+      {!naRotaDeAutenticacao ? (
+        <BarraDeConta sessionStore={sessionStore} />
+      ) : null}
       {children}
     </>
   );
@@ -150,10 +168,21 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
   const pathname = usePathname();
   const [mostrarOpcoesLogin, setMostrarOpcoesLogin] = useState(false);
   const [confirmandoSaida, setConfirmandoSaida] = useState(false);
+  const [saindo, setSaindo] = useState(false);
+  const [erroSaida, setErroSaida] = useState(false);
 
-  function confirmarSaida(): void {
-    sessionStore.logout();
-    router.push("/");
+  async function confirmarSaida(): Promise<void> {
+    if (saindo) return;
+    setSaindo(true);
+    setErroSaida(false);
+    try {
+      await sessionStore.logout();
+      router.push("/");
+    } catch {
+      setErroSaida(true);
+    } finally {
+      setSaindo(false);
+    }
   }
 
   return (
@@ -167,7 +196,11 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
         </Link>
 
         {sessao ? (
-          <NavegacaoPrincipal papel={sessao.papel} usuarioId={sessao.id} pathname={pathname} />
+          <NavegacaoPrincipal
+            papel={sessao.papel}
+            usuarioId={sessao.id}
+            pathname={pathname}
+          />
         ) : null}
 
         <div className="ml-auto flex items-center gap-2 text-body-sm">
@@ -184,7 +217,15 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
           {sessao && confirmandoSaida ? (
             <div className="flex flex-wrap items-center justify-end gap-2">
               <span className="text-fg-muted">Tem certeza que quer sair?</span>
-              <button type="button" onClick={confirmarSaida} className={BOTAO_PERIGO_PEQUENO}>
+              {erroSaida ? (
+                <AlertaErro>Não foi possível sair. Tente novamente.</AlertaErro>
+              ) : null}
+              <button
+                type="button"
+                disabled={saindo}
+                onClick={confirmarSaida}
+                className={BOTAO_PERIGO_PEQUENO}
+              >
                 Sim, sair
               </button>
               <button
@@ -204,8 +245,12 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
                 {sessao.nome.slice(0, 1).toUpperCase()}
               </span>
               <span className="flex flex-col leading-tight">
-                <span className="font-semibold text-fg-strong">{sessao.nome}</span>
-                <span className="text-[12px] font-medium text-fg-muted">{ROTULO_PAPEL[sessao.papel]}</span>
+                <span className="font-semibold text-fg-strong">
+                  {sessao.nome}
+                </span>
+                <span className="text-[12px] font-medium text-fg-muted">
+                  {ROTULO_PAPEL[sessao.papel]}
+                </span>
               </span>
               <button
                 type="button"
@@ -284,7 +329,9 @@ function NavegacaoPrincipal({
             className={pathname === link.href ? LINK_NAV_ATIVO : LINK_NAV}
           >
             {link.rotulo}
-            {link.href === "/carrinho" ? <ContadorCarrinho usuarioId={usuarioId} /> : null}
+            {link.href === "/carrinho" ? (
+              <ContadorCarrinho usuarioId={usuarioId} />
+            ) : null}
           </Link>
         ))}
       </nav>
@@ -303,12 +350,15 @@ function ContadorCarrinho({ usuarioId }: { usuarioId?: string }) {
     setCarrinhoStore(obterCarrinhoStore(usuarioId));
   }, [usuarioId]);
 
-  const quantidade = useCarrinho(carrinhoStore ?? CARRINHO_STORE_INATIVO).itens.length;
+  const quantidade = useCarrinho(carrinhoStore ?? CARRINHO_STORE_INATIVO).itens
+    .length;
 
   return (
     <span
       className={`grid h-[22px] min-w-[22px] place-items-center rounded-pill px-[7px] text-caption font-bold tabular-nums ${
-        quantidade > 0 ? "bg-barro-500 text-fg-on-brand" : "bg-linho-100 text-fg-muted"
+        quantidade > 0
+          ? "bg-barro-500 text-fg-on-brand"
+          : "bg-linho-100 text-fg-muted"
       }`}
     >
       {quantidade}

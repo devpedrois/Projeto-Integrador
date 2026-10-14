@@ -510,3 +510,60 @@ Os TXT preservam a saida PostgreSQL original em FORMAT JSON.
 Todos os pares usam a mesma coleta seletiva existente.
 Os arquivos adicionais foram preservados em evidencias/.historico/.
 Nao houve nova medicao, alteracao de tempos ou acesso ao Neon.
+
+## Registro de apoio em 14/10/2026: WEB-05
+
+O responsavel delimitou cliente HTTP, container e sessao real.
+Codex leu AGENTS.md, D1, D2, WEB-05 e documentos indicados.
+Inspecionou contratos, armazenamento, guardas e formularios antes de escrever.
+TDD, diretrizes React/Next.js e webapp-testing orientaram a implementacao.
+Documentacao primaria confirmou middleware Next.js e AbortController.
+A branch codex/web-05-http-session isola esta subtarefa.
+
+Os primeiros 32 testes falharam antes da implementacao.
+Quatro testes adicionais detectaram guarda antecipada e logout prematuro.
+Tambem detectaram perda do destino de retorno apos login.
+A revisao detectou mutacao local no carrinho HTTP pendente.
+Um teste confirmou essa falha antes da correcao.
+Outro teste detectou papel recebido como array indevidamente aceito.
+Ambas as correcoes passaram pelos respectivos testes de regressao.
+
+O cliente usa /api, cookies, JSON, timeout e erros sanitizados.
+HttpUsuariosService implementa cadastro, login, logout e consulta da sessao.
+O contrato anterior preserva compatibilidade por metodos adicionais opcionais.
+O container respeita NEXT_PUBLIC_DATA_SOURCE e expoe PENDENTES_HTTP.
+Adapters ausentes rejeitam explicitamente, sem fallback para fake.
+O carrinho HTTP preserva somente estado vazio e bloqueia mutacoes.
+SessionStore hidrata em /auth/me, sem consultar localStorage no HTTP.
+Respostas atrasadas nao sobrescrevem login ou logout posteriores.
+As guardas aguardam hidratacao e oferecem recuperacao de falhas.
+Logout aguarda o backend e conserva sessao quando falha.
+Middleware redireciona areas protegidas sem cookie no modo HTTP.
+A checagem real de identidade e papel permanece na API.
+Nenhuma assinatura publica de hook, componente ou pagina mudou.
+
+O Chromium executou o fluxo com Next.js e Express reais.
+O PostgreSQL real recebeu o cadastro em schema isolado.
+Cadastro 201, login 200, me 200 e logout 204 foram capturados.
+Reload restaurou o comprador mesmo com admin falso no localStorage.
+O comprador recebeu acesso negado no painel administrativo.
+Acesso sem cookie recebeu redirect 307 antes da pagina.
+Apos logout, me recebeu 401 e admin voltou a redirecionar.
+Cookie HttpOnly foi verificado sem registrar seu valor.
+Servidores locais e schema de teste foram encerrados ao terminar.
+Nenhum banco ou repository foi mockado nessa validacao.
+
+O runtime Python nao incluia a biblioteca Playwright.
+A validacao usou Playwright Node.js ja disponivel no runtime.
+ffmpeg foi instalado somente para gravacao da evidencia visual.
+Uma falha inicial de seletor foi corrigida sem alterar produto.
+Os logs do sandbox registraram restricao de cache do Vitest.
+Os testes rodaram com sucesso fora dessa restricao.
+
+Lint, typecheck, formatacao e build passaram.
+O build tambem passou com NEXT_PUBLIC_DATA_SOURCE=http.
+A suite final passou: 720 testes em 75 arquivos.
+A revisao equivalente de seguranca ocorreu nesta conversa.
+Verificou inputs, DTOs, cookies, papéis, redirects e falhas recuperaveis.
+Nao houve commit, push, deploy ou mudanca de backend.
+Evidencias ficam em evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/.

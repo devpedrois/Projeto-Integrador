@@ -23,4 +23,11 @@ export interface UsuariosService {
    * retornam o mesmo erro generico, sem indicar qual credencial falhou.
    */
   login(input: LoginInput): Promise<UsuarioSessao>;
+  logout?(): Promise<void>;
+  me?(): Promise<UsuarioSessao>;
+}
+
+export interface UsuariosSessaoService extends UsuariosService {
+  logout(): Promise<void>;
+  me(): Promise<UsuarioSessao>;
 }

@@ -4,8 +4,12 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { BOTAO_SECUNDARIO } from "@/components/formulario/estilos-botao";
-import { CLASSE_VAZIO, IconeVazio } from "@/components/vitrine/EsqueletoProdutos";
-import { useSessao } from "@/hooks/use-sessao";
+import {
+  CLASSE_VAZIO,
+  IconeVazio,
+} from "@/components/vitrine/EsqueletoProdutos";
+import { useSessao, useEstadoSessao } from "@/hooks/use-sessao";
+import { SessaoIndisponivel } from "@/components/layout/SessaoIndisponivel";
 import type { SessionStore } from "@/store/sessao.store";
 import type { Papel } from "@/types/usuario";
 import { paraDestinoSeguro } from "@/utils/rota-segura";
@@ -35,9 +39,10 @@ export function RouteGuard({
   const router = useRouter();
   const pathname = usePathname();
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
+  const estado = useEstadoSessao(sessionStore ?? STORE_INATIVO);
 
-  const restaurando = sessionStore === null;
-  const semSessao = !restaurando && sessao === null;
+  const restaurando = sessionStore === null || estado.restaurando;
+  const semSessao = !restaurando && !estado.erro && sessao === null;
   const papelNegado =
     !restaurando &&
     sessao !== null &&
@@ -51,9 +56,9 @@ export function RouteGuard({
     }
   }, [semSessao, router, pathname]);
 
-  // Guarda client-side vale so para AV1: nao substitui autorizacao no
-  // backend final, que ainda validara papel/sessao no servidor.
   if (restaurando || semSessao) return null;
+  if (estado.erro && sessionStore)
+    return <SessaoIndisponivel store={sessionStore} />;
 
   if (papelNegado && sessao) {
     const saida = SAIDA_POR_PAPEL[sessao.papel];

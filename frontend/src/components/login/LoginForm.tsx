@@ -10,6 +10,7 @@ import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 import type { SessionStore } from "@/store/sessao.store";
 import { ServiceError } from "@/services/errors";
 import type { LoginInput } from "@/types/login";
+import { paraDestinoSeguro } from "@/utils/rota-segura";
 import {
   loginValido,
   validarLogin,
@@ -41,7 +42,10 @@ export function LoginForm({ service, sessionStore }: LoginFormProps) {
   const refEmail = useRef<HTMLInputElement>(null);
   const refSenha = useRef<HTMLInputElement>(null);
 
-  const refsPorCampo: Record<CampoLogin, React.RefObject<HTMLElement | null>> = {
+  const refsPorCampo: Record<
+    CampoLogin,
+    React.RefObject<HTMLElement | null>
+  > = {
     email: refEmail,
     senha: refSenha,
   };
@@ -71,9 +75,15 @@ export function LoginForm({ service, sessionStore }: LoginFormProps) {
     try {
       const sessao = await service.login(entrada);
       sessionStore.login(sessao);
-      router.push("/");
+      const busca = new URLSearchParams(window.location.search);
+      router.push(
+        paraDestinoSeguro(busca.get("retorno") ?? busca.get("redirect")),
+      );
     } catch (erro) {
-      if (erro instanceof ServiceError && erro.code === "CREDENCIAIS_INVALIDAS") {
+      if (
+        erro instanceof ServiceError &&
+        erro.code === "CREDENCIAIS_INVALIDAS"
+      ) {
         setErroServico(MENSAGEM_CREDENCIAIS_INVALIDAS);
       } else {
         setErroServico(MENSAGEM_ERRO_SERVICO);
@@ -114,7 +124,9 @@ export function LoginForm({ service, sessionStore }: LoginFormProps) {
         erro={erros.senha}
       />
 
-      <BotaoEnviar enviando={enviando}>{enviando ? "Entrando…" : "Entrar"}</BotaoEnviar>
+      <BotaoEnviar enviando={enviando}>
+        {enviando ? "Entrando…" : "Entrar"}
+      </BotaoEnviar>
 
       <div className="mt-2 h-px bg-border-default" />
       <p className="m-0 text-center text-[15px] text-fg-muted">

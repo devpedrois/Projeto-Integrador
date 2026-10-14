@@ -26,6 +26,107 @@ import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
 import type { ModeracaoService } from "@/services/contracts/moderacao.contract";
+import { HttpUsuariosService } from "@/services/http/usuarios.service";
+import { obterFonteDados } from "@/services/data-source";
+import { ServiceError } from "@/services/errors";
+
+export const PENDENTES_HTTP = [
+  "ProdutosService",
+  "PedidosService",
+  "PerfilArtesaoService",
+  "AvaliacoesService",
+  "RecomendacoesService",
+  "OpcoesFiltroService",
+  "ModeracaoService",
+  "CarrinhoStore",
+  "UsuariosService.list",
+] as const;
+let pendenciasAvisadas = false;
+
+function modoHttp(): boolean {
+  const http = obterFonteDados() === "http";
+  if (http && !pendenciasAvisadas && process.env.NODE_ENV === "development") {
+    console.warn("Adapters HTTP pendentes:", PENDENTES_HTTP.join(", "));
+    pendenciasAvisadas = true;
+  }
+  return http;
+}
+
+async function pendente(): Promise<never> {
+  throw new ServiceError(
+    "HTTP_NAO_IMPLEMENTADO",
+    "Este recurso ainda está indisponível.",
+  );
+}
+
+const produtosHttpPendentes: ProdutosService = {
+  list: pendente,
+  create: pendente,
+  listByArtesao: pendente,
+  update: pendente,
+  remove: pendente,
+  search: pendente,
+  obterPublico: pendente,
+};
+const pedidosHttpPendentes: PedidosService = { confirmar: pendente };
+const perfilHttpPendente: PerfilArtesaoService = {
+  obter: pendente,
+  salvar: pendente,
+};
+const avaliacoesHttpPendentes: AvaliacoesService = {
+  listByProduto: pendente,
+  resumo: pendente,
+  create: pendente,
+};
+const recomendacoesHttpPendentes: RecomendacoesService = { obter: pendente };
+const opcoesHttpPendentes: OpcoesFiltroService = {
+  categorias: pendente,
+  tecnicas: pendente,
+  regioes: pendente,
+};
+const moderacaoHttpPendente: ModeracaoService = {
+  listarArtesaos: pendente,
+  listarProdutos: pendente,
+  ativarArtesao: pendente,
+  desativarArtesao: pendente,
+  ativarProduto: pendente,
+  desativarProduto: pendente,
+};
+let usuariosHttpInstancia: HttpUsuariosService | null = null;
+
+function usuariosHttp(): HttpUsuariosService {
+  usuariosHttpInstancia ??= new HttpUsuariosService();
+  return usuariosHttpInstancia;
+}
+
+function bloquearCarrinhoHttp(): never {
+  throw new ServiceError(
+    "HTTP_NAO_IMPLEMENTADO",
+    "Carrinho ainda indisponível.",
+  );
+}
+
+class CarrinhoHttpPendente extends CartStore {
+  constructor() {
+    super({
+      ler: () => null,
+      salvar: bloquearCarrinhoHttp,
+      limpar: bloquearCarrinhoHttp,
+    });
+  }
+  override adicionar(): never {
+    return bloquearCarrinhoHttp();
+  }
+  override alterarQuantidade(): never {
+    return bloquearCarrinhoHttp();
+  }
+  override remover(): never {
+    return bloquearCarrinhoHttp();
+  }
+  override limpar(): never {
+    return bloquearCarrinhoHttp();
+  }
+}
 
 const LATENCIA_PADRAO_MS = 300;
 const USUARIO_VISITANTE = "visitante";
@@ -43,6 +144,7 @@ let modoAcessoStorageInstancia: ModoAcessoStorage | null = null;
 const carrinhoStoresPorUsuario = new Map<string, CartStore>();
 
 export function obterUsuariosService(): UsuariosService {
+  if (modoHttp()) return usuariosHttp();
   if (!instancia) {
     const repositorio = new BrowserUsuarioRepository(window.localStorage);
     instancia = new FakeUsuariosService(repositorio, {
@@ -53,6 +155,7 @@ export function obterUsuariosService(): UsuariosService {
 }
 
 export function obterProdutosService(): ProdutosService {
+  if (modoHttp()) return produtosHttpPendentes;
   if (!produtosServiceInstancia) {
     const repositorio = new BrowserProdutoRepository(window.localStorage);
     produtosServiceInstancia = new FakeProdutosService(repositorio, {
@@ -70,13 +173,20 @@ export function obterProdutosService(): ProdutosService {
  * `POST /pedidos`, sem alterar hooks, componentes ou paginas.
  */
 export function obterPedidosService(): PedidosService {
+  if (modoHttp()) return pedidosHttpPendentes;
   if (!pedidosServiceInstancia) {
-    const produtoRepositorio = new BrowserProdutoRepository(window.localStorage);
+    const produtoRepositorio = new BrowserProdutoRepository(
+      window.localStorage,
+    );
     const pedidoRepositorio = new BrowserPedidoRepository(window.localStorage);
-    pedidosServiceInstancia = new FakePedidosService(produtoRepositorio, pedidoRepositorio, {
-      latenciaMs: LATENCIA_PADRAO_MS,
-      usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
-    });
+    pedidosServiceInstancia = new FakePedidosService(
+      produtoRepositorio,
+      pedidoRepositorio,
+      {
+        latenciaMs: LATENCIA_PADRAO_MS,
+        usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
+      },
+    );
   }
   return pedidosServiceInstancia;
 }
@@ -88,11 +198,12 @@ export function obterPedidosService(): PedidosService {
  * sem alterar hooks, componentes ou paginas que dependem do contrato.
  */
 export function obterRecomendacoesService(): RecomendacoesService {
+  if (modoHttp()) return recomendacoesHttpPendentes;
   if (!recomendacoesServiceInstancia) {
     const repositorio = new BrowserProdutoRepository(window.localStorage);
     recomendacoesServiceInstancia = new FakeRecommendationAdapter(
       repositorio,
-      new BrowserUsuarioRepository(window.localStorage)
+      new BrowserUsuarioRepository(window.localStorage),
     );
   }
   return recomendacoesServiceInstancia;
@@ -105,6 +216,7 @@ export function obterRecomendacoesService(): RecomendacoesService {
  * hooks, componentes ou paginas.
  */
 export function obterPerfilArtesaoService(): PerfilArtesaoService {
+  if (modoHttp()) return perfilHttpPendente;
   if (!perfilArtesaoServiceInstancia) {
     const repositorio = new BrowserPerfilArtesaoRepository(window.localStorage);
     perfilArtesaoServiceInstancia = new FakePerfilArtesaoService(repositorio, {
@@ -121,13 +233,20 @@ export function obterPerfilArtesaoService(): PerfilArtesaoService {
  * componentes ou paginas.
  */
 export function obterAvaliacoesService(): AvaliacoesService {
+  if (modoHttp()) return avaliacoesHttpPendentes;
   if (!avaliacoesServiceInstancia) {
     const repositorio = new BrowserAvaliacaoRepository(window.localStorage);
-    const produtoRepositorio = new BrowserProdutoRepository(window.localStorage);
-    avaliacoesServiceInstancia = new FakeAvaliacoesService(repositorio, produtoRepositorio, {
-      latenciaMs: LATENCIA_PADRAO_MS,
-      usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
-    });
+    const produtoRepositorio = new BrowserProdutoRepository(
+      window.localStorage,
+    );
+    avaliacoesServiceInstancia = new FakeAvaliacoesService(
+      repositorio,
+      produtoRepositorio,
+      {
+        latenciaMs: LATENCIA_PADRAO_MS,
+        usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
+      },
+    );
   }
   return avaliacoesServiceInstancia;
 }
@@ -139,17 +258,19 @@ export function obterAvaliacoesService(): AvaliacoesService {
  * hooks, componentes ou paginas.
  */
 export function obterModeracaoService(): ModeracaoService {
+  if (modoHttp()) return moderacaoHttpPendente;
   if (!moderacaoServiceInstancia) {
     moderacaoServiceInstancia = new FakeModeracaoService(
       new BrowserUsuarioRepository(window.localStorage),
       new BrowserProdutoRepository(window.localStorage),
-      { latenciaMs: LATENCIA_PADRAO_MS }
+      { latenciaMs: LATENCIA_PADRAO_MS },
     );
   }
   return moderacaoServiceInstancia;
 }
 
 export function obterOpcoesFiltroService(): OpcoesFiltroService {
+  if (modoHttp()) return opcoesHttpPendentes;
   if (!opcoesFiltroServiceInstancia) {
     opcoesFiltroServiceInstancia = new FakeOpcoesFiltroService({
       latenciaMs: LATENCIA_PADRAO_MS,
@@ -160,11 +281,18 @@ export function obterOpcoesFiltroService(): OpcoesFiltroService {
 
 export function obterSessionStore(): SessionStore {
   if (!sessionStoreInstancia) {
+    if (modoHttp()) {
+      sessionStoreInstancia = new SessionStore(null, usuariosHttp());
+      void sessionStoreInstancia.hidratar();
+      return sessionStoreInstancia;
+    }
     sessionStoreInstancia = new SessionStore(
-      new BrowserSessaoStorage(window.localStorage)
+      new BrowserSessaoStorage(window.localStorage),
     );
     void sessionStoreInstancia.revalidar(
-      criarVerificadorUsuarioAtivo(new BrowserUsuarioRepository(window.localStorage))
+      criarVerificadorUsuarioAtivo(
+        new BrowserUsuarioRepository(window.localStorage),
+      ),
     );
   }
   return sessionStoreInstancia;
@@ -172,7 +300,9 @@ export function obterSessionStore(): SessionStore {
 
 export function obterModoAcessoStorage(): ModoAcessoStorage {
   if (!modoAcessoStorageInstancia) {
-    modoAcessoStorageInstancia = new SessionModoAcessoStorage(window.sessionStorage);
+    modoAcessoStorageInstancia = new SessionModoAcessoStorage(
+      window.sessionStorage,
+    );
   }
   return modoAcessoStorageInstancia;
 }
@@ -181,7 +311,9 @@ export function obterCarrinhoStore(usuarioId?: string): CartStore {
   const chave = usuarioId ?? USUARIO_VISITANTE;
   let store = carrinhoStoresPorUsuario.get(chave);
   if (!store) {
-    store = new CartStore(new BrowserCarrinhoStorage(window.localStorage, chave));
+    store = modoHttp()
+      ? new CarrinhoHttpPendente()
+      : new CartStore(new BrowserCarrinhoStorage(window.localStorage, chave));
     carrinhoStoresPorUsuario.set(chave, store);
   }
   return store;
