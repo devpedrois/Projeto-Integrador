@@ -23,7 +23,9 @@ function produto(id: string, nome: string): Produto {
   };
 }
 
-function criarServicoFake(obterImpl: RecomendacoesService["obter"]): RecomendacoesService {
+function criarServicoFake(
+  obterImpl: RecomendacoesService["obter"],
+): RecomendacoesService {
   return { obter: obterImpl };
 }
 
@@ -31,7 +33,9 @@ describe("FaixaRecomendacoes", () => {
   it("mostra estado de carregando antes do service resolver", () => {
     const service = criarServicoFake(() => new Promise(() => {}));
 
-    render(<FaixaRecomendacoes service={service} contexto={{ produtoId: "p1" }} />);
+    render(
+      <FaixaRecomendacoes service={service} contexto={{ produtoId: "p1" }} />,
+    );
 
     expect(screen.getByRole("status")).toBeInTheDocument();
   });
@@ -40,32 +44,72 @@ describe("FaixaRecomendacoes", () => {
     const service = criarServicoFake(
       vi.fn().mockResolvedValue({
         estrategia: "categoria",
-        itens: [produto("p1", "Vaso de Barro"), produto("p2", "Colar em Sementes")],
-      })
+        itens: [
+          produto("p1", "Vaso de Barro"),
+          produto("p2", "Colar em Sementes"),
+        ],
+      }),
     );
 
-    render(<FaixaRecomendacoes service={service} contexto={{ produtoId: "contexto" }} />);
+    render(
+      <FaixaRecomendacoes
+        service={service}
+        contexto={{ produtoId: "contexto" }}
+      />,
+    );
 
-    await waitFor(() => expect(screen.getByText("Vaso de Barro")).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByText("Vaso de Barro")).toBeInTheDocument(),
+    );
     expect(screen.getByText("Colar em Sementes")).toBeInTheDocument();
   });
 
   it("mostra estado vazio quando nao ha recomendacoes", async () => {
     const service = criarServicoFake(
-      vi.fn().mockResolvedValue({ estrategia: "categoria", itens: [] })
+      vi.fn().mockResolvedValue({ estrategia: "categoria", itens: [] }),
     );
 
-    render(<FaixaRecomendacoes service={service} contexto={{ produtoId: "contexto" }} />);
+    render(
+      <FaixaRecomendacoes
+        service={service}
+        contexto={{ produtoId: "contexto" }}
+      />,
+    );
 
     await waitFor(() =>
-      expect(screen.getByText(/nenhuma recomendação/i)).toBeInTheDocument()
+      expect(screen.getByText(/nenhuma recomendação/i)).toBeInTheDocument(),
     );
   });
 
-  it("mostra erro recuperavel quando o service falha", async () => {
-    const service = criarServicoFake(vi.fn().mockRejectedValue(new Error("falhou")));
+  it("mostra fallback geral com navegacao para o produto", async () => {
+    const service = criarServicoFake(
+      vi.fn().mockResolvedValue({
+        estrategia: "fallback-geral",
+        itens: [produto("p1", "Vaso fallback")],
+      }),
+    );
+    render(
+      <FaixaRecomendacoes
+        service={service}
+        contexto={{ produtoId: "contexto" }}
+      />,
+    );
+    expect(
+      await screen.findByRole("link", { name: "Vaso fallback" }),
+    ).toHaveAttribute("href", "/produto/p1");
+  });
 
-    render(<FaixaRecomendacoes service={service} contexto={{ produtoId: "contexto" }} />);
+  it("mostra erro recuperavel quando o service falha", async () => {
+    const service = criarServicoFake(
+      vi.fn().mockRejectedValue(new Error("falhou")),
+    );
+
+    render(
+      <FaixaRecomendacoes
+        service={service}
+        contexto={{ produtoId: "contexto" }}
+      />,
+    );
 
     await waitFor(() => expect(screen.getByRole("alert")).toBeInTheDocument());
   });

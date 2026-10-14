@@ -1,7 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { DetalheProduto, type DetalheProdutoProps } from "@/components/produto/DetalheProduto";
+import {
+  DetalheProduto,
+  type DetalheProdutoProps,
+} from "@/components/produto/DetalheProduto";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
@@ -32,7 +35,9 @@ function produto(overrides: Partial<Produto> = {}): Produto {
   };
 }
 
-function criarProdutosServiceFake(overrides: Partial<ProdutosService> = {}): ProdutosService {
+function criarProdutosServiceFake(
+  overrides: Partial<ProdutosService> = {},
+): ProdutosService {
   return {
     list: vi.fn().mockResolvedValue([]),
     create: vi.fn(),
@@ -46,7 +51,7 @@ function criarProdutosServiceFake(overrides: Partial<ProdutosService> = {}): Pro
 }
 
 function criarAvaliacoesServiceFake(
-  overrides: Partial<AvaliacoesService> = {}
+  overrides: Partial<AvaliacoesService> = {},
 ): AvaliacoesService {
   return {
     listByProduto: vi.fn().mockResolvedValue([]),
@@ -60,16 +65,28 @@ function criarAvaliacoesServiceFake(
 
 function criarOpcoesFiltroServiceFake(): OpcoesFiltroService {
   return {
-    categorias: vi.fn().mockResolvedValue([{ id: "categoria-1", nome: "Renda e Bordado" }]),
-    tecnicas: vi.fn().mockResolvedValue([{ id: "tecnica-1", nome: "Renda de Bilro" }]),
-    regioes: vi.fn().mockResolvedValue([{ id: "regiao-1", nome: "Pilar, Recife" }]),
+    categorias: vi
+      .fn()
+      .mockResolvedValue([{ id: "categoria-1", nome: "Renda e Bordado" }]),
+    tecnicas: vi
+      .fn()
+      .mockResolvedValue([{ id: "tecnica-1", nome: "Renda de Bilro" }]),
+    regioes: vi
+      .fn()
+      .mockResolvedValue([{ id: "regiao-1", nome: "Pilar, Recife" }]),
   };
 }
 
 function criarUsuariosServiceFake(): UsuariosService {
   return {
     list: vi.fn().mockResolvedValue([
-      { id: "artesao-1", nome: "Maria das Rendas", email: "m@origem.test", papel: "artesao", ativo: true },
+      {
+        id: "artesao-1",
+        nome: "Maria das Rendas",
+        email: "m@origem.test",
+        papel: "artesao",
+        ativo: true,
+      },
     ]),
     register: vi.fn(),
     login: vi.fn(),
@@ -80,7 +97,14 @@ function criarRecomendacoesServiceFake(): RecomendacoesService {
   return {
     obter: vi.fn().mockResolvedValue({
       estrategia: "categoria",
-      itens: [produto({ id: "produto-2", nome: "Caminho de Mesa Bordado" })],
+      itens: [
+        produto({
+          id: "produto-2",
+          nome: "Caminho de Mesa Bordado",
+          preco: 29.9,
+          artesaoId: "artesao-2",
+        }),
+      ],
     }),
   };
 }
@@ -102,7 +126,11 @@ function renderizar(overrides: Partial<DetalheProdutoProps> = {}) {
 
 describe("DetalheProduto", () => {
   it("mostra carregando antes do produto chegar", () => {
-    renderizar({ produtosService: criarProdutosServiceFake({ obterPublico: vi.fn(() => new Promise<Produto | null>(() => {})) }) });
+    renderizar({
+      produtosService: criarProdutosServiceFake({
+        obterPublico: vi.fn(() => new Promise<Produto | null>(() => {})),
+      }),
+    });
 
     expect(screen.getByRole("status")).toHaveTextContent(/carregando produto/i);
   });
@@ -110,8 +138,12 @@ describe("DetalheProduto", () => {
   it("mostra todos os dados do produto no sucesso", async () => {
     renderizar();
 
-    expect(await screen.findByRole("heading", { level: 1, name: "Toalha de Renda" })).toBeInTheDocument();
-    expect(screen.getByText("Toalha feita a mao com linha de algodao.")).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { level: 1, name: "Toalha de Renda" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("Toalha feita a mao com linha de algodao."),
+    ).toBeInTheDocument();
     expect(screen.getByText("R$ 59,90")).toBeInTheDocument();
     expect(screen.getByText(/3 disponíveis/i)).toBeInTheDocument();
     expect(screen.getByText("Renda e Bordado")).toBeInTheDocument();
@@ -141,13 +173,15 @@ describe("DetalheProduto", () => {
               { url: "//externo.test/foto.jpg", ordem: 1 },
               { url: "https://origem.test/foto.jpg", ordem: 2 },
             ],
-          })
+          }),
         ),
       }),
     });
 
     await screen.findByRole("heading", { level: 1 });
-    const imagens = within(screen.getByRole("list", { name: /fotos do produto/i })).getAllByRole("img");
+    const imagens = within(
+      screen.getByRole("list", { name: /fotos do produto/i }),
+    ).getAllByRole("img");
     expect(imagens.map((imagem) => imagem.getAttribute("src"))).toEqual([
       "https://origem.test/foto.jpg",
     ]);
@@ -164,7 +198,11 @@ describe("DetalheProduto", () => {
   it("indica quando o produto ainda nao tem avaliacoes", async () => {
     renderizar({
       avaliacoesService: criarAvaliacoesServiceFake({
-        resumo: vi.fn().mockResolvedValue({ produtoId: "produto-1", media: 0, quantidade: 0 }),
+        resumo: vi.fn().mockResolvedValue({
+          produtoId: "produto-1",
+          media: 0,
+          quantidade: 0,
+        }),
       }),
     });
 
@@ -181,23 +219,93 @@ describe("DetalheProduto", () => {
   it("usa o produtoId da pagina como contexto das recomendacoes", async () => {
     const props = renderizar();
 
-    expect(await screen.findByText("Caminho de Mesa Bordado")).toBeInTheDocument();
-    expect(props.recomendacoesService?.obter).toHaveBeenCalledWith({ produtoId: "produto-1" });
+    expect(
+      await screen.findByText("Caminho de Mesa Bordado"),
+    ).toBeInTheDocument();
+    expect(props.recomendacoesService?.obter).toHaveBeenCalledWith({
+      produtoId: "produto-1",
+    });
+  });
+
+  it("mostra Pecas relacionadas com link e acao do ProdutoCard", async () => {
+    const props = renderizar();
+    const regiao = await screen.findByRole("region", {
+      name: "Peças relacionadas",
+    });
+    const link = await within(regiao).findByRole("link", {
+      name: "Caminho de Mesa Bordado",
+    });
+    expect(link).toHaveAttribute("href", "/produto/produto-2");
+    await userEvent
+      .setup()
+      .click(
+        within(regiao).getByRole("button", { name: /adicionar ao carrinho/i }),
+      );
+    expect(props.onAdicionarAoCarrinho).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "produto-2" }),
+    );
+  });
+
+  it("mostra erro de recomendacao sem ocultar o detalhe", async () => {
+    renderizar({
+      recomendacoesService: {
+        obter: vi.fn().mockRejectedValue(new Error("API indisponivel")),
+      },
+    });
+    const regiao = await screen.findByRole("region", {
+      name: "Peças relacionadas",
+    });
+    expect(await within(regiao).findByRole("alert")).toHaveTextContent(
+      /não foi possível carregar as recomendações/i,
+    );
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Toalha de Renda" }),
+    ).toBeInTheDocument();
+    expect(
+      within(regiao).queryByText(/nenhuma recomendação/i),
+    ).not.toBeInTheDocument();
+  });
+
+  it("renderiza os itens do fallback geral no carrossel", async () => {
+    renderizar({
+      recomendacoesService: {
+        obter: vi.fn().mockResolvedValue({
+          estrategia: "fallback-geral",
+          itens: [produto({ id: "produto-3", nome: "Peca do fallback" })],
+        }),
+      },
+    });
+    const regiao = await screen.findByRole("region", {
+      name: "Peças relacionadas",
+    });
+    expect(
+      await within(regiao).findByRole("link", { name: "Peca do fallback" }),
+    ).toHaveAttribute("href", "/produto/produto-3");
   });
 
   it("aciona onAdicionarAoCarrinho com o produto carregado", async () => {
     const usuarioTeste = userEvent.setup();
     const props = renderizar();
 
-    await usuarioTeste.click(await screen.findByRole("button", { name: /adicionar ao carrinho/i }));
+    await screen.findByRole("heading", { level: 1 });
+    await usuarioTeste.click(
+      within(screen.getByRole("article")).getByRole("button", {
+        name: /adicionar ao carrinho/i,
+      }),
+    );
 
     expect(props.onAdicionarAoCarrinho).toHaveBeenCalledWith(produto());
   });
 
   it("mostra erro de carrinho vinculado ao botao", async () => {
-    renderizar({ erroCarrinho: 'Estoque insuficiente para "Toalha de Renda".' });
+    renderizar({
+      erroCarrinho: 'Estoque insuficiente para "Toalha de Renda".',
+    });
 
-    const botao = await screen.findByRole("button", { name: /adicionar ao carrinho/i });
+    await screen.findByRole("heading", { level: 1 });
+    const botao = within(screen.getByRole("article")).getByRole("button", {
+      name: /adicionar ao carrinho/i,
+    });
     const alerta = screen.getByRole("alert");
     expect(alerta).toHaveTextContent(/estoque insuficiente/i);
     expect(botao).toHaveAttribute("aria-describedby", alerta.id);
@@ -207,17 +315,27 @@ describe("DetalheProduto", () => {
     renderizar({ mensagemCarrinho: "Produto adicionado ao carrinho." });
 
     await screen.findByRole("heading", { level: 1 });
-    expect(screen.getByText("Produto adicionado ao carrinho.")).toBeInTheDocument();
+    expect(
+      screen.getByText("Produto adicionado ao carrinho."),
+    ).toBeInTheDocument();
   });
 
   it("produto indisponivel ou inexistente nao pode ser comprado nem gera recomendacoes", async () => {
     const props = renderizar({
-      produtosService: criarProdutosServiceFake({ obterPublico: vi.fn().mockResolvedValue(null) }),
+      produtosService: criarProdutosServiceFake({
+        obterPublico: vi.fn().mockResolvedValue(null),
+      }),
     });
 
-    expect(await screen.findByText(/produto indisponível ou não encontrado/i)).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /adicionar ao carrinho/i })).not.toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /voltar para a vitrine/i })).toHaveAttribute("href", "/");
+    expect(
+      await screen.findByText(/produto indisponível ou não encontrado/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /adicionar ao carrinho/i }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /voltar para a vitrine/i }),
+    ).toHaveAttribute("href", "/");
     expect(props.recomendacoesService?.obter).not.toHaveBeenCalled();
   });
 
@@ -229,11 +347,19 @@ describe("DetalheProduto", () => {
       .mockResolvedValue(produto());
     renderizar({ produtosService: criarProdutosServiceFake({ obterPublico }) });
 
-    expect(await screen.findByRole("alert")).toHaveTextContent(/não foi possível carregar este produto/i);
-    expect(screen.queryByRole("button", { name: /adicionar ao carrinho/i })).not.toBeInTheDocument();
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      /não foi possível carregar este produto/i,
+    );
+    expect(
+      screen.queryByRole("button", { name: /adicionar ao carrinho/i }),
+    ).not.toBeInTheDocument();
 
-    await usuarioTeste.click(screen.getByRole("button", { name: /tentar novamente/i }));
+    await usuarioTeste.click(
+      screen.getByRole("button", { name: /tentar novamente/i }),
+    );
 
-    expect(await screen.findByRole("heading", { level: 1, name: "Toalha de Renda" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { level: 1, name: "Toalha de Renda" }),
+    ).toBeInTheDocument();
   });
 });

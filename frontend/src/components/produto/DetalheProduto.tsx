@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import { useDetalheProduto } from "@/hooks/use-detalhe-produto";
 import { useNomeArtesao } from "@/hooks/use-nome-artesao";
 import { FaixaRecomendacoes } from "@/components/vitrine/FaixaRecomendacoes";
+import { ProdutoCard } from "@/components/vitrine/ProdutoCard";
 import { Icone } from "@/components/vitrine/Icone";
 import {
   BLOCO,
@@ -38,8 +39,10 @@ export interface DetalheProdutoProps {
 
 const ERRO_CARRINHO_ID = "erro-carrinho-detalhe";
 
-const CLASSE_DT = "border-b border-border-subtle py-3.5 pr-6 text-body-sm text-fg-muted";
-const CLASSE_DD = "m-0 border-b border-border-subtle py-3.5 text-[15px] text-fg-strong";
+const CLASSE_DT =
+  "border-b border-border-subtle py-3.5 pr-6 text-body-sm text-fg-muted";
+const CLASSE_DD =
+  "m-0 border-b border-border-subtle py-3.5 text-[15px] text-fg-strong";
 
 const BOTAO_SECUNDARIO =
   "inline-flex min-h-[var(--control-h-md)] items-center justify-center rounded-control border border-border-strong bg-surface-card px-4 text-button font-semibold text-fg-strong transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover";
@@ -79,17 +82,17 @@ export function DetalheProduto({
     produtosService,
     avaliacoesService,
     opcoesFiltroService,
-    produtoId
+    produtoId,
   );
   const produto = estado.status === "sucesso" ? estado.produto : null;
   const nomeArtesao = useNomeArtesao(
     produto ? usuariosService : null,
-    produto?.artesaoId ?? ""
+    produto?.artesaoId ?? "",
   );
 
   const contextoRecomendacao = useMemo<RecomendacaoContexto | null>(
     () => (produto ? { produtoId: produto.id } : null),
-    [produto]
+    [produto],
   );
 
   const fotos = useMemo(
@@ -100,7 +103,7 @@ export function DetalheProduto({
             .map((foto) => fotoUrlSegura(foto.url))
             .filter((url): url is string => url !== null)
         : [],
-    [produto]
+    [produto],
   );
 
   const semEstoque = produto?.quantidadeEstoque === 0;
@@ -122,8 +125,13 @@ export function DetalheProduto({
           <p role="status" className={CLASSE_STATUS}>
             Carregando produto...
           </p>
-          <div aria-hidden="true" className="flex flex-wrap items-start gap-6 sm:gap-12">
-            <span className={`${BLOCO} aspect-square min-w-0 flex-[1.1_1_400px] rounded-card`} />
+          <div
+            aria-hidden="true"
+            className="flex flex-wrap items-start gap-6 sm:gap-12"
+          >
+            <span
+              className={`${BLOCO} aspect-square min-w-0 flex-[1.1_1_400px] rounded-card`}
+            />
             <div className="flex min-w-0 flex-[1_1_340px] flex-col gap-4 pt-2">
               <span className={`${BLOCO} h-10 w-4/5`} />
               <span className={`${BLOCO} h-4 w-[45%]`} />
@@ -131,7 +139,9 @@ export function DetalheProduto({
               <span className={`${BLOCO} h-3.5 w-full`} />
               <span className={`${BLOCO} h-3.5 w-11/12`} />
               <span className={`${BLOCO} h-44 rounded-card`} />
-              <span className={`${BLOCO} h-[var(--control-h-lg)] rounded-control`} />
+              <span
+                className={`${BLOCO} h-[var(--control-h-lg)] rounded-control`}
+              />
             </div>
           </div>
         </div>
@@ -140,7 +150,10 @@ export function DetalheProduto({
       {estado.status === "indisponivel" ? (
         <div className={CLASSE_VAZIO}>
           <IconeVazio nome="pacote" />
-          <p role="status" className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
+          <p
+            role="status"
+            className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"
+          >
             Produto indisponível ou não encontrado.
           </p>
         </div>
@@ -152,7 +165,11 @@ export function DetalheProduto({
             <Icone nome="alerta" className="mt-0.5 flex-none" />
             {estado.mensagem}
           </p>
-          <button type="button" onClick={recarregar} className={BOTAO_SECUNDARIO}>
+          <button
+            type="button"
+            onClick={recarregar}
+            className={BOTAO_SECUNDARIO}
+          >
             Tentar novamente
           </button>
         </div>
@@ -163,14 +180,22 @@ export function DetalheProduto({
           <article className="flex flex-wrap items-start gap-6 sm:gap-12">
             <div className="min-w-0 flex-[1.1_1_400px] lg:sticky lg:top-24">
               {fotos.length > 0 ? (
-                <ul aria-label="Fotos do produto" className="grid grid-cols-4 gap-2 sm:gap-3">
+                <ul
+                  aria-label="Fotos do produto"
+                  className="grid grid-cols-4 gap-2 sm:gap-3"
+                >
                   {fotos.map((url, indice) => (
-                    <li key={`${url}-${indice}`} className={indice === 0 ? "col-span-4" : undefined}>
+                    <li
+                      key={`${url}-${indice}`}
+                      className={indice === 0 ? "col-span-4" : undefined}
+                    >
                       <img
                         src={url}
                         alt={`${produto.nome}, foto ${indice + 1}`}
                         className={`aspect-square w-full border border-border-subtle bg-linho-100 object-cover ${
-                          indice === 0 ? "rounded-card shadow-card" : "rounded-media"
+                          indice === 0
+                            ? "rounded-card shadow-card"
+                            : "rounded-media"
                         }`}
                       />
                     </li>
@@ -212,7 +237,9 @@ export function DetalheProduto({
 
                 <p
                   className={`m-0 inline-flex items-center gap-1.5 rounded-pill px-2.5 py-1 text-body-sm font-semibold ${
-                    semEstoque ? "bg-linho-100 text-fg-muted" : "bg-aviso-50 text-aviso-700"
+                    semEstoque
+                      ? "bg-linho-100 text-fg-muted"
+                      : "bg-aviso-50 text-aviso-700"
                   }`}
                 >
                   <span
@@ -286,13 +313,20 @@ export function DetalheProduto({
                     role="alert"
                     className="m-0 flex items-start gap-1.5 text-body-sm text-erro-700"
                   >
-                    <Icone nome="alerta" tamanho={16} className="mt-0.5 flex-none" />
+                    <Icone
+                      nome="alerta"
+                      tamanho={16}
+                      className="mt-0.5 flex-none"
+                    />
                     {erroCarrinho}
                   </p>
                 ) : null}
 
                 {mensagemCarrinho && !erroCarrinho ? (
-                  <p role="status" className="m-0 text-body-sm font-medium text-sucesso-700">
+                  <p
+                    role="status"
+                    className="m-0 text-body-sm font-medium text-sucesso-700"
+                  >
                     {mensagemCarrinho}
                   </p>
                 ) : null}
@@ -300,7 +334,18 @@ export function DetalheProduto({
             </div>
           </article>
 
-          <FaixaRecomendacoes service={recomendacoesService} contexto={contextoRecomendacao} />
+          <FaixaRecomendacoes
+            service={recomendacoesService}
+            contexto={contextoRecomendacao}
+            titulo="Peças relacionadas"
+            renderizarProduto={(relacionado) => (
+              <ProdutoCard
+                produto={relacionado}
+                usuariosService={usuariosService}
+                onAdicionarAoCarrinho={onAdicionarAoCarrinho}
+              />
+            )}
+          />
         </>
       ) : null}
     </div>

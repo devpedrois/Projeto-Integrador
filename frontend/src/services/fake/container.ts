@@ -30,6 +30,7 @@ import { HttpUsuariosService } from "@/services/http/usuarios.service";
 import { HttpProdutosService } from "@/services/http/produtos.service";
 import { HttpOpcoesFiltroService } from "@/services/http/opcoes-filtro.service";
 import { HttpAvaliacoesService } from "@/services/http/avaliacoes.service";
+import { HttpRecommendationAdapter } from "@/services/http/recomendacoes.adapter";
 import { obterFonteDados } from "@/services/data-source";
 import { ServiceError } from "@/services/errors";
 
@@ -38,7 +39,6 @@ export const PENDENTES_HTTP = [
   "PedidosService",
   "PerfilArtesaoService",
   "AvaliacoesService.create",
-  "RecomendacoesService",
   "ModeracaoService",
   "CarrinhoStore",
   "UsuariosService.list",
@@ -68,7 +68,7 @@ const perfilHttpPendente: PerfilArtesaoService = {
   salvar: pendente,
 };
 const avaliacoesHttp: AvaliacoesService = new HttpAvaliacoesService();
-const recomendacoesHttpPendentes: RecomendacoesService = { obter: pendente };
+const recomendacoesHttp: RecomendacoesService = new HttpRecommendationAdapter();
 const opcoesHttp: OpcoesFiltroService = new HttpOpcoesFiltroService();
 const moderacaoHttpPendente: ModeracaoService = {
   listarArtesaos: pendente,
@@ -184,7 +184,7 @@ export function obterPedidosService(): PedidosService {
  * sem alterar hooks, componentes ou paginas que dependem do contrato.
  */
 export function obterRecomendacoesService(): RecomendacoesService {
-  if (modoHttp()) return recomendacoesHttpPendentes;
+  if (modoHttp()) return recomendacoesHttp;
   if (!recomendacoesServiceInstancia) {
     const repositorio = new BrowserProdutoRepository(window.localStorage);
     recomendacoesServiceInstancia = new FakeRecommendationAdapter(

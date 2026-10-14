@@ -639,3 +639,51 @@ Validacao final: 340 testes backend e 735 testes frontend.
 Lint, typecheck e Prettier passaram nos dois projetos.
 PostgreSQL emitiu aviso preexistente sobre sslmode=require.
 Nao houve commit, push ou deploy.
+
+### 14/10/2026: IA-02, recomendacoes HTTP e carrossel
+
+Codex implementou somente IA-02 com TDD e diretrizes React.
+Leu AGENTS.md, IA-02, T10.3, RECOMMENDATION e FAKE_API.
+Inspecionou contratos, adapter local, hook, faixa, cards e detalhe.
+A branch codex/ia-02-http-recommendations isola a subtarefa.
+
+Antes da implementacao, 26 testes falharam e 18 passaram.
+HttpRecommendationAdapter entrou no container e saiu de PENDENTES_HTTP.
+O adapter valida contexto e reutiliza ApiClient e parser Produto.
+Preserva estrategia e ranking recebidos, inclusive fallback-geral.
+Exclui contexto, duplicados e invisiveis antes do limite oito.
+Falhas HTTP continuam como erro visivel do hook existente.
+O modo fake conserva o adapter local da AV1.
+
+Peças relacionadas reutiliza ProdutoCard, links e acao existente.
+FaixaRecomendacoes compartilha estados por renderer opcional.
+Os links da faixa compacta agora abrem o produto.
+Nenhuma regra nova de ranking ou historico foi implementada.
+O backend produtivo permaneceu inalterado.
+
+Playwright Node.js validou Next.js, Express e PostgreSQL reais.
+O runtime Python nao possuia Playwright; Node.js ja estava disponivel.
+Fixtures sinteticas ficaram em schema temporario isolado.
+As chamadas /api/recomendacoes foram capturadas em Network JSON.
+O painel visual foi adicionado somente pela automacao.
+Ele identifica chamadas reais e nao representa DevTools nativo.
+O GIF agrupa PNGs reais sem redesenhar o conteudo.
+A resposta JSON tambem foi aberta e capturada no navegador.
+
+A primeira coleta revelou cards encolhidos pelo minmax.
+Medidas CSS comprovaram 27px por card na largura 360px.
+Colunas fixas de 260px corrigiram as tres larguras.
+Validacao final confirmou 360, 768 e 1280px sem overflow.
+Tela e API exibiram os mesmos oito IDs ordenados.
+Categoria e fallback excluiram o proprio produto.
+HTTP 503 controlado mostrou alertas na vitrine e detalhe.
+Servidores e schema temporario foram encerrados ao terminar.
+Nenhum banco ou repository foi mockado na integracao.
+
+A escolha anterior manteve a revisao equivalente nesta conversa.
+Ela conferiu inputs, URLs, payloads, fotos e ausencia de fallback fake.
+Nao houve achados de seguranca no diff revisado.
+Suite final: 761 testes frontend em 78 arquivos.
+Lint, typecheck, Prettier e build HTTP passaram.
+Evidencias ficam em evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/.
+Nao houve commit, push ou deploy.
