@@ -1,7 +1,10 @@
 import type { ProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import type { UsuarioRepository } from "@/fake-api/repositories/usuario.repository";
 import type { Produto } from "@/types/produto";
-import type { RecomendacaoContexto, RecomendacaoResultado } from "@/types/recomendacao";
+import type {
+  RecomendacaoContexto,
+  RecomendacaoResultado,
+} from "@/types/recomendacao";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
 import {
   idsArtesaosInativos,
@@ -30,7 +33,7 @@ function ordenarPorPopularidade(produtos: Produto[]): Produto[] {
 
 function ordenarPorCategoriaERegiao(
   produtos: Produto[],
-  produtoContexto: Produto
+  produtoContexto: Produto,
 ): Produto[] {
   return [...produtos].sort((a, b) => {
     const regiaoA = a.regiaoId === produtoContexto.regiaoId ? 0 : 1;
@@ -54,7 +57,7 @@ function ordenarPorCategoriaERegiao(
 export class FakeRecommendationAdapter implements RecomendacoesService {
   constructor(
     private readonly repositorio: ProdutoRepository,
-    private readonly usuarioRepositorio: UsuarioRepository | null = null
+    private readonly usuarioRepositorio: UsuarioRepository | null = null,
   ) {}
 
   async obter(contexto: RecomendacaoContexto): Promise<RecomendacaoResultado> {
@@ -62,22 +65,24 @@ export class FakeRecommendationAdapter implements RecomendacoesService {
     const produtos = await this.repositorio.list();
     const artesaosInativos = await this.artesaosInativos();
     const visiveis = produtos.filter((produto) =>
-      produtoVisivelPublicamente(produto, artesaosInativos)
+      produtoVisivelPublicamente(produto, artesaosInativos),
     );
 
     if ("usuarioId" in contexto && contexto.usuarioId !== undefined) {
       return this.fallbackGeral(visiveis, null);
     }
 
-    const produtoContexto = produtos.find((produto) => produto.id === contexto.produtoId);
+    const produtoContexto = produtos.find(
+      (produto) => produto.id === contexto.produtoId,
+    );
     if (!produtoContexto) {
-      return this.fallbackGeral(visiveis, contexto.produtoId);
+      return this.fallbackGeral(visiveis, contexto.produtoId ?? null);
     }
 
     const candidatos = visiveis.filter(
       (produto) =>
         produto.id !== produtoContexto.id &&
-        produto.categoriaId === produtoContexto.categoriaId
+        produto.categoriaId === produtoContexto.categoriaId,
     );
 
     if (candidatos.length === 0) {
@@ -94,7 +99,7 @@ export class FakeRecommendationAdapter implements RecomendacoesService {
 
   private fallbackGeral(
     visiveis: Produto[],
-    excluirId: string | null
+    excluirId: string | null,
   ): RecomendacaoResultado {
     const candidatos = visiveis.filter((produto) => produto.id !== excluirId);
     const ordenados = ordenarPorPopularidade(candidatos);

@@ -9,6 +9,7 @@ import { PedidoController } from "./controllers/pedido.controller.js";
 import { RecomendacaoController } from "./controllers/recomendacao.controller.js";
 import { UsuarioController } from "./controllers/usuario.controller.js";
 import { CategoriaRecomendacaoStrategy } from "./integrations/recommendation/categoria-recomendacao.strategy.js";
+import { HistoricoCompraRecomendacaoStrategy } from "./integrations/recommendation/historico-compra-recomendacao.strategy.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 import { autenticar } from "./middlewares/auth.middleware.js";
 import { PrismaHealthRepository } from "./repositories/health.repository.js";
@@ -93,6 +94,10 @@ export function createApp(
   );
   const recomendacaoController = new RecomendacaoController(
     recomendacaoService,
+    new RecomendacaoService(
+      new HistoricoCompraRecomendacaoStrategy(recomendacaoRepository),
+      catalogoRepository,
+    ),
     cacheHttp,
   );
 
@@ -145,7 +150,7 @@ export function createApp(
       autenticarUsuario,
     ),
   );
-  app.use(createRecomendacaoRouter(recomendacaoController));
+  app.use(createRecomendacaoRouter(recomendacaoController, autenticarUsuario));
   app.use(
     createCatalogoRouter(
       new CatalogoController(

@@ -159,13 +159,12 @@ describe("WEB-13 cache HTTP publico", () => {
     ).toBe("MISS");
   });
   it("nao compartilha recomendacoes por usuario nem cacheia rotas privadas", async () => {
-    for (const id of [compradorId, artesaoId, compradorId]) {
+    for (const id of [compradorId, compradorId]) {
       const response = await request(app)
-        .get("/recomendacoes")
-        .query({ usuarioId: id })
+        .get("/recomendacoes/para-mim")
         .set("Cookie", cookie(id));
       expect(response.status).toBe(200);
-      expect(response.headers["x-cache"]).toBe("MISS");
+      expect(response.headers["x-cache"]).toBeUndefined();
       expect(response.headers["cache-control"]).toBe("no-store");
     }
     for (const [rota, id] of [

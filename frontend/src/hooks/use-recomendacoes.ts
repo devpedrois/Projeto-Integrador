@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
-import type { RecomendacaoContexto, RecomendacaoResultado } from "@/types/recomendacao";
+import type {
+  RecomendacaoContexto,
+  RecomendacaoResultado,
+} from "@/types/recomendacao";
 
 export type EstadoRecomendacoes =
   | { status: "carregando" }
@@ -10,18 +13,21 @@ export type EstadoRecomendacoes =
   | { status: "vazio" }
   | { status: "erro"; mensagem: string };
 
-const MENSAGEM_ERRO_PADRAO = "Não foi possível carregar as recomendações agora.";
+const MENSAGEM_ERRO_PADRAO =
+  "Não foi possível carregar as recomendações agora.";
 
 /**
  * Consome `RecomendacoesService` sem aplicar nenhuma regra de ranking aqui:
- * toda ordenacao vem pronta do adapter/service. Nunca chama o service sem
- * um contexto real (produtoId ou usuarioId ja carregado).
+ * toda ordenacao vem pronta do adapter/service. Contexto vazio solicita
+ * fallback geral; null suspende a consulta enquanto o contexto carrega.
  */
 export function useRecomendacoes(
   service: RecomendacoesService | null,
-  contexto: RecomendacaoContexto | null
+  contexto: RecomendacaoContexto | null,
 ): EstadoRecomendacoes {
-  const [estado, setEstado] = useState<EstadoRecomendacoes>({ status: "carregando" });
+  const [estado, setEstado] = useState<EstadoRecomendacoes>({
+    status: "carregando",
+  });
 
   useEffect(() => {
     if (!service || !contexto) {
@@ -39,7 +45,7 @@ export function useRecomendacoes(
         setEstado(
           resultado.itens.length === 0
             ? { status: "vazio" }
-            : { status: "sucesso", resultado }
+            : { status: "sucesso", resultado },
         );
       })
       .catch(() => {
@@ -50,7 +56,7 @@ export function useRecomendacoes(
     return () => {
       cancelado = true;
     };
-  }, [service, contexto?.produtoId, contexto?.usuarioId]);
+  }, [service, contexto === null, contexto?.produtoId, contexto?.usuarioId]);
 
   return estado;
 }

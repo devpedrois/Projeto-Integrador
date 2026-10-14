@@ -29,12 +29,17 @@ class ProdutoRepositoryEmMemoria implements ProdutoRepository {
 
   async update(
     id: string,
-    alteracoes: Partial<Omit<Produto, "id" | "artesaoId">>
+    alteracoes: Partial<Omit<Produto, "id" | "artesaoId">>,
   ): Promise<Produto | null> {
     const indice = this.produtos.findIndex((produto) => produto.id === id);
     if (indice === -1) return null;
     const atual = this.produtos[indice] as Produto;
-    const atualizado: Produto = { ...atual, ...alteracoes, id: atual.id, artesaoId: atual.artesaoId };
+    const atualizado: Produto = {
+      ...atual,
+      ...alteracoes,
+      id: atual.id,
+      artesaoId: atual.artesaoId,
+    };
     this.produtos[indice] = atualizado;
     return atualizado;
   }
@@ -57,7 +62,7 @@ describe("FakeRecommendationAdapter - fixture contratual por produto", () => {
 
     expect(resultado.estrategia).toBe(fixture.resultadoEsperado.estrategia);
     expect(resultado.itens.map((item) => item.id)).toEqual(
-      fixture.resultadoEsperado.produtoIds
+      fixture.resultadoEsperado.produtoIds,
     );
   });
 
@@ -80,9 +85,9 @@ describe("FakeRecommendationAdapter - fixture contratual por produto", () => {
       produtoId: fixture.contexto.produtoId,
     });
 
-    expect(resultado.itens.some((item) => item.id === fixture.contexto.produtoId)).toBe(
-      false
-    );
+    expect(
+      resultado.itens.some((item) => item.id === fixture.contexto.produtoId),
+    ).toBe(false);
   });
 
   it("nunca inclui produto de outra categoria, inativo ou sem estoque", async () => {
@@ -101,6 +106,17 @@ describe("FakeRecommendationAdapter - fixture contratual por produto", () => {
 });
 
 describe("FakeRecommendationAdapter - fallback geral", () => {
+  it("vitrine sem contexto recebe fallback do repositorio local real", async () => {
+    const repositorio = new BrowserProdutoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
+    const adapter = new FakeRecommendationAdapter(repositorio);
+    const resultado = await adapter.obter({});
+    expect(resultado.estrategia).toBe("fallback-geral");
+    expect(resultado.itens.length).toBeGreaterThan(0);
+    expect(resultado.itens.length).toBeLessThanOrEqual(8);
+  });
   it("usa fallback geral quando o contexto e usuarioId", async () => {
     const repositorio = new ProdutoRepositoryEmMemoria(PRODUTOS_FIXTURE);
     const adapter = new FakeRecommendationAdapter(repositorio);
@@ -162,17 +178,24 @@ describe("FakeRecommendationAdapter - fallback geral", () => {
     const resultado = await adapter.obter({ produtoId: "contexto-isolado" });
 
     expect(resultado.estrategia).toBe("fallback-geral");
-    expect(resultado.itens.map((item) => item.id)).toEqual(["produto-fallback-01"]);
+    expect(resultado.itens.map((item) => item.id)).toEqual([
+      "produto-fallback-01",
+    ]);
   });
 });
 
 describe("FakeRecommendationAdapter - repositorio real do navegador", () => {
   it("usa o repositorio local real e persiste apos nova instancia", async () => {
-    const repositorio = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const repositorio = new BrowserProdutoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const adapter = new FakeRecommendationAdapter(repositorio);
     await repositorio.seed();
     const produtos = await repositorio.list();
-    const contexto = produtos.find((produto) => produto.ativo && produto.quantidadeEstoque > 0);
+    const contexto = produtos.find(
+      (produto) => produto.ativo && produto.quantidadeEstoque > 0,
+    );
     if (!contexto) throw new Error("massa de teste sem produto elegivel");
 
     const resultado = await adapter.obter({ produtoId: contexto.id });

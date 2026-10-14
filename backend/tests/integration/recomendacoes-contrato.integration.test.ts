@@ -252,10 +252,7 @@ describe("IA-01 contrato publico de recomendacoes", () => {
   );
 
   it("fallback tambem retorna produtos completos", async () => {
-    for (const contexto of [
-      { produtoId: randomUUID() },
-      { usuarioId: randomUUID() },
-    ]) {
+    for (const contexto of [{ produtoId: randomUUID() }, {}]) {
       const response = await request(app).get("/recomendacoes").query(contexto);
       expect(response.status).toBe(200);
       expect(resultadoSchema.parse(response.body).estrategia).toBe(

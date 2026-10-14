@@ -40,10 +40,8 @@ describe("HttpRecommendationAdapter no container", () => {
       { produtoId: contextoId },
       "/api/recomendacoes?produtoId=aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
     ],
-    [
-      { usuarioId },
-      "/api/recomendacoes?usuarioId=bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
-    ],
+    [{ usuarioId }, "/api/recomendacoes/para-mim"],
+    [{}, "/api/recomendacoes"],
   ] as const)(
     "consulta /api/recomendacoes com contexto real: %j",
     async (contexto, destino) => {
@@ -153,7 +151,6 @@ describe("HttpRecommendationAdapter no container", () => {
   });
 
   it.each([
-    {},
     { produtoId: contextoId, usuarioId },
     { produtoId: "" },
     { produtoId: contextoId, extra: true },

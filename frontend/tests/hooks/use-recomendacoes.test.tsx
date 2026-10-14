@@ -2,7 +2,10 @@ import { describe, expect, it, vi } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
 import { useRecomendacoes } from "@/hooks/use-recomendacoes";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
-import type { RecomendacaoResultado } from "@/types/recomendacao";
+import type {
+  RecomendacaoContexto,
+  RecomendacaoResultado,
+} from "@/types/recomendacao";
 import type { Produto } from "@/types/produto";
 
 function produto(id: string): Produto {
@@ -24,11 +27,29 @@ function produto(id: string): Produto {
   };
 }
 
-function criarServicoFake(obterImpl: RecomendacoesService["obter"]): RecomendacoesService {
+function criarServicoFake(
+  obterImpl: RecomendacoesService["obter"],
+): RecomendacoesService {
   return { obter: obterImpl };
 }
 
 describe("useRecomendacoes", () => {
+  it("consulta fallback quando contexto passa de null para vazio", async () => {
+    const obter = vi
+      .fn()
+      .mockResolvedValue({ estrategia: "fallback-geral", itens: [] });
+    const service = criarServicoFake(obter);
+    const { result, rerender } = renderHook(
+      ({ contexto }: { contexto: RecomendacaoContexto | null }) =>
+        useRecomendacoes(service, contexto),
+      { initialProps: { contexto: null as RecomendacaoContexto | null } },
+    );
+    rerender({ contexto: {} });
+    await waitFor(() => expect(result.current).toEqual({ status: "vazio" }));
+    expect(obter).toHaveBeenCalledWith({});
+    rerender({ contexto: null });
+    expect(result.current).toEqual({ status: "carregando" });
+  });
   it("permanece em carregando quando nao ha service ou contexto", () => {
     const { result } = renderHook(() => useRecomendacoes(null, null));
 
@@ -43,32 +64,37 @@ describe("useRecomendacoes", () => {
     const service = criarServicoFake(vi.fn().mockResolvedValue(resultado));
 
     const { result } = renderHook(() =>
-      useRecomendacoes(service, { produtoId: "contexto-1" })
+      useRecomendacoes(service, { produtoId: "contexto-1" }),
     );
 
     expect(result.current).toEqual({ status: "carregando" });
 
     await waitFor(() =>
-      expect(result.current).toEqual({ status: "sucesso", resultado })
+      expect(result.current).toEqual({ status: "sucesso", resultado }),
     );
   });
 
   it("retorna vazio quando o service resolve sem itens", async () => {
-    const resultado: RecomendacaoResultado = { estrategia: "categoria", itens: [] };
+    const resultado: RecomendacaoResultado = {
+      estrategia: "categoria",
+      itens: [],
+    };
     const service = criarServicoFake(vi.fn().mockResolvedValue(resultado));
 
     const { result } = renderHook(() =>
-      useRecomendacoes(service, { produtoId: "contexto-1" })
+      useRecomendacoes(service, { produtoId: "contexto-1" }),
     );
 
     await waitFor(() => expect(result.current).toEqual({ status: "vazio" }));
   });
 
   it("retorna erro recuperavel quando o service rejeita", async () => {
-    const service = criarServicoFake(vi.fn().mockRejectedValue(new Error("falhou")));
+    const service = criarServicoFake(
+      vi.fn().mockRejectedValue(new Error("falhou")),
+    );
 
     const { result } = renderHook(() =>
-      useRecomendacoes(service, { produtoId: "contexto-1" })
+      useRecomendacoes(service, { produtoId: "contexto-1" }),
     );
 
     await waitFor(() => expect(result.current.status).toBe("erro"));
@@ -84,13 +110,17 @@ describe("useRecomendacoes", () => {
   });
 
   it("chama o service com o contexto informado", async () => {
-    const obter = vi.fn().mockResolvedValue({ estrategia: "categoria", itens: [] });
+    const obter = vi
+      .fn()
+      .mockResolvedValue({ estrategia: "categoria", itens: [] });
     const service = criarServicoFake(obter);
 
-    renderHook(() => useRecomendacoes(service, { produtoId: "produto-destacado" }));
+    renderHook(() =>
+      useRecomendacoes(service, { produtoId: "produto-destacado" }),
+    );
 
     await waitFor(() =>
-      expect(obter).toHaveBeenCalledWith({ produtoId: "produto-destacado" })
+      expect(obter).toHaveBeenCalledWith({ produtoId: "produto-destacado" }),
     );
   });
 });

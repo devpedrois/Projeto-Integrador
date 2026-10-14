@@ -5,12 +5,10 @@ import { AppError } from "../errors/app-error.js";
 const recomendacaoQuerySchema = z
   .object({
     produtoId: z.uuid().optional(),
-    usuarioId: z.uuid().optional(),
   })
-  .strict()
-  .refine((data) => (data.produtoId !== undefined) !== (data.usuarioId !== undefined), {
-    message: "Informe produtoId ou usuarioId, nunca os dois nem nenhum.",
-  });
+  .strict();
+
+const recomendacaoPessoalQuerySchema = z.object({}).strict();
 
 export type RecomendacaoQuery = z.infer<typeof recomendacaoQuerySchema>;
 
@@ -25,5 +23,17 @@ export function validateObterRecomendacoes(
     return;
   }
   response.locals.recomendacaoContexto = result.data;
+  next();
+}
+
+export function validateObterRecomendacoesPessoais(
+  request: Request,
+  _response: Response,
+  next: NextFunction,
+): void {
+  if (!recomendacaoPessoalQuerySchema.safeParse(request.query).success) {
+    next(new AppError(400, "VALIDACAO", "Contexto de recomendacao invalido."));
+    return;
+  }
   next();
 }

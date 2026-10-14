@@ -21,6 +21,11 @@ export interface RecomendacaoRepository {
   }): Promise<string[]>;
   listarFallbackGeral(params: {
     excluirProdutoId: string | null;
+    excluirCompradorId?: string;
+    limite: number;
+  }): Promise<string[]>;
+  listarCandidatosPorHistorico(params: {
+    compradorId: string;
     limite: number;
   }): Promise<string[]>;
   listarElegiveis(): Promise<ProdutoElegivelRecomendacao[]>;
@@ -112,11 +117,13 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
 
   public async listarFallbackGeral(params: {
     excluirProdutoId: string | null;
+    excluirCompradorId?: string;
     limite: number;
   }): Promise<string[]> {
     const linhas = await this.prisma.$queryRaw<{ id: string }[]>`
       SELECT p."id" AS "id"
       FROM "Produto" p
+      JOIN "Usuario" artesao ON artesao."id" = p."artesaoId"
       LEFT JOIN (
         SELECT "produtoId", SUM("quantidade") AS "vendas"
         FROM "ItemPedido"
@@ -128,8 +135,55 @@ export class PrismaRecomendacaoRepository implements RecomendacaoRepository {
         GROUP BY "produtoId"
       ) notas ON notas."produtoId" = p."id"
       WHERE p."ativo" = true
+        AND p."desativadoPorAdmin" = false
+        AND artesao."ativo" = true
         AND p."quantidadeEstoque" > 0
         AND (${params.excluirProdutoId}::uuid IS NULL OR p."id" <> ${params.excluirProdutoId}::uuid)
+        AND NOT EXISTS (
+          SELECT 1 FROM "ItemPedido" item
+          JOIN "Pedido" pedido ON pedido."id" = item."pedidoId"
+          WHERE pedido."compradorId" = ${params.excluirCompradorId ?? null}::uuid
+            AND pedido."status" = 'confirmado'
+            AND item."produtoId" = p."id"
+        )
+      ORDER BY COALESCE(vendas."vendas", 0) DESC,
+               COALESCE(notas."notaMedia", 0) DESC,
+               p."id" ASC
+      LIMIT ${params.limite}
+    `;
+    return linhas.map(({ id }) => id);
+  }
+
+  public async listarCandidatosPorHistorico(params: {
+    compradorId: string;
+    limite: number;
+  }): Promise<string[]> {
+    const linhas = await this.prisma.$queryRaw<{ id: string }[]>`
+      WITH historico AS (
+        SELECT DISTINCT item."produtoId", comprado."categoriaId"
+        FROM "Pedido" pedido
+        JOIN "ItemPedido" item ON item."pedidoId" = pedido."id"
+        JOIN "Produto" comprado ON comprado."id" = item."produtoId"
+        WHERE pedido."compradorId" = ${params.compradorId}::uuid
+          AND pedido."status" = 'confirmado'
+      )
+      SELECT p."id" AS "id"
+      FROM "Produto" p
+      JOIN "Usuario" artesao ON artesao."id" = p."artesaoId"
+      LEFT JOIN (
+        SELECT "produtoId", SUM("quantidade") AS "vendas"
+        FROM "ItemPedido" GROUP BY "produtoId"
+      ) vendas ON vendas."produtoId" = p."id"
+      LEFT JOIN (
+        SELECT "produtoId", AVG("nota") AS "notaMedia"
+        FROM "Avaliacao" GROUP BY "produtoId"
+      ) notas ON notas."produtoId" = p."id"
+      WHERE p."ativo" = true
+        AND p."desativadoPorAdmin" = false
+        AND p."quantidadeEstoque" > 0
+        AND artesao."ativo" = true
+        AND EXISTS (SELECT 1 FROM historico WHERE "categoriaId" = p."categoriaId")
+        AND NOT EXISTS (SELECT 1 FROM historico WHERE "produtoId" = p."id")
       ORDER BY COALESCE(vendas."vendas", 0) DESC,
                COALESCE(notas."notaMedia", 0) DESC,
                p."id" ASC

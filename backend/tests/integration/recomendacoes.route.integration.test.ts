@@ -99,22 +99,20 @@ describe("GET /recomendacoes", () => {
     });
   });
 
-  it("returns the general fallback for a valid usuarioId", async () => {
+  it("rejects usuarioId on the public route", async () => {
     const response = await request(app).get("/recomendacoes").query({
       usuarioId: randomUUID(),
     });
 
-    expect(response.status).toBe(200);
-    expect(response.body.estrategia).toBe("fallback-geral");
-    expect(Array.isArray(response.body.itens)).toBe(true);
-    expect(response.body.itens.length).toBeLessThanOrEqual(8);
-  });
-
-  it("rejects a request with no context parameter", async () => {
-    const response = await request(app).get("/recomendacoes");
-
     expect(response.status).toBe(400);
     expect(response.body.error.code).toBe("VALIDACAO");
+  });
+
+  it("returns the general fallback without a context", async () => {
+    const response = await request(app).get("/recomendacoes");
+
+    expect(response.status).toBe(200);
+    expect(response.body.estrategia).toBe("fallback-geral");
   });
 
   it("rejects a request with both context parameters at once", async () => {

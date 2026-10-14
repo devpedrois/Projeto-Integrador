@@ -171,7 +171,7 @@ describe("Vitrine (Home)", () => {
     expect(await screen.findByRole("alert")).toBeInTheDocument();
   });
 
-  it("visitante: usa o produtoId do primeiro produto ativo com estoque como contexto", async () => {
+  it("visitante: usa fallback geral", async () => {
     const destacado = produto({
       id: "produto-destacado",
       ativo: true,
@@ -185,9 +185,7 @@ describe("Vitrine (Home)", () => {
     render(<Home />);
 
     await waitFor(() =>
-      expect(recomendacoesServiceMock.obter).toHaveBeenCalledWith({
-        produtoId: "produto-destacado",
-      }),
+      expect(recomendacoesServiceMock.obter).toHaveBeenCalledWith({}),
     );
   });
 
@@ -212,15 +210,36 @@ describe("Vitrine (Home)", () => {
     );
   });
 
-  it("nao chama o service de recomendacoes sem contexto real (sem produtos, sem sessao)", async () => {
+  it("consulta fallback mesmo sem produtos carregados", async () => {
     produtosServiceMock = criarProdutosServiceFake();
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
     await screen.findByText(/nenhum produto dispon/i);
 
-    expect(recomendacoesServiceMock.obter).not.toHaveBeenCalled();
+    expect(recomendacoesServiceMock.obter).toHaveBeenCalledWith({});
   });
+
+  it.each(["artesao", "admin"] as const)(
+    "%s usa fallback publico",
+    async (papel) => {
+      sessionStoreMock = criarSessionStoreFake({
+        id: "usuario-logado",
+        nome: "Ana",
+        email: "ana@origem.test",
+        papel,
+      });
+      produtosServiceMock = criarProdutosServiceFake();
+      const { default: Home } = await import("@/app/page");
+      render(<Home />);
+      await waitFor(() =>
+        expect(recomendacoesServiceMock.obter).toHaveBeenCalledWith({}),
+      );
+      expect(recomendacoesServiceMock.obter).not.toHaveBeenCalledWith({
+        usuarioId: "usuario-logado",
+      });
+    },
+  );
 
   it("visitante adiciona ao carrinho local sem redirecionamento", async () => {
     produtosServiceMock = criarProdutosServiceFake({

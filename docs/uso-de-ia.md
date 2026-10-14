@@ -1109,3 +1109,32 @@ A marcação individual retornou 204 e zerou o badge.
 O painel mobile não apresentou transbordamento horizontal.
 GIF, capturas, chamadas HTTP e estado processado foram salvos.
 Schemas temporários, navegador e servidores foram encerrados.
+
+### IA-03: recomendações pelo histórico autenticado
+
+Codex inspecionou Strategy, contratos e identidade recebida por query.
+Testes precederam implementação backend e mudanças na vitrine HTTP.
+A nova Strategy consulta categorias dos pedidos confirmados.
+Exclui compras próprias e preserva vendas, nota e UUID.
+Sem histórico ou candidatos, identifica fallback geral.
+Fallback pessoal também exclui produtos já comprados.
+SQL parametrizado filtra produtos ocultos e artesãos desativados.
+Agregações separadas preservam ranking sem multiplicar vendas e avaliações.
+A rota para-mim exige sessão válida e papel comprador atual.
+A identidade vem exclusivamente do token validado.
+Query pública rejeita usuarioId; query pessoal deve permanecer vazia.
+A rota pessoal não acessa armazenamento compartilhado de cache.
+Compradores usam para-mim; visitantes e outros papéis usam fallback geral.
+O detalhe mantém recomendações por produto.
+
+Pedro escolheu revisão local equivalente, sem delegação.
+Não houve commit, push ou migration na base publicada.
+Validação completa: 517 testes backend e 842 frontend passaram.
+Backend usou node node_modules/vitest/vitest.mjs run --testTimeout=15000.
+Lint, typecheck, Prettier e revisão local passaram.
+Os testes da Strategy usam PostgreSQL real, sem mocks.
+O navegador confirmou cerâmica e exclusão do vaso comprado.
+Confirmou também fallback para comprador sem compras confirmadas.
+Capturas e respostas HTTP sanitizadas foram salvas.
+Evidências: evidencias/PI4-29-W10-Recomendacao/IA-03/.
+Servidores temporários, navegador e schema sintético foram encerrados.

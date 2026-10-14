@@ -22,16 +22,25 @@ export class HttpRecommendationAdapter implements RecomendacoesService {
     if (!objeto(contexto)) return this.contextoInvalido();
     const campos = Object.keys(contexto);
     const campo = campos[0];
-    if (campos.length !== 1 || (campo !== "produtoId" && campo !== "usuarioId"))
+    if (
+      campos.length > 1 ||
+      (campos.length === 1 && campo !== "produtoId" && campo !== "usuarioId")
+    )
       return this.contextoInvalido();
-    const id = contexto[campo];
-    if (typeof id !== "string" || !UUID.test(id))
+    const id =
+      campo === "produtoId" || campo === "usuarioId"
+        ? contexto[campo]
+        : undefined;
+    if (campos.length === 1 && (typeof id !== "string" || !UUID.test(id)))
       return this.contextoInvalido();
 
-    const params = new URLSearchParams({ [campo]: id });
-    const resposta = await this.client.request<unknown>(
-      `/recomendacoes?${params}`,
-    );
+    const destino =
+      campo === "usuarioId"
+        ? "/recomendacoes/para-mim"
+        : campo === "produtoId"
+          ? `/recomendacoes?${new URLSearchParams({ produtoId: id! })}`
+          : "/recomendacoes";
+    const resposta = await this.client.request<unknown>(destino);
     if (
       !objeto(resposta) ||
       typeof resposta.estrategia !== "string" ||

@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import {
   obterCarrinhoStore,
   obterOpcoesFiltroService,
@@ -124,15 +124,6 @@ function PaginaInicial() {
     };
   }, [produtosService]);
 
-  const produtoDestacado = useMemo(() => {
-    if (estado.status !== "sucesso") return null;
-    return (
-      estado.produtos.find(
-        (produto) => produto.ativo && produto.quantidadeEstoque > 0,
-      ) ?? null
-    );
-  }, [estado]);
-
   async function adicionarAoCarrinho(produto: Produto): Promise<void> {
     try {
       if (sessao && sessao.papel !== "comprador")
@@ -163,11 +154,8 @@ function PaginaInicial() {
     }
   }
 
-  const contextoRecomendacao: RecomendacaoContexto | null = sessao
-    ? { usuarioId: sessao.id }
-    : produtoDestacado
-      ? { produtoId: produtoDestacado.id }
-      : null;
+  const contextoRecomendacao: RecomendacaoContexto =
+    sessao?.papel === "comprador" ? { usuarioId: sessao.id } : {};
 
   return (
     <main className="min-h-screen">
