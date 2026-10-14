@@ -8,6 +8,7 @@ import { Icone, type NomeIcone } from "@/components/vitrine/Icone";
 import { useSessao, useEstadoSessao } from "@/hooks/use-sessao";
 import { SessaoIndisponivel } from "@/components/layout/SessaoIndisponivel";
 import { AlertaErro } from "@/components/feedback/AlertaErro";
+import { AvisosCarrinho } from "@/components/carrinho/AvisosCarrinho";
 import { useCarrinho } from "@/hooks/use-carrinho";
 import {
   obterCarrinhoStore,
@@ -170,6 +171,10 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
   const [confirmandoSaida, setConfirmandoSaida] = useState(false);
   const [saindo, setSaindo] = useState(false);
   const [erroSaida, setErroSaida] = useState(false);
+  const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
+  useEffect(() => {
+    setCarrinhoStore(obterCarrinhoStore(sessao?.id));
+  }, [sessao?.id]);
 
   async function confirmarSaida(): Promise<void> {
     if (saindo) return;
@@ -186,105 +191,114 @@ function BarraDeConta({ sessionStore }: { sessionStore: SessionStore }) {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-border-default bg-linho-25/90 backdrop-blur-md backdrop-saturate-[1.2]">
-      <div className="mx-auto flex min-h-[var(--header-h-mobile)] max-w-[var(--container-max)] flex-wrap items-center gap-x-8 gap-y-2 px-[var(--container-pad)] py-2 md:min-h-[var(--header-h)] md:flex-nowrap md:py-0">
-        <Link
-          href="/"
-          className="font-display text-[28px] leading-none font-semibold tracking-[-0.02em] text-fg-strong no-underline hover:text-fg-strong"
-        >
-          Origem
-        </Link>
+    <>
+      <header className="sticky top-0 z-20 border-b border-border-default bg-linho-25/90 backdrop-blur-md backdrop-saturate-[1.2]">
+        <div className="mx-auto flex min-h-[var(--header-h-mobile)] max-w-[var(--container-max)] flex-wrap items-center gap-x-8 gap-y-2 px-[var(--container-pad)] py-2 md:min-h-[var(--header-h)] md:flex-nowrap md:py-0">
+          <Link
+            href="/"
+            className="font-display text-[28px] leading-none font-semibold tracking-[-0.02em] text-fg-strong no-underline hover:text-fg-strong"
+          >
+            Origem
+          </Link>
 
-        {sessao ? (
-          <NavegacaoPrincipal
-            papel={sessao.papel}
-            usuarioId={sessao.id}
-            pathname={pathname}
-          />
-        ) : null}
-
-        <div className="ml-auto flex items-center gap-2 text-body-sm">
-          {!sessao ? (
-            <Link
-              href="/carrinho"
-              className="flex h-11 items-center gap-2 rounded-md px-2.5 text-button font-semibold text-fg-strong no-underline transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover hover:text-fg-strong"
-            >
-              <Icone nome="sacola" tamanho={22} />
-              Carrinho
-              <ContadorCarrinho />
-            </Link>
+          {sessao ? (
+            <NavegacaoPrincipal
+              papel={sessao.papel}
+              usuarioId={sessao.id}
+              pathname={pathname}
+            />
           ) : null}
-          {sessao && confirmandoSaida ? (
-            <div className="flex flex-wrap items-center justify-end gap-2">
-              <span className="text-fg-muted">Tem certeza que quer sair?</span>
-              {erroSaida ? (
-                <AlertaErro>Não foi possível sair. Tente novamente.</AlertaErro>
-              ) : null}
-              <button
-                type="button"
-                disabled={saindo}
-                onClick={confirmarSaida}
-                className={BOTAO_PERIGO_PEQUENO}
+
+          <div className="ml-auto flex items-center gap-2 text-body-sm">
+            {!sessao ? (
+              <Link
+                href="/carrinho"
+                className="flex h-11 items-center gap-2 rounded-md px-2.5 text-button font-semibold text-fg-strong no-underline transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover hover:text-fg-strong"
               >
-                Sim, sair
-              </button>
+                <Icone nome="sacola" tamanho={22} />
+                Carrinho
+                <ContadorCarrinho />
+              </Link>
+            ) : null}
+            {sessao && confirmandoSaida ? (
+              <div className="flex flex-wrap items-center justify-end gap-2">
+                <span className="text-fg-muted">
+                  Tem certeza que quer sair?
+                </span>
+                {erroSaida ? (
+                  <AlertaErro>
+                    Não foi possível sair. Tente novamente.
+                  </AlertaErro>
+                ) : null}
+                <button
+                  type="button"
+                  disabled={saindo}
+                  onClick={confirmarSaida}
+                  className={BOTAO_PERIGO_PEQUENO}
+                >
+                  Sim, sair
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfirmandoSaida(false)}
+                  className={BOTAO_SECUNDARIO_PEQUENO}
+                >
+                  Cancelar
+                </button>
+              </div>
+            ) : sessao ? (
+              <div className="flex items-center gap-3 md:border-l md:border-border-default md:pl-3">
+                <span
+                  aria-hidden="true"
+                  className="hidden size-[34px] place-items-center rounded-pill bg-barro-100 text-[13px] font-bold text-barro-800 sm:grid"
+                >
+                  {sessao.nome.slice(0, 1).toUpperCase()}
+                </span>
+                <span className="flex flex-col leading-tight">
+                  <span className="font-semibold text-fg-strong">
+                    {sessao.nome}
+                  </span>
+                  <span className="text-[12px] font-medium text-fg-muted">
+                    {ROTULO_PAPEL[sessao.papel]}
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setConfirmandoSaida(true)}
+                  className={BOTAO_SECUNDARIO_PEQUENO}
+                >
+                  Sair
+                </button>
+              </div>
+            ) : mostrarOpcoesLogin ? (
+              <div className="flex flex-wrap items-center justify-end gap-2">
+                <span className="text-fg-muted">Entrar como:</span>
+                <Link href="/login" className={BOTAO_SECUNDARIO_PEQUENO}>
+                  Comprador
+                </Link>
+                <Link href="/login" className={BOTAO_SECUNDARIO_PEQUENO}>
+                  Artesão
+                </Link>
+                <Link href="/login" className={BOTAO_SECUNDARIO_PEQUENO}>
+                  Administrador
+                </Link>
+              </div>
+            ) : (
               <button
                 type="button"
-                onClick={() => setConfirmandoSaida(false)}
+                onClick={() => setMostrarOpcoesLogin(true)}
                 className={BOTAO_SECUNDARIO_PEQUENO}
               >
-                Cancelar
+                Entrar
               </button>
-            </div>
-          ) : sessao ? (
-            <div className="flex items-center gap-3 md:border-l md:border-border-default md:pl-3">
-              <span
-                aria-hidden="true"
-                className="hidden size-[34px] place-items-center rounded-pill bg-barro-100 text-[13px] font-bold text-barro-800 sm:grid"
-              >
-                {sessao.nome.slice(0, 1).toUpperCase()}
-              </span>
-              <span className="flex flex-col leading-tight">
-                <span className="font-semibold text-fg-strong">
-                  {sessao.nome}
-                </span>
-                <span className="text-[12px] font-medium text-fg-muted">
-                  {ROTULO_PAPEL[sessao.papel]}
-                </span>
-              </span>
-              <button
-                type="button"
-                onClick={() => setConfirmandoSaida(true)}
-                className={BOTAO_SECUNDARIO_PEQUENO}
-              >
-                Sair
-              </button>
-            </div>
-          ) : mostrarOpcoesLogin ? (
-            <div className="flex flex-wrap items-center justify-end gap-2">
-              <span className="text-fg-muted">Entrar como:</span>
-              <Link href="/login" className={BOTAO_SECUNDARIO_PEQUENO}>
-                Comprador
-              </Link>
-              <Link href="/login" className={BOTAO_SECUNDARIO_PEQUENO}>
-                Artesão
-              </Link>
-              <Link href="/login" className={BOTAO_SECUNDARIO_PEQUENO}>
-                Administrador
-              </Link>
-            </div>
-          ) : (
-            <button
-              type="button"
-              onClick={() => setMostrarOpcoesLogin(true)}
-              className={BOTAO_SECUNDARIO_PEQUENO}
-            >
-              Entrar
-            </button>
-          )}
+            )}
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+      {carrinhoStore && pathname !== "/carrinho" ? (
+        <AvisosCarrinho store={carrinhoStore} />
+      ) : null}
+    </>
   );
 }
 

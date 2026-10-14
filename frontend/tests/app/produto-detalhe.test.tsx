@@ -22,7 +22,9 @@ vi.mock("@/services/fake/container", () => ({
   obterProdutosService: () => produtosServiceMock,
   obterAvaliacoesService: (): AvaliacoesService => ({
     listByProduto: vi.fn().mockResolvedValue([]),
-    resumo: vi.fn().mockResolvedValue({ produtoId: "produto-1", media: 5, quantidade: 1 }),
+    resumo: vi
+      .fn()
+      .mockResolvedValue({ produtoId: "produto-1", media: 5, quantidade: 1 }),
     create: vi.fn(),
   }),
   obterOpcoesFiltroService: (): OpcoesFiltroService => ({
@@ -80,7 +82,11 @@ function criarSessionStoreFake(sessao: UsuarioSessao | null): SessionStore {
 beforeEach(() => {
   window.localStorage.removeItem(`${PREFIXO_CARRINHO_TESTE}:u1`);
   carrinhoStore = new CartStore(
-    new BrowserCarrinhoStorage(window.localStorage, "u1", PREFIXO_CARRINHO_TESTE)
+    new BrowserCarrinhoStorage(
+      window.localStorage,
+      "u1",
+      PREFIXO_CARRINHO_TESTE,
+    ),
   );
   produtosServiceMock = {
     list: vi.fn().mockResolvedValue([]),
@@ -101,38 +107,60 @@ describe("Pagina de detalhes do produto", () => {
 
     render(<PaginaProduto />);
 
-    expect(await screen.findByRole("heading", { level: 1, name: "Vaso de Barro Trancado" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", {
+        level: 1,
+        name: "Vaso de Barro Trancado",
+      }),
+    ).toBeInTheDocument();
     expect(produtosServiceMock.obterPublico).toHaveBeenCalledWith("produto-1");
   });
 
-  it("visitante e levado ao login preservando a pagina do produto", async () => {
+  it("visitante adiciona no carrinho local sem redirecionamento", async () => {
     const { default: PaginaProduto } = await import("@/app/produto/[id]/page");
     const usuario = userEvent.setup();
 
     render(<PaginaProduto />);
-    await usuario.click(await screen.findByRole("button", { name: /adicionar ao carrinho/i }));
+    await usuario.click(
+      await screen.findByRole("button", { name: /adicionar ao carrinho/i }),
+    );
 
-    expect(pushMock).toHaveBeenCalledWith("/login?redirect=%2Fproduto%2Fproduto-1");
-    expect(carrinhoStore.getSnapshot().itens).toHaveLength(0);
+    expect(pushMock).not.toHaveBeenCalled();
+    expect(carrinhoStore.getSnapshot().itens).toEqual([
+      expect.objectContaining({ produtoId: "produto-1", quantidade: 1 }),
+    ]);
   });
 
   it("comprador adiciona ate o limite do estoque e recebe erro acima dele", async () => {
-    sessionStoreMock = criarSessionStoreFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" });
+    sessionStoreMock = criarSessionStoreFake({
+      id: "u1",
+      nome: "Ana",
+      email: "u1@origem.test",
+      papel: "comprador",
+    });
     const { default: PaginaProduto } = await import("@/app/produto/[id]/page");
     const usuario = userEvent.setup();
 
     render(<PaginaProduto />);
-    const botao = await screen.findByRole("button", { name: /adicionar ao carrinho/i });
+    const botao = await screen.findByRole("button", {
+      name: /adicionar ao carrinho/i,
+    });
 
     await usuario.click(botao);
-    expect(await screen.findByText(/produto adicionado ao carrinho/i)).toBeInTheDocument();
+    expect(
+      await screen.findByText(/produto adicionado ao carrinho/i),
+    ).toBeInTheDocument();
     expect(carrinhoStore.getSnapshot().itens).toEqual([
       expect.objectContaining({ produtoId: "produto-1", quantidade: 1 }),
     ]);
 
     await usuario.click(botao);
-    expect(await screen.findByRole("alert")).toHaveTextContent(/estoque insuficiente/i);
-    expect(screen.queryByText(/produto adicionado ao carrinho/i)).not.toBeInTheDocument();
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      /estoque insuficiente/i,
+    );
+    expect(
+      screen.queryByText(/produto adicionado ao carrinho/i),
+    ).not.toBeInTheDocument();
     expect(carrinhoStore.getSnapshot().itens[0]?.quantidade).toBe(1);
   });
 
@@ -142,7 +170,11 @@ describe("Pagina de detalhes do produto", () => {
 
     render(<PaginaProduto />);
 
-    expect(await screen.findByText(/produto indisponível ou não encontrado/i)).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /adicionar ao carrinho/i })).not.toBeInTheDocument();
+    expect(
+      await screen.findByText(/produto indisponível ou não encontrado/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /adicionar ao carrinho/i }),
+    ).not.toBeInTheDocument();
   });
 });

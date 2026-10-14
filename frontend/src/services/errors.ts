@@ -52,5 +52,34 @@ export function paraErroHttp(status: number, body?: unknown): ServiceError {
     )
       code = error.code;
   }
+  if (
+    status === 409 &&
+    code === "ESTOQUE_INSUFICIENTE" &&
+    typeof body === "object" &&
+    body !== null &&
+    "error" in body
+  ) {
+    const error = body.error;
+    if (typeof error === "object" && error !== null && "details" in error) {
+      const details = error.details;
+      if (
+        typeof details === "object" &&
+        details !== null &&
+        "produtoId" in details &&
+        "nome" in details &&
+        typeof details.produtoId === "string" &&
+        details.produtoId.length <= 100 &&
+        typeof details.nome === "string" &&
+        details.nome.trim() &&
+        details.nome.length <= 200
+      ) {
+        return new ServiceError(
+          code,
+          `Estoque insuficiente para "${details.nome}".`,
+          { produtoId: details.produtoId, nome: details.nome },
+        );
+      }
+    }
+  }
   return new ServiceError(code, message);
 }

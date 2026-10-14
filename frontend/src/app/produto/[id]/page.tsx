@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { DetalheProduto } from "@/components/produto/DetalheProduto";
 import {
   obterAvaliacoesService,
@@ -14,7 +14,6 @@ import {
 } from "@/services/fake/container";
 import { ServiceError } from "@/services/errors";
 import { useSessao } from "@/hooks/use-sessao";
-import { paraDestinoSeguro } from "@/utils/rota-segura";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
@@ -34,20 +33,25 @@ const MENSAGEM_ADICIONADO = "Produto adicionado ao carrinho.";
 export default function PaginaProduto() {
   const params = useParams<{ id: string }>();
   const produtoId = typeof params.id === "string" ? params.id : null;
-  const router = useRouter();
-  const pathname = usePathname();
 
-  const [produtosService, setProdutosService] = useState<ProdutosService | null>(null);
-  const [avaliacoesService, setAvaliacoesService] = useState<AvaliacoesService | null>(null);
+  const [produtosService, setProdutosService] =
+    useState<ProdutosService | null>(null);
+  const [avaliacoesService, setAvaliacoesService] =
+    useState<AvaliacoesService | null>(null);
   const [opcoesFiltroService, setOpcoesFiltroService] =
     useState<OpcoesFiltroService | null>(null);
-  const [usuariosService, setUsuariosService] = useState<UsuariosService | null>(null);
+  const [usuariosService, setUsuariosService] =
+    useState<UsuariosService | null>(null);
   const [recomendacoesService, setRecomendacoesService] =
     useState<RecomendacoesService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
-  const [erroCarrinho, setErroCarrinho] = useState<string | undefined>(undefined);
-  const [mensagemCarrinho, setMensagemCarrinho] = useState<string | undefined>(undefined);
+  const [erroCarrinho, setErroCarrinho] = useState<string | undefined>(
+    undefined,
+  );
+  const [mensagemCarrinho, setMensagemCarrinho] = useState<string | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     setProdutosService(obterProdutosService());
@@ -70,20 +74,24 @@ export default function PaginaProduto() {
     setCarrinhoStore(obterCarrinhoStore(sessao?.id));
   }, [sessionStore, sessao?.id]);
 
-  function adicionarAoCarrinho(produto: Produto): void {
-    if (!sessao) {
-      router.push(`/login?redirect=${encodeURIComponent(paraDestinoSeguro(pathname))}`);
-      return;
-    }
-
+  async function adicionarAoCarrinho(produto: Produto): Promise<void> {
     try {
-      carrinhoStore?.adicionar(produto, 1);
+      if (sessao && sessao.papel !== "comprador")
+        throw new ServiceError(
+          "ACESSO_NEGADO",
+          "Somente compradores podem adicionar ao carrinho.",
+        );
+      if (!carrinhoStore) return;
+      await carrinhoStore.adicionar(produto, 1);
       setErroCarrinho(undefined);
       setMensagemCarrinho(MENSAGEM_ADICIONADO);
     } catch (excecao) {
-      if (!(excecao instanceof ServiceError)) throw excecao;
       setMensagemCarrinho(undefined);
-      setErroCarrinho(excecao.message);
+      setErroCarrinho(
+        excecao instanceof ServiceError
+          ? excecao.message
+          : "Não foi possível adicionar ao carrinho.",
+      );
     }
   }
 

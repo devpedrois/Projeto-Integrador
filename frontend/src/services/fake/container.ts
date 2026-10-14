@@ -28,6 +28,7 @@ import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.con
 import type { ModeracaoService } from "@/services/contracts/moderacao.contract";
 import { HttpUsuariosService } from "@/services/http/usuarios.service";
 import { HttpPerfilArtesaoService } from "@/services/http/perfil-artesao.service";
+import { HttpCarrinhoService } from "@/services/http/carrinho.service";
 import { HttpProdutosService } from "@/services/http/produtos.service";
 import { HttpOpcoesFiltroService } from "@/services/http/opcoes-filtro.service";
 import { HttpAvaliacoesService } from "@/services/http/avaliacoes.service";
@@ -40,7 +41,6 @@ export const PENDENTES_HTTP = [
   "PedidosService",
   "AvaliacoesService.create",
   "ModeracaoService",
-  "CarrinhoStore",
   "UsuariosService.list",
 ] as const;
 let pendenciasAvisadas = false;
@@ -82,35 +82,6 @@ function usuariosHttp(): HttpUsuariosService {
   return usuariosHttpInstancia;
 }
 
-function bloquearCarrinhoHttp(): never {
-  throw new ServiceError(
-    "HTTP_NAO_IMPLEMENTADO",
-    "Carrinho ainda indisponível.",
-  );
-}
-
-class CarrinhoHttpPendente extends CartStore {
-  constructor() {
-    super({
-      ler: () => null,
-      salvar: bloquearCarrinhoHttp,
-      limpar: bloquearCarrinhoHttp,
-    });
-  }
-  override adicionar(): never {
-    return bloquearCarrinhoHttp();
-  }
-  override alterarQuantidade(): never {
-    return bloquearCarrinhoHttp();
-  }
-  override remover(): never {
-    return bloquearCarrinhoHttp();
-  }
-  override limpar(): never {
-    return bloquearCarrinhoHttp();
-  }
-}
-
 const LATENCIA_PADRAO_MS = 300;
 const USUARIO_VISITANTE = "visitante";
 
@@ -125,6 +96,22 @@ let moderacaoServiceInstancia: ModeracaoService | null = null;
 let sessionStoreInstancia: SessionStore | null = null;
 let modoAcessoStorageInstancia: ModoAcessoStorage | null = null;
 const carrinhoStoresPorUsuario = new Map<string, CartStore>();
+let compradorHttpAtual: string | null = null;
+
+function acompanharCarrinhoHttp(): void {
+  const sessao = sessionStoreInstancia?.getSnapshot();
+  const compradorId = sessao?.papel === "comprador" ? sessao.id : null;
+  if (compradorId === compradorHttpAtual) return;
+  if (compradorHttpAtual) {
+    carrinhoStoresPorUsuario.get(compradorHttpAtual)?.desconectar();
+    carrinhoStoresPorUsuario.delete(compradorHttpAtual);
+  }
+  compradorHttpAtual = compradorId;
+  if (compradorId)
+    void obterCarrinhoStore(compradorId)
+      .hidratar(obterCarrinhoLocal(USUARIO_VISITANTE))
+      .catch(() => {});
+}
 
 export function obterUsuariosService(): UsuariosService {
   if (modoHttp()) return usuariosHttp();
@@ -267,6 +254,7 @@ export function obterSessionStore(): SessionStore {
   if (!sessionStoreInstancia) {
     if (modoHttp()) {
       sessionStoreInstancia = new SessionStore(null, usuariosHttp());
+      sessionStoreInstancia.subscribe(acompanharCarrinhoHttp);
       void sessionStoreInstancia.hidratar();
       return sessionStoreInstancia;
     }
@@ -292,12 +280,44 @@ export function obterModoAcessoStorage(): ModoAcessoStorage {
 }
 
 export function obterCarrinhoStore(usuarioId?: string): CartStore {
+  if (modoHttp()) {
+    const sessao = sessionStoreInstancia?.getSnapshot();
+    if (sessao?.papel !== "comprador")
+      return obterCarrinhoLocal(USUARIO_VISITANTE);
+    if (usuarioId && usuarioId !== sessao.id)
+      throw new ServiceError(
+        "ACESSO_NEGADO",
+        "Carrinho de outra conta indisponível.",
+      );
+    let store = carrinhoStoresPorUsuario.get(sessao.id);
+    if (!store) {
+      const compradorId = sessao.id;
+      store = new CartStore(
+        null,
+        new HttpCarrinhoService(),
+        produtosHttp,
+        () => {
+          const atual = sessionStoreInstancia?.getSnapshot();
+          return atual?.id === compradorId && atual.papel === "comprador";
+        },
+      );
+      carrinhoStoresPorUsuario.set(compradorId, store);
+      void store
+        .hidratar(obterCarrinhoLocal(USUARIO_VISITANTE))
+        .catch(() => {});
+    }
+    return store;
+  }
   const chave = usuarioId ?? USUARIO_VISITANTE;
+  return obterCarrinhoLocal(chave);
+}
+
+function obterCarrinhoLocal(chave: string): CartStore {
   let store = carrinhoStoresPorUsuario.get(chave);
   if (!store) {
-    store = modoHttp()
-      ? new CarrinhoHttpPendente()
-      : new CartStore(new BrowserCarrinhoStorage(window.localStorage, chave));
+    store = new CartStore(
+      new BrowserCarrinhoStorage(window.localStorage, chave),
+    );
     carrinhoStoresPorUsuario.set(chave, store);
   }
   return store;

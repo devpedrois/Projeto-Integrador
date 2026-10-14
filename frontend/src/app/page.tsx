@@ -1,8 +1,6 @@
 "use client";
 
 import { Suspense, useEffect, useMemo, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { paraDestinoSeguro } from "@/utils/rota-segura";
 import {
   obterCarrinhoStore,
   obterOpcoesFiltroService,
@@ -58,21 +56,25 @@ export default function Home() {
 }
 
 function PaginaInicial() {
-  const [produtosService, setProdutosService] = useState<ProdutosService | null>(null);
+  const [produtosService, setProdutosService] =
+    useState<ProdutosService | null>(null);
   const [recomendacoesService, setRecomendacoesService] =
     useState<RecomendacoesService | null>(null);
   const [opcoesFiltroService, setOpcoesFiltroService] =
     useState<OpcoesFiltroService | null>(null);
-  const [usuariosService, setUsuariosService] = useState<UsuariosService | null>(null);
+  const [usuariosService, setUsuariosService] =
+    useState<UsuariosService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
-  const [estado, setEstado] = useState<EstadoProdutos>({ status: "carregando" });
-  const [errosCarrinho, setErrosCarrinho] = useState<Record<string, string>>({});
+  const [estado, setEstado] = useState<EstadoProdutos>({
+    status: "carregando",
+  });
+  const [errosCarrinho, setErrosCarrinho] = useState<Record<string, string>>(
+    {},
+  );
   const { query, atualizar, limpar } = useFiltrosUrl();
   const opcoesFiltro = useOpcoesFiltro(opcoesFiltroService);
   const artesaosAtivos = useArtesaosAtivos(usuariosService);
-  const router = useRouter();
-  const pathname = usePathname();
 
   useEffect(() => {
     setProdutosService(obterProdutosService());
@@ -107,7 +109,9 @@ function PaginaInicial() {
       .then((produtos) => {
         if (cancelado) return;
         setEstado(
-          produtos.length === 0 ? { status: "vazio" } : { status: "sucesso", produtos }
+          produtos.length === 0
+            ? { status: "vazio" }
+            : { status: "sucesso", produtos },
         );
       })
       .catch(() => {
@@ -122,17 +126,22 @@ function PaginaInicial() {
 
   const produtoDestacado = useMemo(() => {
     if (estado.status !== "sucesso") return null;
-    return estado.produtos.find((produto) => produto.ativo && produto.quantidadeEstoque > 0) ?? null;
+    return (
+      estado.produtos.find(
+        (produto) => produto.ativo && produto.quantidadeEstoque > 0,
+      ) ?? null
+    );
   }, [estado]);
 
-  function adicionarAoCarrinho(produto: Produto): void {
-    if (!sessao) {
-      router.push(`/login?redirect=${encodeURIComponent(paraDestinoSeguro(pathname))}`);
-      return;
-    }
-
+  async function adicionarAoCarrinho(produto: Produto): Promise<void> {
     try {
-      carrinhoStore?.adicionar(produto, 1);
+      if (sessao && sessao.papel !== "comprador")
+        throw new ServiceError(
+          "ACESSO_NEGADO",
+          "Somente compradores podem adicionar ao carrinho.",
+        );
+      if (!carrinhoStore) return;
+      await carrinhoStore.adicionar(produto, 1);
       setErrosCarrinho((atual) => {
         if (!(produto.id in atual)) return atual;
         const resto = { ...atual };
@@ -141,9 +150,15 @@ function PaginaInicial() {
       });
     } catch (excecao) {
       if (excecao instanceof ServiceError) {
-        setErrosCarrinho((atual) => ({ ...atual, [produto.id]: excecao.message }));
+        setErrosCarrinho((atual) => ({
+          ...atual,
+          [produto.id]: excecao.message,
+        }));
       } else {
-        throw excecao;
+        setErrosCarrinho((atual) => ({
+          ...atual,
+          [produto.id]: "Não foi possível adicionar ao carrinho.",
+        }));
       }
     }
   }
@@ -192,7 +207,8 @@ function PaginaInicial() {
                 {estado.status === "erro" ? (
                   <p role="alert" className={CLASSE_ALERTA}>
                     <Icone nome="alerta" className="mt-0.5 flex-none" />
-                    Não foi possível carregar os produtos. Tente novamente em instantes.
+                    Não foi possível carregar os produtos. Tente novamente em
+                    instantes.
                   </p>
                 ) : null}
 
@@ -223,7 +239,10 @@ function PaginaInicial() {
           </div>
         </div>
 
-        <FaixaRecomendacoes service={recomendacoesService} contexto={contextoRecomendacao} />
+        <FaixaRecomendacoes
+          service={recomendacoesService}
+          contexto={contextoRecomendacao}
+        />
       </div>
     </main>
   );

@@ -75,7 +75,7 @@ function produto(overrides: Partial<Produto> = {}): Produto {
 }
 
 function criarProdutosServiceFake(
-  overrides: Partial<ProdutosService> = {}
+  overrides: Partial<ProdutosService> = {},
 ): ProdutosService {
   return {
     create: vi.fn(),
@@ -90,7 +90,7 @@ function criarProdutosServiceFake(
 }
 
 function criarOpcoesFiltroServiceFake(
-  overrides: Partial<OpcoesFiltroService> = {}
+  overrides: Partial<OpcoesFiltroService> = {},
 ): OpcoesFiltroService {
   return {
     categorias: vi.fn().mockResolvedValue([]),
@@ -110,7 +110,9 @@ function criarSessionStoreFake(sessao: UsuarioSessao | null): SessionStore {
 beforeEach(() => {
   sessionStoreMock = criarSessionStoreFake(null);
   carrinhoStoreMock = {
-    getSnapshot: vi.fn().mockReturnValue({ itens: [], total: 0, atualizadoEm: "" }),
+    getSnapshot: vi
+      .fn()
+      .mockReturnValue({ itens: [], total: 0, atualizadoEm: "" }),
     subscribe: vi.fn().mockReturnValue(() => {}),
     adicionar: vi.fn(),
     alterarQuantidade: vi.fn(),
@@ -133,14 +135,18 @@ beforeEach(() => {
 describe("Vitrine (Home)", () => {
   it("mostra carregando e depois a lista de produtos", async () => {
     produtosServiceMock = criarProdutosServiceFake({
-      list: vi.fn().mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
+      list: vi
+        .fn()
+        .mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
     });
     const { default: Home } = await import("@/app/page");
 
     render(<Home />);
 
     expect(screen.getAllByRole("status").length).toBeGreaterThan(0);
-    await waitFor(() => expect(screen.getByText("Vaso de Barro")).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByText("Vaso de Barro")).toBeInTheDocument(),
+    );
   });
 
   it("mostra estado vazio quando nao ha produtos", async () => {
@@ -149,7 +155,9 @@ describe("Vitrine (Home)", () => {
 
     render(<Home />);
 
-    expect(await screen.findByText(/nenhum produto dispon/i)).toBeInTheDocument();
+    expect(
+      await screen.findByText(/nenhum produto dispon/i),
+    ).toBeInTheDocument();
   });
 
   it("mostra erro recuperavel quando o service falha", async () => {
@@ -164,7 +172,11 @@ describe("Vitrine (Home)", () => {
   });
 
   it("visitante: usa o produtoId do primeiro produto ativo com estoque como contexto", async () => {
-    const destacado = produto({ id: "produto-destacado", ativo: true, quantidadeEstoque: 3 });
+    const destacado = produto({
+      id: "produto-destacado",
+      ativo: true,
+      quantidadeEstoque: 3,
+    });
     produtosServiceMock = criarProdutosServiceFake({
       list: vi.fn().mockResolvedValue([destacado]),
     });
@@ -175,7 +187,7 @@ describe("Vitrine (Home)", () => {
     await waitFor(() =>
       expect(recomendacoesServiceMock.obter).toHaveBeenCalledWith({
         produtoId: "produto-destacado",
-      })
+      }),
     );
   });
 
@@ -196,7 +208,7 @@ describe("Vitrine (Home)", () => {
     await waitFor(() =>
       expect(recomendacoesServiceMock.obter).toHaveBeenCalledWith({
         usuarioId: "usuario-logado",
-      })
+      }),
     );
   });
 
@@ -210,32 +222,45 @@ describe("Vitrine (Home)", () => {
     expect(recomendacoesServiceMock.obter).not.toHaveBeenCalled();
   });
 
-  it("visitante sem sessao e redirecionado ao login ao tentar adicionar ao carrinho", async () => {
+  it("visitante adiciona ao carrinho local sem redirecionamento", async () => {
     produtosServiceMock = criarProdutosServiceFake({
-      list: vi.fn().mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
+      list: vi
+        .fn()
+        .mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
     });
     const { default: Home } = await import("@/app/page");
     const usuario = userEvent.setup();
 
     render(<Home />);
     await screen.findByText("Vaso de Barro");
-    await usuario.click(screen.getByRole("button", { name: /adicionar ao carrinho/i }));
+    await usuario.click(
+      screen.getByRole("button", { name: /adicionar ao carrinho/i }),
+    );
 
-    expect(pushMock).toHaveBeenCalledWith("/login?redirect=%2F");
-    expect(carrinhoStoreMock.adicionar).not.toHaveBeenCalled();
+    expect(pushMock).not.toHaveBeenCalled();
+    expect(carrinhoStoreMock.adicionar).toHaveBeenCalled();
   });
 
   it("comprador autenticado adiciona o produto ao carrinho normalmente", async () => {
-    sessionStoreMock = criarSessionStoreFake({ id: "u1", nome: "Ana", email: "u1@origem.test", papel: "comprador" });
+    sessionStoreMock = criarSessionStoreFake({
+      id: "u1",
+      nome: "Ana",
+      email: "u1@origem.test",
+      papel: "comprador",
+    });
     produtosServiceMock = criarProdutosServiceFake({
-      list: vi.fn().mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
+      list: vi
+        .fn()
+        .mockResolvedValue([produto({ id: "p1", nome: "Vaso de Barro" })]),
     });
     const { default: Home } = await import("@/app/page");
     const usuario = userEvent.setup();
 
     render(<Home />);
     const produtoEncontrado = await screen.findByText("Vaso de Barro");
-    await usuario.click(screen.getByRole("button", { name: /adicionar ao carrinho/i }));
+    await usuario.click(
+      screen.getByRole("button", { name: /adicionar ao carrinho/i }),
+    );
 
     expect(carrinhoStoreMock.adicionar).toHaveBeenCalled();
     expect(pushMock).not.toHaveBeenCalled();
@@ -243,7 +268,10 @@ describe("Vitrine (Home)", () => {
   });
 
   it("busca controla o termo e consulta o service ao digitar, mostrando loading e resultado", async () => {
-    const encontrado = produto({ id: "produto-seed-04", nome: "Jarra Ceramica Esculpida" });
+    const encontrado = produto({
+      id: "produto-seed-04",
+      nome: "Jarra Ceramica Esculpida",
+    });
     produtosServiceMock = criarProdutosServiceFake({
       list: vi.fn().mockResolvedValue([]),
       search: vi.fn().mockResolvedValue([encontrado]),
@@ -253,20 +281,30 @@ describe("Vitrine (Home)", () => {
 
     render(<Home />);
 
-    const campoBusca = screen.getByRole("searchbox", { name: /buscar produtos/i });
+    const campoBusca = screen.getByRole("searchbox", {
+      name: /buscar produtos/i,
+    });
     await usuario.type(campoBusca, "esculpida");
 
     await waitFor(() =>
-      expect(produtosServiceMock.search).toHaveBeenLastCalledWith({ termo: "esculpida" })
+      expect(produtosServiceMock.search).toHaveBeenLastCalledWith({
+        termo: "esculpida",
+      }),
     );
     await waitFor(() =>
-      expect(screen.getByText("Jarra Ceramica Esculpida")).toBeInTheDocument()
+      expect(screen.getByText("Jarra Ceramica Esculpida")).toBeInTheDocument(),
     );
   });
 
   it("busca ativa esconde o catalogo completo, mostrando somente o resultado da busca", async () => {
-    const foraDoResultado = produto({ id: "produto-fora", nome: "Panela de Barro Vidrada" });
-    const encontrado = produto({ id: "produto-seed-04", nome: "Jarra Ceramica Esculpida" });
+    const foraDoResultado = produto({
+      id: "produto-fora",
+      nome: "Panela de Barro Vidrada",
+    });
+    const encontrado = produto({
+      id: "produto-seed-04",
+      nome: "Jarra Ceramica Esculpida",
+    });
     produtosServiceMock = criarProdutosServiceFake({
       list: vi.fn().mockResolvedValue([foraDoResultado, encontrado]),
       search: vi.fn().mockResolvedValue([encontrado]),
@@ -277,13 +315,17 @@ describe("Vitrine (Home)", () => {
     render(<Home />);
     await screen.findByText("Panela de Barro Vidrada");
 
-    const campoBusca = screen.getByRole("searchbox", { name: /buscar produtos/i });
+    const campoBusca = screen.getByRole("searchbox", {
+      name: /buscar produtos/i,
+    });
     await usuario.type(campoBusca, "esculpida");
 
     await waitFor(() =>
-      expect(screen.getByText("Jarra Ceramica Esculpida")).toBeInTheDocument()
+      expect(screen.getByText("Jarra Ceramica Esculpida")).toBeInTheDocument(),
     );
-    expect(screen.queryByText("Panela de Barro Vidrada")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Panela de Barro Vidrada"),
+    ).not.toBeInTheDocument();
   });
 
   it("busca mostra erro recuperavel quando o service falha", async () => {
@@ -296,7 +338,9 @@ describe("Vitrine (Home)", () => {
 
     render(<Home />);
 
-    const campoBusca = screen.getByRole("searchbox", { name: /buscar produtos/i });
+    const campoBusca = screen.getByRole("searchbox", {
+      name: /buscar produtos/i,
+    });
     await usuario.type(campoBusca, "esculpida");
 
     expect(await screen.findByRole("alert")).toBeInTheDocument();
@@ -304,9 +348,12 @@ describe("Vitrine (Home)", () => {
 
   it("inicializa termo e filtros a partir da URL e ja consulta o resultado combinado", async () => {
     searchParamsAtual = new URLSearchParams(
-      "termo=vaso&categoria=categoria-ceramica-barro&tecnica=tecnica-modelagem-argila&regiao=regiao-pilar-recife"
+      "termo=vaso&categoria=categoria-ceramica-barro&tecnica=tecnica-modelagem-argila&regiao=regiao-pilar-recife",
     );
-    const encontrado = produto({ id: "produto-seed-01", nome: "Vaso de Barro Trancado" });
+    const encontrado = produto({
+      id: "produto-seed-01",
+      nome: "Vaso de Barro Trancado",
+    });
     produtosServiceMock = criarProdutosServiceFake({
       list: vi.fn().mockResolvedValue([]),
       search: vi.fn().mockResolvedValue([encontrado]),
@@ -321,9 +368,11 @@ describe("Vitrine (Home)", () => {
         categoriaId: "categoria-ceramica-barro",
         tecnicaId: "tecnica-modelagem-argila",
         regiaoId: "regiao-pilar-recife",
-      })
+      }),
     );
-    const campoBusca = screen.getByRole("searchbox", { name: /buscar produtos/i });
+    const campoBusca = screen.getByRole("searchbox", {
+      name: /buscar produtos/i,
+    });
     expect(campoBusca).toHaveValue("vaso");
   });
 
@@ -332,7 +381,9 @@ describe("Vitrine (Home)", () => {
     opcoesFiltroServiceMock = criarOpcoesFiltroServiceFake({
       categorias: vi
         .fn()
-        .mockResolvedValue([{ id: "categoria-ceramica-barro", nome: "Ceramica e Barro" }]),
+        .mockResolvedValue([
+          { id: "categoria-ceramica-barro", nome: "Ceramica e Barro" },
+        ]),
     });
     produtosServiceMock = criarProdutosServiceFake();
     const { default: Home } = await import("@/app/page");
@@ -345,13 +396,16 @@ describe("Vitrine (Home)", () => {
 
     expect(pushMock).toHaveBeenCalledWith(
       "/?termo=vaso&categoria=categoria-ceramica-barro",
-      { scroll: false }
+      { scroll: false },
     );
   });
 
   it("busca sem correspondencia mostra estado vazio e limpar filtros pela faixa vazia restaura o catalogo", async () => {
     searchParamsAtual = new URLSearchParams("termo=vaso");
-    const doCatalogo = produto({ id: "produto-catalogo", nome: "Panela de Barro Vidrada" });
+    const doCatalogo = produto({
+      id: "produto-catalogo",
+      nome: "Panela de Barro Vidrada",
+    });
     produtosServiceMock = criarProdutosServiceFake({
       list: vi.fn().mockResolvedValue([doCatalogo]),
       search: vi.fn().mockResolvedValue([]),
@@ -361,24 +415,31 @@ describe("Vitrine (Home)", () => {
 
     render(<Home />);
 
-    const estadoVazio = await screen.findByRole("status", { name: /nenhum resultado/i });
+    const estadoVazio = await screen.findByRole("status", {
+      name: /nenhum resultado/i,
+    });
     expect(estadoVazio).toBeInTheDocument();
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
 
-    const botaoLimpar = within(estadoVazio).getByRole("button", { name: /limpar filtros/i });
+    const botaoLimpar = within(estadoVazio).getByRole("button", {
+      name: /limpar filtros/i,
+    });
     await usuario.click(botaoLimpar);
 
     expect(pushMock).toHaveBeenCalledWith("/", { scroll: false });
     await waitFor(() =>
-      expect(screen.getByText("Panela de Barro Vidrada")).toBeInTheDocument()
+      expect(screen.getByText("Panela de Barro Vidrada")).toBeInTheDocument(),
     );
   });
 
   it("botao Limpar filtros remove termo e filtros da URL e volta ao catalogo completo", async () => {
     searchParamsAtual = new URLSearchParams(
-      "termo=vaso&categoria=categoria-ceramica-barro"
+      "termo=vaso&categoria=categoria-ceramica-barro",
     );
-    const doCatalogo = produto({ id: "produto-catalogo", nome: "Panela de Barro Vidrada" });
+    const doCatalogo = produto({
+      id: "produto-catalogo",
+      nome: "Panela de Barro Vidrada",
+    });
     produtosServiceMock = criarProdutosServiceFake({
       list: vi.fn().mockResolvedValue([doCatalogo]),
       search: vi.fn().mockResolvedValue([]),
@@ -388,12 +449,14 @@ describe("Vitrine (Home)", () => {
 
     render(<Home />);
 
-    const botaoLimpar = await screen.findByRole("button", { name: /limpar filtros/i });
+    const botaoLimpar = await screen.findByRole("button", {
+      name: /limpar filtros/i,
+    });
     await usuario.click(botaoLimpar);
 
     expect(pushMock).toHaveBeenCalledWith("/", { scroll: false });
     await waitFor(() =>
-      expect(screen.getByText("Panela de Barro Vidrada")).toBeInTheDocument()
+      expect(screen.getByText("Panela de Barro Vidrada")).toBeInTheDocument(),
     );
   });
 });

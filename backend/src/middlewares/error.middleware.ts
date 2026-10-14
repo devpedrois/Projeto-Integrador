@@ -22,7 +22,11 @@ export function errorMiddleware(
 
   if (error instanceof AppError) {
     response.status(error.status).json({
-      error: { code: error.code, message: error.message },
+      error: {
+        code: error.code,
+        message: error.message,
+        ...(error.details ? { details: error.details } : {}),
+      },
     });
     return;
   }

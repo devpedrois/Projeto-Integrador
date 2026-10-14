@@ -728,3 +728,58 @@ Suite final: 761 testes frontend em 78 arquivos.
 Lint, typecheck, Prettier e build HTTP passaram.
 Evidencias ficam em evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/.
 Nao houve commit, push ou deploy.
+
+### WEB-08: carrinho persistido e mesclagem de visitante
+
+Codex implementou somente WEB-08 na branch codex/web-08-carrinho-servidor.
+Leu AGENTS.md, WEB-08, US11 e a limitacao Sprint 08-09.
+Inspecionou store, storage, hooks, tipos, container e schema existentes.
+Aplicou TDD, diretrizes React e transacoes PostgreSQL.
+
+Testes Supertest foram escritos antes das rotas.
+A primeira rodada confirmou 15 falhas funcionais esperadas.
+Os testes de visitante confirmaram o redirecionamento impeditivo.
+O adapter novo permitiu executar testes da store remota.
+Todos os testes de banco usaram PostgreSQL real isolado.
+Nao houve mocks de banco nem de repositories.
+
+GET, POST, PATCH e DELETE do carrinho exigem comprador.
+O carrinho vem da sessao; schemas rejeitam identidade externa.
+POST soma; PATCH substitui; DELETE remove somente o item proprio.
+Estoque atual e preco do banco orientam a escrita atomica.
+Erro 409 informa somente produtoId e nome permitidos.
+O middleware preserva esses detalhes sem expor erros internos.
+
+CartStore aceita transporte remoto mantendo comportamento local.
+Operacoes assincronas sao serializadas e aguardadas nas telas.
+O container acompanha login, hidratacao, logout e troca de conta.
+Visitantes agora adicionam produtos antes de autenticar.
+Mesclagem limita soma ao estoque e descarta ocultos com aviso.
+Itens confirmados saem do local antes do proximo item.
+Falhas parciais preservam somente itens ainda nao processados.
+Logout invalida respostas atrasadas, preservando persistencia no servidor.
+
+Uma falha inicial do navegador mostrou seletor duplicado.
+A automacao restringiu o clique ao produto principal.
+Playwright confirmou visitante, mesclagem limitada e descarte com aviso.
+Validou 409 com nome na tela e tres logins consecutivos.
+Consultou ItemCarrinho real, preco capturado e remocao persistida.
+Confirmou ausencia de overflow em 360, 768 e 1280px.
+Capturas mostram chamadas HTTP reais em painel da automacao.
+O painel nao representa DevTools nativo nem modifica o produto.
+
+A revisao equivalente permanece nesta conversa conforme escolha anterior.
+Conferiu autenticacao, propriedade, inputs, DTOs, locks e sessao.
+Identificou erro de sincronizacao oculto fora da pagina do carrinho.
+Um teste falhou antes da correcao do aviso recuperavel.
+A retomada parcial passou sem duplicar itens ja confirmados.
+Outro teste detectou IDs antigos rejeitados na leitura publica.
+Agora sao descartados com aviso, preservando falhas de rede.
+Nao foram encontrados achados restantes no escopo revisado.
+
+Evidencias: evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/.
+Suite final: 383 testes backend e 789 frontend passaram.
+Lint, typecheck, Prettier e verificacao do diff passaram.
+Avisos preexistentes: SSL do pg e act em use-artesaos-ativos.
+Checkout real e demais pendencias HTTP ficaram fora do escopo.
+Nao houve commit, push ou deploy.

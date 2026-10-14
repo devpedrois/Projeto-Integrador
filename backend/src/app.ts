@@ -33,6 +33,10 @@ import { PerfilArtesaoController } from "./controllers/perfil-artesao.controller
 import { PrismaPerfilArtesaoRepository } from "./repositories/perfil-artesao.repository.js";
 import { PerfilArtesaoService } from "./services/perfil-artesao.service.js";
 import { createPerfilArtesaoRouter } from "./routes/perfil-artesao.routes.js";
+import { CarrinhoController } from "./controllers/carrinho.controller.js";
+import { PrismaCarrinhoRepository } from "./repositories/carrinho.repository.js";
+import { CarrinhoService } from "./services/carrinho.service.js";
+import { createCarrinhoRouter } from "./routes/carrinho.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -77,6 +81,14 @@ export function createApp(
   app.use(cookieParser());
   app.use(createHealthRouter(healthController));
   app.use(createAuthRouter(authController));
+  app.use(
+    createCarrinhoRouter(
+      new CarrinhoController(
+        new CarrinhoService(new PrismaCarrinhoRepository(prisma)),
+      ),
+      autenticarUsuario,
+    ),
+  );
   app.use(createPedidoRouter(pedidoController, autenticarUsuario));
   app.use(createUsuarioRouter(usuarioController, autenticarUsuario));
   app.use(

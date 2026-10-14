@@ -4,21 +4,30 @@ afterEach(() => {
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
 });
-it("HTTP nao consulta localStorage nem substitui adapters por fake", async () => {
+it("HTTP usa storage somente para visitante e persiste comprador no servidor", async () => {
   vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
   vi.resetModules();
-  vi.spyOn(window, "localStorage", "get").mockImplementation(() => {
-    throw new Error("fake proibida");
+  window.localStorage.clear();
+  vi.spyOn(Storage.prototype, "getItem").mockImplementation((chave: string) => {
+    if (chave !== "origem:v1:carrinho:visitante")
+      throw new Error("storage privado proibido");
+    return null;
   });
   vi.stubGlobal(
     "fetch",
-    vi.fn().mockResolvedValue(
-      Response.json({
-        id: "u1",
-        nome: "Ana",
-        email: "ana@origem.test",
-        papel: "comprador",
-      }),
+    vi.fn().mockImplementation(async (path: string) =>
+      path === "/api/auth/me"
+        ? Response.json({
+            id: "u1",
+            nome: "Ana",
+            email: "ana@origem.test",
+            papel: "comprador",
+          })
+        : Response.json({
+            itens: [],
+            total: 0,
+            atualizadoEm: "2026-10-14T00:00:00.000Z",
+          }),
     ),
   );
   const container = await import("@/services/fake/container");
@@ -46,28 +55,43 @@ it("HTTP nao consulta localStorage nem substitui adapters por fake", async () =>
   await store.hidratar();
   expect(store.getSnapshot()?.nome).toBe("Ana");
   const carrinho = container.obterCarrinhoStore("u1");
-  expect(() =>
-    carrinho.adicionar(
-      {
-        id: "p1",
-        nome: "Peca sintetica",
-        descricao: "Teste",
-        preco: 10,
-        categoriaId: "c1",
-        tecnicaId: "t1",
-        regiaoId: "r1",
-        artesaoId: "a1",
-        fotos: [],
-        quantidadeEstoque: 2,
-        quantidadeVendida: 0,
-        notaMedia: 0,
-        ativo: true,
-        criadoEm: "2026-10-14T00:00:00Z",
-      },
-      1,
-    ),
-  ).toThrow();
-  expect(carrinho.getSnapshot().itens).toEqual([]);
+  await carrinho.hidratar();
+  fetchMock.mockResolvedValueOnce(
+    Response.json({
+      itens: [
+        {
+          produtoId: "p1",
+          nome: "Peca sintetica",
+          precoUnitario: 10,
+          quantidade: 1,
+          estoqueDisponivel: 2,
+        },
+      ],
+      total: 10,
+      atualizadoEm: "2026-10-14T00:00:00.000Z",
+    }),
+  );
+  await carrinho.adicionar(
+    {
+      id: "p1",
+      nome: "Peca sintetica",
+      descricao: "Teste",
+      preco: 10,
+      categoriaId: "c1",
+      tecnicaId: "t1",
+      regiaoId: "r1",
+      artesaoId: "a1",
+      fotos: [],
+      quantidadeEstoque: 2,
+      quantidadeVendida: 0,
+      notaMedia: 0,
+      ativo: true,
+      criadoEm: "2026-10-14T00:00:00Z",
+    },
+    1,
+  );
+  expect(carrinho.getSnapshot().itens[0]?.quantidade).toBe(1);
+  expect(container.PENDENTES_HTTP).not.toContain("CarrinhoStore");
 });
 it("HTTP informa pendencias apenas em desenvolvimento", async () => {
   vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");

@@ -7,13 +7,18 @@ import {
   obterProdutosService,
   obterSessionStore,
 } from "@/services/fake/container";
-import { useCarrinho } from "@/hooks/use-carrinho";
+import { useCarrinho, useEstadoCarrinho } from "@/hooks/use-carrinho";
+import { AvisosCarrinho } from "@/components/carrinho/AvisosCarrinho";
 import { useSessao } from "@/hooks/use-sessao";
 import { ServiceError } from "@/services/errors";
 import { formatarMoeda } from "@/utils/formatar-moeda";
 import { Icone } from "@/components/vitrine/Icone";
 import { MiniaturaProduto } from "@/components/carrinho/MiniaturaProduto";
-import { CLASSE_STATUS, CLASSE_VAZIO, IconeVazio } from "@/components/vitrine/EsqueletoProdutos";
+import {
+  CLASSE_STATUS,
+  CLASSE_VAZIO,
+  IconeVazio,
+} from "@/components/vitrine/EsqueletoProdutos";
 import type { CartStore } from "@/store/carrinho.store";
 import type { SessionStore } from "@/store/sessao.store";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
@@ -30,7 +35,8 @@ export default function CarrinhoPage() {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
 
-  const [produtosService, setProdutosService] = useState<ProdutosService | null>(null);
+  const [produtosService, setProdutosService] =
+    useState<ProdutosService | null>(null);
 
   useEffect(() => {
     setSessionStore(obterSessionStore());
@@ -65,11 +71,17 @@ function Carrinho({
   produtosService: ProdutosService | null;
 }) {
   const carrinho = useCarrinho(store);
-  const [errosQuantidade, setErrosQuantidade] = useState<Record<string, string>>({});
+  const estado = useEstadoCarrinho(store);
+  const [errosQuantidade, setErrosQuantidade] = useState<
+    Record<string, string>
+  >({});
 
-  function alterarQuantidade(produtoId: string, valor: number): void {
+  async function alterarQuantidade(
+    produtoId: string,
+    valor: number,
+  ): Promise<void> {
     try {
-      store.alterarQuantidade(produtoId, valor);
+      await store.alterarQuantidade(produtoId, valor);
       setErrosQuantidade((atual) => {
         if (!(produtoId in atual)) return atual;
         const resto = { ...atual };
@@ -78,9 +90,15 @@ function Carrinho({
       });
     } catch (excecao) {
       if (excecao instanceof ServiceError) {
-        setErrosQuantidade((atual) => ({ ...atual, [produtoId]: excecao.message }));
+        setErrosQuantidade((atual) => ({
+          ...atual,
+          [produtoId]: excecao.message,
+        }));
       } else {
-        throw excecao;
+        setErrosQuantidade((atual) => ({
+          ...atual,
+          [produtoId]: "Não foi possível atualizar a quantidade.",
+        }));
       }
     }
   }
@@ -100,7 +118,12 @@ function Carrinho({
         </Link>
       </div>
 
-      {carrinho.itens.length === 0 ? (
+      <AvisosCarrinho store={store} />
+      {estado.carregando ? (
+        <p role="status" className={CLASSE_STATUS}>
+          Carregando carrinho...
+        </p>
+      ) : carrinho.itens.length === 0 ? (
         <div className={CLASSE_VAZIO}>
           <IconeVazio nome="sacola" />
           <p className="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong">
@@ -124,7 +147,10 @@ function Carrinho({
                   }`}
                 >
                   <div className="flex min-w-0 flex-[1_1_240px] items-center gap-3.5">
-                    <MiniaturaProduto produtoId={item.produtoId} produtosService={produtosService} />
+                    <MiniaturaProduto
+                      produtoId={item.produtoId}
+                      produtosService={produtosService}
+                    />
                     <div className="flex min-w-0 flex-col gap-1">
                       <span className="text-base leading-[1.3] font-semibold text-pretty text-fg-strong">
                         {item.nome}
@@ -146,10 +172,13 @@ function Carrinho({
                       <input
                         id={`quantidade-${item.produtoId}`}
                         type="number"
+                        disabled={estado.enviando}
                         min={0}
                         step={1}
                         value={item.quantidade}
-                        aria-describedby={erro ? `erro-quantidade-${item.produtoId}` : undefined}
+                        aria-describedby={
+                          erro ? `erro-quantidade-${item.produtoId}` : undefined
+                        }
                         onChange={(evento) => {
                           const valor = Number(evento.target.value);
                           if (!Number.isInteger(valor) || valor < 0) return;
@@ -166,10 +195,19 @@ function Carrinho({
                       </span>
                       <button
                         type="button"
-                        onClick={() => store.remover(item.produtoId)}
+                        disabled={estado.enviando}
+                        onClick={() => {
+                          Promise.resolve()
+                            .then(() => store.remover(item.produtoId))
+                            .catch(() => {});
+                        }}
                         className="inline-flex min-h-[var(--control-h-sm)] items-center gap-1.5 rounded-control border border-border-strong bg-surface-card px-3 text-body-sm font-semibold text-fg-strong transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover active:translate-y-px"
                       >
-                        <Icone nome="lixeira" tamanho={16} className="flex-none" />
+                        <Icone
+                          nome="lixeira"
+                          tamanho={16}
+                          className="flex-none"
+                        />
                         Remover
                       </button>
                     </div>
@@ -180,7 +218,11 @@ function Carrinho({
                       role="alert"
                       className="m-0 flex flex-[1_1_100%] items-start gap-2 rounded-md bg-erro-50 px-3 py-2.5 text-body-sm leading-[1.45] text-erro-700"
                     >
-                      <Icone nome="alerta" tamanho={16} className="mt-0.5 flex-none" />
+                      <Icone
+                        nome="alerta"
+                        tamanho={16}
+                        className="mt-0.5 flex-none"
+                      />
                       {erro}
                     </p>
                   ) : null}
@@ -191,7 +233,9 @@ function Carrinho({
 
           <aside className="flex w-full flex-[1_1_300px] flex-col gap-5 rounded-card border border-border-subtle bg-surface-card p-6 shadow-card lg:sticky lg:top-24 lg:max-w-[340px]">
             <div className="flex items-baseline justify-between gap-3">
-              <span className="font-display text-[22px] font-semibold text-fg-strong">Total</span>
+              <span className="font-display text-[22px] font-semibold text-fg-strong">
+                Total
+              </span>
               <span className="text-[26px] font-bold tracking-tight text-fg-strong tabular-nums">
                 {formatarMoeda(carrinho.total)}
               </span>

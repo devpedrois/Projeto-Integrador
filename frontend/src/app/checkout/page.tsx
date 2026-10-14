@@ -43,7 +43,8 @@ const BOTAO_SECUNDARIO =
 
 export default function CheckoutPage() {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
-  const [produtosService, setProdutosService] = useState<ProdutosService | null>(null);
+  const [produtosService, setProdutosService] =
+    useState<ProdutosService | null>(null);
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
 
   useEffect(() => {
@@ -51,7 +52,9 @@ export default function CheckoutPage() {
   }, []);
 
   const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
-  const [pedidosService, setPedidosService] = useState<PedidosService | null>(null);
+  const [pedidosService, setPedidosService] = useState<PedidosService | null>(
+    null,
+  );
 
   useEffect(() => {
     if (!sessionStore) return;
@@ -107,9 +110,9 @@ function Checkout({
           produtoId: item.produtoId,
           quantidade: item.quantidade,
         })),
-        compradorId
+        compradorId,
       );
-      carrinhoStore.limpar();
+      await carrinhoStore.limpar();
       setPedidoConfirmado(pedido);
     } catch (excecao) {
       if (excecao instanceof ServiceError) {
@@ -185,7 +188,10 @@ function Checkout({
                 key={item.produtoId}
                 className="flex items-center gap-3.5 border-b border-border-subtle py-4"
               >
-                <MiniaturaProduto produtoId={item.produtoId} produtosService={produtosService} />
+                <MiniaturaProduto
+                  produtoId={item.produtoId}
+                  produtosService={produtosService}
+                />
                 <div className="flex min-w-0 flex-1 flex-col gap-1">
                   <span className="text-base leading-[1.3] font-semibold text-pretty text-fg-strong">
                     {item.nome}
@@ -202,7 +208,9 @@ function Checkout({
           </ul>
 
           <div className="flex items-baseline justify-between gap-3 pt-5 pb-1">
-            <span className="font-display text-[22px] font-semibold text-fg-strong">Total</span>
+            <span className="font-display text-[22px] font-semibold text-fg-strong">
+              Total
+            </span>
             <span className="text-[26px] font-bold tracking-tight text-fg-strong tabular-nums">
               {formatarMoeda(carrinho.total)}
             </span>
