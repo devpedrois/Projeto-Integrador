@@ -783,3 +783,56 @@ Lint, typecheck, Prettier e verificacao do diff passaram.
 Avisos preexistentes: SSL do pg e act em use-artesaos-ativos.
 Checkout real e demais pendencias HTTP ficaram fora do escopo.
 Nao houve commit, push ou deploy.
+
+## 2026-10-14 — WEB-09: checkout HTTP e pagamento simulado
+
+Codex implementou somente WEB-09 com testes de integracao primeiro.
+Leu regras, D6, WEB-09, concorrencia, seguranca, US12 e US20.
+Usou TDD, praticas PostgreSQL, React e verificacao antes da conclusao.
+Dez testes novos falharam antes da implementacao no PostgreSQL real.
+Schemas isolados receberam migrations sem alterar dados do dominio existente.
+O usuario autorizou depois aplicar a migration no banco DIRECT_URL.
+
+Os itens continuam vindo do body. Identidade vem da sessao.
+Locks do comprador precedem locks dos produtos ordenados por UUID.
+Valores usam Decimal. Pedido, itens, pagamento, estoque, vendas,
+limpeza do carrinho e outbox compartilham a transacao.
+O numero vem de sequence do PostgreSQL e aparece no frontend.
+Erro 409 identifica produtoId e nome. Nao existe gateway real.
+O adapter HTTP descarta campos extras e valida o DTO recebido.
+A confirmacao limpa estado local sem DELETE posterior ao pedido.
+
+Um teste adicional detectou falha de hidratacao escondida como carrinho vazio.
+O checkout passou a exibir carregamento e erro com recuperacao.
+O usuario escolheu revisao equivalente de seguranca nesta conversa.
+Nao houve delegacao para security-auditor.
+
+Suite final: 394 testes backend e 792 frontend passaram.
+Lint, typecheck, Prettier e validacao Prisma passaram.
+Diff conferido com reconhecimento de finais CRLF do Windows.
+db:explain exigiu compatibilidade com a nova coluna quantidadeVendida.
+Retry da fila falhou uma vez e passou isolado.
+A reexecucao completa backend passou sem alterar codigo da fila.
+Avisos preexistentes: SSL do pg e act em use-artesaos-ativos.
+Evidencias: evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/.
+Nao houve commit, push ou deploy.
+
+### WEB-09: evidencias visuais adicionais
+
+O usuario solicitou evidencias como WEB-08 e WEB-07.
+Codex coletou o fluxo real com Playwright e Edge headless.
+Next.js e Express consumiram PostgreSQL real em schema temporario.
+Registrou carrinho, checkout, numero, pagamento e erro 409 visivel.
+Conferiu SELECTs de itens, valores, estoque, vendas e intencao.
+Comparou contagens e carrinho antes e depois do conflito.
+Confirmou dez numeros sequenciais em chamadas HTTP autenticadas.
+Capturou responsividade em 360, 768 e 1280px sem overflow.
+Oito PNGs reais formaram o GIF; Playwright produziu video WebM.
+Os paineis da coleta mostram HTTP e SELECT reais.
+Nao representam DevTools nativo nem alteram o produto.
+Um erro de serializacao Decimal foi corrigido somente no coletor.
+Capturas finais foram inspecionadas visualmente antes da entrega.
+Schema, navegador e servidores temporarios foram encerrados.
+Pasta: WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/.
+Nenhum codigo da aplicacao foi alterado nesta coleta.
+Nao houve commit, push ou deploy.

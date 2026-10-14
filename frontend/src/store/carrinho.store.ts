@@ -356,6 +356,12 @@ export class CartStore {
     this.atualizar(itens);
   }
 
+  registrarPedidoConfirmado(): void {
+    this.storage?.limpar();
+    this.carrinho = carrinhoVazio();
+    this.notificar();
+  }
+
   limpar(): void | Promise<void> {
     if (this.remoto)
       return this.executar(async () => {

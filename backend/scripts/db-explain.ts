@@ -153,7 +153,7 @@ async function prepareSchema(
   await client.query(`CREATE SCHEMA "${schema}"`);
   await client.query(`SET LOCAL search_path TO "${schema}"`);
   for (const name of (await readdir(migrationsRoot))
-    .filter((n) => /^\d/.test(n) && n < migrationName)
+    .filter((n) => /^\d/.test(n) && n !== migrationName)
     .sort()) {
     await client.query(await migrationSql(name));
   }

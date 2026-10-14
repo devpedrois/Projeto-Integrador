@@ -86,6 +86,7 @@ afterEach(async () => {
   await prisma.itemPedido.deleteMany({
     where: { pedidoId: { in: pedidoIds } },
   });
+  await prisma.pagamento.deleteMany({ where: { pedidoId: { in: pedidoIds } } });
   await prisma.pedido.deleteMany({ where: { id: { in: pedidoIds } } });
   await prisma.produto.deleteMany({ where: { id: { in: produtoIds } } });
   produtoIds.length = 0;

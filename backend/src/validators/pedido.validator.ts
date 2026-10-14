@@ -4,7 +4,7 @@ import { AppError } from "../errors/app-error.js";
 
 const itemSchema = z.strictObject({
   produtoId: z.uuid().transform((value) => value.toLowerCase()),
-  quantidade: z.number().int().positive(),
+  quantidade: z.number().int().positive().max(2_147_483_647),
 });
 
 const criarPedidoSchema = z.strictObject({

@@ -23,7 +23,14 @@ export class PedidoController {
       const input = request.body as CriarPedidoInput;
       const resultado = await this.service.criar(input, usuario.id);
       response.status(201).json({
-        pedido: { id: resultado.pedidoId, status: "confirmado" },
+        pedido: {
+          id: resultado.pedidoId,
+          compradorId: resultado.compradorId,
+          numero: resultado.numero,
+          total: resultado.total,
+          status: resultado.status,
+          criadoEm: resultado.criadoEm,
+        },
         itens: resultado.itens,
       });
     } catch (error: unknown) {

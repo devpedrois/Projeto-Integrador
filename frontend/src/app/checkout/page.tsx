@@ -11,7 +11,7 @@ import {
   CLASSE_VAZIO,
   IconeVazio,
 } from "@/components/vitrine/EsqueletoProdutos";
-import { useCarrinho } from "@/hooks/use-carrinho";
+import { useCarrinho, useEstadoCarrinho } from "@/hooks/use-carrinho";
 import { useSessao } from "@/hooks/use-sessao";
 import {
   obterCarrinhoStore,
@@ -95,6 +95,7 @@ function Checkout({
   compradorId: string;
 }) {
   const carrinho = useCarrinho(carrinhoStore);
+  const estadoCarrinho = useEstadoCarrinho(carrinhoStore);
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [pedidoConfirmado, setPedidoConfirmado] = useState<Pedido | null>(null);
@@ -112,7 +113,7 @@ function Checkout({
         })),
         compradorId,
       );
-      await carrinhoStore.limpar();
+      carrinhoStore.registrarPedidoConfirmado();
       setPedidoConfirmado(pedido);
     } catch (excecao) {
       if (excecao instanceof ServiceError) {
@@ -149,6 +150,35 @@ function Checkout({
             Voltar para a vitrine
           </Link>
         </section>
+      </main>
+    );
+  }
+
+  if (estadoCarrinho.carregando) {
+    return (
+      <main className={CLASSE_MAIN}>
+        <p role="status" className={CLASSE_STATUS}>
+          Carregando checkout...
+        </p>
+      </main>
+    );
+  }
+
+  if (estadoCarrinho.erro) {
+    return (
+      <main className={CLASSE_MAIN}>
+        <p role="alert" className={CLASSE_ALERTA}>
+          {estadoCarrinho.erro}
+        </p>
+        <button
+          type="button"
+          className={BOTAO_SECUNDARIO}
+          onClick={() => {
+            void carrinhoStore.recarregar().catch(() => {});
+          }}
+        >
+          Tentar novamente
+        </button>
       </main>
     );
   }

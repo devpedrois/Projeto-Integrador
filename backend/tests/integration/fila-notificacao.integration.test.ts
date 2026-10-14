@@ -127,10 +127,17 @@ afterEach(async () => {
   await prisma.intencaoNotificacao.deleteMany({
     where: { pedidoId: { in: createdPedidoIds } },
   });
-  await prisma.itemPedido.deleteMany({ where: { pedidoId: { in: createdPedidoIds } } });
+  await prisma.itemPedido.deleteMany({
+    where: { pedidoId: { in: createdPedidoIds } },
+  });
+  await prisma.pagamento.deleteMany({
+    where: { pedidoId: { in: createdPedidoIds } },
+  });
   await prisma.pedido.deleteMany({ where: { id: { in: createdPedidoIds } } });
   if (createdProdutoIds.length > 0) {
-    await prisma.produto.deleteMany({ where: { id: { in: createdProdutoIds } } });
+    await prisma.produto.deleteMany({
+      where: { id: { in: createdProdutoIds } },
+    });
   }
   createdPedidoIds.length = 0;
   createdProdutoIds.length = 0;
@@ -142,7 +149,9 @@ afterAll(async () => {
   await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
     [artesaoId, compradorId],
   ]);
-  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = $1', [categoriaId]);
+  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = $1', [
+    categoriaId,
+  ]);
   await prisma.$disconnect();
   await databasePool.end();
 });
@@ -163,7 +172,9 @@ describe("fila de notificacao ao artesao", () => {
     const { pedidoId, intencaoId } = await createPedidoComIntencao();
 
     const publicadas = await publicarIntencoesPendentes(boss, repository);
-    expect(publicadas.some((item) => item.intencaoId === intencaoId)).toBe(true);
+    expect(publicadas.some((item) => item.intencaoId === intencaoId)).toBe(
+      true,
+    );
 
     const publicada = await fetchIntencao(pedidoId);
     expect(publicada.status).toBe(StatusIntencao.publicada);
@@ -179,18 +190,22 @@ describe("fila de notificacao ao artesao", () => {
     await publicarIntencoesPendentes(boss, repository);
 
     let attempts = 0;
-    await boss.work<NotificarArtesaoJobData>(NOTIFICAR_ARTESAO_QUEUE, FAST_POLLING, async (jobs) => {
-      const job = jobs[0];
-      if (job === undefined) {
-        return;
-      }
-      await repository.registrarTentativa(job.data.intencaoId);
-      attempts += 1;
-      if (attempts === 1) {
-        throw new Error("falha simulada de worker");
-      }
-      await notificarArtesao(repository, job.data);
-    });
+    await boss.work<NotificarArtesaoJobData>(
+      NOTIFICAR_ARTESAO_QUEUE,
+      FAST_POLLING,
+      async (jobs) => {
+        const job = jobs[0];
+        if (job === undefined) {
+          return;
+        }
+        await repository.registrarTentativa(job.data.intencaoId);
+        attempts += 1;
+        if (attempts === 1) {
+          throw new Error("falha simulada de worker");
+        }
+        await notificarArtesao(repository, job.data);
+      },
+    );
 
     await waitForStatus(pedidoId, StatusIntencao.processada);
 
@@ -198,7 +213,9 @@ describe("fila de notificacao ao artesao", () => {
     const intencao = await fetchIntencao(pedidoId);
     expect(intencao.tentativas).toBe(2);
 
-    const pedido = await prisma.pedido.findUniqueOrThrow({ where: { id: pedidoId } });
+    const pedido = await prisma.pedido.findUniqueOrThrow({
+      where: { id: pedidoId },
+    });
     expect(pedido.id).toBe(pedidoId);
     expect(intencaoId).toBe(intencao.id);
   }, 15_000);
@@ -206,13 +223,19 @@ describe("fila de notificacao ao artesao", () => {
   it("recovers a pending intention after a simulated restart", async () => {
     const { pedidoId } = await createPedidoComIntencao();
 
-    const restartedBoss = createPgBossClient(databaseUrl, { schema: queueSchema });
+    const restartedBoss = createPgBossClient(databaseUrl, {
+      schema: queueSchema,
+    });
     extraBosses.push(restartedBoss);
     await restartedBoss.start();
     await ensureNotificarArtesaoQueue(restartedBoss);
 
     await publicarIntencoesPendentes(restartedBoss, repository);
-    await registerNotificarArtesaoWorker(restartedBoss, repository, FAST_POLLING);
+    await registerNotificarArtesaoWorker(
+      restartedBoss,
+      repository,
+      FAST_POLLING,
+    );
 
     const processada = await waitForStatus(pedidoId, StatusIntencao.processada);
     expect(processada.processadaEm).not.toBeNull();
@@ -233,7 +256,9 @@ describe("fila de notificacao ao artesao", () => {
       firstResult.processadaEm?.toISOString(),
     );
 
-    const count = await prisma.intencaoNotificacao.count({ where: { pedidoId } });
+    const count = await prisma.intencaoNotificacao.count({
+      where: { pedidoId },
+    });
     expect(count).toBe(1);
   });
 
@@ -241,7 +266,10 @@ describe("fila de notificacao ao artesao", () => {
     const { pedidoId, intencaoId } = await createPedidoComIntencao();
     const data: NotificarArtesaoJobData = { intencaoId, pedidoId };
 
-    await Promise.all([notificarArtesao(repository, data), notificarArtesao(repository, data)]);
+    await Promise.all([
+      notificarArtesao(repository, data),
+      notificarArtesao(repository, data),
+    ]);
 
     const afterConcurrent = await fetchIntencao(pedidoId);
     expect(afterConcurrent.status).toBe(StatusIntencao.processada);

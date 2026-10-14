@@ -29,6 +29,7 @@ import type { ModeracaoService } from "@/services/contracts/moderacao.contract";
 import { HttpUsuariosService } from "@/services/http/usuarios.service";
 import { HttpPerfilArtesaoService } from "@/services/http/perfil-artesao.service";
 import { HttpCarrinhoService } from "@/services/http/carrinho.service";
+import { HttpPedidosService } from "@/services/http/pedidos.service";
 import { HttpProdutosService } from "@/services/http/produtos.service";
 import { HttpOpcoesFiltroService } from "@/services/http/opcoes-filtro.service";
 import { HttpAvaliacoesService } from "@/services/http/avaliacoes.service";
@@ -38,7 +39,6 @@ import { ServiceError } from "@/services/errors";
 
 export const PENDENTES_HTTP = [
   "ProdutosService.create/update/remove",
-  "PedidosService",
   "AvaliacoesService.create",
   "ModeracaoService",
   "UsuariosService.list",
@@ -62,7 +62,7 @@ async function pendente(): Promise<never> {
 }
 
 const produtosHttp: ProdutosService = new HttpProdutosService();
-const pedidosHttpPendentes: PedidosService = { confirmar: pendente };
+const pedidosHttp: PedidosService = new HttpPedidosService();
 const perfilHttp: PerfilArtesaoService = new HttpPerfilArtesaoService();
 const avaliacoesHttp: AvaliacoesService = new HttpAvaliacoesService();
 const recomendacoesHttp: RecomendacoesService = new HttpRecommendationAdapter();
@@ -143,7 +143,7 @@ export function obterProdutosService(): ProdutosService {
  * `POST /pedidos`, sem alterar hooks, componentes ou paginas.
  */
 export function obterPedidosService(): PedidosService {
-  if (modoHttp()) return pedidosHttpPendentes;
+  if (modoHttp()) return pedidosHttp;
   if (!pedidosServiceInstancia) {
     const produtoRepositorio = new BrowserProdutoRepository(
       window.localStorage,

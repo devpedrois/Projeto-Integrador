@@ -84,6 +84,10 @@ afterEach(async () => {
     'DELETE FROM "ItemPedido" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorId" = $1)',
     [compradorId],
   );
+  await databasePool.query(
+    'DELETE FROM "Pagamento" WHERE "pedidoId" IN (SELECT "id" FROM "Pedido" WHERE "compradorId" = $1)',
+    [compradorId],
+  );
   await databasePool.query('DELETE FROM "Pedido" WHERE "compradorId" = $1', [
     compradorId,
   ]);
@@ -135,7 +139,15 @@ describe("POST /pedidos", () => {
 
     expect(response.status).toBe(201);
     expect(response.body.pedido.status).toBe("confirmado");
-    expect(response.body.itens).toEqual([{ produtoId, quantidade: 2 }]);
+    expect(response.body.itens).toEqual([
+      {
+        produtoId,
+        quantidade: 2,
+        nome: "Produto de teste",
+        precoUnitario: 10,
+        subtotal: 20,
+      },
+    ]);
     expect(await getEstoque(produtoId)).toBe(3);
     expect(await countPedidos()).toBe(1);
   });
