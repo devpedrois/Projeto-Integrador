@@ -1,4 +1,5 @@
 import { AppError } from "../errors/app-error.js";
+import type { CachePublico } from "../utils/cache.js";
 import type { GestaoProdutosRepository } from "../repositories/gestao-produtos.repository.js";
 import type { UsuarioCriado } from "../repositories/usuario.repository.js";
 import type {
@@ -7,7 +8,10 @@ import type {
 } from "../validators/gestao-produtos.validator.js";
 
 export class GestaoProdutosService {
-  constructor(private readonly repository: GestaoProdutosRepository) {}
+  constructor(
+    private readonly repository: GestaoProdutosRepository,
+    private readonly cache?: CachePublico,
+  ) {}
   listarMeus(usuario: UsuarioCriado) {
     return this.repository.listar(usuario.id);
   }
@@ -17,11 +21,13 @@ export class GestaoProdutosService {
   listarArtesaos() {
     return this.repository.listarArtesaos();
   }
-  criar(input: ProdutoCreate, usuario: UsuarioCriado) {
-    return this.repository.criar(input, usuario.id);
+  async criar(input: ProdutoCreate, usuario: UsuarioCriado) {
+    const resultado = await this.repository.criar(input, usuario.id);
+    await this.cache?.invalidarCatalogo();
+    return resultado;
   }
-  atualizar(id: string, input: ProdutoPatch, usuario: UsuarioCriado) {
-    return this.repository.atualizar(id, (atual) => {
+  async atualizar(id: string, input: ProdutoPatch, usuario: UsuarioCriado) {
+    const resultado = await this.repository.atualizar(id, (atual) => {
       if (usuario.papel !== "admin" && atual.artesaoId !== usuario.id)
         throw new AppError(403, "ACESSO_NEGADO", "Acesso negado.");
       if (
@@ -36,20 +42,26 @@ export class GestaoProdutosService {
         );
       return input;
     });
+    await this.cache?.invalidarCatalogo();
+    return resultado;
   }
   remover(id: string, usuario: UsuarioCriado) {
     return this.atualizar(id, { ativo: false }, usuario);
   }
-  moderarProduto(id: string, ativo: boolean) {
-    return this.repository.moderarProduto(id, ativo);
+  async moderarProduto(id: string, ativo: boolean) {
+    const resultado = await this.repository.moderarProduto(id, ativo);
+    await this.cache?.invalidarCatalogo();
+    return resultado;
   }
-  moderarArtesao(id: string, ativo: boolean, usuario: UsuarioCriado) {
+  async moderarArtesao(id: string, ativo: boolean, usuario: UsuarioCriado) {
     if (id === usuario.id)
       throw new AppError(
         403,
         "OPERACAO_NAO_PERMITIDA",
         "Administrador nao pode moderar a propria conta.",
       );
-    return this.repository.moderarArtesao(id, ativo);
+    const resultado = await this.repository.moderarArtesao(id, ativo);
+    await this.cache?.invalidarCatalogo();
+    return resultado;
   }
 }

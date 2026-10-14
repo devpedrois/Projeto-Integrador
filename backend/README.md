@@ -115,7 +115,7 @@ Nunca reutilize seu `JWT_SECRET` em produção.
 | `CONCURRENCY_TEST_PORT` | `3910` | Porta exclusiva do script de concorrência |
 
 JWT e cookie sustentam a autenticação da WEB-03.
-CORS e cache pertencem às respectivas subtarefas.
+CORS pertence à respectiva subtarefa.
 `COOKIE_SECURE=false` é aceito explicitamente, inclusive em produção.
 No deploy HTTPS, configure sempre `COOKIE_SECURE=true`.
 
@@ -331,3 +331,73 @@ Veja [planos e tempos](../evidencias/PI4-28-W10-Modelo-Fisico/BD-04-indices/01-r
 As escolhas naturais do planner estao documentadas nessa evidencia.
 Categoria e carrinho aproveitam indices preexistentes.
 O parcial da vitrine permanece definido na migration SQL.
+
+## Cache — onde e por quê
+
+WEB-13 aplica cache somente nas leituras públicas de catálogo:
+
+| Endpoint | Chave | Motivo |
+|---|---|---|
+| `GET /produtos` | `produtos:lista:` e query validada normalizada | Evita repetir filtros, joins e agregações no PostgreSQL |
+| `GET /produtos/:id` | `produtos:detalhe:` e UUID normalizado | Reutiliza o DTO público entre visitas à mesma peça |
+| `GET /recomendacoes?produtoId=...` | `recomendacoes:produto:` e UUID normalizado | Evita repetir seleção, ranking e carregamento dos produtos |
+
+As chaves ordenam os campos após validação Zod.
+Defaults de paginação são incluídos; termos vazios são omitidos.
+Termos recebem trim e lowercase; UUIDs recebem lowercase.
+Filtros diferentes e páginas diferentes possuem chaves distintas.
+
+`CACHE_TTL_SECONDS` define a validade, com padrão de 60 segundos.
+`MemoryCacheStore` limita o armazenamento a 500 entradas por padrão.
+Entradas expiradas são removidas; lotação descarta a menos recentemente usada.
+Leituras não renovam o TTL. Valores armazenados e retornados são copiados.
+O limite pode ser definido no construtor do store.
+
+Uma instância é criada por aplicação Express e compartilhada internamente.
+No Render, esta implementação pressupõe uma única instância do backend.
+Reiniciar o processo esvazia o cache, gerando novos MISS.
+O cache reduz viagens ao Neon sem adicionar infraestrutura nesta etapa.
+
+`CacheStore` expõe `get`, `set` com TTL em milissegundos e
+`invalidarPorPrefixo`. Os métodos são assíncronos.
+Uma implementação Redis pode substituir o store via `createApp`:
+
+```typescript
+createApp(prisma, environment, { cacheStore });
+```
+
+Não é necessário reescrever os services ou controllers.
+Antes de escalar o Render para múltiplas instâncias, use armazenamento
+compartilhado e coordene também invalidação e leituras em andamento.
+WEB-13 não instala Redis nem implementa sua integração.
+
+Toda escrita confirmada de produto, estoque, moderação e pedido
+invalida `produtos:` e `recomendacoes:` após concluir a transação.
+Mudanças de papel e perfil do artesão também invalidam essas entradas.
+Elas alteram a visibilidade ou a região exibida pelo catálogo.
+Escritas recusadas preservam o cache dos dados confirmados.
+Uma leitura anterior à invalidação não repovoa entradas antigas.
+Gravações e invalidações no store são serializadas internamente.
+Alterações externas ao processo dependem do TTL ou invalidação explícita.
+
+Recomendações com `usuarioId` não são armazenadas neste cache.
+Autenticação, carrinho, pedidos e painéis privados também não são cacheados.
+O cookie não participa das chaves das três leituras públicas.
+Esses endpoints públicos retornam o mesmo contrato independentemente da sessão.
+Respostas de erro não são armazenadas.
+
+`X-Cache` informa `MISS` ou `HIT` nas leituras elegíveis.
+`Server-Timing: cache;dur=...` expõe a duração do carregamento em milissegundos.
+O log JSON registra rota fixa, estado do cache e duração da resposta.
+Não registra query, identidades, cookies, tokens ou conteúdo das respostas.
+`Cache-Control: no-store` preserva a proteção dos caches do navegador.
+O cache aqui descrito é controlado dentro do backend.
+
+Os testes fazem duas chamadas e comparam MISS com HIT mais rápido.
+Também confirmam invalidação em todas as rotas de escrita atuais.
+TTL é testado com relógio fake, inclusive através do HTTP.
+Os testes de integração usam PostgreSQL real em schema isolado.
+
+```powershell
+npm test -- tests/unit/cache.test.ts tests/integration/cache.web13.integration.test.ts
+```

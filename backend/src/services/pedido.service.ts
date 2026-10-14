@@ -5,9 +5,13 @@ import type {
 import type { CriarPedidoInput } from "../validators/pedido.validator.js";
 import type { PaginacaoPedidos } from "../validators/pedido.validator.js";
 import { AppError } from "../errors/app-error.js";
+import type { CachePublico } from "../utils/cache.js";
 
 export class PedidoService {
-  public constructor(private readonly repository: PedidoRepository) {}
+  public constructor(
+    private readonly repository: PedidoRepository,
+    private readonly cache?: CachePublico,
+  ) {}
 
   public listarMeus(compradorId: string, paginacao: PaginacaoPedidos) {
     return this.repository.listarMeus(compradorId, paginacao);
@@ -28,6 +32,8 @@ export class PedidoService {
     input: CriarPedidoInput,
     compradorId: string,
   ): Promise<PedidoCriado> {
-    return this.repository.criar({ ...input, compradorId });
+    const resultado = await this.repository.criar({ ...input, compradorId });
+    await this.cache?.invalidarCatalogo();
+    return resultado;
   }
 }

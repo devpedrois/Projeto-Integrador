@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import jwt from "jsonwebtoken";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { z } from "zod";
@@ -32,13 +33,24 @@ let categoriaId: string;
 let artesaoId: string;
 let produtoId: string;
 let semAvaliacoesId: string;
+let cookieAdmin: string;
+const secret = "segredo-sintetico-exclusivo-catalogo-web13";
 const tecnicaId = "tecnica-modelagem-argila";
 const regiaoId = "regiao-alto-moura-caruaru";
 const ocultos: string[] = [];
 
 beforeAll(async () => {
   banco = await criarBancoAuth();
-  app = createApp(banco.prisma);
+  app = createApp(banco.prisma, { JWT_SECRET: secret, COOKIE_SECURE: false });
+  const admin = await banco.prisma.usuario.create({
+    data: {
+      nome: "Admin sintetico",
+      email: `${randomUUID()}@teste.origem`,
+      senhaHash: "hash-sintetico",
+      papel: "admin",
+    },
+  });
+  cookieAdmin = `origem_sessao=${jwt.sign({ nome: "Sintetico", papel: "admin" }, secret, { subject: admin.id, expiresIn: "1h" })}`;
   const categoria = await banco.prisma.categoria.create({
     data: { nome: "Ceramica sintetica" },
   });
@@ -217,14 +229,20 @@ describe("catalogo publico WEB-06", () => {
   });
 
   it("reflete moderacao e estoque imediatamente nas leituras", async () => {
-    for (const data of [
-      { desativadoPorAdmin: true },
-      { quantidadeEstoque: 0 },
+    for (const { rota, data } of [
+      {
+        rota: `/admin/produtos/${semAvaliacoesId}/moderar`,
+        data: { ativo: false },
+      },
+      {
+        rota: `/produtos/${semAvaliacoesId}/estoque`,
+        data: { quantidadeEstoque: 0 },
+      },
     ]) {
-      await banco.prisma.produto.update({
-        where: { id: semAvaliacoesId },
-        data,
-      });
+      expect(
+        (await request(app).patch(rota).set("Cookie", cookieAdmin).send(data))
+          .status,
+      ).toBe(200);
       expect(
         (await request(app).get(`/produtos/${semAvaliacoesId}`)).status,
       ).toBe(404);
@@ -232,10 +250,22 @@ describe("catalogo publico WEB-06", () => {
       expect(lista.body.map((item: { id: string }) => item.id)).not.toContain(
         semAvaliacoesId,
       );
-      await banco.prisma.produto.update({
-        where: { id: semAvaliacoesId },
-        data: { desativadoPorAdmin: false, quantidadeEstoque: 4 },
-      });
+      expect(
+        (
+          await request(app)
+            .patch(`/admin/produtos/${semAvaliacoesId}/moderar`)
+            .set("Cookie", cookieAdmin)
+            .send({ ativo: true })
+        ).status,
+      ).toBe(200);
+      expect(
+        (
+          await request(app)
+            .patch(`/produtos/${semAvaliacoesId}/estoque`)
+            .set("Cookie", cookieAdmin)
+            .send({ quantidadeEstoque: 4 })
+        ).status,
+      ).toBe(200);
     }
   });
 

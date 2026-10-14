@@ -1,6 +1,8 @@
 import type { NextFunction, Request, Response } from "express";
 import { AppError } from "../errors/app-error.js";
 import type { CatalogoService } from "../services/catalogo.service.js";
+import { CacheHttp } from "../utils/cache-http.js";
+import { chaveCache } from "../utils/cache.js";
 import {
   avaliacoesQuerySchema,
   catalogoQuerySchema,
@@ -8,7 +10,10 @@ import {
 } from "../validators/catalogo.validator.js";
 
 export class CatalogoController {
-  constructor(private readonly service: CatalogoService) {}
+  constructor(
+    private readonly service: CatalogoService,
+    private readonly cache = new CacheHttp(),
+  ) {}
 
   listar = async (
     request: Request,
@@ -21,7 +26,12 @@ export class CatalogoController {
       return;
     }
     try {
-      response.json(await this.service.listar(query.data));
+      await this.cache.responder(
+        response,
+        "/produtos",
+        chaveCache("produtos:lista", query.data),
+        () => this.service.listar(query.data),
+      );
     } catch (error: unknown) {
       next(error);
     }
@@ -38,7 +48,12 @@ export class CatalogoController {
       return;
     }
     try {
-      response.json(await this.service.obter(params.data.id));
+      await this.cache.responder(
+        response,
+        "/produtos/:id",
+        chaveCache("produtos:detalhe", params.data),
+        () => this.service.obter(params.data.id),
+      );
     } catch (error: unknown) {
       next(error);
     }

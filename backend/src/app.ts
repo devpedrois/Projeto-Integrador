@@ -42,14 +42,27 @@ import { GestaoProdutosController } from "./controllers/gestao-produtos.controll
 import { GestaoProdutosService } from "./services/gestao-produtos.service.js";
 import { PrismaGestaoProdutosRepository } from "./repositories/gestao-produtos.repository.js";
 import { createGestaoProdutosRouter } from "./routes/gestao-produtos.routes.js";
+import {
+  CachePublico,
+  MemoryCacheStore,
+  type CacheStore,
+} from "./utils/cache.js";
+import { CacheHttp, type LogCache } from "./utils/cache-http.js";
 
 export function createApp(
   prisma: PrismaClient,
-  environment: Pick<Environment, "JWT_SECRET" | "COOKIE_SECURE"> = {
+  environment: Pick<Environment, "JWT_SECRET" | "COOKIE_SECURE"> &
+    Partial<Pick<Environment, "CACHE_TTL_SECONDS">> = {
     JWT_SECRET: process.env.JWT_SECRET,
     COOKIE_SECURE: false,
   },
+  options: { cacheStore?: CacheStore; logCache?: LogCache } = {},
 ): Express {
+  const cache = new CachePublico(
+    options.cacheStore ?? new MemoryCacheStore(),
+    (environment.CACHE_TTL_SECONDS ?? 60) * 1000,
+  );
+  const cacheHttp = new CacheHttp(cache, options.logCache);
   const healthRepository = new PrismaHealthRepository(prisma);
   const healthService = new HealthService(healthRepository);
   const healthController = new HealthController(healthService);
@@ -58,11 +71,11 @@ export function createApp(
   const authController = new AuthController(authService, environment);
   const autenticarUsuario = autenticar(authService, environment.JWT_SECRET);
   const usuarioController = new UsuarioController(
-    new UsuarioService(usuarioRepository),
+    new UsuarioService(usuarioRepository, cache),
   );
 
   const pedidoRepository = new PrismaPedidoRepository(prisma);
-  const pedidoService = new PedidoService(pedidoRepository);
+  const pedidoService = new PedidoService(pedidoRepository, cache);
   const pedidoController = new PedidoController(pedidoService);
 
   const recomendacaoRepository = new PrismaRecomendacaoRepository(prisma);
@@ -76,6 +89,7 @@ export function createApp(
   );
   const recomendacaoController = new RecomendacaoController(
     recomendacaoService,
+    cacheHttp,
   );
 
   const app = express();
@@ -88,7 +102,10 @@ export function createApp(
   app.use(
     createGestaoProdutosRouter(
       new GestaoProdutosController(
-        new GestaoProdutosService(new PrismaGestaoProdutosRepository(prisma)),
+        new GestaoProdutosService(
+          new PrismaGestaoProdutosRepository(prisma),
+          cache,
+        ),
       ),
       autenticarUsuario,
     ),
@@ -108,7 +125,10 @@ export function createApp(
   app.use(
     createPerfilArtesaoRouter(
       new PerfilArtesaoController(
-        new PerfilArtesaoService(new PrismaPerfilArtesaoRepository(prisma)),
+        new PerfilArtesaoService(
+          new PrismaPerfilArtesaoRepository(prisma),
+          cache,
+        ),
       ),
       autenticarUsuario,
     ),
@@ -116,7 +136,10 @@ export function createApp(
   app.use(createRecomendacaoRouter(recomendacaoController));
   app.use(
     createCatalogoRouter(
-      new CatalogoController(new CatalogoService(catalogoRepository)),
+      new CatalogoController(
+        new CatalogoService(catalogoRepository),
+        cacheHttp,
+      ),
     ),
   );
   app.use(errorMiddleware);

@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import jwt from "jsonwebtoken";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { z } from "zod";
@@ -43,6 +44,8 @@ let strategy: CategoriaRecomendacaoStrategy;
 let contextoId: string;
 let isoladoId: string;
 let artesaoId: string;
+let cookieAdmin: string;
+const secret = "segredo-sintetico-exclusivo-recomendacoes-web13";
 const ids = new Map<string, string>();
 const regiaoId = "regiao-alto-moura-caruaru";
 
@@ -54,7 +57,16 @@ function idReal(id: string): string {
 
 beforeAll(async () => {
   banco = await criarBancoAuth();
-  app = createApp(banco.prisma);
+  app = createApp(banco.prisma, { JWT_SECRET: secret, COOKIE_SECURE: false });
+  const admin = await banco.prisma.usuario.create({
+    data: {
+      nome: "Admin IA-01",
+      email: `${randomUUID()}@teste.origem`,
+      senhaHash: "hash-sintetico",
+      papel: "admin",
+    },
+  });
+  cookieAdmin = `origem_sessao=${jwt.sign({ nome: "Sintetico", papel: "admin" }, secret, { subject: admin.id, expiresIn: "1h" })}`;
   strategy = new CategoriaRecomendacaoStrategy(
     new PrismaRecomendacaoRepository(banco.prisma),
   );
@@ -253,46 +265,91 @@ describe("IA-01 contrato publico de recomendacoes", () => {
   });
 
   it.each([
-    { desativadoPorAdmin: true },
-    { ativo: false },
-    { quantidadeEstoque: 0 },
-  ])("omite produtos invisiveis sem reordenar restantes: %j", async (data) => {
-    const id = idReal("produto-fixture-p03");
-    try {
-      await banco.prisma.produto.update({ where: { id }, data });
-      const response = await request(app)
-        .get("/recomendacoes")
-        .query({ produtoId: contextoId });
-      const resultado = resultadoSchema.parse(response.body);
-      const ordem = resultado.itens.map((produto) => produto.id);
-      expect(ordem).not.toContain(id);
-      const ranking = fixture.resultadoEsperado.produtoIds
-        .map(idReal)
-        .filter((produtoId) => produtoId !== id);
-      expect(ordem.slice(0, ranking.length)).toEqual(ranking);
-    } finally {
-      await banco.prisma.produto.update({
-        where: { id },
-        data: { desativadoPorAdmin: false, ativo: true, quantidadeEstoque: 10 },
-      });
-    }
-  });
+    { tipo: "moderacao", input: { ativo: false } },
+    { tipo: "produto", input: { ativo: false } },
+    { tipo: "estoque", input: { quantidadeEstoque: 0 } },
+  ])(
+    "omite produtos invisiveis sem reordenar restantes: %j",
+    async ({ tipo, input }) => {
+      const id = idReal("produto-fixture-p03");
+      try {
+        const rota =
+          tipo === "moderacao"
+            ? `/admin/produtos/${id}/moderar`
+            : `/produtos/${id}${tipo === "estoque" ? "/estoque" : ""}`;
+        expect(
+          (
+            await request(app)
+              .patch(rota)
+              .set("Cookie", cookieAdmin)
+              .send(input)
+          ).status,
+        ).toBe(200);
+        const response = await request(app)
+          .get("/recomendacoes")
+          .query({ produtoId: contextoId });
+        const resultado = resultadoSchema.parse(response.body);
+        const ordem = resultado.itens.map((produto) => produto.id);
+        expect(ordem).not.toContain(id);
+        const ranking = fixture.resultadoEsperado.produtoIds
+          .map(idReal)
+          .filter((produtoId) => produtoId !== id);
+        expect(ordem.slice(0, ranking.length)).toEqual(ranking);
+      } finally {
+        expect(
+          (
+            await request(app)
+              .patch(`/admin/produtos/${id}/moderar`)
+              .set("Cookie", cookieAdmin)
+              .send({ ativo: true })
+          ).status,
+        ).toBe(200);
+        expect(
+          (
+            await request(app)
+              .patch(`/produtos/${id}`)
+              .set("Cookie", cookieAdmin)
+              .send({ ativo: true, quantidadeEstoque: 10 })
+          ).status,
+        ).toBe(200);
+      }
+    },
+  );
 
   it.each([{ ativo: false }, { papel: "comprador" as const }])(
     "omite produtos de artesao indisponivel: %j",
     async (data) => {
       try {
-        await banco.prisma.usuario.update({ where: { id: artesaoId }, data });
+        const rota =
+          "papel" in data
+            ? `/admin/usuarios/${artesaoId}/papel`
+            : `/admin/artesaos/${artesaoId}/moderar`;
+        expect(
+          (await request(app).patch(rota).set("Cookie", cookieAdmin).send(data))
+            .status,
+        ).toBe(200);
         const response = await request(app)
           .get("/recomendacoes")
           .query({ produtoId: contextoId });
         expect(response.status).toBe(200);
         expect(resultadoSchema.parse(response.body).itens).toEqual([]);
       } finally {
-        await banco.prisma.usuario.update({
-          where: { id: artesaoId },
-          data: { ativo: true, papel: "artesao" },
-        });
+        expect(
+          (
+            await request(app)
+              .patch(`/admin/usuarios/${artesaoId}/papel`)
+              .set("Cookie", cookieAdmin)
+              .send({ papel: "artesao" })
+          ).status,
+        ).toBe(200);
+        expect(
+          (
+            await request(app)
+              .patch(`/admin/artesaos/${artesaoId}/moderar`)
+              .set("Cookie", cookieAdmin)
+              .send({ ativo: true })
+          ).status,
+        ).toBe(200);
       }
     },
   );

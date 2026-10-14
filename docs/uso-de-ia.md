@@ -1054,3 +1054,30 @@ Servidores temporários encerrados; schema sintético do smoke descartado.
 GIF e capturas não incluem a aba Network.
 As chamadas HTTP possuem cobertura automatizada.
 Evidências: evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/.
+
+### WEB-13: cache público com TTL e invalidação
+
+Codex inspecionou os endpoints públicos e todos os escritores atuais.
+Testes precederam o cache em memória e a integração HTTP.
+CacheStore define armazenamento assíncrono substituível por Redis.
+A implementação em memória possui TTL e limite de entradas.
+Chaves vêm de filtros validados, normalizados e ordenados.
+Catálogo, detalhe público e recomendações por produto recebem cache.
+Recomendações por usuário e rotas privadas permanecem sem armazenamento compartilhado.
+Todas as escritas relevantes invalidam após confirmar os dados.
+Papel e perfil também invalidam visibilidade e região do catálogo.
+Leituras antigas não repovoam o cache após invalidação.
+X-Cache, Server-Timing e log seguro permitem medir o resultado.
+O README backend explica aplicação, motivo e limite de instância única.
+
+Revisão local equivalente mantida conforme escolha anterior de Pedro.
+Não houve delegação, commit ou push nesta subtarefa.
+
+Validação final: 494 testes backend e 833 frontend passaram.
+Lint, typecheck, Prettier e git diff --check passaram.
+Revisão local equivalente não encontrou bloqueios no escopo.
+HTTP real mediu catálogo MISS 41,017 ms e HIT 0,088 ms.
+Detalhe e recomendações também tiveram HIT mais rápido.
+Após editar estoque, as três leituras retornaram MISS.
+O servidor temporário e o schema isolado foram encerrados.
+Evidências: evidencias/PI4-27-W10-Integracao-Camadas/WEB-13-cache/.

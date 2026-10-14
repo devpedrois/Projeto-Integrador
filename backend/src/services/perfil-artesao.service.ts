@@ -1,10 +1,14 @@
 import { AppError } from "../errors/app-error.js";
+import type { CachePublico } from "../utils/cache.js";
 import { verificarPerfilCompleto } from "../domain/perfil-artesao-completo.js";
 import type { PerfilArtesaoRepository } from "../repositories/perfil-artesao.repository.js";
 import type { PerfilArtesaoPatch } from "../validators/perfil-artesao.validator.js";
 
 export class PerfilArtesaoService {
-  constructor(private readonly repository: PerfilArtesaoRepository) {}
+  constructor(
+    private readonly repository: PerfilArtesaoRepository,
+    private readonly cache?: CachePublico,
+  ) {}
 
   async obter(id: string) {
     const perfil = await this.repository.obter(id);
@@ -25,7 +29,7 @@ export class PerfilArtesaoService {
     ]);
     if (!tecnicaValida || !regiaoValida)
       throw new AppError(400, "VALIDACAO", "Dados do perfil invalidos.");
-    return this.repository.atualizar(id, (atual) => {
+    const resultado = await this.repository.atualizar(id, (atual) => {
       const fotoUrl = input.fotoUrl ?? atual.fotoUrl;
       const perfil = {
         artesaoId: atual.artesaoId,
@@ -37,5 +41,7 @@ export class PerfilArtesaoService {
       };
       return { ...perfil, completo: verificarPerfilCompleto(perfil).completo };
     });
+    await this.cache?.invalidarCatalogo();
+    return resultado;
   }
 }
