@@ -70,7 +70,7 @@ export function usePerfilPublicoArtesao(
         ? Promise.resolve(null)
         : usuariosService.list(),
       perfilArtesaoService.obter(artesaoId),
-      produtosService.listByArtesao(artesaoId),
+      produtosService.search({ artesaoId }),
       opcoesFiltroService.tecnicas(),
       opcoesFiltroService.regioes(),
     ])

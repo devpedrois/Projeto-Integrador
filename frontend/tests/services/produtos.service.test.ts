@@ -10,7 +10,7 @@ import type { NovoProdutoInput } from "@/types/novo-produto";
 const CHAVE_TESTE = "origem:test:produtos:service:v1";
 
 function entradaValida(
-  overrides: Partial<NovoProdutoInput> = {}
+  overrides: Partial<NovoProdutoInput> = {},
 ): NovoProdutoInput {
   return {
     nome: "Vaso de Barro",
@@ -51,7 +51,9 @@ describe("FakeProdutosService.list", () => {
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
     const produtos = await service.list();
-    const categoriasComProduto = new Set(produtos.map((produto) => produto.categoriaId));
+    const categoriasComProduto = new Set(
+      produtos.map((produto) => produto.categoriaId),
+    );
 
     expect(categoriasComProduto.size).toBe(5);
     expect(categoriasComProduto.has(CATEGORIA_IDS.arteReciclada)).toBe(false);
@@ -69,11 +71,17 @@ describe("FakeProdutosService.list", () => {
   });
 
   it("dados sobrevivem a uma nova instancia do repositorio na mesma chave", async () => {
-    const repo1 = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const repo1 = new BrowserProdutoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service1 = new FakeProdutosService(repo1, { latenciaMs: 0 });
     await service1.list();
 
-    const repo2 = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+    const repo2 = new BrowserProdutoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service2 = new FakeProdutosService(repo2, { latenciaMs: 0 });
     const produtos = await service2.list();
 
@@ -109,7 +117,8 @@ describe("FakeProdutosService.create", () => {
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
     const entrada = entradaValida();
-    (entrada as unknown as Record<string, unknown>).artesaoId = "artesao-forjado";
+    (entrada as unknown as Record<string, unknown>).artesaoId =
+      "artesao-forjado";
     const criado = await service.create(entrada, "artesao-da-sessao");
 
     expect(criado.artesaoId).toBe("artesao-da-sessao");
@@ -133,7 +142,7 @@ describe("FakeProdutosService.create", () => {
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
     await expect(
-      service.create(entradaValida({ preco: 0 }), "artesao-da-sessao")
+      service.create(entradaValida({ preco: 0 }), "artesao-da-sessao"),
     ).rejects.toBeInstanceOf(ServiceError);
     const produtos = await repo.list();
     expect(produtos).toHaveLength(0);
@@ -145,8 +154,14 @@ describe("FakeProdutosService.listByArtesao", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    const produtoA = await service.create(entradaValida({ nome: "Produto Artesao A" }), "artesao-a");
-    await service.create(entradaValida({ nome: "Produto Artesao B" }), "artesao-b");
+    const produtoA = await service.create(
+      entradaValida({ nome: "Produto Artesao A" }),
+      "artesao-a",
+    );
+    await service.create(
+      entradaValida({ nome: "Produto Artesao B" }),
+      "artesao-b",
+    );
 
     const produtosDoA = await service.listByArtesao("artesao-a");
 
@@ -186,7 +201,7 @@ describe("FakeProdutosService.listByArtesao", () => {
     expect(produtos.some((produto) => produto.id === criado.id)).toBe(true);
   });
 
-  it("produto removido logicamente deixa de aparecer na listagem do dono", async () => {
+  it("produto removido logicamente permanece na listagem privada do dono", async () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
@@ -195,7 +210,9 @@ describe("FakeProdutosService.listByArtesao", () => {
 
     const produtos = await service.listByArtesao("artesao-a");
 
-    expect(produtos).toEqual([]);
+    expect(produtos).toEqual([
+      expect.objectContaining({ id: criado.id, ativo: false }),
+    ]);
   });
 });
 
@@ -208,7 +225,7 @@ describe("FakeProdutosService.update", () => {
     const atualizado = await service.update(
       criado.id,
       entradaValida({ nome: "Nome Atualizado", preco: 120 }),
-      "artesao-a"
+      "artesao-a",
     );
 
     expect(atualizado.nome).toBe("Nome Atualizado");
@@ -223,7 +240,8 @@ describe("FakeProdutosService.update", () => {
 
     const criado = await service.create(entradaValida(), "artesao-a");
     const entrada = entradaValida({ nome: "Tentativa de sequestro" });
-    (entrada as unknown as Record<string, unknown>).artesaoId = "artesao-invasor";
+    (entrada as unknown as Record<string, unknown>).artesaoId =
+      "artesao-invasor";
 
     const atualizado = await service.update(criado.id, entrada, "artesao-a");
 
@@ -237,7 +255,11 @@ describe("FakeProdutosService.update", () => {
     const criado = await service.create(entradaValida(), "artesao-dono");
 
     await expect(
-      service.update(criado.id, entradaValida({ nome: "Invasao" }), "artesao-invasor")
+      service.update(
+        criado.id,
+        entradaValida({ nome: "Invasao" }),
+        "artesao-invasor",
+      ),
     ).rejects.toBeInstanceOf(ServiceError);
 
     const persistido = await repo.findById(criado.id);
@@ -249,7 +271,7 @@ describe("FakeProdutosService.update", () => {
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
     await expect(
-      service.update("produto-inexistente", entradaValida(), "artesao-a")
+      service.update("produto-inexistente", entradaValida(), "artesao-a"),
     ).rejects.toBeInstanceOf(ServiceError);
   });
 
@@ -260,7 +282,7 @@ describe("FakeProdutosService.update", () => {
     const criado = await service.create(entradaValida(), "artesao-a");
 
     await expect(
-      service.update(criado.id, entradaValida({ preco: -1 }), "artesao-a")
+      service.update(criado.id, entradaValida({ preco: -1 }), "artesao-a"),
     ).rejects.toBeInstanceOf(ServiceError);
 
     const persistido = await repo.findById(criado.id);
@@ -276,7 +298,7 @@ describe("FakeProdutosService.search", () => {
     const resultado = await service.search({ termo: "esculpid" });
 
     expect(resultado.map((produto) => produto.id).sort()).toEqual(
-      ["produto-seed-04", "produto-seed-14", "produto-seed-18"].sort()
+      ["produto-seed-04", "produto-seed-14", "produto-seed-18"].sort(),
     );
   });
 
@@ -311,7 +333,9 @@ describe("FakeProdutosService.search", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    const resultado = await service.search({ termo: "termo-sem-correspondencia-xyz" });
+    const resultado = await service.search({
+      termo: "termo-sem-correspondencia-xyz",
+    });
 
     expect(resultado).toEqual([]);
   });
@@ -341,7 +365,9 @@ describe("FakeProdutosService.search", () => {
     const resultado = await service.search({ artesaoId: "seed-artesao-01" });
 
     expect(resultado).toHaveLength(15);
-    expect(resultado.every((produto) => produto.artesaoId === "seed-artesao-01")).toBe(true);
+    expect(
+      resultado.every((produto) => produto.artesaoId === "seed-artesao-01"),
+    ).toBe(true);
   });
 
   it("oculta da busca produto com estoque zerado", async () => {
@@ -349,7 +375,7 @@ describe("FakeProdutosService.search", () => {
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
     const criado = await service.create(
       entradaValida({ nome: "Peca Rara Zerada" }),
-      "artesao-a"
+      "artesao-a",
     );
     await repo.update(criado.id, { quantidadeEstoque: 0 });
 
@@ -363,7 +389,7 @@ describe("FakeProdutosService.search", () => {
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
     const criado = await service.create(
       entradaValida({ nome: "Peca Removida" }),
-      "artesao-a"
+      "artesao-a",
     );
     await service.remove(criado.id, "artesao-a");
 
@@ -374,7 +400,10 @@ describe("FakeProdutosService.search", () => {
 
   describe("cinco combinacoes de filtros ativos (semantica AND)", () => {
     it("combinacao 1: somente categoria retorna os seis produtos da categoria", async () => {
-      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const repo = new BrowserProdutoRepository(
+        window.localStorage,
+        CHAVE_TESTE,
+      );
       const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
       const resultado = await service.search({
@@ -389,12 +418,15 @@ describe("FakeProdutosService.search", () => {
           "produto-seed-04",
           "produto-seed-05",
           "produto-seed-06",
-        ].sort()
+        ].sort(),
       );
     });
 
     it("combinacao 2: somente tecnica retorna os quatro produtos trancados em fibra", async () => {
-      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const repo = new BrowserProdutoRepository(
+        window.localStorage,
+        CHAVE_TESTE,
+      );
       const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
       const resultado = await service.search({
@@ -407,12 +439,15 @@ describe("FakeProdutosService.search", () => {
           "produto-seed-28",
           "produto-seed-29",
           "produto-seed-30",
-        ].sort()
+        ].sort(),
       );
     });
 
     it("combinacao 3: somente regiao retorna os dez produtos de Tracunhaem", async () => {
-      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const repo = new BrowserProdutoRepository(
+        window.localStorage,
+        CHAVE_TESTE,
+      );
       const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
       const resultado = await service.search({
@@ -421,12 +456,17 @@ describe("FakeProdutosService.search", () => {
 
       expect(resultado).toHaveLength(10);
       expect(
-        resultado.every((produto) => produto.regiaoId === REGIAO_IDS.tracunhaem)
+        resultado.every(
+          (produto) => produto.regiaoId === REGIAO_IDS.tracunhaem,
+        ),
       ).toBe(true);
     });
 
     it("combinacao 4: categoria e regiao juntas aplicam AND e restringem para dois produtos", async () => {
-      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const repo = new BrowserProdutoRepository(
+        window.localStorage,
+        CHAVE_TESTE,
+      );
       const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
       const resultado = await service.search({
@@ -435,12 +475,15 @@ describe("FakeProdutosService.search", () => {
       });
 
       expect(resultado.map((produto) => produto.id).sort()).toEqual(
-        ["produto-seed-13", "produto-seed-16"].sort()
+        ["produto-seed-13", "produto-seed-16"].sort(),
       );
     });
 
     it("combinacao 5: termo, categoria e tecnica juntos aplicam AND e restringem para tres produtos", async () => {
-      const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
+      const repo = new BrowserProdutoRepository(
+        window.localStorage,
+        CHAVE_TESTE,
+      );
       const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
       const resultado = await service.search({
@@ -450,7 +493,7 @@ describe("FakeProdutosService.search", () => {
       });
 
       expect(resultado.map((produto) => produto.id).sort()).toEqual(
-        ["produto-seed-07", "produto-seed-09", "produto-seed-12"].sort()
+        ["produto-seed-07", "produto-seed-09", "produto-seed-12"].sort(),
       );
     });
   });
@@ -476,7 +519,7 @@ describe("FakeProdutosService.remove", () => {
     const criado = await service.create(entradaValida(), "artesao-dono");
 
     await expect(
-      service.remove(criado.id, "artesao-invasor")
+      service.remove(criado.id, "artesao-invasor"),
     ).rejects.toBeInstanceOf(ServiceError);
 
     const persistido = await repo.findById(criado.id);
@@ -488,7 +531,7 @@ describe("FakeProdutosService.remove", () => {
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
     await expect(
-      service.remove("produto-inexistente", "artesao-a")
+      service.remove("produto-inexistente", "artesao-a"),
     ).rejects.toBeInstanceOf(ServiceError);
   });
 });
@@ -508,7 +551,9 @@ describe("FakeProdutosService.obterPublico", () => {
     const repo = new BrowserProdutoRepository(window.localStorage, CHAVE_TESTE);
     const service = new FakeProdutosService(repo, { latenciaMs: 0 });
 
-    await expect(service.obterPublico("produto-que-nao-existe")).resolves.toBeNull();
+    await expect(
+      service.obterPublico("produto-que-nao-existe"),
+    ).resolves.toBeNull();
   });
 
   it("retorna null para id vazio", async () => {

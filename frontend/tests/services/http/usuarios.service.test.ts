@@ -105,8 +105,6 @@ it("papel recebido como array e rejeitado", async () => {
 });
 
 it("listagem nao utiliza usuarios sinteticos", async () => {
-  vi.stubGlobal("fetch", vi.fn());
-  await expect((await service()).list()).rejects.toMatchObject({
-    code: "HTTP_NAO_IMPLEMENTADO",
-  });
+  vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json([])));
+  expect(await (await service()).list()).toEqual([]);
 });

@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ProdutoForm } from "@/components/painel-artesao/ProdutoForm";
@@ -8,6 +8,39 @@ import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { Produto } from "@/types/produto";
 
 const ARTESAO_ID_SESSAO = "artesao-sessao-1";
+afterEach(() => {
+  vi.unstubAllEnvs();
+  vi.unstubAllGlobals();
+});
+
+it("carrega categoria HTTP com UUID e cadastra pelo formulario", async () => {
+  vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
+  const categoriaId = "226bbf12-77a5-42f0-9081-246d3ff89c99";
+  const fetchMock = vi
+    .fn()
+    .mockResolvedValue(
+      Response.json([{ id: categoriaId, nome: "Categoria HTTP" }]),
+    );
+  vi.stubGlobal("fetch", fetchMock);
+  const service = criarServicoFake();
+  render(<ProdutoForm service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+  await screen.findByRole("option", { name: "Categoria HTTP" });
+  const user = userEvent.setup();
+  await user.type(screen.getByLabelText(/nome/i), "Vaso HTTP");
+  await user.type(
+    screen.getByLabelText(/descrição/i),
+    "Descricao sintetica HTTP",
+  );
+  await user.type(screen.getByLabelText(/preço/i), "25");
+  await user.selectOptions(screen.getByLabelText(/categoria/i), categoriaId);
+  await user.type(
+    screen.getByLabelText(/foto/i),
+    "https://example.test/foto.jpg",
+  );
+  await user.type(screen.getByLabelText(/estoque/i), "5");
+  await user.click(screen.getByRole("button", { name: /cadastrar/i }));
+  await screen.findByText(/Vaso HTTP já está/i);
+});
 
 function produtoCriado(overrides: Partial<Produto> = {}): Produto {
   return {
@@ -30,7 +63,7 @@ function produtoCriado(overrides: Partial<Produto> = {}): Produto {
 }
 
 function criarServicoFake(
-  createImpl?: ProdutosService["create"]
+  createImpl?: ProdutosService["create"],
 ): ProdutosService {
   return {
     list: vi.fn().mockResolvedValue([]),
@@ -43,20 +76,22 @@ function criarServicoFake(
   };
 }
 
-async function preencherFormularioValido(user: ReturnType<typeof userEvent.setup>) {
+async function preencherFormularioValido(
+  user: ReturnType<typeof userEvent.setup>,
+) {
   await user.type(screen.getByLabelText(/nome/i), "Vaso de Barro");
   await user.type(
     screen.getByLabelText(/descrição/i),
-    "Vaso modelado a mao com argila da regiao."
+    "Vaso modelado a mao com argila da regiao.",
   );
   await user.type(screen.getByLabelText(/preço/i), "89.90");
   await user.selectOptions(
     screen.getByLabelText(/categoria/i),
-    CATEGORIA_IDS.ceramicaBarro
+    CATEGORIA_IDS.ceramicaBarro,
   );
   await user.type(
     screen.getByLabelText(/foto/i),
-    "https://origem.test/fotos/vaso.jpg"
+    "https://origem.test/fotos/vaso.jpg",
   );
   await user.type(screen.getByLabelText(/estoque/i), "5");
 }
@@ -64,7 +99,10 @@ async function preencherFormularioValido(user: ReturnType<typeof userEvent.setup
 describe("ProdutoForm", () => {
   it("possui labels associadas a cada campo", () => {
     render(
-      <ProdutoForm service={criarServicoFake()} artesaoId={ARTESAO_ID_SESSAO} />
+      <ProdutoForm
+        service={criarServicoFake()}
+        artesaoId={ARTESAO_ID_SESSAO}
+      />,
     );
 
     expect(screen.getByLabelText(/nome/i)).toBeInTheDocument();
@@ -82,10 +120,13 @@ describe("ProdutoForm", () => {
       <ProdutoForm
         service={criarServicoFake(createSpy)}
         artesaoId={ARTESAO_ID_SESSAO}
-      />
+      />,
     );
 
-    await user.click(screen.getByRole("button", { name: /cadastrar produto/i }));
+    await screen.findByRole("option", { name: "Cerâmica e Barro" });
+    await user.click(
+      screen.getByRole("button", { name: /cadastrar produto/i }),
+    );
 
     expect(await screen.findByText(/nome com ao menos/i)).toBeInTheDocument();
     expect(screen.getByText(/descrição com ao menos/i)).toBeInTheDocument();
@@ -108,15 +149,19 @@ describe("ProdutoForm", () => {
       <ProdutoForm
         service={criarServicoFake(createSpy)}
         artesaoId={ARTESAO_ID_SESSAO}
-      />
+      />,
     );
 
     await preencherFormularioValido(user);
     await user.clear(screen.getByLabelText(/preço/i));
     await user.type(screen.getByLabelText(/preço/i), valorDigitado);
-    await user.click(screen.getByRole("button", { name: /cadastrar produto/i }));
+    await user.click(
+      screen.getByRole("button", { name: /cadastrar produto/i }),
+    );
 
-    expect(await screen.findByText(/preço maior que zero/i)).toBeInTheDocument();
+    expect(
+      await screen.findByText(/preço maior que zero/i),
+    ).toBeInTheDocument();
     expect(createSpy).not.toHaveBeenCalled();
   });
 
@@ -127,11 +172,13 @@ describe("ProdutoForm", () => {
       <ProdutoForm
         service={criarServicoFake(createSpy)}
         artesaoId={ARTESAO_ID_SESSAO}
-      />
+      />,
     );
 
     await preencherFormularioValido(user);
-    await user.click(screen.getByRole("button", { name: /cadastrar produto/i }));
+    await user.click(
+      screen.getByRole("button", { name: /cadastrar produto/i }),
+    );
 
     await waitFor(() => expect(createSpy).toHaveBeenCalledTimes(1));
     const [entrada, artesaoId] = createSpy.mock.calls[0] as [unknown, string];
@@ -139,7 +186,9 @@ describe("ProdutoForm", () => {
     expect(entrada).not.toHaveProperty("artesaoId");
     const confirmacao = await screen.findByRole("status");
     expect(confirmacao).toHaveTextContent(/cadastrado/i);
-    expect(confirmacao).toHaveTextContent(/vaso de barro já está em meus produtos/i);
+    expect(confirmacao).toHaveTextContent(
+      /vaso de barro já está em meus produtos/i,
+    );
   });
 
   it("aceita preco com virgula e envia o numero correto", async () => {
@@ -149,13 +198,15 @@ describe("ProdutoForm", () => {
       <ProdutoForm
         service={criarServicoFake(createSpy)}
         artesaoId={ARTESAO_ID_SESSAO}
-      />
+      />,
     );
 
     await preencherFormularioValido(user);
     await user.clear(screen.getByLabelText(/preço/i));
     await user.type(screen.getByLabelText(/preço/i), "39,90");
-    await user.click(screen.getByRole("button", { name: /cadastrar produto/i }));
+    await user.click(
+      screen.getByRole("button", { name: /cadastrar produto/i }),
+    );
 
     await waitFor(() => expect(createSpy).toHaveBeenCalledTimes(1));
     const [entrada] = createSpy.mock.calls[0] as [{ preco: number }];
@@ -173,7 +224,7 @@ describe("ProdutoForm", () => {
       <ProdutoForm
         service={criarServicoFake(createSpy)}
         artesaoId={ARTESAO_ID_SESSAO}
-      />
+      />,
     );
 
     await preencherFormularioValido(user);
@@ -198,7 +249,7 @@ describe("ProdutoForm", () => {
       <ProdutoForm
         service={criarServicoFake(createSpy)}
         artesaoId={ARTESAO_ID_SESSAO}
-      />
+      />,
     );
 
     await preencherFormularioValido(user);
@@ -216,20 +267,22 @@ describe("ProdutoForm", () => {
     const createSpy = vi
       .fn()
       .mockRejectedValue(
-        new ServiceError("PRODUTO_INDISPONIVEL", "Falha ao cadastrar produto.")
+        new ServiceError("PRODUTO_INDISPONIVEL", "Falha ao cadastrar produto."),
       );
     render(
       <ProdutoForm
         service={criarServicoFake(createSpy)}
         artesaoId={ARTESAO_ID_SESSAO}
-      />
+      />,
     );
 
     await preencherFormularioValido(user);
-    await user.click(screen.getByRole("button", { name: /cadastrar produto/i }));
+    await user.click(
+      screen.getByRole("button", { name: /cadastrar produto/i }),
+    );
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
-      /não foi possível cadastrar/i
+      /não foi possível cadastrar/i,
     );
     const botao = screen.getByRole("button", { name: /cadastrar produto/i });
     expect(botao).not.toBeDisabled();

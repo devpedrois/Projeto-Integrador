@@ -1027,3 +1027,30 @@ Não houve delegação ou achados de segurança no escopo.
 
 Evidências: evidencias/correcao-vercel-build-2026-10-14/.
 Não houve commit, push ou publicação na Vercel.
+
+### WEB-12: catálogo do artesão e moderação HTTP
+
+Codex implementou rotas Express, validação Zod e repositories Prisma.
+Testes Supertest precederam a implementação e usam PostgreSQL real.
+O schema de testes é isolado e descartado pelo helper existente.
+Foram implementadas propriedade, exclusão lógica e moderação reversível.
+Escritas de produto e estoque usam FOR UPDATE como checkout.
+As rotas administrativas exigem admin por proteção global e local.
+Adapters HTTP completam os contratos atuais dos painéis.
+Categorias dos formulários passaram a vir dos services.
+O perfil público preserva a busca pública após criar catálogo privado.
+O teste do checkpoint agora exige PENDENTES_HTTP vazio.
+
+Revisão local equivalente de segurança autorizada por Pedro.
+security-auditor não foi delegado conforme sua escolha explícita.
+Não houve commit ou push nesta subtarefa.
+
+Validação final: 462 testes backend e 833 frontend passaram.
+Lint, typecheck, Prettier e git diff --check passaram.
+Revisão local equivalente não encontrou achados bloqueantes.
+O navegador confirmou cadastro, edição, estoque zero e exclusão lógica.
+Também confirmou moderação e reativação de artesão e produto.
+Servidores temporários encerrados; schema sintético do smoke descartado.
+GIF e capturas não incluem a aba Network.
+As chamadas HTTP possuem cobertura automatizada.
+Evidências: evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/.

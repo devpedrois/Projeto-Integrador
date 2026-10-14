@@ -37,6 +37,11 @@ import { CarrinhoController } from "./controllers/carrinho.controller.js";
 import { PrismaCarrinhoRepository } from "./repositories/carrinho.repository.js";
 import { CarrinhoService } from "./services/carrinho.service.js";
 import { createCarrinhoRouter } from "./routes/carrinho.routes.js";
+import { exigirPapel } from "./middlewares/role.middleware.js";
+import { GestaoProdutosController } from "./controllers/gestao-produtos.controller.js";
+import { GestaoProdutosService } from "./services/gestao-produtos.service.js";
+import { PrismaGestaoProdutosRepository } from "./repositories/gestao-produtos.repository.js";
+import { createGestaoProdutosRouter } from "./routes/gestao-produtos.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -79,6 +84,15 @@ export function createApp(
   app.use(helmet());
   app.use(express.json({ limit: "16kb" }));
   app.use(cookieParser());
+  app.use("/admin", autenticarUsuario, exigirPapel("admin"));
+  app.use(
+    createGestaoProdutosRouter(
+      new GestaoProdutosController(
+        new GestaoProdutosService(new PrismaGestaoProdutosRepository(prisma)),
+      ),
+      autenticarUsuario,
+    ),
+  );
   app.use(createHealthRouter(healthController));
   app.use(createAuthRouter(authController));
   app.use(

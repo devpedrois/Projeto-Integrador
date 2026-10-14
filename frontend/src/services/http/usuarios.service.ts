@@ -8,6 +8,8 @@ import type { UsuarioPublico, Papel } from "@/types/usuario";
 import type { UsuarioSessao } from "@/types/sessao";
 import { validarCadastro } from "@/validators/cadastro.validator";
 import { validarLogin } from "@/validators/login.validator";
+import { lerArtesao } from "./moderacao.service";
+import { respostaInvalida } from "./catalogo-response";
 
 function sessaoPublica(value: unknown): UsuarioSessao {
   if (typeof value !== "object" || value === null)
@@ -55,10 +57,9 @@ export class HttpUsuariosService implements UsuariosSessaoService {
   }
 
   async list(): Promise<UsuarioPublico[]> {
-    throw new ServiceError(
-      "HTTP_NAO_IMPLEMENTADO",
-      "Listagem de usuários ainda indisponível.",
-    );
+    const value = await this.api.request<unknown>("/admin/artesaos");
+    if (!Array.isArray(value)) return respostaInvalida();
+    return value.map(lerArtesao);
   }
 
   async register(input: CadastroInput): Promise<UsuarioPublico> {

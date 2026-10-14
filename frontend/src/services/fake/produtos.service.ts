@@ -29,7 +29,7 @@ export class FakeProdutosService implements ProdutosService {
 
   constructor(
     private readonly repositorio: ProdutoRepository,
-    opcoes: FakeProdutosServiceOpcoes = {}
+    opcoes: FakeProdutosServiceOpcoes = {},
   ) {
     this.latenciaMs = opcoes.latenciaMs ?? 0;
     this.usuarioRepositorio = opcoes.usuarioRepositorio ?? null;
@@ -80,14 +80,13 @@ export class FakeProdutosService implements ProdutosService {
     await this.repositorio.seed();
     await aguardar(this.latenciaMs);
     const produtos = await this.repositorio.list();
-    const doArtesao = produtos.filter((produto) => produto.artesaoId === artesaoId);
-    return filtrarProdutosVisiveis(doArtesao, { usuarioId: artesaoId });
+    return produtos.filter((produto) => produto.artesaoId === artesaoId);
   }
 
   async update(
     id: string,
     input: NovoProdutoInput,
-    artesaoId: string
+    artesaoId: string,
   ): Promise<Produto> {
     const erros = validarProduto(input);
     if (!produtoValido(erros)) {
@@ -112,7 +111,10 @@ export class FakeProdutosService implements ProdutosService {
     });
 
     if (!atualizado) {
-      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto não encontrado.");
+      throw new ServiceError(
+        "PRODUTO_NAO_ENCONTRADO",
+        "Produto não encontrado.",
+      );
     }
 
     return atualizado;
@@ -129,7 +131,10 @@ export class FakeProdutosService implements ProdutosService {
     });
 
     if (!atualizado) {
-      throw new ServiceError("PRODUTO_NAO_ENCONTRADO", "Produto não encontrado.");
+      throw new ServiceError(
+        "PRODUTO_NAO_ENCONTRADO",
+        "Produto não encontrado.",
+      );
     }
   }
 
@@ -145,10 +150,13 @@ export class FakeProdutosService implements ProdutosService {
         const alvo = normalizarTexto(`${produto.nome} ${produto.descricao}`);
         if (!alvo.includes(termoNormalizado)) return false;
       }
-      if (query.categoriaId && produto.categoriaId !== query.categoriaId) return false;
-      if (query.tecnicaId && produto.tecnicaId !== query.tecnicaId) return false;
+      if (query.categoriaId && produto.categoriaId !== query.categoriaId)
+        return false;
+      if (query.tecnicaId && produto.tecnicaId !== query.tecnicaId)
+        return false;
       if (query.regiaoId && produto.regiaoId !== query.regiaoId) return false;
-      if (query.artesaoId && produto.artesaoId !== query.artesaoId) return false;
+      if (query.artesaoId && produto.artesaoId !== query.artesaoId)
+        return false;
       return true;
     });
 
@@ -177,13 +185,13 @@ export class FakeProdutosService implements ProdutosService {
 
   private async verificarPropriedade(
     id: string,
-    artesaoId: string
+    artesaoId: string,
   ): Promise<Produto> {
     const existente = await this.repositorio.findById(id);
     if (!existente || existente.artesaoId !== artesaoId) {
       throw new ServiceError(
         "ACESSO_NEGADO",
-        "Produto não encontrado para este artesão."
+        "Produto não encontrado para este artesão.",
       );
     }
     return existente;

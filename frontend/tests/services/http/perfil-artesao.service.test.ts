@@ -67,7 +67,7 @@ describe("WEB-07 adapters HTTP", () => {
     const fetchMock = vi.fn().mockResolvedValue(Response.json([]));
     vi.stubGlobal("fetch", fetchMock);
     expect(
-      await new HttpProdutosService().listByArtesao(dto.artesaoId),
+      await new HttpProdutosService().search({ artesaoId: dto.artesaoId }),
     ).toEqual([]);
     expect(fetchMock.mock.calls[0]?.[0]).toBe(
       `/api/produtos?artesaoId=${dto.artesaoId}`,

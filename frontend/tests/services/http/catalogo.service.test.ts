@@ -108,14 +108,12 @@ describe("HTTP catalogo", () => {
     });
   });
 
-  it("escritas continuam explicitamente pendentes", async () => {
-    const fetchMock = vi.fn();
+  it("remocao usa DELETE autenticado", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(Response.json(produto));
     vi.stubGlobal("fetch", fetchMock);
     const service = await produtosService();
-    await expect(
-      service.remove(produto.id, produto.artesaoId),
-    ).rejects.toMatchObject({ code: "HTTP_NAO_IMPLEMENTADO" });
-    expect(fetchMock).not.toHaveBeenCalled();
+    await service.remove(produto.id, produto.artesaoId);
+    expect(fetchMock.mock.calls[0]?.[1].method).toBe("DELETE");
   });
 
   it("carrega categorias, tecnicas e regioes do HTTP", async () => {

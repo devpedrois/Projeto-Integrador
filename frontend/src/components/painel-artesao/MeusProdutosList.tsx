@@ -16,7 +16,7 @@ import {
 } from "@/components/formulario/estilos-botao";
 import { Icone } from "@/components/vitrine/Icone";
 import { useMeusProdutos } from "@/hooks/use-meus-produtos";
-import { CATEGORIA_IDS, CATEGORIAS_SEED } from "@/fake-api/seeds/categorias.seed";
+import { useCategoriasProduto } from "@/hooks/use-categorias-produto";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { NovoProdutoInput } from "@/types/novo-produto";
 import type { Produto } from "@/types/produto";
@@ -37,17 +37,13 @@ export interface MeusProdutosListProps {
 const MENSAGEM_ERRO_ACAO =
   "Não foi possível concluir a ação. Tente novamente em instantes.";
 
-const OPCOES_CATEGORIA = CATEGORIAS_SEED.map((categoria) => ({
-  valor: categoria.id,
-  rotulo: categoria.nome,
-}));
-
 const TONS_CATEGORIA: Record<string, string> = {
-  [CATEGORIA_IDS.ceramicaBarro]: "bg-cat-ceramica-tint text-cat-ceramica-ink",
-  [CATEGORIA_IDS.rendaBordado]: "bg-cat-renda-tint text-cat-renda-ink",
-  [CATEGORIA_IDS.madeiraEntalhada]: "bg-cat-madeira-tint text-cat-madeira-ink",
-  [CATEGORIA_IDS.textilCostura]: "bg-cat-textil-tint text-cat-textil-ink",
-  [CATEGORIA_IDS.bijuteriaAcessorios]: "bg-cat-bijuteria-tint text-cat-bijuteria-ink",
+  "categoria-ceramica-barro": "bg-cat-ceramica-tint text-cat-ceramica-ink",
+  "categoria-renda-bordado": "bg-cat-renda-tint text-cat-renda-ink",
+  "categoria-madeira-entalhada": "bg-cat-madeira-tint text-cat-madeira-ink",
+  "categoria-textil-costura": "bg-cat-textil-tint text-cat-textil-ink",
+  "categoria-bijuteria-acessorios":
+    "bg-cat-bijuteria-tint text-cat-bijuteria-ink",
 };
 
 const BOTAO_LINHA = "md:h-[var(--control-h-sm)] md:px-3.5 md:text-sm";
@@ -56,19 +52,22 @@ function capaDoProduto(produto: Produto): string | undefined {
   return [...produto.fotos].sort((a, b) => a.ordem - b.ordem)[0]?.url;
 }
 
-export function MeusProdutosList({ service, artesaoId }: MeusProdutosListProps) {
+export function MeusProdutosList({
+  service,
+  artesaoId,
+}: MeusProdutosListProps) {
   const { estado, recarregar } = useMeusProdutos(service, artesaoId);
   const [editandoId, setEditandoId] = useState<string | null>(null);
-  const [confirmandoRemocaoId, setConfirmandoRemocaoId] = useState<string | null>(
-    null
-  );
+  const [confirmandoRemocaoId, setConfirmandoRemocaoId] = useState<
+    string | null
+  >(null);
   const [erroAcao, setErroAcao] = useState<string | null>(null);
   const [erroEdicao, setErroEdicao] = useState<string | null>(null);
   const [processandoId, setProcessandoId] = useState<string | null>(null);
 
   const produtoEmEdicao =
     estado.status === "sucesso"
-      ? estado.produtos.find((produto) => produto.id === editandoId) ?? null
+      ? (estado.produtos.find((produto) => produto.id === editandoId) ?? null)
       : null;
 
   function iniciarEdicao(id: string) {
@@ -141,7 +140,9 @@ export function MeusProdutosList({ service, artesaoId }: MeusProdutosListProps) 
         </p>
       ) : null}
 
-      {estado.status === "erro" ? <Alerta tom="erro">{estado.mensagem}</Alerta> : null}
+      {estado.status === "erro" ? (
+        <Alerta tom="erro">{estado.mensagem}</Alerta>
+      ) : null}
 
       {estado.status === "vazio" ? <ListaVazia /> : null}
 
@@ -210,7 +211,10 @@ function ListaVazia() {
       <p className="m-0 max-w-[380px] text-[15px] leading-[1.55] text-fg-muted">
         Cadastre sua primeira peça no Painel do artesão.
       </p>
-      <Link href="/painel-artesao" className={`${BOTAO_PRIMARIO_GRANDE} mt-1.5`}>
+      <Link
+        href="/painel-artesao"
+        className={`${BOTAO_PRIMARIO_GRANDE} mt-1.5`}
+      >
         <Icone nome="mais" className="flex-none" />
         Ir para o Painel do artesão
       </Link>
@@ -241,7 +245,12 @@ function Miniatura({
       className={`grid flex-none place-items-center overflow-hidden rounded-[8px] ${tom} ${className}`}
     >
       {url && !falhou ? (
-        <img src={url} alt="" onError={() => setFalhou(true)} className="size-full object-cover" />
+        <img
+          src={url}
+          alt=""
+          onError={() => setFalhou(true)}
+          className="size-full object-cover"
+        />
       ) : (
         <Icone nome="pacote" tamanho={22} className="opacity-75" />
       )}
@@ -278,6 +287,11 @@ function LinhaProduto({ produto, onEditar, onRemover }: LinhaProdutoProps) {
               Desativado pela moderação: fora da vitrine.
             </span>
           ) : null}
+          {!produto.ativo ? (
+            <span className="text-caption font-semibold text-fg-muted">
+              Removido: fora da vitrine.
+            </span>
+          ) : null}
         </div>
       </div>
       <span className="hidden text-[15px] font-semibold text-fg-strong tabular-nums md:block">
@@ -287,11 +301,19 @@ function LinhaProduto({ produto, onEditar, onRemover }: LinhaProdutoProps) {
         {produto.quantidadeEstoque}
       </span>
       <div className="grid grid-cols-2 gap-2 md:flex md:justify-end">
-        <button type="button" onClick={onEditar} className={`${BOTAO_SECUNDARIO} ${BOTAO_LINHA}`}>
+        <button
+          type="button"
+          onClick={onEditar}
+          className={`${BOTAO_SECUNDARIO} ${BOTAO_LINHA}`}
+        >
           <Icone nome="lapis" tamanho={16} className="flex-none" />
           Editar
         </button>
-        <button type="button" onClick={onRemover} className={`${BOTAO_REMOVER} ${BOTAO_LINHA}`}>
+        <button
+          type="button"
+          onClick={onRemover}
+          className={`${BOTAO_REMOVER} ${BOTAO_LINHA}`}
+        >
           <Icone nome="lixeira" tamanho={16} className="flex-none" />
           Remover
         </button>
@@ -360,14 +382,21 @@ interface PainelEdicaoProps {
   onSalvar: (input: NovoProdutoInput) => void;
 }
 
-function PainelEdicao({ produto, processando, erro, onFechar, onSalvar }: PainelEdicaoProps) {
+function PainelEdicao({
+  produto,
+  processando,
+  erro,
+  onFechar,
+  onSalvar,
+}: PainelEdicaoProps) {
+  const catalogo = useCategoriasProduto();
   const [nome, setNome] = useState(produto.nome);
   const [descricao, setDescricao] = useState(produto.descricao);
   const [preco, setPreco] = useState(formatarPrecoCampo(produto.preco));
   const [categoriaId, setCategoriaId] = useState(produto.categoriaId);
   const [fotoUrl, setFotoUrl] = useState(capaDoProduto(produto) ?? "");
   const [quantidadeEstoque, setQuantidadeEstoque] = useState(
-    String(produto.quantidadeEstoque)
+    String(produto.quantidadeEstoque),
   );
   const [erros, setErros] = useState<ErrosProduto>({});
   const refNome = useRef<HTMLInputElement>(null);
@@ -410,7 +439,10 @@ function PainelEdicao({ produto, processando, erro, onFechar, onSalvar }: Painel
       quantidadeEstoque: Number(quantidadeEstoque),
     };
 
-    const errosValidacao = validarProduto(input);
+    const errosValidacao = validarProduto(
+      input,
+      new Set(catalogo.categorias.map((categoria) => categoria.id)),
+    );
     setErros(errosValidacao);
     if (!produtoValido(errosValidacao)) return;
 
@@ -419,7 +451,11 @@ function PainelEdicao({ produto, processando, erro, onFechar, onSalvar }: Painel
 
   return (
     <>
-      <div aria-hidden="true" onClick={onFechar} className="fixed inset-0 z-40 bg-overlay-scrim" />
+      <div
+        aria-hidden="true"
+        onClick={onFechar}
+        className="fixed inset-0 z-40 bg-overlay-scrim"
+      />
       <form
         role="dialog"
         aria-modal="true"
@@ -429,7 +465,11 @@ function PainelEdicao({ produto, processando, erro, onFechar, onSalvar }: Painel
         className="fixed inset-y-0 right-0 z-[41] flex w-full max-w-[480px] flex-col bg-surface-card shadow-lg"
       >
         <div className="flex flex-none items-center gap-3 border-b border-border-subtle py-4 pr-3 pl-6">
-          <Miniatura categoriaId={categoriaId} fotoUrl={fotoUrl} className="size-11" />
+          <Miniatura
+            categoriaId={categoriaId}
+            fotoUrl={fotoUrl}
+            className="size-11"
+          />
           <div className="mr-auto flex min-w-0 flex-col">
             <span className="text-overline font-semibold tracking-[0.1em] text-fg-brand uppercase">
               Editar
@@ -450,6 +490,21 @@ function PainelEdicao({ produto, processando, erro, onFechar, onSalvar }: Painel
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto p-6">
+          {catalogo.estado.status === "carregando" ? (
+            <p role="status">Carregando categorias...</p>
+          ) : null}
+          {catalogo.estado.status === "erro" ? (
+            <Alerta tom="erro">
+              Não foi possível carregar as categorias.{" "}
+              <button type="button" onClick={catalogo.recarregar}>
+                Tentar novamente
+              </button>
+            </Alerta>
+          ) : null}
+          {catalogo.estado.status === "sucesso" &&
+          catalogo.categorias.length === 0 ? (
+            <p role="status">Nenhuma categoria disponível.</p>
+          ) : null}
           <CampoTexto
             id={`${idBase}-nome`}
             ref={refNome}
@@ -481,10 +536,10 @@ function PainelEdicao({ produto, processando, erro, onFechar, onSalvar }: Painel
           <CampoSelecao
             id={`${idBase}-categoria`}
             rotulo="Categoria"
-            opcoes={OPCOES_CATEGORIA}
+            opcoes={catalogo.opcoes}
             value={categoriaId}
             onChange={(evento) => setCategoriaId(evento.target.value)}
-            disabled={processando}
+            disabled={processando || catalogo.estado.status !== "sucesso"}
             erro={erros.categoriaId}
           />
           <CampoTexto
@@ -514,11 +569,19 @@ function PainelEdicao({ produto, processando, erro, onFechar, onSalvar }: Painel
           {erro ? <Alerta tom="erro">{erro}</Alerta> : null}
           <button
             type="submit"
-            disabled={processando}
+            disabled={
+              processando ||
+              catalogo.estado.status !== "sucesso" ||
+              catalogo.categorias.length === 0
+            }
             aria-busy={processando || undefined}
             className={`${BOTAO_PRIMARIO_GRANDE} w-full`}
           >
-            {processando ? <Giro /> : <Icone nome="confirmar" className="flex-none" />}
+            {processando ? (
+              <Giro />
+            ) : (
+              <Icone nome="confirmar" className="flex-none" />
+            )}
             {processando ? "Salvando..." : "Salvar"}
           </button>
         </div>

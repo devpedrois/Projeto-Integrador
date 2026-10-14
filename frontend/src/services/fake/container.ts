@@ -31,33 +31,17 @@ import { HttpPerfilArtesaoService } from "@/services/http/perfil-artesao.service
 import { HttpCarrinhoService } from "@/services/http/carrinho.service";
 import { HttpPedidosService } from "@/services/http/pedidos.service";
 import { HttpProdutosService } from "@/services/http/produtos.service";
+import { HttpModeracaoService } from "@/services/http/moderacao.service";
 import { HttpOpcoesFiltroService } from "@/services/http/opcoes-filtro.service";
 import { HttpAvaliacoesService } from "@/services/http/avaliacoes.service";
 import { HttpRecommendationAdapter } from "@/services/http/recomendacoes.adapter";
 import { obterFonteDados } from "@/services/data-source";
 import { ServiceError } from "@/services/errors";
 
-export const PENDENTES_HTTP = [
-  "ProdutosService.create/update/remove",
-  "ModeracaoService",
-  "UsuariosService.list",
-] as const;
-let pendenciasAvisadas = false;
+export const PENDENTES_HTTP: readonly string[] = [];
 
 function modoHttp(): boolean {
-  const http = obterFonteDados() === "http";
-  if (http && !pendenciasAvisadas && process.env.NODE_ENV === "development") {
-    console.warn("Adapters HTTP pendentes:", PENDENTES_HTTP.join(", "));
-    pendenciasAvisadas = true;
-  }
-  return http;
-}
-
-async function pendente(): Promise<never> {
-  throw new ServiceError(
-    "HTTP_NAO_IMPLEMENTADO",
-    "Este recurso ainda está indisponível.",
-  );
+  return obterFonteDados() === "http";
 }
 
 const produtosHttp: ProdutosService = new HttpProdutosService();
@@ -66,14 +50,7 @@ const perfilHttp: PerfilArtesaoService = new HttpPerfilArtesaoService();
 const avaliacoesHttp: AvaliacoesService = new HttpAvaliacoesService();
 const recomendacoesHttp: RecomendacoesService = new HttpRecommendationAdapter();
 const opcoesHttp: OpcoesFiltroService = new HttpOpcoesFiltroService();
-const moderacaoHttpPendente: ModeracaoService = {
-  listarArtesaos: pendente,
-  listarProdutos: pendente,
-  ativarArtesao: pendente,
-  desativarArtesao: pendente,
-  ativarProduto: pendente,
-  desativarProduto: pendente,
-};
+const moderacaoHttp: ModeracaoService = new HttpModeracaoService();
 let usuariosHttpInstancia: HttpUsuariosService | null = null;
 
 function usuariosHttp(): HttpUsuariosService {
@@ -232,7 +209,7 @@ export function obterAvaliacoesService(): AvaliacoesService {
  * hooks, componentes ou paginas.
  */
 export function obterModeracaoService(): ModeracaoService {
-  if (modoHttp()) return moderacaoHttpPendente;
+  if (modoHttp()) return moderacaoHttp;
   if (!moderacaoServiceInstancia) {
     moderacaoServiceInstancia = new FakeModeracaoService(
       new BrowserUsuarioRepository(window.localStorage),

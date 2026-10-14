@@ -52,7 +52,7 @@ function produto(overrides: Partial<Produto> = {}): Produto {
 }
 
 function criarUsuariosServiceFake(
-  overrides: Partial<UsuariosService> = {}
+  overrides: Partial<UsuariosService> = {},
 ): UsuariosService {
   return {
     list: vi.fn().mockResolvedValue([usuario()]),
@@ -63,7 +63,7 @@ function criarUsuariosServiceFake(
 }
 
 function criarPerfilServiceFake(
-  overrides: Partial<PerfilArtesaoService> = {}
+  overrides: Partial<PerfilArtesaoService> = {},
 ): PerfilArtesaoService {
   return {
     obter: vi.fn().mockResolvedValue(perfil()),
@@ -73,7 +73,7 @@ function criarPerfilServiceFake(
 }
 
 function criarProdutosServiceFake(
-  overrides: Partial<ProdutosService> = {}
+  overrides: Partial<ProdutosService> = {},
 ): ProdutosService {
   return {
     list: vi.fn().mockResolvedValue([]),
@@ -81,19 +81,23 @@ function criarProdutosServiceFake(
     listByArtesao: vi.fn().mockResolvedValue([produto()]),
     update: vi.fn(),
     remove: vi.fn(),
-    search: vi.fn().mockResolvedValue([]),
+    search: vi.fn().mockResolvedValue([produto()]),
     obterPublico: vi.fn().mockResolvedValue(null),
     ...overrides,
   };
 }
 
 function criarOpcoesFiltroServiceFake(
-  overrides: Partial<OpcoesFiltroService> = {}
+  overrides: Partial<OpcoesFiltroService> = {},
 ): OpcoesFiltroService {
   return {
     categorias: vi.fn().mockResolvedValue([]),
-    tecnicas: vi.fn().mockResolvedValue([{ id: "tecnica-1", nome: "Renda de Bilro" }]),
-    regioes: vi.fn().mockResolvedValue([{ id: "regiao-1", nome: "Pilar, Recife" }]),
+    tecnicas: vi
+      .fn()
+      .mockResolvedValue([{ id: "tecnica-1", nome: "Renda de Bilro" }]),
+    regioes: vi
+      .fn()
+      .mockResolvedValue([{ id: "regiao-1", nome: "Pilar, Recife" }]),
     ...overrides,
   };
 }
@@ -107,12 +111,14 @@ interface Servicos {
 
 function renderizar(
   artesaoId: string | null,
-  overrides: Partial<Servicos> = {}
+  overrides: Partial<Servicos> = {},
 ) {
-  const usuariosService = overrides.usuariosService ?? criarUsuariosServiceFake();
+  const usuariosService =
+    overrides.usuariosService ?? criarUsuariosServiceFake();
   const perfilArtesaoService =
     overrides.perfilArtesaoService ?? criarPerfilServiceFake();
-  const produtosService = overrides.produtosService ?? criarProdutosServiceFake();
+  const produtosService =
+    overrides.produtosService ?? criarProdutosServiceFake();
   const opcoesFiltroService =
     overrides.opcoesFiltroService ?? criarOpcoesFiltroServiceFake();
 
@@ -122,11 +128,17 @@ function renderizar(
       perfilArtesaoService,
       produtosService,
       opcoesFiltroService,
-      artesaoId
-    )
+      artesaoId,
+    ),
   );
 
-  return { ...hook, usuariosService, perfilArtesaoService, produtosService, opcoesFiltroService };
+  return {
+    ...hook,
+    usuariosService,
+    perfilArtesaoService,
+    produtosService,
+    opcoesFiltroService,
+  };
 }
 
 describe("usePerfilPublicoArtesao", () => {
@@ -145,7 +157,8 @@ describe("usePerfilPublicoArtesao", () => {
 
     await waitFor(() => expect(result.current.estado.status).toBe("sucesso"));
 
-    if (result.current.estado.status !== "sucesso") throw new Error("esperado sucesso");
+    if (result.current.estado.status !== "sucesso")
+      throw new Error("esperado sucesso");
     expect(result.current.estado.usuario.nome).toBe("Maria das Rendas");
     expect(result.current.estado.perfil?.historia).toContain("avo no Pilar");
     expect(result.current.estado.tecnicaNome).toBe("Renda de Bilro");
@@ -157,7 +170,7 @@ describe("usePerfilPublicoArtesao", () => {
   it("oculta produtos inativos ou sem estoque da grade publica", async () => {
     const { result } = renderizar("artesao-1", {
       produtosService: criarProdutosServiceFake({
-        listByArtesao: vi
+        search: vi
           .fn()
           .mockResolvedValue([
             produto({ id: "ativo", ativo: true, quantidadeEstoque: 2 }),
@@ -169,10 +182,11 @@ describe("usePerfilPublicoArtesao", () => {
 
     await waitFor(() => expect(result.current.estado.status).toBe("sucesso"));
 
-    if (result.current.estado.status !== "sucesso") throw new Error("esperado sucesso");
-    expect(result.current.estado.produtos.map((produto) => produto.id)).toEqual([
-      "ativo",
-    ]);
+    if (result.current.estado.status !== "sucesso")
+      throw new Error("esperado sucesso");
+    expect(result.current.estado.produtos.map((produto) => produto.id)).toEqual(
+      ["ativo"],
+    );
   });
 
   it("mantem perfil acessivel e incompleto quando nao ha perfil salvo", async () => {
@@ -184,7 +198,8 @@ describe("usePerfilPublicoArtesao", () => {
 
     await waitFor(() => expect(result.current.estado.status).toBe("sucesso"));
 
-    if (result.current.estado.status !== "sucesso") throw new Error("esperado sucesso");
+    if (result.current.estado.status !== "sucesso")
+      throw new Error("esperado sucesso");
     expect(result.current.estado.perfil).toBeNull();
     expect(result.current.estado.perfilCompleto).toBe(false);
   });
@@ -196,7 +211,9 @@ describe("usePerfilPublicoArtesao", () => {
       }),
     });
 
-    await waitFor(() => expect(result.current.estado.status).toBe("naoEncontrado"));
+    await waitFor(() =>
+      expect(result.current.estado.status).toBe("naoEncontrado"),
+    );
   });
 
   it("retorna naoEncontrado quando o usuario nao e artesao ativo", async () => {
@@ -204,17 +221,21 @@ describe("usePerfilPublicoArtesao", () => {
       usuariosService: criarUsuariosServiceFake({
         list: vi
           .fn()
-          .mockResolvedValue([usuario({ id: "comprador-1", papel: "comprador" })]),
+          .mockResolvedValue([
+            usuario({ id: "comprador-1", papel: "comprador" }),
+          ]),
       }),
     });
 
-    await waitFor(() => expect(result.current.estado.status).toBe("naoEncontrado"));
+    await waitFor(() =>
+      expect(result.current.estado.status).toBe("naoEncontrado"),
+    );
   });
 
   it("retorna erro quando algum servico falha", async () => {
     const { result } = renderizar("artesao-1", {
       produtosService: criarProdutosServiceFake({
-        listByArtesao: vi.fn().mockRejectedValue(new Error("falhou")),
+        search: vi.fn().mockRejectedValue(new Error("falhou")),
       }),
     });
 
@@ -222,13 +243,13 @@ describe("usePerfilPublicoArtesao", () => {
   });
 
   it("recarregar busca os dados novamente apos erro", async () => {
-    const listByArtesao = vi
+    const search = vi
       .fn()
       .mockRejectedValueOnce(new Error("falhou"))
       .mockResolvedValueOnce([produto()]);
 
     const { result } = renderizar("artesao-1", {
-      produtosService: criarProdutosServiceFake({ listByArtesao }),
+      produtosService: criarProdutosServiceFake({ search }),
     });
 
     await waitFor(() => expect(result.current.estado.status).toBe("erro"));
@@ -238,7 +259,7 @@ describe("usePerfilPublicoArtesao", () => {
     });
 
     await waitFor(() => expect(result.current.estado.status).toBe("sucesso"));
-    expect(listByArtesao).toHaveBeenCalledTimes(2);
+    expect(search).toHaveBeenCalledTimes(2);
   });
 
   it("nao chama os servicos quando artesaoId e nulo", () => {

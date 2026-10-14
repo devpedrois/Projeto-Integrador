@@ -7,10 +7,13 @@ export type CampoProduto = keyof NovoProdutoInput;
 export type ErrosProduto = Partial<Record<CampoProduto, string>>;
 
 const CATEGORIA_IDS_VALIDAS = new Set(
-  CATEGORIAS_SEED.map((categoria) => categoria.id)
+  CATEGORIAS_SEED.map((categoria) => categoria.id),
 );
 
-export function validarProduto(input: NovoProdutoInput): ErrosProduto {
+export function validarProduto(
+  input: NovoProdutoInput,
+  categoriasValidas: ReadonlySet<string> = CATEGORIA_IDS_VALIDAS,
+): ErrosProduto {
   const erros: ErrosProduto = {};
 
   if (input.nome.trim().length < 3) {
@@ -25,7 +28,7 @@ export function validarProduto(input: NovoProdutoInput): ErrosProduto {
     erros.preco = "Informe um preço maior que zero.";
   }
 
-  if (!CATEGORIA_IDS_VALIDAS.has(input.categoriaId)) {
+  if (!categoriasValidas.has(input.categoriaId)) {
     erros.categoriaId = "Selecione uma categoria válida.";
   }
 
@@ -33,7 +36,8 @@ export function validarProduto(input: NovoProdutoInput): ErrosProduto {
     input.fotos.length === 0 ||
     input.fotos.some((foto) => !fotoUrlAceita(foto.url.trim()))
   ) {
-    erros.fotos = "Informe ao menos uma foto com URL https:// ou caminho local.";
+    erros.fotos =
+      "Informe ao menos uma foto com URL https:// ou caminho local.";
   }
 
   if (

@@ -41,7 +41,7 @@ function produto(overrides: Partial<Produto> = {}): Produto {
 }
 
 function criarUsuariosServiceFake(
-  overrides: Partial<UsuariosService> = {}
+  overrides: Partial<UsuariosService> = {},
 ): UsuariosService {
   return {
     list: vi.fn().mockResolvedValue([usuario()]),
@@ -52,7 +52,7 @@ function criarUsuariosServiceFake(
 }
 
 function criarPerfilServiceFake(
-  overrides: Partial<PerfilArtesaoService> = {}
+  overrides: Partial<PerfilArtesaoService> = {},
 ): PerfilArtesaoService {
   return {
     obter: vi.fn().mockResolvedValue({
@@ -67,7 +67,7 @@ function criarPerfilServiceFake(
 }
 
 function criarProdutosServiceFake(
-  overrides: Partial<ProdutosService> = {}
+  overrides: Partial<ProdutosService> = {},
 ): ProdutosService {
   return {
     list: vi.fn().mockResolvedValue([]),
@@ -75,19 +75,23 @@ function criarProdutosServiceFake(
     listByArtesao: vi.fn().mockResolvedValue([produto()]),
     update: vi.fn(),
     remove: vi.fn(),
-    search: vi.fn().mockResolvedValue([]),
+    search: vi.fn().mockResolvedValue([produto()]),
     obterPublico: vi.fn().mockResolvedValue(null),
     ...overrides,
   };
 }
 
 function criarOpcoesFiltroServiceFake(
-  overrides: Partial<OpcoesFiltroService> = {}
+  overrides: Partial<OpcoesFiltroService> = {},
 ): OpcoesFiltroService {
   return {
     categorias: vi.fn().mockResolvedValue([]),
-    tecnicas: vi.fn().mockResolvedValue([{ id: "tecnica-1", nome: "Renda de Bilro" }]),
-    regioes: vi.fn().mockResolvedValue([{ id: "regiao-1", nome: "Pilar, Recife" }]),
+    tecnicas: vi
+      .fn()
+      .mockResolvedValue([{ id: "tecnica-1", nome: "Renda de Bilro" }]),
+    regioes: vi
+      .fn()
+      .mockResolvedValue([{ id: "regiao-1", nome: "Pilar, Recife" }]),
     ...overrides,
   };
 }
@@ -101,10 +105,12 @@ describe("PerfilArtesaoPublico", () => {
         produtosService={criarProdutosServiceFake()}
         opcoesFiltroService={criarOpcoesFiltroServiceFake()}
         artesaoId="artesao-1"
-      />
+      />,
     );
 
-    await waitFor(() => expect(screen.getByText("Maria das Rendas")).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByText("Maria das Rendas")).toBeInTheDocument(),
+    );
     expect(screen.getByText(/Aprendi a arte da renda/)).toBeInTheDocument();
     expect(screen.getByText("Renda de Bilro")).toBeInTheDocument();
     expect(screen.getByText("Pilar, Recife")).toBeInTheDocument();
@@ -121,10 +127,12 @@ describe("PerfilArtesaoPublico", () => {
         produtosService={criarProdutosServiceFake()}
         opcoesFiltroService={criarOpcoesFiltroServiceFake()}
         artesaoId="artesao-1"
-      />
+      />,
     );
 
-    await waitFor(() => expect(screen.getByText("Maria das Rendas")).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByText("Maria das Rendas")).toBeInTheDocument(),
+    );
     expect(screen.queryByText("Renda de Bilro")).not.toBeInTheDocument();
   });
 
@@ -144,10 +152,12 @@ describe("PerfilArtesaoPublico", () => {
         produtosService={criarProdutosServiceFake()}
         opcoesFiltroService={criarOpcoesFiltroServiceFake()}
         artesaoId="artesao-1"
-      />
+      />,
     );
 
-    const retrato = await screen.findByRole("img", { name: "Maria das Rendas" });
+    const retrato = await screen.findByRole("img", {
+      name: "Maria das Rendas",
+    });
     expect(retrato).toHaveAttribute("src", "/imagens/entalhe-luz.webp");
   });
 
@@ -167,10 +177,12 @@ describe("PerfilArtesaoPublico", () => {
         produtosService={criarProdutosServiceFake()}
         opcoesFiltroService={criarOpcoesFiltroServiceFake()}
         artesaoId="artesao-1"
-      />
+      />,
     );
 
-    await waitFor(() => expect(screen.getByText("Maria das Rendas")).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByText("Maria das Rendas")).toBeInTheDocument(),
+    );
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 
@@ -180,20 +192,24 @@ describe("PerfilArtesaoPublico", () => {
         usuariosService={criarUsuariosServiceFake()}
         perfilArtesaoService={criarPerfilServiceFake()}
         produtosService={criarProdutosServiceFake({
-          listByArtesao: vi
-            .fn()
-            .mockResolvedValue([
-              produto({ id: "ativo", nome: "Peca visivel" }),
-              produto({ id: "inativo", nome: "Peca inativa", ativo: false }),
-              produto({ id: "sem-estoque", nome: "Peca sem estoque", quantidadeEstoque: 0 }),
-            ]),
+          search: vi.fn().mockResolvedValue([
+            produto({ id: "ativo", nome: "Peca visivel" }),
+            produto({ id: "inativo", nome: "Peca inativa", ativo: false }),
+            produto({
+              id: "sem-estoque",
+              nome: "Peca sem estoque",
+              quantidadeEstoque: 0,
+            }),
+          ]),
         })}
         opcoesFiltroService={criarOpcoesFiltroServiceFake()}
         artesaoId="artesao-1"
-      />
+      />,
     );
 
-    await waitFor(() => expect(screen.getByText("Peca visivel")).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByText("Peca visivel")).toBeInTheDocument(),
+    );
     expect(screen.queryByText("Peca inativa")).not.toBeInTheDocument();
     expect(screen.queryByText("Peca sem estoque")).not.toBeInTheDocument();
   });
@@ -204,15 +220,15 @@ describe("PerfilArtesaoPublico", () => {
         usuariosService={criarUsuariosServiceFake()}
         perfilArtesaoService={criarPerfilServiceFake()}
         produtosService={criarProdutosServiceFake({
-          listByArtesao: vi.fn().mockResolvedValue([]),
+          search: vi.fn().mockResolvedValue([]),
         })}
         opcoesFiltroService={criarOpcoesFiltroServiceFake()}
         artesaoId="artesao-1"
-      />
+      />,
     );
 
     await waitFor(() =>
-      expect(screen.getByText(/Nenhum produto disponível/)).toBeInTheDocument()
+      expect(screen.getByText(/Nenhum produto disponível/)).toBeInTheDocument(),
     );
   });
 
@@ -226,11 +242,11 @@ describe("PerfilArtesaoPublico", () => {
         produtosService={criarProdutosServiceFake()}
         opcoesFiltroService={criarOpcoesFiltroServiceFake()}
         artesaoId="artesao-inexistente"
-      />
+      />,
     );
 
     await waitFor(() =>
-      expect(screen.getByText(/Artesão não encontrado/)).toBeInTheDocument()
+      expect(screen.getByText(/Artesão não encontrado/)).toBeInTheDocument(),
     );
   });
 
@@ -240,11 +256,11 @@ describe("PerfilArtesaoPublico", () => {
         usuariosService={criarUsuariosServiceFake()}
         perfilArtesaoService={criarPerfilServiceFake()}
         produtosService={criarProdutosServiceFake({
-          listByArtesao: vi.fn().mockRejectedValue(new Error("falhou")),
+          search: vi.fn().mockRejectedValue(new Error("falhou")),
         })}
         opcoesFiltroService={criarOpcoesFiltroServiceFake()}
         artesaoId="artesao-1"
-      />
+      />,
     );
 
     await waitFor(() => expect(screen.getByRole("alert")).toBeInTheDocument());

@@ -8,7 +8,7 @@ import { CampoTexto } from "@/components/formulario/CampoTexto";
 import { Giro } from "@/components/formulario/Giro";
 import { BOTAO_PRIMARIO_GRANDE } from "@/components/formulario/estilos-botao";
 import { Icone } from "@/components/vitrine/Icone";
-import { CATEGORIAS_SEED } from "@/fake-api/seeds/categorias.seed";
+import { useCategoriasProduto } from "@/hooks/use-categorias-produto";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { NovoProdutoInput } from "@/types/novo-produto";
 import {
@@ -36,12 +36,8 @@ const ORDEM_CAMPOS: CampoProduto[] = [
 const MENSAGEM_ERRO_SERVICO =
   "Não foi possível cadastrar o produto. Tente novamente em instantes.";
 
-const OPCOES_CATEGORIA = CATEGORIAS_SEED.map((categoria) => ({
-  valor: categoria.id,
-  rotulo: categoria.nome,
-}));
-
 export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
+  const catalogo = useCategoriasProduto();
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [preco, setPreco] = useState("");
@@ -50,7 +46,9 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
   const [quantidadeEstoque, setQuantidadeEstoque] = useState("");
   const [erros, setErros] = useState<ErrosProduto>({});
   const [erroServico, setErroServico] = useState<string | null>(null);
-  const [produtoCadastrado, setProdutoCadastrado] = useState<string | null>(null);
+  const [produtoCadastrado, setProdutoCadastrado] = useState<string | null>(
+    null,
+  );
   const [enviando, setEnviando] = useState(false);
 
   const refNome = useRef<HTMLInputElement>(null);
@@ -60,7 +58,10 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
   const refFoto = useRef<HTMLInputElement>(null);
   const refEstoque = useRef<HTMLInputElement>(null);
 
-  const refsPorCampo: Record<CampoProduto, React.RefObject<HTMLElement | null>> = {
+  const refsPorCampo: Record<
+    CampoProduto,
+    React.RefObject<HTMLElement | null>
+  > = {
     nome: refNome,
     descricao: refDescricao,
     preco: refPreco,
@@ -88,7 +89,10 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
       quantidadeEstoque: Number(quantidadeEstoque),
     };
 
-    const errosValidacao = validarProduto(entrada);
+    const errosValidacao = validarProduto(
+      entrada,
+      new Set(catalogo.categorias.map((categoria) => categoria.id)),
+    );
     setErros(errosValidacao);
     setErroServico(null);
     setProdutoCadastrado(null);
@@ -128,6 +132,21 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
       ) : null}
 
       {erroServico ? <Alerta tom="erro">{erroServico}</Alerta> : null}
+      {catalogo.estado.status === "carregando" ? (
+        <p role="status">Carregando categorias...</p>
+      ) : null}
+      {catalogo.estado.status === "erro" ? (
+        <Alerta tom="erro">
+          Não foi possível carregar as categorias.{" "}
+          <button type="button" onClick={catalogo.recarregar}>
+            Tentar novamente
+          </button>
+        </Alerta>
+      ) : null}
+      {catalogo.estado.status === "sucesso" &&
+      catalogo.categorias.length === 0 ? (
+        <p role="status">Nenhuma categoria disponível.</p>
+      ) : null}
 
       <div className="flex flex-col gap-6 rounded-card border border-border-subtle bg-surface-card p-5 shadow-sm sm:p-8">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -173,10 +192,10 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
             ref={refCategoria}
             name="categoriaId"
             rotulo="Categoria"
-            opcoes={OPCOES_CATEGORIA}
+            opcoes={catalogo.opcoes}
             value={categoriaId}
             onChange={(evento) => setCategoriaId(evento.target.value)}
-            disabled={enviando}
+            disabled={enviando || catalogo.estado.status !== "sucesso"}
             erro={erros.categoriaId}
           />
           <CampoTexto
@@ -210,11 +229,19 @@ export function ProdutoForm({ service, artesaoId }: ProdutoFormProps) {
         <div className="flex justify-end border-t border-border-subtle pt-5">
           <button
             type="submit"
-            disabled={enviando}
+            disabled={
+              enviando ||
+              catalogo.estado.status !== "sucesso" ||
+              catalogo.categorias.length === 0
+            }
             aria-busy={enviando || undefined}
             className={`${BOTAO_PRIMARIO_GRANDE} w-full sm:w-auto sm:min-w-[220px]`}
           >
-            {enviando ? <Giro /> : <Icone nome="confirmar" className="flex-none" />}
+            {enviando ? (
+              <Giro />
+            ) : (
+              <Icone nome="confirmar" className="flex-none" />
+            )}
             {enviando ? "Cadastrando…" : "Cadastrar produto"}
           </button>
         </div>

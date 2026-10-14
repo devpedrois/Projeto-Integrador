@@ -1,18 +1,10 @@
 import { afterEach, expect, it, vi } from "vitest";
 
-it("HTTP permite somente pendencias de artesao e admin no checkpoint WEB-16", async () => {
+it("HTTP nao possui pendencias depois de WEB-12", async () => {
   vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
   vi.resetModules();
   const container = await import("@/services/fake/container");
-  const permitidas = new Set<string>([
-    "ProdutosService.create/update/remove",
-    "ModeracaoService",
-    "UsuariosService.list",
-  ]);
-
-  expect(
-    container.PENDENTES_HTTP.filter((pendencia) => !permitidas.has(pendencia)),
-  ).toEqual([]);
+  expect(container.PENDENTES_HTTP).toEqual([]);
 });
 
 it("HTTP seleciona adapters reais para todos os services do fluxo comprador", async () => {
@@ -145,14 +137,14 @@ it("HTTP usa storage somente para visitante e persiste comprador no servidor", a
   expect(carrinho.getSnapshot().itens[0]?.quantidade).toBe(1);
   expect(container.PENDENTES_HTTP).not.toContain("CarrinhoStore");
 });
-it("HTTP informa pendencias apenas em desenvolvimento", async () => {
+it("HTTP nao avisa pendencias inexistentes em desenvolvimento", async () => {
   vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
   vi.stubEnv("NODE_ENV", "development");
   vi.resetModules();
   const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
   const container = await import("@/services/fake/container");
   container.obterUsuariosService();
-  expect(warn).toHaveBeenCalled();
+  expect(warn).not.toHaveBeenCalled();
 });
 it("fonte desconhecida falha explicitamente", async () => {
   vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "errada");

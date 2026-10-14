@@ -30,7 +30,7 @@ function produto(overrides: Partial<Produto> = {}): Produto {
 }
 
 function criarServicoFake(
-  overrides: Partial<ProdutosService> = {}
+  overrides: Partial<ProdutosService> = {},
 ): ProdutosService {
   return {
     list: vi.fn().mockResolvedValue([]),
@@ -50,7 +50,9 @@ describe("MeusProdutosList", () => {
       listByArtesao: vi.fn().mockReturnValue(new Promise(() => {})),
     });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
 
     expect(screen.getByRole("status")).toHaveTextContent(/carregando/i);
   });
@@ -60,7 +62,9 @@ describe("MeusProdutosList", () => {
       listByArtesao: vi.fn().mockResolvedValue([]),
     });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
 
     expect(await screen.findByText(/nenhum produto/i)).toBeInTheDocument();
   });
@@ -70,29 +74,39 @@ describe("MeusProdutosList", () => {
       listByArtesao: vi.fn().mockRejectedValue(new Error("falhou")),
     });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
-      /não foi possível/i
+      /não foi possível/i,
     );
   });
 
   it("lista somente produtos do artesao da sessao, isolando duas contas diferentes", async () => {
-    const listByArtesaoA = vi
-      .fn()
-      .mockResolvedValue([produto({ id: "p1", nome: "Produto da Conta A", artesaoId: "artesao-a" })]);
+    const listByArtesaoA = vi.fn().mockResolvedValue([
+      produto({
+        id: "p1",
+        nome: "Produto da Conta A",
+        artesaoId: "artesao-a",
+      }),
+    ]);
     const servicoA = criarServicoFake({ listByArtesao: listByArtesaoA });
 
     const { unmount } = render(
-      <MeusProdutosList service={servicoA} artesaoId="artesao-a" />
+      <MeusProdutosList service={servicoA} artesaoId="artesao-a" />,
     );
     expect(await screen.findByText("Produto da Conta A")).toBeInTheDocument();
     expect(listByArtesaoA).toHaveBeenCalledWith("artesao-a");
     unmount();
 
-    const listByArtesaoB = vi
-      .fn()
-      .mockResolvedValue([produto({ id: "p2", nome: "Produto da Conta B", artesaoId: "artesao-b" })]);
+    const listByArtesaoB = vi.fn().mockResolvedValue([
+      produto({
+        id: "p2",
+        nome: "Produto da Conta B",
+        artesaoId: "artesao-b",
+      }),
+    ]);
     const servicoB = criarServicoFake({ listByArtesao: listByArtesaoB });
 
     render(<MeusProdutosList service={servicoB} artesaoId="artesao-b" />);
@@ -112,38 +126,57 @@ describe("MeusProdutosList", () => {
     const update = vi.fn().mockResolvedValue(produtoAtualizado);
     const service = criarServicoFake({ listByArtesao, update });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
-    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", {
+      name: /vaso de barro/i,
+    });
 
     await user.click(within(item).getByRole("button", { name: /editar/i }));
     const painel = screen.getByRole("dialog", { name: /editar produto/i });
+    await within(painel).findByRole("option", { name: "Cerâmica e Barro" });
     const campoNome = within(painel).getByLabelText(/nome/i);
     await user.clear(campoNome);
     await user.type(campoNome, "Vaso de Barro Editado");
     await user.click(within(painel).getByRole("button", { name: /salvar/i }));
 
     await waitFor(() => expect(update).toHaveBeenCalledTimes(1));
-    const [idChamado, entradaChamada, artesaoIdChamado] = update.mock.calls[0] as [
-      string,
-      unknown,
-      string,
-    ];
+    const [idChamado, entradaChamada, artesaoIdChamado] = update.mock
+      .calls[0] as [string, unknown, string];
     expect(idChamado).toBe(produtoOriginal.id);
     expect(artesaoIdChamado).toBe(ARTESAO_ID_SESSAO);
     expect(entradaChamada).not.toHaveProperty("artesaoId");
 
-    expect(await screen.findByText("Vaso de Barro Editado")).toBeInTheDocument();
+    expect(
+      await screen.findByText("Vaso de Barro Editado"),
+    ).toBeInTheDocument();
   });
 
   it("sinaliza produto desativado pela moderacao", async () => {
     const service = criarServicoFake({
-      listByArtesao: vi.fn().mockResolvedValue([produto({ desativadoPorAdmin: true })]),
+      listByArtesao: vi
+        .fn()
+        .mockResolvedValue([produto({ desativadoPorAdmin: true })]),
     });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
 
     const item = await screen.findByRole("listitem", { name: "Vaso de Barro" });
     expect(item).toHaveTextContent(/desativado pela moderação/i);
+  });
+
+  it("sinaliza produto removido preservado no catalogo privado", async () => {
+    const service = criarServicoFake({
+      listByArtesao: vi.fn().mockResolvedValue([produto({ ativo: false })]),
+    });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", { name: "Vaso de Barro" });
+    expect(item).toHaveTextContent(/removido: fora da vitrine/i);
   });
 
   it("remover exige confirmacao antes de chamar o service", async () => {
@@ -151,14 +184,18 @@ describe("MeusProdutosList", () => {
     const remove = vi.fn().mockResolvedValue(undefined);
     const service = criarServicoFake({ remove });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
-    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", {
+      name: /vaso de barro/i,
+    });
 
     await user.click(within(item).getByRole("button", { name: /remover/i }));
 
     expect(remove).not.toHaveBeenCalled();
     expect(
-      within(item).getByRole("button", { name: /confirmar remoção/i })
+      within(item).getByRole("button", { name: /confirmar remoção/i }),
     ).toBeInTheDocument();
   });
 
@@ -172,16 +209,20 @@ describe("MeusProdutosList", () => {
     const remove = vi.fn().mockResolvedValue(undefined);
     const service = criarServicoFake({ listByArtesao, remove });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
-    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", {
+      name: /vaso de barro/i,
+    });
 
     await user.click(within(item).getByRole("button", { name: /remover/i }));
     await user.click(
-      within(item).getByRole("button", { name: /confirmar remoção/i })
+      within(item).getByRole("button", { name: /confirmar remoção/i }),
     );
 
     await waitFor(() =>
-      expect(remove).toHaveBeenCalledWith(produtoAlvo.id, ARTESAO_ID_SESSAO)
+      expect(remove).toHaveBeenCalledWith(produtoAlvo.id, ARTESAO_ID_SESSAO),
     );
     expect(await screen.findByText(/nenhum produto/i)).toBeInTheDocument();
   });
@@ -191,8 +232,12 @@ describe("MeusProdutosList", () => {
     const remove = vi.fn().mockResolvedValue(undefined);
     const service = criarServicoFake({ remove });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
-    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", {
+      name: /vaso de barro/i,
+    });
 
     await user.click(within(item).getByRole("button", { name: /remover/i }));
     await user.click(within(item).getByRole("button", { name: /cancelar/i }));
@@ -206,20 +251,27 @@ describe("MeusProdutosList", () => {
     const remove = vi
       .fn()
       .mockRejectedValue(
-        new ServiceError("ACESSO_NEGADO", "Produto nao encontrado para este artesao.")
+        new ServiceError(
+          "ACESSO_NEGADO",
+          "Produto nao encontrado para este artesao.",
+        ),
       );
     const service = criarServicoFake({ remove });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
-    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", {
+      name: /vaso de barro/i,
+    });
 
     await user.click(within(item).getByRole("button", { name: /remover/i }));
     await user.click(
-      within(item).getByRole("button", { name: /confirmar remoção/i })
+      within(item).getByRole("button", { name: /confirmar remoção/i }),
     );
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
-      /não foi possível/i
+      /não foi possível/i,
     );
     expect(screen.getByText("Vaso de Barro")).toBeInTheDocument();
   });
@@ -232,11 +284,16 @@ describe("MeusProdutosList", () => {
       update,
     });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
-    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", {
+      name: /vaso de barro/i,
+    });
 
     await user.click(within(item).getByRole("button", { name: /editar/i }));
     const painel = screen.getByRole("dialog", { name: /editar produto/i });
+    await within(painel).findByRole("option", { name: "Cerâmica e Barro" });
     const campoPreco = within(painel).getByLabelText(/preço/i);
     expect(campoPreco).toHaveValue("39,90");
 
@@ -254,8 +311,12 @@ describe("MeusProdutosList", () => {
     const update = vi.fn();
     const service = criarServicoFake({ update });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
-    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", {
+      name: /vaso de barro/i,
+    });
 
     await user.click(within(item).getByRole("button", { name: /editar/i }));
     const painel = screen.getByRole("dialog", { name: /editar produto/i });
@@ -271,14 +332,23 @@ describe("MeusProdutosList", () => {
     const update = vi.fn().mockRejectedValue(new Error("falhou"));
     const service = criarServicoFake({ update });
 
-    render(<MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />);
-    const item = await screen.findByRole("listitem", { name: /vaso de barro/i });
+    render(
+      <MeusProdutosList service={service} artesaoId={ARTESAO_ID_SESSAO} />,
+    );
+    const item = await screen.findByRole("listitem", {
+      name: /vaso de barro/i,
+    });
 
     await user.click(within(item).getByRole("button", { name: /editar/i }));
     const painel = screen.getByRole("dialog", { name: /editar produto/i });
+    await within(painel).findByRole("option", { name: "Cerâmica e Barro" });
     await user.click(within(painel).getByRole("button", { name: /salvar/i }));
 
-    expect(await within(painel).findByRole("alert")).toHaveTextContent(/não foi possível/i);
-    expect(within(painel).getByRole("button", { name: /salvar/i })).not.toBeDisabled();
+    expect(await within(painel).findByRole("alert")).toHaveTextContent(
+      /não foi possível/i,
+    );
+    expect(
+      within(painel).getByRole("button", { name: /salvar/i }),
+    ).not.toBeDisabled();
   });
 });
