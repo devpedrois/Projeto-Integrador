@@ -871,3 +871,48 @@ A saida e o exit code ficaram salvos na pasta WEB-10-concorrencia.
 Um resumo PNG usa somente metricas dessa saida verificada.
 Ele nao representa captura nativa do terminal.
 Nao houve alteracao de frontend ou antecipacao de outras subtarefas.
+
+## 2026-10-14: BD-01, documento do modelo físico
+
+Codex gerou somente os artefatos de BD-01.
+Leu AGENTS.md, BD-01, modelo lógico e evidências BD-04.
+Inspecionou schema, migrations, consultas e repositórios das agregações.
+Executou os nove EXPLAIN atuais em transação somente leitura.
+As comparações antes/depois vieram dos JSONs históricos de BD-04.
+
+O teste inicial falhou pela ausência de ddl-fisico.sql.
+Prisma 7.10 removeu --to-schema-datamodel; foi utilizado --to-schema.
+O DDL consolidado acrescenta doze CHECKs e dois índices manuais.
+Também inclui pg_trgm e a sequence de Pedido.numero.
+Os dois GIN já representados no Prisma não foram duplicados.
+Nenhuma alteração foi feita no schema ou nas migrations.
+
+O teste usa PostgreSQL real e dois schemas temporários.
+Compara colunas, defaults, constraints, índices, ENUMs e sequence.
+Também confere cobertura documental e geração do número do pedido.
+A transação termina com rollback, preservando o domínio existente.
+A comparação ignora a ordem ordinal das colunas.
+Essa ordem difere naturalmente entre criação integral e ALTERs históricos.
+
+O documento cobre quinze tabelas e todos os índices físicos.
+Registra restrições ausentes e divergências com o modelo lógico.
+QuantidadeVendida já existe desde WEB-09, contrariando a decisão original.
+O catálogo segue calculando vendas confirmadas e notas por agregação.
+Essa divergência ficou explícita no dicionário e na reconciliação.
+
+O PDF utiliza WeasyPrint 70.0 e Mermaid convertido em PNG.
+Foram conferidas visualmente as vinte e quatro páginas finais.
+A verificação confirma quarenta e uma tabelas inteiras.
+Também confere duas imagens, texto completo e margens respeitadas.
+
+O usuário escolheu revisão equivalente nesta conversa.
+Não houve delegação ao agente security-auditor.
+A revisão examinou SQL, isolamento, artefatos e dados expostos.
+Não foram encontrados achados de segurança no escopo.
+Não foram registrados credenciais, URLs de conexão ou hashes reais.
+
+Passaram 36 testes em quatro arquivos relacionados.
+Lint, typecheck, Prettier e validação Prisma passaram.
+Evidências: evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/.
+Branch: codex/bd01-modelo-fisico.
+Não houve commit, push ou deploy.
