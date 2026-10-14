@@ -1,11 +1,16 @@
 import type { PgBoss, WorkOptions } from "pg-boss";
 import type { IntencaoNotificacaoRepository } from "../repositories/intencao-notificacao.repository.js";
+import type { NotificacaoRepository } from "../repositories/notificacao.repository.js";
 import { NOTIFICAR_ARTESAO_QUEUE } from "../queues/pg-boss.client.js";
-import { notificarArtesao, type NotificarArtesaoJobData } from "./notificar-artesao.handler.js";
+import {
+  notificarArtesao,
+  type NotificarArtesaoJobData,
+} from "./notificar-artesao.handler.js";
 
 export function registerNotificarArtesaoWorker(
   boss: PgBoss,
   repository: IntencaoNotificacaoRepository,
+  notificacaoRepository: NotificacaoRepository,
   options: Partial<WorkOptions> = {},
 ): Promise<string> {
   return boss.work<NotificarArtesaoJobData>(
@@ -17,7 +22,7 @@ export function registerNotificarArtesaoWorker(
         return;
       }
       await repository.registrarTentativa(job.data.intencaoId);
-      await notificarArtesao(repository, job.data);
+      await notificarArtesao(repository, job.data, notificacaoRepository);
     },
   );
 }

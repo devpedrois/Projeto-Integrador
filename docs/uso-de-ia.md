@@ -1081,3 +1081,31 @@ Detalhe e recomendações também tiveram HIT mais rápido.
 Após editar estoque, as três leituras retornaram MISS.
 O servidor temporário e o schema isolado foram encerrados.
 Evidências: evidencias/PI4-27-W10-Integracao-Camadas/WEB-13-cache/.
+
+### WEB-14: notificações assíncronas visíveis
+
+Codex integrou handler, repository, rotas e painel HTTP.
+Testes precederam a implementação e usam PostgreSQL real.
+O handler grava avisos por artesão distinto antes de processar.
+Retry após falha parcial não duplica notificações existentes.
+Rotas exigem artesão ativo e identidade exclusiva da sessão.
+Leitura alheia retorna o mesmo 404 de registro inexistente.
+O painel mostra badge, estados recuperáveis e leitura individual.
+Polling de 15s suspende na aba oculta e retoma imediatamente.
+O worker consulta a fila a cada segundo.
+
+Pedro autorizou revisão local equivalente, sem delegação.
+Não houve commit, push ou migration na base publicada.
+Evidências: evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/.
+
+Validação final: 501 testes backend e 838 frontend passaram.
+Backend completo utilizou npm test -- --testTimeout=15000.
+A primeira execução encontrou dois timeouts em testes anteriores.
+Esses testes de catálogo permaneceram sem alteração.
+Lint, typecheck, Prettier e revisão equivalente passaram.
+O diff foi validado considerando as terminações CRLF existentes.
+No navegador real, o badge apareceu em 14,394 segundos.
+A marcação individual retornou 204 e zerou o badge.
+O painel mobile não apresentou transbordamento horizontal.
+GIF, capturas, chamadas HTTP e estado processado foram salvos.
+Schemas temporários, navegador e servidores foram encerrados.

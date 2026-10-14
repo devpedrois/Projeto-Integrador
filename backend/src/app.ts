@@ -48,6 +48,10 @@ import {
   type CacheStore,
 } from "./utils/cache.js";
 import { CacheHttp, type LogCache } from "./utils/cache-http.js";
+import { NotificacaoController } from "./controllers/notificacao.controller.js";
+import { PrismaNotificacaoRepository } from "./repositories/notificacao.repository.js";
+import { NotificacaoService } from "./services/notificacao.service.js";
+import { createNotificacaoRouter } from "./routes/notificacao.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -121,6 +125,14 @@ export function createApp(
     ),
   );
   app.use(createPedidoRouter(pedidoController, autenticarUsuario));
+  app.use(
+    createNotificacaoRouter(
+      new NotificacaoController(
+        new NotificacaoService(new PrismaNotificacaoRepository(prisma)),
+      ),
+      autenticarUsuario,
+    ),
+  );
   app.use(createUsuarioRouter(usuarioController, autenticarUsuario));
   app.use(
     createPerfilArtesaoRouter(

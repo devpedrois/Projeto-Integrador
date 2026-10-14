@@ -6,12 +6,15 @@ import { BOTAO_SECUNDARIO } from "@/components/formulario/estilos-botao";
 import { RouteGuard } from "@/components/layout/RouteGuard";
 import { ProdutoForm } from "@/components/painel-artesao/ProdutoForm";
 import { PendenciaPerfilArtesao } from "@/components/painel-artesao/PendenciaPerfilArtesao";
+import { NotificacoesArtesao } from "@/components/painel-artesao/NotificacoesArtesao";
+import type { NotificacoesService } from "@/services/contracts/notificacoes.contract";
 import { Icone } from "@/components/vitrine/Icone";
 import { useSessao } from "@/hooks/use-sessao";
 import {
   obterPerfilArtesaoService,
   obterProdutosService,
   obterSessionStore,
+  obterNotificacoesService,
 } from "@/services/fake/container";
 import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
@@ -23,18 +26,19 @@ const STORE_INATIVO: SessionStore = {
 } as unknown as SessionStore;
 
 export default function PainelArtesaoPage() {
+  const [notificacoesService, setNotificacoesService] =
+    useState<NotificacoesService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
-  const [produtosService, setProdutosService] = useState<ProdutosService | null>(
-    null
-  );
-  const [perfilService, setPerfilService] = useState<PerfilArtesaoService | null>(
-    null
-  );
+  const [produtosService, setProdutosService] =
+    useState<ProdutosService | null>(null);
+  const [perfilService, setPerfilService] =
+    useState<PerfilArtesaoService | null>(null);
 
   useEffect(() => {
     setSessionStore(obterSessionStore());
     setProdutosService(obterProdutosService());
     setPerfilService(obterPerfilArtesaoService());
+    setNotificacoesService(obterNotificacoesService());
   }, []);
 
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
@@ -51,14 +55,19 @@ export default function PainelArtesaoPage() {
             Meus produtos
           </Link>
         </div>
+        {notificacoesService && sessao?.papel === "artesao" ? (
+          <NotificacoesArtesao key={sessao.id} service={notificacoesService} />
+        ) : null}
         {perfilService && sessao ? (
-          <PendenciaPerfilArtesao service={perfilService} artesaoId={sessao.id} />
+          <PendenciaPerfilArtesao
+            service={perfilService}
+            artesaoId={sessao.id}
+          />
         ) : null}
         {produtosService && sessao ? (
           <ProdutoForm service={produtosService} artesaoId={sessao.id} />
         ) : null}
       </main>
-
     </RouteGuard>
   );
 }

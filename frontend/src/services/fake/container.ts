@@ -37,6 +37,8 @@ import { HttpAvaliacoesService } from "@/services/http/avaliacoes.service";
 import { HttpRecommendationAdapter } from "@/services/http/recomendacoes.adapter";
 import { obterFonteDados } from "@/services/data-source";
 import { ServiceError } from "@/services/errors";
+import type { NotificacoesService } from "@/services/contracts/notificacoes.contract";
+import { HttpNotificacoesService } from "@/services/http/notificacoes.service";
 
 export const PENDENTES_HTTP: readonly string[] = [];
 
@@ -51,6 +53,11 @@ const avaliacoesHttp: AvaliacoesService = new HttpAvaliacoesService();
 const recomendacoesHttp: RecomendacoesService = new HttpRecommendationAdapter();
 const opcoesHttp: OpcoesFiltroService = new HttpOpcoesFiltroService();
 const moderacaoHttp: ModeracaoService = new HttpModeracaoService();
+const notificacoesHttp: NotificacoesService = new HttpNotificacoesService();
+
+export function obterNotificacoesService(): NotificacoesService | null {
+  return modoHttp() ? notificacoesHttp : null;
+}
 let usuariosHttpInstancia: HttpUsuariosService | null = null;
 
 function usuariosHttp(): HttpUsuariosService {

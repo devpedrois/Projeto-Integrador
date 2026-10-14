@@ -14,6 +14,7 @@ import {
 } from "../../src/queues/pg-boss.client.js";
 import { publicarIntencoesPendentes } from "../../src/queues/notificacao.publisher.js";
 import { PrismaIntencaoNotificacaoRepository } from "../../src/repositories/intencao-notificacao.repository.js";
+import { PrismaNotificacaoRepository } from "../../src/repositories/notificacao.repository.js";
 import { PrismaPedidoRepository } from "../../src/repositories/pedido.repository.js";
 import { databasePool } from "../helpers/database.js";
 import {
@@ -30,6 +31,7 @@ if (databaseUrl === undefined || databaseUrl.length === 0) {
 
 const prisma = createPrismaClient(databaseUrl);
 const repository = new PrismaIntencaoNotificacaoRepository(prisma);
+const notificacaoRepository = new PrismaNotificacaoRepository(prisma);
 const pedidoRepository = new PrismaPedidoRepository(prisma);
 
 let boss: PgBoss;
@@ -124,6 +126,9 @@ afterEach(async () => {
     await extraBoss.stop({ graceful: false });
   }
   await boss.offWork(NOTIFICAR_ARTESAO_QUEUE);
+  await prisma.notificacao.deleteMany({
+    where: { pedidoId: { in: createdPedidoIds } },
+  });
   await prisma.intencaoNotificacao.deleteMany({
     where: { pedidoId: { in: createdPedidoIds } },
   });
@@ -179,10 +184,20 @@ describe("fila de notificacao ao artesao", () => {
     const publicada = await fetchIntencao(pedidoId);
     expect(publicada.status).toBe(StatusIntencao.publicada);
 
-    await registerNotificarArtesaoWorker(boss, repository, FAST_POLLING);
+    await registerNotificarArtesaoWorker(
+      boss,
+      repository,
+      notificacaoRepository,
+      FAST_POLLING,
+    );
 
     const processada = await waitForStatus(pedidoId, StatusIntencao.processada);
     expect(processada.processadaEm).not.toBeNull();
+    expect(
+      await prisma.notificacao.count({
+        where: { pedidoId, usuarioId: artesaoId },
+      }),
+    ).toBe(1);
   }, 15_000);
 
   it("retries after a simulated worker failure and still reaches processada, keeping the order confirmed", async () => {
@@ -203,7 +218,7 @@ describe("fila de notificacao ao artesao", () => {
         if (attempts === 1) {
           throw new Error("falha simulada de worker");
         }
-        await notificarArtesao(repository, job.data);
+        await notificarArtesao(repository, job.data, notificacaoRepository);
       },
     );
 
@@ -234,6 +249,7 @@ describe("fila de notificacao ao artesao", () => {
     await registerNotificarArtesaoWorker(
       restartedBoss,
       repository,
+      notificacaoRepository,
       FAST_POLLING,
     );
 
@@ -245,12 +261,12 @@ describe("fila de notificacao ao artesao", () => {
     const { pedidoId, intencaoId } = await createPedidoComIntencao();
     const data: NotificarArtesaoJobData = { intencaoId, pedidoId };
 
-    await notificarArtesao(repository, data);
+    await notificarArtesao(repository, data, notificacaoRepository);
     const firstResult = await fetchIntencao(pedidoId);
     expect(firstResult.status).toBe(StatusIntencao.processada);
     expect(firstResult.processadaEm).not.toBeNull();
 
-    await notificarArtesao(repository, data);
+    await notificarArtesao(repository, data, notificacaoRepository);
     const secondResult = await fetchIntencao(pedidoId);
     expect(secondResult.processadaEm?.toISOString()).toBe(
       firstResult.processadaEm?.toISOString(),
@@ -260,6 +276,11 @@ describe("fila de notificacao ao artesao", () => {
       where: { pedidoId },
     });
     expect(count).toBe(1);
+    expect(
+      await prisma.notificacao.count({
+        where: { pedidoId, usuarioId: artesaoId },
+      }),
+    ).toBe(1);
   });
 
   it("preserves the original processadaEm under concurrent redelivery", async () => {
@@ -267,15 +288,15 @@ describe("fila de notificacao ao artesao", () => {
     const data: NotificarArtesaoJobData = { intencaoId, pedidoId };
 
     await Promise.all([
-      notificarArtesao(repository, data),
-      notificarArtesao(repository, data),
+      notificarArtesao(repository, data, notificacaoRepository),
+      notificarArtesao(repository, data, notificacaoRepository),
     ]);
 
     const afterConcurrent = await fetchIntencao(pedidoId);
     expect(afterConcurrent.status).toBe(StatusIntencao.processada);
     expect(afterConcurrent.processadaEm).not.toBeNull();
 
-    await notificarArtesao(repository, data);
+    await notificarArtesao(repository, data, notificacaoRepository);
     const afterLateRedelivery = await fetchIntencao(pedidoId);
     expect(afterLateRedelivery.processadaEm?.toISOString()).toBe(
       afterConcurrent.processadaEm?.toISOString(),
@@ -285,7 +306,11 @@ describe("fila de notificacao ao artesao", () => {
   it("does not regress processada back to publicada when the publisher revisits it", async () => {
     const { pedidoId, intencaoId } = await createPedidoComIntencao();
 
-    await notificarArtesao(repository, { intencaoId, pedidoId });
+    await notificarArtesao(
+      repository,
+      { intencaoId, pedidoId },
+      notificacaoRepository,
+    );
     const processada = await fetchIntencao(pedidoId);
     expect(processada.status).toBe(StatusIntencao.processada);
 

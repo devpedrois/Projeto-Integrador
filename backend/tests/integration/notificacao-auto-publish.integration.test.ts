@@ -74,6 +74,18 @@ describe("auto-publish of pending notification intentions", () => {
           where: { id: compradorId },
           data: { senhaHash: await gerarHash(senha) },
         });
+        await prisma.usuario.update({
+          where: { id: artesaoId },
+          data: { senhaHash: await gerarHash(senha) },
+        });
+        const artesao = request.agent(server);
+        expect(
+          (
+            await artesao
+              .post("/auth/login")
+              .send({ email: `artesao-${artesaoId}@teste.origem`, senha })
+          ).status,
+        ).toBe(200);
         const login = await request(server)
           .post("/auth/login")
           .send({ email: `comprador-${compradorId}@teste.origem`, senha });
@@ -81,6 +93,7 @@ describe("auto-publish of pending notification intentions", () => {
         const cookies = login.headers["set-cookie"] as string[] | undefined;
         const cookie = cookies?.[0]?.split(";")[0];
         if (!cookie) throw new Error("Login nao emitiu cookie de comprador");
+        const inicio = Date.now();
         const response = await request(server)
           .post("/pedidos")
           .set("Cookie", cookie)
@@ -101,7 +114,20 @@ describe("auto-publish of pending notification intentions", () => {
               : undefined;
           });
           expect(processada.processadaEm).not.toBeNull();
+          const visivel = await artesao.get("/artesao/notificacoes");
+          expect(visivel.status).toBe(200);
+          expect(visivel.body).toEqual(
+            expect.arrayContaining([
+              expect.objectContaining({
+                pedidoId,
+                lida: false,
+                tipo: "novo_pedido",
+              }),
+            ]),
+          );
+          expect(Date.now() - inicio).toBeLessThan(20_000);
         } finally {
+          await prisma.notificacao.deleteMany({ where: { pedidoId } });
           await prisma.intencaoNotificacao.deleteMany({ where: { pedidoId } });
           await prisma.pagamento.deleteMany({ where: { pedidoId } });
           await prisma.itemPedido.deleteMany({ where: { pedidoId } });

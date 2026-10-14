@@ -2,12 +2,19 @@ import "dotenv/config";
 import { pathToFileURL } from "node:url";
 import type { PgBoss } from "pg-boss";
 import { createApp } from "./app.js";
-import { EnvironmentValidationError, parseEnvironment } from "./config/environment.js";
+import {
+  EnvironmentValidationError,
+  parseEnvironment,
+} from "./config/environment.js";
 import { createPrismaClient } from "./database/prisma/client.js";
 import { registerNotificarArtesaoWorker } from "./jobs/notificar-artesao.worker.js";
-import { createPgBossClient, ensureNotificarArtesaoQueue } from "./queues/pg-boss.client.js";
+import {
+  createPgBossClient,
+  ensureNotificarArtesaoQueue,
+} from "./queues/pg-boss.client.js";
 import { publicarIntencoesPendentes } from "./queues/notificacao.publisher.js";
 import { PrismaIntencaoNotificacaoRepository } from "./repositories/intencao-notificacao.repository.js";
+import { PrismaNotificacaoRepository } from "./repositories/notificacao.repository.js";
 
 export async function startServer(input: NodeJS.ProcessEnv = process.env) {
   const environment = parseEnvironment(input);
@@ -18,8 +25,14 @@ export async function startServer(input: NodeJS.ProcessEnv = process.env) {
     boss = createPgBossClient(environment.DATABASE_URL);
     await boss.start();
     await ensureNotificarArtesaoQueue(boss);
-    const intencaoNotificacaoRepository = new PrismaIntencaoNotificacaoRepository(prisma);
-    await registerNotificarArtesaoWorker(boss, intencaoNotificacaoRepository);
+    const intencaoNotificacaoRepository =
+      new PrismaIntencaoNotificacaoRepository(prisma);
+    await registerNotificarArtesaoWorker(
+      boss,
+      intencaoNotificacaoRepository,
+      new PrismaNotificacaoRepository(prisma),
+      { pollingIntervalSeconds: 1 },
+    );
 
     const activeBoss = boss;
     let publicacaoEmAndamento = false;
@@ -30,7 +43,9 @@ export async function startServer(input: NodeJS.ProcessEnv = process.env) {
       publicacaoEmAndamento = true;
       publicarIntencoesPendentes(activeBoss, intencaoNotificacaoRepository)
         .catch(() => {
-          process.stderr.write("Failed to publish pending notification intentions\n");
+          process.stderr.write(
+            "Failed to publish pending notification intentions\n",
+          );
         })
         .finally(() => {
           publicacaoEmAndamento = false;
@@ -65,9 +80,10 @@ if (
   import.meta.url === pathToFileURL(executedFile).href
 ) {
   startServer().catch((error: unknown) => {
-    const message = error instanceof EnvironmentValidationError
-      ? error.message
-      : "Backend startup failed";
+    const message =
+      error instanceof EnvironmentValidationError
+        ? error.message
+        : "Backend startup failed";
     process.stderr.write(`${message}\n`);
     process.exitCode = 1;
   });
