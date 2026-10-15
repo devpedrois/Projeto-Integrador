@@ -1138,3 +1138,55 @@ Confirmou também fallback para comprador sem compras confirmadas.
 Capturas e respostas HTTP sanitizadas foram salvas.
 Evidências: evidencias/PI4-29-W10-Recomendacao/IA-03/.
 Servidores temporários, navegador e schema sintético foram encerrados.
+
+### IA-04: métricas HTTP em demo e volume
+
+Codex inspecionou métricas v0, seeds BD-05 e cache existente.
+Testes precederam as fórmulas novas, CLI e benchmark HTTP.
+Pedro autorizou demo e volume em schemas temporários de testes.
+O modo existente seleciona conexões por nomes de variáveis.
+Esse modo usa schemas existentes e transações somente leitura.
+O modo isolado aplica migrations e seeds somente nos schemas próprios.
+A preparação dos dados precede o snapshot REPEATABLE READ.
+As métricas distinguem cobertura do catálogo e cobertura v0.
+Também incluem fallback, diversidade média/global e acerto por categoria.
+HTTP real mede média e p95 com cache frio e quente.
+Categoria valida MISS seguido de HIT em cada par.
+Histórico permanece BYPASS nas duas fases, preservando IA-03.
+Tokens efêmeros autenticam apenas a API local em loopback.
+Saída contém agregados, sem identidades, senhas ou conexões.
+
+Comando Windows validado: npm.cmd run metricas:recomendacao -- --isolado.
+Demo mediu 30 produtos, dois compradores e três pedidos confirmados.
+Volume mediu 1000 produtos, 300 compradores e 1500 pedidos confirmados.
+No volume, cobertura do catálogo foi 4,50% para categoria.
+Histórico cobriu 4,30%, com diversidade média de 2,83 categorias.
+Um comprador de volume recebeu fallback geral.
+Latências foram coletadas enquanto a suíte backend executava em paralelo.
+RECOMMENDATION.md registra data, método, tabelas e limites da interpretação.
+JSON: backend/metricas/recomendacao-volume.json.
+
+Validação: 532 testes backend passaram em 52 arquivos.
+Os 15 testes IA-04 também passaram na execução direcionada final.
+Lint e typecheck passaram; revisão local equivalente sem achados bloqueantes.
+Não houve alteração de frontend, commit ou push.
+Schemas e servidores temporários foram descartados ao concluir.
+Evidências: evidencias/PI4-29-W10-Recomendacao/IA-04/.
+
+### IA-04: pacote de evidências para Jira
+
+Pedro pediu logs, arquivos de código, GIF e capturas.
+IA-03 e WEB-07 serviram somente como referências de apresentação.
+Codex registrou nova execução completa do benchmark IA-04.
+A reexecução usa JSON próprio, preservando a medição anterior.
+Os 15 testes IA-04, lint e typecheck foram registrados novamente.
+Seis arquivos de código foram copiados com hashes SHA-256.
+Um relatório HTML apresenta os resultados reais da coleta.
+O navegador gerou seis capturas JPG, revisadas visualmente.
+O GIF reúne essas capturas com pausas para leitura.
+Ele não representa gravação contínua ou interface do marketplace.
+Logs integrais e JSON permitem conferir os resultados exibidos.
+O ZIP contém 25 arquivos, com integridade e hashes verificados.
+Também inclui comentário pronto para colar no Jira.
+Nenhum código da aplicação recebeu alteração nesta preparação.
+Pacote: evidencias/PI4-29-W10-Recomendacao/IA-04/IA-04-evidencias-jira.zip.

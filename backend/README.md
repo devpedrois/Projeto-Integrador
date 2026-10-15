@@ -71,22 +71,22 @@ Outras falhas de boot retornam `Backend startup failed`.
 
 ## Scripts
 
-| Comando | Função |
-|---|---|
-| `npm run dev` | Executa TypeScript com reinicialização automática |
-| `npm run build` | Executa `prisma generate && tsc`, sem migrations |
-| `npm start` | Executa `node dist/src/server.js`, sem migrations |
-| `npm run start:prod` | Executa `prisma migrate deploy` antes do servidor compilado |
-| `npm run typecheck` | Verifica TypeScript sem gerar arquivos |
-| `npm run lint` | Executa ESLint |
-| `npm test` | Executa testes unitários e integração PostgreSQL real |
-| `npm run prisma:generate` | Gera o cliente Prisma |
-| `npm run prisma:validate` | Valida o schema Prisma |
-| `npm run db:migrate` | Aplica migrations pendentes usando `DIRECT_URL` |
-| `npm run db:seed` | Executa a carga demo sintética |
-| `npm run db:seed:volume` | Executa a carga de volume mediante opt-in |
-| `npm run test:concorrencia` | Script legado; adaptação ao login prevista no commit 17 |
-| `npm run metricas:recomendacao` | Calcula métricas da recomendação no PostgreSQL real |
+| Comando                         | Função                                                      |
+| ------------------------------- | ----------------------------------------------------------- |
+| `npm run dev`                   | Executa TypeScript com reinicialização automática           |
+| `npm run build`                 | Executa `prisma generate && tsc`, sem migrations            |
+| `npm start`                     | Executa `node dist/src/server.js`, sem migrations           |
+| `npm run start:prod`            | Executa `prisma migrate deploy` antes do servidor compilado |
+| `npm run typecheck`             | Verifica TypeScript sem gerar arquivos                      |
+| `npm run lint`                  | Executa ESLint                                              |
+| `npm test`                      | Executa testes unitários e integração PostgreSQL real       |
+| `npm run prisma:generate`       | Gera o cliente Prisma                                       |
+| `npm run prisma:validate`       | Valida o schema Prisma                                      |
+| `npm run db:migrate`            | Aplica migrations pendentes usando `DIRECT_URL`             |
+| `npm run db:seed`               | Executa a carga demo sintética                              |
+| `npm run db:seed:volume`        | Executa a carga de volume mediante opt-in                   |
+| `npm run test:concorrencia`     | Script legado; adaptação ao login prevista no commit 17     |
+| `npm run metricas:recomendacao` | Calcula métricas da recomendação no PostgreSQL real         |
 
 `start:prod` não define `NODE_ENV` automaticamente.
 Configure as variáveis no ambiente antes de executá-lo.
@@ -98,21 +98,21 @@ O Prisma exige `DIRECT_URL` configurada para carregar sua configuração.
 `.env.example` contém somente valores fictícios.
 Nunca reutilize seu `JWT_SECRET` em produção.
 
-| Chave | Padrão ou exigência | Uso |
-|---|---|---|
-| `DATABASE_URL` | Obrigatória, URL PostgreSQL | Conexões da aplicação e `pg-boss` |
-| `DIRECT_URL` | Obrigatória, URL PostgreSQL | Prisma CLI e migrations, conexão direta |
-| `NODE_ENV` | `development` | Aceita `development`, `test` ou `production` |
-| `HOST` | `127.0.0.1` | Endereço de escuta; configure `0.0.0.0` no Render |
-| `PORT` | `3001` | Inteiro entre 1 e 65535; respeita o ambiente Render |
-| `JWT_SECRET` | Obrigatória em produção | Mínimo de 32 caracteres úteis quando fornecida |
-| `FRONTEND_ORIGIN` | `http://localhost:3000` | Origem HTTP ou HTTPS, sem caminho, barra final ou credenciais |
-| `COOKIE_SECURE` | `true` em produção; `false` nos outros ambientes | Aceita somente textos `true` e `false`, convertidos para boolean |
-| `CACHE_TTL_SECONDS` | `60` | Inteiro positivo, em segundos |
-| `NOTIFICATION_PUBLISHER_INTERVAL_MS` | `3000` | Publicação periódica; inteiro entre 1000 e 60000 |
-| `ALLOW_VOLUME_SEED` | Opt-in desativado no exemplo | `1` autoriza a carga de volume na branch de teste |
-| `DATABASE_URL_DEPLOY` | Opcional, fictícia no exemplo | Identifica o banco de deploy bloqueado para volume |
-| `CONCURRENCY_TEST_PORT` | `3910` | Porta exclusiva do script de concorrência |
+| Chave                                | Padrão ou exigência                              | Uso                                                              |
+| ------------------------------------ | ------------------------------------------------ | ---------------------------------------------------------------- |
+| `DATABASE_URL`                       | Obrigatória, URL PostgreSQL                      | Conexões da aplicação e `pg-boss`                                |
+| `DIRECT_URL`                         | Obrigatória, URL PostgreSQL                      | Prisma CLI e migrations, conexão direta                          |
+| `NODE_ENV`                           | `development`                                    | Aceita `development`, `test` ou `production`                     |
+| `HOST`                               | `127.0.0.1`                                      | Endereço de escuta; configure `0.0.0.0` no Render                |
+| `PORT`                               | `3001`                                           | Inteiro entre 1 e 65535; respeita o ambiente Render              |
+| `JWT_SECRET`                         | Obrigatória em produção                          | Mínimo de 32 caracteres úteis quando fornecida                   |
+| `FRONTEND_ORIGIN`                    | `http://localhost:3000`                          | Origem HTTP ou HTTPS, sem caminho, barra final ou credenciais    |
+| `COOKIE_SECURE`                      | `true` em produção; `false` nos outros ambientes | Aceita somente textos `true` e `false`, convertidos para boolean |
+| `CACHE_TTL_SECONDS`                  | `60`                                             | Inteiro positivo, em segundos                                    |
+| `NOTIFICATION_PUBLISHER_INTERVAL_MS` | `3000`                                           | Publicação periódica; inteiro entre 1000 e 60000                 |
+| `ALLOW_VOLUME_SEED`                  | Opt-in desativado no exemplo                     | `1` autoriza a carga de volume na branch de teste                |
+| `DATABASE_URL_DEPLOY`                | Opcional, fictícia no exemplo                    | Identifica o banco de deploy bloqueado para volume               |
+| `CONCURRENCY_TEST_PORT`              | `3910`                                           | Porta exclusiva do script de concorrência                        |
 
 JWT e cookie sustentam a autenticação da WEB-03.
 CORS pertence à respectiva subtarefa.
@@ -336,11 +336,11 @@ O parcial da vitrine permanece definido na migration SQL.
 
 WEB-13 aplica cache somente nas leituras públicas de catálogo:
 
-| Endpoint | Chave | Motivo |
-|---|---|---|
-| `GET /produtos` | `produtos:lista:` e query validada normalizada | Evita repetir filtros, joins e agregações no PostgreSQL |
-| `GET /produtos/:id` | `produtos:detalhe:` e UUID normalizado | Reutiliza o DTO público entre visitas à mesma peça |
-| `GET /recomendacoes?produtoId=...` | `recomendacoes:produto:` e UUID normalizado | Evita repetir seleção, ranking e carregamento dos produtos |
+| Endpoint                           | Chave                                          | Motivo                                                     |
+| ---------------------------------- | ---------------------------------------------- | ---------------------------------------------------------- |
+| `GET /produtos`                    | `produtos:lista:` e query validada normalizada | Evita repetir filtros, joins e agregações no PostgreSQL    |
+| `GET /produtos/:id`                | `produtos:detalhe:` e UUID normalizado         | Reutiliza o DTO público entre visitas à mesma peça         |
+| `GET /recomendacoes?produtoId=...` | `recomendacoes:produto:` e UUID normalizado    | Evita repetir seleção, ranking e carregamento dos produtos |
 
 As chaves ordenam os campos após validação Zod.
 Defaults de paginação são incluídos; termos vazios são omitidos.
@@ -401,3 +401,66 @@ Os testes de integração usam PostgreSQL real em schema isolado.
 ```powershell
 npm test -- tests/unit/cache.test.ts tests/integration/cache.web13.integration.test.ts
 ```
+
+## Metricas HTTP IA-04
+
+Um comando reproduz demo e volume pelos seeds BD-05:
+
+```powershell
+npm.cmd run metricas:recomendacao -- --isolado
+```
+
+Em outros shells, use `npm run` no lugar de `npm.cmd run`.
+No Windows, npm.cmd preserva os argumentos enviados ao script.
+O modo isolado precisa de DIRECT_URL apontando para testes.
+Exige autorizacao para criar schemas temporarios nessa conexao.
+Recusa NODE_ENV=production e a conexao conhecida do deploy.
+Cria dois schemas separados, aplica migrations e popula os seeds.
+As medicoes usam snapshots REPEATABLE READ e transacoes somente leitura.
+Ao terminar, descarta os schemas e encerra os servidores temporarios.
+Nao aplica migrations ou seeds no schema publico.
+
+Para medir branches existentes, configure DATABASE_URL para demo.
+Configure DATABASE_URL_VOLUME para a branch sintetica de volume.
+O comando sem flags mede ambas exclusivamente em leitura:
+
+```powershell
+npm.cmd run metricas:recomendacao
+```
+
+Use --demo-env e --volume-env para escolher variaveis diferentes.
+Passe os nomes dessas variaveis, nunca URLs pela linha de comando.
+--schema-demo e --schema-volume selecionam schemas existentes.
+Demo e volume precisam de conexoes ou schemas diferentes.
+--repeticoes aceita de 1 a 10 pares por contexto.
+--output permite escolher o arquivo JSON.
+O padrao salva backend/metricas/recomendacao-volume.json.
+Esse arquivo e substituido somente depois das duas bases medidas.
+A tabela com os resultados tambem aparece no terminal.
+
+Todos os produtos publicos elegiveis recebem contexto de categoria.
+Todos os compradores ativos recebem contexto de historico.
+A ordem dos contextos e UUID crescente, sem amostragem aleatoria.
+JWTs efemeros autenticam apenas a API temporaria em loopback.
+Autenticar e exigirPapel continuam consultando o usuario real.
+Nao e necessario conhecer senhas da base selecionada.
+JSON e tabela nao incluem nomes pessoais, IDs, cookies ou conexoes.
+
+Cobertura do catalogo conta produtos distintos efetivamente recomendados.
+A cobertura v0 continua separada: contextos com resposta nao vazia.
+Fallback conta respostas identificadas como fallback-geral.
+Diversidade mede categorias distintas por resposta, incluindo vazias.
+O JSON tambem registra a uniao global de categorias recomendadas.
+
+Cada par esvazia o cache de recomendacoes antes da chamada fria.
+A chamada quente repete imediatamente o mesmo contexto.
+Categoria precisa apresentar MISS seguido de HIT.
+Historico permanece BYPASS nos dois cenarios, conforme IA-03.
+Os tempos incluem HTTP e recebimento completo do JSON.
+Seed, conexao inicial e emissao de JWT ficam fora desses tempos.
+Frio nao significa reiniciar caches PostgreSQL ou sistema operacional.
+P95 usa nearest-rank sobre todas as amostras de cada fase.
+Nao descarta aquecimentos, erros ou outliers silenciosamente.
+Resposta invalida, cache inesperado ou snapshot substituido abortam a medicao.
+Latencias variam com rede, hardware e carga concorrente.
+Os indicadores de qualidade se repetem com dados identicos.
