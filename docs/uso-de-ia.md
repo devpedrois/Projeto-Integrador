@@ -1220,3 +1220,36 @@ O ZIP contém 25 arquivos, com integridade e hashes verificados.
 Também inclui comentário pronto para colar no Jira.
 Nenhum código da aplicação recebeu alteração nesta preparação.
 Pacote: evidencias/PI4-29-W10-Recomendacao/IA-04/IA-04-evidencias-jira.zip.
+
+### BD-07: testes de integridade do modelo físico
+
+Codex leu AGENTS.md, BD-07 e o modelo físico vigente.
+Inspecionou helpers PostgreSQL, fixtures, migrations e configuração Vitest.
+A branch de trabalho é codex/bd-07-integridade.
+Pedro confirmou o endpoint Neon atual como branch de teste.
+A suíte usa SQL parametrizado diretamente, sem mocks.
+São nove casos, incluindo preço zero e negativo separadamente.
+Cada caso cria fixtures válidas numa única transação.
+O teardown executa rollback e verifica zero IDs residuais.
+Pedidos recebem números explícitos, preservando a sequence existente.
+As asserções verificam SQLSTATE e a constraint responsável.
+
+O teste inicial revelou SQLSTATE 23001 nas exclusões RESTRICT.
+Pedro autorizou validar esse retorno de Produto e Tecnica.
+As constraints e migrations da aplicação permaneceram intactas.
+Nove testes passaram após esse ajuste autorizado.
+A contraprova removeu constraints somente do DDL de schemas temporários.
+Os nove casos falharam corretamente com operações aceitas pelo banco.
+Esses schemas também foram revertidos por rollback.
+
+Pedro escolheu revisão de segurança equivalente nesta conversa.
+Não houve delegação para security-auditor, conforme essa escolha.
+Não houve commit nem push.
+Comando: npm.cmd run test:integridade, dentro de backend/.
+Evidências: evidencias/PI4-28-W10-Modelo-Fisico/BD-07/.
+
+Validação final: 548 testes backend passaram em 54 arquivos.
+Os nove casos BD-07 também passaram na execução direcionada.
+As contagens das nove tabelas permaneceram idênticas antes/depois.
+A sequence permaneceu inalterada; nenhum schema temporário BD-07 restou.
+Lint, typecheck, Prettier e revisão local passaram.

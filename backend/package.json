@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
+    "test:integridade": "vitest run tests/integridade --testTimeout=15000 --hookTimeout=15000",
     "test:concorrencia": "tsx scripts/concorrencia-checkout.ts",
     "metricas:recomendacao": "tsx scripts/metricas-recomendacao.ts",
     "dev": "tsx watch src/server.ts",
