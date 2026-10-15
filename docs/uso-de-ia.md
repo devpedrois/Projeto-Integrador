@@ -1,5 +1,35 @@
 # Declaração de uso de IA
 
+## WEB-15: documentação OpenAPI da Sprint 4
+
+Em 15/10/2026, Codex implementou somente a WEB-15.
+Leu AGENTS.md, WEB-15, contratos, CLAUDE.md §8, rotas e validators.
+Utilizou as skills using-superpowers, test-driven-development,
+systematic-debugging e verification-before-completion.
+O responsável escolheu revisão equivalente nesta conversa, sem delegação.
+
+O OpenAPI 3.1 deriva dos validators Zod existentes.
+Schemas de resposta, exemplos e erros ficam no módulo OpenAPI.
+Swagger UI usa assets locais e cookie HttpOnly como segurança.
+Os contratos e CLAUDE.md §8 receberam as rotas vigentes.
+Exceções restritas no gitignore permitem versionar os documentos solicitados.
+
+TDD: cinco testes inicialmente falharam com HTTP 404.
+Sete testes finais verificam cobertura, exemplos, metadados e segurança.
+A comparação usa os métodos e paths registrados no Express.
+Uma mutação controlada confirma detecção de rota e método ausentes.
+O navegador abriu o Swagger com 36 operações, sem erros.
+Lint, typecheck e 539 testes backend passaram em 53 arquivos.
+
+Revisão equivalente verificou sessão, exposição de dados e CSP.
+Nenhum achado novo bloqueante foi identificado na WEB-15.
+npm audit apontou sete vulnerabilidades em dependências preexistentes.
+Nenhuma versão preexistente foi alterada nesta subtarefa.
+São um alerta moderado, cinco altos e um crítico.
+Não houve migração no schema público, commit, push ou deploy.
+A validação remota de `/docs` permanece pendente da publicação.
+Evidências: `evidencias/PI4-27-W10-Documentacao-API/WEB-15/`.
+
 ## 1. Declaração geral
 
 A equipe utilizou ferramentas de Inteligência Artificial durante o Projeto

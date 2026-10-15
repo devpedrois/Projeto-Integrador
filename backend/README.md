@@ -5,6 +5,32 @@ As camadas seguem Route, Controller, Service e Repository.
 O módulo de recomendação utiliza Strategy.
 `src/utils/` contém funções reutilizáveis, incluindo hashing de senhas.
 
+## Documentação OpenAPI WEB-15
+
+`GET /docs` abre o Swagger UI com assets locais.
+`GET /docs/openapi.json` serve OpenAPI 3.1 gerado dos validators Zod.
+`src/docs/openapi.ts` registra operações, respostas, exemplos e erros.
+Não existe YAML manual duplicando os contratos de entrada.
+Transforms e refinements recebem metadados e descrições quando necessário.
+
+O esquema de segurança utiliza o cookie HttpOnly `origem_sessao`.
+Execute `POST /auth/login` no Swagger para iniciar sessão.
+O navegador envia o cookie nas operações seguintes.
+O campo Authorize não pode definir cookies HttpOnly manualmente.
+Os exemplos usam somente dados sintéticos.
+
+Toda alteração de rota atualiza o OpenAPI no mesmo trabalho.
+O teste compara métodos e paths efetivamente registrados no Express.
+Também valida exemplos e detecta operações ausentes ou excedentes.
+
+```powershell
+npm.cmd test -- tests/unit/openapi.test.ts
+```
+
+Após publicar, abra `https://<render>/docs` e confira as operações.
+Confira também `https://<render>/docs/openapi.json` retornando 200.
+Publicação e evidência remota dependem do deploy da branch.
+
 Funcionalidades atuais:
 
 - `GET /health`: verifica acesso ao PostgreSQL real.

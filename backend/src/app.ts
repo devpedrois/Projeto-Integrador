@@ -53,6 +53,7 @@ import { NotificacaoController } from "./controllers/notificacao.controller.js";
 import { PrismaNotificacaoRepository } from "./repositories/notificacao.repository.js";
 import { NotificacaoService } from "./services/notificacao.service.js";
 import { createNotificacaoRouter } from "./routes/notificacao.routes.js";
+import { createDocsRouter } from "./routes/docs.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -107,6 +108,7 @@ export function createApp(
   app.use(helmet());
   app.use(express.json({ limit: "16kb" }));
   app.use(cookieParser());
+  app.use(createDocsRouter());
   app.use("/admin", autenticarUsuario, exigirPapel("admin"));
   app.use(
     createGestaoProdutosRouter(

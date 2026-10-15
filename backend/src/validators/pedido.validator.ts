@@ -7,13 +7,13 @@ const itemSchema = z.strictObject({
   quantidade: z.number().int().positive().max(2_147_483_647),
 });
 
-const criarPedidoSchema = z.strictObject({
+export const criarPedidoSchema = z.strictObject({
   itens: z.array(itemSchema).min(1).max(20),
 });
 
 export type CriarPedidoInput = z.infer<typeof criarPedidoSchema>;
 
-const paginacaoPedidoSchema = z.strictObject({
+export const paginacaoPedidoSchema = z.strictObject({
   pagina: z
     .string()
     .regex(/^[1-9]\d*$/)
@@ -29,6 +29,10 @@ const paginacaoPedidoSchema = z.strictObject({
 });
 
 export type PaginacaoPedidos = z.infer<typeof paginacaoPedidoSchema>;
+
+export const pedidoParamsSchema = z.strictObject({
+  id: z.uuid().transform((value) => value.toLowerCase()),
+});
 
 export function validateListarPedidos(
   request: Request,
@@ -49,15 +53,12 @@ export function validateObterPedido(
   response: Response,
   next: NextFunction,
 ): void {
-  const result = z
-    .uuid()
-    .transform((value) => value.toLowerCase())
-    .safeParse(request.params.id);
+  const result = pedidoParamsSchema.safeParse(request.params);
   if (!result.success) {
     next(new AppError(400, "VALIDACAO", "Identificador de pedido invalido."));
     return;
   }
-  response.locals.pedidoId = result.data;
+  response.locals.pedidoId = result.data.id;
   next();
 }
 

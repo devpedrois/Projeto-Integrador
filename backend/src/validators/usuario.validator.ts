@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 import { AppError } from "../errors/app-error.js";
 
-const alterarPapelSchema = z.object({
+export const alterarPapelSchema = z.object({
   id: z.uuid().transform((value) => value.toLowerCase()),
   body: z.strictObject({ papel: z.enum(["comprador", "artesao"]) }),
 });

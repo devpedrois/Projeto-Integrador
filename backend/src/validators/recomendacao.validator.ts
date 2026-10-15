@@ -2,13 +2,13 @@ import type { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 import { AppError } from "../errors/app-error.js";
 
-const recomendacaoQuerySchema = z
+export const recomendacaoQuerySchema = z
   .object({
     produtoId: z.uuid().optional(),
   })
   .strict();
 
-const recomendacaoPessoalQuerySchema = z.object({}).strict();
+export const recomendacaoPessoalQuerySchema = z.object({}).strict();
 
 export type RecomendacaoQuery = z.infer<typeof recomendacaoQuerySchema>;
 

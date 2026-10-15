@@ -11,7 +11,11 @@ const inteiroQuery = (minimo: number, maximo: number, padrao: number) =>
     .regex(/^\d+$/)
     .transform(Number)
     .pipe(z.number().int().min(minimo).max(maximo))
-    .default(padrao);
+    .default(padrao)
+    .meta({
+      default: String(padrao),
+      description: `Inteiro entre ${minimo} e ${maximo}.`,
+    });
 
 export const catalogoQuerySchema = z
   .object({
