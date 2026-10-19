@@ -8,7 +8,7 @@ Curso de ADS — CESAR School — 4º Semestre — 2026.2
 > uma decisão relevante for tomada, edite a seção correspondente e atualize a data
 > em "Última atualização" no topo.
 
-**Última atualização:** 2026-10-06
+**Última atualização:** 2026-10-18
 
 ---
 
@@ -136,8 +136,8 @@ Suficiente 50% · Insuficiente 25% · Não entregue 0%, aplicados por critério)
 | 4–5 | 24/ago–04/set | Setup técnico e definição dos pontos de concorrência e de IA | Repositório; stack; pontos de concorrência; definição do problema de IA; features |
 | 6–7 | 07–18/set | Primeira sprint (frontend + backend inicial) e convergência | ✅ **Concluída.** Build do app; modelo lógico; baseline de recomendação; **backend mínimo real de FCCPD (concorrência + fila, entregue 20/09/2026 — ver §3)** — auditoria de código em 20/09/2026 confirma as 28 subtarefas implementadas (`docs/08-Subtarefas-Jira-Sprint06-07.md`) |
 | 8–9 | 21/set–02/out | Fechamento e checkpoint da Entrega U1 (AV1) | ✅ **Concluída** (Pedro confirmou em 26/09 que todas as entregas da AV1 foram cumpridas). Histórico: BD, IA e FCCPD já fechados antes do início — só **Desenvolvimento Web** tem entrega pendente: checkout, perfil do artesão, página de produto, avaliações (contrato) e painel admin, detalhadas em `docs/09-Subtarefas-Jira-Sprint08-09.md` |
-| 10–11 | 05–16/out | Replanejamento da U2 e integração backend, BD e IA | 🔄 **Em andamento (Sprint 4).** Integração das camadas; **modelo físico de BD**; índices/otimização; recomendação consumida pelo app — tickets PI4-27 (WEB), PI4-28 (BD), PI4-29 (IA), plano e subtarefas em `docs/10-Plano-Sprint4-Subtarefas-Jira-Semanas10-11.md` |
-| 12–13 | 19–30/out | Concorrência/distribuição, desempenho e testes | Diagrama distribuído; benchmark; resultados de testes e refatorações |
+| 10–11 | 05–16/out | Replanejamento da U2 e integração backend, BD e IA | ✅ **Concluída** (Sprint 4, confirmado pelo Pedro em 18/10/2026). Backend real integrado: autenticação JWT em cookie, autorização por papel e propriedade, persistência, checkout real com pagamento simulado, **modelo físico de BD**, índices, recomendação consumida pelo app — tickets PI4-27 (WEB), PI4-28 (BD), PI4-29 (IA), plano e subtarefas em `docs/10-Plano-Sprint4-Subtarefas-Jira-Semanas10-11.md` |
+| 12–13 | 19–30/out | Concorrência/distribuição, desempenho e testes | 🔄 **Inicia 19/10/2026** (Sprint 5, "Week 12e13" no Jira). Diagrama distribuído; benchmark; resultados de testes e refatorações — tickets PI4-30 (FCCPD) e PI4-31 (REQ), mais 3 tickets-pai novos (BD, WEB, IA) propostos em `docs/10-Subtarefas-Jira-Sprint12-13.md` |
 | 14–15 | 02–13/nov | Consolidação integrada e preparação da apresentação | Build final; documentação; roteiro de apresentação; divisão de falas |
 | 16–18 | 16/nov–04/dez | Apresentação final e avaliação de processo/colaboração | Demonstração do produto; documentação; evidências de gestão. **AV2 de Web nas Semanas 16–17 (16–27/11)** |
 
@@ -443,6 +443,23 @@ Suficiente 50% · Insuficiente 25% · Não entregue 0%, aplicados por critério)
     com evidência em `docs/10-Plano-Sprint4-Subtarefas-Jira-Semanas10-11.md`.
     O modelo físico de BD (PI4-28) é entregável desta sprint.
 
+  - `2026-10-18` (7) — **Fechamento da Sprint 4 (Semanas 10–11).** Pedro
+    confirmou a conclusão da sprint: backend real com autenticação
+    (`/auth/register|login|logout|me`, JWT em cookie `httpOnly` servido pelo
+    proxy `/api` do Next), autorização por papel e propriedade, persistência
+    via HTTP no frontend (`NEXT_PUBLIC_DATA_SOURCE=http`), carrinho no
+    servidor, checkout real com pagamento simulado na mesma transação do
+    `FOR UPDATE`, notificação assíncrona visível ao artesão, cache em memória
+    e Swagger em `GET /docs` (rotas vigentes na §8). Tickets PI4-27 (WEB),
+    PI4-28 (BD) e PI4-29 (IA) encerrados. Itens que o plano da Sprint 4
+    (`docs/10-Plano-Sprint4-Subtarefas-Jira-Semanas10-11.md` §8) já empurrava
+    para a Sprint 5 seguem para lá: avaliação com compra verificada
+    (T15.1/T15.2), pedidos recebidos pelo artesão (T14.1/T14.2), indicadores
+    (T07.x), foto de perfil (T03.3), p95 da busca (T08.4), documentação da
+    concorrência (T12.4) e T20.4 no CI. Pendências de segurança anotadas em
+    `docs/seguranca-pendencias-av2.md`. Planejamento da Sprint 5 ("Week
+    12e13", 19–30/10) em `docs/10-Subtarefas-Jira-Sprint12-13.md`.
+
 ---
 
 ## 7. Dicionário de dados / Modelo atual *(vivo — manter atualizado)*
@@ -540,10 +557,10 @@ Pagamento vigente integra `GET /pedidos/:id`.
 | Disciplina | Entrega em foco | Semana prevista | Status | Dependências pendentes |
 |---|---|---|---|---|
 | Requisitos | Histórias (MoSCoW) + Diagrama de Casos de Uso + Tarefas SMART | 2–3 | ✅ v2 (revisada 26/08/2026; Tarefas SMART de implementação + cronograma de 6 sprints acrescentados 01/09/2026, aplicados ao `.md` em 14/09/2026 — 57 tarefas · 284h) | — |
-| BD | Modelo conceitual → lógico → migrations aplicadas | 2–3 até 6–7 | ✅ **Fechado para U1.** Modelo completo (11 entidades + fila), migration `add_dominio_completo` aplicada no Neon, seed sintético representativo, testes de integridade — ver `docs/docs auxiliares/DATA_MODEL.md` | — |
-| Web | Fake API estruturada + telas da AV1 | 6–7 até 8–9 | 🔄 **Sprint 1 e 2 concluída** (fundação, catálogo, vitrine, busca, carrinho — auditado 20/09). **Sprint 3 (8–9) em andamento:** checkout, perfil do artesão, página de produto, avaliações e painel admin pendentes — ver `docs/09-Subtarefas-Jira-Sprint08-09.md` | Deploy, README, vídeo e distribuição de commits entre os 8 integrantes (`docs/07` §4) |
-| FCCPD | Backend mínimo funcional (concorrência + fila) | 6–7 | ✅ **Entregue em 20/09/2026**, dentro do prazo próprio da plataforma. Gap de bootstrap da fila em `server.ts` (achado 18/09) corrigido antes do envio | — |
-| IA | Baseline por regras + Strategy real + endpoint | 2–3 até 6–7 | ✅ **Fechado para U1.** Adapter falso no frontend (AV1) e Strategy real com PostgreSQL + `GET /recomendacoes` no backend (excede o mínimo da U1, prepara a AV2) — ver `docs/docs auxiliares/RECOMMENDATION.md` | Consumo do endpoint real pelo frontend fica para a AV2 |
+| BD | U1: conceitual → lógico → migrations · Sprint 4: modelo físico · **Sprint 5: consultas otimizadas** | 2–3 até 6–7 · 10–11 · **12–13** | ✅ **Fechado para U1** — ver `docs/docs auxiliares/DATA_MODEL.md`. ✅ **Sprint 4 concluída** (PI4-28): modelo físico, reconciliação com o lógico, `Tecnica`/`Regiao`, índices, seeds de demo e de volume, `Notificacao`. 🔄 **Sprint 5:** p95 da busca, agregação de vendas por artesão, índices de suporte (`docs/10-Subtarefas-Jira-Sprint12-13.md` §3) | — |
+| Web | AV1 (Fake API) · Sprint 4 (integração das camadas) · **Sprint 5: fluxos do artesão e avaliações** | 6–7 até 10–11 · **12–13** | ✅ **AV1 entregue** (26/09). ✅ **Sprint 4 concluída** (18/10): auth, autorização, carrinho e checkout reais, notificação assíncrona, cache e Swagger (PI4-27). 🔄 **Sprint 5:** pedidos recebidos, avaliação com compra verificada, painel de vendas, foto de perfil (`docs/10-Subtarefas-Jira-Sprint12-13.md` §4) | Distribuição de commits entre os 8 integrantes (`docs/07` §4) |
+| FCCPD | U1: backend mínimo (concorrência + fila) · **U2: arquitetura distribuída e paralelismo** | 6–7 · **12–13** | ✅ **U1 entregue em 20/09/2026.** Evidência de concorrência regravada após a auth na Sprint 4 (WEB-10). 🔄 **U2:** PI4-30 — concorrência no checkout integrado, worker separado, diagrama distribuído e 2 benchmarks (`docs/10-Subtarefas-Jira-Sprint12-13.md` §1) | Rubrica oficial da U2 ainda não colada no contexto |
+| IA | U1: baseline + Strategy + endpoint · **U2: módulo integrado via API** | 2–3 até 6–7 · 10–11 · **12–13** | ✅ **Fechado para U1.** ✅ **Sprint 4 concluída** (PI4-29): recomendação consumida pelo app via HTTP e `GET /recomendacoes/para-mim`. 🔄 **Sprint 5:** métricas na massa ampliada e o que restar da integração (`docs/10-Subtarefas-Jira-Sprint12-13.md` §5) | — |
 
 > Documentos de apoio desta sprint: ver seção 10.
 
@@ -568,7 +585,10 @@ Projeto integrador/
     ├── 05-Concorrencia-e-IA-Baseline.md
     ├── 06-Telas-e-Rastreabilidade.md
     ├── 07-Especificacao-Disciplina-Web.md
-    └── 08-Subtarefas-Jira-Sprint06-07.md
+    ├── 08-Subtarefas-Jira-Sprint06-07.md
+    ├── 09-Subtarefas-Jira-Sprint08-09.md
+    ├── 10-Plano-Sprint4-Subtarefas-Jira-Semanas10-11.md   ← Sprint 4 (concluída)
+    └── 10-Subtarefas-Jira-Sprint12-13.md                  ← Sprint 5 (19–30/10)
 ```
 
 **Por que essa divisão:** `CLAUDE.md` e o guia de setup ficam na raiz porque
