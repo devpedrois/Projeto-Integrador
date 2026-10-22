@@ -9,10 +9,16 @@ backend/src/generated/prisma/
 docs/*
 !docs/uso-de-ia.md
 !docs/fake-api.md
+!docs/docs auxiliares/
+docs/docs auxiliares/*
+!docs/docs auxiliares/LOGINS_TESTE.md
 sprints/*
 !sprints/semana-02-03/
 sprints/semana-02-03/*
 !sprints/semana-02-03/04-Contratos-de-API.md
+!sprints/semana-10-11/
+sprints/semana-10-11/*
+!sprints/semana-10-11/01-Modelo-Fisico-BD.md
 AGENTS.md
 .claude/
 CLAUDE.md

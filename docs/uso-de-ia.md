@@ -1269,7 +1269,7 @@ Evidências: `evidencias/BD.1/`.
 ### 31.1: integração contínua
 
 Tarefa realizada por Sérgio e revisada por Pedro.
-O Codex auxiliou na configuração e validação do workflow.
+O Codex auxiliou no workflow e nos testes.
 A CI verifica frontend e backend com banco de teste separado.
 Credenciais são protegidas e a chave JWT é temporária.
 Evidências: `evidencias/PI4-31/31.1/`.

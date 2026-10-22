@@ -79,6 +79,7 @@ function criarServicoFake(
 async function preencherFormularioValido(
   user: ReturnType<typeof userEvent.setup>,
 ) {
+  await screen.findByRole("option", { name: "Cerâmica e Barro" });
   await user.type(screen.getByLabelText(/nome/i), "Vaso de Barro");
   await user.type(
     screen.getByLabelText(/descrição/i),
