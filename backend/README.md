@@ -538,3 +538,75 @@ Nao descarta aquecimentos, erros ou outliers silenciosamente.
 Resposta invalida, cache inesperado ou snapshot substituido abortam a medicao.
 Latencias variam com rede, hardware e carga concorrente.
 Os indicadores de qualidade se repetem com dados identicos.
+
+## Benchmark da busca BD.2
+
+Configure `DATABASE_URL_VOLUME` com a branch sintetica de volume.
+Ela precisa conter pelo menos 1.000 produtos existentes.
+O comando nao executa seeds, migrations ou ANALYZE.
+
+Execute dentro de `backend/`:
+
+```powershell
+npm.cmd run bench:busca
+```
+
+Seis cenarios usam `GET /produtos` com pagina de 24:
+sem filtro, termo, categoria, tecnica, regiao e combinado.
+O combinado utiliza termo, categoria e regiao.
+O termo padrao e `vaso`, com quatro caracteres.
+Termos personalizados precisam ter entre tres e 120 caracteres.
+Os IDs sao escolhidos deterministicamente na massa existente.
+A combinacao mais frequente com o termo orienta os filtros.
+Todos os cenarios exigem resultados nao vazios e filtros corretos.
+
+Cada cenario descarta cinco aquecimentos e mede trinta chamadas.
+As 210 requisicoes sao sequenciais, usando HTTP local real.
+O cronometro inclui recebimento completo e decodificacao do JSON.
+Validacao e invalidacao do cache ficam fora desse tempo.
+O cache `produtos:` e esvaziado antes de cada chamada.
+Toda resposta precisa trazer HTTP 200 e `X-Cache: MISS`.
+Tambem exige `Cache-Control: no-store`, sem alterar TTL de producao.
+Caches PostgreSQL e do sistema operacional permanecem aquecidos.
+
+P50 e p95 usam nearest-rank sobre as trinta medicoes.
+Nenhum outlier dessas medicoes e descartado.
+O comando retorna codigo 1 se algum p95 atingir 500 ms.
+Nesse caso, os resultados completos continuam salvos.
+Falhas de ambiente ou resposta tambem retornam codigo 1.
+Mensagens de erro nao revelam argumentos ou conexoes.
+
+O servidor temporario escuta somente em `127.0.0.1`.
+Ele usa a aplicacao Express existente, sem iniciar fila.
+Todas as consultas compartilham um snapshot PostgreSQL somente leitura.
+O isolamento e `REPEATABLE READ`, com uma conexao.
+O script verifica a mesma conexao ao encerrar.
+Sao recusados NODE_ENV=production e o banco conhecido do deploy.
+Dados, credenciais e configuracoes remotas permanecem preservados.
+
+As opcoes aceitas sao `--volume-env`, `--schema`, `--termo` e `--output`.
+`--volume-env` recebe o nome da variavel, nunca a URL.
+O padrao de schema e `public`.
+O diretorio de saida precisa estar vazio.
+Nenhum arquivo existente e sobrescrito.
+
+```powershell
+npm.cmd run bench:busca -- --termo 977 --output ../evidencias/BD.2/medicao-977
+```
+
+A saida padrao usa pasta nova em `evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/`.
+Ela contem `bruto.csv`, `resultado.json`, `resumo.md` e `explain-http/`.
+O CSV registra aquecimentos e medicoes em fases diferentes.
+Somente as linhas `medicao` entram nos percentis.
+O JSON registra parametros, ambiente resumido e metodologia.
+SQL e parametros capturados do Prisma geram os planos HTTP.
+Isso inclui joins e agregacoes efetivamente usados no endpoint.
+As consultas historicas de `db:explain` continuam preservadas.
+
+Nao foram criados indices adicionais nesta entrega.
+Os indices existentes atenderam os seis cenarios na massa medida.
+Os Seq Scans observados tiveram custo baixo nessa escala.
+Consulte a justificativa em `prisma/consultas/README.md`.
+A massa de volume atual nao possui fotos ou avaliacoes.
+As agregacoes correspondentes medem o caminho sem essas linhas.
+Resultados nao representam catalogos com fotos ou avaliacoes preenchidas.

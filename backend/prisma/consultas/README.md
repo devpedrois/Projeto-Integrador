@@ -51,3 +51,38 @@ por parametros `$1` a `$8`, inclusive limit e offset.
 Nenhum valor controlado pelo usuario forma texto SQL.
 Fotos, notas e vendas confirmadas usam agregacoes laterais apos paginacao.
 As consultas historicas de BD-04 permanecem reproduziveis.
+
+## BD.2: medicao HTTP com a massa de volume
+
+`npm run bench:busca` mede os seis cenarios solicitados.
+Utiliza o endpoint real, com cinco aquecimentos descartados.
+Depois mede trinta requisicoes por cenario, sempre com MISS.
+Os EXPLAINs adicionais usam o SQL capturado dessas requisicoes.
+Nao substituem os nove SELECTs historicos deste diretorio.
+
+Na coleta de 22/10/2026, existiam 1.000 produtos sinteticos.
+Os seis p95 ficaram abaixo de 500 ms.
+Todos os indices da Sprint 4 foram preservados.
+Nenhuma migration `indices_busca_u2` foi criada.
+
+O termo seletivo `977` usou ambos os GIN existentes.
+Categoria utilizou `Produto_categoriaId_idx` no SQL HTTP.
+Tecnica utilizou `Produto_tecnicaId_idx`.
+Regiao utilizou `PerfilArtesao_regiaoId_idx` e `Produto_artesaoId_idx`.
+As agregacoes posteriores aproveitaram indices de fotos, avaliacoes e itens.
+
+Os Seq Scans restantes nao justificaram indices adicionais.
+Sem filtro, o banco examinou apenas 1.000 produtos visiveis.
+O termo `vaso` foi resolvido com scan inferior a 1 ms.
+O join de usuarios examinou uma tabela de 350 registros.
+O custo desses scans foi baixo na massa medida.
+GIN e indices simples ja cobrem os predicados seletivos.
+Nenhum plano foi forcado com `enable_seqscan=off`.
+Criar outro indice equivalente duplicaria estruturas existentes.
+
+O p95 HTTP inclui rede, serializacao e leitura do JSON.
+Os tempos EXPLAIN medem execucao dentro do PostgreSQL.
+Esses valores nao sao apresentados como a mesma metrica.
+Massas maiores ou outra distribuicao exigem nova avaliacao.
+
+Evidencias: `evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/`.

@@ -1281,3 +1281,11 @@ O Codex auxiliou na separação do publicador e consumidor.
 Também apoiou testes com PostgreSQL e processos worker independentes.
 O modo integrado permanece padrão, conforme decisão 3.
 Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.3-worker-separado/`.
+
+### BD.2: benchmark HTTP da busca
+
+Eduardo é responsável pela tarefa; Pedro é o revisor.
+O Codex auxiliou no benchmark HTTP e nos testes.
+A execução validou seis cenários com PostgreSQL real.
+As medições não justificaram novos índices nesta massa.
+Evidências: `evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/`.

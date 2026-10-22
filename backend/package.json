@@ -23,7 +23,8 @@
     "db:migrate": "prisma migrate deploy",
     "db:seed": "prisma db seed",
     "db:seed:volume": "tsx prisma/seed-volume.ts",
-    "db:explain": "tsx scripts/db-explain.ts"
+    "db:explain": "tsx scripts/db-explain.ts",
+    "bench:busca": "tsx scripts/busca-p95.ts"
   },
   "keywords": [],
   "author": "",
