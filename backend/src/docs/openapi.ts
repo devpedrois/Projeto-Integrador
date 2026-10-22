@@ -26,6 +26,7 @@ import {
   produtoParamsSchema as gestaoParamsSchema,
 } from "../validators/gestao-produtos.validator.js";
 import { notificacaoParamsSchema } from "../validators/notificacao.validator.js";
+import { indicadoresQuerySchema } from "../validators/indicadores.validator.js";
 import {
   criarPedidoSchema,
   paginacaoPedidoSchema,
@@ -346,6 +347,24 @@ const recomendacaoExample = {
   estrategia: "categoria",
   itens: [produtoExample],
 };
+const indicadoresExample = {
+  quantidadeVendida: 10,
+  receitaTotal: 51.83,
+  numeroPedidos: 2,
+  ultimaVenda: "2026-10-13T12:00:00.000Z",
+  atualizadoEm: data,
+};
+const indicadores = registrar(
+  "IndicadoresArtesao",
+  z.object({
+    quantidadeVendida: inteiro,
+    receitaTotal: dinheiro.multipleOf(0.01),
+    numeroPedidos: inteiro,
+    ultimaVenda: instante.nullable(),
+    atualizadoEm: instante,
+  }),
+  indicadoresExample,
+);
 const recomendacao = registrar(
   "Recomendacao",
   z.object({ estrategia: z.string(), itens: z.array(produto) }),
@@ -857,6 +876,19 @@ endpoint({
   papel: "artesao",
   response: json(notificacoes, [notificacaoExample]),
   errors: [401, 403],
+});
+endpoint({
+  method: "get",
+  path: "/artesao/indicadores",
+  operationId: "obterIndicadoresArtesao",
+  summary: "Consultar próprias vendas confirmadas",
+  tag: "Indicadores",
+  papel: "artesao",
+  request: { query: indicadoresQuerySchema },
+  response: json(indicadores, indicadoresExample),
+  errors: [400, 401, 403],
+  description:
+    "Identidade vem da sessão. Soma quantidade e subtotal somente dos próprios itens em pedidos confirmados. Conta pedidos distintos. ultimaVenda usa criadoEm do pedido; atualizadoEm é o momento da consulta. Sem vendas retorna zeros e ultimaVenda null. Receita em number com precisão de duas casas. Sem cache compartilhado.",
 });
 endpoint({
   method: "patch",

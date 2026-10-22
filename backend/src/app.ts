@@ -54,6 +54,10 @@ import { PrismaNotificacaoRepository } from "./repositories/notificacao.reposito
 import { NotificacaoService } from "./services/notificacao.service.js";
 import { createNotificacaoRouter } from "./routes/notificacao.routes.js";
 import { createDocsRouter } from "./routes/docs.routes.js";
+import { IndicadoresController } from "./controllers/indicadores.controller.js";
+import { PrismaIndicadoresRepository } from "./repositories/indicadores.repository.js";
+import { IndicadoresService } from "./services/indicadores.service.js";
+import { createIndicadoresRouter } from "./routes/indicadores.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -132,6 +136,14 @@ export function createApp(
     ),
   );
   app.use(createPedidoRouter(pedidoController, autenticarUsuario));
+  app.use(
+    createIndicadoresRouter(
+      new IndicadoresController(
+        new IndicadoresService(new PrismaIndicadoresRepository(prisma)),
+      ),
+      autenticarUsuario,
+    ),
+  );
   app.use(
     createNotificacaoRouter(
       new NotificacaoController(

@@ -1299,3 +1299,12 @@ Os testes verificam erros HTTP e seleção pelo container.
 O OpenAPI recebeu a resposta 404 solicitada.
 
 Evidências: `evidencias/IA.1/`.
+
+### BD.3: indicadores de vendas por artesão
+
+Eliziane é responsável; Pedro é o revisor.
+O Codex auxiliou na consulta agregada e nos testes.
+A implementação considera somente itens próprios em pedidos confirmados.
+Também apoiou a documentação e a conferência SQL independente.
+
+Evidências: `evidencias/PI4-BD-W12-Indices-Consultas/BD.3-indicadores/`.
