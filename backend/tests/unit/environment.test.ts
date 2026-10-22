@@ -7,6 +7,44 @@ describe("environment validation", () => {
     DIRECT_URL: "postgresql://user:secret@localhost:5432/origem",
   };
 
+  it("defaults to an in-process worker with concurrency one", () => {
+    const environment = parseEnvironment(databaseEnvironment);
+    expect(environment.RUN_WORKER_IN_API).toBe(true);
+    expect(environment.WORKER_CONCURRENCY).toBe(1);
+  });
+
+  it.each(["true", "false"])("parses RUN_WORKER_IN_API=%s", (value) => {
+    expect(
+      parseEnvironment({ ...databaseEnvironment, RUN_WORKER_IN_API: value })
+        .RUN_WORKER_IN_API,
+    ).toBe(value === "true");
+  });
+
+  it.each(["", "1", "0", "yes", "FALSE"])(
+    "rejects RUN_WORKER_IN_API=%s",
+    (value) => {
+      expect(() =>
+        parseEnvironment({ ...databaseEnvironment, RUN_WORKER_IN_API: value }),
+      ).toThrow("Invalid environment variables: RUN_WORKER_IN_API");
+    },
+  );
+
+  it.each(["1", "8"])("accepts WORKER_CONCURRENCY=%s", (value) => {
+    expect(
+      parseEnvironment({ ...databaseEnvironment, WORKER_CONCURRENCY: value })
+        .WORKER_CONCURRENCY,
+    ).toBe(Number(value));
+  });
+
+  it.each(["", "0", "9", "-1", "1.5", "Infinity", "invalid"])(
+    "rejects WORKER_CONCURRENCY=%s",
+    (value) => {
+      expect(() =>
+        parseEnvironment({ ...databaseEnvironment, WORKER_CONCURRENCY: value }),
+      ).toThrow("Invalid environment variables: WORKER_CONCURRENCY");
+    },
+  );
+
   it.each(["true", "false", "yes"])(
     "ignora a configuracao retirada ENABLE_COOKIE_PROBE=%s",
     (value) => {

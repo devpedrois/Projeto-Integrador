@@ -1,16 +1,12 @@
 import "dotenv/config";
 import request from "supertest";
-import { afterAll, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { StatusIntencao } from "../../src/generated/prisma/enums.js";
 import { startServer } from "../../src/server.js";
 import { gerarHash } from "../../src/utils/senha.js";
 import { databasePool } from "../helpers/database.js";
-import {
-  criarCategoria,
-  criarProduto,
-  criarUsuarioArtesao,
-  criarUsuarioComprador,
-} from "../helpers/dominio-fixtures.js";
+import { criarBancoAuth } from "../helpers/auth-database.js";
+import { createPgBossClient } from "../../src/queues/pg-boss.client.js";
 
 async function waitFor<T>(
   check: () => Promise<T | undefined>,
@@ -30,43 +26,67 @@ async function waitFor<T>(
   }
 }
 
-const createdUsuarioIds: string[] = [];
-const createdCategoriaIds: string[] = [];
-
-afterAll(async () => {
-  if (createdUsuarioIds.length > 0) {
-    await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
-      createdUsuarioIds,
-    ]);
-  }
-  if (createdCategoriaIds.length > 0) {
-    await databasePool.query('DELETE FROM "Categoria" WHERE "id" = ANY($1)', [
-      createdCategoriaIds,
-    ]);
-  }
-});
-
 describe("auto-publish of pending notification intentions", () => {
   it("moves a real POST /pedidos intention from pendente to processada without manual queue calls", async () => {
-    const { server, prisma, boss } = await startServer({
-      ...process.env,
-      PORT: "3112",
-      JWT_SECRET: "segredo-sintetico-auto-publish-web04",
-      COOKIE_SECURE: "false",
-      NOTIFICATION_PUBLISHER_INTERVAL_MS: "1000",
-    });
+    const database = await criarBancoAuth();
+    const prisma = database.prisma;
+    const rows = await prisma.$queryRaw<
+      { schema: string }[]
+    >`SELECT current_schema() AS schema`;
+    const schema = rows[0]?.schema;
+    if (schema === undefined || !/^web03_[a-f0-9]{32}$/.test(schema))
+      throw new Error("Expected an isolated notification test schema");
+    const databaseUrl = process.env.DATABASE_URL;
+    if (!databaseUrl)
+      throw new Error("DATABASE_URL is required for integration tests");
+    const queueSchema = `${schema}_queue`;
+    const boss = createPgBossClient(databaseUrl, { schema: queueSchema });
+    const { server } = await startServer(
+      {
+        ...process.env,
+        PORT: "3112",
+        RUN_WORKER_IN_API: "true",
+        JWT_SECRET: "segredo-sintetico-auto-publish-web04",
+        COOKIE_SECURE: "false",
+        NOTIFICATION_PUBLISHER_INTERVAL_MS: "1000",
+      },
+      { prisma, boss },
+    );
 
     try {
-      const artesaoId = await criarUsuarioArtesao(databasePool);
-      const compradorId = await criarUsuarioComprador(databasePool);
-      const categoriaId = await criarCategoria(databasePool);
-      createdUsuarioIds.push(artesaoId, compradorId);
-      createdCategoriaIds.push(categoriaId);
-
-      const produtoId = await criarProduto(databasePool, {
-        artesaoId,
-        categoriaId,
+      const artesao = await prisma.usuario.create({
+        data: {
+          nome: "Artesao sintetico",
+          email: "artesao@publisher.test",
+          senhaHash: "hash-sintetico",
+          papel: "artesao",
+        },
       });
+      const artesaoId = artesao.id;
+      const comprador = await prisma.usuario.create({
+        data: {
+          nome: "Comprador sintetico",
+          email: "comprador@publisher.test",
+          senhaHash: "hash-sintetico",
+          papel: "comprador",
+        },
+      });
+      const compradorId = comprador.id;
+      const categoria = await prisma.categoria.create({
+        data: { nome: "Categoria sintetica" },
+      });
+      const produto = await prisma.produto.create({
+        data: {
+          nome: "Produto sintetico",
+          descricao: "Publicacao automatica",
+          preco: "10.00",
+          artesaoId,
+          categoriaId: categoria.id,
+          tecnicaId: "tecnica-modelagem-argila",
+          quantidadeEstoque: 1,
+        },
+      });
+      const produtoId = produto.id;
 
       try {
         const senha = "SenhaSinteticaAutoPublish!";
@@ -83,12 +103,12 @@ describe("auto-publish of pending notification intentions", () => {
           (
             await artesao
               .post("/auth/login")
-              .send({ email: `artesao-${artesaoId}@teste.origem`, senha })
+              .send({ email: "artesao@publisher.test", senha })
           ).status,
         ).toBe(200);
         const login = await request(server)
           .post("/auth/login")
-          .send({ email: `comprador-${compradorId}@teste.origem`, senha });
+          .send({ email: "comprador@publisher.test", senha });
         expect(login.status).toBe(200);
         const cookies = login.headers["set-cookie"] as string[] | undefined;
         const cookie = cookies?.[0]?.split(";")[0];
@@ -127,6 +147,8 @@ describe("auto-publish of pending notification intentions", () => {
           );
           expect(Date.now() - inicio).toBeLessThan(20_000);
         } finally {
+          await new Promise<void>((resolve) => server.close(() => resolve()));
+          await boss.stop({ graceful: true });
           await prisma.notificacao.deleteMany({ where: { pedidoId } });
           await prisma.intencaoNotificacao.deleteMany({ where: { pedidoId } });
           await prisma.pagamento.deleteMany({ where: { pedidoId } });
@@ -138,10 +160,16 @@ describe("auto-publish of pending notification intentions", () => {
       }
     } finally {
       if (boss !== undefined) {
-        await boss.stop({ graceful: false });
+        await boss.stop({ graceful: true });
       }
       await new Promise<void>((resolve) => server.close(() => resolve()));
-      await prisma.$disconnect();
+      try {
+        await databasePool.query(
+          `DROP SCHEMA IF EXISTS "${queueSchema}" CASCADE`,
+        );
+      } finally {
+        await database.fechar();
+      }
     }
   }, 25_000);
 });

@@ -2,7 +2,6 @@ import { randomUUID } from "node:crypto";
 import "dotenv/config";
 import type { PgBoss } from "pg-boss";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import { createPrismaClient } from "../../src/database/prisma/client.js";
 import { StatusIntencao } from "../../src/generated/prisma/enums.js";
 import { notificarArtesao } from "../../src/jobs/notificar-artesao.handler.js";
 import type { NotificarArtesaoJobData } from "../../src/jobs/notificar-artesao.handler.js";
@@ -17,11 +16,7 @@ import { PrismaIntencaoNotificacaoRepository } from "../../src/repositories/inte
 import { PrismaNotificacaoRepository } from "../../src/repositories/notificacao.repository.js";
 import { PrismaPedidoRepository } from "../../src/repositories/pedido.repository.js";
 import { databasePool } from "../helpers/database.js";
-import {
-  criarCategoria,
-  criarUsuarioArtesao,
-  criarUsuarioComprador,
-} from "../helpers/dominio-fixtures.js";
+import { criarBancoAuth } from "../helpers/auth-database.js";
 
 const databaseUrl = process.env.DATABASE_URL;
 
@@ -29,7 +24,8 @@ if (databaseUrl === undefined || databaseUrl.length === 0) {
   throw new Error("DATABASE_URL is required for integration tests");
 }
 
-const prisma = createPrismaClient(databaseUrl);
+const database = await criarBancoAuth();
+const prisma = database.prisma;
 const repository = new PrismaIntencaoNotificacaoRepository(prisma);
 const notificacaoRepository = new PrismaNotificacaoRepository(prisma);
 const pedidoRepository = new PrismaPedidoRepository(prisma);
@@ -116,9 +112,29 @@ beforeAll(async () => {
   boss = createPgBossClient(databaseUrl, { schema: queueSchema });
   await boss.start();
   await ensureNotificarArtesaoQueue(boss);
-  artesaoId = await criarUsuarioArtesao(databasePool);
-  categoriaId = await criarCategoria(databasePool);
-  compradorId = await criarUsuarioComprador(databasePool);
+  artesaoId = (
+    await prisma.usuario.create({
+      data: {
+        nome: "Artesao de teste",
+        email: "artesao@fila.test",
+        senhaHash: "hash-sintetico",
+        papel: "artesao",
+      },
+    })
+  ).id;
+  categoriaId = (
+    await prisma.categoria.create({ data: { nome: "Categoria de teste" } })
+  ).id;
+  compradorId = (
+    await prisma.usuario.create({
+      data: {
+        nome: "Comprador de teste",
+        email: "comprador@fila.test",
+        senhaHash: "hash-sintetico",
+        papel: "comprador",
+      },
+    })
+  ).id;
 });
 
 afterEach(async () => {
@@ -151,13 +167,7 @@ afterEach(async () => {
 afterAll(async () => {
   await boss.stop({ graceful: false });
   await databasePool.query(`DROP SCHEMA IF EXISTS "${queueSchema}" CASCADE`);
-  await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
-    [artesaoId, compradorId],
-  ]);
-  await databasePool.query('DELETE FROM "Categoria" WHERE "id" = $1', [
-    categoriaId,
-  ]);
-  await prisma.$disconnect();
+  await database.fechar();
   await databasePool.end();
 });
 

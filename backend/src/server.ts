@@ -7,50 +7,35 @@ import {
   parseEnvironment,
 } from "./config/environment.js";
 import { createPrismaClient } from "./database/prisma/client.js";
-import { registerNotificarArtesaoWorker } from "./jobs/notificar-artesao.worker.js";
 import {
-  createPgBossClient,
-  ensureNotificarArtesaoQueue,
-} from "./queues/pg-boss.client.js";
-import { publicarIntencoesPendentes } from "./queues/notificacao.publisher.js";
-import { PrismaIntencaoNotificacaoRepository } from "./repositories/intencao-notificacao.repository.js";
-import { PrismaNotificacaoRepository } from "./repositories/notificacao.repository.js";
+  iniciarConsumidor,
+  iniciarPublicador,
+  type QueueInfrastructure,
+} from "./queues/bootstrap.js";
+import { createPgBossClient } from "./queues/pg-boss.client.js";
 
-export async function startServer(input: NodeJS.ProcessEnv = process.env) {
+export async function startServer(
+  input: NodeJS.ProcessEnv = process.env,
+  infrastructure?: QueueInfrastructure,
+) {
   const environment = parseEnvironment(input);
-  const prisma = createPrismaClient(environment.DATABASE_URL);
+  const prisma =
+    infrastructure?.prisma ?? createPrismaClient(environment.DATABASE_URL);
   let boss: PgBoss | undefined;
-  let publisherInterval: NodeJS.Timeout | undefined;
+  let pararPublicador: (() => Promise<void>) | undefined;
   try {
-    boss = createPgBossClient(environment.DATABASE_URL);
-    await boss.start();
-    await ensureNotificarArtesaoQueue(boss);
-    const intencaoNotificacaoRepository =
-      new PrismaIntencaoNotificacaoRepository(prisma);
-    await registerNotificarArtesaoWorker(
+    boss = infrastructure?.boss ?? createPgBossClient(environment.DATABASE_URL);
+    boss.on("error", () => {
+      process.stderr.write("Notification queue error\n");
+    });
+    pararPublicador = await iniciarPublicador(
       boss,
-      intencaoNotificacaoRepository,
-      new PrismaNotificacaoRepository(prisma),
-      { pollingIntervalSeconds: 1 },
+      prisma,
+      environment.NOTIFICATION_PUBLISHER_INTERVAL_MS,
     );
-
-    const activeBoss = boss;
-    let publicacaoEmAndamento = false;
-    publisherInterval = setInterval(() => {
-      if (publicacaoEmAndamento) {
-        return;
-      }
-      publicacaoEmAndamento = true;
-      publicarIntencoesPendentes(activeBoss, intencaoNotificacaoRepository)
-        .catch(() => {
-          process.stderr.write(
-            "Failed to publish pending notification intentions\n",
-          );
-        })
-        .finally(() => {
-          publicacaoEmAndamento = false;
-        });
-    }, environment.NOTIFICATION_PUBLISHER_INTERVAL_MS);
+    if (environment.RUN_WORKER_IN_API) {
+      await iniciarConsumidor(boss, prisma);
+    }
 
     const app = createApp(prisma, environment);
     const server = app.listen(environment.PORT, environment.HOST);
@@ -59,17 +44,16 @@ export async function startServer(input: NodeJS.ProcessEnv = process.env) {
       server.once("error", () => reject(new Error("Backend startup failed")));
     });
     server.once("close", () => {
-      clearInterval(publisherInterval);
+      void pararPublicador?.();
     });
     return { server, prisma, boss };
   } catch {
-    if (publisherInterval !== undefined) {
-      clearInterval(publisherInterval);
+    await pararPublicador?.();
+    try {
+      await boss?.stop({ graceful: false });
+    } finally {
+      await prisma.$disconnect();
     }
-    if (boss !== undefined) {
-      await boss.stop({ graceful: false });
-    }
-    await prisma.$disconnect();
     throw new Error("Backend startup failed");
   }
 }

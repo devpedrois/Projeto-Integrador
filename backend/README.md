@@ -95,13 +95,59 @@ Falhas de validação encerram o processo com código 1.
 A mensagem lista somente nomes das variáveis inválidas.
 Outras falhas de boot retornam `Backend startup failed`.
 
+## API e worker separados: 30.3
+
+`src/queues/bootstrap.ts` separa publicacao e consumo.
+`src/server.ts` inicia HTTP e publicador da outbox.
+`src/worker.ts` inicia somente pg-boss e consumidor.
+O worker nao importa Express nem abre porta HTTP.
+
+Para executar em dois terminais, configure a mesma base:
+
+```powershell
+# Terminal da API
+$env:RUN_WORKER_IN_API = "false"
+npm run dev:api
+```
+
+```powershell
+# Terminal do worker
+npm run dev:worker
+```
+
+A API continua confirmando pedidos sem consumidor ativo.
+As intencoes publicadas aguardam na fila persistente.
+Ao iniciar o worker, elas geram notificacoes internas.
+Para dois consumidores, execute `dev:worker` em outro terminal.
+Cada processo registra um consumidor, sem duplicar notificacoes.
+`WORKER_CONCURRENCY` e validada, mas reservada para 30.5.
+Seu valor ainda nao altera o paralelismo interno.
+
+SIGINT e SIGTERM iniciam o encerramento gracioso do worker.
+pg-boss aguarda jobs ativos por ate 30 segundos.
+Depois fecha seu pool; em seguida, desconecta Prisma.
+Jobs interrompidos permanecem sujeitos ao retry do pg-boss.
+Falhas de boot retornam `Worker startup failed`, sem detalhes internos.
+
+Depois de `npm run build`, use `start:api` e `start:worker`.
+Esses comandos nao executam migrations.
+`start` e `start:prod` mantem os comandos anteriores.
+No Render, o padrao `RUN_WORKER_IN_API=true` preserva consumo interno.
+A decisao 3 dispensa alterar o deploy nesta subtarefa.
+Separacao e validada localmente com processos independentes.
+O painel Render nao foi consultado nesta implementacao.
+
 ## Scripts
 
 | Comando                         | Função                                                      |
 | ------------------------------- | ----------------------------------------------------------- |
 | `npm run dev`                   | Executa TypeScript com reinicialização automática           |
+| `npm run dev:api`               | Inicia API e publicador; consumo segue RUN_WORKER_IN_API    |
+| `npm run dev:worker`            | Inicia somente o consumidor com reinicializacao automatica  |
 | `npm run build`                 | Executa `prisma generate && tsc`, sem migrations            |
 | `npm start`                     | Executa `node dist/src/server.js`, sem migrations           |
+| `npm run start:api`             | Inicia a API compilada, respeitando RUN_WORKER_IN_API       |
+| `npm run start:worker`          | Inicia o worker compilado, sem migrations ou HTTP           |
 | `npm run start:prod`            | Executa `prisma migrate deploy` antes do servidor compilado |
 | `npm run typecheck`             | Verifica TypeScript sem gerar arquivos                      |
 | `npm run lint`                  | Executa ESLint                                              |
@@ -136,6 +182,8 @@ Nunca reutilize seu `JWT_SECRET` em produção.
 | `COOKIE_SECURE`                      | `true` em produção; `false` nos outros ambientes | Aceita somente textos `true` e `false`, convertidos para boolean |
 | `CACHE_TTL_SECONDS`                  | `60`                                             | Inteiro positivo, em segundos                                    |
 | `NOTIFICATION_PUBLISHER_INTERVAL_MS` | `3000`                                           | Publicação periódica; inteiro entre 1000 e 60000                 |
+| `RUN_WORKER_IN_API`                  | `true`                                           | Textos `true` ou `false`; habilita consumidor na API             |
+| `WORKER_CONCURRENCY`                 | `1`                                              | Inteiro entre 1 e 8; reservado para 30.5                         |
 | `ALLOW_VOLUME_SEED`                  | Opt-in desativado no exemplo                     | `1` autoriza a carga de volume na branch de teste                |
 | `DATABASE_URL_DEPLOY`                | Opcional, fictícia no exemplo                    | Identifica o banco de deploy bloqueado para volume               |
 | `CONCURRENCY_TEST_PORT`              | `3910`                                           | Porta exclusiva do script de concorrência                        |

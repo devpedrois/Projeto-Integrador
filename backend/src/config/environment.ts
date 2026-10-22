@@ -38,6 +38,11 @@ const environmentSchema = z
       .enum(["true", "false"])
       .transform((value) => value === "true"),
     CACHE_TTL_SECONDS: z.coerce.number().int().positive().default(60),
+    RUN_WORKER_IN_API: z
+      .enum(["true", "false"])
+      .default("true")
+      .transform((value) => value === "true"),
+    WORKER_CONCURRENCY: z.coerce.number().int().min(1).max(8).default(1),
     NOTIFICATION_PUBLISHER_INTERVAL_MS: z.coerce
       .number()
       .int()

@@ -12,9 +12,10 @@ function runServerProcess(
   databaseUrl: string = FAKE_DATABASE_URL,
   environment: NodeJS.ProcessEnv = {},
 ) {
-  const argumentsList = script === undefined
-    ? ["--import", "tsx", "src/server.ts"]
-    : ["--import", "tsx", "--input-type=module", "--eval", script];
+  const argumentsList =
+    script === undefined
+      ? ["--import", "tsx", "src/server.ts"]
+      : ["--import", "tsx", "--input-type=module", "--eval", script];
 
   return new Promise<{ code: number | null; stdout: string; stderr: string }>(
     (resolve, reject) => {
@@ -59,17 +60,26 @@ describe("server startup", () => {
   it.each([
     { JWT_SECRET: "synthetic-short-secret" },
     { JWT_SECRET: undefined },
-  ])("fails production boot with a clear sanitized JWT validation error", async (environment) => {
-    const result = await runServerProcess(3113, undefined, FAKE_DATABASE_URL, {
-      NODE_ENV: "production",
-      HOST: "0.0.0.0",
-      ...environment,
-    });
+  ])(
+    "fails production boot with a clear sanitized JWT validation error",
+    async (environment) => {
+      const result = await runServerProcess(
+        3113,
+        undefined,
+        FAKE_DATABASE_URL,
+        {
+          NODE_ENV: "production",
+          HOST: "0.0.0.0",
+          ...environment,
+        },
+      );
 
-    expect(result.code).toBe(1);
-    expect(result.stdout).toBe("");
-    expect(result.stderr).toBe("Invalid environment variables: JWT_SECRET\n");
-  }, 20_000);
+      expect(result.code).toBe(1);
+      expect(result.stdout).toBe("");
+      expect(result.stderr).toBe("Invalid environment variables: JWT_SECRET\n");
+    },
+    20_000,
+  );
 
   it("sanitizes asynchronous listen failure on an occupied loopback port", async () => {
     const occupied = createServer();
@@ -91,11 +101,14 @@ describe("server startup", () => {
   }, 20_000);
 
   it("imports without starting a listener or writing output", async () => {
-    const result = await runServerProcess(3109, 'await import("./src/server.ts");');
+    const result = await runServerProcess(
+      3109,
+      'await import("./src/server.ts");',
+    );
 
     expect(result.code).toBe(0);
     expect(result.stdout).toBe("");
-    expect(result.stderr === "").toBe(true);
+    expect(result.stderr).toBe("");
   }, 20_000);
 
   it("binds startup explicitly to IPv4 loopback", async () => {
@@ -112,7 +125,7 @@ describe("server startup", () => {
       try {
         process.stdout.write(server.address().address);
       } finally {
-        await boss.stop({ graceful: false });
+        await boss.stop({ graceful: true });
         await new Promise((resolve) => server.close(resolve));
         await prisma.$disconnect();
       }
@@ -122,6 +135,6 @@ describe("server startup", () => {
 
     expect(result.code).toBe(0);
     expect(result.stdout).toBe("127.0.0.1");
-    expect(result.stderr === "").toBe(true);
+    expect(result.stderr).toBe("");
   }, 20_000);
 });

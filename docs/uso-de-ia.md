@@ -1273,3 +1273,11 @@ O Codex auxiliou no workflow e nos testes.
 A CI verifica frontend e backend com banco de teste separado.
 A execução considera a latência do banco remoto.
 Evidências: `evidencias/PI4-31/31.1/`.
+
+### 30.3: worker da fila como processo separado
+
+Luiza é responsável pela tarefa; Pedro é o revisor.
+O Codex auxiliou na separação do publicador e consumidor.
+Também apoiou testes com PostgreSQL e processos worker independentes.
+O modo integrado permanece padrão, conforme decisão 3.
+Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.3-worker-separado/`.
