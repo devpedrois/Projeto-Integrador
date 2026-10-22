@@ -1317,3 +1317,13 @@ A consulta filtra pedidos confirmados e itens próprios no PostgreSQL.
 Também apoiou OpenAPI, documentação e revisão equivalente nesta conversa.
 
 Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.1-itens-por-artesao/`.
+
+### Web.3: formulário e criação de avaliações
+
+Luiz Rocha é responsável; Pedro é o revisor.
+O Codex auxiliou na API, no adapter HTTP e no formulário.
+Também apoiou testes com PostgreSQL real e validações no frontend.
+A implementação mantém a média na leitura e invalida caches após gravar.
+Compra verificada permanece reservada à Web.4, sem deploy intermediário.
+
+Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/`.

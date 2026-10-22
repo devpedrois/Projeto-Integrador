@@ -58,6 +58,10 @@ import { IndicadoresController } from "./controllers/indicadores.controller.js";
 import { PrismaIndicadoresRepository } from "./repositories/indicadores.repository.js";
 import { IndicadoresService } from "./services/indicadores.service.js";
 import { createIndicadoresRouter } from "./routes/indicadores.routes.js";
+import { AvaliacaoController } from "./controllers/avaliacao.controller.js";
+import { AvaliacaoService } from "./services/avaliacao.service.js";
+import { PrismaAvaliacaoRepository } from "./repositories/avaliacao.repository.js";
+import { createAvaliacaoRouter } from "./routes/avaliacao.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -136,6 +140,14 @@ export function createApp(
     ),
   );
   app.use(createPedidoRouter(pedidoController, autenticarUsuario));
+  app.use(
+    createAvaliacaoRouter(
+      new AvaliacaoController(
+        new AvaliacaoService(new PrismaAvaliacaoRepository(prisma), cache),
+      ),
+      autenticarUsuario,
+    ),
+  );
   app.use(
     createIndicadoresRouter(
       new IndicadoresController(

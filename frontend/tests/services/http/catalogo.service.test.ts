@@ -170,9 +170,6 @@ describe("HTTP catalogo", () => {
     expect(fetchMock.mock.calls[0]?.[0]).toBe(
       `/api/avaliacoes?produtoId=${produto.id}`,
     );
-    await expect(
-      service.create({ produtoId: produto.id, nota: 5 }, "u1"),
-    ).rejects.toMatchObject({ code: "HTTP_NAO_IMPLEMENTADO" });
   });
 
   it("resumo de produto oculto fica vazio para o detalhe indisponivel", async () => {

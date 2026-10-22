@@ -2,7 +2,15 @@ import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract
 import type { Avaliacao, ResumoAvaliacoes } from "@/types/avaliacao";
 import { ServiceError } from "@/services/errors";
 import { ApiClient } from "./api-client";
-import { lerAvaliacoes, type AvaliacoesResponse } from "./catalogo-response";
+import {
+  lerAvaliacao,
+  lerAvaliacoes,
+  type AvaliacoesResponse,
+} from "./catalogo-response";
+import {
+  avaliacaoValida,
+  validarAvaliacaoHttp,
+} from "@/validators/avaliacao.validator";
 
 export class HttpAvaliacoesService implements AvaliacoesService {
   constructor(private readonly client = new ApiClient()) {}
@@ -34,10 +42,30 @@ export class HttpAvaliacoesService implements AvaliacoesService {
     return { produtoId, media: resumo.media, quantidade: resumo.total };
   }
 
-  create: AvaliacoesService["create"] = async () => {
-    throw new ServiceError(
-      "HTTP_NAO_IMPLEMENTADO",
-      "Este recurso ainda está indisponível.",
+  criar: AvaliacoesService["criar"] = async (input) => {
+    const erros = validarAvaliacaoHttp(input);
+    if (!avaliacaoValida(erros))
+      throw new ServiceError(
+        "AVALIACAO_INVALIDA",
+        "Dados da avaliação inválidos.",
+        { erros },
+      );
+    const produtoId = input.produtoId.toLowerCase();
+    const comentario = input.comentario?.trim();
+    return lerAvaliacao(
+      await this.client.request<unknown>("/avaliacoes", {
+        method: "POST",
+        body: {
+          produtoId,
+          nota: input.nota,
+          ...(comentario ? { comentario } : {}),
+        },
+      }),
+      produtoId,
     );
+  };
+
+  create: AvaliacoesService["create"] = (input, compradorId) => {
+    return this.criar(input, compradorId);
   };
 }

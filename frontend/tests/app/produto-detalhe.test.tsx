@@ -21,6 +21,7 @@ let carrinhoStore: CartStore;
 vi.mock("@/services/fake/container", () => ({
   obterProdutosService: () => produtosServiceMock,
   obterAvaliacoesService: (): AvaliacoesService => ({
+    criar: vi.fn(),
     listByProduto: vi.fn().mockResolvedValue([]),
     resumo: vi
       .fn()

@@ -7,15 +7,18 @@ import type { SessionStore } from "@/store/sessao.store";
 import { ROTULO_PAPEL } from "@/utils/rotulo-papel";
 import { MeusPedidos } from "@/components/minha-conta/MeusPedidos";
 import type { PedidosService } from "@/services/contracts/pedidos.contract";
+import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 
 const CLASSE_ROTULO = "text-[13px] font-semibold text-fg-muted";
 
 export function ResumoConta({
   sessionStore,
   pedidosService,
+  avaliacoesService,
 }: {
   sessionStore: SessionStore;
   pedidosService: PedidosService | null;
+  avaliacoesService?: AvaliacoesService | null;
 }) {
   const sessao = useSessao(sessionStore);
   const router = useRouter();
@@ -69,7 +72,12 @@ export function ResumoConta({
         </section>
 
         {sessao.papel === "comprador" && pedidosService ? (
-          <MeusPedidos key={sessao.id} service={pedidosService} />
+          <MeusPedidos
+            key={sessao.id}
+            service={pedidosService}
+            avaliacoesService={avaliacoesService ?? undefined}
+            compradorId={sessao.id}
+          />
         ) : null}
       </div>
     </main>

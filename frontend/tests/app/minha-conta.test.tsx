@@ -5,6 +5,7 @@ import { SessionStore } from "@/store/sessao.store";
 import type { SessaoStorage } from "@/fake-api/storage/sessao.storage";
 import type { UsuarioSessao } from "@/types/sessao";
 import { HttpPedidosService } from "@/services/http/pedidos.service";
+import { HttpAvaliacoesService } from "@/services/http/avaliacoes.service";
 
 const pushMock = vi.fn();
 const replaceMock = vi.fn();
@@ -18,6 +19,7 @@ vi.mock("next/navigation", () => ({
 vi.mock("@/services/fake/container", () => ({
   obterSessionStore: () => storeMock,
   obterPedidosService: () => new HttpPedidosService(),
+  obterAvaliacoesService: () => new HttpAvaliacoesService(),
 }));
 
 function criarStore(sessao: UsuarioSessao | null): SessionStore {

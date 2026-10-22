@@ -6,6 +6,8 @@ import { useMeusPedidos } from "@/hooks/use-meus-pedidos";
 import { Icone } from "@/components/vitrine/Icone";
 import { BOTAO_SECUNDARIO_PEQUENO } from "@/components/formulario/estilos-botao";
 import { formatarMoeda } from "@/utils/formatar-moeda";
+import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
+import { FormularioAvaliacao } from "@/components/minha-conta/FormularioAvaliacao";
 
 const ROTULOS: Record<StatusPedido, string> = {
   pendente: "Pendente",
@@ -71,7 +73,15 @@ function ErroPedidos({
   );
 }
 
-function DetalheDoPedido({ pedido }: { pedido: DetalhePedido }) {
+function DetalheDoPedido({
+  pedido,
+  avaliacoesService,
+  compradorId,
+}: {
+  pedido: DetalhePedido;
+  avaliacoesService?: AvaliacoesService;
+  compradorId?: string;
+}) {
   return (
     <section
       aria-label="Detalhe do pedido"
@@ -113,6 +123,17 @@ function DetalheDoPedido({ pedido }: { pedido: DetalhePedido }) {
                   <dd className="m-0 break-words">{valor(item.subtotal)}</dd>
                 </div>
               </dl>
+              {pedido.status === "confirmado" &&
+              avaliacoesService &&
+              compradorId ? (
+                <FormularioAvaliacao
+                  key={`${compradorId}:${item.produtoId}`}
+                  service={avaliacoesService}
+                  produtoId={item.produtoId}
+                  nomeProduto={item.nome}
+                  compradorId={compradorId}
+                />
+              ) : null}
             </li>
           ))}
         </ul>
@@ -148,7 +169,15 @@ function DetalheDoPedido({ pedido }: { pedido: DetalhePedido }) {
   );
 }
 
-export function MeusPedidos({ service }: { service: PedidosService }) {
+export function MeusPedidos({
+  service,
+  avaliacoesService,
+  compradorId,
+}: {
+  service: PedidosService;
+  avaliacoesService?: AvaliacoesService;
+  compradorId?: string;
+}) {
   const historico = useMeusPedidos(service);
   const { lista, detalhe } = historico;
   return (
@@ -176,7 +205,11 @@ export function MeusPedidos({ service }: { service: PedidosService }) {
               tentar={historico.recarregarDetalhe}
             />
           ) : (
-            <DetalheDoPedido pedido={detalhe.dados} />
+            <DetalheDoPedido
+              pedido={detalhe.dados}
+              avaliacoesService={avaliacoesService}
+              compradorId={compradorId}
+            />
           )}
         </>
       ) : lista.status === "carregando" ? (

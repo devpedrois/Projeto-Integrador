@@ -45,6 +45,26 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("documenta criacao de avaliacao com corpo estrito e conflito", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    const operation = response.body.paths["/avaliacoes"]?.post;
+    expect(operation).toBeDefined();
+    expect(operation.security).toEqual([{ sessao: [] }]);
+    for (const status of ["201", "400", "401", "403", "404", "409"])
+      expect(operation.responses).toHaveProperty(status);
+    expect(response.body.components.schemas.CriarAvaliacao).toMatchObject({
+      additionalProperties: false,
+      required: ["produtoId", "nota"],
+      properties: {
+        nota: { type: "integer", minimum: 1, maximum: 5 },
+        comentario: { type: "string", maxLength: 500 },
+      },
+    });
+    expect(
+      operation.responses["409"].content["application/json"].example.error.code,
+    ).toBe("AVALIACAO_DUPLICADA");
+  });
+
   it("documenta pedidos recebidos sem total financeiro ou dados privados", async () => {
     const response = await request(app).get("/docs/openapi.json");
     const operation = response.body.paths["/artesao/pedidos"]?.get;

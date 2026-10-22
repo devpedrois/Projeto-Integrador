@@ -75,6 +75,32 @@ export interface AvaliacoesResponse {
   resumo: { media: number; total: number };
 }
 
+export function lerAvaliacao(item: unknown, produtoId: string): Avaliacao {
+  if (
+    !objeto(item) ||
+    !identidade(item.id) ||
+    item.produtoId !== produtoId ||
+    !identidade(item.compradorId) ||
+    !quantidade(item.nota) ||
+    item.nota < 1 ||
+    item.nota > 5 ||
+    !data(item.criadoEm) ||
+    (item.comentario !== undefined &&
+      (!texto(item.comentario) || item.comentario.length > 500))
+  )
+    return respostaInvalida();
+  return {
+    id: item.id,
+    produtoId,
+    compradorId: item.compradorId,
+    nota: item.nota,
+    ...(item.comentario === undefined
+      ? {}
+      : { comentario: item.comentario as string }),
+    criadoEm: item.criadoEm,
+  };
+}
+
 export function lerAvaliacoes(
   value: unknown,
   produtoId: string,
@@ -87,21 +113,9 @@ export function lerAvaliacoes(
     !quantidade(value.resumo.total)
   )
     return respostaInvalida();
-  const itens = value.itens.map((item: unknown): Avaliacao => {
-    if (
-      !objeto(item) ||
-      !identidade(item.id) ||
-      item.produtoId !== produtoId ||
-      !identidade(item.compradorId) ||
-      !quantidade(item.nota) ||
-      item.nota < 1 ||
-      item.nota > 5 ||
-      !data(item.criadoEm) ||
-      (item.comentario !== undefined && !texto(item.comentario))
-    )
-      return respostaInvalida();
-    return item as unknown as Avaliacao;
-  });
+  const itens = value.itens.map((item: unknown) =>
+    lerAvaliacao(item, produtoId),
+  );
   if (value.resumo.total !== itens.length) return respostaInvalida();
   return {
     itens,

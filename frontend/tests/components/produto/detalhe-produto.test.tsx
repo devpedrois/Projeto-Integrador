@@ -55,6 +55,7 @@ function criarAvaliacoesServiceFake(
 ): AvaliacoesService {
   return {
     listByProduto: vi.fn().mockResolvedValue([]),
+    criar: vi.fn(),
     resumo: vi
       .fn()
       .mockResolvedValue({ produtoId: "produto-1", media: 4.5, quantidade: 2 }),

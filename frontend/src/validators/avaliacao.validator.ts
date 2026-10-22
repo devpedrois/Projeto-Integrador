@@ -11,7 +11,18 @@ export type ErrosAvaliacao = Partial<Record<CampoAvaliacao, string>>;
 export function validarAvaliacao(input: NovaAvaliacaoInput): ErrosAvaliacao {
   const erros: ErrosAvaliacao = {};
 
-  if (typeof input.produtoId !== "string" || input.produtoId.trim().length === 0) {
+  if (
+    Object.keys(input).some(
+      (campo) => !["produtoId", "nota", "comentario"].includes(campo),
+    )
+  ) {
+    erros.produtoId = "Dados da avaliação inválidos.";
+  }
+
+  if (
+    typeof input.produtoId !== "string" ||
+    input.produtoId.trim().length === 0
+  ) {
     erros.produtoId = "Produto inválido.";
   }
 
@@ -31,6 +42,20 @@ export function validarAvaliacao(input: NovaAvaliacaoInput): ErrosAvaliacao {
     }
   }
 
+  return erros;
+}
+
+export function validarAvaliacaoHttp(
+  input: NovaAvaliacaoInput,
+): ErrosAvaliacao {
+  const erros = validarAvaliacao(input);
+  if (
+    !/^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/.test(
+      input.produtoId,
+    )
+  ) {
+    erros.produtoId = "Produto inválido.";
+  }
   return erros;
 }
 

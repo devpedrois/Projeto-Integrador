@@ -27,6 +27,7 @@ import {
 } from "../validators/gestao-produtos.validator.js";
 import { notificacaoParamsSchema } from "../validators/notificacao.validator.js";
 import { indicadoresQuerySchema } from "../validators/indicadores.validator.js";
+import { criarAvaliacaoSchema } from "../validators/avaliacao.validator.js";
 import {
   criarPedidoSchema,
   paginacaoPedidoSchema,
@@ -187,6 +188,26 @@ const avaliacoes = registrar(
     resumo: z.object({ media: z.number().min(0).max(5), total: inteiro }),
   }),
   avaliacoesExample,
+);
+const avaliacaoCriadaExample = {
+  id,
+  produtoId: id,
+  compradorId: id,
+  nota: 5,
+  comentario: "Peça bonita.",
+  criadoEm: data,
+};
+const avaliacaoCriada = registrar(
+  "AvaliacaoCriada",
+  z.strictObject({
+    id: uuid,
+    produtoId: uuid,
+    compradorId: uuid,
+    nota: z.number().int().min(1).max(5),
+    comentario: z.string().max(500).optional(),
+    criadoEm: instante,
+  }),
+  avaliacaoCriadaExample,
 );
 const carrinhoExample = {
   itens: [
@@ -685,6 +706,33 @@ endpoint({
   request: { query: avaliacoesQuerySchema },
   response: json(avaliacoes, avaliacoesExample),
   errors: [400, 404],
+});
+endpoint({
+  method: "post",
+  path: "/avaliacoes",
+  operationId: "criarAvaliacao",
+  summary: "Registrar avaliação do comprador autenticado",
+  tag: "Catálogo",
+  papel: "comprador",
+  request: {
+    body: body(
+      registry.register("CriarAvaliacao", criarAvaliacaoSchema.clone()),
+      {
+        produtoId: id,
+        nota: 5,
+        comentario: "Peça bonita.",
+      },
+    ),
+  },
+  response: json(avaliacaoCriada, avaliacaoCriadaExample),
+  status: 201,
+  errors: [400, 401, 403, 404, 409],
+  errorExamples: {
+    404: ["PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado."],
+    409: ["AVALIACAO_DUPLICADA", "Voce ja avaliou este produto."],
+  },
+  description:
+    "Corpo estrito; compradorId vem da sessão. Nota inteira de 1 a 5; comentário opcional com trim e até 500 caracteres. Comentário vazio é omitido. Uma avaliação por comprador/produto, inclusive sob concorrência. Invalida produtos e recomendações após gravar. Média calculada somente na leitura. A compra verificada pertence à Web.4; não fazer deploy entre essas subtarefas.",
 });
 endpoint({
   method: "get",

@@ -26,7 +26,9 @@ function produto(overrides: Partial<Produto> = {}): Produto {
   };
 }
 
-function criarProdutosServiceFake(overrides: Partial<ProdutosService> = {}): ProdutosService {
+function criarProdutosServiceFake(
+  overrides: Partial<ProdutosService> = {},
+): ProdutosService {
   return {
     list: vi.fn().mockResolvedValue([]),
     create: vi.fn(),
@@ -40,10 +42,11 @@ function criarProdutosServiceFake(overrides: Partial<ProdutosService> = {}): Pro
 }
 
 function criarAvaliacoesServiceFake(
-  overrides: Partial<AvaliacoesService> = {}
+  overrides: Partial<AvaliacoesService> = {},
 ): AvaliacoesService {
   return {
     listByProduto: vi.fn().mockResolvedValue([]),
+    criar: vi.fn(),
     resumo: vi
       .fn()
       .mockResolvedValue({ produtoId: "produto-1", media: 4.5, quantidade: 2 }),
@@ -54,9 +57,15 @@ function criarAvaliacoesServiceFake(
 
 function criarOpcoesFiltroServiceFake(): OpcoesFiltroService {
   return {
-    categorias: vi.fn().mockResolvedValue([{ id: "categoria-1", nome: "Renda e Bordado" }]),
-    tecnicas: vi.fn().mockResolvedValue([{ id: "tecnica-1", nome: "Renda de Bilro" }]),
-    regioes: vi.fn().mockResolvedValue([{ id: "regiao-1", nome: "Pilar, Recife" }]),
+    categorias: vi
+      .fn()
+      .mockResolvedValue([{ id: "categoria-1", nome: "Renda e Bordado" }]),
+    tecnicas: vi
+      .fn()
+      .mockResolvedValue([{ id: "tecnica-1", nome: "Renda de Bilro" }]),
+    regioes: vi
+      .fn()
+      .mockResolvedValue([{ id: "regiao-1", nome: "Pilar, Recife" }]),
   };
 }
 
@@ -66,11 +75,16 @@ interface Servicos {
   opcoesFiltroService: OpcoesFiltroService;
 }
 
-function renderizar(produtoId: string | null, overrides: Partial<Servicos> = {}) {
+function renderizar(
+  produtoId: string | null,
+  overrides: Partial<Servicos> = {},
+) {
   const servicos: Servicos = {
     produtosService: overrides.produtosService ?? criarProdutosServiceFake(),
-    avaliacoesService: overrides.avaliacoesService ?? criarAvaliacoesServiceFake(),
-    opcoesFiltroService: overrides.opcoesFiltroService ?? criarOpcoesFiltroServiceFake(),
+    avaliacoesService:
+      overrides.avaliacoesService ?? criarAvaliacoesServiceFake(),
+    opcoesFiltroService:
+      overrides.opcoesFiltroService ?? criarOpcoesFiltroServiceFake(),
   };
 
   const hook = renderHook(() =>
@@ -78,8 +92,8 @@ function renderizar(produtoId: string | null, overrides: Partial<Servicos> = {})
       servicos.produtosService,
       servicos.avaliacoesService,
       servicos.opcoesFiltroService,
-      produtoId
-    )
+      produtoId,
+    ),
   );
 
   return { ...hook, ...servicos };
@@ -87,7 +101,9 @@ function renderizar(produtoId: string | null, overrides: Partial<Servicos> = {})
 
 describe("useDetalheProduto", () => {
   it("comeca carregando enquanto os services nao existem", () => {
-    const { result } = renderHook(() => useDetalheProduto(null, null, null, "produto-1"));
+    const { result } = renderHook(() =>
+      useDetalheProduto(null, null, null, "produto-1"),
+    );
 
     expect(result.current.estado.status).toBe("carregando");
   });
@@ -108,16 +124,22 @@ describe("useDetalheProduto", () => {
 
   it("marca indisponivel quando o service nao retorna produto publico", async () => {
     const { result } = renderizar("produto-inexistente", {
-      produtosService: criarProdutosServiceFake({ obterPublico: vi.fn().mockResolvedValue(null) }),
+      produtosService: criarProdutosServiceFake({
+        obterPublico: vi.fn().mockResolvedValue(null),
+      }),
     });
 
-    await waitFor(() => expect(result.current.estado.status).toBe("indisponivel"));
+    await waitFor(() =>
+      expect(result.current.estado.status).toBe("indisponivel"),
+    );
   });
 
   it("marca indisponivel sem consultar o service quando o id esta ausente", async () => {
     const { result, produtosService } = renderizar(null);
 
-    await waitFor(() => expect(result.current.estado.status).toBe("indisponivel"));
+    await waitFor(() =>
+      expect(result.current.estado.status).toBe("indisponivel"),
+    );
     expect(produtosService.obterPublico).not.toHaveBeenCalled();
   });
 

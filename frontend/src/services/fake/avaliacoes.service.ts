@@ -1,7 +1,11 @@
 import type { AvaliacaoRepository } from "@/fake-api/repositories/avaliacao.repository";
 import type { ProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import type { UsuarioRepository } from "@/fake-api/repositories/usuario.repository";
-import type { Avaliacao, NovaAvaliacaoInput, ResumoAvaliacoes } from "@/types/avaliacao";
+import type {
+  Avaliacao,
+  NovaAvaliacaoInput,
+  ResumoAvaliacoes,
+} from "@/types/avaliacao";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import { ServiceError } from "@/services/errors";
 import { calcularResumoAvaliacoes } from "@/domain/resumo-avaliacoes";
@@ -9,7 +13,10 @@ import {
   idsArtesaosInativos,
   produtoDisponivelParaVenda,
 } from "@/domain/produto-visibilidade";
-import { avaliacaoValida, validarAvaliacao } from "@/validators/avaliacao.validator";
+import {
+  avaliacaoValida,
+  validarAvaliacao,
+} from "@/validators/avaliacao.validator";
 
 export interface FakeAvaliacoesServiceOpcoes {
   latenciaMs?: number;
@@ -33,7 +40,7 @@ export class FakeAvaliacoesService implements AvaliacoesService {
   constructor(
     private readonly repositorio: AvaliacaoRepository,
     private readonly produtoRepositorio: ProdutoRepository,
-    opcoes: FakeAvaliacoesServiceOpcoes = {}
+    opcoes: FakeAvaliacoesServiceOpcoes = {},
   ) {
     this.latenciaMs = opcoes.latenciaMs ?? 0;
     this.usuarioRepositorio = opcoes.usuarioRepositorio ?? null;
@@ -53,14 +60,28 @@ export class FakeAvaliacoesService implements AvaliacoesService {
     return calcularResumoAvaliacoes(produtoId, avaliacoes);
   }
 
-  async create(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao> {
+  criar(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao> {
+    return this.create(input, compradorId);
+  }
+
+  async create(
+    input: NovaAvaliacaoInput,
+    compradorId: string,
+  ): Promise<Avaliacao> {
     if (compradorId.trim().length === 0) {
-      throw new ServiceError("NAO_AUTENTICADO", "Entre na sua conta para avaliar.");
+      throw new ServiceError(
+        "NAO_AUTENTICADO",
+        "Entre na sua conta para avaliar.",
+      );
     }
 
     const erros = validarAvaliacao(input);
     if (!avaliacaoValida(erros)) {
-      throw new ServiceError("AVALIACAO_INVALIDA", "Dados da avaliação inválidos.", { erros });
+      throw new ServiceError(
+        "AVALIACAO_INVALIDA",
+        "Dados da avaliação inválidos.",
+        { erros },
+      );
     }
 
     await this.repositorio.seed();
@@ -75,7 +96,7 @@ export class FakeAvaliacoesService implements AvaliacoesService {
       throw new ServiceError(
         "PRODUTO_NAO_ENCONTRADO",
         "Produto não encontrado.",
-        { produtoId: input.produtoId }
+        { produtoId: input.produtoId },
       );
     }
 
@@ -84,7 +105,7 @@ export class FakeAvaliacoesService implements AvaliacoesService {
       throw new ServiceError(
         "AVALIACAO_DUPLICADA",
         "Você já avaliou este produto.",
-        { produtoId: input.produtoId }
+        { produtoId: input.produtoId },
       );
     }
 

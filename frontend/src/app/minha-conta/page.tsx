@@ -5,13 +5,17 @@ import { RouteGuard } from "@/components/layout/RouteGuard";
 import { ResumoConta } from "@/components/minha-conta/ResumoConta";
 import {
   obterPedidosService,
+  obterAvaliacoesService,
   obterSessionStore,
 } from "@/services/fake/container";
 import type { SessionStore } from "@/store/sessao.store";
 import type { PedidosService } from "@/services/contracts/pedidos.contract";
+import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 
 export default function MinhaContaPage() {
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
+  const [avaliacoesService, setAvaliacoesService] =
+    useState<AvaliacoesService | null>(null);
   const [pedidosService, setPedidosService] = useState<PedidosService | null>(
     null,
   );
@@ -19,6 +23,7 @@ export default function MinhaContaPage() {
   useEffect(() => {
     setSessionStore(obterSessionStore());
     setPedidosService(obterPedidosService());
+    setAvaliacoesService(obterAvaliacoesService());
   }, []);
 
   return (
@@ -27,6 +32,7 @@ export default function MinhaContaPage() {
         <ResumoConta
           sessionStore={sessionStore}
           pedidosService={pedidosService}
+          avaliacoesService={avaliacoesService}
         />
       ) : null}
     </RouteGuard>

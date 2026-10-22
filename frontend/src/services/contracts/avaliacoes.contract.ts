@@ -6,10 +6,15 @@
  * consumindo `GET/POST /avaliacoes` substitui a fake sem alterar hooks,
  * componentes ou paginas que dependem deste contrato.
  */
-import type { Avaliacao, NovaAvaliacaoInput, ResumoAvaliacoes } from "@/types/avaliacao";
+import type {
+  Avaliacao,
+  NovaAvaliacaoInput,
+  ResumoAvaliacoes,
+} from "@/types/avaliacao";
 
 export interface AvaliacoesService {
   listByProduto(produtoId: string): Promise<Avaliacao[]>;
   resumo(produtoId: string): Promise<ResumoAvaliacoes>;
+  criar(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao>;
   create(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao>;
 }
