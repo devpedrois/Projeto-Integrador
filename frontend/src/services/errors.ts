@@ -12,7 +12,7 @@ export class ServiceError extends Error {
 const CODIGOS_HTTP: Readonly<Record<number, readonly string[]>> = {
   400: ["VALIDACAO", "CADASTRO_INVALIDO", "PAPEL_INVALIDO"],
   401: ["NAO_AUTENTICADO", "CREDENCIAIS_INVALIDAS"],
-  403: ["ACESSO_NEGADO"],
+  403: ["ACESSO_NEGADO", "COMPRA_NAO_VERIFICADA"],
   404: [
     "NAO_ENCONTRADO",
     "USUARIO_NAO_ENCONTRADO",

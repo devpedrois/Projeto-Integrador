@@ -21,7 +21,7 @@ function cookie(papel = "comprador") {
   return `origem_sessao=${jwt.sign({ nome: "Conta sintetica", papel: papel.startsWith("comprador") ? "comprador" : papel }, secret, { subject: usuario(papel), expiresIn: "1h" })}`;
 }
 async function produto() {
-  return banco.prisma.produto.create({
+  const alvo = await banco.prisma.produto.create({
     data: {
       nome: "Peca sintetica Web.3",
       descricao: "Avaliacao sintetica",
@@ -32,6 +32,24 @@ async function produto() {
       tecnicaId: "tecnica-modelagem-argila",
     },
   });
+  for (const comprador of ["comprador", "comprador2"]) {
+    await banco.prisma.pedido.create({
+      data: {
+        compradorId: usuario(comprador),
+        status: "confirmado",
+        total: "12.30",
+        itens: {
+          create: {
+            produtoId: alvo.id,
+            quantidade: 1,
+            precoUnitario: "12.30",
+            subtotal: "12.30",
+          },
+        },
+      },
+    });
+  }
+  return alvo;
 }
 
 beforeAll(async () => {
@@ -206,13 +224,13 @@ describe("Web.3 avaliacoes HTTP em PostgreSQL real", () => {
     }
   });
 
-  it("produto inexistente retorna 404 seguro", async () => {
+  it("produto sem compra confirmada retorna 403 seguro", async () => {
     const response = await request(app)
       .post("/avaliacoes")
       .set("Cookie", cookie())
       .send({ produtoId: randomUUID(), nota: 5 });
-    expect(response.status).toBe(404);
-    expect(response.body.error.code).toBe("PRODUTO_NAO_ENCONTRADO");
+    expect(response.status).toBe(403);
+    expect(response.body.error.code).toBe("COMPRA_NAO_VERIFICADA");
     expect(response.text).not.toMatch(/Prisma|SELECT|stack/i);
   });
 

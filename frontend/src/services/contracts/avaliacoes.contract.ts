@@ -10,9 +10,14 @@ import type {
   Avaliacao,
   NovaAvaliacaoInput,
   ResumoAvaliacoes,
+  ElegibilidadeAvaliacao,
 } from "@/types/avaliacao";
 
 export interface AvaliacoesService {
+  elegibilidade(
+    produtoId: string,
+    compradorId: string,
+  ): Promise<ElegibilidadeAvaliacao>;
   listByProduto(produtoId: string): Promise<Avaliacao[]>;
   resumo(produtoId: string): Promise<ResumoAvaliacoes>;
   criar(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao>;

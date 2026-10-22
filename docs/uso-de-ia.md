@@ -1327,3 +1327,13 @@ A implementação mantém a média na leitura e invalida caches após gravar.
 Compra verificada permanece reservada à Web.4, sem deploy intermediário.
 
 Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/`.
+
+### Web.4: avaliações com compra verificada
+
+Luiz Rocha é responsável; Pedro é o revisor.
+O Codex auxiliou na autorização transacional e consulta de elegibilidade.
+Também apoiou testes com PostgreSQL real e bloqueio do formulário.
+A implementação exige compra confirmada e preserva a média na leitura.
+A documentação e revisão equivalente foram realizadas nesta conversa.
+
+Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.4-compra-verificada/`.

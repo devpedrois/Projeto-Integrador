@@ -18,3 +18,7 @@ export interface ResumoAvaliacoes {
   media: number;
   quantidade: number;
 }
+
+export type ElegibilidadeAvaliacao =
+  | { podeAvaliar: true; motivo: null }
+  | { podeAvaliar: false; motivo: "nao_comprou" | "ja_avaliou" };

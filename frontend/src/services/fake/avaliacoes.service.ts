@@ -1,10 +1,12 @@
 import type { AvaliacaoRepository } from "@/fake-api/repositories/avaliacao.repository";
 import type { ProdutoRepository } from "@/fake-api/repositories/produto.repository";
 import type { UsuarioRepository } from "@/fake-api/repositories/usuario.repository";
+import type { PedidoRepository } from "@/fake-api/repositories/pedido.repository";
 import type {
   Avaliacao,
   NovaAvaliacaoInput,
   ResumoAvaliacoes,
+  ElegibilidadeAvaliacao,
 } from "@/types/avaliacao";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import { ServiceError } from "@/services/errors";
@@ -21,6 +23,7 @@ import {
 export interface FakeAvaliacoesServiceOpcoes {
   latenciaMs?: number;
   usuarioRepositorio?: UsuarioRepository;
+  pedidoRepositorio?: PedidoRepository;
 }
 
 function aguardar(ms: number): Promise<void> {
@@ -36,6 +39,7 @@ function maisRecentePrimeiro(a: Avaliacao, b: Avaliacao): number {
 export class FakeAvaliacoesService implements AvaliacoesService {
   private readonly latenciaMs: number;
   private readonly usuarioRepositorio: UsuarioRepository | null;
+  private readonly pedidoRepositorio: PedidoRepository | null;
 
   constructor(
     private readonly repositorio: AvaliacaoRepository,
@@ -44,6 +48,27 @@ export class FakeAvaliacoesService implements AvaliacoesService {
   ) {
     this.latenciaMs = opcoes.latenciaMs ?? 0;
     this.usuarioRepositorio = opcoes.usuarioRepositorio ?? null;
+    this.pedidoRepositorio = opcoes.pedidoRepositorio ?? null;
+  }
+
+  async elegibilidade(
+    produtoId: string,
+    compradorId: string,
+  ): Promise<ElegibilidadeAvaliacao> {
+    const [pedidos, avaliacoes] = await Promise.all([
+      this.pedidoRepositorio?.list() ?? Promise.resolve([]),
+      this.listByProduto(produtoId),
+    ]);
+    const comprou = pedidos.some(
+      (pedido) =>
+        pedido.compradorId === compradorId &&
+        pedido.status === "confirmado" &&
+        pedido.itens.some((item) => item.produtoId === produtoId),
+    );
+    if (!comprou) return { podeAvaliar: false, motivo: "nao_comprou" };
+    if (avaliacoes.some((avaliacao) => avaliacao.compradorId === compradorId))
+      return { podeAvaliar: false, motivo: "ja_avaliou" };
+    return { podeAvaliar: true, motivo: null };
   }
 
   async listByProduto(produtoId: string): Promise<Avaliacao[]> {
@@ -100,8 +125,16 @@ export class FakeAvaliacoesService implements AvaliacoesService {
       );
     }
 
-    const existentes = await this.repositorio.listByProdutoId(input.produtoId);
-    if (existentes.some((avaliacao) => avaliacao.compradorId === compradorId)) {
+    const elegibilidade = await this.elegibilidade(
+      input.produtoId,
+      compradorId,
+    );
+    if (!elegibilidade.podeAvaliar && elegibilidade.motivo === "nao_comprou")
+      throw new ServiceError(
+        "COMPRA_NAO_VERIFICADA",
+        "Compra confirmada necessária para avaliar.",
+      );
+    if (!elegibilidade.podeAvaliar) {
       throw new ServiceError(
         "AVALIACAO_DUPLICADA",
         "Você já avaliou este produto.",

@@ -27,7 +27,10 @@ import {
 } from "../validators/gestao-produtos.validator.js";
 import { notificacaoParamsSchema } from "../validators/notificacao.validator.js";
 import { indicadoresQuerySchema } from "../validators/indicadores.validator.js";
-import { criarAvaliacaoSchema } from "../validators/avaliacao.validator.js";
+import {
+  criarAvaliacaoSchema,
+  elegibilidadeAvaliacaoQuerySchema,
+} from "../validators/avaliacao.validator.js";
 import {
   criarPedidoSchema,
   paginacaoPedidoSchema,
@@ -208,6 +211,18 @@ const avaliacaoCriada = registrar(
     criadoEm: instante,
   }),
   avaliacaoCriadaExample,
+);
+const elegibilidadeExample = { podeAvaliar: true as const, motivo: null };
+const elegibilidadeAvaliacao = registrar(
+  "ElegibilidadeAvaliacao",
+  z.discriminatedUnion("podeAvaliar", [
+    z.strictObject({ podeAvaliar: z.literal(true), motivo: z.null() }),
+    z.strictObject({
+      podeAvaliar: z.literal(false),
+      motivo: z.enum(["nao_comprou", "ja_avaliou"]),
+    }),
+  ]),
+  elegibilidadeExample,
 );
 const carrinhoExample = {
   itens: [
@@ -726,13 +741,29 @@ endpoint({
   },
   response: json(avaliacaoCriada, avaliacaoCriadaExample),
   status: 201,
-  errors: [400, 401, 403, 404, 409],
+  errors: [400, 401, 403, 409],
   errorExamples: {
-    404: ["PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado."],
+    403: [
+      "COMPRA_NAO_VERIFICADA",
+      "Compra confirmada necessaria para avaliar.",
+    ],
     409: ["AVALIACAO_DUPLICADA", "Voce ja avaliou este produto."],
   },
   description:
-    "Corpo estrito; compradorId vem da sessão. Nota inteira de 1 a 5; comentário opcional com trim e até 500 caracteres. Comentário vazio é omitido. Uma avaliação por comprador/produto, inclusive sob concorrência. Invalida produtos e recomendações após gravar. Média calculada somente na leitura. A compra verificada pertence à Web.4; não fazer deploy entre essas subtarefas.",
+    "Corpo estrito; compradorId vem da sessão. Exige pedido confirmado desse comprador contendo o produto. Checagem com FOR SHARE em Pedido e ItemPedido e insert na mesma transação. Sem compra confirmada retorna 403 COMPRA_NAO_VERIFICADA, inclusive para UUID inexistente. Nota inteira de 1 a 5; comentário opcional com trim e até 500 caracteres. Comentário vazio é omitido. Uma avaliação por comprador/produto, inclusive sob concorrência. Invalida produtos e recomendações após commit. Média calculada somente na leitura.",
+});
+endpoint({
+  method: "get",
+  path: "/avaliacoes/elegibilidade",
+  operationId: "obterElegibilidadeAvaliacao",
+  summary: "Consultar elegibilidade do comprador para avaliar",
+  tag: "Catálogo",
+  papel: "comprador",
+  request: { query: elegibilidadeAvaliacaoQuerySchema },
+  response: json(elegibilidadeAvaliacao, elegibilidadeExample),
+  errors: [400, 401, 403],
+  description:
+    "Query estrita com produtoId UUID obrigatório; identidade vem da sessão. podeAvaliar true tem motivo null. Sem compra confirmada retorna false/nao_comprou, inclusive para UUID inexistente. Havendo compra e avaliação anterior retorna false/ja_avaliou. Pedido pendente, cancelado, alheio ou sem o produto não conta. Resposta consultiva: POST revalida na própria transação. Cache-Control: no-store.",
 });
 endpoint({
   method: "get",

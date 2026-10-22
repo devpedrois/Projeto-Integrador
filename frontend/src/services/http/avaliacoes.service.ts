@@ -6,14 +6,35 @@ import {
   lerAvaliacao,
   lerAvaliacoes,
   type AvaliacoesResponse,
+  objeto,
+  respostaInvalida,
 } from "./catalogo-response";
 import {
   avaliacaoValida,
   validarAvaliacaoHttp,
+  produtoIdAvaliacaoValido,
 } from "@/validators/avaliacao.validator";
 
 export class HttpAvaliacoesService implements AvaliacoesService {
   constructor(private readonly client = new ApiClient()) {}
+
+  elegibilidade: AvaliacoesService["elegibilidade"] = async (produtoId) => {
+    if (!produtoIdAvaliacaoValido(produtoId))
+      throw new ServiceError("ENTRADA_INVALIDA", "Produto inválido.");
+    const params = new URLSearchParams({ produtoId: produtoId.toLowerCase() });
+    const resposta = await this.client.request<unknown>(
+      `/avaliacoes/elegibilidade?${params}`,
+    );
+    if (!objeto(resposta)) return respostaInvalida();
+    if (resposta.podeAvaliar === true && resposta.motivo === null)
+      return { podeAvaliar: true, motivo: null };
+    if (
+      resposta.podeAvaliar === false &&
+      (resposta.motivo === "nao_comprou" || resposta.motivo === "ja_avaliou")
+    )
+      return { podeAvaliar: false, motivo: resposta.motivo };
+    return respostaInvalida();
+  };
 
   private async obter(produtoId: string): Promise<AvaliacoesResponse> {
     const params = new URLSearchParams({ produtoId });

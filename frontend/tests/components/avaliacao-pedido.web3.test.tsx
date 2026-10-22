@@ -32,6 +32,7 @@ const avaliacao = {
 };
 let statusPedido = "confirmado";
 let existente = false;
+let naoComprou = false;
 let falhaLeitura = false;
 let postar: () => Promise<Response>;
 
@@ -57,12 +58,24 @@ function envios() {
 beforeEach(() => {
   statusPedido = "confirmado";
   existente = false;
+  naoComprou = false;
   falhaLeitura = false;
   postar = async () => Response.json(avaliacao, { status: 201 });
   vi.stubGlobal(
     "fetch",
     vi.fn(async (url: string, options?: RequestInit) => {
       if (options?.method === "POST") return postar();
+      if (url.startsWith("/api/avaliacoes/elegibilidade?")) {
+        if (falhaLeitura) return Response.json({}, { status: 503 });
+        const jaAvaliou = existente && url.includes(produtoId);
+        return Response.json(
+          naoComprou
+            ? { podeAvaliar: false, motivo: "nao_comprou" }
+            : jaAvaliou
+              ? { podeAvaliar: false, motivo: "ja_avaliou" }
+              : { podeAvaliar: true, motivo: null },
+        );
+      }
       if (url.startsWith("/api/pedidos?"))
         return Response.json({
           itens: [{ ...pedido, status: statusPedido, pagamento: null }],
@@ -106,6 +119,45 @@ afterEach(() => {
 });
 
 describe("Web.3 avaliacao no detalhe do pedido", () => {
+  it("Web.4 nao mostra botao nem formulario quando a API informa que nao comprou", async () => {
+    naoComprou = true;
+    await abrir();
+    expect(
+      await screen.findAllByText(
+        "Avaliação disponível somente após compra confirmada.",
+      ),
+    ).toHaveLength(2);
+    expect(
+      screen.queryByRole("button", { name: "Enviar avaliação" }),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByRole("form")).not.toBeInTheDocument();
+    expect(envios()).toHaveLength(0);
+  });
+
+  it("Web.4 remove o formulario se a compra deixar de ser valida antes do envio", async () => {
+    postar = async () =>
+      Response.json(
+        { error: { code: "COMPRA_NAO_VERIFICADA" } },
+        { status: 403 },
+      );
+    await abrir();
+    const form = await screen.findByRole("form", {
+      name: "Avaliar Vaso artesanal",
+    });
+    await userEvent.click(within(form).getByLabelText("5 estrelas"));
+    await userEvent.click(
+      within(form).getByRole("button", { name: "Enviar avaliação" }),
+    );
+    expect(
+      await screen.findByText(
+        "Avaliação disponível somente após compra confirmada.",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("form", { name: "Avaliar Vaso artesanal" }),
+    ).not.toBeInTheDocument();
+  });
+
   it("mostra um formulario por item e impede envio sem nota", async () => {
     await abrir();
     const form = await screen.findByRole("form", {

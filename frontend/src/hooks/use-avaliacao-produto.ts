@@ -11,6 +11,7 @@ type EstadoAvaliacao =
   | "enviando"
   | "sucesso"
   | "ja-avaliado"
+  | "nao-comprou"
   | "erro-leitura"
   | "erro-envio";
 
@@ -29,15 +30,15 @@ export function useAvaliacaoProduto(
     montado.current = true;
     setEstado("carregando");
     service
-      .listByProduto(produtoId)
-      .then((avaliacoes) => {
+      .elegibilidade(produtoId, compradorId)
+      .then((elegibilidade) => {
         if (!cancelado)
           setEstado(
-            avaliacoes.some(
-              (avaliacao) => avaliacao.compradorId === compradorId,
-            )
-              ? "ja-avaliado"
-              : "disponivel",
+            elegibilidade.podeAvaliar
+              ? "disponivel"
+              : elegibilidade.motivo === "ja_avaliou"
+                ? "ja-avaliado"
+                : "nao-comprou",
           );
       })
       .catch(() => {
@@ -62,7 +63,10 @@ export function useAvaliacaoProduto(
         setEstado(
           error instanceof ServiceError && error.code === "AVALIACAO_DUPLICADA"
             ? "ja-avaliado"
-            : "erro-envio",
+            : error instanceof ServiceError &&
+                error.code === "COMPRA_NAO_VERIFICADA"
+              ? "nao-comprou"
+              : "erro-envio",
         );
     } finally {
       enviando.current = false;

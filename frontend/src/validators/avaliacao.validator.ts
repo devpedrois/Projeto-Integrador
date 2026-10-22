@@ -49,14 +49,16 @@ export function validarAvaliacaoHttp(
   input: NovaAvaliacaoInput,
 ): ErrosAvaliacao {
   const erros = validarAvaliacao(input);
-  if (
-    !/^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/.test(
-      input.produtoId,
-    )
-  ) {
+  if (!produtoIdAvaliacaoValido(input.produtoId)) {
     erros.produtoId = "Produto inválido.";
   }
   return erros;
+}
+
+export function produtoIdAvaliacaoValido(produtoId: string): boolean {
+  return /^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/.test(
+    produtoId,
+  );
 }
 
 export function avaliacaoValida(erros: ErrosAvaliacao): boolean {

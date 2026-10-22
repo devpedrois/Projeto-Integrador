@@ -203,6 +203,7 @@ export function obterAvaliacoesService(): AvaliacoesService {
       {
         latenciaMs: LATENCIA_PADRAO_MS,
         usuarioRepositorio: new BrowserUsuarioRepository(window.localStorage),
+        pedidoRepositorio: new BrowserPedidoRepository(window.localStorage),
       },
     );
   }

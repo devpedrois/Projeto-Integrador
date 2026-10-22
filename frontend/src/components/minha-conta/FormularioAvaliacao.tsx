@@ -45,6 +45,12 @@ export function FormularioAvaliacao({
         Carregando sua avaliação…
       </p>
     );
+  if (estado === "nao-comprou")
+    return (
+      <p role="status" className="mt-4 text-sm text-fg-muted">
+        Avaliação disponível somente após compra confirmada.
+      </p>
+    );
   if (estado === "sucesso")
     return (
       <p role="status" className="mt-4 text-sm font-semibold text-sucesso-700">

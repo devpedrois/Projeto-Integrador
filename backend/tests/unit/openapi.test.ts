@@ -45,12 +45,29 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("documenta elegibilidade privada e o bloqueio por compra nao verificada", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    const operation = response.body.paths["/avaliacoes/elegibilidade"]?.get;
+    expect(operation).toBeDefined();
+    expect(operation.security).toEqual([{ sessao: [] }]);
+    for (const status of ["200", "400", "401", "403"])
+      expect(operation.responses).toHaveProperty(status);
+    expect(
+      operation.responses["200"].content["application/json"].example,
+    ).toEqual({ podeAvaliar: true, motivo: null });
+    expect(
+      response.body.paths["/avaliacoes"].post.responses["403"].content[
+        "application/json"
+      ].example.error.code,
+    ).toBe("COMPRA_NAO_VERIFICADA");
+  });
+
   it("documenta criacao de avaliacao com corpo estrito e conflito", async () => {
     const response = await request(app).get("/docs/openapi.json");
     const operation = response.body.paths["/avaliacoes"]?.post;
     expect(operation).toBeDefined();
     expect(operation.security).toEqual([{ sessao: [] }]);
-    for (const status of ["201", "400", "401", "403", "404", "409"])
+    for (const status of ["201", "400", "401", "403", "409"])
       expect(operation.responses).toHaveProperty(status);
     expect(response.body.components.schemas.CriarAvaliacao).toMatchObject({
       additionalProperties: false,

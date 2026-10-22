@@ -7,3 +7,7 @@ export const criarAvaliacaoSchema = z.strictObject({
 });
 
 export type CriarAvaliacaoInput = z.infer<typeof criarAvaliacaoSchema>;
+
+export const elegibilidadeAvaliacaoQuerySchema = criarAvaliacaoSchema.pick({
+  produtoId: true,
+});

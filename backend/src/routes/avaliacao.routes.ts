@@ -7,6 +7,12 @@ export function createAvaliacaoRouter(
   autenticarUsuario: RequestHandler,
 ): Router {
   const router = Router();
+  router.get(
+    "/avaliacoes/elegibilidade",
+    autenticarUsuario,
+    exigirPapel("comprador"),
+    controller.elegibilidade,
+  );
   router.post(
     "/avaliacoes",
     autenticarUsuario,

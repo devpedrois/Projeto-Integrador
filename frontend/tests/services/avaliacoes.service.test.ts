@@ -5,18 +5,30 @@ import { BrowserUsuarioRepository } from "@/fake-api/repositories/usuario.reposi
 import { FakeAvaliacoesService } from "@/services/fake/avaliacoes.service";
 import { AVALIACOES_SEED } from "@/fake-api/seeds/avaliacoes.seed";
 import { ServiceError } from "@/services/errors";
+import { BrowserPedidoRepository } from "@/fake-api/repositories/pedido.repository";
 
 const CHAVE_TESTE = "origem:test:avaliacoes:service:v1";
 const CHAVE_PRODUTOS_TESTE = "origem:test:avaliacoes:service:produtos:v1";
 const CHAVE_USUARIOS_TESTE = "origem:test:avaliacoes:service:usuarios:v1";
+const CHAVE_PEDIDOS_TESTE = "origem:test:avaliacoes:service:pedidos:v1";
 
 function criarService(latenciaMs = 0): FakeAvaliacoesService {
   const repo = new BrowserAvaliacaoRepository(window.localStorage, CHAVE_TESTE);
-  const produtos = new BrowserProdutoRepository(window.localStorage, CHAVE_PRODUTOS_TESTE);
-  const usuarios = new BrowserUsuarioRepository(window.localStorage, CHAVE_USUARIOS_TESTE);
+  const produtos = new BrowserProdutoRepository(
+    window.localStorage,
+    CHAVE_PRODUTOS_TESTE,
+  );
+  const usuarios = new BrowserUsuarioRepository(
+    window.localStorage,
+    CHAVE_USUARIOS_TESTE,
+  );
   return new FakeAvaliacoesService(repo, produtos, {
     latenciaMs,
     usuarioRepositorio: usuarios,
+    pedidoRepositorio: new BrowserPedidoRepository(
+      window.localStorage,
+      CHAVE_PEDIDOS_TESTE,
+    ),
   });
 }
 
@@ -24,15 +36,95 @@ function produtosAvaliadosNoSeed(): string[] {
   return [...new Set(AVALIACOES_SEED.map((a) => a.produtoId))];
 }
 
-beforeEach(() => {
+beforeEach(async () => {
   window.localStorage.removeItem(CHAVE_TESTE);
   window.localStorage.removeItem(CHAVE_PRODUTOS_TESTE);
   window.localStorage.removeItem(CHAVE_USUARIOS_TESTE);
+  window.localStorage.removeItem(CHAVE_PEDIDOS_TESTE);
+  const pedidos = new BrowserPedidoRepository(
+    window.localStorage,
+    CHAVE_PEDIDOS_TESTE,
+  );
+  for (const compra of [
+    ...AVALIACOES_SEED,
+    { compradorId: "seed-comprador-01", produtoId: "produto-seed-30" },
+  ]) {
+    await pedidos.create({
+      id: crypto.randomUUID(),
+      compradorId: compra.compradorId,
+      itens: [
+        {
+          produtoId: compra.produtoId,
+          nome: "Peca sintetica",
+          quantidade: 1,
+          precoUnitario: 10,
+        },
+      ],
+      total: 10,
+      numeroConfirmacao: "ORG-TESTE",
+      status: "confirmado",
+      criadoEm: "2026-10-22T12:00:00.000Z",
+    });
+  }
+});
+
+describe("Web.4 elegibilidade na Fake API", () => {
+  it("considera compra confirmada e avaliacao existente", async () => {
+    const service = criarService();
+    expect(
+      await service.elegibilidade("produto-seed-30", "seed-comprador-01"),
+    ).toEqual({ podeAvaliar: true, motivo: null });
+    await service.criar(
+      { produtoId: "produto-seed-30", nota: 5 },
+      "seed-comprador-01",
+    );
+    expect(
+      await service.elegibilidade("produto-seed-30", "seed-comprador-01"),
+    ).toEqual({ podeAvaliar: false, motivo: "ja_avaliou" });
+  });
+
+  it("nao concede elegibilidade para pedidos pendentes, cancelados ou alheios", async () => {
+    window.localStorage.removeItem(CHAVE_PEDIDOS_TESTE);
+    const pedidos = new BrowserPedidoRepository(
+      window.localStorage,
+      CHAVE_PEDIDOS_TESTE,
+    );
+    for (const status of ["pendente", "cancelado", "confirmado"] as const) {
+      await pedidos.create({
+        id: crypto.randomUUID(),
+        compradorId: status === "confirmado" ? "outro" : "seed-comprador-01",
+        itens: [
+          {
+            produtoId: "produto-seed-30",
+            nome: "Peca",
+            quantidade: 1,
+            precoUnitario: 10,
+          },
+        ],
+        total: 10,
+        numeroConfirmacao: "ORG-TESTE",
+        status,
+        criadoEm: "2026-10-22T12:00:00.000Z",
+      });
+    }
+    const service = criarService();
+    expect(
+      await service.elegibilidade("produto-seed-30", "seed-comprador-01"),
+    ).toEqual({ podeAvaliar: false, motivo: "nao_comprou" });
+    await expect(
+      service.criar(
+        { produtoId: "produto-seed-30", nota: 5 },
+        "seed-comprador-01",
+      ),
+    ).rejects.toMatchObject({ code: "COMPRA_NAO_VERIFICADA" });
+  });
 });
 
 describe("FakeAvaliacoesService.listByProduto", () => {
   it("retorna uma Promise", () => {
-    expect(criarService().listByProduto("produto-seed-01")).toBeInstanceOf(Promise);
+    expect(criarService().listByProduto("produto-seed-01")).toBeInstanceOf(
+      Promise,
+    );
   });
 
   it("retorna avaliacoes semeadas para pelo menos tres produtos", async () => {
@@ -50,9 +142,10 @@ describe("FakeAvaliacoesService.listByProduto", () => {
   it("ordena da avaliacao mais recente para a mais antiga", async () => {
     const service = criarService();
     const produtoComVarias = produtosAvaliadosNoSeed().find(
-      (id) => AVALIACOES_SEED.filter((a) => a.produtoId === id).length > 1
+      (id) => AVALIACOES_SEED.filter((a) => a.produtoId === id).length > 1,
     );
-    if (!produtoComVarias) throw new Error("seed deveria ter produto com varias avaliacoes");
+    if (!produtoComVarias)
+      throw new Error("seed deveria ter produto com varias avaliacoes");
 
     const avaliacoes = await service.listByProduto(produtoComVarias);
     const datas = avaliacoes.map((a) => a.criadoEm);
@@ -61,7 +154,9 @@ describe("FakeAvaliacoesService.listByProduto", () => {
   });
 
   it("retorna lista vazia para produto sem avaliacoes", async () => {
-    expect(await criarService().listByProduto("produto-inexistente")).toEqual([]);
+    expect(await criarService().listByProduto("produto-inexistente")).toEqual(
+      [],
+    );
   });
 
   it("respeita a latencia configurada", async () => {
@@ -76,13 +171,19 @@ describe("FakeAvaliacoesService.resumo", () => {
   it("retorna media e quantidade das avaliacoes do produto", async () => {
     const service = criarService();
     const produtoId = produtosAvaliadosNoSeed()[0] as string;
-    const notas = AVALIACOES_SEED.filter((a) => a.produtoId === produtoId).map((a) => a.nota);
+    const notas = AVALIACOES_SEED.filter((a) => a.produtoId === produtoId).map(
+      (a) => a.nota,
+    );
     const soma = notas.reduce((total, nota) => total + nota, 0);
     const mediaEsperada = Math.round((soma / notas.length) * 10) / 10;
 
     const resumo = await service.resumo(produtoId);
 
-    expect(resumo).toEqual({ produtoId, media: mediaEsperada, quantidade: notas.length });
+    expect(resumo).toEqual({
+      produtoId,
+      media: mediaEsperada,
+      quantidade: notas.length,
+    });
   });
 
   it("retorna media zero e quantidade zero para produto sem avaliacoes", async () => {
@@ -99,8 +200,12 @@ describe("FakeAvaliacoesService.create", () => {
     const service = criarService();
 
     const criada = await service.create(
-      { produtoId: "produto-seed-30", nota: 4, comentario: "  Peca bem acabada.  " },
-      "seed-comprador-01"
+      {
+        produtoId: "produto-seed-30",
+        nota: 4,
+        comentario: "  Peca bem acabada.  ",
+      },
+      "seed-comprador-01",
     );
 
     expect(criada).toMatchObject({
@@ -120,7 +225,7 @@ describe("FakeAvaliacoesService.create", () => {
   it("aceita avaliacao sem comentario", async () => {
     const criada = await criarService().create(
       { produtoId: "produto-seed-30", nota: 1 },
-      "seed-comprador-01"
+      "seed-comprador-01",
     );
 
     expect("comentario" in criada).toBe(false);
@@ -132,80 +237,111 @@ describe("FakeAvaliacoesService.create", () => {
       const service = criarService();
 
       await expect(
-        service.create({ produtoId: "produto-seed-30", nota }, "seed-comprador-01")
+        service.create(
+          { produtoId: "produto-seed-30", nota },
+          "seed-comprador-01",
+        ),
       ).rejects.toMatchObject({ code: "AVALIACAO_INVALIDA" });
       expect(await service.listByProduto("produto-seed-30")).toEqual([]);
-    }
+    },
   );
 
   it("rejeita comentario acima do limite", async () => {
     await expect(
       criarService().create(
         { produtoId: "produto-seed-30", nota: 5, comentario: "a".repeat(501) },
-        "seed-comprador-01"
-      )
+        "seed-comprador-01",
+      ),
     ).rejects.toBeInstanceOf(ServiceError);
   });
 
   it("rejeita comprador ausente", async () => {
     await expect(
-      criarService().create({ produtoId: "produto-seed-30", nota: 5 }, "  ")
+      criarService().create({ produtoId: "produto-seed-30", nota: 5 }, "  "),
     ).rejects.toMatchObject({ code: "NAO_AUTENTICADO" });
   });
 
   it("rejeita produto inexistente", async () => {
     await expect(
-      criarService().create({ produtoId: "produto-inexistente", nota: 5 }, "seed-comprador-01")
+      criarService().create(
+        { produtoId: "produto-inexistente", nota: 5 },
+        "seed-comprador-01",
+      ),
     ).rejects.toMatchObject({ code: "PRODUTO_NAO_ENCONTRADO" });
   });
 
   it("rejeita produto inativo", async () => {
-    const produtos = new BrowserProdutoRepository(window.localStorage, CHAVE_PRODUTOS_TESTE);
+    const produtos = new BrowserProdutoRepository(
+      window.localStorage,
+      CHAVE_PRODUTOS_TESTE,
+    );
     await produtos.seed();
     await produtos.update("produto-seed-30", { ativo: false });
 
     await expect(
-      criarService().create({ produtoId: "produto-seed-30", nota: 5 }, "seed-comprador-01")
+      criarService().create(
+        { produtoId: "produto-seed-30", nota: 5 },
+        "seed-comprador-01",
+      ),
     ).rejects.toMatchObject({ code: "PRODUTO_NAO_ENCONTRADO" });
   });
 
   it("rejeita segunda avaliacao do mesmo comprador para o mesmo produto", async () => {
     const service = criarService();
     const existente = AVALIACOES_SEED[0];
-    if (!existente) throw new Error("seed deveria conter ao menos uma avaliacao");
+    if (!existente)
+      throw new Error("seed deveria conter ao menos uma avaliacao");
 
     await expect(
-      service.create({ produtoId: existente.produtoId, nota: 5 }, existente.compradorId)
+      service.create(
+        { produtoId: existente.produtoId, nota: 5 },
+        existente.compradorId,
+      ),
     ).rejects.toMatchObject({ code: "AVALIACAO_DUPLICADA" });
   });
 });
 
 describe("FakeAvaliacoesService.create - produto fora da vitrine por moderacao", () => {
   it("rejeita produto desativado pelo admin sem gravar avaliacao", async () => {
-    const produtos = new BrowserProdutoRepository(window.localStorage, CHAVE_PRODUTOS_TESTE);
+    const produtos = new BrowserProdutoRepository(
+      window.localStorage,
+      CHAVE_PRODUTOS_TESTE,
+    );
     await produtos.seed();
     await produtos.update("produto-seed-30", { desativadoPorAdmin: true });
     const service = criarService();
     const antes = await service.resumo("produto-seed-30");
 
     await expect(
-      service.create({ produtoId: "produto-seed-30", nota: 1 }, "seed-comprador-01")
+      service.create(
+        { produtoId: "produto-seed-30", nota: 1 },
+        "seed-comprador-01",
+      ),
     ).rejects.toMatchObject({ code: "PRODUTO_NAO_ENCONTRADO" });
     expect(await service.resumo("produto-seed-30")).toEqual(antes);
   });
 
   it("rejeita produto de artesao desativado sem gravar avaliacao", async () => {
-    const produtos = new BrowserProdutoRepository(window.localStorage, CHAVE_PRODUTOS_TESTE);
+    const produtos = new BrowserProdutoRepository(
+      window.localStorage,
+      CHAVE_PRODUTOS_TESTE,
+    );
     await produtos.seed();
     const alvo = await produtos.findById("produto-seed-30");
-    const usuarios = new BrowserUsuarioRepository(window.localStorage, CHAVE_USUARIOS_TESTE);
+    const usuarios = new BrowserUsuarioRepository(
+      window.localStorage,
+      CHAVE_USUARIOS_TESTE,
+    );
     await usuarios.seed();
     await usuarios.update(alvo!.artesaoId, { ativo: false });
     const service = criarService();
     const antes = await service.resumo("produto-seed-30");
 
     await expect(
-      service.create({ produtoId: "produto-seed-30", nota: 1 }, "seed-comprador-01")
+      service.create(
+        { produtoId: "produto-seed-30", nota: 1 },
+        "seed-comprador-01",
+      ),
     ).rejects.toMatchObject({ code: "PRODUTO_NAO_ENCONTRADO" });
     expect(await service.resumo("produto-seed-30")).toEqual(antes);
   });

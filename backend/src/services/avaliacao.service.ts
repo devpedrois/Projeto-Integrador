@@ -8,6 +8,10 @@ export class AvaliacaoService {
     private readonly cache: CachePublico,
   ) {}
 
+  elegibilidade(produtoId: string, compradorId: string) {
+    return this.repository.elegibilidade(produtoId, compradorId);
+  }
+
   async criar(input: CriarAvaliacaoInput, compradorId: string) {
     const avaliacao = await this.repository.criar(input, compradorId);
     await this.cache.invalidarCatalogo();
