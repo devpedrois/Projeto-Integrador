@@ -4,6 +4,8 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { createApp } from "../../src/app.js";
 import { criarBancoAuth } from "../helpers/auth-database.js";
 
+const TEMPO_NUMERACAO_MS = process.env.CI === "true" ? 60_000 : 20_000;
+
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
 let app: ReturnType<typeof createApp>;
 let compradorId: string;
@@ -230,25 +232,31 @@ describe("WEB-09 checkout transacional real", () => {
     ).toBe(5);
   });
 
-  it("gera dez numeros distintos e sequenciais pelo PostgreSQL", async () => {
-    const vaso = await produto();
-    const numeros: string[] = [];
-    for (let indice = 0; indice < 10; indice += 1) {
-      const response = await confirmar([{ produtoId: vaso.id, quantidade: 1 }]);
-      expect(response.status).toBe(201);
-      expect(response.body.pedido.numero).toMatch(/^ORG-\d{4}-\d{6}$/);
-      numeros.push(response.body.pedido.numero);
-    }
-    expect(new Set(numeros).size).toBe(10);
-    const primeiro = Number(numeros[0]?.slice(-6));
-    expect(numeros.map((numero) => Number(numero.slice(-6)))).toEqual(
-      Array.from({ length: 10 }, (_, indice) => primeiro + indice),
-    );
-    expect(
-      await banco.prisma
-        .$queryRaw`SELECT "sequencename" FROM pg_sequences WHERE "schemaname" = current_schema() AND "sequencename" = 'Pedido_numero_seq'`,
-    ).toHaveLength(1);
-  }, 20_000);
+  it(
+    "gera dez numeros distintos e sequenciais pelo PostgreSQL",
+    async () => {
+      const vaso = await produto();
+      const numeros: string[] = [];
+      for (let indice = 0; indice < 10; indice += 1) {
+        const response = await confirmar([
+          { produtoId: vaso.id, quantidade: 1 },
+        ]);
+        expect(response.status).toBe(201);
+        expect(response.body.pedido.numero).toMatch(/^ORG-\d{4}-\d{6}$/);
+        numeros.push(response.body.pedido.numero);
+      }
+      expect(new Set(numeros).size).toBe(10);
+      const primeiro = Number(numeros[0]?.slice(-6));
+      expect(numeros.map((numero) => Number(numero.slice(-6)))).toEqual(
+        Array.from({ length: 10 }, (_, indice) => primeiro + indice),
+      );
+      expect(
+        await banco.prisma
+          .$queryRaw`SELECT "sequencename" FROM pg_sequences WHERE "schemaname" = current_schema() AND "sequencename" = 'Pedido_numero_seq'`,
+      ).toHaveLength(1);
+    },
+    TEMPO_NUMERACAO_MS,
+  );
 
   it.each([1, 2, 3])(
     "preserva concorrencia entre compradores, rodada %i",

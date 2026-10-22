@@ -38,6 +38,8 @@ const resultadoSchema = z
   })
   .strict();
 
+const TEMPO_PREPARACAO_MS = process.env.CI === "true" ? 120_000 : 30_000;
+
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
 let app: ReturnType<typeof createApp>;
 let strategy: CategoriaRecomendacaoStrategy;
@@ -186,7 +188,7 @@ beforeAll(async () => {
       },
     },
   });
-}, 30_000);
+}, TEMPO_PREPARACAO_MS);
 
 afterAll(async () => {
   await banco?.fechar();

@@ -168,6 +168,8 @@ O frontend passa por lint, typecheck, testes e build.
 Seus testes de contrato exigem dependências e tipos do backend.
 Essa preparação gera o Prisma sem conexão ou credenciais.
 O backend gera o Prisma, aplica migrations e executa verificações.
+Prazos padrão na CI: 60s/teste e 120s/preparação.
+O job backend tem limite total de 30 minutos.
 
 Configure estes repository secrets em **Settings → Secrets and variables → Actions**:
 

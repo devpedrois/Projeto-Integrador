@@ -44,7 +44,7 @@ jobs:
 
   backend:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: backend
@@ -93,8 +93,8 @@ jobs:
       - name: Testar sem cargas e benchmarks
         run: >-
           npm test --
-          --testTimeout=15000
-          --hookTimeout=30000
+          --testTimeout=60000
+          --hookTimeout=120000
           --exclude tests/integration/concorrencia-script.integration.test.ts
           --exclude tests/integration/db-explain.integration.test.ts
           --exclude tests/integration/recomendacao-volume.integration.test.ts

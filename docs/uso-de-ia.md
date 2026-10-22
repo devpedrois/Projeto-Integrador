@@ -1271,5 +1271,5 @@ Evidências: `evidencias/BD.1/`.
 Tarefa realizada por Sérgio e revisada por Pedro.
 O Codex auxiliou no workflow e nos testes.
 A CI verifica frontend e backend com banco de teste separado.
-Credenciais são protegidas e a chave JWT é temporária.
+A execução considera a latência do banco remoto.
 Evidências: `evidencias/PI4-31/31.1/`.
