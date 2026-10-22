@@ -1,6 +1,11 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Produto } from "@/types/produto";
 import type { RecomendacaoContexto } from "@/types/recomendacao";
+import { BrowserProdutoRepository } from "@/fake-api/repositories/produto.repository";
+import { FakeRecommendationAdapter } from "@/services/fake/recomendacoes/fake-recommendation.adapter";
+import fixture from "../../../../fixtures/recomendacao-produto.fixture.json";
+
+const chaveFixture = "origem:test:ia1:produtos";
 
 const contextoId = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
 const usuarioId = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
@@ -32,9 +37,49 @@ afterEach(() => {
   vi.unstubAllGlobals();
   vi.unstubAllEnvs();
   vi.restoreAllMocks();
+  window.localStorage.removeItem(chaveFixture);
 });
 
 describe("HttpRecommendationAdapter no container", () => {
+  it("produz o mesmo resultado completo da fake para a fixture contratual", async () => {
+    const ids = new Map(
+      fixture.produtos
+        .map((item) => item.id)
+        .sort()
+        .map((id, indice) => [
+          id,
+          `00000000-0000-4000-8000-${String(indice + 1).padStart(12, "0")}`,
+        ]),
+    );
+    const produtos = fixture.produtos.map((item) => ({
+      ...item,
+      id: ids.get(item.id)!,
+    }));
+    const contexto = { produtoId: ids.get(fixture.contexto.produtoId)! };
+    const resposta = {
+      estrategia: fixture.resultadoEsperado.estrategia,
+      itens: fixture.resultadoEsperado.produtoIds.map((id) =>
+        produtos.find((item) => item.id === ids.get(id))!,
+      ),
+    };
+    window.localStorage.setItem(chaveFixture, JSON.stringify(produtos));
+    const fake = new FakeRecommendationAdapter(
+      new BrowserProdutoRepository(window.localStorage, chaveFixture),
+    );
+    const resultadoFake = await fake.obter(contexto);
+    const fetchMock = vi.fn().mockResolvedValue(Response.json(resposta));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const resultadoHttp = await (await obterService()).obter(contexto);
+
+    expect(resultadoFake).toStrictEqual(resposta);
+    expect(resultadoHttp).toStrictEqual(resultadoFake);
+    expect(fetchMock).toHaveBeenCalledWith(
+      `/api/recomendacoes?produtoId=${contexto.produtoId}`,
+      expect.objectContaining({ method: "GET" }),
+    );
+  });
+
   it.each([
     [
       { produtoId: contextoId },
@@ -165,7 +210,14 @@ describe("HttpRecommendationAdapter no container", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it.each([400, 503])("propaga HTTP %s sem fallback fake", async (status) => {
+  it.each([
+    [400, "VALIDACAO", "Dados inválidos. Confira e tente novamente."],
+    [404, "NAO_ENCONTRADO", "Recurso não encontrado."],
+    [503, "SERVICO_INDISPONIVEL", "Serviço indisponível. Tente novamente."],
+  ])("propaga HTTP %s sem fallback fake", async (status, code, message) => {
+    vi.spyOn(window, "localStorage", "get").mockImplementation(() => {
+      throw new Error("Fake proibida");
+    });
     vi.stubGlobal(
       "fetch",
       vi
@@ -174,11 +226,11 @@ describe("HttpRecommendationAdapter no container", () => {
           Response.json({ message: "Detalhe interno secreto" }, { status }),
         ),
     );
-    await expect(
-      (await obterService()).obter({ produtoId: contextoId }),
-    ).rejects.toMatchObject({
-      code: status === 400 ? "VALIDACAO" : "SERVICO_INDISPONIVEL",
-    });
+    const service = await obterService();
+    const { ServiceError } = await import("@/services/errors");
+    const resultado = service.obter({ produtoId: contextoId });
+    await expect(resultado).rejects.toBeInstanceOf(ServiceError);
+    await expect(resultado).rejects.toMatchObject({ code, message });
   });
 
   it("propaga falha de rede", async () => {

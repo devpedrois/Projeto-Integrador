@@ -1289,3 +1289,13 @@ O Codex auxiliou no benchmark HTTP e nos testes.
 A execução validou seis cenários com PostgreSQL real.
 As medições não justificaram novos índices nesta massa.
 Evidências: `evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/`.
+
+### IA.1: contrato do adapter HTTP de recomendações
+
+Eliziane realizou a tarefa; Pedro revisou.
+O Codex auxiliou nos testes de paridade contratual.
+A fixture compartilhada compara resultados completos dos dois adapters.
+Os testes verificam erros HTTP e seleção pelo container.
+O OpenAPI recebeu a resposta 404 solicitada.
+
+Evidências: `evidencias/IA.1/`.

@@ -45,6 +45,26 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("documenta exemplo de recomendações e respostas 400/404", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    expect(response.status).toBe(200);
+    const operation = response.body.paths["/recomendacoes"].get;
+    expect(
+      operation.responses["200"].content["application/json"].example,
+    ).toMatchObject({ estrategia: "categoria", itens: [expect.any(Object)] });
+    for (const status of ["400", "404"]) {
+      expect(
+        operation.responses[status]?.content["application/json"],
+      ).toMatchObject({
+        schema: expect.any(Object),
+        example: {
+          error: { code: expect.any(String), message: expect.any(String) },
+        },
+      });
+    }
+    expect(operation.description).toContain("fallback geral");
+  });
+
   it("preserva restrições e defaults válidos dos validators", async () => {
     const response = await request(app).get("/docs/openapi.json");
     const schemas = response.body.components.schemas;

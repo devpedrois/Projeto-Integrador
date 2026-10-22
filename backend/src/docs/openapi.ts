@@ -955,7 +955,7 @@ endpoint({
   tag: "Recomendações",
   request: { query: recomendacaoQuerySchema },
   response: json(recomendacao, recomendacaoExample),
-  errors: [400],
+  errors: [400, 404],
   description:
     "produtoId opcional. Sem contexto ou produto oculto usa fallback geral. Cache TTL: X-Cache HIT/MISS e Server-Timing.",
 });
