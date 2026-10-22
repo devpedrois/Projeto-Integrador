@@ -1,5 +1,7 @@
 # Origem
 
+[![CI](https://github.com/devpedrois/Projeto-Integrador/actions/workflows/ci.yml/badge.svg)](https://github.com/devpedrois/Projeto-Integrador/actions/workflows/ci.yml)
+
 Marketplace web full stack que conecta artesãos e produtores criativos de Pernambuco a compradores de todo o Brasil, dando visibilidade digital, canal de venda direto e valorização da origem, da técnica e da história de cada peça.
 
 Projeto Integrador do 4º semestre de Análise e Desenvolvimento de Sistemas — **CESAR School**, 2026.2.
@@ -157,6 +159,33 @@ Na Avaliação 1, o frontend consome uma **Fake API estruturada** (`src/fake-api
 A documentação completa da Fake API (camadas, recursos, contratos, erros, rotas protegidas e plano de troca pelo backend) está em [`docs/fake-api.md`](docs/fake-api.md).
 
 Imagens ilustrativas geradas com IA (Gemini).
+
+## Integração contínua
+
+O workflow `CI` executa em cada push e pull request.
+Frontend e backend usam Node.js 22 e caches npm separados.
+O frontend passa por lint, typecheck, testes e build.
+Seus testes de contrato exigem dependências e tipos do backend.
+Essa preparação gera o Prisma sem conexão ou credenciais.
+O backend gera o Prisma, aplica migrations e executa verificações.
+
+Configure estes repository secrets em **Settings → Secrets and variables → Actions**:
+
+| Secret | Valor |
+|---|---|
+| `DATABASE_URL_TEST` | Conexão PostgreSQL da branch Neon exclusiva de CI |
+| `DIRECT_URL_TEST` | Conexão direta da mesma branch, sem pooler |
+
+O `JWT_SECRET` é gerado com `openssl rand` no job backend.
+As credenciais ficam restritas ao job backend e são mascaradas.
+Pull requests de forks não recebem os secrets do repositório.
+Nesse caso, o backend informa somente a variável ausente.
+
+A CI não executa scripts de concorrência, benchmarks ou seed de volume.
+Também exclui quatro testes de integração que acionam essas cargas:
+`concorrencia-script`, `db-explain`, `recomendacao-volume` e `seed-volume`.
+Os demais testes unitários e de integração permanecem incluídos.
+A suíte local completa continua disponível com `npm test`.
 
 ## Testes de FCCPD
 

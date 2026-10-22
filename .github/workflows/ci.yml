@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: frontend
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            frontend/package-lock.json
+            backend/package-lock.json
+      - run: npm ci
+      - name: Preparar tipos dos contratos do backend
+        working-directory: backend
+        run: |
+          npm ci
+          npx prisma generate --config prisma/generate.config.ts
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      NODE_ENV: test
+      DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL_TEST }}
+      HOST: 127.0.0.1
+      FRONTEND_ORIGIN: http://localhost:3000
+      COOKIE_SECURE: "false"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - name: Validar conexoes de teste
+        run: |
+          node --input-type=module <<'NODE'
+          for (const name of ["DATABASE_URL", "DIRECT_URL"]) {
+            try {
+              const url = new URL(process.env[name]);
+              if (!["postgres:", "postgresql:"].includes(url.protocol)) throw new Error();
+              for (const password of [url.password, decodeURIComponent(url.password)]) {
+                if (password) console.log(`::add-mask::${password}`);
+              }
+            } catch {
+              console.error(`Variavel de teste ausente ou invalida: ${name}`);
+              process.exit(1);
+            }
+          }
+          NODE
+      - name: Gerar JWT_SECRET efemero
+        run: |
+          jwt_secret="$(openssl rand -hex 32)"
+          echo "::add-mask::$jwt_secret"
+          printf 'JWT_SECRET=%s\n' "$jwt_secret" >> "$GITHUB_ENV"
+      - run: npm ci
+      - run: npx prisma generate
+      - run: npx prisma migrate deploy
+      - run: npm run lint
+      - run: npm run typecheck
+      - name: Testar sem cargas e benchmarks
+        run: >-
+          npm test --
+          --testTimeout=15000
+          --hookTimeout=30000
+          --exclude tests/integration/concorrencia-script.integration.test.ts
+          --exclude tests/integration/db-explain.integration.test.ts
+          --exclude tests/integration/recomendacao-volume.integration.test.ts
+          --exclude tests/integration/seed-volume.integration.test.ts
