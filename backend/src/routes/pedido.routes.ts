@@ -3,6 +3,7 @@ import type { PedidoController } from "../controllers/pedido.controller.js";
 import {
   validateCriarPedido,
   validateListarPedidos,
+  validateListarPedidosArtesao,
   validateObterPedido,
 } from "../validators/pedido.validator.js";
 import { exigirPapel } from "../middlewares/role.middleware.js";
@@ -12,6 +13,13 @@ export function createPedidoRouter(
   autenticarUsuario: RequestHandler,
 ): Router {
   const router = Router();
+  router.get(
+    "/artesao/pedidos",
+    autenticarUsuario,
+    exigirPapel("artesao"),
+    validateListarPedidosArtesao,
+    controller.listarRecebidos,
+  );
   router.get(
     "/pedidos",
     autenticarUsuario,

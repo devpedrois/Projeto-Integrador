@@ -1308,3 +1308,12 @@ A implementação considera somente itens próprios em pedidos confirmados.
 Também apoiou a documentação e a conferência SQL independente.
 
 Evidências: `evidencias/PI4-BD-W12-Indices-Consultas/BD.3-indicadores/`.
+
+### Web.1: pedidos recebidos pelo artesão
+
+Andrews é responsável; Pedro é o revisor.
+O Codex auxiliou na implementação e nos testes de integração.
+A consulta filtra pedidos confirmados e itens próprios no PostgreSQL.
+Também apoiou OpenAPI, documentação e revisão equivalente nesta conversa.
+
+Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.1-itens-por-artesao/`.

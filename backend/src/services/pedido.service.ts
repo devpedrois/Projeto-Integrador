@@ -4,6 +4,7 @@ import type {
 } from "../repositories/pedido.repository.js";
 import type { CriarPedidoInput } from "../validators/pedido.validator.js";
 import type { PaginacaoPedidos } from "../validators/pedido.validator.js";
+import type { PaginacaoPedidosArtesao } from "../validators/pedido.validator.js";
 import { AppError } from "../errors/app-error.js";
 import type { CachePublico } from "../utils/cache.js";
 
@@ -15,6 +16,13 @@ export class PedidoService {
 
   public listarMeus(compradorId: string, paginacao: PaginacaoPedidos) {
     return this.repository.listarMeus(compradorId, paginacao);
+  }
+
+  public listarRecebidos(
+    artesaoId: string,
+    paginacao: PaginacaoPedidosArtesao,
+  ) {
+    return this.repository.listarRecebidos(artesaoId, paginacao);
   }
 
   public async obter(id: string, compradorId: string) {

@@ -30,6 +30,39 @@ export const paginacaoPedidoSchema = z.strictObject({
 
 export type PaginacaoPedidos = z.infer<typeof paginacaoPedidoSchema>;
 
+export const paginacaoPedidosArtesaoSchema = z.strictObject({
+  limit: z
+    .string()
+    .regex(/^[1-9]\d*$/)
+    .default("10")
+    .transform(Number)
+    .pipe(z.number().int().max(100)),
+  offset: z
+    .string()
+    .regex(/^\d+$/)
+    .default("0")
+    .transform(Number)
+    .pipe(z.number().int().max(10_000)),
+});
+
+export type PaginacaoPedidosArtesao = z.infer<
+  typeof paginacaoPedidosArtesaoSchema
+>;
+
+export function validateListarPedidosArtesao(
+  request: Request,
+  response: Response,
+  next: NextFunction,
+): void {
+  const result = paginacaoPedidosArtesaoSchema.safeParse(request.query);
+  if (!result.success) {
+    next(new AppError(400, "VALIDACAO", "Paginacao invalida."));
+    return;
+  }
+  response.locals.paginacaoPedidosArtesao = result.data;
+  next();
+}
+
 export const pedidoParamsSchema = z.strictObject({
   id: z.uuid().transform((value) => value.toLowerCase()),
 });

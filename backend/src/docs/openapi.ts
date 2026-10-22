@@ -30,6 +30,7 @@ import { indicadoresQuerySchema } from "../validators/indicadores.validator.js";
 import {
   criarPedidoSchema,
   paginacaoPedidoSchema,
+  paginacaoPedidosArtesaoSchema,
   pedidoParamsSchema,
 } from "../validators/pedido.validator.js";
 import {
@@ -324,6 +325,42 @@ const pagina = registrar(
     total: inteiro,
   }),
   paginaExample,
+);
+const pedidoRecebidoExample = {
+  id,
+  numero: "ORI-EXEMPLO",
+  criadoEm: data,
+  nomeComprador: "Pessoa Exemplo",
+  itens: [itemPedidoExample],
+  subtotalArtesao: 89.9,
+};
+const pedidoRecebido = registrar(
+  "PedidoRecebido",
+  z.strictObject({
+    id: uuid,
+    numero: z.string().nullable(),
+    criadoEm: instante,
+    nomeComprador: z.string(),
+    itens: z.array(itemPedido.strict()),
+    subtotalArtesao: dinheiro,
+  }),
+  pedidoRecebidoExample,
+);
+const paginaRecebidosExample = {
+  itens: [pedidoRecebidoExample],
+  limit: 10,
+  offset: 0,
+  total: 1,
+};
+const paginaRecebidos = registrar(
+  "PaginaPedidosRecebidos",
+  z.strictObject({
+    itens: z.array(pedidoRecebido),
+    limit: inteiro,
+    offset: inteiro,
+    total: inteiro,
+  }),
+  paginaRecebidosExample,
 );
 const notificacaoExample = {
   id,
@@ -784,6 +821,20 @@ endpoint({
   errors: [400, 401, 403, 404],
   errorExamples: { 404: ["PEDIDO_NAO_ENCONTRADO", "Pedido nao encontrado."] },
   description: "Pedido alheio e inexistente recebem o mesmo 404.",
+});
+
+endpoint({
+  method: "get",
+  path: "/artesao/pedidos",
+  operationId: "listarPedidosRecebidos",
+  summary: "Listar pedidos confirmados com os próprios itens",
+  tag: "Pedidos",
+  papel: "artesao",
+  request: { query: paginacaoPedidosArtesaoSchema },
+  response: json(paginaRecebidos, paginaRecebidosExample),
+  errors: [400, 401, 403],
+  description:
+    "Identidade vem da sessão. Filtra pedidos confirmados e seus itens pelo dono do produto. Expõe somente nome do comprador e subtotal do artesão, sem email, total financeiro ou pagamento do pedido. total externo conta pedidos do artesão. limit de 1 a 100, padrão 10; offset de 0 a 10000, padrão 0. Query estrita. Ordena por criadoEm DESC e id DESC. Lista e contagem usam RepeatableRead. Valores legados nulos permanecem null nos itens e não acrescentam subtotal. Produtos ocultos continuam no histórico. Cache-Control: no-store.",
 });
 
 endpoint({

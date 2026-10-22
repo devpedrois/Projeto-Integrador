@@ -45,6 +45,49 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("documenta pedidos recebidos sem total financeiro ou dados privados", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    const operation = response.body.paths["/artesao/pedidos"]?.get;
+    expect(operation).toBeDefined();
+    expect(operation.security).toEqual([{ sessao: [] }]);
+    expect(operation.parameters).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "limit",
+          schema: expect.objectContaining({ default: "10" }),
+        }),
+        expect.objectContaining({
+          name: "offset",
+          schema: expect.objectContaining({ default: "0" }),
+        }),
+      ]),
+    );
+    for (const status of ["400", "401", "403"]) {
+      expect(operation.responses).toHaveProperty(status);
+    }
+    const example =
+      operation.responses["200"].content["application/json"].example;
+    expect(example).toMatchObject({
+      limit: 10,
+      offset: 0,
+      total: 1,
+      itens: [
+        expect.objectContaining({
+          nomeComprador: expect.any(String),
+          subtotalArtesao: expect.any(Number),
+        }),
+      ],
+    });
+    expect(Object.keys(example.itens[0]).sort()).toEqual([
+      "criadoEm",
+      "id",
+      "itens",
+      "nomeComprador",
+      "numero",
+      "subtotalArtesao",
+    ]);
+  });
+
   it("documenta exemplo de recomendações e respostas 400/404", async () => {
     const response = await request(app).get("/docs/openapi.json");
     expect(response.status).toBe(200);

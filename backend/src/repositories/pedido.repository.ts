@@ -3,6 +3,7 @@ import { Prisma, type PrismaClient } from "../generated/prisma/client.js";
 import { AppError } from "../errors/app-error.js";
 import type { CriarPedidoInput } from "../validators/pedido.validator.js";
 import type { PaginacaoPedidos } from "../validators/pedido.validator.js";
+import type { PaginacaoPedidosArtesao } from "../validators/pedido.validator.js";
 
 const resumoPedidoSelect = {
   id: true,
@@ -56,6 +57,20 @@ export interface DetalhePedido extends ResumoPedido {
   }>;
 }
 
+export interface PedidoRecebido {
+  id: string;
+  numero: string | null;
+  criadoEm: string;
+  nomeComprador: string;
+  itens: DetalhePedido["itens"];
+  subtotalArtesao: number;
+}
+
+export interface PaginaPedidosRecebidos extends PaginacaoPedidosArtesao {
+  itens: PedidoRecebido[];
+  total: number;
+}
+
 function mapearResumo(registro: RegistroResumo): ResumoPedido {
   const pagamento = registro.pagamento;
   return {
@@ -98,6 +113,10 @@ export interface NovoPedido extends CriarPedidoInput {
 
 export interface PedidoRepository {
   criar(input: NovoPedido): Promise<PedidoCriado>;
+  listarRecebidos(
+    artesaoId: string,
+    paginacao: PaginacaoPedidosArtesao,
+  ): Promise<PaginaPedidosRecebidos>;
   listarMeus(
     compradorId: string,
     paginacao: PaginacaoPedidos,
@@ -117,6 +136,69 @@ interface EstoqueRow {
 
 export class PrismaPedidoRepository implements PedidoRepository {
   public constructor(private readonly prisma: PrismaClient) {}
+
+  public async listarRecebidos(
+    artesaoId: string,
+    paginacao: PaginacaoPedidosArtesao,
+  ): Promise<PaginaPedidosRecebidos> {
+    const filtroItem = { produto: { artesaoId } };
+    const where = {
+      status: "confirmado",
+      itens: { some: filtroItem },
+    } satisfies Prisma.PedidoWhereInput;
+    const [registros, total] = await this.prisma.$transaction(
+      [
+        this.prisma.pedido.findMany({
+          where,
+          select: {
+            id: true,
+            numero: true,
+            criadoEm: true,
+            comprador: { select: { nome: true } },
+            itens: {
+              where: filtroItem,
+              orderBy: { id: "asc" },
+              select: {
+                produtoId: true,
+                quantidade: true,
+                precoUnitario: true,
+                subtotal: true,
+                produto: { select: { nome: true } },
+              },
+            },
+          },
+          orderBy: [{ criadoEm: "desc" }, { id: "desc" }],
+          take: paginacao.limit,
+          skip: paginacao.offset,
+        }),
+        this.prisma.pedido.count({ where }),
+      ],
+      { isolationLevel: "RepeatableRead" },
+    );
+    return {
+      ...paginacao,
+      total,
+      itens: registros.map((registro) => ({
+        id: registro.id,
+        numero: registro.numero,
+        criadoEm: registro.criadoEm.toISOString(),
+        nomeComprador: registro.comprador.nome,
+        itens: registro.itens.map((item) => ({
+          produtoId: item.produtoId,
+          nome: item.produto.nome,
+          quantidade: item.quantidade,
+          precoUnitario: item.precoUnitario?.toNumber() ?? null,
+          subtotal: item.subtotal?.toNumber() ?? null,
+        })),
+        subtotalArtesao: registro.itens
+          .reduce(
+            (soma, item) => soma.add(item.subtotal ?? 0),
+            new Prisma.Decimal(0),
+          )
+          .toNumber(),
+      })),
+    };
+  }
 
   public async listarMeus(
     compradorId: string,
