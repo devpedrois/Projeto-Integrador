@@ -57,8 +57,18 @@ export function gerarVolume() {
     nome: `Comprador sintetico ${indice + 1}`,
     email: `comprador.${indice + 1}@volume.origem.test`,
   }));
+  const modelos = [
+    ...DEMO.produtos,
+    {
+      nome: "Cesto de Fibras Reaproveitadas",
+      descricao:
+        "Cesto sintetico com fibras reaproveitadas para teste de volume.",
+      tecnicaId: "tecnica-trancado-fibra",
+      categoriaId: "categoria-arte-reciclada",
+    },
+  ];
   const produtos = Array.from({ length: 1000 }, (_, indice) => {
-    const modelo = elemento(DEMO.produtos, indice % DEMO.produtos.length);
+    const modelo = elemento(modelos, indice % modelos.length);
     return {
       id: seedUuid(`volume-produto-${indice}`),
       nome: `${modelo.nome} ${indice + 1}`,
@@ -74,14 +84,43 @@ export function gerarVolume() {
   const pedidos = Array.from({ length: 1500 }, (_, indice) => {
     const produto = elemento(produtos, inteiro(1000));
     const quantidade = 1 + inteiro(3);
-    return {
-      id: seedUuid(`volume-pedido-${indice}`),
-      numero: `VOL-${String(indice + 1).padStart(6, "0")}`,
-      compradorId: elemento(compradores, inteiro(300)).id,
-      produtoId: produto.id,
+    const compradorId = elemento(compradores, inteiro(300)).id;
+    const id = seedUuid(`volume-pedido-${indice}`);
+    const produtosDoPedido = [produto];
+    if (indice < 50) {
+      produtosDoPedido.push(
+        elemento(
+          produtos.filter((outro) => outro.artesaoId !== produto.artesaoId),
+          indice,
+        ),
+      );
+    }
+    const itens = produtosDoPedido.map((item, itemIndice) => ({
+      id: seedUuid(
+        itemIndice === 0 ? `item:${id}` : `item:${id}:${itemIndice}`,
+      ),
+      produtoId: item.id,
       quantidade,
-      precoCentavos: produto.precoCentavos,
-      totalCentavos: produto.precoCentavos * quantidade,
+      precoCentavos: item.precoCentavos,
+      subtotalCentavos: item.precoCentavos * quantidade,
+    }));
+    const totalCentavos = itens.reduce(
+      (total, item) => total + item.subtotalCentavos,
+      0,
+    );
+    return {
+      id,
+      numero: `VOL-${String(indice + 1).padStart(6, "0")}`,
+      compradorId,
+      status: "confirmado" as const,
+      itens,
+      totalCentavos,
+      pagamento: {
+        id: seedUuid(`pagamento:${id}`),
+        valorCentavos: totalCentavos,
+        status: "aprovado" as const,
+        metodo: "pix_simulado" as const,
+      },
       criadoEm: new Date(criadoEm.getTime() + indice * 60000),
     };
   });

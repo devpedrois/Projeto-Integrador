@@ -1253,3 +1253,15 @@ Os nove casos BD-07 também passaram na execução direcionada.
 As contagens das nove tabelas permaneceram idênticas antes/depois.
 A sequence permaneceu inalterada; nenhum schema temporário BD-07 restou.
 Lint, typecheck, Prettier e revisão local passaram.
+
+### BD.1: massa sintética ampliada
+
+Tarefa realizada por Eduardo e revisada por Pedro.
+O Codex auxiliou nos ajustes e na validação.
+
+A massa cobre 1.000 produtos e todas as referências.
+Inclui 50 pedidos multiartesão confirmados, com pagamentos aprovados.
+Determinismo, idempotência e testes foram verificados.
+Demo e deploy foram preservados.
+
+Evidências: `evidencias/BD.1/`.

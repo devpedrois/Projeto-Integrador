@@ -4,6 +4,8 @@ import {
   validarVolumeEnvironment,
 } from "../../prisma/seeds/volume.js";
 import { seedUuid } from "../../prisma/seeds/id.js";
+import { DEMO } from "../../prisma/seeds/demo.js";
+import { REGIOES_SEED, TECNICAS_SEED } from "../../prisma/seeds/referencias.js";
 
 describe("guarda do seed de volume", () => {
   const databaseUrl = "postgresql://teste:teste@ep-teste.neon.tech/origem";
@@ -73,9 +75,89 @@ describe("gerador deterministico", () => {
     );
     expect(
       dados.pedidos.every((pedido) =>
-        dados.produtos.some((produto) => produto.id === pedido.produtoId),
+        pedido.itens.every((item) =>
+          dados.produtos.some((produto) => produto.id === item.produtoId),
+        ),
       ),
     ).toBe(true);
+  });
+  it("BD.1 cobre todas as categorias, tecnicas e regioes com produtos", () => {
+    const dados = gerarVolume();
+    expect(dados.produtos).toHaveLength(1000);
+    expect(DEMO.categorias).toHaveLength(6);
+    expect(
+      new Set(dados.produtos.map((produto) => produto.categoriaId)),
+    ).toEqual(
+      new Set(DEMO.categorias.map((categoria) => seedUuid(categoria.id))),
+    );
+    expect(new Set(dados.produtos.map((produto) => produto.tecnicaId))).toEqual(
+      new Set(TECNICAS_SEED.map((tecnica) => tecnica.id)),
+    );
+    const artesaos = new Map(
+      dados.artesaos.map((artesao) => [artesao.id, artesao]),
+    );
+    expect(
+      new Set(
+        dados.produtos.map(
+          (produto) => artesaos.get(produto.artesaoId)?.regiaoId,
+        ),
+      ),
+    ).toEqual(new Set(REGIOES_SEED.map((regiao) => regiao.id)));
+  });
+  it("BD.1 garante 50 pedidos confirmados e pagos com artesaos distintos", () => {
+    const dados = gerarVolume();
+    const produtos = new Map(
+      dados.produtos.map((produto) => [produto.id, produto]),
+    );
+    const multiArtesao = dados.pedidos.filter((pedido) => {
+      const artesaos = new Set(
+        pedido.itens.map((item) => produtos.get(item.produtoId)?.artesaoId),
+      );
+      return (
+        pedido.status === "confirmado" &&
+        pedido.pagamento.status === "aprovado" &&
+        artesaos.size >= 2
+      );
+    });
+    expect(multiArtesao.length).toBeGreaterThanOrEqual(50);
+    for (const pedido of dados.pedidos) {
+      expect(pedido.totalCentavos).toBe(
+        pedido.itens.reduce((total, item) => total + item.subtotalCentavos, 0),
+      );
+      expect(pedido.pagamento.valorCentavos).toBe(pedido.totalCentavos);
+      expect(pedido.pagamento.metodo).toBe("pix_simulado");
+      for (const item of pedido.itens) {
+        expect(item.precoCentavos).toBe(
+          produtos.get(item.produtoId)?.precoCentavos,
+        );
+        expect(item.subtotalCentavos).toBe(
+          item.precoCentavos * item.quantidade,
+        );
+      }
+    }
+  });
+  it("BD.1 gera IDs unicos e estaveis para reexecucao sem duplicacao", () => {
+    const primeira = gerarVolume();
+    const segunda = gerarVolume();
+    const colecoes = (dados: ReturnType<typeof gerarVolume>) => [
+      dados.artesaos,
+      dados.compradores,
+      dados.produtos,
+      dados.pedidos,
+      dados.pedidos.flatMap((pedido) => pedido.itens),
+      dados.pedidos.map((pedido) => pedido.pagamento),
+    ];
+    for (const [indice, registros] of colecoes(primeira).entries()) {
+      const ids = registros.map((registro) => registro.id);
+      const repetidos = colecoes(segunda)[indice]?.map(
+        (registro) => registro.id,
+      );
+      expect(new Set(ids).size).toBe(registros.length);
+      expect(repetidos).toEqual(ids);
+      expect(new Set([...ids, ...(repetidos ?? [])]).size).toBe(
+        registros.length,
+      );
+    }
   });
   it("preserva UUID valido e converte identificadores textuais", () => {
     const uuid = "a0000000-0000-4000-8000-000000000001";

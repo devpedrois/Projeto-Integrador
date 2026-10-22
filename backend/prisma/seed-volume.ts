@@ -72,37 +72,45 @@ export async function runVolumeSeed(
   });
   await tx.pedido.createMany({
     data: dados.pedidos.map(
-      ({ id, numero, compradorId, totalCentavos, criadoEm }) => ({
+      ({ id, numero, compradorId, totalCentavos, status, criadoEm }) => ({
         id,
         numero,
         compradorId,
         total: (totalCentavos / 100).toFixed(2),
-        status: "confirmado" as const,
+        status,
         criadoEm,
       }),
     ),
     skipDuplicates: true,
   });
   await tx.itemPedido.createMany({
-    data: dados.pedidos.map(
-      ({ id, produtoId, quantidade, precoCentavos, totalCentavos }) => ({
-        id: seedUuid(`item:${id}`),
-        pedidoId: id,
-        produtoId,
-        quantidade,
-        precoUnitario: (precoCentavos / 100).toFixed(2),
-        subtotal: (totalCentavos / 100).toFixed(2),
-      }),
+    data: dados.pedidos.flatMap(({ id, itens }) =>
+      itens.map(
+        ({
+          id: itemId,
+          produtoId,
+          quantidade,
+          precoCentavos,
+          subtotalCentavos,
+        }) => ({
+          id: itemId,
+          pedidoId: id,
+          produtoId,
+          quantidade,
+          precoUnitario: (precoCentavos / 100).toFixed(2),
+          subtotal: (subtotalCentavos / 100).toFixed(2),
+        }),
+      ),
     ),
     skipDuplicates: true,
   });
   await tx.pagamento.createMany({
-    data: dados.pedidos.map(({ id, totalCentavos, criadoEm }) => ({
-      id: seedUuid(`pagamento:${id}`),
+    data: dados.pedidos.map(({ id, pagamento, criadoEm }) => ({
+      id: pagamento.id,
       pedidoId: id,
-      valor: (totalCentavos / 100).toFixed(2),
-      status: "aprovado" as const,
-      metodo: "pix_simulado" as const,
+      valor: (pagamento.valorCentavos / 100).toFixed(2),
+      status: pagamento.status,
+      metodo: pagamento.metodo,
       dataPagamento: criadoEm,
     })),
     skipDuplicates: true,
