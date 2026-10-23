@@ -1337,3 +1337,12 @@ A implementação exige compra confirmada e preserva a média na leitura.
 A documentação e revisão equivalente foram realizadas nesta conversa.
 
 Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.4-compra-verificada/`.
+
+### 30.1: concorrência no checkout integrado
+
+Sergio é responsável; Pedro é o revisor.
+O Codex auxiliou nos testes e ajustes do script existente.
+A validação passou a conferir pagamentos e respostas inesperadas.
+Também apoiou a conferência SQL e exportação das rodadas.
+
+Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/`.

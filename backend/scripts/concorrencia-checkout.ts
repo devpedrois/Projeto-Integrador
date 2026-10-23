@@ -1,10 +1,12 @@
 import "dotenv/config";
 import { randomBytes } from "node:crypto";
+import { writeFile } from "node:fs/promises";
 import type { Server } from "node:http";
 import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import { z } from "zod";
 import { createApp } from "../src/app.js";
+import { Prisma } from "../src/generated/prisma/client.js";
 import { criarBancoConcorrencia } from "./helpers/concorrencia-database.js";
 
 const RODADAS = 3;
@@ -13,6 +15,7 @@ const TIMEOUT_HTTP_MS = 90_000;
 interface Opcoes {
   clientes: number;
   port: number;
+  saida?: string;
 }
 
 export interface ResultadoRodada {
@@ -20,7 +23,14 @@ export interface ResultadoRodada {
   conflitos409: number;
   estoqueFinal: number;
   pedidosProduto: number;
+  pagamentosCriados: number;
+  respostasInesperadas: number;
 }
+
+type ConferenciaProduto = Pick<
+  ResultadoRodada,
+  "estoqueFinal" | "pedidosProduto" | "pagamentosCriados"
+>;
 
 class ErroConcorrencia extends Error {}
 
@@ -29,12 +39,16 @@ export function lerOpcoes(args: string[], env: NodeJS.ProcessEnv): Opcoes {
   try {
     ({ values } = parseArgs({
       args,
-      options: { clientes: { type: "string" }, port: { type: "string" } },
+      options: {
+        clientes: { type: "string" },
+        port: { type: "string" },
+        saida: { type: "string" },
+      },
       allowPositionals: false,
     }));
   } catch {
     throw new ErroConcorrencia(
-      "Argumentos invalidos: confira CONCURRENCY_TEST_CLIENTS e CONCURRENCY_TEST_PORT.",
+      "Argumentos invalidos: confira --saida, CONCURRENCY_TEST_CLIENTS e CONCURRENCY_TEST_PORT.",
     );
   }
   const clientes = Number(
@@ -51,7 +65,13 @@ export function lerOpcoes(args: string[], env: NodeJS.ProcessEnv): Opcoes {
       "CONCURRENCY_TEST_PORT deve ser inteiro entre 0 e 65535.",
     );
   }
-  return { clientes, port };
+  if (values.saida !== undefined && values.saida.trim().length === 0)
+    throw new ErroConcorrencia("--saida deve indicar um arquivo JSON.");
+  return {
+    clientes,
+    port,
+    ...(values.saida !== undefined ? { saida: values.saida } : {}),
+  };
 }
 
 function identidadeBanco(value: string, nome: string): string {
@@ -114,6 +134,10 @@ export function validarRodada(
   if (result.estoqueFinal < 0) falhas.push("Estoque negativo.");
   if (result.pedidosProduto !== 1)
     falhas.push("Esperado exatamente um pedido do produto.");
+  if (result.pagamentosCriados !== 1)
+    falhas.push("Esperado exatamente um pagamento do produto.");
+  if (result.respostasInesperadas !== 0)
+    falhas.push("Esperado zero respostas inesperadas.");
   return falhas;
 }
 
@@ -188,6 +212,11 @@ export async function executarConcorrencia(
     schemaRemovido: false,
   };
   const falhas: string[] = [];
+  const rodadas: ResultadoRodada[] = [];
+  const conferencias: {
+    consulta: Prisma.Sql;
+    resultado: ConferenciaProduto;
+  }[] = [];
   try {
     const app = createApp(banco.prisma, {
       JWT_SECRET: randomBytes(48).toString("hex"),
@@ -271,6 +300,8 @@ export async function executarConcorrencia(
             { itens: [{ produtoId: produto.id, quantidade: 1 }] },
             cookie,
           );
+          if (response.status !== 201 && response.status !== 409)
+            return response.status;
           const body: unknown = await response.json();
           if (response.status === 201 && !pedidoSchema.safeParse(body).success)
             falhas.push(`Rodada ${rodada}: resposta de pedido invalida.`);
@@ -286,22 +317,28 @@ export async function executarConcorrencia(
           return response.status;
         }),
       );
-      const rows = await banco.prisma.$queryRaw<
-        { quantidadeEstoque: number; pedidosProduto: number }[]
-      >`
-        SELECT p."quantidadeEstoque",
-          (SELECT COUNT(DISTINCT i."pedidoId")::integer FROM "ItemPedido" i WHERE i."produtoId" = p."id") AS "pedidosProduto"
+      const consulta = Prisma.sql`
+        SELECT p."quantidadeEstoque" AS "estoqueFinal",
+          (SELECT COUNT(DISTINCT i."pedidoId")::integer FROM "ItemPedido" i WHERE i."produtoId" = p."id") AS "pedidosProduto",
+          (SELECT COUNT(DISTINCT pg."id")::integer
+           FROM "Pagamento" pg JOIN "ItemPedido" i ON i."pedidoId" = pg."pedidoId"
+           WHERE i."produtoId" = p."id") AS "pagamentosCriados"
         FROM "Produto" p WHERE p."id" = ${produto.id}::uuid
       `;
+      const rows = await banco.prisma.$queryRaw<ConferenciaProduto[]>(consulta);
       const row = rows[0];
       if (!row)
         throw new ErroConcorrencia("Produto ausente na consulta final.");
       const result: ResultadoRodada = {
         sucessos: responses.filter((status) => status === 201).length,
         conflitos409: responses.filter((status) => status === 409).length,
-        estoqueFinal: row.quantidadeEstoque,
-        pedidosProduto: row.pedidosProduto,
+        ...row,
+        respostasInesperadas: responses.filter(
+          (status) => status !== 201 && status !== 409,
+        ).length,
       };
+      rodadas.push(result);
+      conferencias.push({ consulta, resultado: row });
       console.log(`Rodada ${rodada}: ${JSON.stringify(result)}`);
       falhas.push(
         ...validarRodada(result, options.clientes).map(
@@ -309,6 +346,18 @@ export async function executarConcorrencia(
         ),
       );
     }
+    console.log("Consulta SQL de conferencia:");
+    console.log(`SET search_path TO "${banco.schema}";`);
+    console.log(`${conferencias[0]?.consulta.text.trim()};`);
+    for (const [indice, conferencia] of conferencias.entries()) {
+      console.log(
+        `Parametros rodada ${indice + 1}: ${JSON.stringify(conferencia.consulta.values)}`,
+      );
+      console.log(
+        `Conferencia rodada ${indice + 1}: ${JSON.stringify(conferencia.resultado)}`,
+      );
+    }
+    console.log("Conferencia realizada antes da remocao do schema temporario.");
   } finally {
     try {
       if (server?.listening) await fecharServidor(server);
@@ -318,6 +367,20 @@ export async function executarConcorrencia(
     }
   }
   console.log(`Resumo: ${JSON.stringify(resumo)}`);
+  if (options.saida !== undefined) {
+    try {
+      await writeFile(
+        options.saida,
+        JSON.stringify({ compradores: options.clientes, rodadas }, null, 2) +
+          "\n",
+        { flag: "wx" },
+      );
+    } catch {
+      throw new ErroConcorrencia(
+        "Nao foi possivel gravar --saida em arquivo novo.",
+      );
+    }
+  }
   if (falhas.length > 0) throw new ErroConcorrencia(falhas.join(" "));
   console.log(
     "Concorrencia validada: 3/3 rodadas. Dados sinteticos removidos.",
