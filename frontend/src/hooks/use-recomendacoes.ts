@@ -11,10 +11,11 @@ export type EstadoRecomendacoes =
   | { status: "carregando" }
   | { status: "sucesso"; resultado: RecomendacaoResultado }
   | { status: "vazio" }
-  | { status: "erro"; mensagem: string };
+  | { status: "erro"; mensagem: string; recarregar(): void };
 
 const MENSAGEM_ERRO_PADRAO =
   "Não foi possível carregar as recomendações agora.";
+const LIMITE_ITENS = 8;
 
 /**
  * Consome `RecomendacoesService` sem aplicar nenhuma regra de ranking aqui:
@@ -25,6 +26,7 @@ export function useRecomendacoes(
   service: RecomendacoesService | null,
   contexto: RecomendacaoContexto | null,
 ): EstadoRecomendacoes {
+  const [tentativa, setTentativa] = useState(0);
   const [estado, setEstado] = useState<EstadoRecomendacoes>({
     status: "carregando",
   });
@@ -42,21 +44,34 @@ export function useRecomendacoes(
       .obter(contexto)
       .then((resultado) => {
         if (cancelado) return;
+        const itens = resultado.itens
+          .filter((produto) => produto.id !== contexto.produtoId)
+          .slice(0, LIMITE_ITENS);
         setEstado(
-          resultado.itens.length === 0
+          itens.length === 0
             ? { status: "vazio" }
-            : { status: "sucesso", resultado },
+            : { status: "sucesso", resultado: { ...resultado, itens } },
         );
       })
       .catch(() => {
         if (cancelado) return;
-        setEstado({ status: "erro", mensagem: MENSAGEM_ERRO_PADRAO });
+        setEstado({
+          status: "erro",
+          mensagem: MENSAGEM_ERRO_PADRAO,
+          recarregar: () => setTentativa((atual) => atual + 1),
+        });
       });
 
     return () => {
       cancelado = true;
     };
-  }, [service, contexto === null, contexto?.produtoId, contexto?.usuarioId]);
+  }, [
+    service,
+    contexto === null,
+    contexto?.produtoId,
+    contexto?.usuarioId,
+    tentativa,
+  ]);
 
   return estado;
 }

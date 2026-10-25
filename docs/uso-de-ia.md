@@ -1385,3 +1385,12 @@ O painel consulta vendas confirmadas, com erro recuperável.
 A medição registra requisição e renderização com PostgreSQL real.
 
 Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/`.
+
+### IA.2: carrossel de peças relacionadas
+
+Eliziane é responsável; Pedro é o revisor indicado.
+O Codex auxiliou nos testes e ajustes do carrossel existente.
+Os testes cobrem limite, exclusão, loading, vazio e recuperação.
+Também apoiou capturas HTTP e revisão equivalente nesta conversa.
+
+Evidências: `evidencias/IA.2/`.

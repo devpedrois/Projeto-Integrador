@@ -249,10 +249,15 @@ describe("DetalheProduto", () => {
   });
 
   it("mostra erro de recomendacao sem ocultar o detalhe", async () => {
+    const obter = vi
+      .fn()
+      .mockRejectedValueOnce(new Error("API indisponivel"))
+      .mockResolvedValue({
+        estrategia: "categoria",
+        itens: [produto({ id: "produto-2", nome: "Peça recuperada" })],
+      });
     renderizar({
-      recomendacoesService: {
-        obter: vi.fn().mockRejectedValue(new Error("API indisponivel")),
-      },
+      recomendacoesService: { obter },
     });
     const regiao = await screen.findByRole("region", {
       name: "Peças relacionadas",
@@ -266,6 +271,106 @@ describe("DetalheProduto", () => {
     expect(
       within(regiao).queryByText(/nenhuma recomendação/i),
     ).not.toBeInTheDocument();
+
+    await userEvent
+      .setup()
+      .click(within(regiao).getByRole("button", { name: /tentar novamente/i }));
+    expect(
+      await within(regiao).findByRole("link", { name: "Peça recuperada" }),
+    ).toHaveAttribute("href", "/produto/produto-2");
+    expect(obter).toHaveBeenCalledTimes(2);
+    expect(obter).toHaveBeenLastCalledWith({ produtoId: "produto-1" });
+    expect(within(regiao).queryByRole("alert")).not.toBeInTheDocument();
+  });
+
+  it("limita as pecas relacionadas aos primeiros oito itens da API", async () => {
+    const itens = Array.from({ length: 12 }, (_, indice) =>
+      produto({ id: `relacionado-${indice}`, nome: `Peça ${indice}` }),
+    );
+    renderizar({
+      recomendacoesService: {
+        obter: vi.fn().mockResolvedValue({ estrategia: "categoria", itens }),
+      },
+    });
+
+    const regiao = await screen.findByRole("region", {
+      name: "Peças relacionadas",
+    });
+    const lista = await within(regiao).findByRole("list");
+    expect(within(lista).getAllByRole("listitem")).toHaveLength(8);
+    expect(
+      within(lista)
+        .getAllByRole("link", { name: /^Peça / })
+        .map((link) => link.getAttribute("href")),
+    ).toEqual(itens.slice(0, 8).map((item) => `/produto/${item.id}`));
+    expect(within(regiao).queryByText("Peça 8")).not.toBeInTheDocument();
+  });
+
+  it.each([0, 4, 10])(
+    "exclui o produto atual na posicao %i antes de limitar os relacionados",
+    async (posicaoAtual) => {
+      const relacionados = Array.from({ length: 10 }, (_, indice) =>
+        produto({ id: `relacionado-${indice}`, nome: `Peça ${indice}` }),
+      );
+      const itens = [...relacionados];
+      itens.splice(posicaoAtual, 0, produto());
+      renderizar({
+        recomendacoesService: {
+          obter: vi.fn().mockResolvedValue({ estrategia: "categoria", itens }),
+        },
+      });
+
+      const regiao = await screen.findByRole("region", {
+        name: "Peças relacionadas",
+      });
+      const lista = await within(regiao).findByRole("list");
+      expect(within(lista).getAllByRole("listitem")).toHaveLength(8);
+      expect(
+        within(regiao).queryByRole("link", { name: "Toalha de Renda" }),
+      ).not.toBeInTheDocument();
+      expect(
+        within(lista)
+          .getAllByRole("link", { name: /^Peça / })
+          .map((link) => link.getAttribute("href")),
+      ).toEqual(relacionados.slice(0, 8).map((item) => `/produto/${item.id}`));
+    },
+  );
+
+  it("mostra loading dos relacionados mantendo o produto visivel", async () => {
+    renderizar({
+      recomendacoesService: { obter: () => new Promise(() => {}) },
+    });
+
+    const regiao = await screen.findByRole("region", {
+      name: "Peças relacionadas",
+    });
+    expect(within(regiao).getByRole("status")).toHaveTextContent(
+      /carregando recomendações/i,
+    );
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Toalha de Renda" }),
+    ).toBeInTheDocument();
+    expect(within(regiao).queryByRole("list")).not.toBeInTheDocument();
+  });
+
+  it.each([
+    { cenario: "API sem itens", itens: [] },
+    { cenario: "API apenas com o produto atual", itens: [produto()] },
+  ])("mostra vazio com $cenario", async ({ itens }) => {
+    renderizar({
+      recomendacoesService: {
+        obter: vi.fn().mockResolvedValue({ estrategia: "categoria", itens }),
+      },
+    });
+
+    const regiao = await screen.findByRole("region", {
+      name: "Peças relacionadas",
+    });
+    expect(
+      await within(regiao).findByText(/nenhuma recomendação disponível/i),
+    ).toBeInTheDocument();
+    expect(within(regiao).queryByRole("list")).not.toBeInTheDocument();
+    expect(within(regiao).queryByRole("alert")).not.toBeInTheDocument();
   });
 
   it("renderiza os itens do fallback geral no carrossel", async () => {

@@ -63,10 +63,19 @@ export function FaixaRecomendacoes({
       ) : null}
 
       {estado.status === "erro" ? (
-        <p role="alert" className={CLASSE_ALERTA}>
-          <Icone nome="alerta" className="mt-0.5 flex-none" />
-          {estado.mensagem}
-        </p>
+        <div className="flex flex-col items-start gap-3">
+          <p role="alert" className={CLASSE_ALERTA}>
+            <Icone nome="alerta" className="mt-0.5 flex-none" />
+            {estado.mensagem}
+          </p>
+          <button
+            type="button"
+            onClick={estado.recarregar}
+            className="inline-flex min-h-[var(--control-h-md)] items-center justify-center rounded-control border border-border-strong bg-surface-card px-4 text-button font-semibold text-fg-strong hover:bg-action-secondary-hover"
+          >
+            Tentar novamente
+          </button>
+        </div>
       ) : null}
 
       {estado.status === "vazio" ? (
