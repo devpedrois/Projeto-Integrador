@@ -8,6 +8,7 @@
     "test:integridade": "vitest run tests/integridade --testTimeout=15000 --hookTimeout=15000",
     "test:concorrencia": "tsx scripts/concorrencia-checkout.ts",
     "metricas:recomendacao": "tsx scripts/metricas-recomendacao.ts",
+    "bench:recomendacao": "tsx scripts/bench-recomendacao-lote.ts",
     "dev": "tsx watch src/server.ts",
     "dev:api": "tsx watch src/server.ts",
     "dev:worker": "tsx watch src/worker.ts",

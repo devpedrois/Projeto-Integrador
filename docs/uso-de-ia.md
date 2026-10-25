@@ -1404,3 +1404,13 @@ A ferramenta gera CSV, JSON, tabela e gráfico reproduzíveis.
 A revisão equivalente foi realizada nesta conversa.
 
 Evidências: `evidencias/PI4-30/benchmark-fila/`.
+
+### 30.6: benchmark de recomendação em lote
+
+Pedro é responsável e revisor indicado.
+O Codex auxiliou nos testes e no benchmark concorrente.
+A ferramenta compara IDs ordenados, preservando a Strategy existente.
+Também apoiou CSV, JSON, gráfico e revisão equivalente nesta conversa.
+A suíte backend passou com 723 testes.
+
+Evidências: `evidencias/PI4-30/benchmark-recomendacao/`.
