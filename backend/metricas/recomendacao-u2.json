@@ -1,0 +1,344 @@
+{
+  "versao": 2,
+  "capturadoEm": "2026-10-25T22:13:40.700Z",
+  "timezone": "America/Sao_Paulo",
+  "ambiente": {
+    "node": "22.12.0",
+    "plataforma": "win32",
+    "http": "servidor local em loopback",
+    "snapshot": "REPEATABLE READ",
+    "repeticoes": 1
+  },
+  "metodo": {
+    "coberturaCatalogo": "Produtos elegiveis distintos recomendados / produtos elegiveis * 100",
+    "coberturaContextos": "Contextos com resposta nao vazia / contextos avaliados * 100; cobertura v0 para categoria",
+    "fallback": "Respostas fallback-geral / contextos avaliados * 100",
+    "diversidade": "Media de categorias distintas por resposta, incluindo zero nas vazias; tambem uniao global",
+    "latencia": "HTTP completo ate receber e interpretar JSON; setup, seed e emissao de JWT excluidos",
+    "p95": "Nearest-rank: amostra ordenada no indice ceil(0.95 * n)-1",
+    "frio": "Cache de recomendacoes esvaziado antes de cada par; nao limpa caches PostgreSQL ou sistema operacional",
+    "quente": "Mesma requisicao imediatamente apos fria; categoria deve HIT; historico permanece BYPASS",
+    "populacao": "Todos os produtos publicos elegiveis e todos os compradores ativos em ordem de UUID",
+    "autenticacao": "JWTs efemeros apenas para a API local; autenticar e papel atuais reconsultados no banco",
+    "sementes": "Branches e schemas existentes; nenhum seed ou migration executado",
+    "comparacaoRegional": {
+      "selecao": "ambos",
+      "execucao": "CategoriaRecomendacaoStrategy direta, sem HTTP ou cache; mesma base e snapshot entre modos",
+      "coberturaCatalogo": "Produtos elegiveis distintos recomendados / produtos elegiveis * 100",
+      "acertoCategoria": "Itens da categoria do contexto / total de itens recomendados * 100",
+      "mesmaRegiao": "Itens com regiao nao nula igual a do contexto / total de itens recomendados * 100; regioes ausentes nao contam como coincidencia",
+      "visibilidade": "Mesma projecao publica do service: exclui IDs ocultos, repetidos e o proprio contexto; nao altera a Strategy",
+      "repeticoes": "Uma resposta por produto e modo; repeticoes de latencia HTTP nao duplicam qualidade"
+    }
+  },
+  "bases": [
+    {
+      "base": "demo",
+      "origem": "branch-configurada",
+      "tamanho": {
+        "produtos": 9,
+        "produtosElegiveis": 7,
+        "usuarios": 7,
+        "compradoresAtivos": 3,
+        "artesaos": 2,
+        "pedidos": 3,
+        "pedidosConfirmados": 2,
+        "categoriasElegiveis": 6
+      },
+      "estrategias": [
+        {
+          "estrategia": "categoria",
+          "contextos": 7,
+          "totalRecomendacoes": 32,
+          "coberturaCatalogo": {
+            "numerador": 7,
+            "denominador": 7,
+            "percentual": 100
+          },
+          "coberturaContextos": {
+            "numerador": 7,
+            "denominador": 7,
+            "percentual": 100
+          },
+          "taxaFallback": {
+            "numerador": 5,
+            "denominador": 7,
+            "percentual": 71.42857142857143
+          },
+          "diversidadeCategorias": {
+            "mediaPorResposta": 3.857142857142857,
+            "distintas": 6,
+            "elegiveis": 6,
+            "percentual": 100
+          },
+          "acertoCategoria": {
+            "numerador": 2,
+            "denominador": 32,
+            "percentual": 6.25
+          },
+          "frio": {
+            "amostras": 7,
+            "mediaMs": 207.633,
+            "p95Ms": 220.508,
+            "cache": {
+              "hit": 0,
+              "miss": 7,
+              "bypass": 0
+            }
+          },
+          "quente": {
+            "amostras": 7,
+            "mediaMs": 1.616,
+            "p95Ms": 2.601,
+            "cache": {
+              "hit": 7,
+              "miss": 0,
+              "bypass": 0
+            }
+          }
+        },
+        {
+          "estrategia": "historico",
+          "contextos": 3,
+          "totalRecomendacoes": 9,
+          "coberturaCatalogo": {
+            "numerador": 7,
+            "denominador": 7,
+            "percentual": 100
+          },
+          "coberturaContextos": {
+            "numerador": 3,
+            "denominador": 3,
+            "percentual": 100
+          },
+          "taxaFallback": {
+            "numerador": 1,
+            "denominador": 3,
+            "percentual": 33.333333333333336
+          },
+          "diversidadeCategorias": {
+            "mediaPorResposta": 2.6666666666666665,
+            "distintas": 6,
+            "elegiveis": 6,
+            "percentual": 100
+          },
+          "frio": {
+            "amostras": 3,
+            "mediaMs": 192.62,
+            "p95Ms": 233.654,
+            "cache": {
+              "hit": 0,
+              "miss": 0,
+              "bypass": 3
+            }
+          },
+          "quente": {
+            "amostras": 3,
+            "mediaMs": 191.586,
+            "p95Ms": 228.099,
+            "cache": {
+              "hit": 0,
+              "miss": 0,
+              "bypass": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "base": "volume",
+      "origem": "branch-configurada",
+      "tamanho": {
+        "produtos": 1000,
+        "produtosElegiveis": 1000,
+        "usuarios": 350,
+        "compradoresAtivos": 300,
+        "artesaos": 50,
+        "pedidos": 1500,
+        "pedidosConfirmados": 1500,
+        "categoriasElegiveis": 6
+      },
+      "estrategias": [
+        {
+          "estrategia": "categoria",
+          "contextos": 1000,
+          "totalRecomendacoes": 8000,
+          "coberturaCatalogo": {
+            "numerador": 54,
+            "denominador": 1000,
+            "percentual": 5.4
+          },
+          "coberturaContextos": {
+            "numerador": 1000,
+            "denominador": 1000,
+            "percentual": 100
+          },
+          "taxaFallback": {
+            "numerador": 0,
+            "denominador": 1000,
+            "percentual": 0
+          },
+          "diversidadeCategorias": {
+            "mediaPorResposta": 1,
+            "distintas": 6,
+            "elegiveis": 6,
+            "percentual": 100
+          },
+          "acertoCategoria": {
+            "numerador": 8000,
+            "denominador": 8000,
+            "percentual": 100
+          },
+          "frio": {
+            "amostras": 1000,
+            "mediaMs": 117.151,
+            "p95Ms": 121.7,
+            "cache": {
+              "hit": 0,
+              "miss": 1000,
+              "bypass": 0
+            }
+          },
+          "quente": {
+            "amostras": 1000,
+            "mediaMs": 1.499,
+            "p95Ms": 2.585,
+            "cache": {
+              "hit": 1000,
+              "miss": 0,
+              "bypass": 0
+            }
+          }
+        },
+        {
+          "estrategia": "historico",
+          "contextos": 300,
+          "totalRecomendacoes": 2400,
+          "coberturaCatalogo": {
+            "numerador": 43,
+            "denominador": 1000,
+            "percentual": 4.3
+          },
+          "coberturaContextos": {
+            "numerador": 300,
+            "denominador": 300,
+            "percentual": 100
+          },
+          "taxaFallback": {
+            "numerador": 1,
+            "denominador": 300,
+            "percentual": 0.3333333333333333
+          },
+          "diversidadeCategorias": {
+            "mediaPorResposta": 3.1433333333333335,
+            "distintas": 6,
+            "elegiveis": 6,
+            "percentual": 100
+          },
+          "frio": {
+            "amostras": 300,
+            "mediaMs": 117.052,
+            "p95Ms": 120.138,
+            "cache": {
+              "hit": 0,
+              "miss": 0,
+              "bypass": 300
+            }
+          },
+          "quente": {
+            "amostras": 300,
+            "mediaMs": 117.21,
+            "p95Ms": 120.71,
+            "cache": {
+              "hit": 0,
+              "miss": 0,
+              "bypass": 300
+            }
+          }
+        }
+      ],
+      "comparacaoRegional": [
+        {
+          "modo": "on",
+          "reforcoRegionalAtivo": true,
+          "produtos": 1000,
+          "produtosElegiveis": 1000,
+          "contextos": 1000,
+          "contextosSemRegiao": 0,
+          "totalRecomendacoes": 8000,
+          "coberturaCatalogo": {
+            "numerador": 162,
+            "denominador": 1000,
+            "percentual": 16.2
+          },
+          "coberturaContextos": {
+            "numerador": 1000,
+            "denominador": 1000,
+            "percentual": 100
+          },
+          "taxaFallback": {
+            "numerador": 0,
+            "denominador": 1000,
+            "percentual": 0
+          },
+          "diversidadeCategorias": {
+            "mediaPorResposta": 1,
+            "distintas": 6,
+            "elegiveis": 6,
+            "percentual": 100
+          },
+          "acertoCategoria": {
+            "numerador": 8000,
+            "denominador": 8000,
+            "percentual": 100
+          },
+          "mesmaRegiao": {
+            "numerador": 8000,
+            "denominador": 8000,
+            "percentual": 100
+          }
+        },
+        {
+          "modo": "off",
+          "reforcoRegionalAtivo": false,
+          "produtos": 1000,
+          "produtosElegiveis": 1000,
+          "contextos": 1000,
+          "contextosSemRegiao": 0,
+          "totalRecomendacoes": 8000,
+          "coberturaCatalogo": {
+            "numerador": 54,
+            "denominador": 1000,
+            "percentual": 5.4
+          },
+          "coberturaContextos": {
+            "numerador": 1000,
+            "denominador": 1000,
+            "percentual": 100
+          },
+          "taxaFallback": {
+            "numerador": 0,
+            "denominador": 1000,
+            "percentual": 0
+          },
+          "diversidadeCategorias": {
+            "mediaPorResposta": 1,
+            "distintas": 6,
+            "elegiveis": 6,
+            "percentual": 100
+          },
+          "acertoCategoria": {
+            "numerador": 8000,
+            "denominador": 8000,
+            "percentual": 100
+          },
+          "mesmaRegiao": {
+            "numerador": 2695,
+            "denominador": 8000,
+            "percentual": 33.6875
+          }
+        }
+      ]
+    }
+  ]
+}

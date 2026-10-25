@@ -143,6 +143,8 @@ describe("IA-04: medicao por HTTP e PostgreSQL reais", () => {
         volumeSchema.schema,
         "--output",
         output,
+        "--reforco-regional",
+        "off",
       ]);
       const result = await runMetrics(options, {
         DATABASE_URL: process.env.DIRECT_URL,
@@ -159,6 +161,11 @@ describe("IA-04: medicao por HTTP e PostgreSQL reais", () => {
         ["volume", "branch-configurada", 1],
       ]);
       expect(JSON.parse(await readFile(output, "utf8"))).toEqual(result);
+      expect(
+        result.bases
+          .find((base) => base.base === "volume")
+          ?.comparacaoRegional?.map((r) => r.modo),
+      ).toEqual(["off"]);
       expect(await banco.prisma.pedido.count()).toBe(1);
       expect(await volume.prisma.produto.count()).toBe(1);
     } finally {

@@ -9,6 +9,7 @@ backend/src/generated/prisma/
 docs/*
 !docs/uso-de-ia.md
 !docs/indices-u2.md
+!docs/metricas-recomendacao-u2.md
 !docs/fake-api.md
 !docs/docs auxiliares/
 docs/docs auxiliares/*

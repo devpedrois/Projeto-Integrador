@@ -75,6 +75,25 @@ describe("IA-04: metricas independentes de ranking", () => {
 });
 
 describe("IA-04: CLI e configuracao segura", () => {
+  it("IA.3 compara ambos os modos por padrao", () => {
+    expect(parseMetricsOptions([])).toHaveProperty("reforcoRegional", "ambos");
+  });
+
+  it.each(["on", "off", "ambos"])("IA.3 aceita reforco regional %s", (modo) => {
+    expect(parseMetricsOptions(["--reforco-regional", modo])).toHaveProperty(
+      "reforcoRegional",
+      modo,
+    );
+  });
+
+  it.each(["true", "ON", "", "on,off"])(
+    "IA.3 rejeita modo invalido %j",
+    (modo) => {
+      expect(() => parseMetricsOptions(["--reforco-regional", modo])).toThrow(
+        "Argumentos de metricas invalidos.",
+      );
+    },
+  );
   it("seleciona branch de volume por nome da variavel", () => {
     const options = parseMetricsOptions([
       "--volume-env",

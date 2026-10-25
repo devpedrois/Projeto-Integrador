@@ -6,6 +6,8 @@ import { z } from "zod";
 import { createApp } from "../../src/app.js";
 import type { PrismaClient } from "../../src/generated/prisma/client.js";
 import { MemoryCacheStore } from "../../src/utils/cache.js";
+import { CategoriaRecomendacaoStrategy } from "../../src/integrations/recommendation/categoria-recomendacao.strategy.js";
+import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
 import {
   resumirRecomendacoes,
   resumirTempos,
@@ -230,7 +232,95 @@ export async function medirBaseRecomendacao(
   }
 }
 
-export type ResultadoBase = Awaited<ReturnType<typeof medirBaseRecomendacao>>;
+export type ReforcoRegional = "on" | "off" | "ambos";
+
+export async function medirReforcoRegional(
+  prisma: PrismaClient,
+  reforcoRegional: ReforcoRegional,
+) {
+  const produtos = await prisma.produto.count();
+  const elegiveis = await prisma.produto.findMany({
+    where: {
+      ativo: true,
+      desativadoPorAdmin: false,
+      quantidadeEstoque: { gt: 0 },
+      artesao: { ativo: true, papel: "artesao" },
+    },
+    select: {
+      id: true,
+      categoriaId: true,
+      artesao: { select: { perfilArtesao: { select: { regiaoId: true } } } },
+    },
+    orderBy: { id: "asc" },
+  });
+  const catalogo = new Map(elegiveis.map((p) => [p.id, p]));
+  const modos: ("on" | "off")[] =
+    reforcoRegional === "ambos" ? ["on", "off"] : [reforcoRegional];
+  const resultados = [];
+  const proporcao = (numerador: number, denominador: number) => ({
+    numerador,
+    denominador,
+    percentual: denominador === 0 ? 0 : (numerador * 100) / denominador,
+  });
+  for (const modo of modos) {
+    const strategy = new CategoriaRecomendacaoStrategy(
+      new PrismaRecomendacaoRepository(prisma),
+      modo === "on",
+    );
+    const respostas: RespostaMetrica[] = [];
+    let acertos = 0;
+    let mesmaRegiao = 0;
+    for (const contexto of elegiveis) {
+      const selecao = await strategy.obter({ produtoId: contexto.id });
+      const ids = [...new Set(selecao.produtoIds)].filter(
+        (id) => id !== contexto.id,
+      );
+      const itens = ids.flatMap((id) => {
+        const candidato = catalogo.get(id);
+        if (!candidato) return [];
+        if (candidato.categoriaId === contexto.categoriaId) acertos++;
+        const regiao = contexto.artesao.perfilArtesao?.regiaoId;
+        if (regiao && candidato.artesao.perfilArtesao?.regiaoId === regiao)
+          mesmaRegiao++;
+        return [{ id, categoriaId: candidato.categoriaId }];
+      });
+      respostas.push({ estrategia: selecao.estrategia, itens });
+    }
+    const qualidade = resumirRecomendacoes(respostas, elegiveis);
+    resultados.push({
+      modo,
+      reforcoRegionalAtivo: modo === "on",
+      produtos,
+      produtosElegiveis: elegiveis.length,
+      contextos: elegiveis.length,
+      contextosSemRegiao: elegiveis.filter(
+        (p) => !p.artesao.perfilArtesao?.regiaoId,
+      ).length,
+      ...qualidade,
+      acertoCategoria: proporcao(acertos, qualidade.totalRecomendacoes),
+      mesmaRegiao: proporcao(mesmaRegiao, qualidade.totalRecomendacoes),
+    });
+  }
+  return resultados;
+}
+
+export type ResultadoRegional = Awaited<
+  ReturnType<typeof medirReforcoRegional>
+>[number];
+export type ResultadoBase = Awaited<
+  ReturnType<typeof medirBaseRecomendacao>
+> & { comparacaoRegional?: ResultadoRegional[] };
+
+export function formatarTabelaRegional(resultados: ResultadoRegional[]) {
+  return [
+    "| Reforco regional | Produtos | Elegiveis | Recomendacoes | Cobertura catalogo % | Cobertura v0 % | Fallback % | Acerto categoria % | Mesma regiao % |",
+    "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ...resultados.map(
+      (r) =>
+        `| ${r.modo} | ${r.produtos} | ${r.produtosElegiveis} | ${r.totalRecomendacoes} | ${r.coberturaCatalogo.percentual} | ${r.coberturaContextos.percentual} | ${r.taxaFallback.percentual} | ${r.acertoCategoria.percentual} | ${r.mesmaRegiao.percentual} |`,
+    ),
+  ].join("\n");
+}
 
 export function formatarTabelaMetricas(bases: ResultadoBase[]) {
   const linhas = [
@@ -242,5 +332,14 @@ export function formatarTabelaMetricas(bases: ResultadoBase[]) {
       linhas.push(
         `| ${base.base} | ${e.estrategia} | ${e.contextos} | ${e.coberturaCatalogo.percentual.toFixed(2)} | ${e.coberturaContextos.percentual.toFixed(2)} | ${e.taxaFallback.percentual.toFixed(2)} | ${e.diversidadeCategorias.mediaPorResposta.toFixed(2)} | ${e.frio.mediaMs}/${e.frio.p95Ms} | ${e.quente.mediaMs}/${e.quente.p95Ms} | ${e.estrategia === "historico" ? "BYPASS" : "HIT"} |`,
       );
+  for (const base of bases) {
+    if (base.comparacaoRegional) {
+      linhas.push(
+        "",
+        `Comparacao regional: ${base.base}`,
+        formatarTabelaRegional(base.comparacaoRegional),
+      );
+    }
+  }
   return linhas.join("\n");
 }

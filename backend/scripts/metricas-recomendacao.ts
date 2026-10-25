@@ -13,6 +13,7 @@ import { runVolumeSeed } from "../prisma/seed-volume.js";
 import {
   formatarTabelaMetricas,
   medirBaseRecomendacao,
+  medirReforcoRegional,
   type ResultadoBase,
 } from "./lib/recomendacao-benchmark.js";
 
@@ -25,6 +26,7 @@ const optionsSchema = z
     schemaVolume: z.string().regex(/^[a-z][a-z0-9_]{0,62}$/),
     repeticoes: z.coerce.number().int().min(1).max(10),
     output: z.string().min(1),
+    reforcoRegional: z.enum(["on", "off", "ambos"]),
   })
   .strict();
 
@@ -45,6 +47,7 @@ export function parseMetricsOptions(args: string[]): MetricsOptions {
         "schema-volume": { type: "string" },
         repeticoes: { type: "string" },
         output: { type: "string" },
+        "reforco-regional": { type: "string" },
       },
     });
     if (
@@ -64,6 +67,7 @@ export function parseMetricsOptions(args: string[]): MetricsOptions {
       schemaDemo: values["schema-demo"] ?? "public",
       schemaVolume: values["schema-volume"] ?? "public",
       repeticoes: values.repeticoes ?? "1",
+      reforcoRegional: values["reforco-regional"] ?? "ambos",
       output: resolve(
         values.output ??
           fileURLToPath(
@@ -205,12 +209,19 @@ async function medirConexao(
     }
     pid = (await pool.query<{ pid: number }>("SELECT pg_backend_pid() AS pid"))
       .rows[0]?.pid;
-    const resultado = await medirBaseRecomendacao(
+    const resultado: ResultadoBase = await medirBaseRecomendacao(
       prisma,
       nome,
       options.isolado ? "seed-isolado" : "branch-configurada",
       options.repeticoes,
     );
+    if (nome === "volume") {
+      console.log(`Comparando reforco regional: ${options.reforcoRegional}...`);
+      resultado.comparacaoRegional = await medirReforcoRegional(
+        prisma,
+        options.reforcoRegional,
+      );
+    }
     const snapshot = (
       await pool.query<{ pid: number; readonly: string }>(
         "SELECT pg_backend_pid() AS pid, current_setting('transaction_read_only') AS readonly",
@@ -251,7 +262,7 @@ export async function runMetrics(
     bases.push(await medirConexao(connectionStrings[nome], nome, options));
   }
   const relatorio = {
-    versao: 1,
+    versao: 2,
     capturadoEm: new Date().toISOString(),
     timezone: "America/Sao_Paulo",
     ambiente: {
@@ -282,6 +293,21 @@ export async function runMetrics(
       sementes: options.isolado
         ? "Seeds BD-05 versionados; volume usa PRNG fixo 20261013; sem alterar dados publicos"
         : "Branches e schemas existentes; nenhum seed ou migration executado",
+      comparacaoRegional: {
+        selecao: options.reforcoRegional,
+        execucao:
+          "CategoriaRecomendacaoStrategy direta, sem HTTP ou cache; mesma base e snapshot entre modos",
+        coberturaCatalogo:
+          "Produtos elegiveis distintos recomendados / produtos elegiveis * 100",
+        acertoCategoria:
+          "Itens da categoria do contexto / total de itens recomendados * 100",
+        mesmaRegiao:
+          "Itens com regiao nao nula igual a do contexto / total de itens recomendados * 100; regioes ausentes nao contam como coincidencia",
+        visibilidade:
+          "Mesma projecao publica do service: exclui IDs ocultos, repetidos e o proprio contexto; nao altera a Strategy",
+        repeticoes:
+          "Uma resposta por produto e modo; repeticoes de latencia HTTP nao duplicam qualidade",
+      },
     },
     bases,
   };

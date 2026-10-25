@@ -1443,3 +1443,12 @@ A interface recebeu seleção de arquivo e prévia local.
 A revisão equivalente foi realizada nesta conversa.
 
 Evidências: `evidencias/Web.6/`.
+
+### IA.3: métricas com reforço regional
+
+O Codex auxiliou na flag de comparação regional.
+Os testes usam a Strategy real e PostgreSQL.
+O relatório compara cobertura, fallback, categoria e região.
+A revisão equivalente foi realizada nesta conversa.
+
+Evidências: `evidencias/IA.3/`.
