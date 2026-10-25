@@ -77,7 +77,15 @@ it("Fake API exige sessao de comprador para leitura", async () => {
 it("Fake API preserva valores gravados e nao inventa pagamento legado", async () => {
   await repositorio.create(pedido);
   const detalhe = await service.obter(pedido.id);
-  expect(detalhe.itens).toEqual([{ ...pedido.itens[0], subtotal: 10 }]);
+  expect(detalhe.itens).toEqual([
+    {
+      ...pedido.itens[0],
+      subtotal: 10,
+      id: `${pedido.id}:0`,
+      status: "aguardando_envio",
+      enviadoEm: null,
+    },
+  ]);
   expect(detalhe.pagamento).toBeNull();
 });
 

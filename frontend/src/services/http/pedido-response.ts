@@ -1,4 +1,5 @@
 import { ServiceError } from "@/services/errors";
+import { lerItemPedido } from "./item-pedido-response";
 import type {
   DetalhePedido,
   PagamentoPedido,
@@ -120,24 +121,7 @@ export function lerDetalhePedido(value: unknown, id: string): DetalhePedido {
     !Array.isArray(registro.itens)
   )
     invalidar();
-  const itens = registro.itens.map((value: unknown) => {
-    const { produtoId, nome, quantidade, precoUnitario, subtotal } =
-      objeto(value);
-    if (
-      !texto(produtoId) ||
-      !texto(nome) ||
-      typeof quantidade !== "number" ||
-      !Number.isSafeInteger(quantidade) ||
-      quantidade < 1 ||
-      (precoUnitario !== null && !dinheiro(precoUnitario)) ||
-      (subtotal !== null && !dinheiro(subtotal)) ||
-      (precoUnitario !== null &&
-        subtotal !== null &&
-        centavos(subtotal) !== centavos(precoUnitario) * quantidade)
-    )
-      invalidar();
-    return { produtoId, nome, quantidade, precoUnitario, subtotal };
-  });
+  const itens = registro.itens.map(lerItemPedido);
   if (
     resumo.total !== null &&
     itens.every((item) => item.subtotal !== null) &&

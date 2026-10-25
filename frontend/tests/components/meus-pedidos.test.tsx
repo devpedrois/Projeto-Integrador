@@ -88,6 +88,9 @@ it("mostra lista, detalhe, itens e pagamento", async () => {
       itens: [
         {
           produtoId: "produto-1",
+          id: "55555555-5555-4555-8555-555555555555",
+          status: "aguardando_envio",
+          enviadoEm: null,
           nome: "Vaso artesanal",
           quantidade: 2,
           precoUnitario: 13.37,
@@ -187,6 +190,46 @@ it("artesao nao consulta historico de comprador", () => {
   expect(
     screen.queryByRole("heading", { name: "Meus pedidos" }),
   ).not.toBeInTheDocument();
+});
+
+it("atualiza status do item no detalhe sem refazer login", async () => {
+  vi.mocked(fetch).mockResolvedValueOnce(Response.json(listagem));
+  conta();
+  const item = {
+    id: "55555555-5555-4555-8555-555555555555",
+    produtoId: "produto-1",
+    nome: "Vaso artesanal",
+    quantidade: 2,
+    precoUnitario: 13.37,
+    subtotal: 26.74,
+    status: "aguardando_envio",
+    enviadoEm: null,
+  };
+  vi.mocked(fetch).mockResolvedValueOnce(
+    Response.json({
+      pedido: resumo,
+      pagamento: resumo.pagamento,
+      itens: [item],
+    }),
+  );
+  await userEvent.click(
+    await screen.findByRole("button", { name: "Ver pedido ORG-2026-000001" }),
+  );
+  expect(await screen.findByText("Aguardando envio")).toBeInTheDocument();
+  vi.mocked(fetch).mockResolvedValueOnce(
+    Response.json({
+      pedido: resumo,
+      pagamento: resumo.pagamento,
+      itens: [
+        { ...item, status: "enviado", enviadoEm: "2026-10-25T12:00:00.000Z" },
+      ],
+    }),
+  );
+  await userEvent.click(
+    screen.getByRole("button", { name: "Atualizar pedido" }),
+  );
+  expect(await screen.findByText("Enviado")).toBeInTheDocument();
+  expect(fetch).toHaveBeenCalledTimes(3);
 });
 
 it("diferencia pedido pendente e cancelado e pagamento recusado", async () => {

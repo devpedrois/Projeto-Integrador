@@ -5,6 +5,7 @@ import {
   validateListarPedidos,
   validateListarPedidosArtesao,
   validateObterPedido,
+  validateEnviarItemPedido,
 } from "../validators/pedido.validator.js";
 import { exigirPapel } from "../middlewares/role.middleware.js";
 
@@ -13,6 +14,13 @@ export function createPedidoRouter(
   autenticarUsuario: RequestHandler,
 ): Router {
   const router = Router();
+  router.patch(
+    "/artesao/itens-pedido/:id/enviar",
+    autenticarUsuario,
+    exigirPapel("artesao"),
+    validateEnviarItemPedido,
+    controller.enviarItem,
+  );
   router.get(
     "/artesao/pedidos",
     autenticarUsuario,

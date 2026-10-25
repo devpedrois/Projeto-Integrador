@@ -67,6 +67,26 @@ export const pedidoParamsSchema = z.strictObject({
   id: z.uuid().transform((value) => value.toLowerCase()),
 });
 
+export const enviarItemPedidoSchema = z.strictObject({});
+
+export function validateEnviarItemPedido(
+  request: Request,
+  response: Response,
+  next: NextFunction,
+): void {
+  const params = pedidoParamsSchema.safeParse(request.params);
+  if (
+    !params.success ||
+    !enviarItemPedidoSchema.safeParse(request.body ?? {}).success ||
+    !enviarItemPedidoSchema.safeParse(request.query).success
+  ) {
+    next(new AppError(400, "VALIDACAO", "Envio de item invalido."));
+    return;
+  }
+  response.locals.itemPedidoId = params.data.id;
+  next();
+}
+
 export function validateListarPedidos(
   request: Request,
   response: Response,

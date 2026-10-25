@@ -15,6 +15,8 @@ CREATE TYPE "PapelUsuario" AS ENUM ('comprador', 'artesao', 'admin');
 -- CreateEnum
 CREATE TYPE "StatusPedido" AS ENUM ('pendente', 'confirmado', 'cancelado');
 
+CREATE TYPE "StatusItemPedido" AS ENUM ('aguardando_envio', 'enviado');
+
 -- CreateEnum
 CREATE TYPE "MetodoPagamento" AS ENUM ('pix_simulado');
 
@@ -144,6 +146,8 @@ CREATE TABLE "ItemPedido" (
     "quantidade" INTEGER NOT NULL,
     "precoUnitario" DECIMAL(10,2),
     "subtotal" DECIMAL(10,2),
+    "status" "StatusItemPedido" NOT NULL DEFAULT 'aguardando_envio',
+    "enviadoEm" TIMESTAMPTZ(3),
 
     CONSTRAINT "ItemPedido_pkey" PRIMARY KEY ("id")
 );

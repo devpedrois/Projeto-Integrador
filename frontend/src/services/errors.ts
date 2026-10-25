@@ -19,12 +19,15 @@ const CODIGOS_HTTP: Readonly<Record<number, readonly string[]>> = {
     "PRODUTO_NAO_ENCONTRADO",
     "ARTESAO_NAO_ENCONTRADO",
     "PEDIDO_NAO_ENCONTRADO",
+    "ITEM_PEDIDO_NAO_ENCONTRADO",
   ],
   409: [
     "CONFLITO",
     "EMAIL_JA_CADASTRADO",
     "ESTOQUE_INSUFICIENTE",
     "AVALIACAO_DUPLICADA",
+    "ITEM_JA_ENVIADO",
+    "PEDIDO_NAO_CONFIRMADO",
   ],
 };
 const ERROS_HTTP: Readonly<Record<number, readonly [string, string]>> = {

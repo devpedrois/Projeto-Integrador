@@ -160,6 +160,9 @@ describe("Web.1 pedidos do artesao em PostgreSQL real", () => {
           ? [
               {
                 produtoId: produtoA,
+                id: expect.any(String),
+                status: "aguardando_envio",
+                enviadoEm: null,
                 nome: "Peca A",
                 quantidade: 3,
                 precoUnitario: 0.1,
@@ -167,6 +170,9 @@ describe("Web.1 pedidos do artesao em PostgreSQL real", () => {
               },
               {
                 produtoId: produtoC,
+                id: expect.any(String),
+                status: "aguardando_envio",
+                enviadoEm: null,
                 nome: "Peca C",
                 quantidade: 2,
                 precoUnitario: 0.1,
@@ -176,6 +182,9 @@ describe("Web.1 pedidos do artesao em PostgreSQL real", () => {
           : [
               {
                 produtoId: produtoB,
+                id: expect.any(String),
+                status: "aguardando_envio",
+                enviadoEm: null,
                 nome: "Peca B",
                 quantidade: 2,
                 precoUnitario: 20.5,

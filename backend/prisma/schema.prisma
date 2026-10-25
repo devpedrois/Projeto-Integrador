@@ -19,6 +19,11 @@ enum StatusPedido {
   cancelado
 }
 
+enum StatusItemPedido {
+  aguardando_envio
+  enviado
+}
+
 enum MetodoPagamento {
   pix_simulado
 }
@@ -172,14 +177,16 @@ model Pedido {
 }
 
 model ItemPedido {
-  id            String   @id @default(uuid()) @db.Uuid
-  pedidoId      String   @db.Uuid
-  produtoId     String   @db.Uuid
+  id            String           @id @default(uuid()) @db.Uuid
+  pedidoId      String           @db.Uuid
+  produtoId     String           @db.Uuid
   quantidade    Int
-  precoUnitario Decimal? @db.Decimal(10, 2)
-  subtotal      Decimal? @db.Decimal(10, 2)
-  pedido        Pedido   @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  produto       Produto  @relation(fields: [produtoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  precoUnitario Decimal?         @db.Decimal(10, 2)
+  subtotal      Decimal?         @db.Decimal(10, 2)
+  status        StatusItemPedido @default(aguardando_envio)
+  enviadoEm     DateTime?        @db.Timestamptz(3)
+  pedido        Pedido           @relation(fields: [pedidoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  produto       Produto          @relation(fields: [produtoId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 
   @@index([pedidoId])
   @@index([produtoId])

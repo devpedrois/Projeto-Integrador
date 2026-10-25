@@ -49,6 +49,9 @@ export interface PaginaPedidos extends PaginacaoPedidos {
 export interface DetalhePedido extends ResumoPedido {
   compradorId: string;
   itens: Array<{
+    id: string;
+    status: "aguardando_envio" | "enviado";
+    enviadoEm: string | null;
     produtoId: string;
     nome: string;
     quantidade: number;
@@ -112,6 +115,7 @@ export interface NovoPedido extends CriarPedidoInput {
 }
 
 export interface PedidoRepository {
+  enviarItem(id: string, artesaoId: string): Promise<ItemEnviado>;
   criar(input: NovoPedido): Promise<PedidoCriado>;
   listarRecebidos(
     artesaoId: string,
@@ -122,6 +126,12 @@ export interface PedidoRepository {
     paginacao: PaginacaoPedidos,
   ): Promise<PaginaPedidos>;
   obter(id: string, compradorId: string): Promise<DetalhePedido | null>;
+}
+
+export interface ItemEnviado {
+  id: string;
+  status: "enviado";
+  enviadoEm: string;
 }
 
 interface EstoqueRow {
@@ -136,6 +146,45 @@ interface EstoqueRow {
 
 export class PrismaPedidoRepository implements PedidoRepository {
   public constructor(private readonly prisma: PrismaClient) {}
+
+  public async enviarItem(id: string, artesaoId: string): Promise<ItemEnviado> {
+    return this.prisma.$transaction(async (tx) => {
+      const [item] = await tx.$queryRaw<
+        {
+          id: string;
+          status: "aguardando_envio" | "enviado";
+          statusPedido: string;
+        }[]
+      >`
+        SELECT i."id", i."status", pe."status" AS "statusPedido"
+        FROM "ItemPedido" i
+        JOIN "Produto" p ON p."id" = i."produtoId"
+        JOIN "Pedido" pe ON pe."id" = i."pedidoId"
+        WHERE i."id" = ${id}::uuid AND p."artesaoId" = ${artesaoId}::uuid
+        FOR UPDATE OF i FOR SHARE OF p, pe
+      `;
+      if (!item)
+        throw new AppError(
+          404,
+          "ITEM_PEDIDO_NAO_ENCONTRADO",
+          "Item de pedido nao encontrado.",
+        );
+      if (item.status === "enviado")
+        throw new AppError(409, "ITEM_JA_ENVIADO", "Item ja enviado.");
+      if (item.statusPedido !== "confirmado")
+        throw new AppError(
+          409,
+          "PEDIDO_NAO_CONFIRMADO",
+          "Pedido nao confirmado.",
+        );
+      const enviadoEm = new Date();
+      await tx.itemPedido.update({
+        where: { id },
+        data: { status: "enviado", enviadoEm },
+      });
+      return { id, status: "enviado", enviadoEm: enviadoEm.toISOString() };
+    });
+  }
 
   public async listarRecebidos(
     artesaoId: string,
@@ -159,6 +208,9 @@ export class PrismaPedidoRepository implements PedidoRepository {
               where: filtroItem,
               orderBy: { id: "asc" },
               select: {
+                id: true,
+                status: true,
+                enviadoEm: true,
                 produtoId: true,
                 quantidade: true,
                 precoUnitario: true,
@@ -184,6 +236,9 @@ export class PrismaPedidoRepository implements PedidoRepository {
         criadoEm: registro.criadoEm.toISOString(),
         nomeComprador: registro.comprador.nome,
         itens: registro.itens.map((item) => ({
+          id: item.id,
+          status: item.status,
+          enviadoEm: item.enviadoEm?.toISOString() ?? null,
           produtoId: item.produtoId,
           nome: item.produto.nome,
           quantidade: item.quantidade,
@@ -234,6 +289,9 @@ export class PrismaPedidoRepository implements PedidoRepository {
         itens: {
           orderBy: { id: "asc" },
           select: {
+            id: true,
+            status: true,
+            enviadoEm: true,
             produtoId: true,
             quantidade: true,
             precoUnitario: true,
@@ -248,6 +306,9 @@ export class PrismaPedidoRepository implements PedidoRepository {
       ...mapearResumo(registro),
       compradorId: registro.compradorId,
       itens: registro.itens.map((item) => ({
+        id: item.id,
+        status: item.status,
+        enviadoEm: item.enviadoEm?.toISOString() ?? null,
         produtoId: item.produtoId,
         nome: item.produto.nome,
         quantidade: item.quantidade,

@@ -293,6 +293,9 @@ const resumo = registrar(
   resumoExample,
 );
 const itemPedidoExample = {
+  id,
+  status: "aguardando_envio" as const,
+  enviadoEm: null,
   produtoId: id,
   nome: "Vaso de barro",
   quantidade: 1,
@@ -302,6 +305,9 @@ const itemPedidoExample = {
 const itemPedido = registrar(
   "ItemPedido",
   z.object({
+    id: uuid,
+    status: z.enum(["aguardando_envio", "enviado"]),
+    enviadoEm: instante.nullable(),
     produtoId: uuid,
     nome: z.string(),
     quantidade: inteiro,
@@ -319,7 +325,15 @@ const pedidoExample = {
     status: "confirmado" as const,
     criadoEm: data,
   },
-  itens: [itemPedidoExample],
+  itens: [
+    {
+      produtoId: id,
+      nome: "Vaso de barro",
+      quantidade: 1,
+      precoUnitario: 89.9,
+      subtotal: 89.9,
+    },
+  ],
 };
 const pedidoCriado = registrar(
   "PedidoCriado",
@@ -331,12 +345,18 @@ const pedidoCriado = registrar(
       status: z.literal("confirmado"),
     }),
     itens: z.array(
-      itemPedido.extend({ precoUnitario: dinheiro, subtotal: dinheiro }),
+      itemPedido
+        .omit({ id: true, status: true, enviadoEm: true })
+        .extend({ precoUnitario: dinheiro, subtotal: dinheiro }),
     ),
   }),
   pedidoExample,
 );
-const detalheExample = { ...pedidoExample, pagamento: pagamentoExample };
+const detalheExample = {
+  ...pedidoExample,
+  itens: [itemPedidoExample],
+  pagamento: pagamentoExample,
+};
 const detalhe = registrar(
   "DetalhePedido",
   z.object({
@@ -914,6 +934,35 @@ endpoint({
   errors: [400, 401, 403],
   description:
     "Identidade vem da sessão. Filtra pedidos confirmados e seus itens pelo dono do produto. Expõe somente nome do comprador e subtotal do artesão, sem email, total financeiro ou pagamento do pedido. total externo conta pedidos do artesão. limit de 1 a 100, padrão 10; offset de 0 a 10000, padrão 0. Query estrita. Ordena por criadoEm DESC e id DESC. Lista e contagem usam RepeatableRead. Valores legados nulos permanecem null nos itens e não acrescentam subtotal. Produtos ocultos continuam no histórico. Cache-Control: no-store.",
+});
+
+endpoint({
+  method: "patch",
+  path: "/artesao/itens-pedido/{id}/enviar",
+  operationId: "enviarItemPedido",
+  summary: "Marcar próprio item como enviado",
+  tag: "Pedidos",
+  papel: "artesao",
+  request: { params: pedidoParamsSchema },
+  response: json(
+    registrar(
+      "ItemEnviado",
+      z.strictObject({
+        id: uuid,
+        status: z.literal("enviado"),
+        enviadoEm: instante,
+      }),
+      { id, status: "enviado", enviadoEm: data },
+    ),
+    { id, status: "enviado", enviadoEm: data },
+  ),
+  errors: [400, 401, 403, 404, 409],
+  errorExamples: {
+    404: ["ITEM_PEDIDO_NAO_ENCONTRADO", "Item de pedido nao encontrado."],
+    409: ["ITEM_JA_ENVIADO", "Item ja enviado."],
+  },
+  description:
+    "Sem corpo ou query; objeto vazio permitido. UUID obrigatório. Identidade vem da sessão. Item de outro artesão e inexistente retornam 404 idêntico. Já enviado recebe 409 ITEM_JA_ENVIADO; pedido pendente ou cancelado recebe 409 PEDIDO_NAO_CONFIRMADO. Transação bloqueia item para escrita e produto/pedido para leitura, revalidando propriedade e confirmação antes da transição única. Resposta contém id, status e enviadoEm. Leituras privadas subsequentes mostram o estado persistido, sem relogar e com Cache-Control: no-store.",
 });
 
 endpoint({

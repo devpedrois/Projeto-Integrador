@@ -162,6 +162,9 @@ describe("WEB-11 meus pedidos em PostgreSQL real", () => {
       });
       expect(response.body.itens).toEqual(
         registro.itens.map((item) => ({
+          id: item.id,
+          status: "aguardando_envio",
+          enviadoEm: null,
           produtoId: item.produtoId,
           nome: item.produto.nome,
           quantidade: item.quantidade,

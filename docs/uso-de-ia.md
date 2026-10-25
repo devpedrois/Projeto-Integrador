@@ -1366,3 +1366,13 @@ Também apoiou contraprovas e revisão equivalente nesta conversa.
 A suíte backend passou com 671 testes.
 
 Evidências: `evidencias/PI4-31-W12-Testes-Executados/31.2-pagamento-us20/`.
+
+### Web.2: pedidos recebidos e envio por item
+
+Andrews é responsável; Pedro é o revisor indicado.
+O Codex auxiliou nos testes e na implementação transacional.
+Também apoiou as telas, contratos e documentação do envio.
+O smoke confirmou cinco envios, refletidos na sessão do comprador.
+A revisão equivalente incluiu isolamento e troca de contas.
+
+Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/`.

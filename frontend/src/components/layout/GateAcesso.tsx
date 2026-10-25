@@ -30,6 +30,7 @@ const LINKS_POR_PAPEL: Record<Papel, { href: string; rotulo: string }[]> = {
   artesao: [
     { href: "/painel-artesao", rotulo: "Painel do artesão" },
     { href: "/painel-artesao/produtos", rotulo: "Meus produtos" },
+    { href: "/painel-artesao/pedidos", rotulo: "Pedidos recebidos" },
     { href: "/painel-artesao/perfil", rotulo: "Meu perfil" },
     { href: "/", rotulo: "Vitrine" },
   ],

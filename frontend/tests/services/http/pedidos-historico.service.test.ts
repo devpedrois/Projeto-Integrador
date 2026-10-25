@@ -28,6 +28,9 @@ const detalhe = {
   itens: [
     {
       produtoId: "44444444-4444-4444-8444-444444444444",
+      id: "55555555-5555-4555-8555-555555555555",
+      status: "aguardando_envio",
+      enviadoEm: null,
       nome: "Vaso",
       quantidade: 2,
       precoUnitario: 13.37,

@@ -23,6 +23,13 @@ export function useMeusPedidos(service: PedidosService) {
   const [versaoDetalhe, setVersaoDetalhe] = useState(0);
 
   useEffect(() => {
+    if (!pedidoId) return;
+    const atualizar = () => setVersaoDetalhe((atual) => atual + 1);
+    window.addEventListener("focus", atualizar);
+    return () => window.removeEventListener("focus", atualizar);
+  }, [pedidoId]);
+
+  useEffect(() => {
     let cancelado = false;
     setLista({ status: "carregando" });
     service

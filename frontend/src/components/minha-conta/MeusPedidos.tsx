@@ -8,6 +8,7 @@ import { BOTAO_SECUNDARIO_PEQUENO } from "@/components/formulario/estilos-botao"
 import { formatarMoeda } from "@/utils/formatar-moeda";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import { FormularioAvaliacao } from "@/components/minha-conta/FormularioAvaliacao";
+import { StatusDoItem } from "@/components/minha-conta/StatusDoItem";
 
 const ROTULOS: Record<StatusPedido, string> = {
   pendente: "Pendente",
@@ -123,6 +124,7 @@ function DetalheDoPedido({
                   <dd className="m-0 break-words">{valor(item.subtotal)}</dd>
                 </div>
               </dl>
+              <StatusDoItem status={item.status} enviadoEm={item.enviadoEm} />
               {pedido.status === "confirmado" &&
               avaliacoesService &&
               compradorId ? (
@@ -196,6 +198,14 @@ export function MeusPedidos({
             className={`${BOTAO_SECUNDARIO_PEQUENO} self-start`}
           >
             Voltar aos pedidos
+          </button>
+          <button
+            type="button"
+            onClick={historico.recarregarDetalhe}
+            disabled={detalhe.status === "carregando"}
+            className={`${BOTAO_SECUNDARIO_PEQUENO} self-start`}
+          >
+            Atualizar pedido
           </button>
           {detalhe.status === "carregando" ? (
             <p role="status">Carregando pedido…</p>

@@ -45,6 +45,18 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("Web.2 documenta envio protegido e status por item", async () => {
+    const resposta = await request(app).get("/docs/openapi.json");
+    const operacao =
+      resposta.body.paths["/artesao/itens-pedido/{id}/enviar"]?.patch;
+    expect(operacao).toBeDefined();
+    expect(operacao.security).toEqual([{ sessao: [] }]);
+    for (const status of ["200", "400", "401", "403", "404", "409"])
+      expect(operacao.responses).toHaveProperty(status);
+    expect(resposta.body.components.schemas.ItemPedido.required).toEqual(
+      expect.arrayContaining(["id", "status", "enviadoEm"]),
+    );
+  });
   it("documenta elegibilidade privada e o bloqueio por compra nao verificada", async () => {
     const response = await request(app).get("/docs/openapi.json");
     const operation = response.body.paths["/avaliacoes/elegibilidade"]?.get;

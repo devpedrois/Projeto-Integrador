@@ -90,6 +90,9 @@ beforeEach(() => {
           itens: [
             {
               produtoId,
+              id: "66666666-6666-4666-8666-666666666666",
+              status: "aguardando_envio",
+              enviadoEm: null,
               nome: "Vaso artesanal",
               quantidade: 1,
               precoUnitario: 10,
@@ -97,6 +100,9 @@ beforeEach(() => {
             },
             {
               produtoId: outroProdutoId,
+              id: "77777777-7777-4777-8777-777777777777",
+              status: "aguardando_envio",
+              enviadoEm: null,
               nome: "Peca de barro",
               quantidade: 1,
               precoUnitario: 10,

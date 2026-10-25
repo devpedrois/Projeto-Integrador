@@ -39,6 +39,8 @@ import { obterFonteDados } from "@/services/data-source";
 import { ServiceError } from "@/services/errors";
 import type { NotificacoesService } from "@/services/contracts/notificacoes.contract";
 import { HttpNotificacoesService } from "@/services/http/notificacoes.service";
+import type { PedidosArtesaoService } from "@/services/contracts/pedidos-artesao.contract";
+import { HttpPedidosArtesaoService } from "@/services/http/pedidos-artesao.service";
 
 export const PENDENTES_HTTP: readonly string[] = [];
 
@@ -54,6 +56,12 @@ const recomendacoesHttp: RecomendacoesService = new HttpRecommendationAdapter();
 const opcoesHttp: OpcoesFiltroService = new HttpOpcoesFiltroService();
 const moderacaoHttp: ModeracaoService = new HttpModeracaoService();
 const notificacoesHttp: NotificacoesService = new HttpNotificacoesService();
+const pedidosArtesaoHttp: PedidosArtesaoService =
+  new HttpPedidosArtesaoService();
+
+export function obterPedidosArtesaoService(): PedidosArtesaoService | null {
+  return modoHttp() ? pedidosArtesaoHttp : null;
+}
 
 export function obterNotificacoesService(): NotificacoesService | null {
   return modoHttp() ? notificacoesHttp : null;

@@ -6,6 +6,7 @@ export interface ItemPedido {
 }
 
 export type StatusPedido = "pendente" | "confirmado" | "cancelado";
+export type StatusItemPedido = "aguardando_envio" | "enviado";
 
 export interface PagamentoPedido {
   id: string;
@@ -26,6 +27,9 @@ export interface ResumoPedido {
 
 export interface DetalhePedido extends ResumoPedido {
   itens: Array<{
+    id: string;
+    status: StatusItemPedido;
+    enviadoEm: string | null;
     produtoId: string;
     nome: string;
     quantidade: number;

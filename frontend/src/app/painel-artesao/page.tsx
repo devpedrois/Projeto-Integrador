@@ -54,6 +54,9 @@ export default function PainelArtesaoPage() {
             <Icone nome="pacote" className="flex-none" />
             Meus produtos
           </Link>
+          <Link href="/painel-artesao/pedidos" className={BOTAO_SECUNDARIO}>
+            Pedidos recebidos
+          </Link>
         </div>
         {notificacoesService && sessao?.papel === "artesao" ? (
           <NotificacoesArtesao key={sessao.id} service={notificacoesService} />

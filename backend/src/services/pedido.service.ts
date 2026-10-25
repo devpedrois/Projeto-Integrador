@@ -14,6 +14,10 @@ export class PedidoService {
     private readonly cache?: CachePublico,
   ) {}
 
+  public enviarItem(id: string, artesaoId: string) {
+    return this.repository.enviarItem(id, artesaoId);
+  }
+
   public listarMeus(compradorId: string, paginacao: PaginacaoPedidos) {
     return this.repository.listarMeus(compradorId, paginacao);
   }

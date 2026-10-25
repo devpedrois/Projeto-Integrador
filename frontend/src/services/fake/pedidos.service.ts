@@ -97,8 +97,11 @@ export class FakePedidosService implements PedidosService {
       throw new ServiceError("PEDIDO_NAO_ENCONTRADO", "Pedido não encontrado.");
     return {
       ...this.resumo(pedido),
-      itens: pedido.itens.map((item) => ({
+      itens: pedido.itens.map((item, indice) => ({
         ...item,
+        id: `${pedido.id}:${indice}`,
+        status: "aguardando_envio",
+        enviadoEm: null,
         subtotal:
           (Math.round(item.precoUnitario * 100) * item.quantidade) / 100,
       })),

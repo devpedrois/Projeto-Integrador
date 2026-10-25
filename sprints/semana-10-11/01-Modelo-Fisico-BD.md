@@ -37,14 +37,15 @@ PK indica chave primária na coluna correspondente.
 UNIQUE composto aparece com todas as colunas participantes.
 Ausente significa que não existe aquela restrição física.
 
-| Tipo ENUM         | Valores físicos permitidos             |
-| ----------------- | -------------------------------------- |
-| `PapelUsuario`    | comprador, artesao, admin              |
-| `StatusPedido`    | pendente, confirmado, cancelado        |
-| `MetodoPagamento` | pix_simulado                           |
-| `StatusPagamento` | aprovado, recusado                     |
-| `StatusIntencao`  | pendente, publicada, processada, falha |
-| `TipoNotificacao` | novo_pedido                            |
+| Tipo ENUM          | Valores físicos permitidos             |
+| ------------------ | -------------------------------------- |
+| `PapelUsuario`     | comprador, artesao, admin              |
+| `StatusPedido`     | pendente, confirmado, cancelado        |
+| `StatusItemPedido` | aguardando_envio, enviado              |
+| `MetodoPagamento`  | pix_simulado                           |
+| `StatusPagamento`  | aprovado, recusado                     |
+| `StatusIntencao`   | pendente, publicada, processada, falha |
+| `TipoNotificacao`  | novo_pedido                            |
 
 ## 3. DDL consolidado
 
@@ -281,16 +282,23 @@ Defaults SQL: `numero`: ORG-AAAA-NNNNNN, por Pedido_numero_seq; `status`: 'pende
 
 Preserva a linha histórica da compra. PrecoUnitario e subtotal aceitam NULL em registros legados. Seus CHECKs rejeitam negativos quando preenchidos. A igualdade subtotal = quantidade × precoUnitario é garantida pelo checkout, sem CHECK SQL correspondente.
 
-| Coluna          | Tipo físico     | NULL | CHECK              | PK / UNIQUE | FK e ações                                    |
-| --------------- | --------------- | ---- | ------------------ | ----------- | --------------------------------------------- |
-| `id`            | `UUID`          | Não  | Ausente            | PK          | Ausente                                       |
-| `pedidoId`      | `UUID`          | Não  | Ausente            | Ausente     | `Pedido.id`; DELETE RESTRICT; UPDATE CASCADE  |
-| `produtoId`     | `UUID`          | Não  | Ausente            | Ausente     | `Produto.id`; DELETE RESTRICT; UPDATE CASCADE |
-| `quantidade`    | `INTEGER`       | Não  | quantidade > 0     | Ausente     | Ausente                                       |
-| `precoUnitario` | `DECIMAL(10,2)` | Sim  | precoUnitario >= 0 | Ausente     | Ausente                                       |
-| `subtotal`      | `DECIMAL(10,2)` | Sim  | subtotal >= 0      | Ausente     | Ausente                                       |
+| Coluna          | Tipo físico        | NULL | CHECK              | PK / UNIQUE | FK e ações                                    |
+| --------------- | ------------------ | ---- | ------------------ | ----------- | --------------------------------------------- |
+| `id`            | `UUID`             | Não  | Ausente            | PK          | Ausente                                       |
+| `pedidoId`      | `UUID`             | Não  | Ausente            | Ausente     | `Pedido.id`; DELETE RESTRICT; UPDATE CASCADE  |
+| `produtoId`     | `UUID`             | Não  | Ausente            | Ausente     | `Produto.id`; DELETE RESTRICT; UPDATE CASCADE |
+| `quantidade`    | `INTEGER`          | Não  | quantidade > 0     | Ausente     | Ausente                                       |
+| `precoUnitario` | `DECIMAL(10,2)`    | Sim  | precoUnitario >= 0 | Ausente     | Ausente                                       |
+| `subtotal`      | `DECIMAL(10,2)`    | Sim  | subtotal >= 0      | Ausente     | Ausente                                       |
+| `status`        | `StatusItemPedido` | Não  | Ausente            | Ausente     | Ausente                                       |
+| `enviadoEm`     | `TIMESTAMPTZ(3)`   | Sim  | Ausente            | Ausente     | Ausente                                       |
 
-Nenhuma coluna possui DEFAULT SQL.
+Default SQL: `status`: 'aguardando_envio'.
+Migration Web.2: `20261025160000_status_item_pedido`.
+Linhas existentes recebem esse estado, com enviadoEm nulo.
+A transição única para enviado pertence à aplicação.
+Ela exige proprietário do produto e pedido confirmado.
+O instante de envio é gravado na mesma transação.
 
 ### 5.12 `Pagamento`
 

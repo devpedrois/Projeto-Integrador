@@ -8,6 +8,30 @@ import { AppError } from "../errors/app-error.js";
 export class PedidoController {
   public constructor(private readonly service: PedidoService) {}
 
+  public enviarItem = async (
+    _request: Request,
+    response: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const usuario = response.locals.usuario;
+      if (!usuario)
+        throw new AppError(
+          401,
+          "NAO_AUTENTICADO",
+          "Sessao invalida ou ausente.",
+        );
+      response.json(
+        await this.service.enviarItem(
+          response.locals.itemPedidoId as string,
+          usuario.id,
+        ),
+      );
+    } catch (error: unknown) {
+      next(error);
+    }
+  };
+
   public listarRecebidos = async (
     _request: Request,
     response: Response,
