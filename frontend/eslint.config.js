@@ -5,6 +5,13 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    ignores: [".next/**", "node_modules/**", "dist/**", "next-env.d.ts"],
-  }
+    ignores: [
+      ".next/**",
+      "node_modules/**",
+      "dist/**",
+      "next-env.d.ts",
+      "test-results/**",
+      "playwright-report/**",
+    ],
+  },
 );

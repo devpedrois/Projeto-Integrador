@@ -13,6 +13,7 @@ docs/*
 !docs/docs auxiliares/
 docs/docs auxiliares/*
 !docs/docs auxiliares/LOGINS_TESTE.md
+!docs/docs auxiliares/TESTING_AND_EVIDENCE.md
 sprints/*
 !sprints/semana-02-03/
 sprints/semana-02-03/*
@@ -25,3 +26,5 @@ AGENTS.md
 CLAUDE.md
 evidencias/
 design/
+frontend/test-results/
+frontend/playwright-report/

@@ -1424,3 +1424,12 @@ Os candidatos temporários foram medidos e revertidos.
 A revisão equivalente foi realizada nesta conversa.
 
 Resultados: [índices da U2](indices-u2.md).
+
+### 31.3: E2E dos fluxos críticos
+
+Sergio é responsável; Pedro é o revisor indicado.
+O Codex auxiliou nos testes Playwright e execução real.
+Os dois fluxos passaram três vezes, em ambos os viewports.
+Também apoiou sanitização dos traces e revisão equivalente nesta conversa.
+
+Evidências: `evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/`.
