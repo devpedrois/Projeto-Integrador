@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import { setTimeout as esperar } from "node:timers/promises";
 import jwt from "jsonwebtoken";
 import request from "supertest";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
@@ -83,6 +84,47 @@ afterAll(async () => {
 });
 
 describe("WEB-14 notificacoes", () => {
+  it("30.5 aguarda a latencia antes de gravar sem alterar a idempotencia", async () => {
+    const inicio = performance.now();
+    const processamento = notificarArtesao(
+      new PrismaIntencaoNotificacaoRepository(banco.prisma),
+      data,
+      new PrismaNotificacaoRepository(banco.prisma),
+      800,
+    );
+    await esperar(100);
+    const durante = await banco.prisma.notificacao.count({
+      where: { pedidoId: data.pedidoId },
+    });
+    await processamento;
+    expect(durante).toBe(0);
+    expect(performance.now() - inicio).toBeGreaterThanOrEqual(800);
+    const antes = await banco.prisma.notificacao.findMany({
+      where: { pedidoId: data.pedidoId },
+      orderBy: { id: "asc" },
+    });
+    const intencaoAntes =
+      await banco.prisma.intencaoNotificacao.findUniqueOrThrow({
+        where: { id: data.intencaoId },
+      });
+    await notificarArtesao(
+      new PrismaIntencaoNotificacaoRepository(banco.prisma),
+      data,
+      new PrismaNotificacaoRepository(banco.prisma),
+      20,
+    );
+    expect(
+      await banco.prisma.notificacao.findMany({
+        where: { pedidoId: data.pedidoId },
+        orderBy: { id: "asc" },
+      }),
+    ).toEqual(antes);
+    expect(
+      await banco.prisma.intencaoNotificacao.findUniqueOrThrow({
+        where: { id: data.intencaoId },
+      }),
+    ).toEqual(intencaoAntes);
+  });
   it("grava um aviso por artesao distinto antes de processar", async () => {
     await processar();
     const avisos = await banco.prisma.notificacao.findMany({

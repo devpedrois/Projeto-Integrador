@@ -34,7 +34,10 @@ export async function startServer(
       environment.NOTIFICATION_PUBLISHER_INTERVAL_MS,
     );
     if (environment.RUN_WORKER_IN_API) {
-      await iniciarConsumidor(boss, prisma);
+      await iniciarConsumidor(boss, prisma, {
+        latenciaMs: environment.NOTIFICACAO_LATENCIA_MS,
+        concorrencia: environment.WORKER_CONCURRENCY,
+      });
     }
 
     const app = createApp(prisma, environment);

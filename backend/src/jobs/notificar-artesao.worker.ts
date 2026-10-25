@@ -12,6 +12,7 @@ export function registerNotificarArtesaoWorker(
   repository: IntencaoNotificacaoRepository,
   notificacaoRepository: NotificacaoRepository,
   options: Partial<WorkOptions> = {},
+  latenciaMs = 0,
 ): Promise<string> {
   return boss.work<NotificarArtesaoJobData>(
     NOTIFICAR_ARTESAO_QUEUE,
@@ -22,7 +23,12 @@ export function registerNotificarArtesaoWorker(
         return;
       }
       await repository.registrarTentativa(job.data.intencaoId);
-      await notificarArtesao(repository, job.data, notificacaoRepository);
+      await notificarArtesao(
+        repository,
+        job.data,
+        notificacaoRepository,
+        latenciaMs,
+      );
     },
   );
 }

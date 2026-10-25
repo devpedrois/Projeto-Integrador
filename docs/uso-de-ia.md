@@ -1394,3 +1394,13 @@ Os testes cobrem limite, exclusão, loading, vazio e recuperação.
 Também apoiou capturas HTTP e revisão equivalente nesta conversa.
 
 Evidências: `evidencias/IA.2/`.
+
+### 30.5: benchmark dos consumidores da fila
+
+Pedro é responsável e revisor indicado.
+O Codex auxiliou na latência simulada e no benchmark.
+Também apoiou testes com PostgreSQL e processos worker reais.
+A ferramenta gera CSV, JSON, tabela e gráfico reproduzíveis.
+A revisão equivalente foi realizada nesta conversa.
+
+Evidências: `evidencias/PI4-30/benchmark-fila/`.

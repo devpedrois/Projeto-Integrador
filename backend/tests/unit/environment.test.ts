@@ -13,6 +13,47 @@ describe("environment validation", () => {
     expect(environment.WORKER_CONCURRENCY).toBe(1);
   });
 
+  it("defaults notification latency to zero", () => {
+    expect(parseEnvironment(databaseEnvironment).NOTIFICACAO_LATENCIA_MS).toBe(
+      0,
+    );
+  });
+
+  it.each(["0", "200", "2000"])("accepts simulated latency %s", (value) => {
+    expect(
+      parseEnvironment({
+        ...databaseEnvironment,
+        NOTIFICACAO_LATENCIA_MS: value,
+      }).NOTIFICACAO_LATENCIA_MS,
+    ).toBe(Number(value));
+  });
+
+  it.each(["", " ", "-1", "2001", "1.5", "Infinity", "invalid"])(
+    "rejects invalid simulated latency %s",
+    (value) => {
+      expect(() =>
+        parseEnvironment({
+          ...databaseEnvironment,
+          NOTIFICACAO_LATENCIA_MS: value,
+        }),
+      ).toThrow("Invalid environment variables: NOTIFICACAO_LATENCIA_MS");
+    },
+  );
+
+  it.each(["0", "200"])(
+    "rejects configured latency in production: %s",
+    (value) => {
+      expect(() =>
+        parseEnvironment({
+          ...databaseEnvironment,
+          NODE_ENV: "production",
+          JWT_SECRET: "synthetic-jwt-secret-for-tests-only",
+          NOTIFICACAO_LATENCIA_MS: value,
+        }),
+      ).toThrow("Invalid environment variables: NOTIFICACAO_LATENCIA_MS");
+    },
+  );
+
   it.each(["true", "false"])("parses RUN_WORKER_IN_API=%s", (value) => {
     expect(
       parseEnvironment({ ...databaseEnvironment, RUN_WORKER_IN_API: value })

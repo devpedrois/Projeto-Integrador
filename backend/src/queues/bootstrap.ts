@@ -40,13 +40,18 @@ export async function iniciarPublicador(
   };
 }
 
-export async function iniciarConsumidor(boss: PgBoss, prisma: PrismaClient) {
+export async function iniciarConsumidor(
+  boss: PgBoss,
+  prisma: PrismaClient,
+  options: { latenciaMs?: number; concorrencia?: number } = {},
+) {
   await boss.start();
   await ensureNotificarArtesaoQueue(boss);
   return registerNotificarArtesaoWorker(
     boss,
     new PrismaIntencaoNotificacaoRepository(prisma),
     new PrismaNotificacaoRepository(prisma),
-    { pollingIntervalSeconds: 1 },
+    { pollingIntervalSeconds: 1, localConcurrency: options.concorrencia ?? 1 },
+    options.latenciaMs ?? 0,
   );
 }

@@ -24,7 +24,10 @@ export async function startWorker(
     process.stderr.write("Notification queue error\n");
   });
   try {
-    await iniciarConsumidor(boss, prisma);
+    await iniciarConsumidor(boss, prisma, {
+      latenciaMs: environment.NOTIFICACAO_LATENCIA_MS,
+      concorrencia: environment.WORKER_CONCURRENCY,
+    });
   } catch {
     await Promise.allSettled([
       boss.stop({ graceful: false }),

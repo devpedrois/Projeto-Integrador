@@ -43,6 +43,12 @@ const environmentSchema = z
       .default("true")
       .transform((value) => value === "true"),
     WORKER_CONCURRENCY: z.coerce.number().int().min(1).max(8).default(1),
+    NOTIFICACAO_LATENCIA_MS: z
+      .preprocess(
+        (value) => (typeof value === "string" && !value.trim() ? NaN : value),
+        z.coerce.number().int().min(0).max(2000),
+      )
+      .optional(),
     NOTIFICATION_PUBLISHER_INTERVAL_MS: z.coerce
       .number()
       .int()
@@ -53,6 +59,16 @@ const environmentSchema = z
   .superRefine((environment, context) => {
     if (
       environment.NODE_ENV === "production" &&
+      environment.NOTIFICACAO_LATENCIA_MS !== undefined
+    ) {
+      context.addIssue({
+        code: "custom",
+        path: ["NOTIFICACAO_LATENCIA_MS"],
+        message: "Simulation is forbidden in production",
+      });
+    }
+    if (
+      environment.NODE_ENV === "production" &&
       environment.JWT_SECRET === undefined
     ) {
       context.addIssue({
@@ -61,7 +77,11 @@ const environmentSchema = z
         message: "Required in production",
       });
     }
-  });
+  })
+  .transform((environment) => ({
+    ...environment,
+    NOTIFICACAO_LATENCIA_MS: environment.NOTIFICACAO_LATENCIA_MS ?? 0,
+  }));
 
 export type Environment = z.infer<typeof environmentSchema>;
 
