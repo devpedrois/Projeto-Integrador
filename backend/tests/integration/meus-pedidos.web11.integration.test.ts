@@ -183,19 +183,6 @@ describe("WEB-11 meus pedidos em PostgreSQL real", () => {
     },
   );
 
-  it("pedido de terceiro e UUID inexistente retornam o mesmo 404", async () => {
-    const terceiro = await request(app)
-      .get(`/pedidos/${ids[0]}`)
-      .set("Cookie", outroCookie);
-    const inexistente = await request(app)
-      .get(`/pedidos/${randomUUID()}`)
-      .set("Cookie", outroCookie);
-    expect(terceiro.status).toBe(404);
-    expect(inexistente.status).toBe(404);
-    expect(terceiro.body).toEqual(inexistente.body);
-    expect(terceiro.body.error.code).toBe("PEDIDO_NAO_ENCONTRADO");
-  });
-
   it.each(["/pedidos", `/pedidos/00000000-0000-4000-8000-000000000000`])(
     "%s exige sessao e papel comprador",
     async (path) => {

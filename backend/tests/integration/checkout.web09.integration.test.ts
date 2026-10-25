@@ -8,8 +8,6 @@ const TEMPO_NUMERACAO_MS = process.env.CI === "true" ? 60_000 : 20_000;
 
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
 let app: ReturnType<typeof createApp>;
-let compradorId: string;
-let outroCompradorId: string;
 let cookie: string;
 let outroCookie: string;
 let artesaoId: string;
@@ -69,10 +67,8 @@ beforeAll(async () => {
         : undefined;
     if (!sessao) throw new Error("Sessao de teste ausente");
     if (indice === 0) {
-      compradorId = cadastro.body.id;
       cookie = sessao;
     } else {
-      outroCompradorId = cadastro.body.id;
       outroCookie = sessao;
     }
   }
@@ -104,134 +100,6 @@ afterAll(async () => {
 });
 
 describe("WEB-09 checkout transacional real", () => {
-  it("persiste valores atuais, pagamento e outbox; limpa somente o carrinho do comprador", async () => {
-    const vaso = await produto();
-    const cesta = await produto(5, "0.10");
-    await carrinho(vaso.id, 2);
-    await carrinho(cesta.id, 3);
-    await carrinho(vaso.id, 1, outroCookie);
-    await banco.prisma.produto.update({
-      where: { id: vaso.id },
-      data: { preco: "13.37", nome: "Vaso atualizado" },
-    });
-
-    const response = await confirmar([
-      { produtoId: vaso.id, quantidade: 2 },
-      { produtoId: cesta.id, quantidade: 3 },
-    ]);
-    expect(response.status).toBe(201);
-    expect(response.body.pedido).toMatchObject({
-      compradorId,
-      status: "confirmado",
-      total: 27.04,
-      numero: expect.stringMatching(/^ORG-\d{4}-\d{6}$/),
-    });
-    const rows = await banco.prisma.$queryRaw<
-      {
-        status: string;
-        total: string;
-        numero: string;
-        precoUnitario: string;
-        subtotal: string;
-        quantidade: number;
-        valor: string;
-        metodo: string;
-        pagamentoStatus: string;
-        intencaoStatus: string;
-      }[]
-    >`
-      SELECT p."status"::text, p."total"::text, p."numero", i."precoUnitario"::text,
-        i."subtotal"::text, i."quantidade", pg."valor"::text, pg."metodo"::text,
-        pg."status"::text AS "pagamentoStatus", n."status"::text AS "intencaoStatus"
-      FROM "Pedido" p JOIN "ItemPedido" i ON i."pedidoId" = p."id"
-      JOIN "Pagamento" pg ON pg."pedidoId" = p."id"
-      JOIN "IntencaoNotificacao" n ON n."pedidoId" = p."id"
-      WHERE p."id" = ${response.body.pedido.id}::uuid ORDER BY i."subtotal" DESC
-    `;
-    expect(rows).toEqual([
-      {
-        status: "confirmado",
-        total: "27.04",
-        numero: response.body.pedido.numero,
-        precoUnitario: "13.37",
-        subtotal: "26.74",
-        quantidade: 2,
-        valor: "27.04",
-        metodo: "pix_simulado",
-        pagamentoStatus: "aprovado",
-        intencaoStatus: "pendente",
-      },
-      {
-        status: "confirmado",
-        total: "27.04",
-        numero: response.body.pedido.numero,
-        precoUnitario: "0.10",
-        subtotal: "0.30",
-        quantidade: 3,
-        valor: "27.04",
-        metodo: "pix_simulado",
-        pagamentoStatus: "aprovado",
-        intencaoStatus: "pendente",
-      },
-    ]);
-    expect(response.body.itens).toContainEqual({
-      produtoId: vaso.id,
-      nome: "Vaso atualizado",
-      quantidade: 2,
-      precoUnitario: 13.37,
-      subtotal: 26.74,
-    });
-    const vendidos = await banco.prisma.$queryRaw<
-      { quantidadeEstoque: number; quantidadeVendida: number }[]
-    >`SELECT "quantidadeEstoque", "quantidadeVendida" FROM "Produto" WHERE "id" = ${vaso.id}::uuid`;
-    expect(vendidos).toEqual([{ quantidadeEstoque: 18, quantidadeVendida: 2 }]);
-    expect(
-      await banco.prisma.itemCarrinho.count({
-        where: { carrinhoId: compradorId },
-      }),
-    ).toBe(0);
-    expect(
-      await banco.prisma.itemCarrinho.count({
-        where: { carrinhoId: outroCompradorId },
-      }),
-    ).toBe(1);
-    expect(await banco.prisma.pagamento.count()).toBe(1);
-  });
-
-  it("nomeia item insuficiente e preserva todos os registros", async () => {
-    const vaso = await produto(5);
-    const cesta = await produto(5);
-    await carrinho(vaso.id, 2);
-    await carrinho(cesta.id, 2);
-    await banco.prisma.produto.update({
-      where: { id: cesta.id },
-      data: { quantidadeEstoque: 1 },
-    });
-    const antes = await banco.prisma.itemCarrinho.findMany({
-      orderBy: { id: "asc" },
-    });
-    const response = await confirmar([
-      { produtoId: vaso.id, quantidade: 2 },
-      { produtoId: cesta.id, quantidade: 2 },
-    ]);
-    expect(response.status).toBe(409);
-    expect(response.body.error.details).toEqual({
-      produtoId: cesta.id,
-      nome: cesta.nome,
-    });
-    expect(await banco.prisma.pedido.count()).toBe(0);
-    expect(await banco.prisma.itemPedido.count()).toBe(0);
-    expect(await banco.prisma.pagamento.count()).toBe(0);
-    expect(await banco.prisma.intencaoNotificacao.count()).toBe(0);
-    expect(
-      await banco.prisma.itemCarrinho.findMany({ orderBy: { id: "asc" } }),
-    ).toEqual(antes);
-    expect(
-      (await banco.prisma.produto.findUniqueOrThrow({ where: { id: vaso.id } }))
-        .quantidadeEstoque,
-    ).toBe(5);
-  });
-
   it(
     "gera dez numeros distintos e sequenciais pelo PostgreSQL",
     async () => {

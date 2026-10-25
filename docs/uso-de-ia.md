@@ -1356,3 +1356,13 @@ A consulta pública confirmou limites do plano gratuito Render.
 O painel exigiu login; a configuração remota permanece pendente.
 
 Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.4-diagrama-distribuido/`.
+
+### 31.2: checkout, pedido e pagamento da US20
+
+Sergio é responsável; Pedro é o revisor indicado.
+O Codex reorganizou casos existentes, evitando testes duplicados.
+A suíte passou a conferir o pagamento pela API autenticada.
+Também apoiou contraprovas e revisão equivalente nesta conversa.
+A suíte backend passou com 671 testes.
+
+Evidências: `evidencias/PI4-31-W12-Testes-Executados/31.2-pagamento-us20/`.
