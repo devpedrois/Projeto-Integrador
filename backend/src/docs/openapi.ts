@@ -514,6 +514,7 @@ const errors = {
   403: ["ACESSO_NEGADO", "Acesso negado."],
   404: ["PRODUTO_NAO_ENCONTRADO", "Produto nao encontrado."],
   409: ["ESTOQUE_INSUFICIENTE", "Estoque insuficiente."],
+  413: ["FOTO_MUITO_GRANDE", "A foto deve ter ate 2 MB."],
 } as const;
 function json(schema: z.ZodType, example: unknown): ResponseConfig {
   return {
@@ -819,6 +820,50 @@ endpoint({
   errorExamples: { 404: ["ARTESAO_NAO_ENCONTRADO", "Artesao nao encontrado."] },
   description:
     "Pelo menos um campo. Foto relativa segura ou HTTPS. Identidade diferente recebe 403.",
+});
+
+endpoint({
+  method: "post",
+  path: "/artesao/perfil/foto",
+  operationId: "enviarFotoPerfil",
+  summary: "Enviar foto do proprio perfil",
+  tag: "Perfil",
+  papel: "artesao",
+  request: {
+    body: {
+      required: true,
+      content: {
+        "multipart/form-data": {
+          schema: {
+            type: "object",
+            required: ["foto"],
+            additionalProperties: false,
+            properties: {
+              foto: {
+                type: "string",
+                format: "binary",
+                description:
+                  "JPG ou PNG, MIME e assinatura correspondentes, ate 2097152 bytes.",
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  response: json(perfil, {
+    ...perfilExample,
+    fotoUrl: `https://store.public.blob.vercel-storage.com/perfis/${id}/${id}.jpg`,
+  }),
+  errors: [400, 401, 403, 413],
+  errorExamples: {
+    400: [
+      "FOTO_INVALIDA",
+      "Envie somente um arquivo JPG ou PNG no campo foto.",
+    ],
+  },
+  description:
+    "Um arquivo foto, sem campos extras. Limite de 2 MiB no parser multipart; MIME image/jpeg ou image/png e magic bytes correspondentes. Identidade da sessao. UUID gerado no servidor. Persiste fotoUrl em PerfilArtesao.foto e remove Blob anterior gerenciado do mesmo usuario. Cache-Control: no-store. Token exclusivo do backend. JSON continua limitado a 16kb.",
 });
 
 endpoint({

@@ -47,6 +47,7 @@ describe("ApiClient", () => {
     [404, undefined, "NAO_ENCONTRADO"],
     [409, "EMAIL_JA_CADASTRADO", "EMAIL_JA_CADASTRADO"],
     [400, "VALIDACAO", "VALIDACAO"],
+    [413, "FOTO_MUITO_GRANDE", "FOTO_MUITO_GRANDE"],
     [503, undefined, "SERVICO_INDISPONIVEL"],
   ])("mapeia status %s e codigo %s", async (status, code, expected) => {
     vi.stubGlobal(

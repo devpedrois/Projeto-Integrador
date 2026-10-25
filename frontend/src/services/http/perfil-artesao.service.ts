@@ -3,6 +3,7 @@ import type { PerfilArtesao, PerfilArtesaoInput } from "@/types/perfil-artesao";
 import { ServiceError } from "@/services/errors";
 import { fotoUrlAceita } from "@/utils/foto-url-segura";
 import { ApiClient } from "./api-client";
+import { validarFotoPerfil } from "@/validators/foto-perfil.validator";
 
 function lerPerfil(value: unknown, artesaoId: string): PerfilArtesao {
   const invalida = () =>
@@ -44,6 +45,20 @@ function lerPerfil(value: unknown, artesaoId: string): PerfilArtesao {
 
 export class HttpPerfilArtesaoService implements PerfilArtesaoService {
   constructor(private readonly client = new ApiClient()) {}
+
+  async enviarFoto(arquivo: File, artesaoId: string): Promise<PerfilArtesao> {
+    this.rota(artesaoId);
+    await validarFotoPerfil(arquivo);
+    const body = new FormData();
+    body.append("foto", arquivo);
+    return lerPerfil(
+      await this.client.request<unknown>("/artesao/perfil/foto", {
+        method: "POST",
+        body,
+      }),
+      artesaoId,
+    );
+  }
 
   async obter(artesaoId: string): Promise<PerfilArtesao | null> {
     try {

@@ -5,9 +5,11 @@ import { RetratoArtesao } from "@/components/artesao/RetratoArtesao";
 import { Alerta } from "@/components/feedback/Alerta";
 import { CampoAreaTexto } from "@/components/formulario/CampoAreaTexto";
 import { CampoSelecao } from "@/components/formulario/CampoSelecao";
-import { CampoTexto } from "@/components/formulario/CampoTexto";
 import { Giro } from "@/components/formulario/Giro";
-import { BOTAO_PRIMARIO_GRANDE, BOTAO_SECUNDARIO } from "@/components/formulario/estilos-botao";
+import {
+  BOTAO_PRIMARIO_GRANDE,
+  BOTAO_SECUNDARIO,
+} from "@/components/formulario/estilos-botao";
 import { Icone } from "@/components/vitrine/Icone";
 import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
 import type { OpcoesFiltroService } from "@/services/contracts/opcoes-filtro.contract";
@@ -15,6 +17,7 @@ import type { PerfilArtesaoInput } from "@/types/perfil-artesao";
 import type { Tecnica } from "@/types/tecnica";
 import type { Regiao } from "@/types/regiao";
 import { fotoUrlSegura } from "@/utils/foto-url-segura";
+import { validarFotoPerfil } from "@/validators/foto-perfil.validator";
 import {
   HISTORIA_LIMITE_CARACTERES,
   perfilArtesaoValido,
@@ -35,7 +38,12 @@ type EstadoCarregamento =
   | { status: "pronto" }
   | { status: "erro"; mensagem: string };
 
-const ORDEM_CAMPOS: CampoPerfilArtesao[] = ["historia", "tecnicaId", "regiaoId", "fotoUrl"];
+const ORDEM_CAMPOS: CampoPerfilArtesao[] = [
+  "historia",
+  "tecnicaId",
+  "regiaoId",
+  "fotoUrl",
+];
 
 const MENSAGEM_ERRO_CARREGAMENTO = "Não foi possível carregar seu perfil.";
 const MENSAGEM_ERRO_SALVAR =
@@ -47,9 +55,10 @@ export function PerfilArtesaoForm({
   artesaoId,
   nomeArtesao = "Artesão",
 }: PerfilArtesaoFormProps) {
-  const [estadoCarregamento, setEstadoCarregamento] = useState<EstadoCarregamento>({
-    status: "carregando",
-  });
+  const [estadoCarregamento, setEstadoCarregamento] =
+    useState<EstadoCarregamento>({
+      status: "carregando",
+    });
   const [tentativa, setTentativa] = useState(0);
   const [tecnicas, setTecnicas] = useState<readonly Tecnica[]>([]);
   const [regioes, setRegioes] = useState<readonly Regiao[]>([]);
@@ -58,6 +67,11 @@ export function PerfilArtesaoForm({
   const [tecnicaId, setTecnicaId] = useState("");
   const [regiaoId, setRegiaoId] = useState("");
   const [fotoUrl, setFotoUrl] = useState("");
+  const [arquivoFoto, setArquivoFoto] = useState<File | null>(null);
+  const [previaFoto, setPreviaFoto] = useState<string | null>(null);
+  const [erroFoto, setErroFoto] = useState<string | null>(null);
+  const [validandoFoto, setValidandoFoto] = useState(false);
+  const selecaoFoto = useRef(0);
   const [erros, setErros] = useState<ErrosPerfilArtesao>({});
   const [erroServico, setErroServico] = useState<string | null>(null);
   const [mensagemSucesso, setMensagemSucesso] = useState<string | null>(null);
@@ -68,7 +82,40 @@ export function PerfilArtesaoForm({
   const refRegiao = useRef<HTMLSelectElement>(null);
   const refFoto = useRef<HTMLInputElement>(null);
 
-  const refsPorCampo: Record<CampoPerfilArtesao, React.RefObject<HTMLElement | null>> = {
+  useEffect(() => {
+    if (!arquivoFoto) {
+      setPreviaFoto(null);
+      return;
+    }
+    const url = URL.createObjectURL(arquivoFoto);
+    setPreviaFoto(url);
+    return () => URL.revokeObjectURL(url);
+  }, [arquivoFoto]);
+
+  async function selecionarFoto(arquivo: File | undefined) {
+    const selecao = ++selecaoFoto.current;
+    setArquivoFoto(null);
+    setErroFoto(null);
+    setMensagemSucesso(null);
+    setValidandoFoto(Boolean(arquivo));
+    if (!arquivo) return;
+    try {
+      await validarFotoPerfil(arquivo);
+      if (selecao !== selecaoFoto.current) return;
+      setArquivoFoto(arquivo);
+    } catch (error: unknown) {
+      if (selecao !== selecaoFoto.current) return;
+      setErroFoto(error instanceof Error ? error.message : "Foto inválida.");
+      if (refFoto.current) refFoto.current.value = "";
+    } finally {
+      if (selecao === selecaoFoto.current) setValidandoFoto(false);
+    }
+  }
+
+  const refsPorCampo: Record<
+    CampoPerfilArtesao,
+    React.RefObject<HTMLElement | null>
+  > = {
     historia: refHistoria,
     tecnicaId: refTecnica,
     regiaoId: refRegiao,
@@ -98,7 +145,10 @@ export function PerfilArtesaoForm({
       })
       .catch(() => {
         if (cancelado) return;
-        setEstadoCarregamento({ status: "erro", mensagem: MENSAGEM_ERRO_CARREGAMENTO });
+        setEstadoCarregamento({
+          status: "erro",
+          mensagem: MENSAGEM_ERRO_CARREGAMENTO,
+        });
       });
 
     return () => {
@@ -114,13 +164,12 @@ export function PerfilArtesaoForm({
 
   async function handleSubmit(evento: FormEvent<HTMLFormElement>) {
     evento.preventDefault();
-    if (enviando) return;
+    if (enviando || validandoFoto || erroFoto) return;
 
     const entrada: PerfilArtesaoInput = {
       historia,
       tecnicaId,
       regiaoId,
-      ...(fotoUrl.trim().length > 0 ? { fotoUrl } : {}),
     };
 
     const errosValidacao = validarPerfilArtesao(entrada);
@@ -135,6 +184,13 @@ export function PerfilArtesaoForm({
 
     setEnviando(true);
     try {
+      if (arquivoFoto) {
+        if (!service.enviarFoto) throw new Error("Upload indisponível.");
+        const salvo = await service.enviarFoto(arquivoFoto, artesaoId);
+        setFotoUrl(salvo.fotoUrl ?? "");
+        setArquivoFoto(null);
+        if (refFoto.current) refFoto.current.value = "";
+      }
       await service.salvar(entrada, artesaoId);
       setMensagemSucesso("Perfil salvo com sucesso.");
     } catch {
@@ -172,7 +228,9 @@ export function PerfilArtesaoForm({
     );
   }
 
-  const tecnicaSelecionada = tecnicas.find((tecnica) => tecnica.id === tecnicaId);
+  const tecnicaSelecionada = tecnicas.find(
+    (tecnica) => tecnica.id === tecnicaId,
+  );
   const regiaoSelecionada = regioes.find((regiao) => regiao.id === regiaoId);
 
   function alterarCampo(definir: (valor: string) => void) {
@@ -206,7 +264,10 @@ export function PerfilArtesaoForm({
           ref={refTecnica}
           name="tecnicaId"
           rotulo="Técnica principal"
-          opcoes={tecnicas.map((tecnica) => ({ valor: tecnica.id, rotulo: tecnica.nome }))}
+          opcoes={tecnicas.map((tecnica) => ({
+            valor: tecnica.id,
+            rotulo: tecnica.nome,
+          }))}
           value={tecnicaId}
           onChange={alterarCampo(setTecnicaId)}
           disabled={enviando}
@@ -217,25 +278,64 @@ export function PerfilArtesaoForm({
           ref={refRegiao}
           name="regiaoId"
           rotulo="Região"
-          opcoes={regioes.map((regiao) => ({ valor: regiao.id, rotulo: regiao.nome }))}
+          opcoes={regioes.map((regiao) => ({
+            valor: regiao.id,
+            rotulo: regiao.nome,
+          }))}
           value={regiaoId}
           onChange={alterarCampo(setRegiaoId)}
           disabled={enviando}
           erro={erros.regiaoId}
         />
-        <CampoTexto
-          id="perfil-foto"
-          ref={refFoto}
-          name="fotoUrl"
-          rotulo="URL da foto"
-          opcional
-          type="url"
-          icone="imagem"
-          value={fotoUrl}
-          onChange={alterarCampo(setFotoUrl)}
-          disabled={enviando}
-          erro={erros.fotoUrl}
-        />
+        <div className="flex flex-col gap-2">
+          <label
+            htmlFor="perfil-foto"
+            className="text-sm font-semibold text-fg-strong"
+          >
+            Foto do perfil{" "}
+            <span className="font-normal text-fg-muted">opcional</span>
+          </label>
+          <input
+            id="perfil-foto"
+            ref={refFoto}
+            name="foto"
+            type="file"
+            accept="image/jpeg,image/png"
+            disabled={enviando || validandoFoto || !service.enviarFoto}
+            aria-invalid={Boolean(erroFoto)}
+            aria-describedby="perfil-foto-ajuda perfil-foto-erro"
+            onChange={(evento) => void selecionarFoto(evento.target.files?.[0])}
+            className="w-full rounded-control border border-border-subtle p-3 text-sm"
+          />
+          <p id="perfil-foto-ajuda" className="text-sm text-fg-muted">
+            JPG ou PNG. Até 2 MB.
+          </p>
+          {!service.enviarFoto ? (
+            <p className="text-sm text-fg-muted">
+              Envio de foto indisponível neste ambiente.
+            </p>
+          ) : null}
+          {arquivoFoto || erroFoto ? (
+            <button
+              type="button"
+              disabled={enviando}
+              className={BOTAO_SECUNDARIO}
+              onClick={() => {
+                void selecionarFoto(undefined);
+                if (refFoto.current) refFoto.current.value = "";
+              }}
+            >
+              Cancelar foto
+            </button>
+          ) : null}
+          <p
+            id="perfil-foto-erro"
+            role={erroFoto ? "alert" : undefined}
+            className="text-sm text-fg-strong"
+          >
+            {erroFoto}
+          </p>
+        </div>
 
         <div className="flex flex-col gap-3 border-t border-border-subtle pt-5">
           {mensagemSucesso ? (
@@ -253,11 +353,15 @@ export function PerfilArtesaoForm({
           <div className="flex justify-end">
             <button
               type="submit"
-              disabled={enviando}
+              disabled={enviando || validandoFoto || Boolean(erroFoto)}
               aria-busy={enviando || undefined}
               className={`${BOTAO_PRIMARIO_GRANDE} w-full sm:w-auto sm:min-w-[200px]`}
             >
-              {enviando ? <Giro /> : <Icone nome="confirmar" className="flex-none" />}
+              {enviando ? (
+                <Giro />
+              ) : (
+                <Icone nome="confirmar" className="flex-none" />
+              )}
               {enviando ? "Salvando..." : "Salvar perfil"}
             </button>
           </div>
@@ -276,9 +380,9 @@ export function PerfilArtesaoForm({
           <div className="flex justify-center bg-linho-100 px-6 pt-6">
             <div className="-mb-10">
               <RetratoArtesao
-                key={fotoUrl}
+                key={previaFoto ?? fotoUrl}
                 nome={nomeArtesao}
-                fotoUrl={fotoUrlSegura(fotoUrl.trim())}
+                fotoUrl={previaFoto ?? fotoUrlSegura(fotoUrl.trim())}
                 variante="previa"
               />
             </div>

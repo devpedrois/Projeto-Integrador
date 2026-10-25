@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { HttpUsuariosService } from "@/services/http/usuarios.service";
 import { HttpProdutosService } from "@/services/http/produtos.service";
+import { HttpPerfilArtesaoService } from "@/services/http/perfil-artesao.service";
 
 const dto = {
   artesaoId: "bdc970c1-2b87-467e-80f3-d5d7100780a7",
@@ -20,6 +21,31 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 describe("WEB-07 adapters HTTP", () => {
+  it("Web.6 envia FormData com cookie sem Content-Type manual", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      Response.json({
+        ...dto,
+        fotoUrl: "https://blob.example.test/perfis/foto.jpg",
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    const arquivo = new File(
+      [new Uint8Array([255, 216, 255, 224])],
+      "foto.jpg",
+      { type: "image/jpeg" },
+    );
+    const salvo = await new HttpPerfilArtesaoService().enviarFoto(
+      arquivo,
+      dto.artesaoId,
+    );
+    expect(salvo.fotoUrl).toBe("https://blob.example.test/perfis/foto.jpg");
+    expect(fetchMock.mock.calls[0]?.[0]).toBe("/api/artesao/perfil/foto");
+    const options = fetchMock.mock.calls[0]?.[1];
+    expect(options.credentials).toBe("include");
+    expect(options.body).toBeInstanceOf(FormData);
+    expect(options.body.get("foto")).toBe(arquivo);
+    expect(options.headers).not.toHaveProperty("Content-Type");
+  });
   it("perfil sai de pendentes e carrega sem acessar storage", async () => {
     vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
     vi.spyOn(window, "localStorage", "get").mockImplementation(() => {

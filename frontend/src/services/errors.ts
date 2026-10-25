@@ -29,6 +29,7 @@ const CODIGOS_HTTP: Readonly<Record<number, readonly string[]>> = {
     "ITEM_JA_ENVIADO",
     "PEDIDO_NAO_CONFIRMADO",
   ],
+  413: ["FOTO_MUITO_GRANDE"],
 };
 const ERROS_HTTP: Readonly<Record<number, readonly [string, string]>> = {
   400: ["VALIDACAO", "Dados inválidos. Confira e tente novamente."],
@@ -36,6 +37,7 @@ const ERROS_HTTP: Readonly<Record<number, readonly [string, string]>> = {
   403: ["ACESSO_NEGADO", "Sua conta não tem permissão para esta ação."],
   404: ["NAO_ENCONTRADO", "Recurso não encontrado."],
   409: ["CONFLITO", "Não foi possível concluir esta ação."],
+  413: ["FOTO_MUITO_GRANDE", "A foto deve ter até 2 MB."],
   429: ["MUITAS_SOLICITACOES", "Aguarde antes de tentar novamente."],
 };
 

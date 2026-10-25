@@ -21,7 +21,7 @@ export class FakePerfilArtesaoService implements PerfilArtesaoService {
 
   constructor(
     private readonly repositorio: PerfilArtesaoRepository,
-    opcoes: FakePerfilArtesaoServiceOpcoes = {}
+    opcoes: FakePerfilArtesaoServiceOpcoes = {},
   ) {
     this.latenciaMs = opcoes.latenciaMs ?? 0;
   }
@@ -32,21 +32,29 @@ export class FakePerfilArtesaoService implements PerfilArtesaoService {
     return this.repositorio.findByArtesaoId(artesaoId);
   }
 
-  async salvar(input: PerfilArtesaoInput, artesaoId: string): Promise<PerfilArtesao> {
+  async salvar(
+    input: PerfilArtesaoInput,
+    artesaoId: string,
+  ): Promise<PerfilArtesao> {
     const erros = validarPerfilArtesao(input);
     if (!perfilArtesaoValido(erros)) {
-      throw new ServiceError("PERFIL_ARTESAO_INVALIDO", "Dados do perfil inválidos.");
+      throw new ServiceError(
+        "PERFIL_ARTESAO_INVALIDO",
+        "Dados do perfil inválidos.",
+      );
     }
 
     await this.repositorio.seed();
     await aguardar(this.latenciaMs);
 
+    const atual = await this.repositorio.findByArtesaoId(artesaoId);
+    const fotoUrl = input.fotoUrl?.trim() ?? atual?.fotoUrl;
     const perfil: PerfilArtesao = {
       artesaoId,
       historia: input.historia.trim(),
       tecnicaId: input.tecnicaId,
       regiaoId: input.regiaoId,
-      ...(input.fotoUrl !== undefined ? { fotoUrl: input.fotoUrl.trim() } : {}),
+      ...(fotoUrl ? { fotoUrl } : {}),
     };
 
     return this.repositorio.upsert(perfil);

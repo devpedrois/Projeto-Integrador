@@ -1433,3 +1433,13 @@ Os dois fluxos passaram três vezes, em ambos os viewports.
 Também apoiou sanitização dos traces e revisão equivalente nesta conversa.
 
 Evidências: `evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/`.
+
+### Web.6: upload da foto de perfil
+
+Pedro é responsável e revisor indicado.
+O Codex auxiliou no upload autenticado e nas validações.
+Também apoiou testes com PostgreSQL real e armazenamento temporário.
+A interface recebeu seleção de arquivo e prévia local.
+A revisão equivalente foi realizada nesta conversa.
+
+Evidências: `evidencias/Web.6/`.

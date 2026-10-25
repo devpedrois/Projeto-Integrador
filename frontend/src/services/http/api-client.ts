@@ -29,10 +29,15 @@ export class ApiClient {
         "Destino de requisição inválido.",
       );
     }
-    let body: string | undefined;
+    let body: string | FormData | undefined;
+    const multipart = options.body instanceof FormData;
     try {
       body =
-        options.body === undefined ? undefined : JSON.stringify(options.body);
+        options.body === undefined
+          ? undefined
+          : multipart
+            ? (options.body as FormData)
+            : JSON.stringify(options.body);
     } catch {
       throw new ServiceError(
         "ENTRADA_INVALIDA",
@@ -60,7 +65,9 @@ export class ApiClient {
         signal: controller.signal,
         headers: {
           Accept: "application/json",
-          ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
+          ...(body !== undefined && !multipart
+            ? { "Content-Type": "application/json" }
+            : {}),
         },
         ...(body !== undefined ? { body } : {}),
       });

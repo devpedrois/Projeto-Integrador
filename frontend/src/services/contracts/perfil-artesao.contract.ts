@@ -12,4 +12,5 @@ import type { PerfilArtesao, PerfilArtesaoInput } from "@/types/perfil-artesao";
 export interface PerfilArtesaoService {
   obter(artesaoId: string): Promise<PerfilArtesao | null>;
   salvar(input: PerfilArtesaoInput, artesaoId: string): Promise<PerfilArtesao>;
+  enviarFoto?(arquivo: File, artesaoId: string): Promise<PerfilArtesao>;
 }

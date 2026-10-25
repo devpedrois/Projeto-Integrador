@@ -62,6 +62,11 @@ import { AvaliacaoController } from "./controllers/avaliacao.controller.js";
 import { AvaliacaoService } from "./services/avaliacao.service.js";
 import { PrismaAvaliacaoRepository } from "./repositories/avaliacao.repository.js";
 import { createAvaliacaoRouter } from "./routes/avaliacao.routes.js";
+import type { FotoStorage } from "./integrations/storage/foto-storage.js";
+import { VercelFotoStorage } from "./integrations/storage/vercel-foto-storage.js";
+import { FotoPerfilService } from "./services/foto-perfil.service.js";
+import { FotoPerfilController } from "./controllers/foto-perfil.controller.js";
+import { createFotoPerfilRouter } from "./routes/foto-perfil.routes.js";
 
 export function createApp(
   prisma: PrismaClient,
@@ -70,7 +75,11 @@ export function createApp(
     JWT_SECRET: process.env.JWT_SECRET,
     COOKIE_SECURE: false,
   },
-  options: { cacheStore?: CacheStore; logCache?: LogCache } = {},
+  options: {
+    cacheStore?: CacheStore;
+    logCache?: LogCache;
+    fotoStorage?: FotoStorage;
+  } = {},
 ): Express {
   const cache = new CachePublico(
     options.cacheStore ?? new MemoryCacheStore(),
@@ -165,6 +174,18 @@ export function createApp(
     ),
   );
   app.use(createUsuarioRouter(usuarioController, autenticarUsuario));
+  app.use(
+    createFotoPerfilRouter(
+      new FotoPerfilController(
+        new FotoPerfilService(
+          new PrismaPerfilArtesaoRepository(prisma),
+          options.fotoStorage ?? new VercelFotoStorage(),
+          cache,
+        ),
+      ),
+      autenticarUsuario,
+    ),
+  );
   app.use(
     createPerfilArtesaoRouter(
       new PerfilArtesaoController(

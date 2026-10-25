@@ -9,7 +9,7 @@ import type { PerfilArtesaoInput } from "@/types/perfil-artesao";
 const CHAVE_TESTE = "origem:test:perfis-artesao:service:v1";
 
 function entradaValida(
-  overrides: Partial<PerfilArtesaoInput> = {}
+  overrides: Partial<PerfilArtesaoInput> = {},
 ): PerfilArtesaoInput {
   return {
     historia: "Historia com detalhes suficientes sobre a origem da peca.",
@@ -25,7 +25,10 @@ beforeEach(() => {
 
 describe("FakePerfilArtesaoService.obter", () => {
   it("retorna null quando o artesao ainda nao possui perfil salvo", async () => {
-    const repo = new BrowserPerfilArtesaoRepository(window.localStorage, CHAVE_TESTE);
+    const repo = new BrowserPerfilArtesaoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service = new FakePerfilArtesaoService(repo, { latenciaMs: 0 });
 
     const perfil = await service.obter("artesao-sem-perfil");
@@ -34,7 +37,10 @@ describe("FakePerfilArtesaoService.obter", () => {
   });
 
   it("retorna o perfil semeado do artesao informado", async () => {
-    const repo = new BrowserPerfilArtesaoRepository(window.localStorage, CHAVE_TESTE);
+    const repo = new BrowserPerfilArtesaoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service = new FakePerfilArtesaoService(repo, { latenciaMs: 0 });
 
     const perfil = await service.obter("seed-artesao-01");
@@ -44,12 +50,29 @@ describe("FakePerfilArtesaoService.obter", () => {
 });
 
 describe("FakePerfilArtesaoService.salvar", () => {
+  it("preserva foto existente quando o formulario omite fotoUrl", async () => {
+    const repo = new BrowserPerfilArtesaoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
+    const service = new FakePerfilArtesaoService(repo);
+    await service.salvar(
+      entradaValida({ fotoUrl: "https://example.test/foto.jpg" }),
+      "artesao-da-sessao",
+    );
+    const salvo = await service.salvar(entradaValida(), "artesao-da-sessao");
+    expect(salvo.fotoUrl).toBe("https://example.test/foto.jpg");
+  });
   it("cria o perfil vinculado ao artesao da sessao, ignorando artesaoId da entrada", async () => {
-    const repo = new BrowserPerfilArtesaoRepository(window.localStorage, CHAVE_TESTE);
+    const repo = new BrowserPerfilArtesaoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service = new FakePerfilArtesaoService(repo, { latenciaMs: 0 });
 
     const entrada = entradaValida();
-    (entrada as unknown as Record<string, unknown>).artesaoId = "artesao-forjado";
+    (entrada as unknown as Record<string, unknown>).artesaoId =
+      "artesao-forjado";
     const salvo = await service.salvar(entrada, "artesao-da-sessao");
 
     expect(salvo.artesaoId).toBe("artesao-da-sessao");
@@ -57,7 +80,10 @@ describe("FakePerfilArtesaoService.salvar", () => {
   });
 
   it("perfil salvo persiste e e recuperavel por obter", async () => {
-    const repo = new BrowserPerfilArtesaoRepository(window.localStorage, CHAVE_TESTE);
+    const repo = new BrowserPerfilArtesaoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service = new FakePerfilArtesaoService(repo, { latenciaMs: 0 });
 
     await service.salvar(entradaValida(), "artesao-da-sessao");
@@ -67,25 +93,39 @@ describe("FakePerfilArtesaoService.salvar", () => {
   });
 
   it("atualizar o proprio perfil substitui o anterior sem duplicar", async () => {
-    const repo = new BrowserPerfilArtesaoRepository(window.localStorage, CHAVE_TESTE);
+    const repo = new BrowserPerfilArtesaoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service = new FakePerfilArtesaoService(repo, { latenciaMs: 0 });
 
     await service.salvar(entradaValida(), "artesao-da-sessao");
-    await service.salvar(entradaValida({ historia: "Historia revisada e atualizada." }), "artesao-da-sessao");
+    await service.salvar(
+      entradaValida({ historia: "Historia revisada e atualizada." }),
+      "artesao-da-sessao",
+    );
 
     const perfil = await service.obter("artesao-da-sessao");
     const todos = await repo.list();
 
     expect(perfil?.historia).toBe("Historia revisada e atualizada.");
-    expect(todos.filter((p) => p.artesaoId === "artesao-da-sessao")).toHaveLength(1);
+    expect(
+      todos.filter((p) => p.artesaoId === "artesao-da-sessao"),
+    ).toHaveLength(1);
   });
 
   it("rejeita historia acima de 1000 caracteres sem salvar", async () => {
-    const repo = new BrowserPerfilArtesaoRepository(window.localStorage, CHAVE_TESTE);
+    const repo = new BrowserPerfilArtesaoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service = new FakePerfilArtesaoService(repo, { latenciaMs: 0 });
 
     await expect(
-      service.salvar(entradaValida({ historia: "a".repeat(1001) }), "artesao-da-sessao")
+      service.salvar(
+        entradaValida({ historia: "a".repeat(1001) }),
+        "artesao-da-sessao",
+      ),
     ).rejects.toBeInstanceOf(ServiceError);
 
     const perfil = await service.obter("artesao-da-sessao");
@@ -93,19 +133,26 @@ describe("FakePerfilArtesaoService.salvar", () => {
   });
 
   it("nao altera o perfil de outro artesao ao salvar com um artesaoId de sessao diferente", async () => {
-    const repo = new BrowserPerfilArtesaoRepository(window.localStorage, CHAVE_TESTE);
+    const repo = new BrowserPerfilArtesaoRepository(
+      window.localStorage,
+      CHAVE_TESTE,
+    );
     const service = new FakePerfilArtesaoService(repo, { latenciaMs: 0 });
 
     await service.salvar(entradaValida(), "artesao-a");
     await service.salvar(
-      entradaValida({ historia: "Historia do artesao b, completamente diferente." }),
-      "artesao-b"
+      entradaValida({
+        historia: "Historia do artesao b, completamente diferente.",
+      }),
+      "artesao-b",
     );
 
     const perfilA = await service.obter("artesao-a");
     const perfilB = await service.obter("artesao-b");
 
     expect(perfilA?.historia).toBe(entradaValida().historia);
-    expect(perfilB?.historia).toBe("Historia do artesao b, completamente diferente.");
+    expect(perfilB?.historia).toBe(
+      "Historia do artesao b, completamente diferente.",
+    );
   });
 });

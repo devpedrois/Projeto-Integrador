@@ -45,6 +45,22 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("Web.6 documenta multipart autenticado com limites e erros", async () => {
+    const resposta = await request(app).get("/docs/openapi.json");
+    const operacao = resposta.body.paths["/artesao/perfil/foto"]?.post;
+    expect(operacao).toBeDefined();
+    expect(operacao.security).toEqual([{ sessao: [] }]);
+    expect(
+      operacao.requestBody.content["multipart/form-data"].schema,
+    ).toMatchObject({
+      type: "object",
+      required: ["foto"],
+      additionalProperties: false,
+      properties: { foto: { type: "string", format: "binary" } },
+    });
+    for (const status of ["200", "400", "401", "403", "413", "503"])
+      expect(operacao.responses).toHaveProperty(status);
+  });
   it("Web.2 documenta envio protegido e status por item", async () => {
     const resposta = await request(app).get("/docs/openapi.json");
     const operacao =
