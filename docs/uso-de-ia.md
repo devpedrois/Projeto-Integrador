@@ -1346,3 +1346,13 @@ A validação passou a conferir pagamentos e respostas inesperadas.
 Também apoiou a conferência SQL e exportação das rodadas.
 
 Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/`.
+
+### 30.4: diagrama de arquitetura distribuída
+
+Sergio é responsável; Pedro é o revisor indicado.
+O Codex auxiliou na documentação e exportação do diagrama.
+Os componentes foram conferidos contra os arquivos existentes.
+A consulta pública confirmou limites do plano gratuito Render.
+O painel exigiu login; a configuração remota permanece pendente.
+
+Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.4-diagrama-distribuido/`.
