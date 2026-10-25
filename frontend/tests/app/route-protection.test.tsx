@@ -16,6 +16,15 @@ let storeMock: SessionStore | null = null;
 vi.mock("@/services/fake/container", () => ({
   obterSessionStore: () => storeMock,
   obterNotificacoesService: () => null,
+  obterIndicadoresArtesaoService: () => ({
+    obter: vi.fn().mockResolvedValue({
+      quantidadeVendida: 0,
+      receitaTotal: 0,
+      numeroPedidos: 0,
+      ultimaVenda: null,
+      atualizadoEm: "2026-10-25T12:00:00.000Z",
+    }),
+  }),
   obterAvaliacoesService: () => null,
   obterProdutosService: () => ({ list: vi.fn(), create: vi.fn() }),
   obterOpcoesFiltroService: () => ({
@@ -98,7 +107,9 @@ describe("protecao de rotas", () => {
 
     render(<PainelArtesaoPage />);
 
-    expect(await screen.findByRole("heading")).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { name: "Painel do artesão" }),
+    ).toBeInTheDocument();
   });
 
   it("/admin nega visitante e preserva destino de retorno", async () => {

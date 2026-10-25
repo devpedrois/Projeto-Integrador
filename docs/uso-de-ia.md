@@ -1376,3 +1376,12 @@ O smoke confirmou cinco envios, refletidos na sessão do comprador.
 A revisão equivalente incluiu isolamento e troca de contas.
 
 Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/`.
+
+### Web.5: indicadores de vendas do artesão
+
+Pedro é responsável e revisor indicado.
+O Codex auxiliou no card, adapters e testes.
+O painel consulta vendas confirmadas, com erro recuperável.
+A medição registra requisição e renderização com PostgreSQL real.
+
+Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/`.

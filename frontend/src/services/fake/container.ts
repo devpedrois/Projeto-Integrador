@@ -41,6 +41,9 @@ import type { NotificacoesService } from "@/services/contracts/notificacoes.cont
 import { HttpNotificacoesService } from "@/services/http/notificacoes.service";
 import type { PedidosArtesaoService } from "@/services/contracts/pedidos-artesao.contract";
 import { HttpPedidosArtesaoService } from "@/services/http/pedidos-artesao.service";
+import type { IndicadoresArtesaoService } from "@/services/contracts/indicadores-artesao.contract";
+import { HttpIndicadoresArtesaoService } from "@/services/http/indicadores-artesao.service";
+import { FakeIndicadoresArtesaoService } from "@/services/fake/indicadores-artesao.service";
 
 export const PENDENTES_HTTP: readonly string[] = [];
 
@@ -58,6 +61,8 @@ const moderacaoHttp: ModeracaoService = new HttpModeracaoService();
 const notificacoesHttp: NotificacoesService = new HttpNotificacoesService();
 const pedidosArtesaoHttp: PedidosArtesaoService =
   new HttpPedidosArtesaoService();
+const indicadoresHttp: IndicadoresArtesaoService =
+  new HttpIndicadoresArtesaoService();
 
 export function obterPedidosArtesaoService(): PedidosArtesaoService | null {
   return modoHttp() ? pedidosArtesaoHttp : null;
@@ -84,10 +89,27 @@ let perfilArtesaoServiceInstancia: PerfilArtesaoService | null = null;
 let recomendacoesServiceInstancia: RecomendacoesService | null = null;
 let opcoesFiltroServiceInstancia: OpcoesFiltroService | null = null;
 let moderacaoServiceInstancia: ModeracaoService | null = null;
+let indicadoresServiceInstancia: IndicadoresArtesaoService | null = null;
 let sessionStoreInstancia: SessionStore | null = null;
 let modoAcessoStorageInstancia: ModoAcessoStorage | null = null;
 const carrinhoStoresPorUsuario = new Map<string, CartStore>();
 let compradorHttpAtual: string | null = null;
+
+export function obterIndicadoresArtesaoService(): IndicadoresArtesaoService {
+  if (modoHttp()) return indicadoresHttp;
+  indicadoresServiceInstancia ??= new FakeIndicadoresArtesaoService(
+    new BrowserProdutoRepository(window.localStorage),
+    new BrowserPedidoRepository(window.localStorage),
+    {
+      latenciaMs: LATENCIA_PADRAO_MS,
+      obterArtesaoId: () => {
+        const sessao = obterSessionStore().getSnapshot();
+        return sessao?.papel === "artesao" ? sessao.id : null;
+      },
+    },
+  );
+  return indicadoresServiceInstancia;
+}
 
 function acompanharCarrinhoHttp(): void {
   const sessao = sessionStoreInstancia?.getSnapshot();

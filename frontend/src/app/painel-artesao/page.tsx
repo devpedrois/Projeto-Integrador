@@ -7,6 +7,8 @@ import { RouteGuard } from "@/components/layout/RouteGuard";
 import { ProdutoForm } from "@/components/painel-artesao/ProdutoForm";
 import { PendenciaPerfilArtesao } from "@/components/painel-artesao/PendenciaPerfilArtesao";
 import { NotificacoesArtesao } from "@/components/painel-artesao/NotificacoesArtesao";
+import { IndicadoresArtesaoCard } from "@/components/painel-artesao/IndicadoresArtesaoCard";
+import type { IndicadoresArtesaoService } from "@/services/contracts/indicadores-artesao.contract";
 import type { NotificacoesService } from "@/services/contracts/notificacoes.contract";
 import { Icone } from "@/components/vitrine/Icone";
 import { useSessao } from "@/hooks/use-sessao";
@@ -15,6 +17,7 @@ import {
   obterProdutosService,
   obterSessionStore,
   obterNotificacoesService,
+  obterIndicadoresArtesaoService,
 } from "@/services/fake/container";
 import type { PerfilArtesaoService } from "@/services/contracts/perfil-artesao.contract";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
@@ -26,6 +29,8 @@ const STORE_INATIVO: SessionStore = {
 } as unknown as SessionStore;
 
 export default function PainelArtesaoPage() {
+  const [indicadoresService, setIndicadoresService] =
+    useState<IndicadoresArtesaoService | null>(null);
   const [notificacoesService, setNotificacoesService] =
     useState<NotificacoesService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
@@ -39,6 +44,7 @@ export default function PainelArtesaoPage() {
     setProdutosService(obterProdutosService());
     setPerfilService(obterPerfilArtesaoService());
     setNotificacoesService(obterNotificacoesService());
+    setIndicadoresService(obterIndicadoresArtesaoService());
   }, []);
 
   const sessao = useSessao(sessionStore ?? STORE_INATIVO);
@@ -58,6 +64,12 @@ export default function PainelArtesaoPage() {
             Pedidos recebidos
           </Link>
         </div>
+        {indicadoresService && sessao?.papel === "artesao" ? (
+          <IndicadoresArtesaoCard
+            key={`indicadores:${sessao.id}`}
+            service={indicadoresService}
+          />
+        ) : null}
         {notificacoesService && sessao?.papel === "artesao" ? (
           <NotificacoesArtesao key={sessao.id} service={notificacoesService} />
         ) : null}
