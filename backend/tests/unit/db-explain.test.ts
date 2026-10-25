@@ -13,6 +13,58 @@ async function carregarScript() {
 }
 
 describe("entrada db:explain", () => {
+  it("seleciona volume e candidato permitido sem aceitar SQL externo", async () => {
+    const { parseExplainOptions } = await carregarScript();
+    expect(
+      parseExplainOptions(["--volume", "--candidate", "confirmado-comprador"]),
+    ).toMatchObject({ volume: true, candidate: "confirmado-comprador" });
+    expect(() =>
+      parseExplainOptions(["--candidate", "confirmado-id"]),
+    ).toThrow();
+    expect(() =>
+      parseExplainOptions(["--volume", "--candidate", "DROP TABLE"]),
+    ).toThrow();
+    expect(() => parseExplainOptions(["--volume", "--compare"])).toThrow();
+  });
+
+  it("volume exige branch separada e recusa producao", async () => {
+    const { validateExplainEnvironment } = await carregarScript();
+    const env = {
+      DIRECT_URL: "postgresql://test:secret@principal.example/db",
+      DATABASE_URL_VOLUME: "postgresql://test:secret@volume.example/db",
+    };
+    expect(validateExplainEnvironment(env, false, true)).toBe(
+      env.DATABASE_URL_VOLUME,
+    );
+    expect(() =>
+      validateExplainEnvironment(
+        { ...env, NODE_ENV: "production" },
+        false,
+        true,
+      ),
+    ).toThrow();
+    expect(() =>
+      validateExplainEnvironment(
+        { ...env, DATABASE_URL_VOLUME: env.DIRECT_URL },
+        false,
+        true,
+      ),
+    ).toThrow();
+    expect(() =>
+      validateExplainEnvironment(
+        {
+          ...env,
+          DATABASE_URL_DEPLOY:
+            "postgresql://test:secret@volume-pooler.example/db",
+        },
+        false,
+        true,
+      ),
+    ).toThrow();
+    expect(() =>
+      validateExplainEnvironment({ DIRECT_URL: env.DIRECT_URL }, false, true),
+    ).toThrow();
+  });
   it("CLI retorna erro sanitizado para argumento invalido", () => {
     const result = spawnSync(
       process.execPath,

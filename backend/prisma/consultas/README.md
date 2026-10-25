@@ -86,3 +86,66 @@ Esses valores nao sao apresentados como a mesma metrica.
 Massas maiores ou outra distribuicao exigem nova avaliacao.
 
 Evidencias: `evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/`.
+
+## BD.4: pedidos, indicadores, avaliacoes e recomendacao
+
+O runner passa a executar dezenove consultas parametrizadas.
+As nove consultas historicas permanecem no catalogo.
+As dez consultas adicionais reproduzem os acessos inspecionados.
+
+| Consulta                          | Parametros                                                         |
+| --------------------------------- | ------------------------------------------------------------------ |
+| `indicadores-artesao.sql`         | `$1`: artesao autenticado                                          |
+| `pedidos-artesao.sql`             | `$1`: status confirmado; `$2`: artesao; `$3`: limite; `$4`: offset |
+| `pedidos-artesao-total.sql`       | `$1`: status confirmado; `$2`: artesao                             |
+| `pedidos-artesao-itens.sql`       | `$1`: artesao; `$2`: UUIDs dos pedidos paginados                   |
+| `avaliacao-compra-verificada.sql` | `$1`: comprador; `$2`: produto                                     |
+| `avaliacao-elegibilidade.sql`     | `$1`: comprador; `$2`: produto                                     |
+| `recomendacao-categoria.sql`      | `$1`: categoria; `$2`: produto excluido; `$3`: limite              |
+| `recomendacao-regional.sql`       | mesmos parametros; `$4`: regiao contextual, podendo ser nula       |
+| `recomendacao-historico.sql`      | `$1`: comprador; `$2`: limite                                      |
+| `recomendacao-fallback.sql`       | `$1`: produto excluido; `$2`: comprador; `$3`: limite              |
+
+Os parametros operacionais sao selecionados deterministicamente da massa.
+No endpoint, as identidades continuam vindo da sessao.
+A consulta de compra preserva `FOR SHARE OF pedido, item`.
+Ela mede a verificacao transacional anterior ao INSERT.
+O INSERT de avaliacao continua protegido pelo UNIQUE existente.
+Nenhuma avaliacao e criada pelo runner.
+
+Pedidos recebidos usa pagina, contagem e leitura dos itens.
+O filtro de propriedade aparece na pagina e nos itens.
+O status parametrizado e seu cast reproduzem o Prisma.
+A projecao de itens inclui somente as colunas preexistentes.
+`status` e `enviadoEm` nao existem nesta branch de volume.
+Essas colunas projetadas nao alteram os predicados medidos.
+A busca do nome do comprador por PK nao foi duplicada.
+O lote de pedidos usa `ANY(uuid[])`, equivalente ao `IN` parametrizado.
+Esses planos nao comprovam uma execucao HTTP completa.
+
+`npm run db:explain -- --volume` usa `DATABASE_URL_VOLUME`.
+O runner recusa producao e branches padrao ou deploy coincidentes.
+Os candidatos aceitos sao uma allowlist interna de DDL:
+`confirmado-id`, `confirmado-comprador` e `confirmado-ordenacao`.
+
+```sh
+npm run db:explain -- --volume --candidate confirmado-comprador --output ../evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/nova-coleta
+```
+
+No PowerShell, use `npm.cmd` para preservar os argumentos.
+O diretorio de saida precisa ser novo ou vazio.
+O modo candidato coleta `antes/` e `depois/` na mesma transacao.
+Executa ANALYZE antes das duas fases, sem forcar scans.
+As consultas recebem aquecimento antes do EXPLAIN ANALYZE BUFFERS.
+O hash SHA-256 confere resultados iguais entre as fases.
+Somente `atualizadoEm`, calculado pelo relogio, e excluido do hash.
+O hash preserva a ordem das linhas retornadas.
+
+Todas as transacoes terminam com ROLLBACK, inclusive em falhas.
+Usam BEGIN normal para permitir os locks de leitura.
+O modo candidato verifica sua ausencia depois do ROLLBACK.
+Essa verificacao fica registrada em `rollback.json`.
+`--compare` preserva a comparacao historica em schema isolado.
+Esse modo nao pode ser combinado com `--volume`.
+
+Decisoes e limites: [indices-u2.md](../../../docs/indices-u2.md).

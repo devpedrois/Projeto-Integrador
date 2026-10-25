@@ -1414,3 +1414,13 @@ Também apoiou CSV, JSON, gráfico e revisão equivalente nesta conversa.
 A suíte backend passou com 723 testes.
 
 Evidências: `evidencias/PI4-30/benchmark-recomendacao/`.
+
+### BD.4: indices de suporte as consultas novas
+
+Eliziane é responsável; Pedro é o revisor indicado.
+O Codex auxiliou nas consultas, testes e EXPLAIN reais.
+A análise preservou os índices existentes da Sprint 4.
+Os candidatos temporários foram medidos e revertidos.
+A revisão equivalente foi realizada nesta conversa.
+
+Resultados: [índices da U2](indices-u2.md).

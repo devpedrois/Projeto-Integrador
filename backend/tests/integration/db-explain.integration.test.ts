@@ -5,6 +5,71 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { Pool } from "pg";
 import { expect, it } from "vitest";
+import { criarBancoAuth } from "../helpers/auth-database.js";
+import { runVolumeSeed } from "../../prisma/seed-volume.js";
+
+it("BD.4 compara candidatos reais sem persistir indices ou mudar resultados", async () => {
+  const { runExplain, parseExplainOptions } =
+    await import("../../scripts/db-explain.js");
+  const banco = await criarBancoAuth();
+  try {
+    await runVolumeSeed(banco.prisma);
+    const [contexto] = await banco.prisma.$queryRaw<
+      { schema: string }[]
+    >`SELECT current_schema() AS schema`;
+    if (!contexto || !process.env.DIRECT_URL)
+      throw new Error("Schema isolado ausente");
+    for (const candidate of [
+      "confirmado-id",
+      "confirmado-comprador",
+      "confirmado-ordenacao",
+    ]) {
+      const output = await mkdtemp(join(tmpdir(), "origem-bd4-candidato-"));
+      await runExplain(
+        parseExplainOptions([
+          "--volume",
+          "--candidate",
+          candidate,
+          "--schema",
+          contexto.schema,
+          "--output",
+          output,
+        ]),
+        {
+          DATABASE_URL_VOLUME: process.env.DIRECT_URL,
+          NODE_ENV: "test",
+        },
+      );
+      const antes = JSON.parse(
+        await readFile(
+          join(output, "antes", "avaliacao-compra-verificada.json"),
+          "utf8",
+        ),
+      );
+      const depois = JSON.parse(
+        await readFile(
+          join(output, "depois", "avaliacao-compra-verificada.json"),
+          "utf8",
+        ),
+      );
+      expect(antes.resultHash).toMatch(/^[a-f0-9]{64}$/);
+      expect(depois.resultHash).toBe(antes.resultHash);
+      expect(depois.context.indexes.length).toBe(
+        antes.context.indexes.length + 1,
+      );
+      expect(
+        JSON.parse(await readFile(join(output, "rollback.json"), "utf8")),
+      ).toMatchObject({ rollback: true, candidateAbsent: true });
+      expect(await banco.prisma.pedido.count()).toBe(1500);
+    }
+    expect(
+      await banco.prisma
+        .$queryRaw`SELECT indexname FROM pg_indexes WHERE schemaname = ${contexto.schema} AND indexname LIKE 'Pedido_confirmado_%'`,
+    ).toEqual([]);
+  } finally {
+    await banco.fechar();
+  }
+}, 60000);
 
 it("db:explain grava pares reais, tabela e reverte o schema", async () => {
   expect(
@@ -21,8 +86,26 @@ it("db:explain grava pares reais, tabela e reverte o schema", async () => {
       EXPLAIN_ISOLATED: "1",
     },
   );
-  expect(await readdir(join(output, "antes"))).toHaveLength(9);
-  expect(await readdir(join(output, "depois"))).toHaveLength(9);
+  expect(await readdir(join(output, "antes"))).toHaveLength(19);
+  expect(await readdir(join(output, "depois"))).toHaveLength(19);
+  for (const name of [
+    "indicadores-artesao",
+    "pedidos-artesao",
+    "pedidos-artesao-total",
+    "pedidos-artesao-itens",
+    "avaliacao-compra-verificada",
+    "avaliacao-elegibilidade",
+    "recomendacao-categoria",
+    "recomendacao-regional",
+    "recomendacao-historico",
+    "recomendacao-fallback",
+  ]) {
+    const sample = JSON.parse(
+      await readFile(join(output, "depois", `${name}.json`), "utf8"),
+    );
+    expect(sample.explain[0]["Execution Time"]).toBeTypeOf("number");
+    expect(sample.explain[0].Plan["Actual Rows"]).toBeGreaterThan(0);
+  }
   const antes = JSON.parse(
     await readFile(join(output, "antes", "vitrine-publica.json"), "utf8"),
   );
@@ -80,7 +163,7 @@ it("db:explain atual mede tambem tabelas vazias sem alterar dados", async () => 
     await import("../../scripts/db-explain.js");
   const output = await mkdtemp(join(tmpdir(), "origem-bd04-atual-"));
   await runExplain(parseExplainOptions(["--output", output]));
-  expect(await readdir(join(output, "atual"))).toHaveLength(9);
+  expect(await readdir(join(output, "atual"))).toHaveLength(19);
   const notificacoes = JSON.parse(
     await readFile(join(output, "atual", "notificacoes-artesao.json"), "utf8"),
   );

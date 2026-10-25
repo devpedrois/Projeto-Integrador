@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { resolve, join } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -14,18 +14,38 @@ import { runVolumeSeed } from "../prisma/seed-volume.js";
 const migrationName = "20261014010000_indices_consultas";
 const migrationsRoot = new URL("../prisma/migrations/", import.meta.url);
 const queriesRoot = new URL("../prisma/consultas/", import.meta.url);
+const candidateIndexes = {
+  "confirmado-id":
+    'CREATE INDEX "Pedido_confirmado_id_idx" ON "Pedido" (id) WHERE status = \'confirmado\'',
+  "confirmado-comprador":
+    'CREATE INDEX "Pedido_confirmado_compradorId_id_idx" ON "Pedido" ("compradorId", id) WHERE status = \'confirmado\'',
+  "confirmado-ordenacao":
+    'CREATE INDEX "Pedido_confirmado_criadoEm_id_idx" ON "Pedido" ("criadoEm" DESC, id DESC) WHERE status = \'confirmado\'',
+} as const;
 const optionsSchema = z
   .object({
     compare: z.boolean(),
+    volume: z.boolean(),
+    candidate: z
+      .enum(["confirmado-id", "confirmado-comprador", "confirmado-ordenacao"])
+      .optional(),
     schema: z.string().regex(/^[a-z][a-z0-9_]{0,62}$/),
     phase: z.enum(["antes", "depois", "atual"]),
     term: z.string().trim().min(3).max(120),
     output: z.string().min(1),
   })
-  .strict();
+  .strict()
+  .refine(
+    (o) => !o.candidate || (o.volume && !o.compare && o.phase === "atual"),
+    "Candidato requer volume e ambas as fases",
+  )
+  .refine(
+    (o) => !(o.volume && o.compare),
+    "Volume nao recria a massa historica",
+  );
 
 export type ExplainOptions = z.infer<typeof optionsSchema>;
-type Parameter = string | boolean;
+type Parameter = string | boolean | number | null | string[];
 interface ExplainNode {
   "Node Type": string;
   "Index Name"?: string;
@@ -43,6 +63,8 @@ interface Sample {
   expectedIndexes: readonly string[];
   sql: string;
   parameters: Parameter[];
+  resultHash: string;
+  rowCount: number | null;
   explain: ExplainDocument[];
 }
 
@@ -56,6 +78,70 @@ const catalog = [
   ["poller-fila", ["IntencaoNotificacao_status_idx"]],
   ["notificacoes-artesao", ["Notificacao_usuarioId_lida_criadoEm_idx"]],
   ["itens-carrinho", ["ItemCarrinho_carrinhoId_produtoId_key"]],
+  [
+    "indicadores-artesao",
+    ["Produto_artesaoId_idx", "ItemPedido_produtoId_idx", "Pedido_pkey"],
+  ],
+  [
+    "pedidos-artesao",
+    ["Produto_artesaoId_idx", "ItemPedido_produtoId_idx", "Pedido_pkey"],
+  ],
+  [
+    "pedidos-artesao-total",
+    ["Produto_artesaoId_idx", "ItemPedido_produtoId_idx", "Pedido_pkey"],
+  ],
+  [
+    "pedidos-artesao-itens",
+    ["ItemPedido_pedidoId_idx", "Produto_pkey", "Produto_artesaoId_idx"],
+  ],
+  [
+    "avaliacao-compra-verificada",
+    [
+      "Pedido_compradorId_criadoEm_idx",
+      "ItemPedido_produtoId_idx",
+      "ItemPedido_pedidoId_idx",
+    ],
+  ],
+  [
+    "avaliacao-elegibilidade",
+    [
+      "Pedido_compradorId_criadoEm_idx",
+      "ItemPedido_produtoId_idx",
+      "Avaliacao_compradorId_produtoId_key",
+    ],
+  ],
+  [
+    "recomendacao-categoria",
+    [
+      "Produto_categoriaId_idx",
+      "ItemPedido_produtoId_idx",
+      "Avaliacao_produtoId_idx",
+    ],
+  ],
+  [
+    "recomendacao-regional",
+    [
+      "Produto_categoriaId_idx",
+      "ItemPedido_produtoId_idx",
+      "Avaliacao_produtoId_idx",
+    ],
+  ],
+  [
+    "recomendacao-historico",
+    [
+      "Pedido_compradorId_criadoEm_idx",
+      "ItemPedido_pedidoId_idx",
+      "Avaliacao_produtoId_idx",
+    ],
+  ],
+  [
+    "recomendacao-fallback",
+    [
+      "Pedido_compradorId_criadoEm_idx",
+      "ItemPedido_pedidoId_idx",
+      "Avaliacao_produtoId_idx",
+    ],
+  ],
 ] as const;
 const tables = [
   "Produto",
@@ -65,6 +151,8 @@ const tables = [
   "IntencaoNotificacao",
   "Notificacao",
   "ItemCarrinho",
+  "ItemPedido",
+  "Avaliacao",
 ];
 
 export function parseExplainOptions(args: string[]): ExplainOptions {
@@ -72,6 +160,8 @@ export function parseExplainOptions(args: string[]): ExplainOptions {
     args,
     options: {
       compare: { type: "boolean", default: false },
+      volume: { type: "boolean", default: false },
+      candidate: { type: "string" },
       schema: { type: "string" },
       phase: { type: "string" },
       termo: { type: "string" },
@@ -87,12 +177,14 @@ export function parseExplainOptions(args: string[]): ExplainOptions {
   }
   return optionsSchema.parse({
     compare: values.compare,
+    volume: values.volume,
+    candidate: values.candidate,
     schema: values.schema ?? "public",
     phase: values.phase ?? "atual",
     term: values.termo ?? "vaso",
     output: resolve(
       values.output ??
-        `../evidencias/PI4-28-W10-Modelo-Fisico/BD-04-indices/${new Date().toISOString().replaceAll(/[:.]/g, "-")}`,
+        `../evidencias/${values.volume ? "PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte" : "PI4-28-W10-Modelo-Fisico/BD-04-indices"}/${new Date().toISOString().replaceAll(/[:.]/g, "-")}`,
     ),
   });
 }
@@ -112,7 +204,20 @@ function databaseIdentity(value: string): string {
 export function validateExplainEnvironment(
   env: NodeJS.ProcessEnv,
   compare: boolean,
+  volume = false,
 ): string {
+  if (volume) {
+    if (!env.DATABASE_URL_VOLUME || env.NODE_ENV === "production")
+      throw new Error("Volume requer branch separada fora de producao");
+    const identity = databaseIdentity(env.DATABASE_URL_VOLUME);
+    if (
+      [env.DIRECT_URL, env.DATABASE_URL, env.DATABASE_URL_DEPLOY].some(
+        (value) => value && databaseIdentity(value) === identity,
+      )
+    )
+      throw new Error("Volume deve ser separado das bases padrao e deploy");
+    return env.DATABASE_URL_VOLUME;
+  }
   if (!env.DIRECT_URL) throw new Error("DIRECT_URL obrigatoria");
   const identity = databaseIdentity(env.DIRECT_URL);
   if (env.DATABASE_URL && databaseIdentity(env.DATABASE_URL) !== identity) {
@@ -188,7 +293,44 @@ async function parametersForQueries(
     const result = await client.query<{ id: string }>(sql);
     return result.rows[0]?.id ?? "00000000-0000-0000-0000-000000000000";
   }
+  const artesao = await firstId(
+    `SELECT p."artesaoId" id FROM "Produto" p JOIN "ItemPedido" i ON i."produtoId" = p.id GROUP BY p."artesaoId" ORDER BY count(*) DESC, p."artesaoId" LIMIT 1`,
+  );
+  const compra = (
+    await client.query<{
+      compradorId: string;
+      produtoId: string;
+      categoriaId: string;
+      regiaoId: string | null;
+    }>(
+      `SELECT pe."compradorId", i."produtoId", p."categoriaId", pa."regiaoId" FROM "Pedido" pe JOIN "ItemPedido" i ON i."pedidoId" = pe.id JOIN "Produto" p ON p.id = i."produtoId" LEFT JOIN "PerfilArtesao" pa ON pa."usuarioId" = p."artesaoId" WHERE pe.status = 'confirmado' ORDER BY pe.id, i.id LIMIT 1`,
+    )
+  ).rows[0];
+  const zero = "00000000-0000-0000-0000-000000000000";
+  const comprador = compra?.compradorId ?? zero;
+  const produto = compra?.produtoId ?? zero;
+  const pedidos = (
+    await client.query<{ id: string }>(
+      `SELECT pe.id FROM "Pedido" pe WHERE pe.status = 'confirmado' AND EXISTS (SELECT 1 FROM "ItemPedido" i JOIN "Produto" p ON p.id = i."produtoId" WHERE i."pedidoId" = pe.id AND p."artesaoId" = $1::uuid) ORDER BY pe."criadoEm" DESC, pe.id DESC LIMIT 20`,
+      [artesao],
+    )
+  ).rows.map(({ id }) => id);
   return {
+    "indicadores-artesao": [artesao],
+    "pedidos-artesao": ["confirmado", artesao, 20, 0],
+    "pedidos-artesao-total": ["confirmado", artesao],
+    "pedidos-artesao-itens": [artesao, pedidos],
+    "avaliacao-compra-verificada": [comprador, produto],
+    "avaliacao-elegibilidade": [comprador, produto],
+    "recomendacao-categoria": [compra?.categoriaId ?? zero, produto, 8],
+    "recomendacao-regional": [
+      compra?.categoriaId ?? zero,
+      produto,
+      8,
+      compra?.regiaoId ?? null,
+    ],
+    "recomendacao-historico": [comprador, 8],
+    "recomendacao-fallback": [produto, comprador, 8],
     "vitrine-publica": [],
     "busca-termo": [searchPattern(term)],
     "filtro-categoria": [
@@ -230,19 +372,24 @@ async function context(client: PoolClient, schema: string) {
   const counts = await client.query(`SELECT
     (SELECT count(*)::int FROM "Produto") produtos,
     (SELECT count(*)::int FROM "Pedido") pedidos,
+    (SELECT count(*)::int FROM "ItemPedido") "itensPedido",
+    (SELECT count(*)::int FROM "Avaliacao") avaliacoes,
+    (SELECT count(*)::int FROM "Pedido" WHERE status = 'confirmado') "pedidosConfirmados",
     (SELECT count(*)::int FROM "Usuario" WHERE papel = 'artesao') artesaos,
     (SELECT count(*)::int FROM "Usuario" WHERE papel = 'comprador') compradores,
     (SELECT count(*)::int FROM "IntencaoNotificacao") intencoes,
     (SELECT count(*)::int FROM "Notificacao") notificacoes,
     (SELECT count(*)::int FROM "ItemCarrinho") "itensCarrinho"`);
   const indexes = await client.query<{ indexname: string; indexdef: string }>(
-    `SELECT indexname, indexdef FROM pg_indexes WHERE schemaname = $1 ORDER BY indexname`,
+    `SELECT indexname, indexdef, pg_relation_size(format('%I.%I', schemaname, indexname)::regclass)::text AS "sizeBytes" FROM pg_indexes WHERE schemaname = $1 ORDER BY indexname`,
     [schema],
   );
   const settings = await client.query<{
     version: string;
     enableSeqscan: string;
-  }>(`SELECT version(), current_setting('enable_seqscan') AS "enableSeqscan"`);
+  }>(
+    `SELECT version(), current_setting('enable_seqscan') AS "enableSeqscan", current_setting('plan_cache_mode') AS "planCacheMode"`,
+  );
   const categories = await client.query(
     `SELECT "categoriaId", count(*)::int quantidade FROM "Produto" GROUP BY "categoriaId" ORDER BY "categoriaId"`,
   );
@@ -279,14 +426,33 @@ async function capture(
     const sql = await readFile(new URL(`${name}.sql`, queriesRoot), "utf8");
     const values = parameters[name];
     if (!values) throw new Error("Parametros ausentes");
-    await client.query(sql, values);
+    const warmup = await client.query<Record<string, unknown>>(sql, values);
+    const resultHash = createHash("sha256")
+      .update(
+        JSON.stringify(
+          warmup.rows.map((row) =>
+            Object.fromEntries(
+              Object.entries(row).filter(([key]) => key !== "atualizadoEm"),
+            ),
+          ),
+        ),
+      )
+      .digest("hex");
     const result = await client.query<{ "QUERY PLAN": ExplainDocument[] }>(
       `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) ${sql}`,
       values,
     );
     const explain = result.rows[0]?.["QUERY PLAN"];
     if (!explain?.[0]) throw new Error("Plano ausente");
-    const sample = { name, expectedIndexes, sql, parameters: values, explain };
+    const sample = {
+      name,
+      expectedIndexes,
+      sql,
+      parameters: values,
+      resultHash,
+      rowCount: warmup.rowCount,
+      explain,
+    };
     await writeFile(
       join(directory, `${name}.json`),
       JSON.stringify({ phase, context: metadata, ...sample }, null, 2) + "\n",
@@ -311,13 +477,13 @@ async function summary(
   after?: Sample[],
 ): Promise<void> {
   const lines = [
-    "# BD-04: consultas e indices",
+    "# Consultas e indices: Sprint 4 e BD.4",
     "",
     "Tempos de execucao do servidor, em milissegundos.",
     "Uma execucao de aquecimento precede cada EXPLAIN.",
     "Nao representa p95 nem latencia HTTP.",
     "",
-    "| Consulta | Indice justificado | Plano antes | Plano depois | Tempo antes ms | Tempo depois ms |",
+    "| Consulta | Indices candidatos ou existentes | Plano antes | Plano depois | Tempo antes ms | Tempo depois ms |",
     "|---|---|---|---|---:|---:|",
   ];
   for (const [index, sample] of before.entries()) {
@@ -347,7 +513,11 @@ export async function runExplain(
   env: NodeJS.ProcessEnv = process.env,
 ): Promise<{ schema: string; output: string }> {
   optionsSchema.parse(options);
-  const connectionString = validateExplainEnvironment(env, options.compare);
+  const connectionString = validateExplainEnvironment(
+    env,
+    options.compare,
+    options.volume,
+  );
   await mkdir(options.output, { recursive: true });
   if ((await readdir(options.output)).length > 0)
     throw new Error("Diretorio de saida precisa estar vazio");
@@ -365,7 +535,7 @@ export async function runExplain(
   let transactionStarted = false;
   try {
     client = await pool.connect();
-    await client.query(options.compare ? "BEGIN" : "BEGIN READ ONLY");
+    await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ");
     transactionStarted = true;
     await client.query("SET LOCAL statement_timeout = '60s'");
     await client.query("SET LOCAL lock_timeout = '5s'");
@@ -396,15 +566,20 @@ export async function runExplain(
       await client.query(`SET LOCAL search_path TO "${schema}"`);
     }
     const parameters = await parametersForQueries(client, options.term);
+    if (options.candidate) await analyze(client);
     const before = await capture(
       client,
       schema,
       options.output,
-      options.compare ? "antes" : options.phase,
+      options.compare || options.candidate ? "antes" : options.phase,
       parameters,
     );
-    if (options.compare) {
-      await client.query(await migrationSql(migrationName));
+    if (options.compare || options.candidate) {
+      await client.query(
+        options.candidate
+          ? candidateIndexes[options.candidate]
+          : await migrationSql(migrationName),
+      );
       await analyze(client);
       const after = await capture(
         client,
@@ -413,6 +588,11 @@ export async function runExplain(
         "depois",
         parameters,
       );
+      if (
+        options.candidate &&
+        before.some((sample, i) => sample.resultHash !== after[i]?.resultHash)
+      )
+        throw new Error("Candidato alterou resultados das consultas");
       await summary(options.output, before, after);
     } else {
       await summary(options.output, before);
@@ -423,6 +603,8 @@ export async function runExplain(
       if (transactionStarted) {
         client ??= await pool.connect();
         await client.query("ROLLBACK");
+        if (options.candidate)
+          await recordCandidateRollback(client, schema, options);
       }
     } finally {
       client?.release();
@@ -433,6 +615,37 @@ export async function runExplain(
       }
     }
   }
+}
+
+async function recordCandidateRollback(
+  client: PoolClient,
+  schema: string,
+  options: ExplainOptions,
+): Promise<void> {
+  if (!options.candidate) return;
+  const name = candidateIndexes[options.candidate].match(
+    /CREATE INDEX "([^"]+)"/,
+  )?.[1];
+  const remaining = await client.query(
+    "SELECT 1 FROM pg_indexes WHERE schemaname = $1 AND indexname = $2",
+    [schema, name],
+  );
+  if (remaining.rowCount !== 0)
+    throw new Error("Indice candidato permaneceu apos rollback");
+  await writeFile(
+    join(options.output, "rollback.json"),
+    JSON.stringify(
+      {
+        rollback: true,
+        candidate: options.candidate,
+        candidateAbsent: true,
+        connectionSource: "DATABASE_URL_VOLUME",
+      },
+      null,
+      2,
+    ) + "\n",
+    { flag: "wx" },
+  );
 }
 
 const executedFile = process.argv[1];
