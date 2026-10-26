@@ -1461,3 +1461,12 @@ Também apoiou justificativas, rastreabilidade e conferência das três rodadas.
 A entrega documental inclui PNG para conferência em A4.
 
 Documento: [concorrência no checkout](concorrencia-checkout-u2.md).
+
+### 31.5: refatorações justificadas da U2
+
+Luiza é responsável; Pedro é o revisor indicado.
+O Codex auxiliou na análise dos commits e limites.
+Também conferiu testes anteriores e execuções reais do CI.
+O relatório distingue mudanças estruturais, funcionalidades e falhas preexistentes.
+
+Documento: [refatorações da U2](refatoracoes-u2.md).
