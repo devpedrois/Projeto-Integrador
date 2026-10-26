@@ -1470,3 +1470,12 @@ Também conferiu testes anteriores e execuções reais do CI.
 O relatório distingue mudanças estruturais, funcionalidades e falhas preexistentes.
 
 Documento: [refatorações da U2](refatoracoes-u2.md).
+
+### 31.4: matriz de aceitação da U2
+
+Luiza é responsável; Pedro é o revisor indicado.
+O Codex auxiliou na rastreabilidade dos cenários e testes.
+Foram conferidos resultados históricos de CI e Playwright.
+O documento identifica lacunas, sem aprovação presumida.
+
+Documento: [matriz de aceitação](matriz-aceitacao-u2.md).

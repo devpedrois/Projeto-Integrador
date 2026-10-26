@@ -7,6 +7,7 @@ backend/src/generated/prisma/
 !.env.example
 .superpowers/
 docs/*
+!docs/matriz-aceitacao-u2.md
 !docs/refatoracoes-u2.md
 !docs/concorrencia-checkout-u2.md
 !docs/concorrencia-checkout-u2.mmd
