@@ -1,0 +1,61 @@
+---
+config:
+  theme: neutral
+  fontFamily: Arial
+  fontSize: 18
+  sequence:
+    actorMargin: 12
+    width: 100
+    height: 54
+    boxMargin: 5
+    boxTextMargin: 4
+    noteMargin: 5
+    messageMargin: 4
+    mirrorActors: false
+    actorFontSize: 20
+    messageFontSize: 20
+    noteFontSize: 18
+  themeVariables:
+    fontSize: 20px
+    actorFontSize: 20px
+    messageFontSize: 20px
+    noteFontSize: 18px
+---
+sequenceDiagram
+    actor C as Comprador
+    participant P as Proxy
+    participant A as API
+    participant T as PostgreSQL
+    participant U as Publicador
+    participant Q as Fila
+    participant W as Worker
+    C->>P: [F] POST /api/pedidos
+    P->>A: [P] /pedidos
+    A->>A: [V] Sessão e inputs
+    A->>T: [A,R] Abrir transação
+    T->>T: [R] Lock comprador<br/>FOR NO KEY UPDATE
+    loop IDs crescentes
+        T->>T: [R] SELECT ...<br/>FOR UPDATE OF p<br/>Disponibilidade e estoque
+    end
+    alt Estoque insuficiente
+        T-->>A: [R] ROLLBACK
+        A-->>P: [E] HTTP 409
+        P-->>C: [P,F,C] Erro
+    else Estoque disponível
+        T->>T: [R] Total e Pedido<br/>Decrementar estoque<br/>Incrementar vendas
+        T->>T: [R] ItemPedido<br/>Pagamento aprovado
+        T->>T: [R] Limpar carrinho<br/>IntencaoNotificacao<br/>pendente
+        T-->>A: [R] COMMIT
+        A-->>P: [A] Invalidar catálogo<br/>HTTP 201
+        P-->>C: [P,F,C] Confirmado
+    end
+    opt Após COMMIT
+        U->>T: [U,I] Ler outbox
+        U->>Q: [U] Enviar job<br/>3 retries e backoff
+        U->>T: [I] publicada<br/>Condicional
+        Q->>W: [W,I] Receber job<br/>Contar tentativa
+        W->>T: [H,N] Artesãos<br/>Notificacao UNIQUE
+        W->>T: [H,I] processada<br/>Após todos os avisos
+        W-->>Q: [W] Concluir job
+    end
+    Note over C,W: Mapa arquivo:função no documento:<br/>docs/concorrencia-checkout-u2.md<br/>R = pedido.repository.ts:criar

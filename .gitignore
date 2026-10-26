@@ -7,6 +7,9 @@ backend/src/generated/prisma/
 !.env.example
 .superpowers/
 docs/*
+!docs/concorrencia-checkout-u2.md
+!docs/concorrencia-checkout-u2.mmd
+!docs/concorrencia-checkout-u2.png
 !docs/uso-de-ia.md
 !docs/indices-u2.md
 !docs/metricas-recomendacao-u2.md

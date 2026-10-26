@@ -1452,3 +1452,12 @@ O relatório compara cobertura, fallback, categoria e região.
 A revisão equivalente foi realizada nesta conversa.
 
 Evidências: `evidencias/IA.3/`.
+
+### 30.2: sequência e justificativa do checkout concorrente
+
+Sergio é responsável; Pedro é o revisor indicado.
+O Codex auxiliou no diagrama fiel ao checkout existente.
+Também apoiou justificativas, rastreabilidade e conferência das três rodadas.
+A entrega documental inclui PNG para conferência em A4.
+
+Documento: [concorrência no checkout](concorrencia-checkout-u2.md).
