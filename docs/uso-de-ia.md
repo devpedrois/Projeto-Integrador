@@ -1529,11 +1529,11 @@ Gerou conferência automática de tabelas, fontes, links e entradas.
 A participação humana foi confirmada diretamente pelo responsável neste chat.
 Documentos: [desempenho U2](relatorio-desempenho-u2.md) e esta declaração.
 
-### 31.6: insumos para o relatório de execução de testes
+### 31.6: relatório de execução de testes
 
-O Codex produziu logs e relatórios nas subtarefas de origem.
-São insumos Vitest, Playwright e checkout para essa consolidação.
-Sua revisão humana integra a confirmação geral do responsável.
-Esta entrada declara os insumos, sem atribuir nova execução agregada.
-A consolidação final pertence à entrega específica da 31.6.
-Fontes: [CI](../evidencias/PI4-31/31.1/validacao.md), [US20](../evidencias/PI4-31-W12-Testes-Executados/31.2-pagamento-us20/00-resumo.md), [E2E](../evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/README.md), [checkout](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/README.md).
+O Codex executou cobertura, integridade, E2E e concorrência.
+Instalou providers compatíveis isoladamente, preservando manifests e locks produtivos.
+Gerou relatórios HTML/JSON, resumo e validação do hash comum.
+Registrou a falha CI anterior em ticket, sem corrigir código.
+A confirmação humana anterior refere-se aos insumos já revisados.
+Evidência: [resumo da execução congelada](../evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/00-resumo.md).
