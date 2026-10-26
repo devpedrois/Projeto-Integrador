@@ -38,9 +38,10 @@ Integrador Origem.
 - [x] Sim
 - [ ] Não
 
-O uso ocorreu como apoio técnico orientado pela equipe. As ferramentas
-auxiliaram pesquisas, organização, documentação, implementação, testes e
-revisões. As decisões finais permaneceram sob responsabilidade humana.
+O uso incluiu geração de código, testes, documentação e automações.
+As ferramentas também apoiaram pesquisas, arquitetura, depuração e revisões.
+Os integrantes revisaram, codificaram e refatoraram o material gerado.
+As decisões finais permaneceram sob responsabilidade humana.
 
 Este registro reúne os usos principais e materialmente relevantes. Interações
 pequenas, sem impacto no resultado, foram agrupadas. O conteúdo incorporado foi
@@ -55,10 +56,11 @@ revisto, adaptado e validado antes da entrega.
 
 ## 3. Registro dos principais usos
 
-Os membros produziram, integraram e validaram as entregas. A IA atuou como
-apoio crítico. Ela revisou código escrito pelos integrantes, encontrou bugs e
-sugeriu correções de arquitetura, separação de camadas e estrutura do código.
-Cada alteração aproveitada permaneceu sujeita à decisão do autor responsável.
+As entregas combinaram geração por IA e trabalho humano.
+A IA implementou funcionalidades, escreveu testes e corrigiu problemas.
+Também revisou código humano e propôs mudanças de arquitetura.
+Os integrantes revisaram e alteraram o material antes da incorporação.
+Cada alteração permaneceu sujeita à decisão do responsável.
 
 | Data ou período         | Etapa                                    | Participação dos membros                                                                                                                                                           | Apoio da IA                                                                                                                                            | Aproveitamento e validação                                                                                                                   |
 | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1254,228 +1256,284 @@ As contagens das nove tabelas permaneceram idênticas antes/depois.
 A sequence permaneceu inalterada; nenhum schema temporário BD-07 restou.
 Lint, typecheck, Prettier e revisão local passaram.
 
+## Sprint 12–13: participação da IA e dos integrantes
+
+Este registro cobre cada subtarefa da sprint uma única vez.
+O Codex gerou código, testes, documentação e automações de evidência.
+Sua participação incluiu implementação extensa e correções de arquitetura.
+Não se limitou a sugestões ou revisão de código humano.
+Os registros anteriores foram ampliados conforme os artefatos existentes.
+
+O responsável confirmou a participação humana em 26/10/2026.
+Cada responsável e revisor declarado realizou revisão humana.
+Também houve codificação e refatoração humanas do código gerado.
+Essa confirmação descreve o trabalho humano nas entradas abaixo.
+Os logs automatizados comprovam execuções, sem substituir essa declaração.
+Não foram inventados nomes ou alterações humanas específicas por arquivo.
+
+A ferramenta de IA identificada nesta sprint é o Codex.
+PowerShell, Git e GitHub CLI apoiaram operações e inspeções.
+Vitest, PostgreSQL, Playwright e Chromium apoiaram testes e capturas.
+Python, Matplotlib e Mermaid apoiaram gráficos e diagramas.
+ESLint, TypeScript e Prettier apoiaram verificações de qualidade.
+Essas ferramentas executoras não constituem outras IAs.
+Claude Code permanece declarado nos registros históricos pertinentes.
+Sua utilização nesta sprint não foi acrescentada sem comprovação.
+
 ### BD.1: massa sintética ampliada
 
-Tarefa realizada por Eduardo e revisada por Pedro.
-O Codex auxiliou nos ajustes e na validação.
+**Responsável:** Eduardo. **Revisor:** Pedro.
 
-A massa cobre 1.000 produtos e todas as referências.
-Inclui 50 pedidos multiartesão confirmados, com pagamentos aprovados.
-Determinismo, idempotência e testes foram verificados.
-Demo e deploy foram preservados.
-
-Evidências: `evidencias/BD.1/`.
+O Codex gerou alterações no seed, testes e consultas verificadoras.
+Implementou distribuição completa e pedidos multiartesão, preservando determinismo.
+Executou validações PostgreSQL, idempotência e aplicação autorizada na branch sintética.
+Eduardo e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [validação BD.1](../evidencias/BD.1/validacao.md).
 
 ### 31.1: integração contínua
 
-Tarefa realizada por Sérgio e revisada por Pedro.
-O Codex auxiliou no workflow e nos testes.
-A CI verifica frontend e backend com banco de teste separado.
-A execução considera a latência do banco remoto.
-Evidências: `evidencias/PI4-31/31.1/`.
+**Responsável:** Sérgio. **Revisor:** Pedro.
+
+O Codex gerou workflow, configuração Prisma e correções dos testes.
+Investigou falhas remotas, dependências ausentes, fixtures e timeouts PostgreSQL.
+Produziu contraprovas, logs locais e consultas de resultados GitHub Actions.
+Sérgio e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidências: [validação CI](../evidencias/PI4-31/31.1/validacao.md), [correções de timeouts](../evidencias/PI4-31/31.1/correcao-timeouts.md).
 
 ### 30.3: worker da fila como processo separado
 
-Luiza é responsável pela tarefa; Pedro é o revisor.
-O Codex auxiliou na separação do publicador e consumidor.
-Também apoiou testes com PostgreSQL e processos worker independentes.
-O modo integrado permanece padrão, conforme decisão 3.
-Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.3-worker-separado/`.
+**Responsável:** Luiza. **Revisor:** Pedro.
+
+O Codex gerou bootstrap, entrypoint, flags, scripts e testes multiprocesso.
+Implementou encerramento gracioso e corrigiu isolamento de consumidores nos testes.
+Executou PostgreSQL real e documentou a preservação do deploy integrado.
+Luiza e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [separação do worker](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.3-worker-separado/00-resumo.md).
 
 ### BD.2: benchmark HTTP da busca
 
-Eduardo é responsável pela tarefa; Pedro é o revisor.
-O Codex auxiliou no benchmark HTTP e nos testes.
-A execução validou seis cenários com PostgreSQL real.
-As medições não justificaram novos índices nesta massa.
-Evidências: `evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/`.
+**Responsável:** Eduardo. **Revisor:** Pedro.
+
+O Codex gerou CLI, testes e captura dos planos SQL.
+Executou medições HTTP e produziu CSV, JSON, tabelas e auditoria.
+Interpretou os planos, sem acrescentar índices injustificados pelos dados.
+Eduardo e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [benchmark da busca](../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/00-resumo.md).
 
 ### IA.1: contrato do adapter HTTP de recomendações
 
-Eliziane realizou a tarefa; Pedro revisou.
-O Codex auxiliou nos testes de paridade contratual.
-A fixture compartilhada compara resultados completos dos dois adapters.
-Os testes verificam erros HTTP e seleção pelo container.
-O OpenAPI recebeu a resposta 404 solicitada.
+**Responsável:** Eliziane. **Revisor:** Pedro.
 
-Evidências: `evidencias/IA.1/`.
+O Codex gerou testes contratuais usando a fixture compartilhada.
+Ampliou o OpenAPI e conferiu composição, erros e respostas completas.
+Gerou automação e capturas HTTP reais da vitrine existente.
+Eliziane e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [contrato e vitrine HTTP](../evidencias/IA.1/README.md).
 
 ### BD.3: indicadores de vendas por artesão
 
-Eliziane é responsável; Pedro é o revisor.
-O Codex auxiliou na consulta agregada e nos testes.
-A implementação considera somente itens próprios em pedidos confirmados.
-Também apoiou a documentação e a conferência SQL independente.
+**Responsável:** Eliziane. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-BD-W12-Indices-Consultas/BD.3-indicadores/`.
+O Codex gerou rota, validação, camadas, SQL agregado e testes.
+Documentou o contrato e automatizou conferência independente sobre o volume.
+Validou autenticação, isolamento, fanout e totais usando PostgreSQL real.
+Eliziane e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [indicadores e conferência SQL](../evidencias/PI4-BD-W12-Indices-Consultas/BD.3-indicadores/README.md).
 
 ### Web.1: pedidos recebidos pelo artesão
 
-Andrews é responsável; Pedro é o revisor.
-O Codex auxiliou na implementação e nos testes de integração.
-A consulta filtra pedidos confirmados e itens próprios no PostgreSQL.
-Também apoiou OpenAPI, documentação e revisão equivalente nesta conversa.
+**Responsável:** Andrews. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.1-itens-por-artesao/`.
+O Codex gerou endpoint, consulta restrita, contrato e testes PostgreSQL.
+Implementou o isolamento dos itens pelo artesão autenticado.
+Automatizou a captura dos payloads e conferiu pedidos multiartesão.
+Andrews e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [itens por artesão](../evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.1-itens-por-artesao/README.md).
 
 ### Web.3: formulário e criação de avaliações
 
-Luiz Rocha é responsável; Pedro é o revisor.
-O Codex auxiliou na API, no adapter HTTP e no formulário.
-Também apoiou testes com PostgreSQL real e validações no frontend.
-A implementação mantém a média na leitura e invalida caches após gravar.
-Compra verificada permanece reservada à Web.4, sem deploy intermediário.
+**Responsável:** Luiz Rocha. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/`.
+O Codex gerou API, validators, adapter HTTP, formulário e testes.
+Implementou avaliações persistidas, tratamento de duplicidade e invalidação de cache.
+Automatizou capturas reais, validações de entrada e conferência responsiva.
+Luiz Rocha e Pedro realizaram revisão e alterações humanas.
+Essa participação incluiu codificação e refatoração do código gerado.
+Evidência: [avaliações](../evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/README.md).
 
 ### Web.4: avaliações com compra verificada
 
-Luiz Rocha é responsável; Pedro é o revisor.
-O Codex auxiliou na autorização transacional e consulta de elegibilidade.
-Também apoiou testes com PostgreSQL real e bloqueio do formulário.
-A implementação exige compra confirmada e preserva a média na leitura.
-A documentação e revisão equivalente foram realizadas nesta conversa.
+**Responsável:** Luiz Rocha. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.4-compra-verificada/`.
+O Codex gerou autorização transacional, elegibilidade, integração visual e testes.
+Implementou revalidação da compra confirmada e bloqueio do formulário inelegível.
+Verificou os locks, papéis e rejeições com PostgreSQL real.
+Luiz Rocha e Pedro realizaram revisão e alterações humanas.
+Essa participação incluiu codificação e refatoração do código gerado.
+Evidência: [compra verificada](../evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.4-compra-verificada/README.md).
 
 ### 30.1: concorrência no checkout integrado
 
-Sergio é responsável; Pedro é o revisor.
-O Codex auxiliou nos testes e ajustes do script existente.
-A validação passou a conferir pagamentos e respostas inesperadas.
-Também apoiou a conferência SQL e exportação das rodadas.
+**Responsável:** Sergio. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/`.
+O Codex ampliou o script, asserções, testes e exportação JSON.
+Gerou verificações de pagamentos, conflitos e respostas HTTP inesperadas.
+Executou rodadas autenticadas e conferência SQL no PostgreSQL real.
+Sergio e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [concorrência no checkout](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/README.md).
 
 ### 30.4: diagrama de arquitetura distribuída
 
-Sergio é responsável; Pedro é o revisor indicado.
-O Codex auxiliou na documentação e exportação do diagrama.
-Os componentes foram conferidos contra os arquivos existentes.
-A consulta pública confirmou limites do plano gratuito Render.
-O painel exigiu login; a configuração remota permanece pendente.
+**Responsável:** Sergio. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-30-W12-Arquitetura-Distribuida/30.4-diagrama-distribuido/`.
+O Codex gerou texto arquitetural, Mermaid, exportações e verificações documentais.
+Conferiu componentes existentes e pesquisou limitações públicas do Render.
+Registrou a exigência de login e preservou a configuração remota.
+Sergio e Pedro realizaram revisão humana do material gerado.
+Evidência: [verificação arquitetural](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.4-diagrama-distribuido/00-validacao.md).
 
 ### 31.2: checkout, pedido e pagamento da US20
 
-Sergio é responsável; Pedro é o revisor indicado.
-O Codex reorganizou casos existentes, evitando testes duplicados.
-A suíte passou a conferir o pagamento pela API autenticada.
-Também apoiou contraprovas e revisão equivalente nesta conversa.
-A suíte backend passou com 671 testes.
+**Responsável:** Sergio. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-31-W12-Testes-Executados/31.2-pagamento-us20/`.
+O Codex reorganizou testes e ampliou asserções sobre pagamento autenticado.
+Gerou contraprovas para pagamento omitido e comprador indevidamente ignorado.
+Executou a suíte PostgreSQL e documentou revisão equivalente local.
+Sergio e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [integração US20](../evidencias/PI4-31-W12-Testes-Executados/31.2-pagamento-us20/00-resumo.md).
 
 ### Web.2: pedidos recebidos e envio por item
 
-Andrews é responsável; Pedro é o revisor indicado.
-O Codex auxiliou nos testes e na implementação transacional.
-Também apoiou as telas, contratos e documentação do envio.
-O smoke confirmou cinco envios, refletidos na sessão do comprador.
-A revisão equivalente incluiu isolamento e troca de contas.
+**Responsável:** Andrews. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/`.
+O Codex gerou migration, fluxo transacional, contratos, tela e testes.
+Implementou envio por item e atualização no histórico do comprador.
+Gerou automação visual, GIF e evidências contra o backend real.
+Andrews e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [pedidos recebidos](../evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/README.md).
 
 ### Web.5: indicadores de vendas do artesão
 
-Pedro é responsável e revisor indicado.
-O Codex auxiliou no card, adapters e testes.
-O painel consulta vendas confirmadas, com erro recuperável.
-A medição registra requisição e renderização com PostgreSQL real.
+**Responsável:** Pedro. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/`.
+O Codex gerou card, adapters, integração do container e testes.
+Implementou estados de leitura e descarte dos dados entre contas.
+Automatizou recargas, medição HTTP/renderização e capturas usando PostgreSQL real.
+Pedro realizou revisão humana, codificação e refatoração do código gerado.
+Evidência: [painel de indicadores](../evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/README.md).
 
 ### IA.2: carrossel de peças relacionadas
 
-Eliziane é responsável; Pedro é o revisor indicado.
-O Codex auxiliou nos testes e ajustes do carrossel existente.
-Os testes cobrem limite, exclusão, loading, vazio e recuperação.
-Também apoiou capturas HTTP e revisão equivalente nesta conversa.
+**Responsável:** Eliziane. **Revisor:** Pedro.
 
-Evidências: `evidencias/IA.2/`.
+O Codex gerou testes e ajustes no hook/carrossel existente.
+Implementou exclusão do produto atual antes do limite visual.
+Automatizou recuperação de erro, capturas HTTP e verificações responsivas.
+Eliziane e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [carrossel relacionado](../evidencias/IA.2/README.md).
 
 ### 30.5: benchmark dos consumidores da fila
 
-Pedro é responsável e revisor indicado.
-O Codex auxiliou na latência simulada e no benchmark.
-Também apoiou testes com PostgreSQL e processos worker reais.
-A ferramenta gera CSV, JSON, tabela e gráfico reproduzíveis.
-A revisão equivalente foi realizada nesta conversa.
+**Responsável:** Pedro. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-30/benchmark-fila/`.
+O Codex gerou latência configurável, CLI, processos worker e testes.
+Gerou verificações de unicidade, exportações, gráfico programado e auditoria.
+Executou PostgreSQL real; a coleta foi interrompida pelo responsável.
+Não houve gráfico final nem comparação completa entre workers.
+Pedro realizou revisão humana, codificação e refatoração do código gerado.
+Evidência: [protocolo e estado real B1](../evidencias/PI4-30/benchmark-fila/README.md).
 
 ### 30.6: benchmark de recomendação em lote
 
-Pedro é responsável e revisor indicado.
-O Codex auxiliou nos testes e no benchmark concorrente.
-A ferramenta compara IDs ordenados, preservando a Strategy existente.
-Também apoiou CSV, JSON, gráfico e revisão equivalente nesta conversa.
-A suíte backend passou com 723 testes.
+**Responsável:** Pedro. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-30/benchmark-recomendacao/`.
+O Codex gerou CLI, concorrência limitada, snapshots, testes e exportações.
+Executou o benchmark e produziu CSV, JSON, tabela e PNG.
+Implementou comparação sequencial/paralela e corrigiu guardas após contraprovas.
+Pedro realizou revisão humana, codificação e refatoração do código gerado.
+Evidência: [benchmark B2](../evidencias/PI4-30/benchmark-recomendacao/README.md).
 
-### BD.4: indices de suporte as consultas novas
+### BD.4: índices de suporte às consultas novas
 
-Eliziane é responsável; Pedro é o revisor indicado.
-O Codex auxiliou nas consultas, testes e EXPLAIN reais.
-A análise preservou os índices existentes da Sprint 4.
-Os candidatos temporários foram medidos e revertidos.
-A revisão equivalente foi realizada nesta conversa.
+**Responsável:** Eliziane. **Revisor:** Pedro.
 
-Resultados: [índices da U2](indices-u2.md).
+O Codex gerou consultas de análise, testes, candidatos e documentação.
+Executou EXPLAIN reais, comparou alternativas e reverteu candidatos temporários.
+Produziu planos e relatório dos índices mantidos ou descartados.
+Eliziane e Pedro revisaram, codificaram e refatoraram código gerado.
+Documento: [índices da U2](indices-u2.md).
 
 ### 31.3: E2E dos fluxos críticos
 
-Sergio é responsável; Pedro é o revisor indicado.
-O Codex auxiliou nos testes Playwright e execução real.
-Os dois fluxos passaram três vezes, em ambos os viewports.
-Também apoiou sanitização dos traces e revisão equivalente nesta conversa.
+**Responsável:** Sergio. **Revisor:** Pedro.
 
-Evidências: `evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/`.
+O Codex gerou fluxos Playwright, entrypoint, fixtures e sanitização.
+Executou os fluxos com API, navegador e PostgreSQL reais.
+Produziu relatórios HTML/JSON, traces, capturas e verificações de limpeza.
+Sergio e Pedro revisaram, codificaram e refatoraram código gerado.
+Evidência: [execuções E2E](../evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/README.md).
 
 ### Web.6: upload da foto de perfil
 
-Pedro é responsável e revisor indicado.
-O Codex auxiliou no upload autenticado e nas validações.
-Também apoiou testes com PostgreSQL real e armazenamento temporário.
-A interface recebeu seleção de arquivo e prévia local.
-A revisão equivalente foi realizada nesta conversa.
+**Responsável:** Pedro. **Revisor:** Pedro.
 
-Evidências: `evidencias/Web.6/`.
+O Codex gerou upload autenticado, abstração de armazenamento e validators.
+Implementou seleção, prévia, adapter HTTP e testes de assinatura/tamanho.
+Gerou automação visual com PostgreSQL real e armazenamento temporário.
+Pedro realizou revisão humana, codificação e refatoração do código gerado.
+Evidência: [foto de perfil](../evidencias/Web.6/README.md).
 
 ### IA.3: métricas com reforço regional
 
-O Codex auxiliou na flag de comparação regional.
-Os testes usam a Strategy real e PostgreSQL.
-O relatório compara cobertura, fallback, categoria e região.
-A revisão equivalente foi realizada nesta conversa.
-
-Evidências: `evidencias/IA.3/`.
+O Codex gerou flag, testes PostgreSQL, comparação regional e relatório.
+Executou coleta somente leitura e produziu JSON e tabela integral.
+Conferiu paridade, percentuais e interpretação dos resultados obtidos.
+Responsável e revisor realizaram revisão, codificação e refatoração humanas.
+Evidência: [métricas regionais](../evidencias/IA.3/README.md).
 
 ### 30.2: sequência e justificativa do checkout concorrente
 
-Sergio é responsável; Pedro é o revisor indicado.
-O Codex auxiliou no diagrama fiel ao checkout existente.
-Também apoiou justificativas, rastreabilidade e conferência das três rodadas.
-A entrega documental inclui PNG para conferência em A4.
+**Responsável:** Sergio. **Revisor:** Pedro.
 
+O Codex gerou diagrama, justificativas técnicas e exportação PNG.
+Conferiu transação, locks, publicação e processamento contra a implementação.
+Gerou rastreabilidade documental e prévias para conferência em A4.
+Sergio e Pedro realizaram revisão humana do material gerado.
 Documento: [concorrência no checkout](concorrencia-checkout-u2.md).
 
 ### 31.5: refatorações justificadas da U2
 
-Luiza é responsável; Pedro é o revisor indicado.
-O Codex auxiliou na análise dos commits e limites.
-Também conferiu testes anteriores e execuções reais do CI.
-O relatório distingue mudanças estruturais, funcionalidades e falhas preexistentes.
+**Responsável:** Luiza. **Revisor:** Pedro.
 
+O Codex analisou commits e gerou o relatório de refatorações.
+Preparou snapshot anterior e executou testes frontend comparativos.
+Consultou resultados CI, preservando diferenças entre evidências locais/remotas.
+Luiza e Pedro realizaram revisão humana do material gerado.
 Documento: [refatorações da U2](refatoracoes-u2.md).
 
 ### 31.4: matriz de aceitação da U2
 
-Luiza é responsável; Pedro é o revisor indicado.
-O Codex auxiliou na rastreabilidade dos cenários e testes.
-Foram conferidos resultados históricos de CI e Playwright.
-O documento identifica lacunas, sem aprovação presumida.
+**Responsável:** Luiza. **Revisor:** Pedro.
 
+O Codex gerou inventário de cenários, mapeamento e matriz documental.
+Conferiu nomes e asserções contra testes, CI e Playwright preservados.
+Classificou os resultados conforme as evidências históricas disponíveis.
+Luiza e Pedro realizaram revisão humana do material gerado.
 Documento: [matriz de aceitação](matriz-aceitacao-u2.md).
+
+### 30.7: relatório de desempenho e declaração da sprint
+
+O Codex gerou relatório, gráficos documentais e esta declaração ampliada.
+Consolidou exclusivamente evidências salvas, preservando a interrupção do B1.
+Gerou conferência automática de tabelas, fontes, links e entradas.
+A participação humana foi confirmada diretamente pelo responsável neste chat.
+Documentos: [desempenho U2](relatorio-desempenho-u2.md) e esta declaração.
+
+### 31.6: insumos para o relatório de execução de testes
+
+O Codex produziu logs e relatórios nas subtarefas de origem.
+São insumos Vitest, Playwright e checkout para essa consolidação.
+Sua revisão humana integra a confirmação geral do responsável.
+Esta entrada declara os insumos, sem atribuir nova execução agregada.
+A consolidação final pertence à entrega específica da 31.6.
+Fontes: [CI](../evidencias/PI4-31/31.1/validacao.md), [US20](../evidencias/PI4-31-W12-Testes-Executados/31.2-pagamento-us20/00-resumo.md), [E2E](../evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/README.md), [checkout](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/README.md).

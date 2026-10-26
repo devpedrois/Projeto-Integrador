@@ -7,6 +7,8 @@ backend/src/generated/prisma/
 !.env.example
 .superpowers/
 docs/*
+!docs/relatorio-desempenho-u2.md
+!docs/relatorio-desempenho-u2-recomendacao.png
 !docs/matriz-aceitacao-u2.md
 !docs/refatoracoes-u2.md
 !docs/concorrencia-checkout-u2.md
