@@ -1,0 +1,126 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/auth.routes.integration.test.ts tests/unit/openapi.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:32100) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/auth.routes.integration.test.ts (39 tests | 5 failed) 6232ms
+   ❯ POST /auth/register (18)
+     × normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador 273ms
+     × cria perfil de artesao incompleto e inicia sessao de artesao 245ms
+     × cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=false 244ms
+     × cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=true 242ms
+     × preserva conta e carrinho quando a emissao da sessao falha apos commit 244ms
+ ❯ tests/unit/openapi.test.ts (14 tests | 1 failed) 87ms
+   ❯ WEB-15 OpenAPI (14)
+     × cadastro documenta Set-Cookie no 201 com as mesmas flags do login 14ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/auth.routes.integration.test.ts > POST /auth/register > normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ primeiroCookie tests/integration/auth.routes.integration.test.ts:29:34
+     27| function primeiroCookie(headers: Record<string, unknown>): string {
+     28|   const cookies = headers["set-cookie"];
+     29|   expect(Array.isArray(cookies)).toBe(true);
+       |                                  ^
+     30|   const cookie: unknown = Array.isArray(cookies) ? cookies[0] : undefi…
+     31|   expect(typeof cookie).toBe("string");
+ ❯ tests/integration/auth.routes.integration.test.ts:78:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/integration/auth.routes.integration.test.ts > POST /auth/register > cria perfil de artesao incompleto e inicia sessao de artesao
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ primeiroCookie tests/integration/auth.routes.integration.test.ts:29:34
+     27| function primeiroCookie(headers: Record<string, unknown>): string {
+     28|   const cookies = headers["set-cookie"];
+     29|   expect(Array.isArray(cookies)).toBe(true);
+       |                                  ^
+     30|   const cookie: unknown = Array.isArray(cookies) ? cookies[0] : undefi…
+     31|   expect(typeof cookie).toBe("string");
+ ❯ tests/integration/auth.routes.integration.test.ts:103:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/integration/auth.routes.integration.test.ts > POST /auth/register > cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=false
+ FAIL  tests/integration/auth.routes.integration.test.ts > POST /auth/register > cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=true
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ primeiroCookie tests/integration/auth.routes.integration.test.ts:29:34
+     27| function primeiroCookie(headers: Record<string, unknown>): string {
+     28|   const cookies = headers["set-cookie"];
+     29|   expect(Array.isArray(cookies)).toBe(true);
+       |                                  ^
+     30|   const cookie: unknown = Array.isArray(cookies) ? cookies[0] : undefi…
+     31|   expect(typeof cookie).toBe("string");
+ ❯ tests/integration/auth.routes.integration.test.ts:134:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/integration/auth.routes.integration.test.ts > POST /auth/register > preserva conta e carrinho quando a emissao da sessao falha apos commit
+AssertionError: expected 201 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 201
+
+ ❯ tests/integration/auth.routes.integration.test.ts:170:29
+    168|       .post("/auth/register")
+    169|       .send(input);
+    170|     expect(response.status).toBe(503);
+       |                             ^
+    171|     expect(response.body).toEqual({
+    172|       error: { code: "AUTH_NAO_CONFIGURADA", message: "Autenticacao in…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > cadastro documenta Set-Cookie no 201 com as mesmas flags do login
+AssertionError: expected undefined to be defined
+ ❯ tests/unit/openapi.test.ts:52:20
+     50|     const paths = response.body.paths;
+     51|     const header = paths["/auth/register"].post.responses["201"].heade…
+     52|     expect(header).toBeDefined();
+       |                    ^
+     53|     expect(header).toEqual(paths["/auth/login"].post.responses["200"].…
+     54|     expect(header.description).toContain("origem_sessao");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  6 failed | 47 passed (53)
+   Start at  15:31:07
+   Duration  7.64s (tests 85%, import 11%, transform 4%)

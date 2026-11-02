@@ -601,6 +601,16 @@ const login = registrar("LoginInput", loginSchema, {
   email: "pessoa@example.com",
   senha: "Exemplo123!",
 });
+const respostaSessao: ResponseConfig = {
+  ...json(usuario, usuarioExample),
+  headers: {
+    "Set-Cookie": {
+      schema: { type: "string" },
+      description:
+        "Emite origem_sessao HttpOnly, Path=/, SameSite=Lax, Max-Age=86400 e Expires em 24h. Secure segue COOKIE_SECURE; sem Domain.",
+    },
+  },
+};
 endpoint({
   method: "post",
   path: "/auth/register",
@@ -615,12 +625,12 @@ endpoint({
       papel: "comprador",
     }),
   },
-  response: json(usuario, usuarioExample),
+  response: respostaSessao,
   status: 201,
   errors: [400, 409],
   errorExamples: { 409: ["EMAIL_JA_CADASTRADO", "Email ja cadastrado."] },
   description:
-    "Senha sintética nos exemplos. Senha entre 8 e 72 caracteres, até 72 bytes UTF-8. Conflito: EMAIL_JA_CADASTRADO. Não inicia sessão.",
+    "Senha sintética nos exemplos. Senha entre 8 e 72 caracteres, até 72 bytes UTF-8. Conflito: EMAIL_JA_CADASTRADO. Inicia sessão após criar a conta. Erros 400/409 não emitem cookie. Falha na emissão após commit preserva a conta e retorna erro seguro.",
 });
 endpoint({
   method: "post",
@@ -631,16 +641,7 @@ endpoint({
   request: {
     body: body(login, { email: "pessoa@example.com", senha: "Exemplo123!" }),
   },
-  response: {
-    ...json(usuario, usuarioExample),
-    headers: {
-      "Set-Cookie": {
-        schema: { type: "string" },
-        description:
-          "Emite origem_sessao HttpOnly, Path=/, SameSite=Lax e Secure em produção.",
-      },
-    },
-  },
+  response: respostaSessao,
   errors: [400, 401],
   errorExamples: {
     401: ["CREDENCIAIS_INVALIDAS", "Email ou senha invalidos."],

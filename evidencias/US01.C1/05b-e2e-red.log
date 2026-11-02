@@ -1,0 +1,66 @@
+[WebServer] (node:34952) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+[WebServer] In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+[WebServer]
+[WebServer] To prepare for this change:
+[WebServer] - If you want the current behavior, explicitly use 'sslmode=verify-full'
+[WebServer] - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+[WebServer]
+[WebServer] See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:34952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (node:36372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+  x  1 [360px] › e2e\fluxos.spec.ts:151:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (16.9s)
+
+
+  1) [360px] › e2e\fluxos.spec.ts:151:1 › (a) cadastro autenticado ate Meus pedidos sem login separado › Cadastro inicia sessao de comprador sem login separado
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /\/$/
+    Received string:  "http://127.0.0.1:3113/login?cadastro=sucesso"
+    Timeout: 15000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 15000ms
+        5 × locator resolved to <html lang="pt-BR" class="__variable_a7b3bd __variable_e59a90">…</html>
+          - unexpected value "http://127.0.0.1:3113/cadastro"
+        28 × locator resolved to <html lang="pt-BR" class="__variable_a7b3bd __variable_e59a90">…</html>
+           - unexpected value "http://127.0.0.1:3113/login?cadastro=sucesso"
+
+
+      36 |       expect((await cadastro).status()).toBe(201);
+      37 |       const destino = papel === "artesao" ? "/painel-artesao" : "/";
+    > 38 |       await expect(page).toHaveURL(new RegExp(`${destino}$`));
+         |                          ^
+      39 |       const me = await page.request.get("/api/auth/me");
+      40 |       expect(me.status()).toBe(200);
+      41 |       expect(await me.json()).toMatchObject({ email, papel });
+        at C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\fluxos.spec.ts:38:26
+        at cadastrar (C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\fluxos.spec.ts:26:5)
+        at comprar (C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\fluxos.spec.ts:53:3)
+        at C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\fluxos.spec.ts:154:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\evidencias\US01.C1\05b-e2e-red\91d82e343368486d8a4d5688acf2728d\results\fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-360px\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\evidencias\US01.C1\05b-e2e-red\91d82e343368486d8a4d5688acf2728d\results\fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-360px\error-context.md
+
+  1 failed
+    [360px] › e2e\fluxos.spec.ts:151:1 › (a) cadastro autenticado ate Meus pedidos sem login separado
+(node:36708) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Schema E2E removido e ausencia confirmada.
+Traces ZIP sanitizados: 0
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\US01.C1\05b-e2e-red\91d82e343368486d8a4d5688acf2728d\html\index.html

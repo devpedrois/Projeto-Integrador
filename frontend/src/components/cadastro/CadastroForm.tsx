@@ -8,6 +8,7 @@ import { BotaoEnviar } from "@/components/formulario/BotaoEnviar";
 import { CampoTexto } from "@/components/formulario/CampoTexto";
 import { Icone, type NomeIcone } from "@/components/vitrine/Icone";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
+import type { SessionStore } from "@/store/sessao.store";
 import { ServiceError } from "@/services/errors";
 import type { CadastroInput, PapelCadastro } from "@/types/cadastro";
 import {
@@ -19,21 +20,27 @@ import {
 
 export interface CadastroFormProps {
   service: UsuariosService;
+  sessionStore: SessionStore;
 }
 
 const ORDEM_CAMPOS: CampoCadastro[] = ["nome", "email", "senha", "papel"];
 
-const OPCOES_PAPEL: { valor: PapelCadastro; rotulo: string; icone: NomeIcone }[] = [
+const OPCOES_PAPEL: {
+  valor: PapelCadastro;
+  rotulo: string;
+  icone: NomeIcone;
+}[] = [
   { valor: "comprador", rotulo: "Comprador", icone: "sacola" },
   { valor: "artesao", rotulo: "Artesão", icone: "mao" },
 ];
 
-const MENSAGEM_EMAIL_JA_CADASTRADO = "Este e-mail já está cadastrado. Use outro e-mail.";
+const MENSAGEM_EMAIL_JA_CADASTRADO =
+  "Este e-mail já está cadastrado. Use outro e-mail.";
 
 const MENSAGEM_ERRO_SERVICO =
   "Não foi possível concluir o cadastro. Tente novamente em instantes.";
 
-export function CadastroForm({ service }: CadastroFormProps) {
+export function CadastroForm({ service, sessionStore }: CadastroFormProps) {
   const router = useRouter();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -48,7 +55,10 @@ export function CadastroForm({ service }: CadastroFormProps) {
   const refSenha = useRef<HTMLInputElement>(null);
   const refPapel = useRef<HTMLButtonElement>(null);
 
-  const refsPorCampo: Record<CampoCadastro, React.RefObject<HTMLElement | null>> = {
+  const refsPorCampo: Record<
+    CampoCadastro,
+    React.RefObject<HTMLElement | null>
+  > = {
     nome: refNome,
     email: refEmail,
     senha: refSenha,
@@ -83,11 +93,14 @@ export function CadastroForm({ service }: CadastroFormProps) {
 
     setEnviando(true);
     try {
-      await service.register(entrada);
-      router.push("/login?cadastro=sucesso");
+      const { id, nome, email, papel } = await service.register(entrada);
+      sessionStore.login({ id, nome, email, papel });
+      router.push(papel === "artesao" ? "/painel-artesao" : "/");
     } catch (erro) {
       if (erro instanceof ServiceError && erro.code === "EMAIL_JA_CADASTRADO") {
-        const errosEmail: ErrosCadastro = { email: MENSAGEM_EMAIL_JA_CADASTRADO };
+        const errosEmail: ErrosCadastro = {
+          email: MENSAGEM_EMAIL_JA_CADASTRADO,
+        };
         flushSync(() => {
           setErros(errosEmail);
           setEnviando(false);
@@ -102,7 +115,11 @@ export function CadastroForm({ service }: CadastroFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-[18px]">
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="flex flex-col gap-[18px]"
+    >
       {erroServico ? <AlertaErro>{erroServico}</AlertaErro> : null}
 
       <CampoTexto
@@ -146,7 +163,10 @@ export function CadastroForm({ service }: CadastroFormProps) {
       />
 
       <div className={`flex flex-col gap-2 ${enviando ? "opacity-60" : ""}`}>
-        <span id="cadastro-papel-rotulo" className="text-sm leading-[1.3] font-semibold text-fg-strong">
+        <span
+          id="cadastro-papel-rotulo"
+          className="text-sm leading-[1.3] font-semibold text-fg-strong"
+        >
           Papel
         </span>
         <div
@@ -172,23 +192,35 @@ export function CadastroForm({ service }: CadastroFormProps) {
                     : "border-border-strong bg-surface-card hover:bg-action-secondary-hover"
                 }`}
               >
-                <Icone nome={opcao.icone} tamanho={20} className="flex-none text-fg-brand" />
+                <Icone
+                  nome={opcao.icone}
+                  tamanho={20}
+                  className="flex-none text-fg-brand"
+                />
                 <span className="flex-1">{opcao.rotulo}</span>
                 {marcado ? (
-                  <Icone nome="confirmar" className="flex-none text-barro-600" />
+                  <Icone
+                    nome="confirmar"
+                    className="flex-none text-barro-600"
+                  />
                 ) : null}
               </button>
             );
           })}
         </div>
         {erros.papel ? (
-          <p id="cadastro-papel-erro" className="m-0 text-[13px] leading-[1.4] text-erro-700">
+          <p
+            id="cadastro-papel-erro"
+            className="m-0 text-[13px] leading-[1.4] text-erro-700"
+          >
             {erros.papel}
           </p>
         ) : null}
       </div>
 
-      <BotaoEnviar enviando={enviando}>{enviando ? "Enviando..." : "Cadastrar"}</BotaoEnviar>
+      <BotaoEnviar enviando={enviando}>
+        {enviando ? "Enviando..." : "Cadastrar"}
+      </BotaoEnviar>
     </form>
   );
 }

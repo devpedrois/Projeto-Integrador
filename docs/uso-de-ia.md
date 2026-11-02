@@ -1537,3 +1537,11 @@ Gerou relatórios HTML/JSON, resumo e validação do hash comum.
 Registrou a falha CI anterior em ticket, sem corrigir código.
 A confirmação humana anterior refere-se aos insumos já revisados.
 Evidência: [resumo da execução congelada](../evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/00-resumo.md).
+
+### US01.C1: cadastro com sessão e navegação por papel
+
+O Codex corrigiu o cadastro para iniciar sessão automaticamente.
+Reutilizou o cookie do login e hidratou o SessionStore.
+Executou TDD com PostgreSQL real, componentes e E2E responsivo.
+Atualizou contratos, OpenAPI e matriz, com revisão equivalente de segurança.
+Evidências: [US01.C1](../evidencias/US01.C1/README.md).

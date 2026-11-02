@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect, type Page, type Request } from "@playwright/test";
 
 const produto = "Boneca de Barro Pintada";
 
@@ -13,27 +13,60 @@ async function login(page: Page, email: string, senha: string, destino = "/") {
   );
 }
 
-async function comprar(page: Page) {
+async function cadastrar(page: Page, papel: "comprador" | "artesao") {
   const email = `e2e31-${randomUUID()}@teste.origem`;
   const senha = `E2e!${randomUUID()}`;
-  await test.step("Cadastro e login do comprador novo", async () => {
-    await page.goto("/cadastro");
-    await page
-      .getByLabel("Nome", { exact: true })
-      .fill("Comprador sintético E2E");
-    await page.getByLabel("E-mail", { exact: true }).fill(email);
-    await page.getByLabel("Senha", { exact: true }).fill(senha);
-    await page.getByRole("radio", { name: "Comprador", exact: true }).click();
-    const cadastro = page.waitForResponse(
-      (r) =>
-        new URL(r.url()).pathname === "/api/auth/register" &&
-        r.request().method() === "POST",
-    );
-    await page.getByRole("button", { name: "Cadastrar", exact: true }).click();
-    expect((await cadastro).status()).toBe(201);
-    await expect(page).toHaveURL(/\/login\?cadastro=sucesso$/);
-    await login(page, email, senha);
-  });
+  const logins: string[] = [];
+  const observarLogin = (req: Request) => {
+    if (
+      new URL(req.url()).pathname === "/api/auth/login" &&
+      req.method() === "POST"
+    )
+      logins.push(req.url());
+  };
+  page.on("request", observarLogin);
+  try {
+    await test.step(`Cadastro inicia sessao de ${papel} sem login separado`, async () => {
+      await page.goto("/cadastro");
+      await page
+        .getByLabel("Nome", { exact: true })
+        .fill("Pessoa sintética E2E");
+      await page.getByLabel("E-mail", { exact: true }).fill(email);
+      await page.getByLabel("Senha", { exact: true }).fill(senha);
+      await page
+        .getByRole("radio", {
+          name: papel === "artesao" ? "Artesão" : "Comprador",
+          exact: true,
+        })
+        .click();
+      const cadastro = page.waitForResponse(
+        (r) =>
+          new URL(r.url()).pathname === "/api/auth/register" &&
+          r.request().method() === "POST",
+      );
+      await page
+        .getByRole("button", { name: "Cadastrar", exact: true })
+        .click();
+      expect((await cadastro).status()).toBe(201);
+      const destino = papel === "artesao" ? "/painel-artesao" : "/";
+      await expect(page).toHaveURL(new RegExp(`${destino}$`));
+      const me = await page.request.get("/api/auth/me");
+      expect(me.status()).toBe(200);
+      expect(await me.json()).toMatchObject({ email, papel });
+      await page.reload();
+      await expect(page).toHaveURL(new RegExp(`${destino}$`));
+      await expect(
+        page.getByRole("button", { name: "Sair", exact: true }).first(),
+      ).toBeVisible();
+      expect(logins).toEqual([]);
+    });
+  } finally {
+    page.off("request", observarLogin);
+  }
+}
+
+async function comprar(page: Page) {
+  await cadastrar(page, "comprador");
   await test.step("Busca com filtro e detalhe do produto", async () => {
     await page
       .getByRole("searchbox", { name: "Buscar produtos" })
@@ -131,7 +164,7 @@ async function comprar(page: Page) {
   return numero;
 }
 
-test("(a) cadastro ate Meus pedidos com numero confirmado", async ({
+test("(a) cadastro autenticado ate Meus pedidos sem login separado", async ({
   page,
 }) => {
   await comprar(page);
@@ -148,6 +181,15 @@ test("(b) artesao envia e comprador acompanha Enviado", async ({
   });
   try {
     const painel = await artesao.newPage();
+    await cadastrar(painel, "artesao");
+    await painel
+      .getByRole("button", { name: "Sair", exact: true })
+      .first()
+      .click();
+    await painel
+      .getByRole("button", { name: "Sim, sair", exact: true })
+      .click();
+    await expect(painel).toHaveURL(/\/$/);
     await login(
       painel,
       "joao.artesao@origem.test",

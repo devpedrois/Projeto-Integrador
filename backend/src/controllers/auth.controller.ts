@@ -22,9 +22,16 @@ export class AuthController {
     next: NextFunction,
   ): Promise<void> => {
     try {
-      response
-        .status(201)
-        .json(await this.service.register(request.body as CadastroInput));
+      const usuario = await this.service.register(
+        request.body as CadastroInput,
+      );
+      iniciarSessao(
+        response,
+        usuario,
+        this.environment.JWT_SECRET,
+        this.environment.COOKIE_SECURE,
+      );
+      response.status(201).json(usuario);
     } catch (error: unknown) {
       next(error);
     }

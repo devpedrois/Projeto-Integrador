@@ -60,7 +60,7 @@ afterAll(async () => {
 });
 
 describe("POST /auth/register", () => {
-  it("normaliza email, persiste bcrypt custo 10 e cria carrinho sem iniciar sessao", async () => {
+  it("normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador", async () => {
     const input = cadastro();
     const agent = request.agent(app);
     const response = await agent.post("/auth/register").send({
@@ -75,8 +75,11 @@ describe("POST /auth/register", () => {
       email: input.email,
       papel: "comprador",
     });
-    expect(response.headers["set-cookie"]).toBeUndefined();
-    expect((await agent.get("/auth/me")).status).toBe(401);
+    const cookie = primeiroCookie(response.headers);
+    expect(cookie).toContain("origem_sessao=");
+    const me = await agent.get("/auth/me");
+    expect(me.status).toBe(200);
+    expect(me.body).toEqual(response.body);
     const salvo = await banco.prisma.usuario.findUniqueOrThrow({
       where: { email: input.email },
       include: { carrinho: true, perfilArtesao: true },
@@ -87,7 +90,7 @@ describe("POST /auth/register", () => {
     expect(salvo.perfilArtesao).toBeNull();
   });
 
-  it("cria perfil de artesao incompleto", async () => {
+  it("cria perfil de artesao incompleto e inicia sessao de artesao", async () => {
     const input = cadastro("artesao");
     const response = await request(app).post("/auth/register").send(input);
     expect(response.status).toBe(201);
@@ -97,6 +100,10 @@ describe("POST /auth/register", () => {
       "nome",
       "papel",
     ]);
+    const cookie = primeiroCookie(response.headers);
+    const me = await request(app).get("/auth/me").set("Cookie", cookie);
+    expect(me.status).toBe(200);
+    expect(me.body).toEqual({ ...response.body, papel: "artesao" });
     const salvo = await banco.prisma.usuario.findUniqueOrThrow({
       where: { email: input.email },
       include: { carrinho: true, perfilArtesao: true },
@@ -110,6 +117,91 @@ describe("POST /auth/register", () => {
       regiaoId: null,
       foto: null,
     });
+  });
+
+  it.each([false, true])(
+    "cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=%s",
+    async (secure) => {
+      const input = cadastro();
+      const configuredApp = createApp(banco.prisma, {
+        ...environment,
+        COOKIE_SECURE: secure,
+      });
+      const response = await request(configuredApp)
+        .post("/auth/register")
+        .send(input);
+      expect(response.status).toBe(201);
+      const cookie = primeiroCookie(response.headers);
+      const login = await request(configuredApp)
+        .post("/auth/login")
+        .send({ email: input.email, senha });
+      expect(login.status).toBe(200);
+      const attributes = (value: string) =>
+        value
+          .split("; ")
+          .slice(1)
+          .filter((part) => !part.startsWith("Expires="));
+      expect(attributes(cookie)).toEqual(
+        attributes(primeiroCookie(login.headers)),
+      );
+      expect(cookie).toContain("HttpOnly");
+      expect(cookie).toContain("SameSite=Lax");
+      expect(cookie).toContain("Path=/");
+      expect(cookie).toContain("Max-Age=86400");
+      expect(cookie.includes("Secure")).toBe(secure);
+      expect(cookie).not.toContain("Domain=");
+      const expires = cookie
+        .split("; ")
+        .find((part) => part.startsWith("Expires="));
+      expect(
+        Math.abs(
+          Date.parse(String(expires?.slice(8))) - Date.now() - 86_400_000,
+        ),
+      ).toBeLessThan(5_000);
+      const salvo = await banco.prisma.usuario.findUniqueOrThrow({
+        where: { email: input.email },
+      });
+      const payload = jwt.verify(
+        String(cookie.split(";")[0]?.split("=")[1]),
+        secret,
+        {
+          algorithms: ["HS256"],
+        },
+      );
+      expect(payload).toMatchObject({
+        sub: salvo.id,
+        papel: salvo.papel,
+        nome: salvo.nome,
+      });
+      if (typeof payload === "string") throw new Error("Payload invalido");
+      expect(Number(payload.exp) - Number(payload.iat)).toBe(86_400);
+      expect(payload).not.toHaveProperty("senhaHash");
+      expect(response.text).not.toContain("senhaHash");
+      expect(response.headers["cache-control"]).toBe("no-store");
+    },
+  );
+
+  it("preserva conta e carrinho quando a emissao da sessao falha apos commit", async () => {
+    const input = cadastro();
+    const response = await request(
+      createApp(banco.prisma, { COOKIE_SECURE: false }),
+    )
+      .post("/auth/register")
+      .send(input);
+    expect(response.status).toBe(503);
+    expect(response.body).toEqual({
+      error: {
+        code: "AUTH_NAO_CONFIGURADA",
+        message: "Autenticacao indisponivel.",
+      },
+    });
+    expect(response.headers["set-cookie"]).toBeUndefined();
+    const salvo = await banco.prisma.usuario.findUniqueOrThrow({
+      where: { email: input.email },
+      include: { carrinho: true },
+    });
+    expect(salvo.carrinho?.usuarioId).toBe(salvo.id);
+    expect(response.text).not.toContain("senhaHash");
   });
 
   it.each([
@@ -126,6 +218,10 @@ describe("POST /auth/register", () => {
     const input = { ...cadastro(), ...alteracao };
     const response = await request(app).post("/auth/register").send(input);
     expect(response.status).toBe(400);
+    expect(response.headers["set-cookie"]).toBeUndefined();
+    expect(response.body).toEqual({
+      error: { code: "VALIDACAO", message: "Dados de autenticacao invalidos." },
+    });
     expect(response.text).not.toContain("senhaHash");
     expect(
       await banco.prisma.usuario.count({ where: { email: input.email } }),
@@ -164,6 +260,7 @@ describe("POST /auth/register", () => {
       const input = { ...cadastro(papel), nome: "Falha transacional" };
       const response = await request(app).post("/auth/register").send(input);
       expect(response.status).toBe(503);
+      expect(response.headers["set-cookie"]).toBeUndefined();
       expect(response.text).not.toContain("Falha sintetica");
       expect(
         await banco.prisma.usuario.count({ where: { email: input.email } }),

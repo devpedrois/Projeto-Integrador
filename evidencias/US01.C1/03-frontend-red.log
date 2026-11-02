@@ -1,0 +1,264 @@
+
+> origem-frontend@1.0.0 test
+> vitest run tests/components/cadastro-form.test.tsx
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ❯ tests/components/cadastro-form.test.tsx (13 tests | 5 failed) 11004ms
+   × CadastroForm > cadastro valido de artesao hidrata sessao e redireciona para painel-artesao 1850ms
+     → expected "spy" to be called with arguments: [ '/painel-artesao' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/painel-artesao",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+   × CadastroForm > cadastro valido de comprador hidrata sessao e redireciona para vitrine 1573ms
+     → expected "spy" to be called with arguments: [ '/' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+   ✓ CadastroForm > senha curta bloqueia envio e mostra erro no campo 603ms
+   ✓ CadastroForm > mostra loading e desabilita o botao durante o envio 797ms
+   ✓ CadastroForm > email ja cadastrado associa a mensagem ao campo email 654ms
+   ✓ CadastroForm > mostra erro recuperavel quando o service falha 608ms
+   × CadastroForm com adapters reais > fake cadastra 'comprador', persiste sessao e navega para '/' 1576ms
+     → expected "spy" to be called with arguments: [ '/' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+   × CadastroForm com adapters reais > fake cadastra 'artesao', persiste sessao e navega para '/painel-artesao' 1688ms
+     → expected "spy" to be called with arguments: [ '/painel-artesao' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/painel-artesao",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+   × CadastroForm com adapters reais > HTTP hidrata sessao pelo cadastro sem chamar login nem usar storage local 1536ms
+     → expected "spy" to be called with arguments: [ '/' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/components/cadastro-form.test.tsx > CadastroForm > cadastro valido de artesao hidrata sessao e redireciona para painel-artesao
+AssertionError: expected "spy" to be called with arguments: [ '/painel-artesao' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/painel-artesao",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+ ❯ tests/components/cadastro-form.test.tsx:110:42
+    108|     await user.click(screen.getByRole("button", { name: /cadastrar/i }…
+    109|
+    110|     await waitFor(() => expect(pushMock).toHaveBeenCalledWith("/painel…
+       |                                          ^
+    111|     expect(registerSpy).toHaveBeenCalledWith(expect.objectContaining({…
+    112|     expect(sessionStore.getSnapshot()).toEqual({
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/components/cadastro-form.test.tsx > CadastroForm > cadastro valido de comprador hidrata sessao e redireciona para vitrine
+AssertionError: expected "spy" to be called with arguments: [ '/' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+ ❯ tests/components/cadastro-form.test.tsx:144:24
+    142|     });
+    143|     await waitFor(() =>
+    144|       expect(pushMock).toHaveBeenCalledWith("/")
+       |                        ^
+    145|     );
+    146|     expect(sessionStore.getSnapshot()).toEqual({
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/components/cadastro-form.test.tsx > CadastroForm com adapters reais > fake cadastra 'comprador', persiste sessao e navega para '/'
+AssertionError: expected "spy" to be called with arguments: [ '/' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+ ❯ tests/components/cadastro-form.test.tsx:284:42
+    282|     await user.click(screen.getByRole("radio", { name: papel === "arte…
+    283|     await user.click(screen.getByRole("button", { name: /cadastrar/i }…
+    284|     await waitFor(() => expect(pushMock).toHaveBeenCalledWith(destino)…
+       |                                          ^
+    285|     expect(sessionStore.getSnapshot()).toMatchObject({ papel, email: "…
+    286|     expect(new SessionStore(storage).getSnapshot()).toEqual(sessionSto…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/components/cadastro-form.test.tsx > CadastroForm com adapters reais > fake cadastra 'artesao', persiste sessao e navega para '/painel-artesao'
+AssertionError: expected "spy" to be called with arguments: [ '/painel-artesao' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/painel-artesao",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+ ❯ tests/components/cadastro-form.test.tsx:284:42
+    282|     await user.click(screen.getByRole("radio", { name: papel === "arte…
+    283|     await user.click(screen.getByRole("button", { name: /cadastrar/i }…
+    284|     await waitFor(() => expect(pushMock).toHaveBeenCalledWith(destino)…
+       |                                          ^
+    285|     expect(sessionStore.getSnapshot()).toMatchObject({ papel, email: "…
+    286|     expect(new SessionStore(storage).getSnapshot()).toEqual(sessionSto…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/components/cadastro-form.test.tsx > CadastroForm com adapters reais > HTTP hidrata sessao pelo cadastro sem chamar login nem usar storage local
+AssertionError: expected "spy" to be called with arguments: [ '/' ]
+
+Received:
+
+  1st spy call:
+
+  Array [
+-   "/",
++   "/login?cadastro=sucesso",
+  ]
+
+
+Number of calls: 1
+
+
+Ignored nodes: comments, script, style
+...
+ ❯ tests/components/cadastro-form.test.tsx:307:44
+    305|       await user.type(screen.getByLabelText("Senha"), "[REDACTED]");
+    306|       await user.click(screen.getByRole("button", { name: /cadastrar/i…
+    307|       await waitFor(() => expect(pushMock).toHaveBeenCalledWith("/"));
+       |                                            ^
+    308|       expect(fetchMock.mock.calls.map(([url]) => url)).toEqual(["/api/…
+    309|       expect(window.localStorage.length).toBe(0);
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 8 passed (13)
+   Start at  15:32:39
+   Duration  13.17s (transform 150ms, setup 175ms, collect 422ms, tests 11.00s, environment 1.11s, prepare 177ms)

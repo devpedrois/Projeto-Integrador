@@ -2,22 +2,23 @@
 
 Subtarefa 31.4 · 26/10/2026.
 Responsável: Luiza. Revisor indicado: Pedro.
-Base local consultada: `8cf8c88`.
+Base local consultada na 31.4: `8cf8c88`.
+Atualização US01.C1: 02/11/2026, sobre `aa37c48`.
 
 ## Totais por status
 
 | Status           |   Must | Should implementadas |  Total |
 | ---------------- | -----: | -------------------: | -----: |
-| aprovado         |     25 |                   10 |     35 |
+| aprovado         |     26 |                   10 |     36 |
 | parcial          |      1 |                    0 |      1 |
-| não implementado |      1 |                    0 |      1 |
+| não implementado |      0 |                    0 |      0 |
 | **Total**        | **27** |               **10** | **37** |
 
 Os 27 cenários Must possuem linha, sem omissões.
 As seis histórias Should implementadas também estão integralmente inventariadas.
 São dez histórias Must e seis Should, totalizando dezesseis.
-A aprovação integral corresponde a 35/37 cenários, ou 94,6%.
-Uma divergência funcional e uma medição parcial ficam destacadas.
+A aprovação integral corresponde a 36/37 cenários, ou 97,3%.
+Uma medição parcial permanece destacada.
 
 ## Cobertura por história
 
@@ -27,7 +28,7 @@ Os testes diagnósticos das lacunas não contam como cobertura integral.
 
 | US   | Prioridade | Cenários / linhas | Aprovados | Parciais | Não implementados | Cobertura integral |
 | ---- | ---------- | ----------------: | --------: | -------: | ----------------: | -----------------: |
-| US01 | Must       |             4 / 4 |         3 |        0 |                 1 |              75.0% |
+| US01 | Must       |             4 / 4 |         4 |        0 |                 0 |             100.0% |
 | US02 | Must       |             3 / 3 |         3 |        0 |                 0 |             100.0% |
 | US03 | Should     |             2 / 2 |         2 |        0 |                 0 |             100.0% |
 | US04 | Must       |             3 / 3 |         3 |        0 |                 0 |             100.0% |
@@ -55,7 +56,7 @@ Os testes diagnósticos das lacunas não contam como cobertura integral.
   commit `8e78cdc4e5f601c1de2aad9eb78d99985fae564e`.
   O mesmo run falhou no typecheck backend e pulou seus testes.
   Portanto, não comprova um CI integralmente verde nessa revisão.
-- **PW3**: última rodada Playwright verde preservada, em 25/10/2026.
+- **PW3**: rodada histórica Playwright preservada, em 25/10/2026.
   [Resultado JSON](../evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-3/a7a3261839664b3080cefa119bf039b9/resultado.json)
   e [relatório HTML](../evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-3/a7a3261839664b3080cefa119bf039b9/html/index.html).
   Foram quatro aprovações, zero falhas, zero skips e zero flaky.
@@ -63,9 +64,19 @@ Os testes diagnósticos das lacunas não contam como cobertura integral.
   O README registra base `3d77bb3`, com alterações locais da 31.3.
   Essas alterações foram incorporadas posteriormente em `5090add`.
   Não se atribui a execução a um checkout limpo desse commit.
-  O arquivo de fluxos permanece idêntico ao incorporado em `5090add`.
+  PW3 comprova o fluxo anterior à correção US01.C1.
 
-As datas representam execuções preservadas, não testes novos desta tarefa.
+- **U01**: execução local da correção US01.C1, em 02/11/2026.
+  [Evidências RED/GREEN](../evidencias/US01.C1/README.md).
+  Integração auth e OpenAPI: 53 testes aprovados.
+  Componentes, login, store e adapter HTTP: 31 aprovados.
+  Suítes completas: backend 759/759; frontend 958/958.
+  Lint e typecheck aprovados nos dois projetos.
+  Playwright: 4/4 em 360px e 1280px, sem skips/flaky.
+  Comprador e artesão cadastram sem login separado.
+  A sessão permanece após recarregar; schema removido e verificado.
+
+B, F e PW3 são históricos; U01 registra novas execuções locais.
 Os nomes parametrizados mantêm exatamente seus templates de declaração.
 Por exemplo, `%s`, `%i` e `$papel` identificam casos existentes.
 O nível unitário inclui testes React com Testing Library.
@@ -77,7 +88,7 @@ Não foram usados seus resultados como prova de persistência PostgreSQL.
 Todos os cenários possuem teste automatizado aplicável ou diagnóstico.
 Nenhuma linha depende exclusivamente de um roteiro manual.
 Não há roteiro manual nem print apresentado como execução inexistente.
-As duas lacunas conservam status sem aprovação integral.
+Somente US08.C3 conserva status sem aprovação integral.
 
 ## Matriz de cenários
 
@@ -89,7 +100,7 @@ A coluna commit identifica a revisão realmente comprovada pela evidência.
 
 | US            | Cenário                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Teste que cobre, arquivo:nome                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Nível                | Resultado da última execução disponível                                                                                                                                                                                                            | Commit                                                                |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| US01 · Must   | **US01.C1 · Cadastro bem-sucedido**<br/>**Dado** que sou um visitante na tela de cadastro<br/>**Quando** informo um e-mail ainda não utilizado, uma senha que atende ao tamanho mínimo exigido e escolho meu papel (comprador ou artesão)<br/>**Então** minha conta é criada com o papel escolhido **e** sou redirecionado para a área correspondente ao meu papel                                                                                                                                                                              | [backend/tests/integration/auth.routes.integration.test.ts](../backend/tests/integration/auth.routes.integration.test.ts): `normaliza email, persiste bcrypt custo 10 e cria carrinho sem iniciar sessao`<br/>[frontend/tests/components/cadastro-form.test.tsx](../frontend/tests/components/cadastro-form.test.tsx): `cadastro valido chama o service e redireciona para login com confirmacao`                                                                                                                                                                                                                               | integração; unitário | **não implementado**. B: testes citados passaram; F: testes citados passaram.<br/>O cadastro funciona, mas o redirecionamento direto exigido não foi implementado. O teste confirma navegação para /login?cadastro=sucesso, sem sessão automática. | B: `376c5f9`<br/>F: `8e78cdc`                                         |
+| US01 · Must   | **US01.C1 · Cadastro bem-sucedido**<br/>**Dado** que sou um visitante na tela de cadastro<br/>**Quando** informo um e-mail ainda não utilizado, uma senha que atende ao tamanho mínimo exigido e escolho meu papel (comprador ou artesão)<br/>**Então** minha conta é criada com o papel escolhido **e** sou redirecionado para a área correspondente ao meu papel                                                                                                                                                                              | [backend/tests/integration/auth.routes.integration.test.ts](../backend/tests/integration/auth.routes.integration.test.ts): `normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador`; `cria perfil de artesao incompleto e inicia sessao de artesao`<br/>[frontend/tests/components/cadastro-form.test.tsx](../frontend/tests/components/cadastro-form.test.tsx): `cadastro valido de comprador hidrata sessao e redireciona para vitrine`; `cadastro valido de artesao hidrata sessao e redireciona para painel-artesao`<br/>[frontend/e2e/fluxos.spec.ts](../frontend/e2e/fluxos.spec.ts): `(a) cadastro autenticado ate Meus pedidos sem login separado`; `(b) artesao envia e comprador acompanha Enviado` | integração; unitário; E2E | **aprovado**. U01: testes citados passaram. Cookie e sessão automática para ambos os papéis; comprador segue para /; artesão segue para /painel-artesao. E2E 4/4 em 360/1280px, sem login separado. | U01: alterações locais sobre `aa37c48`; hash final no registro da entrega |
 | US01 · Must   | **US01.C2 · Tentativa de cadastro com e-mail já existente**<br/>**Dado** que já existe uma conta cadastrada com um determinado e-mail<br/>**Quando** tento me cadastrar novamente usando esse mesmo e-mail<br/>**Então** o cadastro é rejeitado com uma mensagem informando que o e-mail já está em uso                                                                                                                                                                                                                                         | [backend/tests/integration/auth.routes.integration.test.ts](../backend/tests/integration/auth.routes.integration.test.ts): `retorna 409 para email em uso com caixa e espacos distintos`<br/>[frontend/tests/components/cadastro-form.test.tsx](../frontend/tests/components/cadastro-form.test.tsx): `email ja cadastrado associa a mensagem ao campo email`                                                                                                                                                                                                                                                                   | integração; unitário | **aprovado**. B: testes citados passaram; F: testes citados passaram.                                                                                                                                                                              | B: `376c5f9`<br/>F: `8e78cdc`                                         |
 | US01 · Must   | **US01.C3 · Senha abaixo do tamanho mínimo**<br/>**Dado** que estou preenchendo o formulário de cadastro<br/>**Quando** informo uma senha menor que o tamanho mínimo exigido<br/>**Então** o cadastro não é concluído e uma mensagem de validação é exibida                                                                                                                                                                                                                                                                                     | [frontend/tests/components/cadastro-form.test.tsx](../frontend/tests/components/cadastro-form.test.tsx): `senha curta bloqueia envio e mostra erro no campo`                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | unitário             | **aprovado**. F: testes citados passaram.                                                                                                                                                                                                          | F: `8e78cdc`                                                          |
 | US01 · Must   | **US01.C4 · Papel não pode ser alterado pelo próprio usuário**<br/>**Dado** que já concluí meu cadastro com um papel definido (comprador ou artesão)<br/>**Quando** tento alterar meu próprio papel pela minha conta<br/>**Então** o sistema impede a alteração, permitindo a mudança apenas por intervenção do administrador                                                                                                                                                                                                                   | [backend/tests/integration/authorization.routes.integration.test.ts](../backend/tests/integration/authorization.routes.integration.test.ts): `PATCH /admin/usuarios/:id/papel como $papel retorna $adminStatus`                                                                                                                                                                                                                                                                                                                                                                                                                 | integração           | **aprovado**. B: testes citados passaram.                                                                                                                                                                                                          | B: `376c5f9`                                                          |
@@ -129,15 +140,20 @@ A coluna commit identifica a revisão realmente comprovada pela evidência.
 
 ## Lacunas e limites do aceite
 
-### US01.C1: cadastro sem entrada automática na área
+### US01.C1: lacuna resolvida com sessão automática
 
-O teste de cadastro espera `/login?cadastro=sucesso` após o cadastro.
-O backend também cria a conta sem iniciar sessão automaticamente.
-Isso diverge da conjunção final do cenário original da US01.
-O cadastro existe, mas esse requisito integral não foi implementado.
-Por isso, a linha registra **não implementado**, sem aprovação.
-O fluxo E2E realiza login separadamente após cadastrar o comprador.
-Sua aprovação não corrige essa divergência do requisito.
+A linha está **aprovada** pela execução local U01.
+O cadastro reutiliza a emissão de cookie/JWT do login.
+GET /auth/me confirma o papel persistido de ambos.
+Erros 400/409 não emitem cookie; admin permanece rejeitado.
+Falha de sessão após commit preserva a conta criada.
+SessionStore autentica antes da navegação, sem chamar login.
+Comprador segue para `/`; artesão, para `/painel-artesao`.
+A Fake API apresenta comportamento equivalente com sessão persistida.
+Os dois fluxos E2E passam nos dois viewports.
+O fluxo (b) também cadastra e autentica novo artesão.
+A sessão permanece válida depois de recarregar a página.
+As evidências U01 incluem RED anterior e GREEN posterior.
 
 ### US08.C3: tempo da apresentação visual
 
@@ -169,6 +185,8 @@ Contagens, hashes e referências estão nas [evidências da 31.4](../evidencias/
 
 A revisão documental local verificou completude, resultados e ausência de credenciais.
 Não houve delegação ao security-auditor nem aprovação humana presumida.
-Nenhum código, teste, workflow ou dependência foi alterado.
-Não houve commit, push, deploy ou nova execução do Playwright.
-A falha recente do CI e as lacunas continuam explícitas.
+Na elaboração original da 31.4, não houve alterações produtivas.
+A atualização US01.C1 corrige código, testes e documentação.
+Inclui revisão equivalente de segurança, autorizada nesta conversa.
+Não representa revisão humana nem execução remota de CI.
+As demais pendências da sprint permanecem fora deste escopo.

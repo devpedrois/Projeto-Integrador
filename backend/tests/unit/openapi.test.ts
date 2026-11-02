@@ -45,6 +45,17 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("cadastro documenta Set-Cookie no 201 com as mesmas flags do login", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    const paths = response.body.paths;
+    const header =
+      paths["/auth/register"].post.responses["201"].headers?.["Set-Cookie"];
+    expect(header).toBeDefined();
+    expect(header).toEqual(
+      paths["/auth/login"].post.responses["200"].headers["Set-Cookie"],
+    );
+    expect(header.description).toContain("origem_sessao");
+  });
   it("Web.6 documenta multipart autenticado com limites e erros", async () => {
     const resposta = await request(app).get("/docs/openapi.json");
     const operacao = resposta.body.paths["/artesao/perfil/foto"]?.post;

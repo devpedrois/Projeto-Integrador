@@ -1,0 +1,28 @@
+
+> origem-frontend@1.0.0 test
+> vitest run tests/components/cadastro-form.test.tsx tests/components/login-form.test.tsx tests/store/sessao-http.store.test.ts tests/services/http/usuarios.service.test.ts
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/store/sessao-http.store.test.ts (5 tests) 4ms
+ ✓ tests/services/http/usuarios.service.test.ts (6 tests) 107ms
+ ✓ tests/components/login-form.test.tsx (7 tests) 1330ms
+   ✓ LoginForm > login valido chama o service, cria a sessao e redireciona 343ms
+   ✓ LoginForm > credenciais invalidas mostram mensagem generica sem apontar o campo 384ms
+   ✓ LoginForm > mostra loading e desabilita o botao durante o envio 326ms
+ ✓ tests/components/cadastro-form.test.tsx (13 tests) 4169ms
+   ✓ CadastroForm > cadastro valido de artesao hidrata sessao e redireciona para painel-artesao 552ms
+   ✓ CadastroForm > cadastro valido de comprador hidrata sessao e redireciona para vitrine 483ms
+   ✓ CadastroForm > senha curta bloqueia envio e mostra erro no campo 339ms
+   ✓ CadastroForm > mostra loading e desabilita o botao durante o envio 438ms
+   ✓ CadastroForm > email ja cadastrado associa a mensagem ao campo email 351ms
+   ✓ CadastroForm > mostra erro recuperavel quando o service falha 366ms
+   ✓ CadastroForm com adapters reais > fake cadastra 'comprador', persiste sessao e navega para '/' 547ms
+   ✓ CadastroForm com adapters reais > fake cadastra 'artesao', persiste sessao e navega para '/painel-artesao' 534ms
+   ✓ CadastroForm com adapters reais > HTTP hidrata sessao pelo cadastro sem chamar login nem usar storage local 451ms
+
+ Test Files  4 passed (4)
+      Tests  31 passed (31)
+   Start at  15:33:03
+   Duration  7.06s (transform 306ms, setup 974ms, collect 1.03s, tests 5.61s, environment 6.44s, prepare 543ms)
