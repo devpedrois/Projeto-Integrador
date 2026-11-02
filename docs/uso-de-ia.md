@@ -1545,3 +1545,11 @@ Reutilizou o cookie do login e hidratou o SessionStore.
 Executou TDD com PostgreSQL real, componentes e E2E responsivo.
 Atualizou contratos, OpenAPI e matriz, com revisão equivalente de segurança.
 Evidências: [US01.C1](../evidencias/US01.C1/README.md).
+
+### P1: build backend independente das dependências frontend
+
+O Codex identificou a importação indevida de Playwright no build.
+Excluiu somente o script manual de evidências da compilação.
+Criou regressão com compilação real sem dependências do frontend.
+Validou build, typecheck e instalação limpa do backend.
+Evidências: [P1 build backend](../evidencias/P1-build-backend/README.md).

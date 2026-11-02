@@ -311,7 +311,7 @@ execution report` (26/10). Execução congelada da 31.6 no commit `58996b9`.
 
 | # | Pendência | Por que importa | Ação sugerida |
 |---|---|---|---|
-| P1 | CI vermelho (issue #1): typecheck do backend importa Playwright do `node_modules` do frontend em `scripts/web6-evidencias.ts` | DoD do PI4-31; os testes do backend foram pulados no último run | Tirar o script do `tsconfig` do backend ou declarar a dependência; rodar de novo em instalação limpa |
+| P1 | Correção local em 02/11/2026: script manual Web.6 excluído da compilação backend | Build e typecheck passam sem instalar dependências frontend; suíte com configuração CI: 743/743; regressão adicionada | [Evidências](../evidencias/P1-build-backend/README.md). CI/Render aguardam publicação e nova execução; issue #1 permanece aberta |
 | P2 | B1 incompleto (1/2/4 workers) | DoD do PI4-30 exige os dois benchmarks; é a prova de paralelismo na fila para a U2 de FCCPD | Reduzir o custo por rodada (menos jobs ou polling menor, declarado no relatório) e completar as medições |
 | P3 | Smoke em produção não executado | Critério "fluxo end-to-end no ambiente publicado" (35%) da AV2 de Web | Executar os passos 0–10 do roteiro WEB-16 com vídeo e aba Network |
 | P4 | Resolvida em 02/11/2026: US01.C1 aprovado, cadastro inicia sessão e navega por papel | Cenário Must; E2E 4/4 em 360/1280px | [Evidências](../evidencias/US01.C1/README.md). Hash do commit: preencher pelo responsável após o commit único, sem commit adicional |

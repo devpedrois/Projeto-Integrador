@@ -1,0 +1,12 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/build-isolation.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  16:02:54
+   Duration  4.01s (tests 99%)

@@ -1,0 +1,39 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/build-isolation.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ❯ tests/unit/build-isolation.test.ts (1 test | 1 failed) 3573ms
+   × compila API e worker sem instalar dependencias do frontend 3573ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/build-isolation.test.ts > compila API e worker sem instalar dependencias do frontend
+AssertionError: scripts/web6-evidencias.ts(14,8): error TS2307: Cannot find module '../../frontend/node_modules/playwright-core/index.js' or its corresponding type declarations.
+scripts/web6-evidencias.ts(142,63): error TS7006: Parameter 'route' implicitly has an 'any' type.
+scripts/web6-evidencias.ts(227,6): error TS7006: Parameter 'r' implicitly has an 'any' type.
+: expected 2 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 2
+
+ ❯ tests/unit/build-isolation.test.ts:53:73
+     51|     );
+     52|     expect(compilation.error).toBeUndefined();
+     53|     expect(compilation.status, compilation.stdout + compilation.stderr…
+       |                                                                         ^
+     54|     expect(existsSync(join(backend, "dist/src/server.js"))).toBe(true);
+     55|     expect(existsSync(join(backend, "dist/src/worker.js"))).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  16:02:36
+   Duration  3.70s (tests 99%)

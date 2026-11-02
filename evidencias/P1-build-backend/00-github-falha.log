@@ -1,0 +1,20 @@
+backend	Run npm run typecheck	﻿2026-11-02T18:52:50.7682710Z ##[group]Run npm run typecheck
+backend	Run npm run typecheck	2026-11-02T18:52:50.7683095Z ^[[36;1mnpm run typecheck^[[0m
+backend	Run npm run typecheck	2026-11-02T18:52:50.7712832Z shell: /usr/bin/bash -e {0}
+backend	Run npm run typecheck	2026-11-02T18:52:50.7713100Z env:
+backend	Run npm run typecheck	2026-11-02T18:52:50.7713307Z   NODE_ENV: test
+backend	Run npm run typecheck	2026-11-02T18:52:50.7714169Z   DATABASE_URL: ***
+backend	Run npm run typecheck	2026-11-02T18:52:50.7714863Z   DIRECT_URL: ***
+backend	Run npm run typecheck	2026-11-02T18:52:50.7715086Z   HOST: 127.0.0.1
+backend	Run npm run typecheck	2026-11-02T18:52:50.7715326Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	Run npm run typecheck	2026-11-02T18:52:50.7715627Z   COOKIE_SECURE: false
+backend	Run npm run typecheck	2026-11-02T18:52:50.7716008Z   JWT_SECRET: ***
+backend	Run npm run typecheck	2026-11-02T18:52:50.7716220Z ##[endgroup]
+backend	Run npm run typecheck	2026-11-02T18:52:50.8952252Z
+backend	Run npm run typecheck	2026-11-02T18:52:50.8953220Z > origem-backend@1.0.0 typecheck
+backend	Run npm run typecheck	2026-11-02T18:52:50.8954246Z > tsc --noEmit
+backend	Run npm run typecheck	2026-11-02T18:52:50.8954689Z
+backend	Run npm run typecheck	2026-11-02T18:52:57.0938035Z ##[error]scripts/web6-evidencias.ts(14,8): error TS2307: Cannot find module '../../frontend/node_modules/playwright-core/index.js' or its corresponding type declarations.
+backend	Run npm run typecheck	2026-11-02T18:52:57.0948047Z ##[error]scripts/web6-evidencias.ts(142,63): error TS7006: Parameter 'route' implicitly has an 'any' type.
+backend	Run npm run typecheck	2026-11-02T18:52:57.0950055Z ##[error]scripts/web6-evidencias.ts(227,6): error TS7006: Parameter 'r' implicitly has an 'any' type.
+backend	Run npm run typecheck	2026-11-02T18:52:57.1455872Z ##[error]Process completed with exit code 2.
