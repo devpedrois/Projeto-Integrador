@@ -9,6 +9,28 @@ async function middleware() {
     .middleware;
 }
 afterEach(() => vi.unstubAllEnvs());
+it("Swagger sem barra preserva prefixo e query no redirecionamento", async () => {
+  vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
+  const response = (await middleware())(
+    new NextRequest("https://origem.test/api/docs?verificacao=1"),
+  );
+  expect(response.status).toBe(308);
+  expect(response.headers.get("location")).toBe(
+    "https://origem.test/api/docs/?verificacao=1",
+  );
+});
+
+it.each(["/api/docs/", "/api/docs/openapi.json", "/api/docs/swagger-ui.css"])(
+  "Swagger publico nao exige cookie em %s",
+  async (path) => {
+    vi.stubEnv("NEXT_PUBLIC_DATA_SOURCE", "http");
+    const response = (await middleware())(
+      new NextRequest(`https://origem.test${path}`),
+    );
+    expect(response.headers.get("location")).toBeNull();
+  },
+);
+
 it.each(["/admin", "/painel-artesao/produtos", "/minha-conta?aba=pedidos"])(
   "sem cookie redireciona %s no servidor",
   async (path) => {

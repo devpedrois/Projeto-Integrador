@@ -4,6 +4,13 @@ import { obterFonteDados } from "@/services/data-source";
 import { paraDestinoSeguro } from "@/utils/rota-segura";
 
 export function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname === "/api/docs") {
+    const canonical = new URL(request.url);
+    canonical.pathname = "/api/docs/";
+    return NextResponse.redirect(canonical, 308);
+  }
+  if (request.nextUrl.pathname.startsWith("/api/docs/"))
+    return NextResponse.next();
   if (
     obterFonteDados() === "fake" ||
     request.cookies.get("origem_sessao")?.value
@@ -18,5 +25,10 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/painel-artesao/:path*", "/admin/:path*", "/minha-conta/:path*"],
+  matcher: [
+    "/painel-artesao/:path*",
+    "/admin/:path*",
+    "/minha-conta/:path*",
+    "/api/docs/:path*",
+  ],
 };

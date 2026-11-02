@@ -660,6 +660,7 @@ Assets e documento permanecem relativos ao caminho externo.
 O OpenAPI usa `servers: [{ url: "../" }]`.
 Assim, funciona diretamente no backend e pelo prefixo `/api`.
 O Next preserva `/api/docs/`, evitando remover sua barra final.
+O middleware canonicaliza `/api/docs` antes do rewrite, preservando a query.
 
 Filtros combinados por AND: termo, categoriaId, tecnicaId, regiaoId, artesaoId.
 Termo busca nome e descricao com ILIKE, recebendo trim.

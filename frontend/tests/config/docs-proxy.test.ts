@@ -53,3 +53,13 @@ it("encaminha a barra final do Swagger sem redirecionamento circular", async () 
   expect(response.status).toBe(200);
   expect(await response.text()).toBe("Swagger local");
 });
+
+it("canonicaliza o endereco publico sem barra antes do rewrite", async () => {
+  const response = await fetch(`${origin}/api/docs`, { redirect: "manual" });
+  expect(response.status).toBe(308);
+  const target = new URL(response.headers.get("location") ?? "", origin);
+  expect(target.pathname).toBe("/api/docs/");
+  const page = await fetch(target, { redirect: "manual" });
+  expect(page.status).toBe(200);
+  expect(await page.text()).toBe("Swagger local");
+});
