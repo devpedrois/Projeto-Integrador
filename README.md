@@ -10,18 +10,25 @@ Projeto Integrador do 4º semestre de Análise e Desenvolvimento de Sistemas —
 
 **Frontend publicado:** <https://origem-marketplace.vercel.app/>
 
-Na Avaliação 1, o frontend roda com uma Fake API no navegador (detalhes em [`docs/fake-api.md`](docs/fake-api.md)), sem depender do backend. Para avaliar os fluxos, use as credenciais sintéticas abaixo:
+O frontend (Vercel) consome o backend real em Express (Render) com PostgreSQL (Neon). O navegador chama `/api/*` no próprio domínio da Vercel. O Next.js repassa essas chamadas ao backend, e a sessão fica num cookie `httpOnly` (`origem_sessao`).
+
+**Documentação da API (Swagger):** `/api/docs` no domínio publicado (no backend, `GET /docs` e `GET /docs/openapi.json`).
+
+Para avaliar os fluxos, use as credenciais sintéticas da carga demo (`backend/prisma/seeds/demo.ts`):
 
 | Papel | Email | Senha |
 |---|---|---|
 | Comprador | `ana.compradora@origem.test` | `senha-sintetica-comprador` |
+| Comprador | `bruno.comprador@origem.test` | `senha-sintetica-comprador-02` |
 | Artesão | `joao.artesao@origem.test` | `senha-sintetica-artesao` |
 | Artesã | `maria.artesa@origem.test` | `senha-sintetica-artesao-02` |
 | Admin | `admin@origem.test` | `senha-sintetica-admin` |
 
-> Os dados ficam no `localStorage` de cada navegador: pedidos, cadastros e produtos criados por um visitante não aparecem para outro, e cada acesso começa da mesma massa sintética. Para uma demonstração limpa, use uma janela anônima.
+> Os dados ficam no PostgreSQL e são compartilhados entre todos os visitantes: um pedido, uma avaliação ou uma moderação feita por um avaliador aparece para os outros. O backend roda no plano gratuito do Render, que dorme após 15 min sem tráfego e leva cerca de 1 min para acordar. Abra a aplicação um pouco antes de demonstrar.
 
-**Branch principal:** `main` (cada push publica automaticamente na Vercel).
+**Branch principal:** `main` (cada push publica o frontend na Vercel).
+
+> **Histórico (Avaliação 1):** na AV1 o frontend rodava com uma Fake API no navegador e `localStorage`. Esse modo ainda existe para desenvolvimento offline (`NEXT_PUBLIC_DATA_SOURCE=fake`), mas não é o modo publicado. Documentação em [`docs/fake-api.md`](docs/fake-api.md).
 
 ## O problema
 
@@ -41,34 +48,40 @@ Escopo deliberadamente controlado para caber em um semestre: poucas categorias, 
 
 ## Arquitetura
 
-Monorepo com dois projetos independentes — `frontend/` e `backend/` — comunicando-se por HTTP.
+Monorepo com dois projetos independentes, `frontend/` e `backend/`, que se comunicam por HTTP.
 
 ```mermaid
 flowchart LR
-    subgraph Cliente
-        FE["frontend/\nNext.js (App Router) + React + TypeScript\nTailwind CSS"]
+    U["Navegador"] -- "/api/* + cookie httpOnly" --> FE["frontend/ · Vercel\nNext.js (App Router) + React + TypeScript\nproxy /api → backend"]
+
+    subgraph Render
+        BE["backend/ · API Express\nroutes → controllers → services → repositories"]
+        REC["Recomendação\n(Strategy)"]
+        W["Worker pg-boss\n(integrado na API ou worker.ts separado)"]
     end
 
-    subgraph Servidor
-        BE["backend/\nNode.js + TypeScript (Express)\nroutes → controllers → services → repositories"]
-        Q["Fila assíncrona\npg-boss"]
-        REC["Serviço de recomendação\n(Strategy)"]
-    end
-
-    DB[("PostgreSQL\n(Neon)")]
+    DB[("PostgreSQL · Neon\ndados + fila pg-boss")]
+    BLOB["Vercel Blob\nfotos de perfil"]
 
     FE -- "HTTP (sem prefixo /api)" --> BE
-    BE -- "Prisma" --> DB
-    BE -- "enfileira job" --> Q
-    Q -- "worker idempotente + retry" --> DB
-    BE -- "consulta" --> REC
+    BE -- "Prisma · FOR UPDATE no checkout" --> DB
+    BE --> REC
+    REC --> DB
+    BE -- "publica job" --> DB
+    DB -- "consome job" --> W
+    W -- "notificação idempotente" --> DB
+    BE --> BLOB
 ```
+
+Diagrama completo, com justificativa de cada componente e limites do deploy, em [`docs/arquitetura-distribuida.md`](docs/arquitetura-distribuida.md).
 
 **Camadas do backend:** `routes` → `controllers` → `services` → `repositories`, com `middlewares` para cross-cutting concerns e `validators` para DTO/validação na borda (Zod). Padrões aplicados de forma pontual e justificada — Repository, Service layer, Strategy (integração de recomendação) e a chain de middlewares do Express — sem Clean Architecture completa, CQRS ou framework de DI, que não se justificam para o tamanho do projeto.
 
 **Concorrência (FCCPD):** o ponto mais sensível do domínio é a baixa de estoque no checkout. A abordagem escolhida é lock pessimista explícito em transação (`SELECT ... FOR UPDATE`) em vez de update condicional otimista — mais simples de implementar, mas o lock explícito demonstra de forma mais didática o controle de concorrência que a disciplina avalia.
 
-**Processamento assíncrono:** após a confirmação de um pedido, um job é publicado em uma fila (`pg-boss`, sobre o próprio PostgreSQL) e processado por um worker idempotente com retry — desacoplando o fluxo síncrono de checkout de efeitos colaterais como notificação ao artesão.
+**Processamento assíncrono:** após a confirmação de um pedido, um job é publicado em uma fila (`pg-boss`, sobre o próprio PostgreSQL) e processado por um worker idempotente com retry — desacoplando o fluxo síncrono de checkout de efeitos colaterais como notificação ao artesão. O consumidor tem entrypoint próprio (`backend/src/worker.ts`) e pode rodar em processos separados da API. No deploy, ele roda dentro da API (`RUN_WORKER_IN_API=true`), porque o plano gratuito do Render não oferece Background Worker.
+
+**Recomendação (IA):** a vitrine e a página de produto consomem `GET /recomendacoes` pelo `HttpRecommendationAdapter`. O backend aplica uma Strategy sobre o PostgreSQL. A página de produto mostra um carrossel de relacionados com até 8 itens, sem repetir o produto atual.
 
 ## Decisões de stack
 
@@ -100,25 +113,29 @@ Projeto integrador/
 │   │   ├── middlewares/     # cross-cutting concerns
 │   │   ├── validators/      # DTO/validação na borda (Zod)
 │   │   ├── queues/ e jobs/  # fila assíncrona (pg-boss)
-│   │   ├── integrations/    # ex.: cliente do serviço de recomendação
-│   │   └── database/prisma/ # schema e cliente Prisma
-│   ├── prisma/               # migrations e seed
-│   └── scripts/               # scripts de evidência (ex.: teste de concorrência)
+│   │   ├── integrations/    # ex.: Strategy de recomendação
+│   │   ├── docs/            # OpenAPI (Swagger)
+│   │   ├── server.ts        # API + publicador da fila
+│   │   └── worker.ts        # só consumidores da fila
+│   ├── prisma/               # schema, migrations, seed demo e seed de volume
+│   ├── scripts/              # concorrência, benchmarks, p95 da busca, métricas
+│   └── tests/                # unit, integration e integridade (PostgreSQL real)
 ├── frontend/                # aplicação Next.js
-│   └── src/
-│       ├── app/              # rotas (App Router)
-│       ├── components/       # componentes por domínio de tela
-│       ├── services/          # camada de acesso a dados (Fake API / futura API real)
-│       ├── fake-api/          # Fake API estruturada usada na Avaliação 1
-│       ├── domain/, store/, hooks/, types/, validators/
-├── docs/                    # documentação publicada: fake-api.md e uso-de-ia.md
+│   ├── src/
+│   │   ├── app/              # rotas (App Router)
+│   │   ├── components/       # componentes por domínio de tela
+│   │   ├── services/         # services; adapters HTTP (padrão) e Fake API (offline)
+│   │   ├── fake-api/         # Fake API da Avaliação 1, mantida para dev offline
+│   │   └── domain/, store/, hooks/, types/, validators/
+│   └── e2e/                  # fluxos Playwright
+├── docs/                    # arquitetura, relatórios, matriz de aceitação, uso de IA
 ├── sprints/                 # entregáveis formais por sprint/checkpoint
 └── CLAUDE.md                # contexto vivo do projeto (decisões, modelo de dados, cronograma)
 ```
 
 ## Como rodar localmente
 
-Pré-requisitos: Node.js 24+, npm e um banco PostgreSQL (recomendado: Neon).
+Pré-requisitos: Node.js 22+ (versão usada na CI e nas evidências), npm e um banco PostgreSQL (recomendado: Neon).
 
 ### Backend
 
@@ -127,13 +144,16 @@ cd backend
 npm install
 npm run prisma:generate
 
-# configurar variáveis de ambiente antes de continuar:
-# DATABASE_URL=<connection string do Postgres>
+# copie .env.example para .env e preencha, no mínimo:
+# DATABASE_URL, DIRECT_URL, JWT_SECRET, FRONTEND_ORIGIN=http://localhost:3000
+# (BLOB_READ_WRITE_TOKEN só é necessário para o upload de foto de perfil)
 
 npm run db:migrate
 npm run db:seed
-npm run dev        # sobe o servidor em http://127.0.0.1:<PORT>
+npm run dev        # API + consumidor da fila em http://127.0.0.1:3001
 ```
+
+Para rodar o worker em processo separado: `RUN_WORKER_IN_API=false` no terminal da API (`npm run dev:api`) e `npm run dev:worker` em outro terminal. Todas as variáveis estão descritas em [`backend/README.md`](backend/README.md).
 
 `GET /health` confirma o acesso ao banco (`200` com banco disponível, `503` caso contrário). As rotas da API não usam prefixo `/api` (ex.: `/pedidos`).
 
@@ -151,12 +171,22 @@ npm run test:concorrencia   # script dedicado de evidência de concorrência
 ```bash
 cd frontend
 npm install
+
+# frontend/.env.local
+# BACKEND_URL=http://127.0.0.1:3001
+# NEXT_PUBLIC_DATA_SOURCE=http
+
 npm run dev         # http://localhost:3000
 ```
 
-Na Avaliação 1, o frontend consome uma **Fake API estruturada** (`src/fake-api/`), com a mesma camada de services/hooks/store que será usada para consumir a API real na Avaliação 2 — a integração real entre as camadas é entregue nessa segunda fase, sem reescrever a estrutura do frontend.
+Com `NEXT_PUBLIC_DATA_SOURCE=http`, o frontend usa os adapters HTTP e o Next.js repassa `/api/*` para `BACKEND_URL`. Erros HTTP nunca caem para a Fake API. Sem essa variável, o padrão continua `fake`, que é o modo offline herdado da AV1 ([`docs/fake-api.md`](docs/fake-api.md)). A troca acontece só na composição dos services, sem mudar páginas nem componentes ([`docs/refatoracoes-u2.md`](docs/refatoracoes-u2.md)).
 
-A documentação completa da Fake API (camadas, recursos, contratos, erros, rotas protegidas e plano de troca pelo backend) está em [`docs/fake-api.md`](docs/fake-api.md).
+E2E (sobe Express e Next.js reais num schema isolado, nos viewports 360 e 1280px):
+
+```bash
+cd frontend
+npm run test:e2e
+```
 
 Imagens ilustrativas geradas com IA (Gemini).
 
@@ -239,7 +269,15 @@ npm run lint
 
 | Documento | Conteúdo |
 |---|---|
-| [`docs/fake-api.md`](docs/fake-api.md) | Fake API da Avaliação 1: arquitetura, recursos, contratos, erros e troca pelo backend real |
+| [`docs/arquitetura-distribuida.md`](docs/arquitetura-distribuida.md) | Componentes, implantação, API × worker e limites do deploy |
+| [`docs/concorrencia-checkout-u2.md`](docs/concorrencia-checkout-u2.md) | Sequência do checkout, `FOR UPDATE` e ordenação de locks |
+| [`docs/relatorio-desempenho-u2.md`](docs/relatorio-desempenho-u2.md) | Concorrência, benchmarks da fila e da recomendação, p95 da busca |
+| [`docs/indices-u2.md`](docs/indices-u2.md) | Índices analisados com `EXPLAIN`, retidos e descartados |
+| [`docs/metricas-recomendacao-u2.md`](docs/metricas-recomendacao-u2.md) | Métricas v0 da recomendação na massa de 1.000 produtos |
+| [`docs/matriz-aceitacao-u2.md`](docs/matriz-aceitacao-u2.md) | Critérios de aceite × teste × resultado |
+| [`docs/refatoracoes-u2.md`](docs/refatoracoes-u2.md) | Refatorações justificadas da U2 |
+| [`docs/Relatorio-Testes-Origem-Sprint12-13.pdf`](docs/Relatorio-Testes-Origem-Sprint12-13.pdf) | Relatório consolidado de testes (Semanas 12–13) |
+| [`docs/fake-api.md`](docs/fake-api.md) | Fake API da Avaliação 1 (histórico; hoje só para dev offline) |
 | [`docs/uso-de-ia.md`](docs/uso-de-ia.md) | Declaração de uso de IA no desenvolvimento |
 
 ## Declaração de uso de IA
