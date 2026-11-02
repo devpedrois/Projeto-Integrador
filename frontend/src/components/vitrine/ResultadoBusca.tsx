@@ -18,6 +18,7 @@ import type { Produto } from "@/types/produto";
 export interface ResultadoBuscaProps {
   service: ProdutosService | null;
   usuariosService?: UsuariosService | null;
+  nomesArtesaos?: ReadonlyMap<string, string>;
   query: ProdutoQuery;
   onLimpar(): void;
   onAdicionarAoCarrinho(produto: Produto): void;
@@ -27,6 +28,7 @@ export interface ResultadoBuscaProps {
 export function ResultadoBusca({
   service,
   usuariosService = null,
+  nomesArtesaos,
   query,
   onLimpar,
   onAdicionarAoCarrinho,
@@ -53,7 +55,11 @@ export function ResultadoBusca({
       ) : null}
 
       {estado.status === "vazio" ? (
-        <div role="status" aria-label="Nenhum resultado encontrado" className={CLASSE_VAZIO}>
+        <div
+          role="status"
+          aria-label="Nenhum resultado encontrado"
+          className={CLASSE_VAZIO}
+        >
           <IconeVazio nome="busca" />
           <p className="m-0 max-w-[380px] text-[15px] text-fg-muted">
             Nenhum resultado encontrado para essa busca.
@@ -75,6 +81,11 @@ export function ResultadoBusca({
               key={produto.id}
               produto={produto}
               usuariosService={usuariosService}
+              nomeArtesao={
+                nomesArtesaos
+                  ? (nomesArtesaos.get(produto.artesaoId) ?? null)
+                  : undefined
+              }
               onAdicionarAoCarrinho={onAdicionarAoCarrinho}
               erroCarrinho={errosCarrinho[produto.id]}
             />

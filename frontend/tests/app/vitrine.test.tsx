@@ -1,6 +1,6 @@
-import { describe, expect, it, vi, beforeEach } from "vitest";
+import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
 import { useEffect, useState } from "react";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { RecomendacoesService } from "@/services/contracts/recomendacoes.contract";
@@ -133,6 +133,95 @@ beforeEach(() => {
 });
 
 describe("Vitrine (Home)", () => {
+  afterEach(() => vi.useRealTimers());
+
+  it("substitui o catalogo aberto quando os produtos mudam no servidor", async () => {
+    vi.useFakeTimers();
+    let produtos = [produto({ nome: "Peca anterior" })];
+    produtosServiceMock = criarProdutosServiceFake({
+      list: () => Promise.resolve(produtos),
+    });
+    const { default: Home } = await import("@/app/page");
+    await act(async () => {
+      render(<Home />);
+    });
+    expect(
+      screen.getByRole("link", { name: "Peca anterior" }),
+    ).toBeInTheDocument();
+    produtos = [produto({ id: "novo", nome: "Peca atualizada", preco: 75 })];
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(15_000);
+    });
+
+    expect(
+      screen.queryByRole("link", { name: "Peca anterior" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Peca atualizada" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/75,00/)).toBeInTheDocument();
+  });
+
+  it("renova tambem o estado vazio sem navegar ou recarregar a pagina", async () => {
+    let produtos: Produto[] = [];
+    produtosServiceMock = criarProdutosServiceFake({
+      list: () => Promise.resolve(produtos),
+    });
+    const { default: Home } = await import("@/app/page");
+    render(<Home />);
+    await screen.findByText(/nenhum produto dispon/i);
+    produtos = [produto({ nome: "Primeira peca" })];
+
+    await act(async () => {
+      window.dispatchEvent(new Event("focus"));
+    });
+
+    expect(
+      screen.getByRole("link", { name: "Primeira peca" }),
+    ).toBeInTheDocument();
+  });
+
+  it.each(["catalogo", "busca"])(
+    "atualiza a autoria dos cards junto do filtro em %s",
+    async (modo) => {
+      let nome = "Autor anterior";
+      if (modo === "busca")
+        searchParamsAtual = new URLSearchParams("termo=vaso");
+      produtosServiceMock = criarProdutosServiceFake({
+        list: () => Promise.resolve([produto()]),
+        search: () => Promise.resolve([produto()]),
+      });
+      usuariosServiceMock.list = () =>
+        Promise.resolve([
+          {
+            id: "artesao-sintetico-pilar",
+            nome,
+            papel: "artesao",
+            ativo: true,
+          },
+        ]);
+      const { default: Home } = await import("@/app/page");
+      render(<Home />);
+      await screen.findByRole("link", { name: "Autor anterior" });
+      nome = "Autoria atualizada";
+
+      await act(async () => {
+        window.dispatchEvent(new Event("focus"));
+      });
+
+      expect(
+        screen.getByRole("option", { name: "Autoria atualizada" }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole("link", { name: "Autoria atualizada" }),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByRole("link", { name: "Autor anterior" }),
+      ).not.toBeInTheDocument();
+    },
+  );
+
   it("mostra carregando e depois a lista de produtos", async () => {
     produtosServiceMock = criarProdutosServiceFake({
       list: vi

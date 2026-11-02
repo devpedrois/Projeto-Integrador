@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import { useConsultaPublica } from "@/hooks/use-consulta-publica";
 import type { UsuariosService } from "@/services/contracts/usuarios.contract";
 
 export interface ArtesaoAtivo {
@@ -16,38 +17,21 @@ export type EstadoArtesaosAtivos =
 const MENSAGEM_ERRO_PADRAO = "Não foi possível carregar os artesãos agora.";
 
 export function useArtesaosAtivos(
-  service: UsuariosService | null
+  service: UsuariosService | null,
 ): EstadoArtesaosAtivos {
-  const [estado, setEstado] = useState<EstadoArtesaosAtivos>({ status: "carregando" });
-
-  useEffect(() => {
-    if (!service) {
-      setEstado({ status: "carregando" });
-      return;
-    }
-
-    let cancelado = false;
-    setEstado({ status: "carregando" });
-
-    service
-      .list()
-      .then((usuarios) => {
-        if (cancelado) return;
-        const artesaos = usuarios
-          .filter((usuario) => usuario.papel === "artesao" && usuario.ativo)
-          .map((usuario) => ({ id: usuario.id, nome: usuario.nome }))
-          .sort((a, b) => a.nome.localeCompare(b.nome));
-        setEstado({ status: "sucesso", artesaos });
-      })
-      .catch(() => {
-        if (cancelado) return;
-        setEstado({ status: "erro", mensagem: MENSAGEM_ERRO_PADRAO });
-      });
-
-    return () => {
-      cancelado = true;
-    };
-  }, [service]);
-
-  return estado;
+  const consulta = useMemo(
+    () => (service ? () => service.list() : null),
+    [service],
+  );
+  const { estado } = useConsultaPublica(consulta);
+  if (estado.status === "erro")
+    return { status: "erro", mensagem: MENSAGEM_ERRO_PADRAO };
+  if (estado.status === "carregando") return estado;
+  return {
+    status: "sucesso",
+    artesaos: estado.dados
+      .filter((usuario) => usuario.papel === "artesao" && usuario.ativo)
+      .map((usuario) => ({ id: usuario.id, nome: usuario.nome }))
+      .sort((a, b) => a.nome.localeCompare(b.nome)),
+  };
 }

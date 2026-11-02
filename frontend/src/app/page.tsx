@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import {
   obterCarrinhoStore,
   obterOpcoesFiltroService,
@@ -15,6 +15,7 @@ import type { CartStore } from "@/store/carrinho.store";
 import { useFiltrosUrl } from "@/hooks/use-filtros-url";
 import { useOpcoesFiltro } from "@/hooks/use-opcoes-filtro";
 import { useArtesaosAtivos } from "@/hooks/use-artesaos-ativos";
+import { useConsultaPublica } from "@/hooks/use-consulta-publica";
 import { FaixaRecomendacoes } from "@/components/vitrine/FaixaRecomendacoes";
 import { ResultadoBusca } from "@/components/vitrine/ResultadoBusca";
 import { FiltrosProdutos } from "@/components/vitrine/FiltrosProdutos";
@@ -66,15 +67,18 @@ function PaginaInicial() {
     useState<UsuariosService | null>(null);
   const [sessionStore, setSessionStore] = useState<SessionStore | null>(null);
   const [carrinhoStore, setCarrinhoStore] = useState<CartStore | null>(null);
-  const [estado, setEstado] = useState<EstadoProdutos>({
-    status: "carregando",
-  });
   const [errosCarrinho, setErrosCarrinho] = useState<Record<string, string>>(
     {},
   );
   const { query, atualizar, limpar } = useFiltrosUrl();
   const opcoesFiltro = useOpcoesFiltro(opcoesFiltroService);
   const artesaosAtivos = useArtesaosAtivos(usuariosService);
+  const nomesArtesaos =
+    artesaosAtivos.status === "sucesso"
+      ? new Map(
+          artesaosAtivos.artesaos.map((artesao) => [artesao.id, artesao.nome]),
+        )
+      : undefined;
 
   useEffect(() => {
     setProdutosService(obterProdutosService());
@@ -98,31 +102,20 @@ function PaginaInicial() {
     setCarrinhoStore(obterCarrinhoStore(sessao?.id));
   }, [sessionStore, sessao?.id]);
 
-  useEffect(() => {
-    if (!produtosService) return;
-
-    let cancelado = false;
-    setEstado({ status: "carregando" });
-
-    produtosService
-      .list()
-      .then((produtos) => {
-        if (cancelado) return;
-        setEstado(
-          produtos.length === 0
-            ? { status: "vazio" }
-            : { status: "sucesso", produtos },
-        );
-      })
-      .catch(() => {
-        if (cancelado) return;
-        setEstado({ status: "erro" });
-      });
-
-    return () => {
-      cancelado = true;
-    };
-  }, [produtosService]);
+  const consultaProdutos = useMemo(
+    () =>
+      produtosService && !algumFiltroAtivo
+        ? () => produtosService.list()
+        : null,
+    [produtosService, algumFiltroAtivo],
+  );
+  const { estado: leituraProdutos } = useConsultaPublica(consultaProdutos);
+  const estado: EstadoProdutos =
+    leituraProdutos.status === "sucesso"
+      ? leituraProdutos.dados.length === 0
+        ? { status: "vazio" }
+        : { status: "sucesso", produtos: leituraProdutos.dados }
+      : leituraProdutos;
 
   async function adicionarAoCarrinho(produto: Produto): Promise<void> {
     try {
@@ -176,6 +169,7 @@ function PaginaInicial() {
               <ResultadoBusca
                 service={produtosService}
                 usuariosService={usuariosService}
+                nomesArtesaos={nomesArtesaos}
                 query={query}
                 onLimpar={limpar}
                 onAdicionarAoCarrinho={adicionarAoCarrinho}
@@ -216,6 +210,11 @@ function PaginaInicial() {
                         key={produto.id}
                         produto={produto}
                         usuariosService={usuariosService}
+                        nomeArtesao={
+                          nomesArtesaos
+                            ? (nomesArtesaos.get(produto.artesaoId) ?? null)
+                            : undefined
+                        }
                         onAdicionarAoCarrinho={adicionarAoCarrinho}
                         erroCarrinho={errosCarrinho[produto.id]}
                       />

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import { useConsultaPublica } from "@/hooks/use-consulta-publica";
 import type { ProdutosService } from "@/services/contracts/produtos.contract";
 import type { ProdutoQuery } from "@/types/produto-query";
 import type { Produto } from "@/types/produto";
@@ -15,37 +16,21 @@ const MENSAGEM_ERRO_PADRAO = "Não foi possível buscar produtos agora.";
 
 export function useBuscaProdutos(
   service: ProdutosService | null,
-  query: ProdutoQuery
+  query: ProdutoQuery,
 ): EstadoBuscaProdutos {
-  const [estado, setEstado] = useState<EstadoBuscaProdutos>({ status: "carregando" });
   const chaveQuery = JSON.stringify(query);
-
-  useEffect(() => {
-    if (!service) {
-      setEstado({ status: "carregando" });
-      return;
-    }
-
-    let cancelado = false;
-    setEstado({ status: "carregando" });
-
-    service
-      .search(JSON.parse(chaveQuery) as ProdutoQuery)
-      .then((produtos) => {
-        if (cancelado) return;
-        setEstado(
-          produtos.length === 0 ? { status: "vazio" } : { status: "sucesso", produtos }
-        );
-      })
-      .catch(() => {
-        if (cancelado) return;
-        setEstado({ status: "erro", mensagem: MENSAGEM_ERRO_PADRAO });
-      });
-
-    return () => {
-      cancelado = true;
-    };
-  }, [service, chaveQuery]);
-
-  return estado;
+  const consulta = useMemo(
+    () =>
+      service
+        ? () => service.search(JSON.parse(chaveQuery) as ProdutoQuery)
+        : null,
+    [service, chaveQuery],
+  );
+  const { estado } = useConsultaPublica(consulta);
+  if (estado.status === "erro")
+    return { status: "erro", mensagem: MENSAGEM_ERRO_PADRAO };
+  if (estado.status === "carregando") return estado;
+  return estado.dados.length === 0
+    ? { status: "vazio" }
+    : { status: "sucesso", produtos: estado.dados };
 }

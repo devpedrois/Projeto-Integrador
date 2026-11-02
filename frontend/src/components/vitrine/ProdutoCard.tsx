@@ -11,6 +11,7 @@ import type { Produto } from "@/types/produto";
 export interface ProdutoCardProps {
   produto: Produto;
   usuariosService?: UsuariosService | null;
+  nomeArtesao?: string | null;
   onAdicionarAoCarrinho(produto: Produto): void;
   erroCarrinho?: string;
 }
@@ -18,10 +19,15 @@ export interface ProdutoCardProps {
 export function ProdutoCard({
   produto,
   usuariosService = null,
+  nomeArtesao: nomeAtual,
   onAdicionarAoCarrinho,
   erroCarrinho,
 }: ProdutoCardProps) {
-  const nomeArtesao = useNomeArtesao(usuariosService, produto.artesaoId);
+  const nomeConsultado = useNomeArtesao(
+    nomeAtual === undefined ? usuariosService : null,
+    produto.artesaoId,
+  );
+  const nomeArtesao = nomeAtual === undefined ? nomeConsultado : nomeAtual;
   const erroId = `erro-carrinho-${produto.id}`;
   const hrefProduto = `/produto/${produto.id}`;
   const capa = [...produto.fotos].sort((a, b) => a.ordem - b.ordem)[0];
@@ -43,7 +49,10 @@ export function ProdutoCard({
           />
         </Link>
       ) : (
-        <div aria-hidden="true" className="grid aspect-[4/5] place-items-center rounded-media bg-linho-100 text-fg-subtle">
+        <div
+          aria-hidden="true"
+          className="grid aspect-[4/5] place-items-center rounded-media bg-linho-100 text-fg-subtle"
+        >
           <Icone nome="pacote" tamanho={28} className="opacity-75" />
         </div>
       )}
@@ -79,7 +88,11 @@ export function ProdutoCard({
         Adicionar ao carrinho
       </button>
       {erroCarrinho ? (
-        <p id={erroId} role="alert" className="flex items-start gap-1.5 text-caption text-erro-700">
+        <p
+          id={erroId}
+          role="alert"
+          className="flex items-start gap-1.5 text-caption text-erro-700"
+        >
           <Icone nome="alerta" tamanho={14} className="mt-px flex-none" />
           {erroCarrinho}
         </p>
