@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  skipTrailingSlashRedirect: true,
   typescript: {
     tsconfigPath: "tsconfig.build.json",
   },
@@ -29,7 +30,10 @@ const nextConfig: NextConfig = {
       throw new Error(invalidOrigin);
     }
 
-    return [{ source: "/api/:path*", destination: `${origin.origin}/:path*` }];
+    return [
+      { source: "/api/docs/", destination: `${origin.origin}/docs/` },
+      { source: "/api/:path*", destination: `${origin.origin}/:path*` },
+    ];
   },
 };
 

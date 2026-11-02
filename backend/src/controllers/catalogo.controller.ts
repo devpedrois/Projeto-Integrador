@@ -95,6 +95,18 @@ export class CatalogoController {
     }
   };
 
+  artesaos = async (
+    _request: Request,
+    response: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      response.json(await this.service.artesaos());
+    } catch (error: unknown) {
+      next(error);
+    }
+  };
+
   avaliacoes = async (
     request: Request,
     response: Response,

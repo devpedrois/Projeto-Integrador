@@ -30,6 +30,10 @@ export class CatalogoService {
     return this.repository.regioes();
   }
 
+  artesaos() {
+    return this.repository.artesaos();
+  }
+
   async avaliacoes(produtoId: string) {
     await this.obter(produtoId);
     return this.repository.avaliacoes(produtoId);

@@ -720,6 +720,31 @@ endpoint({
 });
 endpoint({
   method: "get",
+  path: "/artesaos",
+  operationId: "listarArtesaosPublicos",
+  summary: "Listar artesãos ativos para filtros públicos",
+  tag: "Catálogo",
+  response: json(
+    registry.register(
+      "ListaArtesaosPublicos",
+      z.array(
+        z
+          .object({
+            id: z.uuid(),
+            nome: z.string(),
+            papel: z.literal("artesao"),
+            ativo: z.literal(true),
+          })
+          .strict(),
+      ),
+    ),
+    [{ id, nome: "Maria Artesã", papel: "artesao", ativo: true }],
+  ),
+  description:
+    "Lista pública sem e-mail, senha ou dados de sessão. Somente artesãos ativos.",
+});
+endpoint({
+  method: "get",
   path: "/tecnicas",
   operationId: "listarTecnicas",
   summary: "Listar técnicas",
@@ -1243,7 +1268,7 @@ registry.registerPath({
   responses: {
     308: {
       description: "Redireciona /docs para /docs/.",
-      headers: { Location: { schema: { type: "string" }, example: "/docs/" } },
+      headers: { Location: { schema: { type: "string" }, example: "./docs/" } },
     },
     200: {
       description: "Interface interativa",
@@ -1279,5 +1304,5 @@ export const openapi = new OpenApiGeneratorV31(
     description:
       "Marketplace da economia criativa pernambucana. Rotas implementadas, sem prefixo /api. Exemplos sintéticos. Pagamento exclusivamente simulado. Toda mudança de rota deve atualizar esta especificação e o teste de cobertura.",
   },
-  servers: [{ url: "/" }],
+  servers: [{ url: "../" }],
 });

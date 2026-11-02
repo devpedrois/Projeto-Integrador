@@ -647,7 +647,19 @@ Todas estas leituras respondem com `Cache-Control: no-store`.
 | GET | `/produtos` | `Produto[]` |
 | GET | `/produtos/:id` | `Produto` |
 | GET | `/categorias`, `/tecnicas`, `/regioes` | `{ id, nome }[]` |
+| GET | `/artesaos` | `{ id, nome, papel: "artesao", ativo: true }[]` |
 | GET | `/avaliacoes?produtoId=` | `{ itens: Avaliacao[], resumo: { media, total } }` |
+
+`GET /artesaos` não exige sessão. Retorna somente artesãos ativos.
+Ordena por nome e ID, sem e-mail ou credenciais.
+`UsuariosService.list()` usa esse resumo público no modo HTTP.
+`GET /admin/artesaos` permanece protegido e exclusivo da moderação.
+
+Swagger usa redirecionamento relativo de `/docs` para `./docs/`.
+Assets e documento permanecem relativos ao caminho externo.
+O OpenAPI usa `servers: [{ url: "../" }]`.
+Assim, funciona diretamente no backend e pelo prefixo `/api`.
+O Next preserva `/api/docs/`, evitando remover sua barra final.
 
 Filtros combinados por AND: termo, categoriaId, tecnicaId, regiaoId, artesaoId.
 Termo busca nome e descricao com ILIKE, recebendo trim.

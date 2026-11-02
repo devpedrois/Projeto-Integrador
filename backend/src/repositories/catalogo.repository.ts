@@ -49,6 +49,9 @@ export interface CatalogoRepository {
   categorias(): Promise<{ id: string; nome: string }[]>;
   tecnicas(): Promise<{ id: string; nome: string }[]>;
   regioes(): Promise<{ id: string; nome: string }[]>;
+  artesaos(): Promise<
+    { id: string; nome: string; papel: "artesao"; ativo: true }[]
+  >;
   avaliacoes(produtoId: string): Promise<{
     itens: {
       id: string;
@@ -122,6 +125,19 @@ export class PrismaCatalogoRepository implements CatalogoRepository {
       select: { id: true, nome: true },
       orderBy: [{ nome: "asc" }, { id: "asc" }],
     });
+  }
+
+  async artesaos() {
+    const usuarios = await this.prisma.usuario.findMany({
+      where: { papel: "artesao", ativo: true },
+      select: { id: true, nome: true },
+      orderBy: [{ nome: "asc" }, { id: "asc" }],
+    });
+    return usuarios.map((usuario) => ({
+      ...usuario,
+      papel: "artesao" as const,
+      ativo: true as const,
+    }));
   }
 
   async avaliacoes(produtoId: string) {

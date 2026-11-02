@@ -108,3 +108,28 @@ it("listagem nao utiliza usuarios sinteticos", async () => {
   vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json([])));
   expect(await (await service()).list()).toEqual([]);
 });
+
+it("lista artesaos publicos sem consultar administracao nem expor e-mail", async () => {
+  const artesao = { id: "a1", nome: "Maria", papel: "artesao", ativo: true };
+  const fetchMock = vi
+    .fn()
+    .mockImplementation(async (url: string) =>
+      url === "/api/artesaos"
+        ? Response.json([{ ...artesao, email: "privado@origem.test" }])
+        : Response.json({ error: { code: "NAO_AUTORIZADO" } }, { status: 401 }),
+    );
+  vi.stubGlobal("fetch", fetchMock);
+  expect(await (await service()).list()).toEqual([artesao]);
+});
+
+it.each([
+  { id: "", nome: "Maria", papel: "artesao", ativo: true },
+  { id: "a1", nome: " ", papel: "artesao", ativo: true },
+  { id: "a1", nome: "Maria", papel: "admin", ativo: true },
+  { id: "a1", nome: "Maria", papel: "artesao", ativo: false },
+])("recusa identidade invalida na lista publica: %j", async (artesao) => {
+  vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json([artesao])));
+  await expect((await service()).list()).rejects.toMatchObject({
+    code: "RESPOSTA_INVALIDA",
+  });
+});

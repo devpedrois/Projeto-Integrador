@@ -339,6 +339,46 @@ describe("catalogo publico WEB-06", () => {
     }
   });
 
+  it("lista apenas artesaos ativos sem sessao e sem dados privados", async () => {
+    const excluidos = [];
+    for (const data of [
+      { papel: "artesao" as const, ativo: false },
+      { papel: "comprador" as const, ativo: true },
+    ]) {
+      excluidos.push(
+        await banco.prisma.usuario.create({
+          data: {
+            ...data,
+            nome: "Usuario excluido da lista publica",
+            email: `${randomUUID()}@teste.origem`,
+            senhaHash: "hash-sintetico",
+          },
+        }),
+      );
+    }
+    const response = await request(app).get("/artesaos");
+    expect(response.status).toBe(200);
+    expect(response.headers["cache-control"]).toBe("no-store");
+    expect(response.body).toContainEqual({
+      id: artesaoId,
+      nome: "Artesao sintetico",
+      papel: "artesao",
+      ativo: true,
+    });
+    for (const item of response.body) {
+      expect(Object.keys(item).sort()).toEqual([
+        "ativo",
+        "id",
+        "nome",
+        "papel",
+      ]);
+      expect(item.papel).toBe("artesao");
+      expect(item.ativo).toBe(true);
+      expect(excluidos.map((usuario) => usuario.id)).not.toContain(item.id);
+    }
+    expect((await request(app).get("/admin/artesaos")).status).toBe(401);
+  });
+
   it("retorna avaliacoes e resumo consistente sem credenciais", async () => {
     const response = await request(app).get("/avaliacoes").query({ produtoId });
     expect(response.status).toBe(200);

@@ -11,6 +11,11 @@ export interface Usuario {
 
 export type UsuarioPublico = Omit<Usuario, "senha">;
 
+export type UsuarioResumoPublico = Pick<
+  UsuarioPublico,
+  "id" | "nome" | "papel" | "ativo"
+>;
+
 export function paraUsuarioPublico(usuario: Usuario): UsuarioPublico {
   const { senha, ...publico } = usuario;
   void senha;

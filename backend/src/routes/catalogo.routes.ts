@@ -12,6 +12,7 @@ export function createCatalogoRouter(controller: CatalogoController): Router {
   router.get("/categorias", controller.categorias);
   router.get("/tecnicas", controller.tecnicas);
   router.get("/regioes", controller.regioes);
+  router.get("/artesaos", controller.artesaos);
   router.get("/avaliacoes", controller.avaliacoes);
   return router;
 }

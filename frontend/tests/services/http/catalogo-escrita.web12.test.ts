@@ -116,7 +116,7 @@ it("moderacao HTTP usa todas as rotas administrativas sem adminId externo", asyn
     { ativo: true },
   ]);
 });
-it("UsuariosService.list usa lista administrativa com resposta validada", async () => {
+it("UsuariosService.list valida a lista publica e descarta dados privados", async () => {
   vi.stubGlobal(
     "fetch",
     vi.fn().mockResolvedValue(
@@ -136,7 +136,6 @@ it("UsuariosService.list usa lista administrativa com resposta validada", async 
     {
       id: "a1",
       nome: "Ana",
-      email: "ana@example.test",
       papel: "artesao",
       ativo: true,
     },

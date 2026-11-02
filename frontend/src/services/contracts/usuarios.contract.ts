@@ -8,11 +8,11 @@
  */
 import type { CadastroInput } from "@/types/cadastro";
 import type { LoginInput } from "@/types/login";
-import type { UsuarioPublico } from "@/types/usuario";
+import type { UsuarioPublico, UsuarioResumoPublico } from "@/types/usuario";
 import type { UsuarioSessao } from "@/types/sessao";
 
 export interface UsuariosService {
-  list(): Promise<UsuarioPublico[]>;
+  list(): Promise<UsuarioResumoPublico[]>;
   obterNomeArtesao?(artesaoId: string): Promise<string | null>;
   register(input: CadastroInput): Promise<UsuarioPublico>;
   /**

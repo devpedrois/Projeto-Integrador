@@ -1,9 +1,11 @@
 import request from "supertest";
+import express from "express";
 import { afterAll, describe, expect, it } from "vitest";
 import { createApp } from "../../src/app.js";
 import { createPrismaClient } from "../../src/database/prisma/client.js";
 import { registry } from "../../src/docs/openapi.js";
 import { z } from "zod";
+import { createDocsRouter } from "../../src/routes/docs.routes.js";
 
 const prisma = createPrismaClient(
   "postgresql://synthetic:synthetic@127.0.0.1:5432/unused",
@@ -240,7 +242,7 @@ describe("WEB-15 OpenAPI", () => {
     expect(response.headers["content-type"]).toContain("application/json");
     expect(response.body).toMatchObject({
       openapi: "3.1.0",
-      servers: [{ url: "/" }],
+      servers: [{ url: "../" }],
       components: {
         securitySchemes: {
           sessao: { type: "apiKey", in: "cookie", name: "origem_sessao" },
@@ -296,13 +298,42 @@ describe("WEB-15 OpenAPI", () => {
       expect(result.headers["x-content-type-options"]).toBe("nosniff");
     }
     const init = await request(app).get("/docs/swagger-ui-init.js");
-    expect(init.text).toContain("/docs/openapi.json");
+    expect(init.text).toContain("./openapi.json");
     const missing = await request(app).get("/docs/inexistente");
     expect(missing.status).toBe(404);
     const elsewhere = await request(app).post("/auth/logout");
     expect(elsewhere.headers["content-security-policy"]).toContain(
       "upgrade-insecure-requests",
     );
+  });
+
+  it("preserva o prefixo externo no Swagger e nas operacoes OpenAPI", async () => {
+    const proxy = express();
+    proxy.use("/api", createDocsRouter());
+    const redirect = await request(proxy).get("/api/docs");
+    expect(redirect.status).toBe(308);
+    const publicUrl = new URL("https://origem.example/api/docs");
+    const target = new URL(redirect.headers.location ?? "", publicUrl);
+    expect(target.pathname).toBe("/api/docs/");
+    const page = await request(proxy).get(target.pathname);
+    expect(page.status).toBe(200);
+    expect(page.text).toContain("./swagger-ui.css");
+    for (const asset of [
+      "swagger-ui.css",
+      "swagger-ui-bundle.js",
+      "swagger-ui-init.js",
+    ]) {
+      expect(
+        (await request(proxy).get(new URL(`./${asset}`, target).pathname))
+          .status,
+      ).toBe(200);
+    }
+    const init = await request(proxy).get("/api/docs/swagger-ui-init.js");
+    expect(init.text).toContain('"url": "./openapi.json"');
+    const specUrl = new URL("./openapi.json", target);
+    const spec = await request(proxy).get(specUrl.pathname);
+    expect(new URL(spec.body.servers[0].url, specUrl).pathname).toBe("/api/");
+    expect(spec.body.paths["/artesaos"].get.security).toEqual([]);
   });
 
   it("inclui exemplos, schemas, segurança e erros aplicáveis", async () => {

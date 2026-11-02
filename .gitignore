@@ -1,6 +1,7 @@
 node_modules/
 backend/dist/
 backend/coverage/
+backend/.vitest/
 backend/src/generated/prisma/
 .env
 .env.*

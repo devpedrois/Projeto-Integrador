@@ -4,12 +4,15 @@ import { ApiClient } from "@/services/http/api-client";
 import { HttpPerfilArtesaoService } from "@/services/http/perfil-artesao.service";
 import type { CadastroInput } from "@/types/cadastro";
 import type { LoginInput } from "@/types/login";
-import type { UsuarioPublico, Papel } from "@/types/usuario";
+import type {
+  UsuarioPublico,
+  UsuarioResumoPublico,
+  Papel,
+} from "@/types/usuario";
 import type { UsuarioSessao } from "@/types/sessao";
 import { validarCadastro } from "@/validators/cadastro.validator";
 import { validarLogin } from "@/validators/login.validator";
-import { lerArtesao } from "./moderacao.service";
-import { respostaInvalida } from "./catalogo-response";
+import { objeto, respostaInvalida } from "./catalogo-response";
 
 function sessaoPublica(value: unknown): UsuarioSessao {
   if (typeof value !== "object" || value === null)
@@ -56,10 +59,27 @@ export class HttpUsuariosService implements UsuariosSessaoService {
     );
   }
 
-  async list(): Promise<UsuarioPublico[]> {
-    const value = await this.api.request<unknown>("/admin/artesaos");
+  async list(): Promise<UsuarioResumoPublico[]> {
+    const value = await this.api.request<unknown>("/artesaos");
     if (!Array.isArray(value)) return respostaInvalida();
-    return value.map(lerArtesao);
+    return value.map((artesao) => {
+      if (
+        !objeto(artesao) ||
+        typeof artesao.id !== "string" ||
+        !artesao.id.trim() ||
+        typeof artesao.nome !== "string" ||
+        !artesao.nome.trim() ||
+        artesao.papel !== "artesao" ||
+        artesao.ativo !== true
+      )
+        return respostaInvalida();
+      return {
+        id: artesao.id,
+        nome: artesao.nome,
+        papel: "artesao",
+        ativo: true,
+      };
+    });
   }
 
   async register(input: CadastroInput): Promise<UsuarioPublico> {

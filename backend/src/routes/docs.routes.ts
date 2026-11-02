@@ -20,12 +20,12 @@ export function createDocsRouter(): Router {
     response.json(openapi);
   });
   const options = {
-    swaggerOptions: { url: "/docs/openapi.json", validatorUrl: null },
+    swaggerOptions: { url: "./openapi.json", validatorUrl: null },
   };
   const ui = swaggerUi.setup(undefined, options);
   router.get("/docs", (request, response, next) => {
     if (!request.path.endsWith("/")) {
-      response.redirect(308, "/docs/");
+      response.redirect(308, "./docs/");
       return;
     }
     ui(request, response, next);

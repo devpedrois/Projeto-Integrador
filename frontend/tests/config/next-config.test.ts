@@ -13,20 +13,32 @@ async function rewrites() {
 }
 
 describe("proxy da API", () => {
-  it.each([undefined, "", "   "])("não registra rewrite sem BACKEND_URL", async (value) => {
-    vi.stubEnv("BACKEND_URL", value);
+  it.each([undefined, "", "   "])(
+    "não registra rewrite sem BACKEND_URL",
+    async (value) => {
+      vi.stubEnv("BACKEND_URL", value);
 
-    expect(await rewrites()).toEqual([]);
-  });
+      expect(await rewrites()).toEqual([]);
+    },
+  );
 
   it.each([
     ["https://origem-backend.example", "https://origem-backend.example/:path*"],
-    ["https://origem-backend.example/", "https://origem-backend.example/:path*"],
+    [
+      "https://origem-backend.example/",
+      "https://origem-backend.example/:path*",
+    ],
     ["http://127.0.0.1:3001", "http://127.0.0.1:3001/:path*"],
   ])("encaminha /api para a origem %s", async (backendUrl, destination) => {
     vi.stubEnv("BACKEND_URL", backendUrl);
 
-    expect(await rewrites()).toEqual([{ source: "/api/:path*", destination }]);
+    expect(await rewrites()).toEqual([
+      {
+        source: "/api/docs/",
+        destination: `${new URL(backendUrl).origin}/docs/`,
+      },
+      { source: "/api/:path*", destination },
+    ]);
     expect(nextConfig.env).toBeUndefined();
   });
 
@@ -48,6 +60,8 @@ describe("proxy da API", () => {
   ])("rejeita destino inválido sem revelar valores", async (backendUrl) => {
     vi.stubEnv("BACKEND_URL", backendUrl);
 
-    await expect(rewrites()).rejects.toThrow(/^BACKEND_URL inválida: informe uma origem HTTP ou HTTPS\.$/);
+    await expect(rewrites()).rejects.toThrow(
+      /^BACKEND_URL inválida: informe uma origem HTTP ou HTTPS\.$/,
+    );
   });
 });
