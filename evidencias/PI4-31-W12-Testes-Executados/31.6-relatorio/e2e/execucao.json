@@ -1,0 +1,32 @@
+{
+  "suite": "e2e",
+  "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+  "sourceBefore": {
+    "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+    "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+    "dirty": ""
+  },
+  "sourceAfter": {
+    "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+    "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+    "dirty": ""
+  },
+  "startedAt": "2026-10-26T16:38:08.436Z",
+  "finishedAt": "2026-10-26T16:38:50.757Z",
+  "durationMs": 42459.1179,
+  "cwd": "frontend",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+    "run",
+    "test:e2e"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "terminalSha256": "83eafccb2f7156e60bd1e6464707879f7a804747ec885aeda1f82997d6b74f31",
+  "redaction": "Somente credenciais conhecidas, URLs PostgreSQL e tokens JWT.",
+  "databaseSource": "DATABASE_URL_VOLUME",
+  "artifactDirectories": [
+    "cb7fb518f3e246de9f693f8898d92c59"
+  ]
+}

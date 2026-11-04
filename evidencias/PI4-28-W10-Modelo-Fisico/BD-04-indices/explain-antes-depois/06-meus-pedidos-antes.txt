@@ -1,0 +1,129 @@
+Consulta: meus-pedidos
+Fase: antes
+Captura original UTC: 2026-10-14T02:22:27.150Z
+Schema isolado: bd04_951b24127b014d84969945506e99dcda
+PostgreSQL: PostgreSQL 18.6 (653b019) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+enable_seqscan: on
+Contagens: {"produtos":1000,"pedidos":1500,"artesaos":50,"compradores":300,"intencoes":1500,"notificacoes":1500,"itenscarrinho":300}
+Parametros: ["144447aa-dd7a-59c5-bbb0-531e8099375f"]
+
+SQL executado:
+EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)
+SELECT "id", "numero", "status", "total", "criadoEm"
+FROM "Pedido"
+WHERE "compradorId" = $1::uuid
+ORDER BY "criadoEm" DESC;
+
+Saida original PostgreSQL em FORMAT JSON:
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 23.03,
+      "Total Cost": 23.07,
+      "Plan Rows": 14,
+      "Plan Width": 45,
+      "Actual Startup Time": 0.061,
+      "Actual Total Time": 0.062,
+      "Actual Rows": 14,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Sort Key": [
+        "\"criadoEm\" DESC"
+      ],
+      "Sort Method": "quicksort",
+      "Sort Space Used": 25,
+      "Sort Space Type": "Memory",
+      "Shared Hit Blocks": 11,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Bitmap Heap Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "Pedido",
+          "Alias": "Pedido",
+          "Startup Cost": 4.39,
+          "Total Cost": 22.76,
+          "Plan Rows": 14,
+          "Plan Width": 45,
+          "Actual Startup Time": 0.036,
+          "Actual Total Time": 0.05,
+          "Actual Rows": 14,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Recheck Cond": "(\"compradorId\" = '144447aa-dd7a-59c5-bbb0-531e8099375f'::uuid)",
+          "Rows Removed by Index Recheck": 0,
+          "Exact Heap Blocks": 9,
+          "Lossy Heap Blocks": 0,
+          "Shared Hit Blocks": 11,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Bitmap Index Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Index Name": "Pedido_compradorId_idx",
+              "Startup Cost": 0,
+              "Total Cost": 4.38,
+              "Plan Rows": 14,
+              "Plan Width": 0,
+              "Actual Startup Time": 0.021,
+              "Actual Total Time": 0.021,
+              "Actual Rows": 14,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Index Cond": "(\"compradorId\" = '144447aa-dd7a-59c5-bbb0-531e8099375f'::uuid)",
+              "Index Searches": 1,
+              "Shared Hit Blocks": 2,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            }
+          ]
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 0,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.103,
+    "Triggers": [],
+    "Execution Time": 0.092
+  }
+]

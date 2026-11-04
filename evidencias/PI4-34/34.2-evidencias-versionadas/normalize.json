@@ -1,0 +1,889 @@
+{
+  "copied": 221,
+  "files": [
+    {
+      "original": "evidencias/correcao-vercel-build-2026-10-14/build-sem-prisma.log",
+      "published": "evidencias/correcao-vercel-build-2026-10-14/build-sem-prisma.txt"
+    },
+    {
+      "original": "evidencias/correcao-vercel-build-2026-10-14/testes-frontend.log",
+      "published": "evidencias/correcao-vercel-build-2026-10-14/testes-frontend.txt"
+    },
+    {
+      "original": "evidencias/IA.3/backend-lint.log",
+      "published": "evidencias/IA.3/backend-lint.txt"
+    },
+    {
+      "original": "evidencias/IA.3/backend-test.log",
+      "published": "evidencias/IA.3/backend-test.txt"
+    },
+    {
+      "original": "evidencias/IA.3/backend-typecheck.log",
+      "published": "evidencias/IA.3/backend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/IA.3/coleta.log",
+      "published": "evidencias/IA.3/coleta.txt"
+    },
+    {
+      "original": "evidencias/IA.3/formatacao.log",
+      "published": "evidencias/IA.3/formatacao.txt"
+    },
+    {
+      "original": "evidencias/IA.3/frontend-lint.log",
+      "published": "evidencias/IA.3/frontend-lint.txt"
+    },
+    {
+      "original": "evidencias/IA.3/frontend-test.log",
+      "published": "evidencias/IA.3/frontend-test.txt"
+    },
+    {
+      "original": "evidencias/IA.3/frontend-typecheck.log",
+      "published": "evidencias/IA.3/frontend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/IA.3/testes-direcionados.log",
+      "published": "evidencias/IA.3/testes-direcionados.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/00-github-falha.log",
+      "published": "evidencias/P1-build-backend/00-github-falha.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/01-red.log",
+      "published": "evidencias/P1-build-backend/01-red.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/02-green.log",
+      "published": "evidencias/P1-build-backend/02-green.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/03-build.log",
+      "published": "evidencias/P1-build-backend/03-build.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/04-lint.log",
+      "published": "evidencias/P1-build-backend/04-lint.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/05-typecheck.log",
+      "published": "evidencias/P1-build-backend/05-typecheck.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/06-backend-tests.log",
+      "published": "evidencias/P1-build-backend/06-backend-tests.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/07-npm-ci-isolado.log",
+      "published": "evidencias/P1-build-backend/07-npm-ci-isolado.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/08-build-isolado.log",
+      "published": "evidencias/P1-build-backend/08-build-isolado.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/09-typecheck-isolado.log",
+      "published": "evidencias/P1-build-backend/09-typecheck-isolado.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/10-teste-isolado.log",
+      "published": "evidencias/P1-build-backend/10-teste-isolado.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/11-format.log",
+      "published": "evidencias/P1-build-backend/11-format.txt"
+    },
+    {
+      "original": "evidencias/P1-build-backend/12-ci-tests.log",
+      "published": "evidencias/P1-build-backend/12-ci-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/backend-tests.log",
+      "published": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/backend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/formatacao.log",
+      "published": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/formatacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/lint.log",
+      "published": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/openapi-tests.log",
+      "published": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/openapi-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/typecheck.log",
+      "published": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/backend-tests.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/backend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/frontend-tests-entrega.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/frontend-tests-entrega.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/frontend-tests-final.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/frontend-tests-final.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/frontend-tests.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/frontend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-13-cache/backend-tests-final.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-13-cache/backend-tests-final.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-13-cache/backend-tests.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-13-cache/backend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-13-cache/frontend-tests.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-13-cache/frontend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/backend-tests-final.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/backend-tests-final.txt"
+    },
+    {
+      "original": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/worker-processamento.log",
+      "published": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/worker-processamento.txt"
+    },
+    {
+      "original": "evidencias/PI4-28-W10-Modelo-Fisico/BD-02-reconciliacao/dry-run-dados-legados.log",
+      "published": "evidencias/PI4-28-W10-Modelo-Fisico/BD-02-reconciliacao/dry-run-dados-legados.txt"
+    },
+    {
+      "original": "evidencias/PI4-28-W10-Modelo-Fisico/BD-02-reconciliacao/migrate-dev.log",
+      "published": "evidencias/PI4-28-W10-Modelo-Fisico/BD-02-reconciliacao/migrate-dev.txt"
+    },
+    {
+      "original": "evidencias/PI4-28-W10-Modelo-Fisico/BD-02-reconciliacao/migrate-status.log",
+      "published": "evidencias/PI4-28-W10-Modelo-Fisico/BD-02-reconciliacao/migrate-status.txt"
+    },
+    {
+      "original": "evidencias/PI4-28-W10-Modelo-Fisico/BD-02-reconciliacao/teste-manual-constraints.log",
+      "published": "evidencias/PI4-28-W10-Modelo-Fisico/BD-02-reconciliacao/teste-manual-constraints.txt"
+    },
+    {
+      "original": "evidencias/PI4-28-W10-Modelo-Fisico/BD-07/01-red-constraints-ausentes.log",
+      "published": "evidencias/PI4-28-W10-Modelo-Fisico/BD-07/01-red-constraints-ausentes.txt"
+    },
+    {
+      "original": "evidencias/PI4-28-W10-Modelo-Fisico/BD-07/02-green.log",
+      "published": "evidencias/PI4-28-W10-Modelo-Fisico/BD-07/02-green.txt"
+    },
+    {
+      "original": "evidencias/PI4-28-W10-Modelo-Fisico/BD-07/04-backend-completo.log",
+      "published": "evidencias/PI4-28-W10-Modelo-Fisico/BD-07/04-backend-completo.txt"
+    },
+    {
+      "original": "evidencias/PI4-28-W10-Modelo-Fisico/BD-07/06-checks.log",
+      "published": "evidencias/PI4-28-W10-Modelo-Fisico/BD-07/06-checks.txt"
+    },
+    {
+      "original": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/logs/execucao-metricas.log",
+      "published": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/logs/execucao-metricas.txt"
+    },
+    {
+      "original": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/logs/lint.log",
+      "published": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/logs/lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/logs/testes-ia04.log",
+      "published": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/logs/testes-ia04.txt"
+    },
+    {
+      "original": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/logs/typecheck.log",
+      "published": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/logs/typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/backend-testes.log",
+      "published": "evidencias/PI4-30/benchmark-fila/backend-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/contraprova-lock-real.log",
+      "published": "evidencias/PI4-30/benchmark-fila/contraprova-lock-real.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/contraprova-lock.log",
+      "published": "evidencias/PI4-30/benchmark-fila/contraprova-lock.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/direcionados.log",
+      "published": "evidencias/PI4-30/benchmark-fila/direcionados.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/encerramento.log",
+      "published": "evidencias/PI4-30/benchmark-fila/encerramento.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/environment-red.log",
+      "published": "evidencias/PI4-30/benchmark-fila/environment-red.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/execucao.log",
+      "published": "evidencias/PI4-30/benchmark-fila/execucao.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/fila-red.log",
+      "published": "evidencias/PI4-30/benchmark-fila/fila-red.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/formatacao.log",
+      "published": "evidencias/PI4-30/benchmark-fila/formatacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/latencia-green.log",
+      "published": "evidencias/PI4-30/benchmark-fila/latencia-green.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/lint-inicial.log",
+      "published": "evidencias/PI4-30/benchmark-fila/lint-inicial.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/lint.log",
+      "published": "evidencias/PI4-30/benchmark-fila/lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/metricas-green.log",
+      "published": "evidencias/PI4-30/benchmark-fila/metricas-green.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/processos-green.log",
+      "published": "evidencias/PI4-30/benchmark-fila/processos-green.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/processos-red.log",
+      "published": "evidencias/PI4-30/benchmark-fila/processos-red.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/typecheck-inicial.log",
+      "published": "evidencias/PI4-30/benchmark-fila/typecheck-inicial.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-fila/typecheck.log",
+      "published": "evidencias/PI4-30/benchmark-fila/typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/ambiente-green.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/ambiente-green.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/ambiente-red.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/ambiente-red.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/backend-testes.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/backend-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/cli-recusada.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/cli-recusada.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/direcionados-inicial.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/direcionados-inicial.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/direcionados.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/direcionados.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/execucao.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/execucao.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/formatacao-check.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/formatacao-check.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/formatacao.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/formatacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/lint.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-30/benchmark-recomendacao/typecheck.log",
+      "published": "evidencias/PI4-30/benchmark-recomendacao/typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/conferencia-independente.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/conferencia-independente.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/diff-check.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/diff-check.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/execucao-50-clientes.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/execucao-50-clientes.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/formatacao.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/formatacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/lint-backend.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/lint-backend.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/lint-frontend.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/lint-frontend.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/testes-30.1.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/testes-30.1.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/testes-backend.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/testes-backend.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/testes-frontend.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/testes-frontend.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/typecheck-backend.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/typecheck-backend.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/typecheck-frontend.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/typecheck-frontend.txt"
+    },
+    {
+      "original": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.7-relatorio/04-formatacao.log",
+      "published": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.7-relatorio/04-formatacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/backend-ci-timeouts-suite.log",
+      "published": "evidencias/PI4-31/31.1/backend-ci-timeouts-suite.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/backend-fix-suite.log",
+      "published": "evidencias/PI4-31/31.1/backend-fix-suite.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/backend-github-failure.log",
+      "published": "evidencias/PI4-31/31.1/backend-github-failure.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/backend-github-run2-failure.log",
+      "published": "evidencias/PI4-31/31.1/backend-github-run2-failure.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/backend-suite.log",
+      "published": "evidencias/PI4-31/31.1/backend-suite.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/contraprova.log",
+      "published": "evidencias/PI4-31/31.1/contraprova.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/frontend-fix-suite.log",
+      "published": "evidencias/PI4-31/31.1/frontend-fix-suite.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/frontend-github-failure.log",
+      "published": "evidencias/PI4-31/31.1/frontend-github-failure.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.1/testes-ci-selecionados.log",
+      "published": "evidencias/PI4-31/31.1/testes-ci-selecionados.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.4/03-grep-nomes.log",
+      "published": "evidencias/PI4-31/31.4/03-grep-nomes.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.4/ci-40232946842-testes.log",
+      "published": "evidencias/PI4-31/31.4/ci-40232946842-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.4/ci-40239567812-testes.log",
+      "published": "evidencias/PI4-31/31.4/ci-40239567812-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.5/01-antes-composicao-validado.log",
+      "published": "evidencias/PI4-31/31.5/01-antes-composicao-validado.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.5/01-antes-composicao.log",
+      "published": "evidencias/PI4-31/31.5/01-antes-composicao.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.5/02-depois-composicao.log",
+      "published": "evidencias/PI4-31/31.5/02-depois-composicao.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.5/ci-39856854893-testes.log",
+      "published": "evidencias/PI4-31/31.5/ci-39856854893-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.5/ci-40232946842-testes.log",
+      "published": "evidencias/PI4-31/31.5/ci-40232946842-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-31/31.5/ci-40239567812-testes.log",
+      "published": "evidencias/PI4-31/31.5/ci-40239567812-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-1/execucao.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-1/execucao.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-2/execucao.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-2/execucao.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-3/execucao.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-3/execucao.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/08-formatacao.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/08-formatacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/backend-coverage/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/backend-coverage/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/backend-lint/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/backend-lint/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/backend-typecheck/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/backend-typecheck/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/ci-ultima-falhas.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/ci-ultima-falhas.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/concorrencia/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/concorrencia/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/e2e/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/e2e/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/frontend-coverage/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/frontend-coverage/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/frontend-lint/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/frontend-lint/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/frontend-typecheck/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/frontend-typecheck/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/integridade/terminal.log",
+      "published": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/integridade/terminal.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/backend-build.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/backend-build.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/backend-checks.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/backend-checks.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/backend-ci-tests.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/backend-ci-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/backend-tests.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/backend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-build.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-build.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-checks.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-checks.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-final-tests.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-final-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-full-tests.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-full-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-production-build.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-production-build.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-tests.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/frontend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright/028a078050be434c81e0380c0b4605fa/recomendacao.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright/028a078050be434c81e0380c0b4605fa/recomendacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/backend-build.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/backend-build.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/backend-checks.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/backend-checks.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/backend-tests.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/backend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/frontend-build.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/frontend-build.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/frontend-checks.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/frontend-checks.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/frontend-tests.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/frontend-tests.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/recomendacao.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/recomendacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/3ab0a7a8f8d244388bed80a8856fbdd2/recomendacao.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/3ab0a7a8f8d244388bed80a8856fbdd2/recomendacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright-final.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright-final.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/avaliacoes-existentes.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/avaliacoes-existentes.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/checks-final.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/checks-final.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/checks.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/checks.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/cinco-conjuntos-final.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/cinco-conjuntos-final.txt"
+    },
+    {
+      "original": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/cinco-conjuntos.log",
+      "published": "evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/cinco-conjuntos.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.1/20261104-134954/lint.log",
+      "published": "evidencias/PI4-33/33.1/20261104-134954/lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.1/20261104-134954/red-estrito-postgresql.log",
+      "published": "evidencias/PI4-33/33.1/20261104-134954/red-estrito-postgresql.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.1/20261104-134954/red-final-postgresql.log",
+      "published": "evidencias/PI4-33/33.1/20261104-134954/red-final-postgresql.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.1/20261104-134954/red-prefixo-postgresql.log",
+      "published": "evidencias/PI4-33/33.1/20261104-134954/red-prefixo-postgresql.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.1/20261104-134954/red-prefixo.log",
+      "published": "evidencias/PI4-33/33.1/20261104-134954/red-prefixo.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.1/20261104-134954/typecheck.log",
+      "published": "evidencias/PI4-33/33.1/20261104-134954/typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/diagnostico-worker.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/diagnostico-worker.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/green-integridade.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/green-integridade.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/lint.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/migrate-create.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/migrate-create.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/migrate-deploy.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/migrate-deploy.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/migrate-status-antes.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/migrate-status-antes.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/migrate-status-depois.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/migrate-status-depois.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/migrate-status-pendente.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/migrate-status-pendente.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/psql-perfil-artesao.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/psql-perfil-artesao.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/red-antes.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/red-antes.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/testes-backend-conexao-teste.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/testes-backend-conexao-teste.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/testes-backend.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/testes-backend.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/typecheck.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-33/33.2/20261104-validacao/worker-conexao-teste.log",
+      "published": "evidencias/PI4-33/33.2/20261104-validacao/worker-conexao-teste.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/e2e/7bf98311233f4ed8b704172e57720e18/recomendacao.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/e2e/7bf98311233f4ed8b704172e57720e18/recomendacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/e2e/c28ceefaf86b47b19bbd36fdd1baa878/recomendacao.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/e2e/c28ceefaf86b47b19bbd36fdd1baa878/recomendacao.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-backend-full.tmp.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-backend-full.tmp.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-backend-green.tmp.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-backend-green.tmp.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-backend-tests.tmp.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-backend-tests.tmp.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-compose-smoke.tmp.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-compose-smoke.tmp.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-frontend-restarted.tmp.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-frontend-restarted.tmp.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-frontend-tests.tmp.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-frontend-tests.tmp.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-frontend.tmp.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-frontend.tmp.txt"
+    },
+    {
+      "original": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-pg18-migrate.tmp.log",
+      "published": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-pg18-migrate.tmp.txt"
+    },
+    {
+      "original": "evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/testes-backend-temporario.log",
+      "published": "evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/testes-backend-temporario.txt"
+    },
+    {
+      "original": "evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/testes-backend-volume.log",
+      "published": "evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/testes-backend-volume.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/backend-lint.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/backend-lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/backend-testes-final.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/backend-testes-final.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/backend-testes.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/backend-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/backend-typecheck.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/backend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/frontend-lint.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/frontend-lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/frontend-testes.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/frontend-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/frontend-typecheck.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/frontend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/smoke-visual.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/smoke-visual.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/backend-lint.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/backend-lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/backend-testes.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/backend-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/backend-typecheck.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/backend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/frontend-build.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/frontend-build.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/frontend-lint.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/frontend-lint.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/frontend-testes.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/frontend-testes.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/frontend-typecheck.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/frontend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/performance-isolado.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/performance-isolado.txt"
+    },
+    {
+      "original": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/performance.log",
+      "published": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/performance.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/01-backend-red.log",
+      "published": "evidencias/US01.C1/01-backend-red.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/02-backend-green.log",
+      "published": "evidencias/US01.C1/02-backend-green.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/03-frontend-red.log",
+      "published": "evidencias/US01.C1/03-frontend-red.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/04-frontend-green.log",
+      "published": "evidencias/US01.C1/04-frontend-green.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/05-e2e-red.log",
+      "published": "evidencias/US01.C1/05-e2e-red.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/05b-e2e-red.log",
+      "published": "evidencias/US01.C1/05b-e2e-red.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/06-e2e-green.log",
+      "published": "evidencias/US01.C1/06-e2e-green.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/07-backend-lint.log",
+      "published": "evidencias/US01.C1/07-backend-lint.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/08-backend-typecheck.log",
+      "published": "evidencias/US01.C1/08-backend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/09-backend-tests.log",
+      "published": "evidencias/US01.C1/09-backend-tests.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/10-frontend-lint.log",
+      "published": "evidencias/US01.C1/10-frontend-lint.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/11-frontend-typecheck.log",
+      "published": "evidencias/US01.C1/11-frontend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/12-frontend-tests.log",
+      "published": "evidencias/US01.C1/12-frontend-tests.txt"
+    },
+    {
+      "original": "evidencias/US01.C1/13-format.log",
+      "published": "evidencias/US01.C1/13-format.txt"
+    },
+    {
+      "original": "evidencias/Web.6/backend-lint.log",
+      "published": "evidencias/Web.6/backend-lint.txt"
+    },
+    {
+      "original": "evidencias/Web.6/backend-test.log",
+      "published": "evidencias/Web.6/backend-test.txt"
+    },
+    {
+      "original": "evidencias/Web.6/backend-typecheck.log",
+      "published": "evidencias/Web.6/backend-typecheck.txt"
+    },
+    {
+      "original": "evidencias/Web.6/backend-upload-test.log",
+      "published": "evidencias/Web.6/backend-upload-test.txt"
+    },
+    {
+      "original": "evidencias/Web.6/formatacao.log",
+      "published": "evidencias/Web.6/formatacao.txt"
+    },
+    {
+      "original": "evidencias/Web.6/frontend-lint.log",
+      "published": "evidencias/Web.6/frontend-lint.txt"
+    },
+    {
+      "original": "evidencias/Web.6/frontend-test-final.log",
+      "published": "evidencias/Web.6/frontend-test-final.txt"
+    },
+    {
+      "original": "evidencias/Web.6/frontend-test.log",
+      "published": "evidencias/Web.6/frontend-test.txt"
+    },
+    {
+      "original": "evidencias/Web.6/frontend-typecheck.log",
+      "published": "evidencias/Web.6/frontend-typecheck.txt"
+    }
+  ]
+}

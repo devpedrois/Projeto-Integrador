@@ -1,0 +1,29 @@
+{
+  "compradores": 50,
+  "rodadas": [
+    {
+      "sucessos": 1,
+      "conflitos409": 49,
+      "estoqueFinal": 0,
+      "pedidosProduto": 1,
+      "pagamentosCriados": 1,
+      "respostasInesperadas": 0
+    },
+    {
+      "sucessos": 1,
+      "conflitos409": 49,
+      "estoqueFinal": 0,
+      "pedidosProduto": 1,
+      "pagamentosCriados": 1,
+      "respostasInesperadas": 0
+    },
+    {
+      "sucessos": 1,
+      "conflitos409": 49,
+      "estoqueFinal": 0,
+      "pedidosProduto": 1,
+      "pagamentosCriados": 1,
+      "respostasInesperadas": 0
+    }
+  ]
+}

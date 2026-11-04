@@ -1,0 +1,4 @@
+Verificação dos arquivos novos e alterados, sem imprimir valores:
+{"arquivosVerificados":25,"segredosLocaisComparados":5,"ocorrencias":[]}
+git diff --check: exit 0
+git diff --cached --name-only: vazio

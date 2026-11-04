@@ -1,0 +1,7 @@
+{
+  "command": "npm test -- tests/services/container-http.test.ts --reporter=verbose",
+  "exitCode": 0,
+  "dataBrasilia": "14/10/2026 13:39:08",
+  "ambiente": "Local, Vitest/jsdom",
+  "smokeProducao": "Pendente de execucao manual"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/auth/me",
+    "status": 401
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/artesaos",
+    "status": 401
+  },
+  {
+    "method": "GET",
+    "path": "/api/categorias",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/regioes",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/produtos",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/recomendacoes",
+    "status": 200
+  }
+]

@@ -1,0 +1,110 @@
+{
+  "amostras": [
+    {
+      "rota": "/produtos",
+      "status": 200,
+      "cache": "MISS",
+      "servidorMs": 41.017,
+      "clienteMs": 59.977
+    },
+    {
+      "rota": "/produtos",
+      "status": 200,
+      "cache": "HIT",
+      "servidorMs": 0.088,
+      "clienteMs": 2.348
+    },
+    {
+      "rota": "/produtos/:id",
+      "status": 200,
+      "cache": "MISS",
+      "servidorMs": 38.191,
+      "clienteMs": 39.914
+    },
+    {
+      "rota": "/produtos/:id",
+      "status": 200,
+      "cache": "HIT",
+      "servidorMs": 0.049,
+      "clienteMs": 1.206
+    },
+    {
+      "rota": "/recomendacoes",
+      "status": 200,
+      "cache": "MISS",
+      "servidorMs": 113.047,
+      "clienteMs": 114.963
+    },
+    {
+      "rota": "/recomendacoes",
+      "status": 200,
+      "cache": "HIT",
+      "servidorMs": 0.058,
+      "clienteMs": 1.242
+    }
+  ],
+  "aposEscrita": [
+    {
+      "rota": "/produtos",
+      "status": 200,
+      "cache": "MISS"
+    },
+    {
+      "rota": "/produtos/:id",
+      "status": 200,
+      "cache": "MISS"
+    },
+    {
+      "rota": "/recomendacoes",
+      "status": 200,
+      "cache": "MISS"
+    }
+  ],
+  "logs": [
+    {
+      "rota": "/produtos",
+      "cache": "MISS",
+      "duracaoMs": 42.677
+    },
+    {
+      "rota": "/produtos",
+      "cache": "HIT",
+      "duracaoMs": 0.261
+    },
+    {
+      "rota": "/produtos/:id",
+      "cache": "MISS",
+      "duracaoMs": 38.455
+    },
+    {
+      "rota": "/produtos/:id",
+      "cache": "HIT",
+      "duracaoMs": 0.266
+    },
+    {
+      "rota": "/recomendacoes",
+      "cache": "MISS",
+      "duracaoMs": 113.371
+    },
+    {
+      "rota": "/recomendacoes",
+      "cache": "HIT",
+      "duracaoMs": 0.225
+    },
+    {
+      "rota": "/produtos",
+      "cache": "MISS",
+      "duracaoMs": 38.274
+    },
+    {
+      "rota": "/produtos/:id",
+      "cache": "MISS",
+      "duracaoMs": 38.532
+    },
+    {
+      "rota": "/recomendacoes",
+      "cache": "MISS",
+      "duracaoMs": 113.698
+    }
+  ]
+}

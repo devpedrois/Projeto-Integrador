@@ -1,0 +1,60 @@
+{
+  "verificadoEm": "2026-11-02T21:45:02.104Z",
+  "commit": "6f55c3817b6173a4405abe33856bbaca51a94464",
+  "origem": "https://origem-marketplace.vercel.app",
+  "artesaosPublicos": 4,
+  "imagensPublicasVerificadas": 6,
+  "swagger": 200,
+  "openapi": 200,
+  "rotaAdministrativaProtegida": 401,
+  "tabelasConferidas": 15,
+  "apenasFotosAlteradas": true,
+  "contaTemporariaRemovida": true,
+  "blobTemporarioRemovido": true,
+  "eventos": [
+    {
+      "rota": "/api/health",
+      "status": 200
+    },
+    {
+      "rota": "/api/artesaos",
+      "status": 200
+    },
+    {
+      "rota": "/api/produtos",
+      "status": 200
+    },
+    {
+      "rota": "/api/produtos?artesaoId=a0000000-0000-4000-8000-000000000003",
+      "status": 200
+    },
+    {
+      "rota": "/api/docs",
+      "status": 308
+    },
+    {
+      "rota": "/api/docs/",
+      "status": 200
+    },
+    {
+      "rota": "/api/docs/swagger-ui.css",
+      "status": 200
+    },
+    {
+      "rota": "/api/docs/swagger-ui-bundle.js",
+      "status": 200
+    },
+    {
+      "rota": "/api/docs/swagger-ui-init.js",
+      "status": 200
+    },
+    {
+      "rota": "/api/docs/openapi.json",
+      "status": 200
+    },
+    {
+      "rota": "/api/admin/artesaos",
+      "status": 401
+    }
+  ]
+}

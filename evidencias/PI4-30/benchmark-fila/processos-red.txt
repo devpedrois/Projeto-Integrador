@@ -1,0 +1,29 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/bench-fila.integration.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ❯ tests/integration/bench-fila.integration.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/bench-fila.integration.test.ts [ tests/integration/bench-fila.integration.test.ts ]
+Error: Cannot find module '../../scripts/bench-fila.js' imported from C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/bench-fila.integration.test.ts
+ ❯ tests/integration/bench-fila.integration.test.ts:6:1
+      4| import { runVolumeSeed } from "../../prisma/seed-volume.js";
+      5| import { gerarVolume } from "../../prisma/seeds/volume.js";
+      6| import { executarRodada } from "../../scripts/bench-fila.js";
+       | ^
+      7| import { prepararIntencoes } from "../../scripts/lib/bench-fila.js";
+      8| import { createPgBossClient, ensureNotificarArtesaoQueue } from "../..…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  16:30:21
+   Duration  353ms (worker 97%, environment 3%)
+

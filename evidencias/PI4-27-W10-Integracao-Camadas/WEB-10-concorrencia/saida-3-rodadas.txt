@@ -1,0 +1,20 @@
+
+> origem-backend@1.0.0 test:concorrencia
+> tsx scripts/concorrencia-checkout.ts
+
+(node:43932) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Schema temporario: web10_ff2fe338c4704c8ba7151826f5761c05
+Compradores sinteticos autenticados: 50
+Rodada 1: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1}
+Rodada 2: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1}
+Rodada 3: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1}
+Resumo: {"compradores":50,"cadastros":50,"logins":50,"schemaRemovido":true}
+Concorrencia validada: 3/3 rodadas. Dados sinteticos removidos.

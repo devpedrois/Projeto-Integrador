@@ -1,0 +1,47 @@
+
+> origem-backend@1.0.0 test
+> vitest run --config ../evidencias/PI4-31-W12-Testes-Executados/31.2-pagamento-us20/90-mutacao.config.mjs --testNamePattern outro comprador --testTimeout=60000 --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Desktop/Projeto integrador/backend
+
+(node:47724) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/pagamento.us20.integration.test.ts (3 tests | 1 failed | 2 skipped) 3148ms
+   ❯ US20 - checkout, pedido e pagamento em PostgreSQL real (3)
+     × US20 - cenário 2: outro comprador não visualiza o pagamento 1481ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/pagamento.us20.integration.test.ts > US20 - checkout, pedido e pagamento em PostgreSQL real > US20 - cenário 2: outro comprador não visualiza o pagamento
+AssertionError: expected 200 to be 404 // Object.is equality
+
+- Expected
++ Received
+
+- 404
++ 200
+
+ ❯ tests/integration/pagamento.us20.integration.test.ts:284:29
+    282|       .get(`/pedidos/${randomUUID()}`)
+    283|       .set("Cookie", outroCookie);
+    284|     expect(terceiro.status).toBe(404);
+       |                             ^
+    285|     expect(inexistente.status).toBe(404);
+    286|     expect(terceiro.body).toEqual(inexistente.body);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 skipped (3)
+   Start at  15:21:06
+   Duration  3.85s (tests 84%, transform 8%, import 8%)
+

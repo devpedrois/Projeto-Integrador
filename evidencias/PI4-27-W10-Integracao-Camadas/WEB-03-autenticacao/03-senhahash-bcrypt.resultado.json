@@ -1,0 +1,18 @@
+{
+  "coletadoEm": "13/10/2026, 22:22:11",
+  "timezone": "America/Sao_Paulo",
+  "origem": "Consulta real no PostgreSQL via Prisma; resultado renderizado no PNG.",
+  "consulta": "SELECT email, left(\"senhaHash\", 7) AS prefixo_bcrypt FROM \"Usuario\" WHERE email = $1;",
+  "parametros": [
+    "web03-evidencia-97c63f3f8563473f8f13d0a9941ea454@teste.origem"
+  ],
+  "duracaoMs": 59.66,
+  "cadastroHttpStatus": 201,
+  "usuarioId": "741f7f0a-e96a-491d-aa49-f06fc71affa9",
+  "resultados": [
+    {
+      "email": "web03-evidencia-97c63f3f8563473f8f13d0a9941ea454@teste.origem",
+      "prefixo_bcrypt": "$2b$10$"
+    }
+  ]
+}

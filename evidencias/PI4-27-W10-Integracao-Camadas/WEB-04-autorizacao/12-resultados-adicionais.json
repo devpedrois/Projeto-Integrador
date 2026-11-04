@@ -1,0 +1,582 @@
+{
+  "coletadoEm": "13/10/2026, 22:57:41",
+  "timezone": "America/Sao_Paulo",
+  "base": "http://127.0.0.1:49275",
+  "origem": "curl.exe real, aplicação Express local e PostgreSQL real em schema temporário isolado",
+  "schemaTemporarioRemovido": true,
+  "matriz": [
+    {
+      "sessao": "Anonimo",
+      "pedido": 401,
+      "admin": 401
+    },
+    {
+      "sessao": "Comprador",
+      "pedido": 201,
+      "admin": 403
+    },
+    {
+      "sessao": "Artesao",
+      "pedido": 403,
+      "admin": 403
+    },
+    {
+      "sessao": "Admin",
+      "pedido": 403,
+      "admin": 200
+    }
+  ],
+  "sessoes": [
+    {
+      "caso": "Cookie ausente",
+      "status": 401
+    },
+    {
+      "caso": "JWT invalido",
+      "status": 401
+    },
+    {
+      "caso": "JWT expirado controlado",
+      "status": 401
+    },
+    {
+      "caso": "Comprador desativado apos login",
+      "status": 401
+    },
+    {
+      "caso": "Admin desativado apos login",
+      "status": 401
+    }
+  ],
+  "entradas": [
+    {
+      "caso": "Body com compradorId",
+      "status": 400
+    },
+    {
+      "caso": "Body com compradorRef",
+      "status": 400
+    },
+    {
+      "caso": "Item com preco extra",
+      "status": 400
+    }
+  ],
+  "administracao": [
+    {
+      "caso": "JWT antigo comprador apos mudar para artesao",
+      "status": 403
+    },
+    {
+      "caso": "Admin muda artesao para comprador",
+      "status": 200
+    },
+    {
+      "caso": "Admin altera proprio papel",
+      "status": 403
+    },
+    {
+      "caso": "Admin altera proprio papel com UUID maiusculo",
+      "status": 403
+    },
+    {
+      "caso": "Papel admin rejeitado",
+      "status": 400
+    },
+    {
+      "caso": "UUID invalido",
+      "status": 400
+    },
+    {
+      "caso": "Usuario alvo ausente",
+      "status": 404
+    }
+  ],
+  "identidade": {
+    "compradorSessao": "e023cffb-6ed4-4c49-9551-1c71429070f4",
+    "consulta": "SELECT \"id\", \"compradorId\", \"compradorRef\" FROM \"Pedido\" WHERE \"id\" = $1::uuid;",
+    "resultados": [
+      {
+        "id": "c422393b-35e0-4389-b56b-2c56943a8a9d",
+        "compradorId": "e023cffb-6ed4-4c49-9551-1c71429070f4",
+        "compradorRef": null
+      }
+    ]
+  },
+  "papel": {
+    "antes": {
+      "id": "61ae8453-361b-48ba-8664-95a0e3d45bb8",
+      "papel": "artesao"
+    },
+    "depois": {
+      "id": "61ae8453-361b-48ba-8664-95a0e3d45bb8",
+      "papel": "comprador"
+    },
+    "tokenEmitidoComo": "comprador",
+    "acessoComTokenAntigoAposMudanca": 403
+  },
+  "concorrencia": {
+    "estoqueInicial": 1,
+    "statuses": [
+      201,
+      409
+    ],
+    "estoqueFinal": 0,
+    "pedidosPersistidos": 1
+  },
+  "capturas": [
+    {
+      "caso": "Cadastro Comprador sintetico WEB04",
+      "metodo": "POST",
+      "rota": "/auth/register",
+      "status": 201,
+      "request": "[CREDENCIAIS SINTETICAS OMITIDAS]",
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 201 Created\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 171\r\nETag: W/\"ab-JjJUsrymJVMfl+DrrIMDGbdkXV8\"\r\nDate: Wed, 14 Oct 2026 01:57:42 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"e023cffb-6ed4-4c49-9551-1c71429070f4\",\"nome\":\"Comprador sintetico WEB04\",\"email\":\"web04-evid-e6d36bcd-6bc6-423d-9264-f0c5f878b6ab@teste.origem\",\"papel\":\"comprador\"}",
+      "corpo": "{\"id\":\"e023cffb-6ed4-4c49-9551-1c71429070f4\",\"nome\":\"Comprador sintetico WEB04\",\"email\":\"web04-evid-e6d36bcd-6bc6-423d-9264-f0c5f878b6ab@teste.origem\",\"papel\":\"comprador\"}"
+    },
+    {
+      "caso": "Login Comprador sintetico WEB04",
+      "metodo": "POST",
+      "rota": "/auth/login",
+      "status": 200,
+      "request": "[CREDENCIAIS SINTETICAS OMITIDAS]",
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 200 OK\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nSet-Cookie: [COOKIE_REMOVIDO]; Max-Age=86400; Path=/; Expires=Thu, 15 Oct 2026 01:57:42 GMT; HttpOnly; SameSite=Lax\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 171\r\nETag: W/\"ab-JjJUsrymJVMfl+DrrIMDGbdkXV8\"\r\nDate: Wed, 14 Oct 2026 01:57:42 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"e023cffb-6ed4-4c49-9551-1c71429070f4\",\"nome\":\"Comprador sintetico WEB04\",\"email\":\"web04-evid-e6d36bcd-6bc6-423d-9264-f0c5f878b6ab@teste.origem\",\"papel\":\"comprador\"}",
+      "corpo": "{\"id\":\"e023cffb-6ed4-4c49-9551-1c71429070f4\",\"nome\":\"Comprador sintetico WEB04\",\"email\":\"web04-evid-e6d36bcd-6bc6-423d-9264-f0c5f878b6ab@teste.origem\",\"papel\":\"comprador\"}"
+    },
+    {
+      "caso": "Cadastro Artesao sintetico WEB04",
+      "metodo": "POST",
+      "rota": "/auth/register",
+      "status": 201,
+      "request": "[CREDENCIAIS SINTETICAS OMITIDAS]",
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 201 Created\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 167\r\nETag: W/\"a7-IQOaqLVCPy+gtHMLBvVQrrjyaBE\"\r\nDate: Wed, 14 Oct 2026 01:57:42 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"1f1233b4-9d9c-40d5-9198-a9d3226050e7\",\"nome\":\"Artesao sintetico WEB04\",\"email\":\"web04-evid-60c5c1fb-add3-4a95-aa77-9643a245bf34@teste.origem\",\"papel\":\"artesao\"}",
+      "corpo": "{\"id\":\"1f1233b4-9d9c-40d5-9198-a9d3226050e7\",\"nome\":\"Artesao sintetico WEB04\",\"email\":\"web04-evid-60c5c1fb-add3-4a95-aa77-9643a245bf34@teste.origem\",\"papel\":\"artesao\"}"
+    },
+    {
+      "caso": "Login Artesao sintetico WEB04",
+      "metodo": "POST",
+      "rota": "/auth/login",
+      "status": 200,
+      "request": "[CREDENCIAIS SINTETICAS OMITIDAS]",
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 200 OK\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nSet-Cookie: [COOKIE_REMOVIDO]; Max-Age=86400; Path=/; Expires=Thu, 15 Oct 2026 01:57:42 GMT; HttpOnly; SameSite=Lax\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 167\r\nETag: W/\"a7-IQOaqLVCPy+gtHMLBvVQrrjyaBE\"\r\nDate: Wed, 14 Oct 2026 01:57:42 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"1f1233b4-9d9c-40d5-9198-a9d3226050e7\",\"nome\":\"Artesao sintetico WEB04\",\"email\":\"web04-evid-60c5c1fb-add3-4a95-aa77-9643a245bf34@teste.origem\",\"papel\":\"artesao\"}",
+      "corpo": "{\"id\":\"1f1233b4-9d9c-40d5-9198-a9d3226050e7\",\"nome\":\"Artesao sintetico WEB04\",\"email\":\"web04-evid-60c5c1fb-add3-4a95-aa77-9643a245bf34@teste.origem\",\"papel\":\"artesao\"}"
+    },
+    {
+      "caso": "Cadastro Alvo sintetico WEB04",
+      "metodo": "POST",
+      "rota": "/auth/register",
+      "status": 201,
+      "request": "[CREDENCIAIS SINTETICAS OMITIDAS]",
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 201 Created\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 166\r\nETag: W/\"a6-iNZA6ZL+pBi1C7kLRThE09E84bo\"\r\nDate: Wed, 14 Oct 2026 01:57:42 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"61ae8453-361b-48ba-8664-95a0e3d45bb8\",\"nome\":\"Alvo sintetico WEB04\",\"email\":\"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem\",\"papel\":\"comprador\"}",
+      "corpo": "{\"id\":\"61ae8453-361b-48ba-8664-95a0e3d45bb8\",\"nome\":\"Alvo sintetico WEB04\",\"email\":\"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem\",\"papel\":\"comprador\"}"
+    },
+    {
+      "caso": "Login Alvo sintetico WEB04",
+      "metodo": "POST",
+      "rota": "/auth/login",
+      "status": 200,
+      "request": "[CREDENCIAIS SINTETICAS OMITIDAS]",
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 200 OK\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nSet-Cookie: [COOKIE_REMOVIDO]; Max-Age=86400; Path=/; Expires=Thu, 15 Oct 2026 01:57:42 GMT; HttpOnly; SameSite=Lax\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 166\r\nETag: W/\"a6-iNZA6ZL+pBi1C7kLRThE09E84bo\"\r\nDate: Wed, 14 Oct 2026 01:57:42 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"61ae8453-361b-48ba-8664-95a0e3d45bb8\",\"nome\":\"Alvo sintetico WEB04\",\"email\":\"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem\",\"papel\":\"comprador\"}",
+      "corpo": "{\"id\":\"61ae8453-361b-48ba-8664-95a0e3d45bb8\",\"nome\":\"Alvo sintetico WEB04\",\"email\":\"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem\",\"papel\":\"comprador\"}"
+    },
+    {
+      "caso": "Login admin fixture",
+      "metodo": "POST",
+      "rota": "/auth/login",
+      "status": 200,
+      "request": "[CREDENCIAIS SINTETICAS OMITIDAS]",
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 200 OK\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nSet-Cookie: [COOKIE_REMOVIDO]; Max-Age=86400; Path=/; Expires=Thu, 15 Oct 2026 01:57:43 GMT; HttpOnly; SameSite=Lax\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 172\r\nETag: W/\"ac-oU/1R3LLg5LiH2llFgodAErD2cU\"\r\nDate: Wed, 14 Oct 2026 01:57:43 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"bcc32c67-0301-499d-933c-87f219857292\",\"nome\":\"Admin fixture sintetico WEB04\",\"email\":\"web04-admin-2c81ccba-c9f0-4fe6-9344-bf3f05ca30a7@teste.origem\",\"papel\":\"admin\"}",
+      "corpo": "{\"id\":\"bcc32c67-0301-499d-933c-87f219857292\",\"nome\":\"Admin fixture sintetico WEB04\",\"email\":\"web04-admin-2c81ccba-c9f0-4fe6-9344-bf3f05ca30a7@teste.origem\",\"papel\":\"admin\"}"
+    },
+    {
+      "caso": "Matriz pedidos Anonimo",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 401,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 401 Unauthorized\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 76\r\nETag: W/\"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI\"\r\nDate: Wed, 14 Oct 2026 01:57:43 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}",
+      "corpo": "{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}"
+    },
+    {
+      "caso": "Matriz admin Anonimo",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel",
+      "status": 401,
+      "request": {
+        "papel": "artesao"
+      },
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 401 Unauthorized\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 76\r\nETag: W/\"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI\"\r\nDate: Wed, 14 Oct 2026 01:57:43 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}",
+      "corpo": "{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}"
+    },
+    {
+      "caso": "Matriz pedidos Comprador",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 201,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 201 Created\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 156\r\nETag: W/\"9c-fzPD15zJMM4hcPz3D4Sd9oWtIn4\"\r\nDate: Wed, 14 Oct 2026 01:57:43 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"pedido\":{\"id\":\"c422393b-35e0-4389-b56b-2c56943a8a9d\",\"status\":\"confirmado\"},\"itens\":[{\"produtoId\":\"8702db84-a960-4016-974c-ed3b5cf2b8e5\",\"quantidade\":1}]}",
+      "corpo": "{\"pedido\":{\"id\":\"c422393b-35e0-4389-b56b-2c56943a8a9d\",\"status\":\"confirmado\"},\"itens\":[{\"produtoId\":\"8702db84-a960-4016-974c-ed3b5cf2b8e5\",\"quantidade\":1}]}"
+    },
+    {
+      "caso": "Matriz admin Comprador",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel",
+      "status": 403,
+      "request": {
+        "papel": "artesao"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 403 Forbidden\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 61\r\nETag: W/\"3d-oziqnbKke1mV+jZIdpKY57fGNDE\"\r\nDate: Wed, 14 Oct 2026 01:57:43 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}",
+      "corpo": "{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}"
+    },
+    {
+      "caso": "Matriz pedidos Artesao",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 403,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 403 Forbidden\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 61\r\nETag: W/\"3d-oziqnbKke1mV+jZIdpKY57fGNDE\"\r\nDate: Wed, 14 Oct 2026 01:57:43 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}",
+      "corpo": "{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}"
+    },
+    {
+      "caso": "Matriz admin Artesao",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel",
+      "status": 403,
+      "request": {
+        "papel": "artesao"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 403 Forbidden\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 61\r\nETag: W/\"3d-oziqnbKke1mV+jZIdpKY57fGNDE\"\r\nDate: Wed, 14 Oct 2026 01:57:43 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}",
+      "corpo": "{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}"
+    },
+    {
+      "caso": "Matriz pedidos Admin",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 403,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 403 Forbidden\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 61\r\nETag: W/\"3d-oziqnbKke1mV+jZIdpKY57fGNDE\"\r\nDate: Wed, 14 Oct 2026 01:57:43 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}",
+      "corpo": "{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}"
+    },
+    {
+      "caso": "Matriz admin Admin",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel",
+      "status": 200,
+      "request": {
+        "papel": "artesao"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 200 OK\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 164\r\nETag: W/\"a4-GemWpwu7xWAhaz+a6kJ8DG6xewQ\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"61ae8453-361b-48ba-8664-95a0e3d45bb8\",\"nome\":\"Alvo sintetico WEB04\",\"email\":\"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem\",\"papel\":\"artesao\"}",
+      "corpo": "{\"id\":\"61ae8453-361b-48ba-8664-95a0e3d45bb8\",\"nome\":\"Alvo sintetico WEB04\",\"email\":\"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem\",\"papel\":\"artesao\"}"
+    },
+    {
+      "caso": "Cookie ausente",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 401,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "ausente",
+      "resposta": "HTTP/1.1 401 Unauthorized\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 76\r\nETag: W/\"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}",
+      "corpo": "{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}"
+    },
+    {
+      "caso": "JWT invalido",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 401,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 401 Unauthorized\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 76\r\nETag: W/\"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}",
+      "corpo": "{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}"
+    },
+    {
+      "caso": "JWT expirado controlado",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 401,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 401 Unauthorized\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 76\r\nETag: W/\"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}",
+      "corpo": "{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}"
+    },
+    {
+      "caso": "Sessao ativa antes da desativacao",
+      "metodo": "GET",
+      "rota": "/auth/me",
+      "status": 200,
+      "request": null,
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 200 OK\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 171\r\nETag: W/\"ab-JjJUsrymJVMfl+DrrIMDGbdkXV8\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"e023cffb-6ed4-4c49-9551-1c71429070f4\",\"nome\":\"Comprador sintetico WEB04\",\"email\":\"web04-evid-e6d36bcd-6bc6-423d-9264-f0c5f878b6ab@teste.origem\",\"papel\":\"comprador\"}",
+      "corpo": "{\"id\":\"e023cffb-6ed4-4c49-9551-1c71429070f4\",\"nome\":\"Comprador sintetico WEB04\",\"email\":\"web04-evid-e6d36bcd-6bc6-423d-9264-f0c5f878b6ab@teste.origem\",\"papel\":\"comprador\"}"
+    },
+    {
+      "caso": "Comprador desativado apos login",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 401,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 401 Unauthorized\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 76\r\nETag: W/\"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}",
+      "corpo": "{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}"
+    },
+    {
+      "caso": "Admin desativado apos login",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel",
+      "status": 401,
+      "request": {
+        "papel": "comprador"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 401 Unauthorized\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 76\r\nETag: W/\"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}",
+      "corpo": "{\"error\":{\"code\":\"NAO_AUTENTICADO\",\"message\":\"Sessao invalida ou ausente.\"}}"
+    },
+    {
+      "caso": "Body com compradorId",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 400,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ],
+        "compradorId": "bcc32c67-0301-499d-933c-87f219857292"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 400 Bad Request\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 59\r\nETag: W/\"3b-wZpk00X4TrW9YUfnR40iI3vatXs\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Pedido invalido.\"}}",
+      "corpo": "{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Pedido invalido.\"}}"
+    },
+    {
+      "caso": "Body com compradorRef",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 400,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ],
+        "compradorRef": "referencia-nao-aceita"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 400 Bad Request\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 59\r\nETag: W/\"3b-wZpk00X4TrW9YUfnR40iI3vatXs\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Pedido invalido.\"}}",
+      "corpo": "{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Pedido invalido.\"}}"
+    },
+    {
+      "caso": "Item com preco extra",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 400,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1,
+            "preco": 0.01
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 400 Bad Request\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 59\r\nETag: W/\"3b-wZpk00X4TrW9YUfnR40iI3vatXs\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Pedido invalido.\"}}",
+      "corpo": "{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Pedido invalido.\"}}"
+    },
+    {
+      "caso": "JWT antigo comprador apos mudar para artesao",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 403,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "8702db84-a960-4016-974c-ed3b5cf2b8e5",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 403 Forbidden\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 61\r\nETag: W/\"3d-oziqnbKke1mV+jZIdpKY57fGNDE\"\r\nDate: Wed, 14 Oct 2026 01:57:44 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}",
+      "corpo": "{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Acesso negado.\"}}"
+    },
+    {
+      "caso": "Admin muda artesao para comprador",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel",
+      "status": 200,
+      "request": {
+        "papel": "comprador"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 200 OK\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 166\r\nETag: W/\"a6-iNZA6ZL+pBi1C7kLRThE09E84bo\"\r\nDate: Wed, 14 Oct 2026 01:57:45 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"id\":\"61ae8453-361b-48ba-8664-95a0e3d45bb8\",\"nome\":\"Alvo sintetico WEB04\",\"email\":\"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem\",\"papel\":\"comprador\"}",
+      "corpo": "{\"id\":\"61ae8453-361b-48ba-8664-95a0e3d45bb8\",\"nome\":\"Alvo sintetico WEB04\",\"email\":\"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem\",\"papel\":\"comprador\"}"
+    },
+    {
+      "caso": "Admin altera proprio papel",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/bcc32c67-0301-499d-933c-87f219857292/papel",
+      "status": 403,
+      "request": {
+        "papel": "comprador"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 403 Forbidden\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 86\r\nETag: W/\"56-zDO5D0030NacscHYQ5WcC57AGK0\"\r\nDate: Wed, 14 Oct 2026 01:57:45 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Admin nao pode alterar o proprio papel.\"}}",
+      "corpo": "{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Admin nao pode alterar o proprio papel.\"}}"
+    },
+    {
+      "caso": "Admin altera proprio papel com UUID maiusculo",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/BCC32C67-0301-499D-933C-87F219857292/papel",
+      "status": 403,
+      "request": {
+        "papel": "comprador"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 403 Forbidden\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 86\r\nETag: W/\"56-zDO5D0030NacscHYQ5WcC57AGK0\"\r\nDate: Wed, 14 Oct 2026 01:57:45 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Admin nao pode alterar o proprio papel.\"}}",
+      "corpo": "{\"error\":{\"code\":\"ACESSO_NEGADO\",\"message\":\"Admin nao pode alterar o proprio papel.\"}}"
+    },
+    {
+      "caso": "Papel admin rejeitado",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel",
+      "status": 400,
+      "request": {
+        "papel": "admin"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 400 Bad Request\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 71\r\nETag: W/\"47-w65plBj2LXHcdM0H9VUUMBs4vYA\"\r\nDate: Wed, 14 Oct 2026 01:57:45 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Alteracao de papel invalida.\"}}",
+      "corpo": "{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Alteracao de papel invalida.\"}}"
+    },
+    {
+      "caso": "UUID invalido",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/nao-e-uuid/papel",
+      "status": 400,
+      "request": {
+        "papel": "artesao"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 400 Bad Request\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 71\r\nETag: W/\"47-w65plBj2LXHcdM0H9VUUMBs4vYA\"\r\nDate: Wed, 14 Oct 2026 01:57:45 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Alteracao de papel invalida.\"}}",
+      "corpo": "{\"error\":{\"code\":\"VALIDACAO\",\"message\":\"Alteracao de papel invalida.\"}}"
+    },
+    {
+      "caso": "Usuario alvo ausente",
+      "metodo": "PATCH",
+      "rota": "/admin/usuarios/8bb1e304-7e6c-4bc4-a31d-64616e0b2bf0/papel",
+      "status": 404,
+      "request": {
+        "papel": "artesao"
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 404 Not Found\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 79\r\nETag: W/\"4f-clAfyMlES0sIN7BNiSZtm0gbgHc\"\r\nDate: Wed, 14 Oct 2026 01:57:45 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"USUARIO_NAO_ENCONTRADO\",\"message\":\"Usuario nao encontrado.\"}}",
+      "corpo": "{\"error\":{\"code\":\"USUARIO_NAO_ENCONTRADO\",\"message\":\"Usuario nao encontrado.\"}}"
+    },
+    {
+      "caso": "Checkout concorrente 1",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 201,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "7ccc94ab-5150-4ee2-b4e2-92b7f8567cbf",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 201 Created\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 156\r\nETag: W/\"9c-RtH0YAvOPJTDzOrjtLCvN5LDatI\"\r\nDate: Wed, 14 Oct 2026 01:57:46 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"pedido\":{\"id\":\"d4e74a42-830c-4b8f-a179-a470e6f596ab\",\"status\":\"confirmado\"},\"itens\":[{\"produtoId\":\"7ccc94ab-5150-4ee2-b4e2-92b7f8567cbf\",\"quantidade\":1}]}",
+      "corpo": "{\"pedido\":{\"id\":\"d4e74a42-830c-4b8f-a179-a470e6f596ab\",\"status\":\"confirmado\"},\"itens\":[{\"produtoId\":\"7ccc94ab-5150-4ee2-b4e2-92b7f8567cbf\",\"quantidade\":1}]}"
+    },
+    {
+      "caso": "Checkout concorrente 2",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 409,
+      "request": {
+        "itens": [
+          {
+            "produtoId": "7ccc94ab-5150-4ee2-b4e2-92b7f8567cbf",
+            "quantidade": 1
+          }
+        ]
+      },
+      "cookie": "[REDIGIDO]",
+      "resposta": "HTTP/1.1 409 Conflict\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-DNS-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-XSS-Protection: 0\r\nCache-Control: no-store\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 75\r\nETag: W/\"4b-B5+sG+SNX8xRm2LY/QTWEDOrEYA\"\r\nDate: Wed, 14 Oct 2026 01:57:46 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n{\"error\":{\"code\":\"ESTOQUE_INSUFICIENTE\",\"message\":\"Estoque insuficiente.\"}}",
+      "corpo": "{\"error\":{\"code\":\"ESTOQUE_INSUFICIENTE\",\"message\":\"Estoque insuficiente.\"}}"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[A legado corrigivel] migration aplicou
+  produto sem preco: preco=1.00 ativo=false descricao="Produto sintetico legado do backend minimo de FCCPD."
+  produto descricao vazia: preco=25.00 ativo=false descricao="Produto sintetico legado do backend minimo de FCCPD."
+  email normalizado: "ana.legado-1831b8dc@teste.origem"
+[B email duplicado por caixa/espaco] abortou: reconciliar_modelo_logico: emails duplicados apos normalizar caixa e espacos. Deduplique "Usuario" antes de aplicar.
+[C preco 0] abortou: reconciliar_modelo_logico: "Produto" com "preco" <= 0. Corrija antes de aplicar.
+[D senhaHash vazio] abortou: reconciliar_modelo_logico: "Usuario" com "senhaHash" vazio. Corrija antes de aplicar.
+[E pedido com total negativo] abortou: reconciliar_modelo_logico: "Pedido" com total negativo. Corrija antes de aplicar.

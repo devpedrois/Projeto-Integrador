@@ -1,0 +1,9 @@
+{
+  "tabelaDocumentoIgualJSON": true,
+  "mesmosDadosNosDoisModos": true,
+  "offIgualQualidadeHTTP": true,
+  "formulasVerificadas": true,
+  "credenciaisEncontradas": false,
+  "jsonSha256": "874a66b9b7bdf14d89e1f04a867846b1be2dd1870288fde896be18f1f1a2c409",
+  "documentoSha256": "c5ae9d3acea260a09988e2df743dee7b51cd04d5991ee4874c3fe3bb09e5ace7"
+}

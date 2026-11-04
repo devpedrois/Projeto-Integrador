@@ -1,0 +1,53 @@
+
+
+## Overview
+
+                   │                    Analyzed Image                     
+───────────────────┼───────────────────────────────────────────────────────
+ Target            │  registry://dhi.io/node:22-alpine3.24-dev             
+   digest          │  1576f2dae41d                                         
+   platform        │ linux/arm64                                           
+   provenance      │ https://github.com/docker-hardened-images/definitions 
+                   │  https://github.com/docker-hardened-images/definitions/blob/76e53e0eff835d0a73e2406ec8393c18a332a4dc             
+   vulnerabilities │    0C     3H     0M     0L                            
+   size            │ 49 MB                                                 
+   packages        │ 185                                                   
+
+
+## Packages and Vulnerabilities
+
+   0C     3H     0M     0L  undici 6.28.1
+pkg:npm/undici@6.28.1
+
+    x HIGH CVE-2026-87018 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-87018?s=github&n=undici&t=npm&vr=%3E%3D4.2.1%2C%3C6.29.1
+      Affected range : >=4.2.1                                      
+                     : <6.29.1                                      
+      Fixed version  : 6.29.1                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-109869 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-109869?s=github&n=undici&t=npm&vr=%3E%3D6.23.0%2C%3C6.29.1
+      Affected range : >=6.23.0                                     
+                     : <6.29.1                                      
+      Fixed version  : 6.29.1                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-109383 [Improper Certificate Validation]
+      https://scout.docker.com/v/CVE-2026-109383?s=github&n=undici&t=npm&vr=%3E%3D4.0.0%2C%3C6.29.1
+      Affected range : >=4.0.0                                      
+                     : <6.29.1                                      
+      Fixed version  : 6.29.1                                       
+      CVSS Score     : 7.4                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N 
+    
+
+
+3 vulnerabilities found in 1 package
+  CRITICAL  0 
+  HIGH      3 
+  MEDIUM    0 
+  LOW       0 
+

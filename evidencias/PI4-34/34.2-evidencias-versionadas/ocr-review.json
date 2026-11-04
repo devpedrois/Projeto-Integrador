@@ -1,0 +1,2533 @@
+{
+  "scanned": 281,
+  "uniqueScanned": 271,
+  "affected": 0,
+  "errors": 0,
+  "findings": [
+    {
+      "path": "evidencias/BD-03/02-select-join-tecnica-regiao.png",
+      "sha256": "c6b9bb34dbe542254402d239fdf5b238b2beeae6cce220604a50d3e956da0964",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/IA.1/diagnostico.png",
+      "sha256": "61475a402eb49dc60962710eeed02f219345a89c838b82ba0d03141548d801e7",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/IA.1/vitrine-network.png",
+      "sha256": "48a454e5bde21347bf60f09e3b7b18e1eedae6e682d740ccd1ec2cb4b9a79d52",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/IA.1/vitrine.png",
+      "sha256": "09a5532f3419b2d8ed2cbf8283f406fd94e1ea6b659c2db8c6b9582fdc167161",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/IA.2/produto-1-network.png",
+      "sha256": "24f2d37172b603795efc71d26a264dd75d66d82243c821689b860bf98cdfdbbd",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/IA.2/produto-2-network.png",
+      "sha256": "ae24c6a03dfdbea4c7c5e4922b498f58eb11170716381d82c1b2377918a0dbab",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/IA.2/produto-3-network.png",
+      "sha256": "6e64070b6ee162b64feceaad930838439ebe675eb1f97689706533dd241a76ba",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/01-swagger-render.png",
+      "sha256": "0604c33f6a7e6b6b08b849400cc76d72dec9d1250844c6e606b34d4be7d0b658",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/01-swagger-render.source.jpg",
+      "sha256": "88bb4c56fdad835ca6c479cb4963daaf2c35e13ef5640450e04af6857cbbd0bd",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/02-exemplo-rota-409.png",
+      "sha256": "8888602cc1c2daead17f6a5668eb37e905eb8a6c6013c01123bd5624fecf0443",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/02-exemplo-rota-409.source.jpg",
+      "sha256": "8afd4c167d0c23d98f43e749885684847fa7a45171ff51c37b9c5568e3dbf744",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-01-backend-producao/01-env-example.png",
+      "sha256": "071ed99c42c73735f9f6a6624d31b0691e8b73fa75c94bf197b2aea234604175",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-01-backend-producao/05-readme.png",
+      "sha256": "0b6599d0e3e02f2927e423a2b18641386b6a1687cc243c93738dc025a1c941ac",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-01-backend-producao/07-navegador-health-headers.png",
+      "sha256": "5ef13fda9c56a235bc7934d3493dc1e54749a89a0d77b189db03b8367cfdac88",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-01-backend-producao/web01-evidencia-visual.png",
+      "sha256": "7f938e6574e2f70e3fe66b3ff5a9872c46645f8518a5b5b0b88eac73df5fa5af",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-03-autenticacao/03-senhahash-bcrypt.png",
+      "sha256": "8442ff00fd2794266363c7b338df773822e6c3af2ca4fbe1dfd6653a8662e443",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-04-autorizacao/03-matriz-autorizacao.png",
+      "sha256": "68b0b6f0094e5906fa5e9269e130509309557f1a684f722a79ea1b6f0f2a347f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-04-autorizacao/05-sessoes-invalidas.png",
+      "sha256": "61f181f1bf9cf9e4f0d388fe6d48a0b45e142b9876918a4470fbf063599008f8",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-04-autorizacao/07-body-identidade.png",
+      "sha256": "eac1e5506d60548ee26aa3487a16ff6528136635bd930c4022d2e7bc94e24434",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-04-autorizacao/09-admin-papel-autoalteracao.png",
+      "sha256": "474e32281614e2c37eed94db028b680203045d02dfa5e84794b1404299031616",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-04-autorizacao/11-checkout-concorrente-cookie.png",
+      "sha256": "2fdfcc1735b46ab5395ac4772ad67d2d721fd668401bc47affdea9997756e82a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/fluxo-real-2026-10-14T03-18-45-160Z/sessao-apos-reload.png",
+      "sha256": "f96b828a25002136293b658f9b39e58fb4fbb77236c7c9b1bdcf1960a58acabe",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/fluxo-real-2026-10-14T03-30-51-255Z/sessao-apos-reload.png",
+      "sha256": "f96b828a25002136293b658f9b39e58fb4fbb77236c7c9b1bdcf1960a58acabe",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-18-38-711Z/busca-dois-filtros.png",
+      "sha256": "66931bfc5188f946b753d45bd4eef59bb2ad98a34b71a22f3594b3748ea3a1c7",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-18-38-711Z/busca-mobile.png",
+      "sha256": "2a9457ddb65a947e510edfd128fd13c28cdf8f1953f277b4611392a610699657",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-18-38-711Z/busca-vazia.png",
+      "sha256": "b450cf16b19ea7d9cd70c64fd87b79041f7a2c6a00f3142b8ac101ae653db4de",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-18-38-711Z/detalhe-http.png",
+      "sha256": "476e0011e3ad0eba09c304e95b3fe30f855f46b8611304b34e445bb6e490cb8d",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-18-38-711Z/url-outra-aba.png",
+      "sha256": "5cea5f15a779fbacd75f1ecdcfcb33de5d508b5c4a2b908e36865347ea1c131e",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/01-produto-nome-real.png",
+      "sha256": "3d3973969e2897848291acffee3b53da4bca5137e303c0597af0ff10d2b0c407",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/02-perfil-produtos-reais.png",
+      "sha256": "da86ea8baadc4dd3eacb7a6baf5aa1aecc64af91b12a95beb4c7a314041e227d",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/03-pendencia-inicial.png",
+      "sha256": "b86bee387d7d22807b85fd3ca223302ed4eb47940716f0a3c18450621d5a233a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/04-perfil-salvo.png",
+      "sha256": "9e9f2976824f6ae988baff08a1d9af5677817f96699e52c29614032a71c48d1c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/05-pendencia-resolvida.png",
+      "sha256": "29033a1a8b8b88dc5585f3d23f20c945339b87c170f300baedd2774e4ade0d5a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/06-perfil-atualizado-403.png",
+      "sha256": "a18e825605967b85402089f3c6512fef2b3b877f2a0d103be355517e6d99c34b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/perfil-1280.png",
+      "sha256": "8039b78bb9e55808145207c034a7d67c3fbde623a238f7f10a00bbe9d6c6367b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/perfil-360.png",
+      "sha256": "f37a44e33e285911909f8af068744fae0179072e0414ac4f082823e60fa2606f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/perfil-768.png",
+      "sha256": "62313058a70753fa1e153eaf4e38054fa87bf4296a0c139bb6e881b4b165cfd5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-55-55-240Z/falha.png",
+      "sha256": "2e5d1211f9dc77a7f9623144d1e3ede1774eaa31e945e12c19c114f7d0fce78c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/01-carrinho-visitante.png",
+      "sha256": "7da3fa8cf99c7195ff269ce90691b3bea5cd45b748b01bc5bee391bfa937609e",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/02-login-mesclagem-limitada.png",
+      "sha256": "60db02fdc214f3d93877cf82cbdb7d1e605f34a2322a0bc2857e3b93b2f8988f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/03-linhas-item-carrinho-postgresql.png",
+      "sha256": "342ebc9c6c5a56b53a8ede89da0652d2ca9a97b35df5c61bd84fa02ce21948f4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/04-409-nome-na-tela.png",
+      "sha256": "9004097af8d962621cba610bd9d241ec2ff8da73efb5e974d1f3f57d921e9a18",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/05-persistencia-rodada-1.png",
+      "sha256": "ab8d29babcdd5c3b45af0591861793b1e645fa4fa9be8b6d2cfda167c0fbfd38",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/05-persistencia-rodada-2.png",
+      "sha256": "de3818d488645db9b6d8e313a7006d635e4358ee1988e3b221604eb87bd70a68",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/05-persistencia-rodada-3.png",
+      "sha256": "427299b922555fd9c096c38bed54f91f5166e4f0253427da28a595bff0751221",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/06-remocao-servidor.png",
+      "sha256": "fda682fc93b3bf8fdf09d3420c1af17e45f79f94ced5d77adb79328c78904cd7",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/carrinho-1280.png",
+      "sha256": "5c5565510b21f4f54a248a03035eee804bf3b124d12dae8a2e67d4aff055ca83",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/carrinho-360.png",
+      "sha256": "da4c9e5eb679889498a3c5c428b47cfb2e4be9515526a87a65b9317fa0587b62",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/carrinho-768.png",
+      "sha256": "d0a84cb03de36562789e62ed71a5545a874a90b29b8dcc8cbe05df599e3a0dc1",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/01-carrinho-servidor.png",
+      "sha256": "a9a988a5c2e6d051ac0a63b4d95231ffad1f459c42d7f212d55e1dce7a4d7e64",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/02-revisao-checkout.png",
+      "sha256": "f656b9d285c0ec8d6e44f69ec79db1056b90e704e5403c6e4f74c15ef5b3f95f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/03-confirmacao-numero-real.png",
+      "sha256": "7f11792c9c8cfd4023731cdf39be638bc8c360b43cd27bd908ae107cba8903f7",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/04-select-pedido-itens-pagamento.png",
+      "sha256": "25b7e328d8959945aec6100da05f1c74fbf036ce708a0825f827f3b6d2882628",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/05-carrinho-vazio-apos-sucesso.png",
+      "sha256": "579c64c038655a0b5c5029549c8736ceb12a422600aae35888ad33c99ea10482",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/06-409-item-em-falta.png",
+      "sha256": "02da5a40b90f405815eb4fd881ec621465cfec75a662fc201ddc8cae7da4b01b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/checkout-1280.png",
+      "sha256": "04f936c96d4da9547a46f9ecd2ebe61784a2b2f65ae8ae806f5ec6a21c710274",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/checkout-360.png",
+      "sha256": "8d9482cd9d449e2dd04ad5e4db734d22818a081a2b00dd978786d13eb37ef3bd",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/checkout-768.png",
+      "sha256": "22aac0870e1be0d61081ec452fb00f6dca97334a2309e633ba6ffd1b04b4c6aa",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/falha.png",
+      "sha256": "2f8339519e7d8aff936b2a05117fec51cb083a4c5e59bfd7f2b102b4ec824a93",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/01-carrinho-servidor.png",
+      "sha256": "db05e33b464471292c9c64a2a0c8b9ad14a9c9ea7c51f6fee14fa2fa7af20f45",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/02-revisao-checkout.png",
+      "sha256": "4eae8a0c70856501a2d852a843f32272c3f8e424a8a35ed4e91e6ee1334889ab",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/03-confirmacao-numero-real.png",
+      "sha256": "7f11792c9c8cfd4023731cdf39be638bc8c360b43cd27bd908ae107cba8903f7",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/04-select-pedido-itens-pagamento.png",
+      "sha256": "25b7e328d8959945aec6100da05f1c74fbf036ce708a0825f827f3b6d2882628",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/05-carrinho-vazio-apos-sucesso.png",
+      "sha256": "579c64c038655a0b5c5029549c8736ceb12a422600aae35888ad33c99ea10482",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/06-409-item-em-falta.png",
+      "sha256": "619c7f1b239efde23bddea4a9cb9cf3d4a54373054592256071b22fe3a3ef3b5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/07-rollback-carrinho-preservado.png",
+      "sha256": "6dd8315cee9306ef8b2e83b0eb599c0feeee83e5fcda1797fd3bc40c8870cc55",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/08-dez-numeros-sequenciais.png",
+      "sha256": "5ad4ec31b242be9da722c06381e235d5957cf93a578e23fc3cd4aa498a12d492",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/checkout-1280.png",
+      "sha256": "2ce69aea05ea440756496437bd3b24303d404eb32deae06443477f537be01924",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/checkout-360.png",
+      "sha256": "8fb49e715c08b6a51cfc6088cc5685ca45b28eb8f04f4f7fc62554904a657b6a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/checkout-768.png",
+      "sha256": "b0fa9dd9155d5341a6b2b37dc96e70f3ab7bea01fc0c431578c8a26efba145df",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/01-carrinho-servidor.png",
+      "sha256": "d8ed07603df1bf9f4619fda21715d2b6abb157c272c9be756fc9fadf6e38909a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/02-revisao-checkout.png",
+      "sha256": "7e2fbcee0e7f74ae40821a959d636a16ebb796754d3e761d0d5ccac25eeefe99",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/03-confirmacao-numero-real.png",
+      "sha256": "328760ca3f1da55c2448edf2cf88d0a17856300a88e1acb926798204a6461a33",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/04-select-pedido-itens-pagamento.png",
+      "sha256": "08ae36164704a0018c824fc75ecc1b7920462953b1708e865e464cd33bfc9b59",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/05-carrinho-vazio-apos-sucesso.png",
+      "sha256": "c3445c7034decfdc0285eba6f68e51d25d66081042c80c3401e7b75d58aee2cf",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/06-409-item-em-falta.png",
+      "sha256": "dcdcc332d4f9423e176a8119b962b74bd8e226886f643c31a24bb89d84d0f907",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/07-rollback-carrinho-preservado.png",
+      "sha256": "e2b43c8bf37f0a49660059822c0e3796293aa1b4f770fe86028ce685d9f8c40c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/08-dez-numeros-sequenciais.png",
+      "sha256": "a165ac5b93de79072065fdce10ef92da39621d86272f9b5c3aab3387c4394537",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/checkout-1280.png",
+      "sha256": "710a092767986daf5f1f2f580d43305288020897fd5e93080d7dbdbbd854ef73",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/checkout-360.png",
+      "sha256": "63df0b33f93db82341d641a9b640ce3cd6b837ebbe4e1526c038cf653d3fddc4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/checkout-768.png",
+      "sha256": "260a6223666c1da87e1e9e6db6383c92f5a103b545a0fd4c3784055b0975cc2e",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-10-concorrencia/resumo-3-rodadas.png",
+      "sha256": "ee79a9c6a2f84f8b9162e1fd8767664336242f8c6aec0d8cef78a6092a7e35a5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T16-58-54-882Z/01-lista-http.png",
+      "sha256": "17d3dd807bc4bf558f016a6b4691d14aef52b081efcdf440f8e7e1b5b907eeac",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T16-58-54-882Z/falha.png",
+      "sha256": "5f4c9fbb99fb8965f686d3e44f926c77da7ed8032f611754dd5bd6698ab14449",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T16-58-54-882Z/lista-1280.png",
+      "sha256": "fb109e902b70f8a7fdef7a570b5a7135d3b6a410942cfc84dfce5ad06437da08",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T16-58-54-882Z/lista-360.png",
+      "sha256": "569499a8e7d5bcd2ab236fda38e3ad89b9e65d1e6c2470e656ae3ee241656585",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T16-58-54-882Z/lista-768.png",
+      "sha256": "7e540f7d35c49efb185077b0702462a417efcd1a4db25bba331ac34c9c07a616",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/01-lista-http.png",
+      "sha256": "a78a00c629993420f90c71c46593fb14a0f8b88cfdedd5899e29b733b19b23e1",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/02-detalhe-pedido-1-postgresql.png",
+      "sha256": "149941ff376808bd396a1a56b273bfc3a372b6783cc4ae1705309c20edc7ba45",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/02-detalhe-pedido-2-postgresql.png",
+      "sha256": "46036211df4eb1a2424b464c6b1c1f3ceeeed5fda8cc85dd429b635b10030b05",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/02-detalhe-pedido-3-postgresql.png",
+      "sha256": "2cca6d63da243292bf38d2b87dbb2ccea72b1c76964cd931d618f1e9ad4600e9",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/03-terceiro-404-e-conta-vazia.png",
+      "sha256": "ace61aad42ced27392fd9d5af2732941a143014522b25af18210b1a7e457a617",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/detalhe-1280.png",
+      "sha256": "0f01d247b08b9032347d85afc854c26d3e21e4d81e3bd29f4378af678f002fdb",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/detalhe-360.png",
+      "sha256": "fcef8a39eaae3da22e4a6be18f6e7f62f0ad45d403ea0862cd184ae556bce946",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/detalhe-768.png",
+      "sha256": "cb11cfb7100cf6eb6ec14fd0cc29ef25e8f0413b19b93afd0cf7475091586dec",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/lista-1280.png",
+      "sha256": "fa5e668cf841ee3c872464b8935e27d09f62f5239bf978fb6b4d394c3e396a9d",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/lista-360.png",
+      "sha256": "0722a5a581b6873528ecc8a1ab2bb62950a8101a994ec55948f7b52cbad94749",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/lista-768.png",
+      "sha256": "af405fdc3240a8acf8020ec800307cf09d5035c02afbe8d87186af911d49965c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/artesao-moderado-http.png",
+      "sha256": "ff9c9d667b496b1764f0ea13ca0f4725fd5dd10809f2889e01de2c756c87de47",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/artesao-reativado-http.png",
+      "sha256": "6e91f9e2f14e2685bb64194bff724e363b386b38ac1d1337ed2e325575c2b556",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/cadastro-http.png",
+      "sha256": "93fe00111aefd8f79d4a00ca74296285ac45c47a59035d6ffa513379f2f1da9b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/edicao-http.png",
+      "sha256": "f4bc7c74d2c8789140615de492c48a03b336928199c71c4321673cb0295a9c89",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/estoque-zero-http.png",
+      "sha256": "b711d6a8f55f52d3c8cb89f6e07ff801c2130f30d2c1fe121a3d118404cef0dc",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/produto-moderado-http.png",
+      "sha256": "0f6888de5c2072114a6ad703ca8803ac6d0c4579224808107fb75aef76cde17b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/produto-moderado-persistido-http.png",
+      "sha256": "2094c65cc5a6e59cefe16c408ac7fbab7845bf90e9a5835079a48219e3229b8b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/produto-reativado-http.png",
+      "sha256": "65a82df0615d8ec7e8208e5758add3c602bdad3d60d147d8234c0491abd1d0b1",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-12-catalogo-moderacao/soft-delete-http.png",
+      "sha256": "f4a4ef62f958a998e19a6dca5591ac8690b5854f598bae1a0f8408c3b1e58eaa",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/01-painel-sem-notificacoes.png",
+      "sha256": "923fb097c287282cce4b728663c68ab0b364ade01c68a506773d22647333bf80",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/02-checkout.png",
+      "sha256": "620a92591e1ef90529edadfa848c492dd4b73a59a32c7ed0d92d936f4a6c32e2",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/03-pedido-confirmado.png",
+      "sha256": "232b1067997258eb72616c593f4688aefe410e676712d11e9a9508dc5c3bb3bb",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/04-notificacao-visivel.png",
+      "sha256": "a3d10f248d0c560949776c1437f5e0760db1d4fedf40aaf2d6dcd5010afc7e9e",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/05-notificacao-lida.png",
+      "sha256": "923fb097c287282cce4b728663c68ab0b364ade01c68a506773d22647333bf80",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-14-notificacoes/06-painel-mobile.png",
+      "sha256": "d7b71ce23dba88b49d2c3798a9f56c19efcc4877e5b43ce44751830a0a0be15b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-16-smoke-producao/validacao-20261014-163907/WEB-16-container-http.png",
+      "sha256": "c710498561131584452c7672c2485e6932999d1eeaef64bc45d8d1cbc8629f63",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/contato-1.png",
+      "sha256": "c2980d3bf65367e1fda161aa0fa2f29a7716e6f0e6276c79413c634a0f015543",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/contato-2.png",
+      "sha256": "2189449a43395ea1e7edd80d888fc16603969bf429c9cab4f0aa12f83f1cd567",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/contato-3.png",
+      "sha256": "095f0301af9227f793f24c3a12c5ec7712e776c4836d14820af2f6a77302f687",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/contato-4.png",
+      "sha256": "afaa29aba7087ceb8bedc6bc1ec38694a9d3e250191e96523e6a5dab9745f9cd",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-01.png",
+      "sha256": "e7a50020c6eae809fc3f00bc04d69a977cb9daf6d11a230df86fdac21d05e5c9",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-02.png",
+      "sha256": "de0a9aa169b03e2184d344974e5b4a31663e001e881c4f488f1c08ab3c4bd8f4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-03.png",
+      "sha256": "a147e2158a7f2422cbc5adbeb4812787f0f2a38507bd7c6540a03c53ef0883fd",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-04.png",
+      "sha256": "333d5ec49c45698b13e84c27491ee122a7c63ed4cb8071d4a4b3ddb73d2da64f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-05.png",
+      "sha256": "e8082edd0d18e0a05b5978c7d6d866d9b65409289e45445bfa85b6de3b7b6d9f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-06.png",
+      "sha256": "827e0a7ffb33e979a7403f145f9b09e712704424dcdf0ae8ec9da86c748a869d",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-07.png",
+      "sha256": "8052f1e123d0a62bf23234773871013f23872039167cbc91646877f4626b6939",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-08.png",
+      "sha256": "3853fda217b507c9464418afefe87b0b03ef89279f65d2fc324ae2226a85f2c5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-09.png",
+      "sha256": "5d7e094b833ae65d6702f09e13e7fdb06a2b1fe9c0582f5fb497c5ca08b0397b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-10.png",
+      "sha256": "dbb2598f5a27056ca20e966e606f1ffa8b24e5d279d5ad06b07122395b64d4cd",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-11.png",
+      "sha256": "98c06df6963a6af963332d200135cde4b9cd1607c74f2f60edd1d48afcdea7ab",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-12.png",
+      "sha256": "26fcf1785a21c5a1ae9c6f4a7d001ef1d7e507aa371ef29dcfaf6c51e0042de5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-13.png",
+      "sha256": "036812a89d6f41905b71c35ad25a10c9fff4a119acccc8bf37026a9451927643",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-14.png",
+      "sha256": "d84e1fcc04b0f01d9287004be0f07ec7f9bbb6c785b8353eb1226aa73189e71c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-15.png",
+      "sha256": "aae96ff16bd189ef5ced3b897d806801c7415c106d175733e359d11d032400a3",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-16.png",
+      "sha256": "8ec0a145d86fff011488afbd46e0939423544296a97771a1d5f23ea4d07e3457",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-17.png",
+      "sha256": "cfdf077a7d8817acdd568eda0261617ad5b687dfffc75b9c07c7d2aeceea7294",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-18.png",
+      "sha256": "386157859d783fa60f9f4de96235857da2a9ff07af5fe829db273ae58aec082a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-19.png",
+      "sha256": "4e3ae5b3c71fb131ce2ac1a98b9520a5523d59be0c506b34cc9cfba1ce2eddde",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-20.png",
+      "sha256": "ca20d6da449e46bd5b35e36d9e5502be3882cdc800261175d35762af98b4a867",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-21.png",
+      "sha256": "4d1d2ff141b2c0ba0eedc37e166f5beafe7e0c19c52d78683bd52f91a67b969a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-22.png",
+      "sha256": "d5a33aa03f0a34b06794205d014559f148fee1502bb56ba1a229d64805987bb9",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-23.png",
+      "sha256": "d596955b92feec6ae52dfc1634ddfdf69a036ce0063853ec9372c34b5dfa99bb",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-24.png",
+      "sha256": "342518a259232c3f7f16ca0342886bcda3cd4f96097fab3d89edba7e914d2d56",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-contato-1.png",
+      "sha256": "a24815e5836a06dec38ce5c4cdf116b991c4d05dc0760c14073b0e959ca66488",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-contato-2.png",
+      "sha256": "73a4227f3ad8e9cc615651d488da927be9da5345526988923c84c382be098f26",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-contato-3.png",
+      "sha256": "6efa2dbc2ed89cc9f7057f20b49a6cf3070ad75dd47e86c72fc2ce2751eb127b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/final-contato-4.png",
+      "sha256": "4e6722697d3eaa2133c7387dcfb749f80ee0599b8f582db6da69a778aa12ec06",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-01.png",
+      "sha256": "06a2f68fe76735fbee4f30c5afd9a7b15047125002f2ad7f8e9c7ce35f44b33c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-02.png",
+      "sha256": "29f5f50e592814ed418a3b59fa291ce7f6fdbb776981ebf20cf86998768fbd83",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-03.png",
+      "sha256": "fd1b7860baf7f3efc30bd82bfb6aee7665d614e98b0b1c6c081bc6e26730aab4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-04.png",
+      "sha256": "94cd07d3bc131df7d4826e66e038fe37cf8c09390b0528ad7dbc1b80824a1502",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-05.png",
+      "sha256": "504f59f7e4ffb3e2b0148f424d1a1a8c1171acb0531ad25a847a8c975829c981",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-06.png",
+      "sha256": "2fdd33146a282d49d3ad077905840818d8c23fcbc1b5860f41196b51a7043445",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-07.png",
+      "sha256": "32daac52c018435a250a3ccdce3c7fcc25cfc0c1c7512f6c47dcfcf9b66b3dbe",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-08.png",
+      "sha256": "22edcc44fa6558a3dc962dbbcd3c83b59c3bd06f6d7953a3f5edf661dfb3d993",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-09.png",
+      "sha256": "616fdb56a1269acb0635152dca8816816966b39ffb992204d12c11b828d388f9",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-10.png",
+      "sha256": "287866fb1aae95d4a96a0827a5afee3faf97a7daab90be44c3f28fc79ad9619c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-11.png",
+      "sha256": "df4ef02a482da4c55975eb2dff3e6a5f8807d39adab6c248717de15db836d0b4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-12.png",
+      "sha256": "92ccbd5341ff7f7d621263eb45c3c3c311d988c0c4a05e7d0ead5cbab4e257f9",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-13.png",
+      "sha256": "23fb31219019006d7d70005ca1d75579ba641c495f7afd28598b49a441a6dd3f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-14.png",
+      "sha256": "1c49b1ff26fcd62eefed39fdaa75e21dcf745c12e7b14e513290a9c0dea4529e",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-15.png",
+      "sha256": "cd1aef8ef3abeaf5fced19dccdbe9e218a5e62321485a8ad0589827cc8a43c82",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-16.png",
+      "sha256": "b8edbda0dbfc70dbcab6b26820086d90c85dc7bc8042fb49405e00dbb61bc921",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-17.png",
+      "sha256": "7212b2d3f8c9ba1d6a83f46a483fe47d0acde4250f7869498fa5c732355a9b4b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-18.png",
+      "sha256": "d7c28ec79bc15225be5649350eae97a4c5a6814999e56b3a007e9232bb05db94",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-19.png",
+      "sha256": "69ec8db6345729cf1a77d6966a179c632302fa831a7d61d71b9c33817977999d",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-20.png",
+      "sha256": "50eb19013e061eef620c5f1a270631d234453b1989fa1a0d0dcbab129918d1f5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-21.png",
+      "sha256": "1b692cd9d551addc92e42aede17c7882e48a5e5a56fdc669f6d604868fa66cd2",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-22.png",
+      "sha256": "2b0c1e05e1ef7b7262937e37e103d721ef5a3f9de27f406fa9839ed71cf1e9da",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-28-W10-Modelo-Fisico/BD-01-documento/auxiliar/pagina-23.png",
+      "sha256": "e431e723b01629c7022bae09578579556ba6987da13fde5f7a8a0e76655f48be",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-00-13-799Z/detalhe-360.png",
+      "sha256": "e95e70cb60eaf35bfa0b9ff2ef968d84dc0506cd9cef3382df35278ebff5dea0",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-00-13-799Z/detalhe-768.png",
+      "sha256": "09f83b05ae8a15dd89d215083192b31c6f3f4fc5c88e79373e38fda15f5c5a4f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-00-13-799Z/falha.png",
+      "sha256": "518092406670971b21d11b9048505a9392ebeedeb9d0aa4b8983a278920a5d50",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-00-13-799Z/vitrine-network.png",
+      "sha256": "ba6d6037b8787c7c3888a1cba004fa8e4df31fe0d1ab60fbdb43d2d8df127100",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-02-06-107Z/detalhe-360.png",
+      "sha256": "73892a3603efb1ace98a5a4104941a64bb3a7aa9f333624216681b78e2e38a99",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-02-06-107Z/detalhe-768.png",
+      "sha256": "3bcf43735b870fbc985b6576a276b81f13e60365dafab40397427b7274066a38",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-02-06-107Z/falha.png",
+      "sha256": "518092406670971b21d11b9048505a9392ebeedeb9d0aa4b8983a278920a5d50",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-02-06-107Z/vitrine-network.png",
+      "sha256": "f6d2df66c739cebbf57ec86e3c4b097c3bd6059fed220100f3b390302e46ee95",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/detalhe-1280.png",
+      "sha256": "930f1a1fad927f21369f8a0032e19fd6002f28fa89f987baca437d2b3b6a645a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/detalhe-360.png",
+      "sha256": "06e508a0050f4e61f7b99a5e0e352da918e3291f117101bc3b3c651d627490e4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/detalhe-768.png",
+      "sha256": "10525347571ce78c3fc776c22cd933233bfeba6bbb21558f893647c7738a2b7c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/detalhe-network.png",
+      "sha256": "14e83988c50333481bbe59225af1e98ac0a48d7baf67d4a69401de42075a3819",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/erro-detalhe.png",
+      "sha256": "19065e0e48c5a234aafd582b6c0e948094e50a8d2468d6a4475e8e2e51a581a1",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/erro-vitrine.png",
+      "sha256": "e5b0c8b2e2438746f46d59cc8b6581339cd431c3e3f9c41b0063299a921d46b8",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/fallback-network.png",
+      "sha256": "e2aa79cc93271c24349039c65799968cf4ab6719c1456bd4e69c21dadea7d8b1",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/vitrine-network.png",
+      "sha256": "0c3c91f8f54e3cb67308ea332044f4a5162161a7c786bdebd9da3450110e0c0d",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/detalhe-1280.png",
+      "sha256": "092b4ffbcd5fcea9ebc4fbe25083b9af5f7a20e06e00f64681c4d4ebd2a225a5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/detalhe-360.png",
+      "sha256": "7c32528d4a28af9e107386de3431de19dc0d7050bca0d9f32285ac26de4132a4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/detalhe-768.png",
+      "sha256": "823f04495ea69b4879b6628b59812893ac3b83481660e9a115293a440f084859",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/detalhe-network.png",
+      "sha256": "fb4270985be708b4d2cc69eddb234418c1b8b65e048a9421715aa5f2587f54e7",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/erro-detalhe.png",
+      "sha256": "9162635274453c557c5d46547e258ac7ecabb50669c63921c7acb87ae3246343",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/erro-vitrine.png",
+      "sha256": "0612818461d6159c10128ed94dfe1af5f2d0c2a07b32cd58ee360c0fba5c9923",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/fallback-network.png",
+      "sha256": "5da29928fea82d2dbf7fef235cc2a7a2d8d123e366e4bddc7161c0b8eb2ea540",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/resposta-http.png",
+      "sha256": "fff0cc4e117854f33262ade20818d87e23dd3249e7e5f7d401cd742df0211f0a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/vitrine-network.png",
+      "sha256": "6e5dcb80f804b23bdae44154284e99c05eaae817846b842ef0b9b1720da49613",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao/IA-03/vitrine-compradora-ceramica.jpg",
+      "sha256": "337eaa5e628d7418b7e9dad0b1427d48b0d4538d46526c02c8c2ee7ec56cc96f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao/IA-03/vitrine-sem-historico.jpg",
+      "sha256": "3e6ca5a0684a9a9ce0b72ad092fda76f6f3b6aacec89089484b8ef9d64d558f9",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/capturas/01-execucao-real.jpg",
+      "sha256": "735e492f99fd982b23de2635fa6c9c5ec032409dad7b4b09a993ace47863ffa4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/capturas/02-cobertura-fallback-diversidade.jpg",
+      "sha256": "e27947f53cf52e0983940d9bd1e6a390ab3682360956cb4d3bbd4e9718e94788",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/capturas/03-media-p95-cache.jpg",
+      "sha256": "0832e294af4948e7cbea5a6521d5047ed116244b69dcceec2f28180ad8d8052c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/capturas/04-log-execucao.jpg",
+      "sha256": "b98a7e91aaec4f8bcc19c9c96b840f1298ed924a35585523a8fba67b3c3313d7",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/capturas/05-testes-aprovados.jpg",
+      "sha256": "257dcb1baabcca17a382cfd00e7194c0cd1fdab6f2bc3ad3d2fda4a4a3234709",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/capturas/06-codigo-http-cache.jpg",
+      "sha256": "d4270abfdecce8f809ac86dd8b0c3b700c0f759a4aeb28e0bebb4c9f0d8feb6f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.2-sequencia-checkout/03-previa-a4-1.png",
+      "sha256": "decba3b271b537a80309957d4e2b675ebb9942d52038ea0551e968a4426ed181",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.2-sequencia-checkout/03-previa-a4-2.png",
+      "sha256": "c32b13d535601e2ff9b493b7169adcdd09808ff9b1c1092e1bd7cdb070cce84c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.2-sequencia-checkout/03-previa-a4-3.png",
+      "sha256": "ad8d73a5c4dc78a0982bbb7a8b46d8f8391000d6c66cbfa1d08c70eae3324d71",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.2-sequencia-checkout/sequencia-checkout.png",
+      "sha256": "1e0b96319e657dd4d42c12e9d052186bd44a358697356f8cbf8d1621cfd2dad2",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.4-diagrama-distribuido/03-previa-a4-paisagem.png",
+      "sha256": "3557f7b6ef34fe636728f496adc7283accfad9ce9f54c2628fe07415db71d6d2",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.4-diagrama-distribuido/arquitetura-distribuida.png",
+      "sha256": "fb2e815195d33ef25ada841a59630b7f7162d6f03592ebd9cd3960b2d4d7a8bf",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/throughput.png",
+      "sha256": "8ba1bacf79ed27749c3d754b6b4b0226d90a5e7352d4e997b2ef0b58fa2acb34",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright/028a078050be434c81e0380c0b4605fa/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-1280px.png",
+      "sha256": "bf31cb0aecf4cee62bcb7a8fc524fbe7d468c1e77641fd2642572b5039399f33",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright/028a078050be434c81e0380c0b4605fa/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-360px.png",
+      "sha256": "ada659d68f32cbbe7f4bcc654db6a4ab24e43cad491851adcc398aca24ed292a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright/028a078050be434c81e0380c0b4605fa/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-768px.png",
+      "sha256": "4493d9e6300de5263e84c689257f95ac38833e5e32d96422a68015e68313cbd1",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-1280px.png",
+      "sha256": "7d2d06cef0c5c2539927c6196a90d907ae26bca1871bcc7c0ee80141e3179f3a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-360px.png",
+      "sha256": "39c2a94f3da8d12a8edc8922ec387882dc52a11b962491189cb34b7d0a1d0ed3",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-768px.png",
+      "sha256": "7764fa068294dd2c5f5273e72ccc3b83546364a14fe2f717ba263f24744f11a8",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px/test-failed-1.png",
+      "sha256": "260b543013c76a98430c1e110ceef6add365fe4371ed7a93bde50ee732b25924",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px/test-failed-1.png",
+      "sha256": "2711547e23083f683ed52139398353c1528c07357f17b191e711b5cc621970c0",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/3ab0a7a8f8d244388bed80a8856fbdd2/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px/produto-pagina-1-1280px.png",
+      "sha256": "f84b170264b850ba108f3506df13c52f57d4495e14a4ac9f91b6c11e198b0c15",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/3ab0a7a8f8d244388bed80a8856fbdd2/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px/produto-pagina-4-1280px.png",
+      "sha256": "43197c7b65781540d8fd56358d0f39be623973328e15bbcc2316ee23e567f47b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/3ab0a7a8f8d244388bed80a8856fbdd2/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px/produto-pagina-1-360px.png",
+      "sha256": "8b404666039a541c98e0f1a34bbeb61a01250a8e15b7d1781d4876bc4a22ead6",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/3ab0a7a8f8d244388bed80a8856fbdd2/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px/produto-pagina-4-360px.png",
+      "sha256": "7666194f533d49356e5edcb7e1c490241780a89ccfa7900de0b1f3b4836b93f2",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/e2e/c28ceefaf86b47b19bbd36fdd1baa878/results/fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-1280px/test-failed-1.png",
+      "sha256": "57f45d88e654eeca054ff1cc37c39a437cb6e4b6ea2a6f59cf08a6228670107a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/e2e/c28ceefaf86b47b19bbd36fdd1baa878/results/fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-1280px/test-failed-1.png",
+      "sha256": "71dfa0c70a09055599b2d3dfb0fe09a1ec1ae646f884bb4ffbea7f07903ef217",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/02-compose-ps.png",
+      "sha256": "6b17ac5ec6bbf39ecda3455a3b8c1f974f5c58a723b73a0af5eb2588e4caf93f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/04-recomendacoes-1280.png",
+      "sha256": "a9ed2111c580eeb90e5e409e81dc8e802281396fbde12a600be3bde623d43767",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/04-recomendacoes-360.png",
+      "sha256": "4134c0b7f41b235013cd62440a988a643de7fbea405aea2fd5d55d2121be5744",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/04-vitrine-compose-1280.png",
+      "sha256": "fe12b8d5336212f90af10b4ab5a02f6f1470ecdd0eab6075ccf07c59f9ba112a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/04-vitrine-compose-360.png",
+      "sha256": "2b15a64a9b3b485959632ccb488affdb8c5685d456118516c8ead7309f32d56f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/debug-vitrine.png",
+      "sha256": "3878570f4a62a0d65f57cf1754e0269e56ec797f4e36e26b44c172eb6e800401",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/artesao-antes-1280.png",
+      "sha256": "13891a3bc57df93204871a4d1d101f39e896f8525d942c813ceb9cf6b5296827",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/artesao-antes-360.png",
+      "sha256": "8775678645baab96fad592cfd0ffbafc3709f571e5e0f58b75356f5ee45fd961",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/artesao-antes-768.png",
+      "sha256": "b049bfead58a5a9c3b2c3c80d8ff60aaf70a24ff94f85259e768c14c2c4f4107",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/artesao-depois-1280.png",
+      "sha256": "cdbde2c4a69597eade20ae76dfcba08c252b89edfcc1964e0e91deb0ce06c7e5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/artesao-depois-360.png",
+      "sha256": "5dc0b9803f6db57c186c20ca33b581785786a926ee7856bc176d56caacbf6e38",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/artesao-depois-768.png",
+      "sha256": "ad631e78b08da4caeb05523fd0c0eca3aee244b01f037917d1bc60d9ba89b67b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/comprador-antes-1280.png",
+      "sha256": "5353d5da4a8d3a60279a06782dd0a724bc013b36da62f8d929fbc8f1f565270c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/comprador-antes-360.png",
+      "sha256": "8fd34caafca692b4eb6fba9b00d46b876162619dbf49c90fe8f3ab83aafc12b5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/comprador-antes-768.png",
+      "sha256": "842d70a44ee207f0220b5908405f1d24c4aecf20928425d11bc566ae796214e0",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/comprador-depois-1280.png",
+      "sha256": "12ed3b9a7ed9a81034127e6d984d0a45317c97ca4ffb33a8a75cbb56ab6e725a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/comprador-depois-360.png",
+      "sha256": "83e9fd11fed6db88aa8092358dea096444ee5561cf23c7bb932a250e19457c81",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/comprador-depois-768.png",
+      "sha256": "1c2af4c2f36e312a3569f64dd87943297d16b48eefaae3ab2c8cdb23a3ae8dac",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/envio-1.png",
+      "sha256": "685c9641a94291c8af2821ffeadb80c075f304b348a7e79a2f809e2307e21219",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/envio-2.png",
+      "sha256": "d9248585b5b2a257018f5cd77e217dbca50453826bb378ef3c7f5f385ffff339",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/envio-3.png",
+      "sha256": "5df7a34dcfd3bc2b26de38b1d47fdf6f8701349bc294563e04738551f4a3a125",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/envio-4.png",
+      "sha256": "bf1f8f02c24ba6ee7140d0f853e74c806e8b15f76c03422581fa68089abb37d3",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.2-pedidos-recebidos/envio-5.png",
+      "sha256": "ad631e78b08da4caeb05523fd0c0eca3aee244b01f037917d1bc60d9ba89b67b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/01-formulario-desktop.jpg",
+      "sha256": "04d05c94c29b4037d57f90a168134b0df13cfef1ef51643a21bfde94d1dc1cf4",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/02-validacao-sem-nota.jpg",
+      "sha256": "6a87dbcc0a1d425bcfbd8787c18f1149f54955a9315fee4608af43f73ff3696b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/03-avaliacao-sucesso.jpg",
+      "sha256": "aeacda4e1641caf7a9e8339501d13aad9b03065dcc941799ba96e9138346c575",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/04-duplicada-segunda-aba.jpg",
+      "sha256": "352e26e211bed0ca59b287fb0b719ad83c69ca47ecca8c0dc9a09a26ac8c6bbb",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/05-mobile-360.jpg",
+      "sha256": "36951f0a1111c7331074e5485c191c16a3c136e896e1fb99abe3e17fba4762aa",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/06-tablet-768.jpg",
+      "sha256": "5fc5f4af757b2d14a5749f0e55603970ddcc061ecec030b200623425d4124019",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/07-desktop-1280.jpg",
+      "sha256": "f7ee72399c5203a637073fd61a18b73ceaa825adc127a08293c65e0d0835db9c",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/08-nota-media-produto.jpg",
+      "sha256": "836841e3899e78f109f40df380e3a5fa86c05a4dbdd7a3c53893b3b97f82d739",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.3-avaliacoes/09-comentario-501.jpg",
+      "sha256": "1c6eca78ccd44e8e0f223ad9650cc78c1b9f2ce61a4b61aa75f7d80d6948aebd",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/card-1280.png",
+      "sha256": "0e1c0632fc25b7dd83d892a2087db9ac85d34413c5a7ac67cedd914156416ae5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/card-360.png",
+      "sha256": "2037097dfb6a2639ee99bf807196a06fd4ec84ce924d9e4491c1bf82717b2cf5",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/card-768.png",
+      "sha256": "6a2cc95e810e025e3d27146978efa6018d6b8b22c3d51ffcebadb8814d3cb32f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/painel-1280.png",
+      "sha256": "ffaa4695ffb93bb3cb1a7c661b57063f1bd17d04f29f4322532312de8fd95811",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/painel-360.png",
+      "sha256": "abd51587c4f8b44fea890e5e14db7a7051d4d3fe40dcfce91e795f89e8b36eeb",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/PI4-WEB-W12-Fluxos-Artesao-Avaliacoes/Web.5-indicadores-artesao/painel-768.png",
+      "sha256": "6fb9ba7a4ffa1c8344b1862c1d521d3fd96d80bc53f0df22d22e55b38075945e",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/US01.C1/05b-e2e-red/91d82e343368486d8a4d5688acf2728d/results/fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-360px/test-failed-1.png",
+      "sha256": "fa22c5fc3b9875070698850108efc3d80e243d174c6db7b0a231fdfb626adf30",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/647a60f8-6a99-4d2f-af8b-c3cc6443e58d/gif.png",
+      "sha256": "dbfcd48d6e8eb8256296fb44588b4df762ec84dd94f0d71feb9ff6c87c6b6fb3",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/647a60f8-6a99-4d2f-af8b-c3cc6443e58d/jpg-500kb-aceito.png",
+      "sha256": "131c98d0bd3a10d8c44e5b836ae4273b05bd42abfe3f4c1ec521c26b9b45896f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/647a60f8-6a99-4d2f-af8b-c3cc6443e58d/jpg-500kb-previa.png",
+      "sha256": "1a70bfb0ae825aee90061481e7748cf157c496d87bf436499d7b03ec237c4e02",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/647a60f8-6a99-4d2f-af8b-c3cc6443e58d/pdf-renomeado.png",
+      "sha256": "156763ca7a6f4285e67d47beb3dfe18d9f0e10130dc34dc26ba1dce3b243f727",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/647a60f8-6a99-4d2f-af8b-c3cc6443e58d/png-3mb.png",
+      "sha256": "1949f43f59dbf97b4e2198995aaf4edba1a2a4da23e3f0f34cd1eba5d3234f50",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/e77e2bac-49c7-46f5-acfb-6bd52e10b58c/gif.png",
+      "sha256": "dbfcd48d6e8eb8256296fb44588b4df762ec84dd94f0d71feb9ff6c87c6b6fb3",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/e77e2bac-49c7-46f5-acfb-6bd52e10b58c/jpg-500kb-aceito.png",
+      "sha256": "131c98d0bd3a10d8c44e5b836ae4273b05bd42abfe3f4c1ec521c26b9b45896f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/e77e2bac-49c7-46f5-acfb-6bd52e10b58c/jpg-500kb-previa.png",
+      "sha256": "fbb0d96fe0615a9ea298760e8b0d8e8a193e7741ad7b014797886f3eb3eeb33f",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/e77e2bac-49c7-46f5-acfb-6bd52e10b58c/pdf-renomeado.png",
+      "sha256": "d91e066a7d2328cb2553dc3553c05f8f2331f872a4571a5a650f75ef9d783395",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/Web.6/e77e2bac-49c7-46f5-acfb-6bd52e10b58c/png-3mb.png",
+      "sha256": "1949f43f59dbf97b4e2198995aaf4edba1a2a4da23e3f0f34cd1eba5d3234f50",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/blob-apos-limpeza.jpg",
+      "sha256": "28e9fe0a24dc445cdc7cfe510bd4aef3fc852e16cee38fa3e32fd7868cd4f048",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/filtro-artesao-producao.jpg",
+      "sha256": "1d56f2df9b365d7e7601152774afe031db497e4126f8d8820f9b0058953bd07b",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/fotos-corrigidas-producao.jpg",
+      "sha256": "f30c3344599ac03bb87075d87a91e72065d262dec0e88ca9ae9eadee014e43f1",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/render-blob-token-oculto.jpg",
+      "sha256": "3cfa08d2feb3d7a5fe5dc77e4523b557aa65bac5a04f722a772fb8d4b07f772a",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": [
+        {
+          "kind": "storage-credential",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/render-status-final.jpg",
+      "sha256": "ed1846f1bc5a0d87c49628b74b04460d5662d9cd3ad0632d572f37fba5acee15",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/swagger-execucao-200.jpg",
+      "sha256": "ee1b7422b93ab27c4ffec5734719dad1ae59038155caaff4e5a3861c45ba820d",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/swagger-producao.jpg",
+      "sha256": "04b2f81758e7fceded7388db5f2e189abdb1fea30b6f10e3a61a39b9026486a9",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/upload-real-confirmado.jpg",
+      "sha256": "b1b9e8853ecc099f3ec80b14a8bb447aaa9127adc7ffd7c3270d61142b9937b6",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/vercel-deploy-final.jpg",
+      "sha256": "db07ff9d40e23c80109cf56a9a23c6dcc82dc65c70be9a2a92131f870641739d",
+      "status": "ok",
+      "findings": [],
+      "tiles": 1,
+      "phase": null,
+      "reviewedFindings": []
+    }
+  ],
+  "reviewed": 1
+}

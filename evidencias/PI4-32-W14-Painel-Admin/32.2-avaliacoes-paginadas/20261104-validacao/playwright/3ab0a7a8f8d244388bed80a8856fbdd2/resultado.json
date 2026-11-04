@@ -1,0 +1,249 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "produto-avaliacoes.spec.ts"
+    ],
+    "configFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/3ab0a7a8f8d244388bed80a8856fbdd2/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "360px",
+        "name": "360px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/3ab0a7a8f8d244388bed80a8856fbdd2/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "1280px",
+        "name": "1280px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\3ab0a7a8f8d244388bed80a8856fbdd2\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "360px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 360,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "360px"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\3ab0a7a8f8d244388bed80a8856fbdd2\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "1280px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "1280px"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\3ab0a7a8f8d244388bed80a8856fbdd2\\html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\3ab0a7a8f8d244388bed80a8856fbdd2\\resultado.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "produto-avaliacoes.spec.ts",
+      "file": "produto-avaliacoes.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "32.2 produto demo mostra quatro paginas de avaliacoes reais",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T19:50:26.207Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "84da38f025b923bf2756-da1eac688bed7c56380c",
+          "file": "produto-avaliacoes.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "32.2 produto demo mostra quatro paginas de avaliacoes reais",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1919,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T19:50:29.707Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "84da38f025b923bf2756-a952e6725222435e729f",
+          "file": "produto-avaliacoes.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T19:50:19.463Z",
+    "duration": 13136.512,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

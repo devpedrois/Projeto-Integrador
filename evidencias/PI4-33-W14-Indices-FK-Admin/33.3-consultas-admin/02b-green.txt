@@ -1,0 +1,35 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ❯ tests/integration/indicadores-plataforma.repository.integration.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores-plataforma.repository.integration.test.ts [ tests/integration/indicadores-plataforma.repository.integration.test.ts ]
+Error: Transform failed with 1 error:
+
+[PARSE_ERROR] Expected a semicolon or an implicit semicolon after a statement, but found none
+     ╭─[ tests/integration/indicadores-plataforma.repository.integration.test.ts:125:89 ]
+     │
+ 125 │       const saved = JSON.parse(await readFile(join(output, "conferencia.json"), "utf8"))) as { divergencias: number; planos: Record<string, unknown> };
+     │                                                                                         │ 
+     │                                                                                         ╰─ 
+     │ 
+     │ Help: Try inserting a semicolon here
+─────╯
+
+  Plugin: vite:oxc
+  File: C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/indicadores-plataforma.repository.integration.test.ts
+ ❯ transformWithOxc ../../Projeto%20integrador/backend/node_modules/vite/dist/node/chunks/node.js:7208:19
+ ❯ TransformPluginContext.transform ../../Projeto%20integrador/backend/node_modules/vite/dist/node/chunks/node.js:7280:26
+ ❯ EnvironmentPluginContainer.transform ../../Projeto%20integrador/backend/node_modules/vite/dist/node/chunks/node.js:8172:51
+ ❯ loadAndTransform ../../Projeto%20integrador/backend/node_modules/vite/dist/node/chunks/node.js:19634:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 passed (1)
+   Start at  15:17:00
+   Duration  473ms (tests 87%, transform 6%, import 4%, worker 3%)
+

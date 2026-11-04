@@ -1,0 +1,32 @@
+-- PI4-28 BD-02 — Violações registradas no psql (Neon, branch dev)
+-- Migration: 20261013213237_reconciliar_modelo_logico
+-- Os 3 INSERTs inválidos do critério de aceite e o erro devolvido pelo banco.
+
+-- preco 0
+INSERT INTO "Produto" ("id","nome","descricao","preco","artesaoId","categoriaId","quantidadeEstoque") VALUES (gen_random_uuid(),'Manual','Desc',0,'2fc29846-9765-4100-bffd-ea7a5e96460b','d5cc84e2-3410-4690-96fe-82e90f7fd89d',1);
+ERROR:  new row for relation "Produto" violates check constraint "Produto_preco_check"
+SQLSTATE 23514, constraint Produto_preco_check
+
+-- estoque negativo
+INSERT INTO "Produto" ("id","nome","descricao","preco","artesaoId","categoriaId","quantidadeEstoque") VALUES (gen_random_uuid(),'Manual','Desc',10,'2fc29846-9765-4100-bffd-ea7a5e96460b','d5cc84e2-3410-4690-96fe-82e90f7fd89d',-1);
+ERROR:  new row for relation "Produto" violates check constraint "Produto_quantidadeEstoque_check"
+SQLSTATE 23514, constraint Produto_quantidadeEstoque_check
+
+-- email duplicado com caixa diferente
+INSERT INTO "Usuario" ("id","nome","email","senhaHash") VALUES (gen_random_uuid(),'Duplicado','MANUAL-0EC38EFF-88C3-48CF-994C-BE15799F9394@Teste.Origem','hash-manual');
+ERROR:  duplicate key value violates unique constraint "Usuario_email_lower_key"
+SQLSTATE 23505, constraint Usuario_email_lower_key
+
+-- ------------------------------------------------------------------
+-- Complementares (mesma sessão): NOT NULL em descricao e CHECK em senhaHash
+-- ------------------------------------------------------------------
+
+-- descricao nula
+INSERT INTO "Produto" ("id","nome","descricao","preco","artesaoId","categoriaId","quantidadeEstoque") VALUES (gen_random_uuid(),'Manual',NULL,10,'2fc29846-9765-4100-bffd-ea7a5e96460b','d5cc84e2-3410-4690-96fe-82e90f7fd89d',1);
+ERROR:  null value in column "descricao" of relation "Produto" violates not-null constraint
+SQLSTATE 23502
+
+-- senhaHash vazio
+INSERT INTO "Usuario" ("id","nome","email","senhaHash") VALUES (gen_random_uuid(),'Sem hash','vazio-cd5328d4-4605-4dde-8a12-d457625c67c2@teste.origem','');
+ERROR:  new row for relation "Usuario" violates check constraint "Usuario_senhaHash_check"
+SQLSTATE 23514, constraint Usuario_senhaHash_check

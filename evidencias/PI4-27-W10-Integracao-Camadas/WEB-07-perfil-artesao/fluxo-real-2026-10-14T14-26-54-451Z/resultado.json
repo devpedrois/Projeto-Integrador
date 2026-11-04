@@ -1,0 +1,289 @@
+{
+  "sucesso": true,
+  "produtoId": "68a46887-bd62-4e01-8e38-7e676e13972f",
+  "artesaoId": "47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b",
+  "produtosDeOutroArtesaoExcluidos": true,
+  "patchProprio": 200,
+  "patchTerceiro": 403,
+  "completoNoPostgreSQL": true,
+  "pendenciaAtualizada": true,
+  "responsividade": [
+    {
+      "width": 360,
+      "semOverflow": true
+    },
+    {
+      "width": 768,
+      "semOverflow": true
+    },
+    {
+      "width": 1280,
+      "semOverflow": true
+    }
+  ],
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/411c476b-392d-403a-8173-d67e03a8afdb/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/411c476b-392d-403a-8173-d67e03a8afdb/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/68a46887-bd62-4e01-8e38-7e676e13972f",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/411c476b-392d-403a-8173-d67e03a8afdb/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/411c476b-392d-403a-8173-d67e03a8afdb/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/68a46887-bd62-4e01-8e38-7e676e13972f",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/411c476b-392d-403a-8173-d67e03a8afdb/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/411c476b-392d-403a-8173-d67e03a8afdb/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?artesaoId=47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "PATCH",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "PATCH",
+      "caminho": "/api/usuarios/411c476b-392d-403a-8173-d67e03a8afdb/perfil-artesao",
+      "status": 403
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?artesaoId=47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?artesaoId=47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?artesaoId=47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?artesaoId=47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/usuarios/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b/perfil-artesao",
+      "status": 200
+    }
+  ],
+  "frames": [
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-07-perfil-artesao\\fluxo-real-2026-10-14T14-26-54-451Z\\01-produto-nome-real.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-07-perfil-artesao\\fluxo-real-2026-10-14T14-26-54-451Z\\02-perfil-produtos-reais.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-07-perfil-artesao\\fluxo-real-2026-10-14T14-26-54-451Z\\03-pendencia-inicial.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-07-perfil-artesao\\fluxo-real-2026-10-14T14-26-54-451Z\\04-perfil-salvo.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-07-perfil-artesao\\fluxo-real-2026-10-14T14-26-54-451Z\\05-pendencia-resolvida.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-07-perfil-artesao\\fluxo-real-2026-10-14T14-26-54-451Z\\06-perfil-atualizado-403.png"
+  ]
+}

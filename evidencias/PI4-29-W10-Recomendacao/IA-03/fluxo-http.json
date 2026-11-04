@@ -1,0 +1,44 @@
+[
+  {
+    "metodo": "GET",
+    "rota": "/recomendacoes",
+    "status": 200,
+    "cacheControl": "no-store",
+    "xCache": "MISS"
+  },
+  {
+    "metodo": "GET",
+    "rota": "/recomendacoes/para-mim",
+    "status": 200,
+    "cacheControl": "no-store",
+    "xCache": null
+  },
+  {
+    "metodo": "GET",
+    "rota": "/recomendacoes/para-mim",
+    "status": 200,
+    "cacheControl": "no-store",
+    "xCache": null
+  },
+  {
+    "metodo": "GET",
+    "rota": "/recomendacoes",
+    "status": 200,
+    "cacheControl": "no-store",
+    "xCache": "MISS"
+  },
+  {
+    "metodo": "GET",
+    "rota": "/recomendacoes/para-mim",
+    "status": 200,
+    "cacheControl": "no-store",
+    "xCache": null
+  },
+  {
+    "metodo": "GET",
+    "rota": "/recomendacoes/para-mim",
+    "status": 200,
+    "cacheControl": "no-store",
+    "xCache": null
+  }
+]

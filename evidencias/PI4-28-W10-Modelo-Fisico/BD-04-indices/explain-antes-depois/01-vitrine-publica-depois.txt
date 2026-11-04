@@ -1,0 +1,96 @@
+Consulta: vitrine-publica
+Fase: depois
+Captura original UTC: 2026-10-14T02:22:29.088Z
+Schema isolado: bd04_951b24127b014d84969945506e99dcda
+PostgreSQL: PostgreSQL 18.6 (653b019) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+enable_seqscan: on
+Contagens: {"produtos":1000,"pedidos":1500,"artesaos":50,"compradores":300,"intencoes":1500,"notificacoes":1500,"itenscarrinho":300}
+Parametros: []
+
+SQL executado:
+EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)
+SELECT p."id", p."nome", p."descricao", p."preco",
+       p."quantidadeEstoque", p."categoriaId", p."tecnicaId",
+       p."artesaoId", p."criadoEm"
+FROM "Produto" p
+WHERE p."ativo" AND NOT p."desativadoPorAdmin"
+  AND p."quantidadeEstoque" > 0
+ORDER BY p."criadoEm" DESC
+LIMIT 24;
+
+Saida original PostgreSQL em FORMAT JSON:
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 0.15,
+      "Total Cost": 1.45,
+      "Plan Rows": 24,
+      "Plan Width": 176,
+      "Actual Startup Time": 0.021,
+      "Actual Total Time": 0.03,
+      "Actual Rows": 24,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 2,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Index Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Scan Direction": "Forward",
+          "Index Name": "Produto_vitrine_criadoEm_idx",
+          "Relation Name": "Produto",
+          "Alias": "p",
+          "Startup Cost": 0.15,
+          "Total Cost": 54.15,
+          "Plan Rows": 1000,
+          "Plan Width": 176,
+          "Actual Startup Time": 0.02,
+          "Actual Total Time": 0.027,
+          "Actual Rows": 24,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Index Searches": 1,
+          "Shared Hit Blocks": 2,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 0,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.121,
+    "Triggers": [],
+    "Execution Time": 0.054
+  }
+]

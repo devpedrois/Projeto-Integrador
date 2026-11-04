@@ -1,0 +1,12 @@
+{
+  "suite": "e2e",
+  "startedAt": "2026-10-26T16:38:08.436Z",
+  "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+  "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+  "dirty": "",
+  "args": [
+    "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+    "run",
+    "test:e2e"
+  ]
+}

@@ -1,0 +1,17 @@
+frontend	UNKNOWN STEP	2026-10-22T21:24:08.1816593Z  ^[[32m✓^[[39m tests/components/produto/detalhe-produto.test.tsx ^[[2m(^[[22m^[[2m16 tests^[[22m^[[2m)^[[22m^[[33m 720^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-22T21:24:15.3286812Z  ^[[32m✓^[[39m tests/services/fake-recommendation.adapter.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[90m 11^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-22T21:24:22.6525106Z  ^[[32m✓^[[39m tests/services/http/recomendacoes.adapter.test.ts ^[[2m(^[[22m^[[2m22 tests^[[22m^[[2m)^[[22m^[[33m 781^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-22T21:24:23.7977413Z  ^[[32m✓^[[39m tests/services/container-http.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 178^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-22T21:24:30.0761592Z  ^[[32m✓^[[39m tests/hooks/use-recomendacoes.test.tsx ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[90m 272^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-22T21:24:31.4592277Z  ^[[32m✓^[[39m tests/components/faixa-recomendacoes.test.tsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[90m 194^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-22T21:24:43.6072453Z  ^[[32m✓^[[39m tests/services/recomendacao-contrato.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-22T21:24:48.2507734Z ^[[2m Test Files ^[[22m ^[[1m^[[32m89 passed^[[39m^[[22m^[[90m (89)^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:28:45.2826153Z  ^[[32m✓^[[39m tests/integration/recomendacoes-contrato.integration.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[33m 49197^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:29:43.5529467Z  ^[[32m✓^[[39m tests/integration/fila-notificacao.integration.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[33m 34680^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:30:32.8905737Z  ^[[32m✓^[[39m tests/integration/recomendacao.strategy.integration.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[33m 13314^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:32:10.0957127Z  ^[[32m✓^[[39m tests/integration/recomendacao-fallback.strategy.integration.test.ts ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 9906^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:33:21.6435346Z  ^[[32m✓^[[39m tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 7463^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:34:18.4926309Z  ^[[32m✓^[[39m tests/integration/notificacao-auto-publish.integration.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[33m 10250^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:35:30.4093024Z  ^[[32m✓^[[39m tests/integration/server-queue-bootstrap.integration.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[33m 11398^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:35:43.1423824Z  ^[[32m✓^[[39m tests/unit/server.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[33m 5999^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-22T21:35:54.9933267Z ^[[2m Test Files ^[[22m ^[[1m^[[31m1 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m49 passed^[[39m^[[22m^[[90m (50)^[[39m

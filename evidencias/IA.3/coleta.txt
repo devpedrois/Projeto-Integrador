@@ -1,0 +1,29 @@
+
+> origem-backend@1.0.0 metricas:recomendacao
+> tsx scripts/metricas-recomendacao.ts --reforco-regional ambos --output metricas/recomendacao-u2.json
+
+Medindo demo por HTTP real...
+(node:7372) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Medindo volume por HTTP real...
+Comparando reforco regional: ambos...
+| Base | Estrategia | Contextos | Cobertura catalogo % | Cobertura v0 % | Fallback % | Diversidade media | Frio media/p95 ms | Quente media/p95 ms | Cache quente |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|
+| demo | categoria | 7 | 100.00 | 100.00 | 71.43 | 3.86 | 207.633/220.508 | 1.616/2.601 | HIT |
+| demo | historico | 3 | 100.00 | 100.00 | 33.33 | 2.67 | 192.62/233.654 | 191.586/228.099 | BYPASS |
+| volume | categoria | 1000 | 5.40 | 100.00 | 0.00 | 1.00 | 117.151/121.7 | 1.499/2.585 | HIT |
+| volume | historico | 300 | 4.30 | 100.00 | 0.33 | 3.14 | 117.052/120.138 | 117.21/120.71 | BYPASS |
+
+Comparacao regional: volume
+| Reforco regional | Produtos | Elegiveis | Recomendacoes | Cobertura catalogo % | Cobertura v0 % | Fallback % | Acerto categoria % | Mesma regiao % |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| on | 1000 | 1000 | 8000 | 16.20 | 100.00 | 0.00 | 100.00 | 100.00 |
+| off | 1000 | 1000 | 8000 | 5.40 | 100.00 | 0.00 | 100.00 | 33.69 |
+JSON de metricas salvo.

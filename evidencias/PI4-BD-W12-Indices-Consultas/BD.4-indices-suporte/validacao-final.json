@@ -1,0 +1,30 @@
+{
+  "backend": {
+    "lint": 0,
+    "typecheck": 0,
+    "testExitCode": 0,
+    "testsPassed": 726,
+    "testFilesPassed": 69,
+    "database": "temporaria atualizada na branch volume",
+    "removed": true
+  },
+  "frontend": {
+    "lint": 0,
+    "typecheck": 0,
+    "testExitCode": 0,
+    "testsPassed": 942,
+    "testFilesPassed": 100
+  },
+  "explain": {
+    "queries": 19,
+    "newQueries": 10,
+    "candidates": 3,
+    "pairs": 57,
+    "unchangedResultHashes": 57,
+    "candidateRollbackConfirmed": 3,
+    "retainedNewIndexes": 0
+  },
+  "review": "equivalente nesta conversa, autorizada pelo usuario",
+  "commitCreated": false,
+  "pushExecuted": false
+}

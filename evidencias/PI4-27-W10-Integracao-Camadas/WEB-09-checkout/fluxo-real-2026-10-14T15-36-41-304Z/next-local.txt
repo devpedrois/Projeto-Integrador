@@ -1,0 +1,22 @@
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:39446
+   - Network:      http://127.0.0.1:39446
+
+ ✓ Starting...
+ ✓ Ready in 1639ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1171ms (784 modules)
+ GET /login?retorno=%2Fcarrinho 200 in 1488ms
+ ✓ Compiled /carrinho in 340ms (797 modules)
+ GET /carrinho 200 in 425ms
+ GET /carrinho 200 in 24ms
+ ✓ Compiled /produto/[id] in 274ms (802 modules)
+ GET /produto/ba8e9164-5b5d-4765-8978-cc06c5a2c229 200 in 819ms
+ GET /produto/338a4880-dc97-4fc4-9c19-26446d8d198e 200 in 32ms
+ GET /carrinho 200 in 32ms
+ ✓ Compiled /checkout in 284ms (811 modules)
+ GET /checkout 200 in 343ms
+ GET /carrinho 200 in 137ms
+ GET /produto/ba8e9164-5b5d-4765-8978-cc06c5a2c229 200 in 41ms
+ GET /produto/338a4880-dc97-4fc4-9c19-26446d8d198e 200 in 36ms
+ GET /checkout 200 in 34ms

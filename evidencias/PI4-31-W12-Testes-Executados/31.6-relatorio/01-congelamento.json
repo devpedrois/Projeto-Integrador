@@ -1,0 +1,26 @@
+{
+  "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+  "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+  "dirty": "",
+  "capturedAt": "2026-10-26T16:33:28.225Z",
+  "timezone": "America/Sao_Paulo",
+  "node": "v22.12.0",
+  "platform": "win32",
+  "packageHashes": {
+    "backend/package.json": "7b0ddb5f3677e27fc48aa07e7737c15c7ffda0dc0d0ff17bfcff4108b2016873",
+    "backend/package-lock.json": "e2c923fa8f064546f1df6a87fe62a9f1942b7606c30eb90937e96658b36717c0",
+    "frontend/package.json": "4aa1bc87b22589d33fc6f56355f342cb7079ee1a78548a50ee1c2be719e15205",
+    "frontend/package-lock.json": "70c0b0724acba439c76f779f266a3c8bbec6f7bc6b6dd776f6d828ff7c4c7988"
+  },
+  "runtime": {
+    "backend": {
+      "vitest": "5.0.0",
+      "@vitest/coverage-v8": "5.0.0"
+    },
+    "frontend": {
+      "vitest": "2.1.9",
+      "@vitest/coverage-v8": "2.1.9"
+    }
+  },
+  "providers": "Instalados em runtimes isolados, com junctions; manifests e locks produtivos preservados."
+}

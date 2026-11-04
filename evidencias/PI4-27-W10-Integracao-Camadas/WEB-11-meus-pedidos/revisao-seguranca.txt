@@ -1,0 +1,30 @@
+WEB-11 - Revisao equivalente de seguranca
+14/10/2026. Realizada nesta conversa, conforme escolha do Pedro.
+
+Escopo revisado:
+- GET /pedidos e GET /pedidos/:id.
+- Validators, controller, service e PrismaPedidoRepository.
+- DTOs, adapters HTTP/fake, hook e Minha conta.
+- Testes e evidencias produzidas nesta subtarefa.
+
+Controles conferidos:
+- Autenticar reconsulta o usuario ativo e seu papel atual.
+- As duas rotas exigem papel comprador.
+- Listagem e contagem filtram compradorId da sessao.
+- Detalhe consulta ID e compradorId em conjunto.
+- UUID inexistente e pedido de terceiro retornam a mesma resposta 404.
+- Query estrita rejeita identidade forjada e parametros repetidos.
+- UUID invalido e paginacao fora dos limites recebem 400.
+- Leituras privadas possuem Cache-Control: no-store.
+- Prisma parametriza as consultas; nao ha SQL com valores concatenados.
+- SELECT explicito nao inclui senha, hash, email ou compradorRef.
+- Dinheiro e datas passam por mapper e validacao do adapter.
+- UI nao interpreta HTML retornado nem depende de dados sinteticos diretos.
+- Historico e desmontado quando a identidade da sessao muda.
+- Respostas tardias sao descartadas apos desmontagem ou troca do detalhe.
+- Falhas HTTP nao recorrem ao repositorio local.
+- Evidencias mostram apenas dados sinteticos e metricas permitidas.
+- Helper cria schema exclusivo e limpa somente esse schema.
+
+Resultado: nenhum achado de seguranca no escopo revisado.
+Implementacao e verificacoes restritas a WEB-11.

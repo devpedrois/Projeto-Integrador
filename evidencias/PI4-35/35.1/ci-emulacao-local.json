@@ -1,0 +1,10 @@
+{
+  "scripts_javascript_validos": true,
+  "github_env_4_variaveis": true,
+  "bootstrap_cli": true,
+  "migrate_cli": true,
+  "leitura_views": true,
+  "limpeza_cli": true,
+  "novos_secrets": [],
+  "observacao": "Emulacao local dos passos do job usando PostgreSQL real; nao substitui GitHub Actions remoto."
+}

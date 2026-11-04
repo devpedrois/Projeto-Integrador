@@ -1,0 +1,8 @@
+{"method":"GET","path":"/recomendacoes/historico","status":200}
+{"method":"GET","path":"/recomendacoes/historico","status":200}
+{"method":"GET","path":"/recomendacoes","status":200}
+{"method":"GET","path":"/recomendacoes","status":200}
+{"method":"GET","path":"/recomendacoes/historico","status":200}
+{"method":"GET","path":"/recomendacoes/historico","status":200}
+{"method":"GET","path":"/recomendacoes","status":200}
+{"method":"GET","path":"/recomendacoes","status":200}

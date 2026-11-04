@@ -1,0 +1,23 @@
+{
+  "limit": 10,
+  "offset": 0,
+  "total": 1,
+  "itens": [
+    {
+      "id": "84fd3a64-7447-470d-9866-27a620755935",
+      "numero": "ORG-2026-000001",
+      "criadoEm": "2026-10-22T23:07:46.703Z",
+      "nomeComprador": "Conta sintetica 1",
+      "itens": [
+        {
+          "produtoId": "2a880eb6-ad78-4d63-a513-c8a13b04fb68",
+          "nome": "Peca B sintetica",
+          "quantidade": 2,
+          "precoUnitario": 20.2,
+          "subtotal": 40.4
+        }
+      ],
+      "subtotalArtesao": 40.4
+    }
+  ]
+}

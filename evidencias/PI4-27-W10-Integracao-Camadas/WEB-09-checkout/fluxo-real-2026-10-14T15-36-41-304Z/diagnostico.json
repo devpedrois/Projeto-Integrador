@@ -1,0 +1,119 @@
+{
+  "texto": "Origem\nVitrine\nCarrinho\n2\nMinha conta\nC\nComprador WEB09\nComprador\nSair\nRevisar e confirmar pedido\n\nEstoque insuficiente para \"Vaso WEB09 Sintetico\".\n\nVaso WEB09 Sintetico\n2 x R$ 13,37\nR$ 26,74\nCesta WEB09 Sintetica\n1 x R$ 0,10\nR$ 0,10\nTotal\nR$ 26,84\nConfirmar pedido",
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "body": {
+        "itens": [
+          {
+            "produtoId": "338a4880-dc97-4fc4-9c19-26446d8d198e",
+            "quantidade": 3
+          },
+          {
+            "produtoId": "ba8e9164-5b5d-4765-8978-cc06c5a2c229",
+            "quantidade": 2
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 409,
+      "body": {
+        "itens": [
+          {
+            "produtoId": "ba8e9164-5b5d-4765-8978-cc06c5a2c229",
+            "quantidade": 2
+          },
+          {
+            "produtoId": "338a4880-dc97-4fc4-9c19-26446d8d198e",
+            "quantidade": 1
+          }
+        ]
+      }
+    }
+  ]
+}

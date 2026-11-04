@@ -1,0 +1,87 @@
+{
+  "sucesso": true,
+  "ambiente": "Next.js + Express + PostgreSQL reais, schema isolado",
+  "pedidosConferidos": 3,
+  "itensConferidos": 6,
+  "resposta404": {
+    "error": {
+      "code": "PEDIDO_NAO_ENCONTRADO",
+      "message": "Pedido nao encontrado."
+    }
+  },
+  "responsividade": [
+    {
+      "tela": "lista",
+      "width": 360,
+      "semOverflow": true
+    },
+    {
+      "tela": "lista",
+      "width": 768,
+      "semOverflow": true
+    },
+    {
+      "tela": "lista",
+      "width": 1280,
+      "semOverflow": true
+    },
+    {
+      "tela": "detalhe",
+      "width": 360,
+      "semOverflow": true
+    },
+    {
+      "tela": "detalhe",
+      "width": 768,
+      "semOverflow": true
+    },
+    {
+      "tela": "detalhe",
+      "width": 1280,
+      "semOverflow": true
+    }
+  ],
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos?pagina=1&limite=10",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos?pagina=1&limite=10",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos/1d698d3b-2b28-4672-ba1b-145ddfc4cb10",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos/c5d1ca9a-74b2-4dfa-89b1-b6d16ba39c0f",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos/8129ed7f-bca5-4913-bf5c-80a7956b96ff",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos/1d698d3b-2b28-4672-ba1b-145ddfc4cb10",
+      "status": 404
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos?pagina=1&limite=10",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos?pagina=1&limite=10",
+      "status": 200
+    }
+  ],
+  "errosPagina": []
+}

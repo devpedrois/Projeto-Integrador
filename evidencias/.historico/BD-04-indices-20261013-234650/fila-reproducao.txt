@@ -1,0 +1,47 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/fila-notificacao.integration.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:11152) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/fila-notificacao.integration.test.ts (7 tests | 1 failed) 8984ms
+   ❯ fila de notificacao ao artesao (7)
+     × retries after a simulated worker failure and still reaches processada, keeping the order confirmed 2187ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > retries after a simulated worker failure and still reaches processada, keeping the order confirmed
+AssertionError: expected 1 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ tests/integration/fila-notificacao.integration.test.ts:195:22
+    193|     await waitForStatus(pedidoId, StatusIntencao.processada);
+    194|
+    195|     expect(attempts).toBe(2);
+       |                      ^
+    196|     const intencao = await fetchIntencao(pedidoId);
+    197|     expect(intencao.tentativas).toBe(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  23:29:12
+   Duration  9.24s (tests 98%, import 1%, transform 1%)
+

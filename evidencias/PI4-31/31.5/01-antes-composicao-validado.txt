@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-31/31.5/antes-1529f71/frontend
+
+ ✓ tests/services/fake-recommendation.adapter.test.ts (8 tests) 4ms
+ ✓ tests/components/faixa-recomendacoes.test.tsx (5 tests) 81ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (6 tests) 217ms
+
+ Test Files  3 passed (3)
+      Tests  19 passed (19)
+   Start at  12:48:28
+   Duration  2.12s (transform 132ms, setup 523ms, collect 388ms, tests 302ms, environment 3.24s, prepare 340ms)
+

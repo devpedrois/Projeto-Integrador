@@ -1,0 +1,29 @@
+{
+  "aprovado": false,
+  "entradasSprint": 26,
+  "fontesOriginaisPreservadas": true,
+  "tabelasConferidas": [
+    "30.1",
+    "30.5",
+    "30.6",
+    "BD.2"
+  ],
+  "benchmarksExecutados": false,
+  "erros": [
+    "Participa��o humana ausente: BD.1: massa sint�tica ampliada",
+    "Participa��o humana ausente: 31.1: integra��o cont�nua",
+    "Participa��o humana ausente: 30.3: worker da fila como processo separado",
+    "Participa��o humana ausente: BD.2: benchmark HTTP da busca",
+    "Participa��o humana ausente: IA.1: contrato do adapter HTTP de recomenda��es",
+    "Participa��o humana ausente: BD.3: indicadores de vendas por artes�o",
+    "Participa��o humana ausente: Web.1: pedidos recebidos pelo artes�o",
+    "Participa��o humana ausente: 30.1: concorr�ncia no checkout integrado",
+    "Participa��o humana ausente: 31.2: checkout, pedido e pagamento da US20",
+    "Participa��o humana ausente: Web.2: pedidos recebidos e envio por item",
+    "Participa��o humana ausente: IA.2: carrossel de pe�as relacionadas",
+    "Participa��o humana ausente: BD.4: �ndices de suporte �s consultas novas",
+    "Participa��o humana ausente: 31.3: E2E dos fluxos cr�ticos",
+    "Tempo B1 divergente",
+    "Tempo B1 divergente"
+  ]
+}

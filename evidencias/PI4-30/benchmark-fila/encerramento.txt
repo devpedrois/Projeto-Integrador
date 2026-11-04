@@ -1,0 +1,11 @@
+(node:43076) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"dataUtc":"2026-10-25T20:26:43.970Z","motivo":"Encerrado a pedido do usuario","rodadasCompletas":3,"medicoesValidas":2,"intencoesNaInterrupcao":[{"status":"pendente","quantidade":934,"minimo":0,"maximo":0},{"status":"processada","quantidade":7,"minimo":1,"maximo":1},{"status":"publicada","quantidade":59,"minimo":0,"maximo":0}],"notificacoesNaInterrupcao":9,"schemaFilaRemovido":true}
+Resultados preservados: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-30\benchmark-fila\execucao-2026-10-25T19-34-45.068Z\

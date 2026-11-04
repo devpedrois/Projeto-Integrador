@@ -1,0 +1,34 @@
+{
+  "comando": "npm --prefix backend run test:concorrencia",
+  "exitCode": 0,
+  "rodadas": [
+    {
+      "rodada": 1,
+      "sucessos": 1,
+      "conflitos409": 49,
+      "estoqueFinal": 0,
+      "pedidosProduto": 1
+    },
+    {
+      "rodada": 2,
+      "sucessos": 1,
+      "conflitos409": 49,
+      "estoqueFinal": 0,
+      "pedidosProduto": 1
+    },
+    {
+      "rodada": 3,
+      "sucessos": 1,
+      "conflitos409": 49,
+      "estoqueFinal": 0,
+      "pedidosProduto": 1
+    }
+  ],
+  "resumo": {
+    "compradores": 50,
+    "cadastros": 50,
+    "logins": 50,
+    "schemaRemovido": true
+  },
+  "schemaAusenteAposComando": true
+}

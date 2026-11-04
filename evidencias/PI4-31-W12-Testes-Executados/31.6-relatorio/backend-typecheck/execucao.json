@@ -1,0 +1,28 @@
+{
+  "suite": "backend-typecheck",
+  "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+  "sourceBefore": {
+    "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+    "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+    "dirty": ""
+  },
+  "sourceAfter": {
+    "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+    "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+    "dirty": ""
+  },
+  "startedAt": "2026-10-26T16:35:32.427Z",
+  "finishedAt": "2026-10-26T16:35:35.630Z",
+  "durationMs": 3344.9494,
+  "cwd": "backend",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+    "run",
+    "typecheck"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "terminalSha256": "0250000afc9ea58e203ae9dfd8d241159d8e5695c59749cb8e815ebf4b7abd76",
+  "redaction": "Somente credenciais conhecidas, URLs PostgreSQL e tokens JWT."
+}

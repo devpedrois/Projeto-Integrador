@@ -204,7 +204,7 @@ Nenhuma migration da Web.2 foi aplicada ao volume público.
 
 Registros locais de validação:
 
-- [Suíte backend final](../evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/testes-backend-temporario.log).
+- [Suíte backend final](../evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/testes-backend-temporario.txt).
 - [Criação e remoção da base temporária](../evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/banco-temporario-final.json).
 - [Diagnóstico das falhas ambientais iniciais](../evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/diagnostico-volume.json).
 - [Revisão equivalente](../evidencias/PI4-BD-W12-Indices-Consultas/BD.4-indices-suporte/revisao-equivalente.md).

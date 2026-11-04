@@ -1,0 +1,62 @@
+[
+  {
+    "name": "@prisma/config",
+    "severity": "high",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "@vitest/mocker",
+    "severity": "moderate",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "body-parser",
+    "severity": "high",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "deepmerge-ts",
+    "severity": "high",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "fast-uri",
+    "severity": "moderate",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "mysql2",
+    "severity": "high",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "prisma",
+    "severity": "high",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "proxy-addr",
+    "severity": "critical",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "source-map-js",
+    "severity": "high",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "vite",
+    "severity": "high",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "vitest",
+    "severity": "moderate",
+    "versoesPreexistentes": true
+  },
+  {
+    "name": "zod",
+    "severity": "high",
+    "versoesPreexistentes": true
+  }
+]

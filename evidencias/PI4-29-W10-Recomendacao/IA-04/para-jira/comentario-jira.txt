@@ -1,0 +1,21 @@
+IA-04 concluída: métricas HTTP nas cargas demo e volume.
+
+Coleta de evidência: 14/10/2026 23:50:51, America/Sao_Paulo.
+Comando: npm.cmd run metricas:recomendacao -- --isolado
+
+- Demo: 30 produtos, dois compradores e três pedidos confirmados.
+- Volume: 1000 produtos, 300 compradores e 1500 pedidos confirmados.
+- Cobertura do catálogo: categoria 4.50%; histórico 4.30%.
+- Histórico: 2.83 categorias por resposta, em média.
+- Fallback do histórico: 1/300 compradores.
+- Categoria valida MISS frio seguido de HIT quente.
+- Histórico mantém BYPASS nas duas fases.
+- Média e p95 das duas fases constam no JSON anexado.
+- 15 testes IA-04, lint e typecheck aprovados.
+
+Anexos: GIF, capturas, log da execução, JSON e código.
+O GIF reúne capturas do relatório técnico gerado.
+Os dados vêm da execução real registrada no log.
+Não representa DevTools ou interface do marketplace.
+Scripts usam HTTP e PostgreSQL reais, sem mocks de banco.
+Schemas e servidores temporários são descartados ao terminar.

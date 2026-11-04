@@ -1,0 +1,93 @@
+{
+  "capturadoEm": "2026-10-22T22:01:17.924Z",
+  "contexto": {
+    "produtos": 1000,
+    "schema": "public",
+    "variavelVolume": "DATABASE_URL_VOLUME",
+    "somenteLeitura": true,
+    "enableSeqscan": "on",
+    "postgres": "PostgreSQL 18.6 (fd34222) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+    "node": "v22.12.0",
+    "pool": 1
+  },
+  "metodologia": {
+    "aquecimentosPorCenario": 5,
+    "medicoesPorCenario": 30,
+    "percentil": "nearest-rank",
+    "limiteP95Ms": 500,
+    "cache": "produtos: invalidado antes de cada requisicao; X-Cache=MISS obrigatorio",
+    "tempo": "HTTP ate receber e decodificar todo o JSON; invalidacao e validacao fora da cronometragem",
+    "snapshot": "REPEATABLE READ READ ONLY",
+    "ordem": "sequencial",
+    "observacao": "Nao esvazia caches PostgreSQL ou sistema operacional. Consultas Prisma sao capturadas para EXPLAIN."
+  },
+  "aprovado": true,
+  "cenarios": [
+    {
+      "cenario": "sem-filtro",
+      "filtros": {},
+      "amostras": 30,
+      "p50Ms": 41.44710000000032,
+      "p95Ms": 43.07480000000032,
+      "maxMs": 43.741399999999885,
+      "aprovado": true
+    },
+    {
+      "cenario": "termo",
+      "filtros": {
+        "termo": "vaso"
+      },
+      "amostras": 30,
+      "p50Ms": 42.35909999999967,
+      "p95Ms": 44.672599999999875,
+      "maxMs": 46.247899999999845,
+      "aprovado": true
+    },
+    {
+      "cenario": "categoria",
+      "filtros": {
+        "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385"
+      },
+      "amostras": 30,
+      "p50Ms": 41.486400000000685,
+      "p95Ms": 45.84969999999976,
+      "maxMs": 46.57220000000052,
+      "aprovado": true
+    },
+    {
+      "cenario": "tecnica",
+      "filtros": {
+        "tecnicaId": "tecnica-modelagem-argila"
+      },
+      "amostras": 30,
+      "p50Ms": 41.681800000000294,
+      "p95Ms": 43.4360999999999,
+      "maxMs": 46.07120000000032,
+      "aprovado": true
+    },
+    {
+      "cenario": "regiao",
+      "filtros": {
+        "regiaoId": "regiao-pilar-recife"
+      },
+      "amostras": 30,
+      "p50Ms": 41.27300000000014,
+      "p95Ms": 44.17950000000019,
+      "maxMs": 47.99289999999928,
+      "aprovado": true
+    },
+    {
+      "cenario": "combinado",
+      "filtros": {
+        "termo": "vaso",
+        "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+        "regiaoId": "regiao-pilar-recife"
+      },
+      "amostras": 30,
+      "p50Ms": 41.724599999999555,
+      "p95Ms": 44.08519999999953,
+      "maxMs": 45.02169999999933,
+      "aprovado": true
+    }
+  ]
+}

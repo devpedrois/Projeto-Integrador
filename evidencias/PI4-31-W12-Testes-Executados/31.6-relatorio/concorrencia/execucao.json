@@ -1,0 +1,31 @@
+{
+  "suite": "concorrencia",
+  "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+  "sourceBefore": {
+    "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+    "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+    "dirty": ""
+  },
+  "sourceAfter": {
+    "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+    "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+    "dirty": ""
+  },
+  "startedAt": "2026-10-26T16:41:28.985Z",
+  "finishedAt": "2026-10-26T16:41:40.600Z",
+  "durationMs": 11753.803,
+  "cwd": "backend",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+    "run",
+    "test:concorrencia",
+    "--",
+    "--saida",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-31-W12-Testes-Executados\\31.6-relatorio\\concorrencia\\rodadas.json"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "terminalSha256": "123219c54b38204d404e8f695b8e38a2bfb522b67f739b9fbcf585ce8ac9c1a4",
+  "redaction": "Somente credenciais conhecidas, URLs PostgreSQL e tokens JWT."
+}

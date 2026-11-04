@@ -1,0 +1,577 @@
+{
+  "total": {
+    "files": 38863,
+    "bytes": 1334826310
+  },
+  "folders": [
+    {
+      "name": "PI4-31",
+      "files": 17424,
+      "bytes": 557205178
+    },
+    {
+      "name": "P1-build-backend",
+      "files": 17290,
+      "bytes": 435666027
+    },
+    {
+      "name": "PI4-31-W12-Testes-Executados",
+      "files": 2169,
+      "bytes": 145253045
+    },
+    {
+      "name": "correcao-vercel-build-2026-10-14",
+      "files": 507,
+      "bytes": 116683648
+    },
+    {
+      "name": "PI4-27-W10-Integracao-Camadas",
+      "files": 278,
+      "bytes": 24583408
+    },
+    {
+      "name": "PI4-29-W10-Recomendacao-Integrada",
+      "files": 71,
+      "bytes": 7629263
+    },
+    {
+      "name": "PI4-28-W10-Modelo-Fisico",
+      "files": 112,
+      "bytes": 7246546
+    },
+    {
+      "name": "PI4-BD-W12-Indices-Consultas",
+      "files": 304,
+      "bytes": 6342756
+    },
+    {
+      "name": "PI4-35-W14-Microsservico-Docker",
+      "files": 103,
+      "bytes": 5816093
+    },
+    {
+      "name": "PI4-32-W14-Painel-Admin",
+      "files": 95,
+      "bytes": 5581880
+    },
+    {
+      "name": "PI4-WEB-W12-Fluxos-Artesao-Avaliacoes",
+      "files": 76,
+      "bytes": 4311714
+    },
+    {
+      "name": "PI4-29-W10-Recomendacao",
+      "files": 36,
+      "bytes": 4103156
+    },
+    {
+      "name": "PI4-30-W12-Arquitetura-Distribuida",
+      "files": 52,
+      "bytes": 2900664
+    },
+    {
+      "name": "PI4-27-W10-Documentacao-API",
+      "files": 12,
+      "bytes": 2487755
+    },
+    {
+      "name": "US01.C1",
+      "files": 35,
+      "bytes": 1871979
+    },
+    {
+      "name": "PI4-30",
+      "files": 51,
+      "bytes": 1410910
+    },
+    {
+      "name": "correcoes-integracao-producao",
+      "files": 21,
+      "bytes": 1380710
+    },
+    {
+      "name": "IA.1",
+      "files": 24,
+      "bytes": 1302475
+    },
+    {
+      "name": "Web.6",
+      "files": 28,
+      "bytes": 969191
+    },
+    {
+      "name": ".historico",
+      "files": 78,
+      "bytes": 947885
+    },
+    {
+      "name": "IA.2",
+      "files": 21,
+      "bytes": 357079
+    },
+    {
+      "name": "PI4-35",
+      "files": 12,
+      "bytes": 301786
+    },
+    {
+      "name": "BD-03",
+      "files": 4,
+      "bytes": 158011
+    },
+    {
+      "name": "PI4-33",
+      "files": 25,
+      "bytes": 117007
+    },
+    {
+      "name": "PI4-33-W14-Indices-FK-Admin",
+      "files": 14,
+      "bytes": 82279
+    },
+    {
+      "name": "IA.3",
+      "files": 13,
+      "bytes": 53570
+    },
+    {
+      "name": "BD-06",
+      "files": 3,
+      "bytes": 41970
+    },
+    {
+      "name": "BD.1",
+      "files": 3,
+      "bytes": 14927
+    },
+    {
+      "name": "BD-05",
+      "files": 2,
+      "bytes": 5398
+    }
+  ],
+  "extensions": [
+    {
+      "name": ".js",
+      "files": 13996,
+      "bytes": 301347162
+    },
+    {
+      "name": ".pack",
+      "files": 14,
+      "bytes": 213156431
+    },
+    {
+      "name": ".zip",
+      "files": 25,
+      "bytes": 116983672
+    },
+    {
+      "name": ".wasm",
+      "files": 34,
+      "bytes": 105560438
+    },
+    {
+      "name": ".map",
+      "files": 4625,
+      "bytes": 77434765
+    },
+    {
+      "name": ".mjs",
+      "files": 515,
+      "bytes": 76501757
+    },
+    {
+      "name": ".exe",
+      "files": 5,
+      "bytes": 71385088
+    },
+    {
+      "name": ".ts",
+      "files": 10591,
+      "bytes": 70157035
+    },
+    {
+      "name": ".node",
+      "files": 24,
+      "bytes": 62696776
+    },
+    {
+      "name": ".cjs",
+      "files": 940,
+      "bytes": 56956973
+    },
+    {
+      "name": ".json",
+      "files": 2484,
+      "bytes": 40009560
+    },
+    {
+      "name": ".png",
+      "files": 304,
+      "bytes": 38985064
+    },
+    {
+      "name": ".data",
+      "files": 4,
+      "bytes": 21156436
+    },
+    {
+      "name": ".gz",
+      "files": 146,
+      "bytes": 13007818
+    },
+    {
+      "name": ".html",
+      "files": 419,
+      "bytes": 12474090
+    },
+    {
+      "name": ".md",
+      "files": 1401,
+      "bytes": 9610303
+    },
+    {
+      "name": ".webm",
+      "files": 19,
+      "bytes": 8926743
+    },
+    {
+      "name": ".gif",
+      "files": 11,
+      "bytes": 5670750
+    },
+    {
+      "name": ".cts",
+      "files": 560,
+      "bytes": 4628439
+    },
+    {
+      "name": ".old",
+      "files": 1,
+      "bytes": 4403859
+    },
+    {
+      "name": ".mts",
+      "files": 281,
+      "bytes": 3109085
+    },
+    {
+      "name": "sem-extensao",
+      "files": 1129,
+      "bytes": 2985459
+    },
+    {
+      "name": ".jpg",
+      "files": 28,
+      "bytes": 2918835
+    },
+    {
+      "name": ".tar",
+      "files": 2,
+      "bytes": 2580480
+    },
+    {
+      "name": ".css",
+      "files": 45,
+      "bytes": 1950527
+    },
+    {
+      "name": ".log",
+      "files": 221,
+      "bytes": 1920803
+    },
+    {
+      "name": ".txt",
+      "files": 242,
+      "bytes": 1669160
+    },
+    {
+      "name": ".flow",
+      "files": 10,
+      "bytes": 1527920
+    },
+    {
+      "name": ".tsx",
+      "files": 242,
+      "bytes": 1283930
+    },
+    {
+      "name": ".h",
+      "files": 8,
+      "bytes": 760682
+    },
+    {
+      "name": ".pdf",
+      "files": 1,
+      "bytes": 662621
+    },
+    {
+      "name": ".woff2",
+      "files": 24,
+      "bytes": 492744
+    },
+    {
+      "name": ".ttf",
+      "files": 4,
+      "bytes": 321360
+    },
+    {
+      "name": ".webp",
+      "files": 6,
+      "bytes": 294126
+    },
+    {
+      "name": ".lock",
+      "files": 4,
+      "bytes": 209014
+    },
+    {
+      "name": ".tsbuildinfo",
+      "files": 1,
+      "bytes": 201552
+    },
+    {
+      "name": ".py",
+      "files": 19,
+      "bytes": 122077
+    },
+    {
+      "name": ".rsc",
+      "files": 22,
+      "bytes": 121539
+    },
+    {
+      "name": ".sql",
+      "files": 62,
+      "bytes": 111846
+    },
+    {
+      "name": ".jst",
+      "files": 50,
+      "bytes": 100086
+    },
+    {
+      "name": ".cc",
+      "files": 6,
+      "bytes": 83056
+    },
+    {
+      "name": ".svg",
+      "files": 20,
+      "bytes": 64757
+    },
+    {
+      "name": ".yml",
+      "files": 116,
+      "bytes": 59520
+    },
+    {
+      "name": ".ps1",
+      "files": 53,
+      "bytes": 42997
+    },
+    {
+      "name": ".def",
+      "files": 10,
+      "bytes": 33524
+    },
+    {
+      "name": ".csv",
+      "files": 6,
+      "bytes": 21802
+    },
+    {
+      "name": ".prisma",
+      "files": 2,
+      "bytes": 18033
+    },
+    {
+      "name": ".cmd",
+      "files": 53,
+      "bytes": 17308
+    },
+    {
+      "name": ".markdown",
+      "files": 6,
+      "bytes": 14396
+    },
+    {
+      "name": ".go",
+      "files": 2,
+      "bytes": 12050
+    },
+    {
+      "name": ".php",
+      "files": 2,
+      "bytes": 9226
+    },
+    {
+      "name": ".pyc",
+      "files": 1,
+      "bytes": 8561
+    },
+    {
+      "name": ".1",
+      "files": 1,
+      "bytes": 7278
+    },
+    {
+      "name": ".hash-wasm",
+      "files": 4,
+      "bytes": 6520
+    },
+    {
+      "name": ".gyp",
+      "files": 6,
+      "bytes": 4986
+    },
+    {
+      "name": ".BSD",
+      "files": 4,
+      "bytes": 4924
+    },
+    {
+      "name": ".meta",
+      "files": 22,
+      "bytes": 4314
+    },
+    {
+      "name": ".gypi",
+      "files": 6,
+      "bytes": 4084
+    },
+    {
+      "name": ".example",
+      "files": 5,
+      "bytes": 3105
+    },
+    {
+      "name": ".bnf",
+      "files": 3,
+      "bytes": 2106
+    },
+    {
+      "name": ".sh",
+      "files": 2,
+      "bytes": 2074
+    },
+    {
+      "name": ".webmanifest",
+      "files": 4,
+      "bytes": 1716
+    },
+    {
+      "name": ".yaml",
+      "files": 2,
+      "bytes": 1706
+    },
+    {
+      "name": ".mmd",
+      "files": 2,
+      "bytes": 847
+    },
+    {
+      "name": ".toml",
+      "files": 2,
+      "bytes": 262
+    },
+    {
+      "name": ".sha256",
+      "files": 1,
+      "bytes": 96
+    },
+    {
+      "name": ".ignore",
+      "files": 1,
+      "bytes": 57
+    },
+    {
+      "name": ".c",
+      "files": 2,
+      "bytes": 0
+    }
+  ],
+  "selected": {
+    "files": 1239,
+    "bytes": 55372538
+  },
+  "videos": [
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/fluxo-real-2026-10-14T03-18-13-975Z/page@fe6c152ea52bbf80b625a3f5aa717c57.webm",
+      "bytes": 61735
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/fluxo-real-2026-10-14T03-18-45-160Z/page@5bc9d11af3a17b46b81c23d14b9f6a98.webm",
+      "bytes": 281746
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/fluxo-real-2026-10-14T03-30-51-255Z/page@54172764581a0dc1beb3ed030528bb54.webm",
+      "bytes": 288196
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-16-00-504Z/page@34a207e9d3ad4c49b853129bd3b90daf.webm",
+      "bytes": 695960
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-18-38-711Z/page@822cf0f6f9a45bd4d8c9594c9b5ea37d.webm",
+      "bytes": 491509
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-18-38-711Z/page@d37181aa81ca9703a772f34ceaebb65d.webm",
+      "bytes": 295569
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-07-perfil-artesao/fluxo-real-2026-10-14T14-26-54-451Z/page@f8521722db1650cbe1d438baac8dab87.webm",
+      "bytes": 601431
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-55-55-240Z/page@8074532150c234f9a6e831634d6496cd.webm",
+      "bytes": 176135
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-08-carrinho/fluxo-real-2026-10-14T14-58-05-568Z/page@5fc4d0e181e0cfc36ae9fc49936290c0.webm",
+      "bytes": 988782
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-36-41-304Z/page@113d3b68a7a1ae5d583f1f410a1efd05.webm",
+      "bytes": 673997
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-37-32-913Z/page@84c80948e7d0d35d4b270d6e380ce24e.webm",
+      "bytes": 824451
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-09-checkout/fluxo-real-2026-10-14T15-38-55-750Z/page@f1e9aff695a7402897b049f2dd31e889.webm",
+      "bytes": 791144
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T16-58-54-882Z/page@d1bf73d09a4ba6a7bfc798a0dee7eae8.webm",
+      "bytes": 158613
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/fluxo-real-2026-10-14T17-00-01-360Z/page@a2ccb11975cdb0d5eafef81a50480bb7.webm",
+      "bytes": 338203
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-00-13-799Z/page@9d6eff4cdf297dc6602b1ede9fb4c4b1.webm",
+      "bytes": 400865
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-02-06-107Z/page@45f95ee8c596a9a35fb23510f15e22ca.webm",
+      "bytes": 364785
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/page@cb9b7e5f83b9504aac703fe17f342497.webm",
+      "bytes": 640905
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/page@2e5d4e894e1984ba54aa9d23cd4e71fa.webm",
+      "bytes": 235921
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-05-18-468Z/page@889db1fb17bf8122eba38db8a0a3fa14.webm",
+      "bytes": 616796
+    }
+  ]
+}

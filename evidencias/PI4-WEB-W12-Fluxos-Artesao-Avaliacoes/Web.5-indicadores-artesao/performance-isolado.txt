@@ -1,0 +1,30 @@
+(node:15732) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Card inicial: Indicadores de vendas
+Quantidade vendida
+2
+Receita total
+R$�118,80
+Pedidos
+2
+
+Atualizado em 25/10/2026, 16:06
+{"rodada": 1, "requisicaoMs": 169.9, "inicioRequisicaoMs": 87.8, "cardRenderMs": 259.9, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:26.205Z"}}
+{"rodada": 2, "requisicaoMs": 151.5, "inicioRequisicaoMs": 75.4, "cardRenderMs": 229.8, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:26.475Z"}}
+{"rodada": 3, "requisicaoMs": 151.7, "inicioRequisicaoMs": 73.5, "cardRenderMs": 235.4, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:26.736Z"}}
+{"rodada": 4, "requisicaoMs": 151.3, "inicioRequisicaoMs": 71.7, "cardRenderMs": 228.8, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:26.992Z"}}
+{"rodada": 5, "requisicaoMs": 151.4, "inicioRequisicaoMs": 76, "cardRenderMs": 231.1, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:27.259Z"}}
+{"rodada": 6, "requisicaoMs": 150.7, "inicioRequisicaoMs": 73.4, "cardRenderMs": 236, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:27.518Z"}}
+{"rodada": 7, "requisicaoMs": 150.5, "inicioRequisicaoMs": 74, "cardRenderMs": 228.4, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:27.780Z"}}
+{"rodada": 8, "requisicaoMs": 150.7, "inicioRequisicaoMs": 72.9, "cardRenderMs": 234.6, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:28.038Z"}}
+{"rodada": 9, "requisicaoMs": 150.9, "inicioRequisicaoMs": 71.7, "cardRenderMs": 236.5, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:28.297Z"}}
+{"rodada": 10, "requisicaoMs": 151, "inicioRequisicaoMs": 73.9, "cardRenderMs": 226.3, "valoresConferem": true, "resposta": {"quantidadeVendida": 2, "receitaTotal": 118.8, "numeroPedidos": 2, "ultimaVenda": "2026-09-03T12:00:00.000Z", "atualizadoEm": "2026-10-25T19:06:28.560Z"}}
+Dez recargas abaixo de 2s; valores conferidos contra a API.
+Schema isolado Web.5 removido.

@@ -1,0 +1,37 @@
+{
+  "mensagem": "Error",
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos?pagina=1&limite=10",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos?pagina=1&limite=10",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/pedidos/6d38414c-8da5-4cb5-8f5c-273687b6055d",
+      "status": 200
+    }
+  ],
+  "responsividade": [
+    {
+      "tela": "lista",
+      "width": 360,
+      "semOverflow": true
+    },
+    {
+      "tela": "lista",
+      "width": 768,
+      "semOverflow": true
+    },
+    {
+      "tela": "lista",
+      "width": 1280,
+      "semOverflow": true
+    }
+  ]
+}

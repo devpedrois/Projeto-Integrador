@@ -1,0 +1,75 @@
+{
+  "rodadas": [
+    {
+      "concorrencia": 1,
+      "poolMax": 3,
+      "rodada": 1,
+      "aquecimento": true,
+      "produtos": 1000,
+      "duracaoMs": 74878.3396,
+      "throughput": 13.354996990344587,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 1,
+      "picoEsperaPool": 0
+    },
+    {
+      "concorrencia": 1,
+      "poolMax": 3,
+      "rodada": 2,
+      "aquecimento": false,
+      "produtos": 1000,
+      "duracaoMs": 74522.7139,
+      "throughput": 13.41872762902694,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 1,
+      "picoEsperaPool": 0
+    },
+    {
+      "concorrencia": 1,
+      "poolMax": 3,
+      "rodada": 3,
+      "aquecimento": false,
+      "produtos": 1000,
+      "duracaoMs": 74025.0104,
+      "throughput": 13.508947781248809,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 1,
+      "picoEsperaPool": 0
+    },
+    {
+      "concorrencia": 1,
+      "poolMax": 3,
+      "rodada": 4,
+      "aquecimento": false,
+      "produtos": 1000,
+      "duracaoMs": 73981.83690000002,
+      "throughput": 13.516831183195448,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 1,
+      "picoEsperaPool": 0
+    },
+    {
+      "concorrencia": 1,
+      "poolMax": 3,
+      "rodada": 5,
+      "aquecimento": false,
+      "produtos": 1000,
+      "duracaoMs": 74284.04729999998,
+      "throughput": 13.461840547829174,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 1,
+      "picoEsperaPool": 0
+    }
+  ],
+  "diff": [],
+  "poolMax": 3,
+  "conexoesPreparadas": 3,
+  "somenteLeitura": true,
+  "postgres": "PostgreSQL 18.6 (fd34222) on aarch64-unknown-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+  "maxConexoesPostgres": 901
+}

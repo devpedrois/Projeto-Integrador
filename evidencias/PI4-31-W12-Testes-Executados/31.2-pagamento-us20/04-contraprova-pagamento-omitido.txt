@@ -1,0 +1,53 @@
+
+> origem-backend@1.0.0 test
+> vitest run --config ../evidencias/PI4-31-W12-Testes-Executados/31.2-pagamento-us20/90-mutacao.config.mjs --testNamePattern cenários 1 e 2 --testTimeout=60000 --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Desktop/Projeto integrador/backend
+
+(node:48868) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/pagamento.us20.integration.test.ts (3 tests | 1 failed | 2 skipped) 5056ms
+   ❯ US20 - checkout, pedido e pagamento em PostgreSQL real (3)
+     × US20 - cenários 1 e 2: registra pagamento único e exibe o status no detalhe 3356ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/pagamento.us20.integration.test.ts > US20 - checkout, pedido e pagamento em PostgreSQL real > US20 - cenários 1 e 2: registra pagamento único e exibe o status no detalhe
+AssertionError: expected null to deeply equal { …(5) }
+
+- Expected:
+{
+  "dataPagamento": "2026-10-25T18:20:57.894Z",
+  "id": "623ab0bf-3eed-48ad-94cc-98f28768c097",
+  "metodo": "pix_simulado",
+  "status": "aprovado",
+  "valor": 27.04,
+}
+
++ Received:
+null
+
+ ❯ tests/integration/pagamento.us20.integration.test.ts:221:36
+    219|       total: 27.04,
+    220|     });
+    221|     expect(detalhe.body.pagamento).toEqual({
+       |                                    ^
+    222|       id: pagamento.id,
+    223|       metodo: "pix_simulado",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 skipped (3)
+   Start at  15:20:53
+   Duration  5.74s (tests 90%, transform 5%, import 5%)
+

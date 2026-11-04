@@ -1,0 +1,26 @@
+commit 92da32d37a408a71b22cbdb818b1bc8c1037aceb
+Author: devpedrois <pedeoiranildo@gmail.com>
+Date:   Tue Oct 13 18:46:45 2026 -0300
+
+    feat(db): reconcile physical schema with logical model
+
+ .../migration.sql                                  |  88 +++++++++
+ backend/prisma/schema.prisma                       |  42 ++---
+ backend/scripts/concorrencia-checkout.ts           |   2 +-
+ backend/src/repositories/usuario.repository.ts     |  44 +++++
+ backend/src/services/usuario.service.ts            |  17 ++
+ backend/tests/helpers/dominio-fixtures.ts          |   2 +-
+ .../integration/constraints.integration.test.ts    |   6 +-
+ ...ominio-completo.constraints.integration.test.ts |   6 +-
+ .../fila-notificacao.integration.test.ts           |  10 +-
+ .../tests/integration/pedidos.integration.test.ts  |   2 +-
+ ...omendacao-fallback.strategy.integration.test.ts |   2 +-
+ ...o-reforco-regional.strategy.integration.test.ts |   2 +-
+ .../recomendacao.strategy.integration.test.ts      |   6 +-
+ .../recomendacoes.route.integration.test.ts        |   4 +-
+ ...reconciliacao-modelo-logico.integration.test.ts | 199 +++++++++++++++++++++
+ .../usuario.service.integration.test.ts            |  62 +++++++
+ backend/tests/unit/schema-structure.test.ts        |  14 +-
+ backend/tests/unit/usuario.service.unit.test.ts    |  16 ++
+ docs/uso-de-ia.md                                  |  15 ++
+ 19 files changed, 498 insertions(+), 41 deletions(-)

@@ -1,0 +1,26 @@
+[
+  {
+    "arquivo": "backend/scripts/metricas-recomendacao.ts",
+    "sha256": "ac40543449d862f31d1e23982d2bd53d39b3d980399af292c4bcf96dd04fb82f"
+  },
+  {
+    "arquivo": "backend/scripts/lib/recomendacao-benchmark.ts",
+    "sha256": "bfbd6a2035e71d5a849b6cce9af3c25a5c05a043c91550523cbf20f32a5c6a5c"
+  },
+  {
+    "arquivo": "backend/src/integrations/recommendation/recomendacao-volume.metricas.ts",
+    "sha256": "5dc28be89391251e2a5aa688c3e5d84e9d9a9fa34ea3aa3cba18a9c1e036f660"
+  },
+  {
+    "arquivo": "backend/tests/unit/recomendacao-volume.unit.test.ts",
+    "sha256": "0179fcfddee36250d56c4ac1bbc35a0ce7342f5e1704c63501b8f31344949152"
+  },
+  {
+    "arquivo": "backend/tests/integration/recomendacao-volume.integration.test.ts",
+    "sha256": "02cd39a9a5773a7ddd0e0e0044208eff3488ca95b7a2122c5f5cfe1636abd8e8"
+  },
+  {
+    "arquivo": "backend/package.json",
+    "sha256": "dd0ecfa77e34003b17774a61ba6e3de9fdfb873440a2dd24525d7eecf1b2ae7a"
+  }
+]

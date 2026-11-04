@@ -1,0 +1,70 @@
+{
+  "texto": "Origem\nCarrinho\n0\nEntrar\nVoltar para a vitrine\nVaso de contexto IA02\n\nSem avaliações ainda\n\nR$ 89,90\n\nEstoque: 4 disponíveis\n\nPeca sintetica de barro artesanal\n\nCategoria\nCeramica IA02\nTécnica\nModelagem em Argila\nRegião\nAlto do Moura - Caruaru\nArtesão\nVer perfil do artesão\nAdicionar ao carrinho\nPeças relacionadas\nPeca IA02 10\npor Ver perfil do artesão\nR$ 89,90\nAdicionar ao carrinho\nPeca IA02 09\npor Ver perfil do artesão\nR$ 89,90\nAdicionar ao carrinho\nPeca IA02 08\npor Ver perfil do artesão\nR$ 89,90\nAdicionar ao carrinho\nPeca IA02 07\npor Ver perfil do artesão\nR$ 89,90\nAdicionar ao carrinho\nPeca IA02 06\npor Ver perfil do artesão\nR$ 89,90\nAdicionar ao carrinho\nPeca IA02 05\npor Ver perfil do artesão\nR$ 89,90\nAdicionar ao carrinho\nPeca IA02 04\npor Ver perfil do artesão\nR$ 89,90\nAdicionar ao carrinho\nPeca IA02 03\npor Ver perfil do artesão\nR$ 89,90\nAdicionar ao carrinho",
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=2fcb4b2c-8252-4209-bb56-8506b5faeee1",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/2fcb4b2c-8252-4209-bb56-8506b5faeee1",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/avaliacoes?produtoId=2fcb4b2c-8252-4209-bb56-8506b5faeee1",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=2fcb4b2c-8252-4209-bb56-8506b5faeee1",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=2fcb4b2c-8252-4209-bb56-8506b5faeee1",
+      "status": 200
+    }
+  ]
+}

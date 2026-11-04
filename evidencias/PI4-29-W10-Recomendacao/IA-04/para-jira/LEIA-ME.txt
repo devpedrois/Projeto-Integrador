@@ -1,0 +1,28 @@
+IA-04 - pacote de evidências para anexar ao Jira
+
+IA-03 e WEB-07 foram usadas somente como referências.
+Este pacote documenta exclusivamente IA-04.
+
+Anexe primeiro IA-04-evidencias.gif e as capturas JPG.
+Use comentario-jira.txt como texto de acompanhamento.
+Inclua medicao/recomendacao-volume.json para conferir os números.
+logs/execucao-metricas.log registra a execução real desta coleta.
+Os demais logs comprovam testes focados, lint e typecheck.
+codigo/ contém seis arquivos completos da implementação e configuração.
+manifesto-sha256.json identifica o conteúdo dos arquivos copiados.
+base-git.txt informa a base e a branch capturadas.
+O código IA-04 estava sem novo commit durante a coleta.
+
+relatorio-visual.html organiza os resultados reais para inspeção.
+As capturas JPG mostram esse relatório no navegador.
+O GIF é uma montagem dessas capturas, com pausas legíveis.
+Não é gravação contínua da execução nem da aplicação.
+Não representa DevTools, terminal nativo ou interface do marketplace.
+O log e o JSON são a fonte técnica verificável.
+
+Esta reexecução possui JSON próprio para preservar a medição anterior.
+Os indicadores de qualidade são determinísticos nos seeds versionados.
+Tempos variam com ambiente e rede entre execuções.
+Cache frio significa cache da aplicação vazio.
+Histórico mantém BYPASS; não houve cache de dados pessoais.
+As bases foram sintéticas, isoladas e descartadas ao terminar.

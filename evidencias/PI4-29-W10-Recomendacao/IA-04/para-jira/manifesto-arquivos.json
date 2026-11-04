@@ -1,0 +1,122 @@
+[
+  {
+    "arquivo": "capturas/01-execucao-real.jpg",
+    "bytes": 91558,
+    "sha256": "735e492f99fd982b23de2635fa6c9c5ec032409dad7b4b09a993ace47863ffa4"
+  },
+  {
+    "arquivo": "capturas/02-cobertura-fallback-diversidade.jpg",
+    "bytes": 104404,
+    "sha256": "e27947f53cf52e0983940d9bd1e6a390ab3682360956cb4d3bbd4e9718e94788"
+  },
+  {
+    "arquivo": "capturas/03-media-p95-cache.jpg",
+    "bytes": 113220,
+    "sha256": "0832e294af4948e7cbea5a6521d5047ed116244b69dcceec2f28180ad8d8052c"
+  },
+  {
+    "arquivo": "capturas/04-log-execucao.jpg",
+    "bytes": 97753,
+    "sha256": "b98a7e91aaec4f8bcc19c9c96b840f1298ed924a35585523a8fba67b3c3313d7"
+  },
+  {
+    "arquivo": "capturas/05-testes-aprovados.jpg",
+    "bytes": 67629,
+    "sha256": "257dcb1baabcca17a382cfd00e7194c0cd1fdab6f2bc3ad3d2fda4a4a3234709"
+  },
+  {
+    "arquivo": "capturas/06-codigo-http-cache.jpg",
+    "bytes": 94398,
+    "sha256": "d4270abfdecce8f809ac86dd8b0c3b700c0f759a4aeb28e0bebb4c9f0d8feb6f"
+  },
+  {
+    "arquivo": "codigo/backend/package.json",
+    "bytes": 1752,
+    "sha256": "dd0ecfa77e34003b17774a61ba6e3de9fdfb873440a2dd24525d7eecf1b2ae7a"
+  },
+  {
+    "arquivo": "codigo/backend/scripts/lib/recomendacao-benchmark.ts",
+    "bytes": 8516,
+    "sha256": "bfbd6a2035e71d5a849b6cce9af3c25a5c05a043c91550523cbf20f32a5c6a5c"
+  },
+  {
+    "arquivo": "codigo/backend/scripts/metricas-recomendacao.ts",
+    "bytes": 10877,
+    "sha256": "ac40543449d862f31d1e23982d2bd53d39b3d980399af292c4bcf96dd04fb82f"
+  },
+  {
+    "arquivo": "codigo/backend/src/integrations/recommendation/recomendacao-volume.metricas.ts",
+    "bytes": 2408,
+    "sha256": "5dc28be89391251e2a5aa688c3e5d84e9d9a9fa34ea3aa3cba18a9c1e036f660"
+  },
+  {
+    "arquivo": "codigo/backend/tests/integration/recomendacao-volume.integration.test.ts",
+    "bytes": 7491,
+    "sha256": "02cd39a9a5773a7ddd0e0e0044208eff3488ca95b7a2122c5f5cfe1636abd8e8"
+  },
+  {
+    "arquivo": "codigo/backend/tests/unit/recomendacao-volume.unit.test.ts",
+    "bytes": 4407,
+    "sha256": "0179fcfddee36250d56c4ac1bbc35a0ce7342f5e1704c63501b8f31344949152"
+  },
+  {
+    "arquivo": "codigo/base-git.txt",
+    "bytes": 76,
+    "sha256": "cb340dae6998d49fd0b939d607de0ccf6294a3359e0576e2f406c34962cd4711"
+  },
+  {
+    "arquivo": "codigo/manifesto-sha256.json",
+    "bytes": 975,
+    "sha256": "ff5a9d5d540b6c439ed85335686a11b001a6b8455f38be60a7b95995254c31b2"
+  },
+  {
+    "arquivo": "comentario-jira.txt",
+    "bytes": 1035,
+    "sha256": "18c8c730ae5d4039e2b07d0f7471d1c3bc38b9d3f08b1213d9a30f32c3288ea5"
+  },
+  {
+    "arquivo": "IA-04-evidencias.gif",
+    "bytes": 1326565,
+    "sha256": "1d593aaaddff0694bc68b5026c1a9366f8204bd88f1da97250e6f7295d207c18"
+  },
+  {
+    "arquivo": "LEIA-ME.txt",
+    "bytes": 1483,
+    "sha256": "828c4ea5aae5fe98d3f2e6df747009dba5a72a7c9112f22c2a5c1670b46f8d1f"
+  },
+  {
+    "arquivo": "logs/execucao-metricas.log",
+    "bytes": 1549,
+    "sha256": "31e2110d84209464b9deb982a5f9853ac36bfd0cbc1b360d233aad96549e78c0"
+  },
+  {
+    "arquivo": "logs/lint.log",
+    "bytes": 45,
+    "sha256": "c8aeccba1d47a7c00dc8ea0323e93b2fe570f14c7ef8c486890784435ab1fe60"
+  },
+  {
+    "arquivo": "logs/testes-ia04.log",
+    "bytes": 856,
+    "sha256": "7ea98f030d4b8ae25ee4011fbced617be6d417406753da5b51f8164187b1b064"
+  },
+  {
+    "arquivo": "logs/typecheck.log",
+    "bytes": 54,
+    "sha256": "e9f62e75f929c9bc3e320777c53adb6c8b4761ee61415200974c56b4510ac587"
+  },
+  {
+    "arquivo": "logs/validacao-status.json",
+    "bytes": 264,
+    "sha256": "50ab55be2d0ab225e4288141176a1187f5a3ca2dbc91157e9c65bf11a89ddae5"
+  },
+  {
+    "arquivo": "medicao/recomendacao-volume.json",
+    "bytes": 7115,
+    "sha256": "5dc14630446f853017fbcba73b2e27cd9dd28fe5915fb93b22c0618fa3214229"
+  },
+  {
+    "arquivo": "relatorio-visual.html",
+    "bytes": 58536,
+    "sha256": "5c8c7d44cb25001c932c74f6af3e313b69fabd265909c2bea0feb64791bbf1bb"
+  }
+]

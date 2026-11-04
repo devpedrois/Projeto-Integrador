@@ -1,0 +1,30 @@
+{
+  "migration": [
+    {
+      "migration_name": "20261025160000_status_item_pedido",
+      "aplicada": true
+    }
+  ],
+  "colunas": [
+    {
+      "column_name": "enviadoEm",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null,
+      "datetime_precision": 3
+    },
+    {
+      "column_name": "status",
+      "udt_name": "StatusItemPedido",
+      "is_nullable": "NO",
+      "column_default": "'aguardando_envio'::\"StatusItemPedido\"",
+      "datetime_precision": null
+    }
+  ],
+  "contagens": [
+    {
+      "status": "aguardando_envio",
+      "itens": 6
+    }
+  ]
+}

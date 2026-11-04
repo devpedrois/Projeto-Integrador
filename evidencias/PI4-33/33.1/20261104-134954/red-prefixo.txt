@@ -1,0 +1,88 @@
+
+> origem-backend@1.0.0 test:integridade
+> vitest run tests/integridade --testTimeout=15000 --hookTimeout=15000
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:43992) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integridade/modelo-fisico.test.ts (9 tests | 9 failed) 29ms
+   ❯ BD-07: integridade do modelo fisico (9)
+     × rejeita estoque negativo com 23514 10ms
+     × rejeita preco 0.00 com 23514 2ms
+     × rejeita preco -0.01 com 23514 2ms
+     × rejeita nota 6 com 23514 3ms
+     × rejeita email duplicado com caixa diferente com 23505 2ms
+     × restringe exclusao de produto com pedido com 23001 1ms
+     × rejeita dois pagamentos para o mesmo pedido com 23505 2ms
+     × rejeita notificacao duplicada com 23505 2ms
+     × restringe exclusao de Tecnica referenciada com 23001 2ms
+ ❯ tests/integridade/fk-com-indice.integridade.test.ts (0 test)
+ ❯ tests/integridade/recomendacao-views.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integridade/fk-com-indice.integridade.test.ts [ tests/integridade/fk-com-indice.integridade.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f995a312-55ac-46bb-ac14-bb94c5b6a345}\AC\Temp\pnO4HvVg5scHN01iQvg9b\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integridade/fk-com-indice.integridade.test.ts:6:1
+      4|  */
+      5| import { afterAll, expect, it } from "vitest";
+      6| import { databasePool } from "../helpers/database.js";
+       | ^
+      7|
+      8| const MODO_ESTRITO = false;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  tests/integridade/recomendacao-views.test.ts [ tests/integridade/recomendacao-views.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f995a312-55ac-46bb-ac14-bb94c5b6a345}\AC\Temp\pnO4HvVg5scHN01iQvg9b\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integridade/recomendacao-views.test.ts:2:1
+      1| import { afterAll, expect, it } from "vitest";
+      2| import { databasePool } from "../helpers/database.js";
+       | ^
+      3|
+      4| afterAll(async () => databasePool.end());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > rejeita estoque negativo com 23514
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > rejeita preco 0.00 com 23514
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > rejeita preco -0.01 com 23514
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > rejeita nota 6 com 23514
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > rejeita email duplicado com caixa diferente com 23505
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > restringe exclusao de produto com pedido com 23001
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > rejeita dois pagamentos para o mesmo pedido com 23505
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > rejeita notificacao duplicada com 23505
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > restringe exclusao de Tecnica referenciada com 23001
+Error: getaddrinfo ENOTFOUND ep-solitary-fire-ack2rila-pooler.sa-east-1.aws.neon.tech
+ ❯ node_modules/pg-pool/index.js:45:11
+ ❯ tests/integridade/modelo-fisico.test.ts:110:12
+    108| beforeEach(async () => {
+    109|   idsCriados.length = 0;
+    110|   client = await databasePool.connect();
+       |            ^
+    111|   await client.query("BEGIN");
+    112|   dados = await prepararDados();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  9 failed (9)
+   Start at  13:49:55
+   Duration  646ms (import 46%, transform 25%, tests 19%, worker 10%)
+
+    Isolate  3 workers spawned · ~141ms startup each (spawn + environment, per file)
+             at least ~282ms faster with isolate: false — reuses workers across files instead of one per file
+

@@ -1,0 +1,220 @@
+{
+  "sucesso": true,
+  "idsAPI": [
+    "3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c"
+  ],
+  "idsOutraAba": [
+    "3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c"
+  ],
+  "urlCopiada": "http://127.0.0.1:39416/?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnica=tecnica-modelagem-argila",
+  "contratoProdutoValidadoPeloAdapter": true,
+  "mobileSemOverflow": true,
+  "ocultacoes": [
+    {
+      "alteracao": {
+        "desativadoPorAdmin": true
+      },
+      "api": 404,
+      "sumiuDaTela": true
+    },
+    {
+      "alteracao": {
+        "quantidadeEstoque": 0
+      },
+      "api": 404,
+      "sumiuDaTela": true
+    }
+  ],
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?termo=Vaso",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?termo=Vaso",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?termo=Vaso&categoriaId=ae79c327-0a04-44d7-b9d2-e7a1ed181666",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?termo=Vaso&categoriaId=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnicaId=tecnica-modelagem-argila",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/avaliacoes?produtoId=3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?termo=Vaso&categoriaId=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnicaId=tecnica-modelagem-argila",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/avaliacoes?produtoId=3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c",
+      "status": 404
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c",
+      "status": 404
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?termo=Vaso&categoriaId=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnicaId=tecnica-modelagem-argila",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/avaliacoes?produtoId=3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c",
+      "status": 404
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c",
+      "status": 404
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos?termo=produto-inexistente",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos",
+      "status": 200
+    }
+  ]
+}

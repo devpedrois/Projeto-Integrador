@@ -1,0 +1,37 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/bench-recomendacao-lote.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ❯ tests/unit/bench-recomendacao-lote.test.ts (15 tests | 4 failed) 80ms
+   ❯ 30.6 benchmark de recomendacao em lote (15)
+     × impede aliases e redirecionamentos da conexao de volume 3ms
+     × impede aliases e redirecionamentos da conexao de volume 0ms
+     × impede aliases e redirecionamentos da conexao de volume 0ms
+     × impede aliases e redirecionamentos da conexao de volume 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/bench-recomendacao-lote.test.ts > 30.6 benchmark de recomendacao em lote > impede aliases e redirecionamentos da conexao de volume
+ FAIL  tests/unit/bench-recomendacao-lote.test.ts > 30.6 benchmark de recomendacao em lote > impede aliases e redirecionamentos da conexao de volume
+ FAIL  tests/unit/bench-recomendacao-lote.test.ts > 30.6 benchmark de recomendacao em lote > impede aliases e redirecionamentos da conexao de volume
+ FAIL  tests/unit/bench-recomendacao-lote.test.ts > 30.6 benchmark de recomendacao em lote > impede aliases e redirecionamentos da conexao de volume
+AssertionError: expected [Function] to throw an error
+ ❯ tests/unit/bench-recomendacao-lote.test.ts:110:77
+    108|     "[BANCO_REMOVIDO]
+    109|   ])("impede aliases e redirecionamentos da conexao de volume", (url) …
+    110|     expect(() => validarAmbienteLote({ ...env, DATABASE_URL_VOLUME: ur…
+       |                                                                             ^
+    111|   });
+    112|   it.each([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 11 passed (15)
+   Start at  17:38:06
+   Duration  328ms (tests 35%, transform 33%, import 30%, worker 1%)
+

@@ -1633,3 +1633,12 @@ Acrescentou seed idempotente com 35 avaliações e compras coerentes.
 Validou testes, OpenAPI, builds e navegação real nos dois viewports.
 Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
 Evidências: [PI4-32.2](../evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/README.md).
+
+### 34.2: evidências acessíveis e sanitizadas
+
+O Codex restringiu o versionamento aos formatos de evidência permitidos.
+Converteu logs para texto e corrigiu links dos relatórios.
+Anonimizou ocorrências textuais e verificou imagens com OCR local.
+Reuniu padrões, resultados, tamanhos e vídeos na pasta 34.2.
+Validou a política Git e a varredura do staging.
+Evidências: [PI4-34.2](../evidencias/PI4-34/34.2-evidencias-versionadas/README.md).

@@ -1,0 +1,107 @@
+{
+  "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+  "timezone": "America/Sao_Paulo",
+  "suites": [
+    {
+      "suite": "backend-coverage",
+      "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+      "exitCode": 0,
+      "passed": 755,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationMs": 449725.0559,
+      "startedAt": "2026-10-26T16:33:41.741Z",
+      "finishedAt": "2026-10-26T16:41:11.291Z",
+      "coverage": {
+        "lines": {
+          "total": 2912,
+          "covered": 2383,
+          "skipped": 0,
+          "pct": 81.83
+        },
+        "branches": {
+          "total": 1430,
+          "covered": 1098,
+          "skipped": 0,
+          "pct": 76.78
+        }
+      }
+    },
+    {
+      "suite": "frontend-coverage",
+      "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+      "exitCode": 0,
+      "passed": 955,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationMs": 29934.662900000003,
+      "startedAt": "2026-10-26T16:33:28.230Z",
+      "finishedAt": "2026-10-26T16:33:58.013Z",
+      "coverage": {
+        "lines": {
+          "total": 11414,
+          "covered": 9619,
+          "skipped": 0,
+          "pct": 84.27
+        },
+        "branches": {
+          "total": 2689,
+          "covered": 2421,
+          "skipped": 0,
+          "pct": 90.03
+        }
+      }
+    },
+    {
+      "suite": "integridade",
+      "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+      "exitCode": 0,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationMs": 7314.607,
+      "startedAt": "2026-10-26T16:41:21.478Z",
+      "finishedAt": "2026-10-26T16:41:28.657Z",
+      "coverage": null
+    },
+    {
+      "suite": "e2e",
+      "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+      "exitCode": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationMs": 42459.1179,
+      "startedAt": "2026-10-26T16:38:08.436Z",
+      "finishedAt": "2026-10-26T16:38:50.757Z",
+      "coverage": null
+    },
+    {
+      "suite": "concorrencia",
+      "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+      "exitCode": 0,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationMs": 11753.803,
+      "startedAt": "2026-10-26T16:41:28.985Z",
+      "finishedAt": "2026-10-26T16:41:40.600Z",
+      "coverage": null
+    }
+  ],
+  "tickets": [
+    {
+      "createdAt": "2026-10-26T16:35:27Z",
+      "number": 1,
+      "state": "OPEN",
+      "title": "[31.6] CI backend falha por importação Playwright do frontend",
+      "url": "https://github.com/devpedrois/Projeto-Integrador/issues/1"
+    }
+  ],
+  "durationDefinition": "Tempo do wrapper, incluindo subprocesso, cobertura, limpeza e conferencia Git final."
+}

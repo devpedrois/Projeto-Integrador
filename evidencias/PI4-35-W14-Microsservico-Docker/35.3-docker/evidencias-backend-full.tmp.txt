@@ -1,0 +1,160 @@
+
+> origem-backend@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:37340) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:46388) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:45988) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"event":"notificacao-processada","pedidoId":"01fc4977-a1e0-405e-af0f-a15b1e223640","intencaoId":"4a4024e8-1f75-454b-a031-f14f9a3dbd87"}
+{"event":"notificacao-processada","pedidoId":"1819e1fa-09e8-48be-a581-1c6f79eec809","intencaoId":"379214fb-7398-4023-84d1-c3dac32801c4"}
+(node:41376) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ ❯ tests/integridade/modelo-fisico.test.ts (9 tests | 2 failed) 96ms
+   ❯ BD-07: integridade do modelo fisico (9)
+     × restringe exclusao de produto com pedido com 23001 14ms
+     × restringe exclusao de Tecnica referenciada com 23001 9ms
+{"event":"notificacao-processada","pedidoId":"9b00929c-b473-4244-b7f0-eed5d1a0e469","intencaoId":"c6823294-a242-4468-81b5-cff4301e4ef1"}
+{"event":"notificacao-processada","pedidoId":"4451803e-4a13-46a1-8a8a-1600cdefd36d","intencaoId":"795c5b48-2e02-4f8c-83a0-cfc5c8ef6696"}
+ ❯ tests/integration/tecnica-regiao.integration.test.ts (11 tests | 3 failed) 69ms
+   ❯ BD-03: referencias Tecnica e Regiao no PostgreSQL (11)
+     × bloqueia exclusao de tecnica referenciada por produto 12ms
+     × bloqueia exclusao da referencia tecnicaPrincipalId do perfil 5ms
+     × bloqueia exclusao da referencia regiaoId do perfil 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > restringe exclusao de produto com pedido com 23001
+AssertionError: expected error: update or delete on table "Produto… { …(15) } to match object { code: '23001', …(1) }
+(16 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "23001",
++ DatabaseError {
++   "code": "23503",
+    "constraint": "ItemPedido_produtoId_fkey",
+  }
+
+ ❯ tests/integridade/modelo-fisico.test.ts:205:6
+    203|         dados.produtoId,
+    204|       ]),
+    205|     ).rejects.toMatchObject({
+       |      ^
+    206|       code: "23001",
+    207|       constraint: "ItemPedido_produtoId_fkey",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/integridade/modelo-fisico.test.ts > BD-07: integridade do modelo fisico > restringe exclusao de Tecnica referenciada com 23001
+AssertionError: expected error: update or delete on table "Tecnica… { …(15) } to match object { code: '23001', …(1) }
+(16 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "23001",
++ DatabaseError {
++   "code": "23503",
+    "constraint": "Produto_tecnicaId_fkey",
+  }
+
+ ❯ tests/integridade/modelo-fisico.test.ts:241:6
+    239|         dados.tecnicaId,
+    240|       ]),
+    241|     ).rejects.toMatchObject({
+       |      ^
+    242|       code: "23001",
+    243|       constraint: "Produto_tecnicaId_fkey",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > bloqueia exclusao de tecnica referenciada por produto
+AssertionError: expected error: update or delete on table "Tecnica… { …(15) } to match object { code: '23001' }
+(17 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "23001",
++ DatabaseError {
++   "code": "23503",
+  }
+
+ ❯ expectPostgresError tests/helpers/postgres-error.ts:11:19
+      9|     throw new Error("Expected PostgreSQL operation to fail");
+     10|   } catch (error: unknown) {
+     11|     expect(error).toMatchObject({ code: expectedCode });
+       |                   ^
+     12|   }
+     13| }
+ ❯ tests/integration/tecnica-regiao.integration.test.ts:75:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > bloqueia exclusao da referencia tecnicaPrincipalId do perfil
+AssertionError: expected error: update or delete on table "Tecnica… { …(15) } to match object { code: '23001' }
+(17 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "23001",
++ DatabaseError {
++   "code": "23503",
+  }
+
+ ❯ expectPostgresError tests/helpers/postgres-error.ts:11:19
+      9|     throw new Error("Expected PostgreSQL operation to fail");
+     10|   } catch (error: unknown) {
+     11|     expect(error).toMatchObject({ code: expectedCode });
+       |                   ^
+     12|   }
+     13| }
+ ❯ tests/integration/tecnica-regiao.integration.test.ts:90:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > bloqueia exclusao da referencia regiaoId do perfil
+AssertionError: expected error: update or delete on table "Regiao"… { …(15) } to match object { code: '23001' }
+(17 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "23001",
++ DatabaseError {
++   "code": "23503",
+  }
+
+ ❯ expectPostgresError tests/helpers/postgres-error.ts:11:19
+      9|     throw new Error("Expected PostgreSQL operation to fail");
+     10|   } catch (error: unknown) {
+     11|     expect(error).toMatchObject({ code: expectedCode });
+       |                   ^
+     12|   }
+     13| }
+ ❯ tests/integration/tecnica-regiao.integration.test.ts:90:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  2 failed | 76 passed (78)
+      Tests  5 failed | 803 passed (808)
+   Start at  15:41:36
+   Duration  135.26s (tests 83%, import 16%, transform 1%)
+
+    Isolate  78 workers spawned · ~114ms startup each (spawn + environment, per file)
+             at least ~8.77s faster with isolate: false — reuses workers across files instead of one per file
+

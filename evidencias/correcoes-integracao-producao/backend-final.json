@@ -1,0 +1,3497 @@
+{
+  "project": "backend",
+  "exitCode": 0,
+  "total": 762,
+  "passou": 762,
+  "falhou": 0,
+  "pendente": 0,
+  "sucesso": true,
+  "suites": [
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integridade/modelo-fisico.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-07: integridade do modelo fisico rejeita estoque negativo com 23514",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-07: integridade do modelo fisico rejeita preco 0.00 com 23514",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-07: integridade do modelo fisico rejeita preco -0.01 com 23514",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-07: integridade do modelo fisico rejeita nota 6 com 23514",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-07: integridade do modelo fisico rejeita email duplicado com caixa diferente com 23505",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-07: integridade do modelo fisico restringe exclusao de produto com pedido com 23001",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-07: integridade do modelo fisico rejeita dois pagamentos para o mesmo pedido com 23505",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-07: integridade do modelo fisico rejeita notificacao duplicada com 23505",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-07: integridade do modelo fisico restringe exclusao de Tecnica referenciada com 23001",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/auth.routes.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "POST /auth/register normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register cria perfil de artesao incompleto e inicia sessao de artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=false",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=true",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register preserva conta e carrinho quando a emissao da sessao falha apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"papel\":\"admin\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"papel\":\"outro\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"nome\":\"ab\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"email\":\"email-invalido\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"senha\":\"[CREDENCIAL_REMOVIDA]\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"senha\":\"[CREDENCIAL_REMOVIDA]\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"senha\":\"[CREDENCIAL_REMOVIDA]\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"ativo\":true}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register rejeita entrada invalida ou campos extras: {\"senhaHash\":\"hash-injetado\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register retorna 409 para email em uso com caixa e espacos distintos",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register mantem unicidade em cadastros simultaneos",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register reverte Usuario se o segundo insert falhar para comprador",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/register reverte Usuario se o segundo insert falhar para artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login emite JWT de 24h e cookie seguro conforme COOKIE_SECURE=false",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login emite JWT de 24h e cookie seguro conforme COOKIE_SECURE=true",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login retorna status e corpo byte a byte iguais nos tres logins invalidos",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login executa bcrypt real contra o mesmo hash fixo para email inexistente",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login valida o login na borda: {\"email\":\"invalido\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login valida o login na borda: {\"senha\":\"[CREDENCIAL_REMOVIDA]\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login valida o login na borda: {\"senha\":\"[CREDENCIAL_REMOVIDA]\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login valida o login na borda: {\"papel\":\"admin\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login retorna 400 para JSON malformado em /auth/register",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login retorna 400 para JSON malformado em /auth/login",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /auth/login recusa emitir sessao sem JWT_SECRET configurado",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout retorna somente usuario publico e encerra sessao no logout",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout rejeita sessao invalida, expirada ou de usuario ausente: 0",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout rejeita sessao invalida, expirada ou de usuario ausente: 1",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout rejeita sessao invalida, expirada ou de usuario ausente: 2",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout rejeita sessao invalida, expirada ou de usuario ausente: 3",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout rejeita sessao invalida, expirada ou de usuario ausente: 4",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout rejeita sessao invalida, expirada ou de usuario ausente: 5",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout rejeita sessao invalida, expirada ou de usuario ausente: 6",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout reconsulta o usuario e recusa sessao de usuario desativado",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /auth/me e POST /auth/logout remove definitivamente o probe temporario",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/authorization.routes.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-04: matriz de autorizacao POST /pedidos como anonimo retorna 401",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: matriz de autorizacao POST /pedidos como comprador retorna 201",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: matriz de autorizacao POST /pedidos como artesao retorna 403",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: matriz de autorizacao POST /pedidos como admin retorna 403",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: matriz de autorizacao PATCH /admin/usuarios/:id/papel como anonimo retorna 401",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: matriz de autorizacao PATCH /admin/usuarios/:id/papel como comprador retorna 403",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: matriz de autorizacao PATCH /admin/usuarios/:id/papel como artesao retorna 403",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: matriz de autorizacao PATCH /admin/usuarios/:id/papel como admin retorna 200",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: sessao protegida rejeita JWT invalido ou expirado em pedido",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: sessao protegida rejeita JWT invalido ou expirado em admin",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: sessao protegida nega sessao desativada depois do login em pedido",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: sessao protegida nega sessao desativada depois do login em admin",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: sessao protegida usa o papel atual do banco apos alteracao administrativa",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: sessao protegida retira acesso administrativo mesmo com papel admin no JWT antigo",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: sessao protegida recusa elevar privilegio confiando apenas nas claims",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos rejeita a chave extra compradorId no checkout",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos rejeita a chave extra compradorRef no checkout",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos rejeita a chave extra outro no checkout",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos rejeita campos extras dentro dos itens do checkout",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos impede admin alterar o proprio papel com UUID maiusculo=false",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos impede admin alterar o proprio papel com UUID maiusculo=true",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos valida papel e campos extras: {\"papel\":\"admin\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos valida papel e campos extras: {\"papel\":\"outro\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos valida papel e campos extras: {\"papel\":\"\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos valida papel e campos extras: {\"papel\":1}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos valida papel e campos extras: {}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos valida papel e campos extras: {\"papel\":\"artesao\",\"ativo\":false}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos valida UUID do usuario alvo",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos retorna 404 para usuario alvo ausente",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-04: entradas e limites administrativos permite admin alterar artesao para comprador preservando dados pessoais",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/avaliacoes.web3.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real grava identidade do token, normaliza comentario e recalcula media na leitura",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real retorna 409 na segunda avaliacao e preserva a primeira",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real unicidade resiste a duas tentativas concorrentes",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"nota\":0} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"nota\":6} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"nota\":3.5} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"nota\":\"5\"} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"nota\":null} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"comentario\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"comentario\":null} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"produtoId\":\"invalido\"} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"compradorId\":\"outra-conta\"} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real rejeita corpo invalido {\"extra\":true} sem gravar",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real limita comentario depois do trim e omite comentario vazio",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real exige comprador autenticado",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real produto sem compra confirmada retorna 403 seguro",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.3 avaliacoes HTTP em PostgreSQL real escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/avaliacoes.web4.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real permite somente ao comprador com pedido confirmado e depois informa ja avaliado",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real nao comprou recebe 403 estavel, sem gravacao ou invalidacao de cache",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real nao autoriza pedido pendente",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real nao autoriza pedido cancelado",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real nao autoriza pedido alheio",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real revalida a compra no POST mesmo apos elegibilidade positiva",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real produto inexistente e avaliacao legada sem compra nao concedem permissao",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real post exige sessao e papel comprador",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real get exige sessao e papel comprador",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real rejeita query invalida: ",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real rejeita query invalida: produtoId=invalido",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real rejeita query invalida: produtoId=a&produtoId=b",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real rejeita query invalida: produtoId=00000000-0000-4000-8000-000000000000&compradorId=outro",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.4 compra verificada em PostgreSQL real mantem os locks de autorizacao na transacao que insere",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/bench-fila.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "30.5 mede processos reais e reinicia somente as intencoes selecionadas",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/bench-recomendacao-lote.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "30.6 executa quinze rodadas da Strategy real com pools C+2",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/busca-p95.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD.2: HTTP com PostgreSQL real mede seis cenarios sem cache e salva CSV e planos reais",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/cache.web13.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-13 cache HTTP publico segunda chamada e HIT com consulta mais rapida e log seguro",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico normaliza query validada, ordem, defaults e UUIDs",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico nao compartilha recomendacoes por usuario nem cacheia rotas privadas",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico criar invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico editar invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico remover invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico estoque invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico moderar-produto invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico moderar-artesao invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico pedido invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico perfil invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico papel invalida catalogo e recomendacoes apos commit",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico escrita rejeitada nao invalida dados confirmados",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico TTL configurado expira usando relogio fake e banco real",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-13 cache HTTP publico 404 repetido continua MISS e registra duracao sem armazenar erro",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/carrinho.routes.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-08 carrinho do comprador protege todas as rotas para anonimo",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador protege todas as rotas para artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador protege todas as rotas para admin",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador le carrinho vazio somente da sessao e impede cache",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador POST soma, grava preco do banco e persiste entre sessoes",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador PATCH substitui quantidade e atualiza preco a partir do banco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador DELETE remove somente da sessao atual e permite limpar ocultos",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador 409 inclui produto e nome sem alterar quantidade ou preco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador produto oculto, inexistente ou artesao inativo retorna 404",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador rejeita quantidade invalida 0",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador rejeita quantidade invalida -1",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador rejeita quantidade invalida 1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador rejeita quantidade invalida 2",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador rejeita quantidade invalida 2147483648",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador rejeita identidade ou preco externos e query na leitura",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-08 carrinho do comprador adicoes concorrentes nao perdem quantidade nem ultrapassam estoque",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-12 catalogo e moderacao matriz de propriedade PATCH",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao matriz de propriedade DELETE",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao matriz de propriedade ESTOQUE",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao cria pelo token, valida referencias e rejeita identidade externa",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao lista todos os produtos proprios incluindo inativos e sem estoque",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao protege todas as rotas admin antes de validar entradas",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao modera artesao reversivelmente e invalida login e sessao",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao moderacao preserva soft delete e dono nao reativa produto moderado",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao rejeita estoque invalido {\"quantidadeEstoque\":-1}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao rejeita estoque invalido {\"quantidadeEstoque\":1.5}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao rejeita estoque invalido {\"quantidadeEstoque\":2147483648}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao rejeita estoque invalido {\"quantidadeEstoque\":\"3\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao rejeita estoque invalido {\"quantidadeEstoque\":2,\"artesaoId\":\"externo\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao listas administrativas incluem inativos sem dados secretos",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {\"nome\":\"\"} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {\"preco\":0} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {\"preco\":1.234} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {\"categoriaId\":\"invalido\"} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {\"fotos\":[{\"url\":\"javascript:alert(1)\"}]} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {\"fotos\":[]} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {\"desativadoPorAdmin\":false} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {\"artesaoId\":\"externo\"} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao PATCH rejeita entrada invalida {} sem alterar produto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao soft delete preserva itens de pedidos anteriores",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao checkout simultaneo com estoque manual preserva ordem dos commits",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-12 catalogo e moderacao revalida bloqueio administrativo depois de esperar o lock do produto",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/catalogo.routes.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "catalogo publico WEB-06 impede cache publico de catalogo e detalhe moderavel",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 combina termo e todos os filtros sem vazar produtos ocultos",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 valida o contrato Produto e agrega fotos, notas e vendas confirmadas",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 ocultos e inexistentes devolvem o mesmo 404",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 reflete moderacao e estoque imediatamente nas leituras",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 busca na descricao e trata curingas como texto literal",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 pagina com ordem estavel e sem duplicar registros",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: categoriaId=texto",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: artesaoId=texto",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: tecnicaId=",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: regiaoId=../x",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: regiaoId=x%27",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: categoriaId=a&categoriaId=b",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: limit=101",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: limit=0",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: limit=-1",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: limit=1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: offset=-1",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: offset=10001",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: offset=Infinity",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: limit=",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: termo=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita query invalida: desconhecido=1",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 rejeita ID invalido no detalhe",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 lista opcoes reais sem dados de usuarios",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 lista apenas artesaos ativos sem sessao e sem dados privados",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 retorna avaliacoes e resumo consistente sem credenciais",
+          "status": "passed"
+        },
+        {
+          "nome": "catalogo publico WEB-06 avaliações ocultas nao revelam o produto",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/checkout.web09.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-09 checkout transacional real gera dez numeros distintos e sequenciais pelo PostgreSQL",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-09 checkout transacional real preserva concorrencia entre compradores, rodada 1",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-09 checkout transacional real preserva concorrencia entre compradores, rodada 2",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-09 checkout transacional real preserva concorrencia entre compradores, rodada 3",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-09 checkout transacional real rollback inclui baixas e carrinho quando Pagamento falha",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-09 checkout transacional real rollback inclui baixas e carrinho quando IntencaoNotificacao falha",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-09 checkout transacional real rejeita produto oculto: {\"ativo\":false}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-09 checkout transacional real rejeita produto oculto: {\"desativadoPorAdmin\":true}",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-09 checkout transacional real rejeita total fora da capacidade monetaria sem gravacoes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/concorrencia-script.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "limpa schema quando a porta do servidor esta ocupada",
+          "status": "passed"
+        },
+        {
+          "nome": "comando autentica cinco compradores, valida tres rodadas e remove seu schema",
+          "status": "passed"
+        },
+        {
+          "nome": "recusa sobrescrever um arquivo JSON existente",
+          "status": "passed"
+        },
+        {
+          "nome": "rejeita N=0 antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "rejeita N=1 antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "rejeita N=-1 antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "rejeita N=1.5 antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "rejeita N=101 antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "rejeita N=abc antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "recusa ambiente production antes de criar dados",
+          "status": "passed"
+        },
+        {
+          "nome": "recusa a mesma base identificada como deploy",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/constraints.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "reduced FCCPD schema constraints rejects negative stock",
+          "status": "passed"
+        },
+        {
+          "nome": "reduced FCCPD schema constraints rejects zero item quantity",
+          "status": "passed"
+        },
+        {
+          "nome": "reduced FCCPD schema constraints rejects missing required relationships",
+          "status": "passed"
+        },
+        {
+          "nome": "reduced FCCPD schema constraints rejects unknown relationship references",
+          "status": "passed"
+        },
+        {
+          "nome": "reduced FCCPD schema constraints rejects missing pedidoId with a valid produtoId",
+          "status": "passed"
+        },
+        {
+          "nome": "reduced FCCPD schema constraints rejects unknown pedidoId with a valid produtoId",
+          "status": "passed"
+        },
+        {
+          "nome": "reduced FCCPD schema constraints rejects missing produtoId with a valid pedidoId",
+          "status": "passed"
+        },
+        {
+          "nome": "reduced FCCPD schema constraints rejects unknown produtoId with a valid pedidoId",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/db-explain.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD.4 compara candidatos reais sem persistir indices ou mudar resultados",
+          "status": "passed"
+        },
+        {
+          "nome": "db:explain grava pares reais, tabela e reverte o schema",
+          "status": "passed"
+        },
+        {
+          "nome": "db:explain atual mede tambem tabelas vazias sem alterar dados",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/ddl-fisico.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-01: modelo fisico documentado recria o catalogo das migrations sem alterar o schema existente",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-01: modelo fisico documentado documenta todas as tabelas e suas colunas fisicas",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-01: modelo fisico documentado vincula todos os indices e CHECKs ao documento",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-01: modelo fisico documentado gera numeros de pedido usando a sequence restaurada",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/dominio-completo.constraints.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects an order without a comprador (usuario)",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects an item without a pedido",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects an item without a produto",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects a produto without an artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects a produto without a categoria",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects a duplicate email",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects negative stock on the full domain schema",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects a nota of 0 outside the 1-5 range",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects a nota of 6 outside the 1-5 range",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) rejects a second pagamento for the same pedido",
+          "status": "passed"
+        },
+        {
+          "nome": "full domain schema constraints (PI4-19.5) preserves ItemPedido when the produto is logically deactivated",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/envio-item.web2.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.2 envio de item em PostgreSQL real expoe id e estado inicial dos proprios itens",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.2 envio de item em PostgreSQL real nao revela item alheio nem permite seu envio",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.2 envio de item em PostgreSQL real recusa pedido nao confirmado: 53581737-a6a2-49df-b428-8e05c82723d9",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.2 envio de item em PostgreSQL real recusa pedido nao confirmado: 7f37c4e7-169f-442b-8af9-2c7b9192596a",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.2 envio de item em PostgreSQL real envia cinco itens e atualiza comprador com a mesma sessao",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.2 envio de item em PostgreSQL real serializa envios concorrentes com um unico sucesso",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.2 envio de item em PostgreSQL real exige sessao e papel artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.2 envio de item em PostgreSQL real valida identificador, corpo e query antes da mutacao",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/fila-notificacao.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "fila de notificacao ao artesao creates a pending IntencaoNotificacao in the same transaction as the order",
+          "status": "passed"
+        },
+        {
+          "nome": "fila de notificacao ao artesao publishes a pending intention and the worker processes it to processada",
+          "status": "passed"
+        },
+        {
+          "nome": "fila de notificacao ao artesao retries after a simulated worker failure and still reaches processada, keeping the order confirmed",
+          "status": "passed"
+        },
+        {
+          "nome": "fila de notificacao ao artesao recovers a pending intention after a simulated restart",
+          "status": "passed"
+        },
+        {
+          "nome": "fila de notificacao ao artesao keeps a single effect on duplicate redelivery of the same job data",
+          "status": "passed"
+        },
+        {
+          "nome": "fila de notificacao ao artesao preserves the original processadaEm under concurrent redelivery",
+          "status": "passed"
+        },
+        {
+          "nome": "fila de notificacao ao artesao does not regress processada back to publicada when the publisher revisits it",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/foto-perfil.routes.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario exige sessao e papel antes de processar o arquivo",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario rejeita PDF renomeado preservando foto e disco",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario rejeita PNG de 3 MB preservando foto e disco",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario rejeita GIF preservando foto e disco",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario rejeita MIME divergente preservando foto e disco",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario rejeita MIME ausente preservando foto e disco",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario rejeita vazio preservando foto e disco",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario rejeita assinatura truncada preservando foto e disco",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario exige um unico arquivo foto sem campos extras",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario aceita JPG 500 KB com UUID e substitui removendo anterior",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario aceita exatamente 2 MB e serializa substituicoes concorrentes",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario nao remove foto de terceiro injetada pelo PATCH",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario falha no banco compensa o arquivo novo sem expor detalhes",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.6 upload real com PostgreSQL e disco temporario falha de storage preserva banco e nao vaza token na resposta",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/health.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "GET /health sets security headers on /health without advertising Express",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /health sets security headers on /recomendacoes without advertising Express",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /health sets security headers on /missing-route without advertising Express",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /health confirms access to the real PostgreSQL database",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/indicadores.route.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD.3 GET /artesao/indicadores soma apenas itens próprios confirmados sem fanout ou reprecificação",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.3 GET /artesao/indicadores isola o segundo artesão em pedidos compartilhados",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.3 GET /artesao/indicadores retorna zeros para artesão sem vendas",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.3 GET /artesao/indicadores retorna zeros para artesão sem produtos",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.3 GET /artesao/indicadores rejeita identidade externa pela query",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.3 GET /artesao/indicadores rejeita anônimo",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.3 GET /artesao/indicadores rejeita papel comprador mesmo com papel forjado no token",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.3 GET /artesao/indicadores rejeita papel admin mesmo com papel forjado no token",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.3 GET /artesao/indicadores documenta indicadores e segurança no OpenAPI",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/indices-consultas.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-04 em PostgreSQL real aplica indices completos e substitui o simples de pedidos",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real vitrine exclui inativos, moderados e estoque zero",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real busca encontra nome e descricao sem diferenciar caixa",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real filtro-categoria preserva visibilidade e ordenacao",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real filtro-tecnica preserva visibilidade e ordenacao",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real filtro-regiao preserva visibilidade e ordenacao",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real meus pedidos exclui terceiros e ordena por data",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real poller recupera somente pendentes e falhas",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real notificacoes restringem usuario e estado de leitura",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-04 em PostgreSQL real carrinho usa o prefixo do unique sem indice redundante",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/metricas-reforco-regional.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "IA.3 comparacao regional com PostgreSQL real conta produtos, fallback, cobertura, categoria e regiao nos dois modos",
+          "status": "passed"
+        },
+        {
+          "nome": "IA.3 comparacao regional com PostgreSQL real executa somente o modo on solicitado",
+          "status": "passed"
+        },
+        {
+          "nome": "IA.3 comparacao regional com PostgreSQL real executa somente o modo off solicitado",
+          "status": "passed"
+        },
+        {
+          "nome": "IA.3 comparacao regional com PostgreSQL real retorna zeros em base vazia sem NaN ou Infinity",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/meus-pedidos.web11.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real lista somente os pedidos do token, em data decrescente e com pagamento",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real pagina sem repetir pedidos e informa total",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real confere itens e valores do pedido 0 contra o banco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real confere itens e valores do pedido 1 contra o banco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real confere itens e valores do pedido 2 contra o banco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real /pedidos exige sessao e papel comprador",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real /pedidos/00000000-0000-4000-8000-000000000000 exige sessao e papel comprador",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: pagina=0",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: pagina=-1",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: pagina=1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: pagina=10001",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: limite=101",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: limite=0",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: limite=abc",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: pagina=1&pagina=2",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita query invalida: compradorId=outro",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real rejeita UUID invalido na borda",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real impede cache das leituras privadas",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-11 meus pedidos em PostgreSQL real preserva ausencia de valores e pagamento em pedido legado",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/notificacao-auto-publish.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "auto-publish of pending notification intentions moves a real POST /pedidos intention from pendente to processada without manual queue calls",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/notificacao-migration.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-06 aplica apos o historico existente em PostgreSQL real",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/notificacao.repository.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-06: PrismaNotificacaoRepository dois registros iguais resultam em uma linha",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-06: PrismaNotificacaoRepository reentrega preserva estado lido, ID e data originais",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-06: PrismaNotificacaoRepository pedidos distintos produzem notificacoes distintas",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-06: PrismaNotificacaoRepository rejeita usuarioId inexistente",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-06: PrismaNotificacaoRepository rejeita pedidoId inexistente",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/notificacoes.web14.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-14 notificacoes 30.5 aguarda a latencia antes de gravar sem alterar a idempotencia",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-14 notificacoes grava um aviso por artesao distinto antes de processar",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-14 notificacoes redelivery concorrente preserva leitura, id e timestamp",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-14 notificacoes falha parcial deixa intencao pendente e retry completa sem duplicar",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-14 notificacoes lista somente token com nao lidas primeiro e data decrescente",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-14 notificacoes marca somente propria e retorna 404 indistinguivel para outra",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-14 notificacoes protege rota get por sessao e papel",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-14 notificacoes protege rota patch por sessao e papel",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/pagamento.us20.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "US20 - checkout, pedido e pagamento em PostgreSQL real US20 - cenários 1 e 2: registra pagamento único e exibe o status no detalhe",
+          "status": "passed"
+        },
+        {
+          "nome": "US20 - checkout, pedido e pagamento em PostgreSQL real US20 - cenário 1: estoque insuficiente retorna 409 sem pedido ou pagamento",
+          "status": "passed"
+        },
+        {
+          "nome": "US20 - checkout, pedido e pagamento em PostgreSQL real US20 - cenário 2: outro comprador não visualiza o pagamento",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/pedidos-artesao.web1.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real isola o payload inteiro e soma somente os proprios itens",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real filtra confirmados antes de paginar e ordena por data decrescente",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real retorna lista vazia para artesao sem produtos",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real exige sessao e restringe o papel a artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: limit=0",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: limit=101",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: limit=-1",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: limit=1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: limit=abc",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: offset=-1",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: offset=1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: offset=10001",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: offset=Infinity",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: limit=1&limit=2",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: offset=0&offset=1",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: limit[x]=1",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: artesaoId=outro",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: compradorId=outro",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: escopo=artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real rejeita parametros invalidos: status=pendente",
+          "status": "passed"
+        },
+        {
+          "nome": "Web.1 pedidos do artesao em PostgreSQL real revalida papel e atividade apos emitir o token",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/pedidos.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "POST /pedidos mantem checkout concorrente com cookie: uma criacao e um conflito",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /pedidos creates an order and decrements stock exactly by the requested quantity",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /pedidos rejects an order referencing a missing product",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /pedidos rejects an order with an invalid quantity",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /pedidos rejects an order when stock is insufficient",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /pedidos rolls back the whole order when one item among several fails",
+          "status": "passed"
+        },
+        {
+          "nome": "POST /pedidos treats case-variant duplicate produtoId as the same product and never goes negative",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/perfil-artesao.routes.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-07 perfil do artesao publica somente campos publicos e reaproveita produtos por artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao inativo, inexistente e outros papeis retornam o mesmo 404",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao artesao sem campos preenchidos possui perfil publico incompleto",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao bloqueia PATCH como anonimo sem alterar o banco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao bloqueia PATCH como terceiro sem alterar o banco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao bloqueia PATCH como admin sem alterar o banco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao bloqueia PATCH como comprador sem alterar o banco",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao salva o proprio perfil normalizando UUID e recalculando completo",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao aceita exatamente mil caracteres e preserva campos omitidos",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 0",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 1",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 2",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 3",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 4",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 5",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 6",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 7",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 8",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 9",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao rejeita entrada invalida sem alterar o banco 10",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao limpa referencias e recalcula pendencias sem aceitar completo do cliente",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-07 perfil do artesao valida UUID na borda",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/recomendacao-fallback.strategy.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "CategoriaRecomendacaoStrategy - fallback geral ordena o universo geral por vendas, nota media e UUID, limitado a oito",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - fallback geral nunca repete IDs e nunca supera oito itens",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - fallback geral nunca inclui produto inativo ou sem estoque",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - fallback geral aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - fallback geral aciona o fallback quando o produto de contexto nao existe",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - fallback geral aciona o fallback sintetico para contexto usuarioId na U1, sem consultar historico pessoal",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/recomendacao-metricas.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "calcularMetricasBaseline - carga sintetica real (PI4-20.5) reproduz cobertura e acerto por categoria calculados de forma independente da base",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularMetricasBaseline - carga sintetica real (PI4-20.5) produz o mesmo resultado em execucoes repetidas sobre os mesmos dados",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularMetricasBaseline - carga sintetica real (PI4-20.5) nunca gera denominador zero quando ha carga sintetica com produtos ativos e com estoque",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) sem reforco, preserva a ordenacao baseline por vendas, ignorando regiao",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) com reforco, prioriza candidatos da mesma regiao do contexto antes de olhar vendas",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) com reforco, desempate dentro de cada grupo regional continua deterministico por UUID",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) com reforco, o limite de oito itens permanece respeitado",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/recomendacao-volume.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "IA-04: medicao por HTTP e PostgreSQL reais CLI seleciona schemas existentes sem modificar dados e salva tabela/JSON",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: medicao por HTTP e PostgreSQL reais mede ambas as estrategias, distingue MISS/HIT e bypass pessoal",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/recomendacao.strategy.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) reproduz o mesmo ranking da fixture usada pelo FakeRecommendationAdapter",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) nunca retorna mais itens que o limite documentado",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) nunca inclui o produto de contexto no resultado",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) nunca inclui produto de outra categoria, inativo ou sem estoque",
+          "status": "passed"
+        },
+        {
+          "nome": "CategoriaRecomendacaoStrategy - desempate deterministico por UUID ordena vendas iguais e notas iguais pelo UUID crescente",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/recomendacoes-contrato.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "IA-01 contrato publico de recomendacoes retorna o ProdutoDTO completo e identico ao catalogo",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes preserva exatamente o ranking esperado da fixture",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes Strategy retorna somente IDs ordenados e nome da estrategia",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes nao recomenda o proprio produto em categoria",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes nao recomenda o proprio produto em fallback-geral",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes fallback tambem retorna produtos completos",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes omite produtos invisiveis sem reordenar restantes: {\"tipo\":\"moderacao\",\"input\":{\"ativo\":false}}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes omite produtos invisiveis sem reordenar restantes: {\"tipo\":\"produto\",\"input\":{\"ativo\":false}}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes omite produtos invisiveis sem reordenar restantes: {\"tipo\":\"estoque\",\"input\":{\"quantidadeEstoque\":0}}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes omite produtos de artesao indisponivel: {\"ativo\":false}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-01 contrato publico de recomendacoes omite produtos de artesao indisponivel: {\"papel\":\"comprador\"}",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/recomendacoes-historico.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "IA-03: historico real do comprador autenticado Strategy seleciona categorias confirmadas no PostgreSQL real",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado Strategy sem historico identifica fallback geral",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado recomenda ceramica, exclui compras e preserva vendas, nota, UUID e limite",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado comprador sem pedidos recebe fallback identificado",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado pedidos pendentes e cancelados nao criam historico nem excluem produtos",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado usa todas as categorias confirmadas e nunca historico alheio",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado fallback com categoria esgotada nao reintroduz produtos comprados",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado protege acesso como anonimo",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado protege acesso como artesao",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado protege acesso como admin",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado recusa contexto na query pessoal: {\"usuarioId\":\"2d1064b9-f062-4456-aedf-120304a0c591\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado recusa contexto na query pessoal: {\"produtoId\":\"2b2d988b-0686-46f9-8aac-6fa0cd531846\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado recusa contexto na query pessoal: {\"extra\":\"1\"}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado revalida usuario ativo e papel atual apos emitir token",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado rejeita token adulterado ou expirado",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-03: historico real do comprador autenticado nao acessa cache compartilhado e atualiza depois de nova compra",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/recomendacoes.route.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "GET /recomendacoes returns category-based recommendations for a valid produtoId",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /recomendacoes rejects usuarioId on the public route",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /recomendacoes returns the general fallback without a context",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /recomendacoes rejects a request with both context parameters at once",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /recomendacoes rejects an invalid UUID",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /recomendacoes falls back to the general recommendation when the product does not exist",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/reconciliacao-modelo-logico.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Produto reconciled with the logical model (BD-02) rejects a product without descricao",
+          "status": "passed"
+        },
+        {
+          "nome": "Produto reconciled with the logical model (BD-02) rejects a product without preco",
+          "status": "passed"
+        },
+        {
+          "nome": "Produto reconciled with the logical model (BD-02) rejects a product with preco 0",
+          "status": "passed"
+        },
+        {
+          "nome": "Produto reconciled with the logical model (BD-02) rejects a product with a negative stock",
+          "status": "passed"
+        },
+        {
+          "nome": "Produto reconciled with the logical model (BD-02) defaults desativadoPorAdmin to false",
+          "status": "passed"
+        },
+        {
+          "nome": "monetary non-negativity (BD-02) rejects a negative ItemPedido.precoUnitario",
+          "status": "passed"
+        },
+        {
+          "nome": "monetary non-negativity (BD-02) rejects a negative ItemPedido.subtotal",
+          "status": "passed"
+        },
+        {
+          "nome": "monetary non-negativity (BD-02) rejects a negative ItemCarrinho.precoUnitario",
+          "status": "passed"
+        },
+        {
+          "nome": "monetary non-negativity (BD-02) rejects a negative Pedido.total",
+          "status": "passed"
+        },
+        {
+          "nome": "monetary non-negativity (BD-02) rejects a Pagamento with valor 0",
+          "status": "passed"
+        },
+        {
+          "nome": "Usuario reconciled with the logical model (BD-02) rejects an email that differs from an existing one only by case",
+          "status": "passed"
+        },
+        {
+          "nome": "Usuario reconciled with the logical model (BD-02) rejects an empty senhaHash",
+          "status": "passed"
+        },
+        {
+          "nome": "Pedido legacy compradorRef (BD-02) accepts an order without the legacy compradorRef",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/schema-completo.smoke.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "schema completo: smoke test com Prisma real consulta as onze entidades de dominio sem erro",
+          "status": "passed"
+        },
+        {
+          "nome": "schema completo: smoke test com Prisma real consulta a estrutura tecnica de fila sem erro",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/seed-volume.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD.1 repete volume multiartesao em dois schemas limpos sem duplicar",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/seed.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-05 demo no PostgreSQL real mantem contagens apos duas execucoes",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-05 demo no PostgreSQL real autentica todas as contas documentadas",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-05 demo no PostgreSQL real preserva catalogo, fotos e referencias da Fake API",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-05 demo no PostgreSQL real confirma pedidos com itens e pagamento coerente",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/server-queue-bootstrap.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "startServer bootstraps the notification queue serves health in production on the configured wildcard host",
+          "status": "passed"
+        },
+        {
+          "nome": "startServer bootstraps the notification queue accepts and processes a job right after the backend boots, without a manual worker registration",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/tecnica-regiao-migration.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-03: migracao dos textos legados converte textos normalizados e preserva os nove produtos",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: migracao dos textos legados converte Marcenaria e renda e Caruaru - Alto do Moura sem preencher campos ausentes",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: migracao dos textos legados converte  BORDADO À MÃO  e TRACUNHAÉM sem preencher campos ausentes",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: migracao dos textos legados converte null e null sem preencher campos ausentes",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: migracao dos textos legados aborta e preserva textos quando tecnicaPrincipal e desconhecida",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: migracao dos textos legados aborta e preserva textos quando regiao e desconhecida",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: migracao dos textos legados aborta para produto sem mapeamento explicito",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/tecnica-regiao.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL Tecnica preserva os mesmos IDs e nomes dos seeds frontais",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL Regiao preserva os mesmos IDs e nomes dos seeds frontais",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL resolve tecnica e regiao de todos os produtos existentes",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL bloqueia exclusao de tecnica referenciada por produto",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL bloqueia exclusao da referencia tecnicaPrincipalId do perfil",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL bloqueia exclusao da referencia regiaoId do perfil",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL rejeita tecnica inexistente em produto",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL nao aceita produto sem tecnica",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL Tecnica exige nome unico",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL Regiao exige nome unico",
+          "status": "passed"
+        },
+        {
+          "nome": "BD-03: referencias Tecnica e Regiao no PostgreSQL remove textos legados e mantem regiao somente no perfil",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/usuario.service.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "UsuarioService.criar persists the email trimmed and lowercased",
+          "status": "passed"
+        },
+        {
+          "nome": "UsuarioService.criar rejects an email that differs from an existing one only by case or spaces",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integration/worker-process.integration.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "API and independent worker processes keeps orders unprocessed until 1 worker processes start, with one notification per order",
+          "status": "passed"
+        },
+        {
+          "nome": "API and independent worker processes keeps orders unprocessed until 2 worker processes start, with one notification per order",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/bench-fila.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "30.5 benchmark da fila fixa mil jobs, cinco medicoes e um aquecimento por configuracao",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila seleciona somente a conexao de volume separada",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila recusa ambiente inseguro sem revelar credenciais",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila recusa ambiente inseguro sem revelar credenciais",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila recusa ambiente inseguro sem revelar credenciais",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila recusa ambiente inseguro sem revelar credenciais",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila recusa ambiente inseguro sem revelar credenciais",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila recusa ambiente inseguro sem revelar credenciais",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila recusa ambiente inseguro sem revelar credenciais",
+          "status": "passed"
+        },
+        {
+          "nome": "30.5 benchmark da fila exclui aquecimento da mediana, throughput, speedup e eficiencia",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/bench-recomendacao-cli.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "recusa flags desconhecidas e valores ausentes",
+          "status": "passed"
+        },
+        {
+          "nome": "preserva evidencias existentes antes de conectar ao banco",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/bench-recomendacao-lote.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "30.6 benchmark de recomendacao em lote limita tarefas concorrentes sem perder a ordem original",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote aguarda tarefas pendentes e interrompe novas tarefas apos falha",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote detecta IDs ausentes, extras e mudancas na ordem",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote descarta somente o primeiro aquecimento de cinco rodadas por C",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote aceita apenas volume separado sem expor a conexao",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote impede aliases e redirecionamentos da conexao de volume",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote impede aliases e redirecionamentos da conexao de volume",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote impede aliases e redirecionamentos da conexao de volume",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote impede aliases e redirecionamentos da conexao de volume",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote recusa conexao inadequada com erro sanitizado",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote recusa conexao inadequada com erro sanitizado",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote recusa conexao inadequada com erro sanitizado",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote recusa conexao inadequada com erro sanitizado",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote recusa conexao inadequada com erro sanitizado",
+          "status": "passed"
+        },
+        {
+          "nome": "30.6 benchmark de recomendacao em lote recusa conexao inadequada com erro sanitizado",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/build-isolation.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "compila API e worker sem instalar dependencias do frontend",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/busca-p95.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD.2: configuracao do benchmark de busca seleciona volume separado e termo com pelo menos tres caracteres",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos invalidos \"--termo\"",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos invalidos \"--termo\"",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos invalidos \"--termo\"",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos invalidos \"--schema\"",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos invalidos \"--volume-env\"",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos invalidos \"--aquecimentos\"",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos invalidos \"--amostras\"",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos invalidos \"--desconhecido\"",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa ambiente inadequado antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa ambiente inadequado antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa ambiente inadequado antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa ambiente inadequado antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa ambiente inadequado antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca aceita schema isolado na mesma base e nome alternativo",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca importa sem conectar ou produzir arquivos",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: configuracao do benchmark de busca recusa argumentos sem revelar seus valores",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: percentis independentes calcula nearest-rank sem alterar amostras ou remover outliers",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: percentis independentes reprova p95 igual a 500 ms",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: percentis independentes recusa amostras insuficientes ou invalidas",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: percentis independentes recusa amostras insuficientes ou invalidas",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: percentis independentes recusa amostras insuficientes ou invalidas",
+          "status": "passed"
+        },
+        {
+          "nome": "BD.2: percentis independentes recusa amostras insuficientes ou invalidas",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/cache.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "MemoryCacheStore expira no TTL sem renovar a validade durante leituras",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore limita entradas descartando a menos recentemente usada",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore remove expiradas antes de descartar uma entrada valida",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore invalida somente o prefixo solicitado",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore isola objetos retornados e objetos recebidos",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita limite invalido 0",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita limite invalido -1",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita limite invalido Infinity",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita limite invalido NaN",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita limite invalido 1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita TTL invalido 0",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita TTL invalido -1",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita TTL invalido Infinity",
+          "status": "passed"
+        },
+        {
+          "nome": "MemoryCacheStore rejeita TTL invalido NaN",
+          "status": "passed"
+        },
+        {
+          "nome": "cache publico normaliza ordem, termo vazio, espacos e UUID maiusculo",
+          "status": "passed"
+        },
+        {
+          "nome": "cache publico nao armazena erros nem respostas sem chave publica",
+          "status": "passed"
+        },
+        {
+          "nome": "cache publico leitura iniciada antes da invalidacao nao repovoa dados antigos",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/concorrencia-resultado.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "aceita uma unica venda do ultimo item para cinco compradores",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova contagens inconsistentes: {\"sucessos\":2,\"conflitos409\":3,\"estoqueFinal\":0,\"pedidosProduto\":1}",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova contagens inconsistentes: {\"sucessos\":0,\"conflitos409\":5,\"estoqueFinal\":0,\"pedidosProduto\":1}",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova contagens inconsistentes: {\"sucessos\":1,\"conflitos409\":3,\"estoqueFinal\":0,\"pedidosProduto\":1}",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova contagens inconsistentes: {\"sucessos\":1,\"conflitos409\":4,\"estoqueFinal\":-1,\"pedidosProduto\":1}",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova contagens inconsistentes: {\"sucessos\":1,\"conflitos409\":4,\"estoqueFinal\":1,\"pedidosProduto\":1}",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova contagens inconsistentes: {\"sucessos\":1,\"conflitos409\":4,\"estoqueFinal\":0,\"pedidosProduto\":0}",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova contagens inconsistentes: {\"sucessos\":1,\"conflitos409\":4,\"estoqueFinal\":0,\"pedidosProduto\":2}",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova 0 pagamentos do produto",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova 2 pagamentos do produto",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova -1 pagamentos do produto",
+          "status": "passed"
+        },
+        {
+          "nome": "reprova respostas inesperadas mesmo com as demais contagens corretas",
+          "status": "passed"
+        },
+        {
+          "nome": "aceita caminho JSON preservando o padrao de cinquenta clientes",
+          "status": "passed"
+        },
+        {
+          "nome": "recusa saida ausente ou vazia: \"--saida\"",
+          "status": "passed"
+        },
+        {
+          "nome": "recusa saida ausente ou vazia: \"--saida\"",
+          "status": "passed"
+        },
+        {
+          "nome": "recusa saida ausente ou vazia: \"--saida\"",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/db-explain.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "entrada db:explain seleciona volume e candidato permitido sem aceitar SQL externo",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain volume exige branch separada e recusa producao",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain CLI retorna erro sanitizado para argumento invalido",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain usa leitura atual sem DDL por padrao",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain rejeita entrada invalida \"--schema\" antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain rejeita entrada invalida \"--phase\" antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain rejeita entrada invalida \"--termo\" antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain rejeita entrada invalida \"--termo\" antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain rejeita entrada invalida \"--termo\" antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain rejeita entrada invalida \"--desconhecido\" antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain rejeita entrada invalida \"--compare\" antes de conectar",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain escapa curingas, preservando a busca literal",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain recusa comparacao sem ambiente de teste valido",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain recusa comparacao sem ambiente de teste valido",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain recusa comparacao sem ambiente de teste valido",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain recusa comparacao sem ambiente de teste valido",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain recusa comparacao sem ambiente de teste valido",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain recusa comparacao sem ambiente de teste valido",
+          "status": "passed"
+        },
+        {
+          "nome": "entrada db:explain recusa URLs direta e da aplicacao em branches diferentes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/e2e-server.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "31.3 recusa ambiente inseguro antes de abrir conexao",
+          "status": "passed"
+        },
+        {
+          "nome": "31.3 usa conexao direta da branch de teste e porta local",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/environment.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "environment validation defaults to an in-process worker with concurrency one",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation defaults notification latency to zero",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation accepts simulated latency 0",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation accepts simulated latency 200",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation accepts simulated latency 2000",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid simulated latency ",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid simulated latency  ",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid simulated latency -1",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid simulated latency 2001",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid simulated latency 1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid simulated latency Infinity",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid simulated latency invalid",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects configured latency in production: 0",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects configured latency in production: 200",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation parses RUN_WORKER_IN_API=true",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation parses RUN_WORKER_IN_API=false",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects RUN_WORKER_IN_API=",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects RUN_WORKER_IN_API=1",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects RUN_WORKER_IN_API=0",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects RUN_WORKER_IN_API=yes",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects RUN_WORKER_IN_API=FALSE",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation accepts WORKER_CONCURRENCY=1",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation accepts WORKER_CONCURRENCY=8",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects WORKER_CONCURRENCY=",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects WORKER_CONCURRENCY=0",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects WORKER_CONCURRENCY=9",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects WORKER_CONCURRENCY=-1",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects WORKER_CONCURRENCY=1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects WORKER_CONCURRENCY=Infinity",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects WORKER_CONCURRENCY=invalid",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation ignora a configuracao retirada ENABLE_COOKIE_PROBE=true",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation ignora a configuracao retirada ENABLE_COOKIE_PROBE=false",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation ignora a configuracao retirada ENABLE_COOKIE_PROBE=yes",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation accepts production with an explicit host and a valid JWT secret",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation defaults to local development without requiring a JWT secret",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation requires JWT_SECRET in production without exposing its value",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects short JWT secrets in development",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects short JWT secrets in test",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects short JWT secrets in production",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects whitespace-only JWT secrets",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation parses COOKIE_SECURE=true as a boolean",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation parses COOKIE_SECURE=false as a boolean",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects ambiguous COOKIE_SECURE=",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects ambiguous COOKIE_SECURE=1",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects ambiguous COOKIE_SECURE=0",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects ambiguous COOKIE_SECURE=yes",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects ambiguous COOKIE_SECURE=FALSE",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation accepts an explicit cookie flag and cache TTL in production",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid cache TTL=",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid cache TTL=0",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid cache TTL=-1",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid cache TTL=1.5",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid cache TTL=Infinity",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid cache TTL=invalid",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects an empty HOST=",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects an empty HOST=   ",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid frontend origins without exposing values",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid frontend origins without exposing values",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid frontend origins without exposing values",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid frontend origins without exposing values",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects invalid frontend origins without exposing values",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation reports invalid names together without values",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation rejects missing connection variables without exposing values",
+          "status": "passed"
+        },
+        {
+          "nome": "environment validation accepts PostgreSQL URLs and a valid port",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/health-cookie.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "GET /health/cookie removido não registra a rota por padrão",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /health/cookie removido não permite habilitar a rota pela query ou pelo cookie",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /health/cookie removido remove o probe mesmo com a antiga configuracao e COOKIE_SECURE=true",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /health/cookie removido remove o probe mesmo com a antiga configuracao e COOKIE_SECURE=false",
+          "status": "passed"
+        },
+        {
+          "nome": "GET /health/cookie removido também não registra POST para o antigo probe",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/openapi.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-15 OpenAPI cadastro documenta Set-Cookie no 201 com as mesmas flags do login",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI Web.6 documenta multipart autenticado com limites e erros",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI Web.2 documenta envio protegido e status por item",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI documenta elegibilidade privada e o bloqueio por compra nao verificada",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI documenta criacao de avaliacao com corpo estrito e conflito",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI documenta pedidos recebidos sem total financeiro ou dados privados",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI documenta exemplo de recomendações e respostas 400/404",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI preserva restrições e defaults válidos dos validators",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI mantém exemplos compatíveis com os schemas reais",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI publica o documento com cookie de sessão e servidor relativo",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI cobre cada método e path realmente registrado no Express",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI detecta novas rotas e novos métodos ausentes no documento",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI serve Swagger com assets locais e CSP permitindo scripts locais",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI preserva o prefixo externo no Swagger e nas operacoes OpenAPI",
+          "status": "passed"
+        },
+        {
+          "nome": "WEB-15 OpenAPI inclui exemplos, schemas, segurança e erros aplicáveis",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/perfil-artesao-completo.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "verificarPerfilCompleto perfil com todos os campos preenchidos e completo",
+          "status": "passed"
+        },
+        {
+          "nome": "verificarPerfilCompleto perfil sem historia fica incompleto",
+          "status": "passed"
+        },
+        {
+          "nome": "verificarPerfilCompleto perfil sem tecnica principal fica incompleto",
+          "status": "passed"
+        },
+        {
+          "nome": "verificarPerfilCompleto perfil sem regiao fica incompleto",
+          "status": "passed"
+        },
+        {
+          "nome": "verificarPerfilCompleto perfil ausente fica incompleto com todos os campos pendentes",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/recomendacao-metricas.unit.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "calcularCobertura calcula o percentual quando ha produtos elegiveis",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularCobertura retorna zero explicitamente quando o denominador e zero",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularCobertura retorna cem quando todo produto elegivel recebe recomendacao",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularCobertura retorna zero quando nenhum produto elegivel recebe recomendacao",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularAcertoCategoria calcula o percentual quando ha recomendacoes",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularAcertoCategoria retorna zero explicitamente quando o denominador e zero",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularAcertoCategoria retorna zero quando nenhuma recomendacao acerta a categoria",
+          "status": "passed"
+        },
+        {
+          "nome": "calcularAcertoCategoria retorna cem quando toda recomendacao acerta a categoria",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/recomendacao-volume.unit.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "IA-04: metricas independentes de ranking calcula cobertura do catalogo, cobertura v0, fallback e diversidade",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: metricas independentes de ranking retorna zeros sem catalogo ou respostas",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: metricas independentes de ranking p95 usa nearest-rank e nao interpola ou confunde media",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura IA.3 compara ambos os modos por padrao",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura IA.3 aceita reforco regional on",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura IA.3 aceita reforco regional off",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura IA.3 aceita reforco regional ambos",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura IA.3 rejeita modo invalido \"true\"",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura IA.3 rejeita modo invalido \"ON\"",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura IA.3 rejeita modo invalido \"\"",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura IA.3 rejeita modo invalido \"on,off\"",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura seleciona branch de volume por nome da variavel",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura recusa argumentos invalidos: {\"args\":[\"--schema-volume\",\"public; DROP TABLE Usuario\"]}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura recusa argumentos invalidos: {\"args\":[\"--volume-env\",\"[conexao omitida]\"]}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura recusa argumentos invalidos: {\"args\":[\"--repeticoes\",\"0\"]}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura recusa argumentos invalidos: {\"args\":[\"--repeticoes\",\"1.5\"]}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura recusa argumentos invalidos: {\"args\":[\"--repeticoes\",\"11\"]}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura recusa argumentos invalidos: {\"args\":[\"--isolado\",\"--volume-env\",\"DIRECT_URL_VOLUME\"]}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura recusa argumentos invalidos: {\"args\":[\"--desconhecido\",\"segredo\"]}",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura variavel ausente informa apenas seu nome",
+          "status": "passed"
+        },
+        {
+          "nome": "IA-04: CLI e configuracao segura schemas isolados recusam producao e a variante pooler do deploy",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/schema-structure.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "complete domain schema structure declares the Usuario domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the PerfilArtesao domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the Categoria domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the Produto domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the ProdutoFoto domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the Carrinho domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the ItemCarrinho domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the Pedido domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the ItemPedido domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the Pagamento domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares the Avaliacao domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure keeps queue infrastructure under its own clearly named model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares enum PapelUsuario with its expected values",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares enum StatusPedido with its expected values",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares enum MetodoPagamento with its expected values",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares enum StatusPagamento with its expected values",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure declares enum StatusIntencao with its expected values",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure preserves the reduced FCCPD fields already relied on by services and tests",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure keeps compradorRef as an optional legacy field alongside the required compradorId FK",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure uses UUID identifiers on every domain model",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure uses Decimal for monetary fields",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure uses timezone-aware timestamps for creation dates",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure requires descricao on Produto",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure separates admin moderation from the artisan soft delete on Produto",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure marks Usuario email as unique",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure never cascades deletes over order history relations",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure allows at most one payment per order",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure prevents duplicate cart lines for the same product",
+          "status": "passed"
+        },
+        {
+          "nome": "complete domain schema structure prevents duplicate reviews from the same buyer for the same product",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/seed-demo.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BD-05 mantem snapshot alinhado aos seeds frontais atuais",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/seed-volume.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "guarda do seed de volume recusa sem opt-in explicito",
+          "status": "passed"
+        },
+        {
+          "nome": "guarda do seed de volume recusa o deploy mesmo com opt-in",
+          "status": "passed"
+        },
+        {
+          "nome": "guarda do seed de volume recusa o mesmo endpoint com pooler e parametros diferentes",
+          "status": "passed"
+        },
+        {
+          "nome": "guarda do seed de volume aceita branch separada explicitamente autorizada",
+          "status": "passed"
+        },
+        {
+          "nome": "guarda do seed de volume recusa URL invalida undefined",
+          "status": "passed"
+        },
+        {
+          "nome": "guarda do seed de volume recusa URL invalida ",
+          "status": "passed"
+        },
+        {
+          "nome": "guarda do seed de volume recusa URL invalida https://exemplo.test",
+          "status": "passed"
+        },
+        {
+          "nome": "guarda do seed de volume recusa URL invalida [conexao omitida]",
+          "status": "passed"
+        },
+        {
+          "nome": "gerador deterministico repete dados, referencias e datas com seed fixa",
+          "status": "passed"
+        },
+        {
+          "nome": "gerador deterministico BD.1 cobre todas as categorias, tecnicas e regioes com produtos",
+          "status": "passed"
+        },
+        {
+          "nome": "gerador deterministico BD.1 garante 50 pedidos confirmados e pagos com artesaos distintos",
+          "status": "passed"
+        },
+        {
+          "nome": "gerador deterministico BD.1 gera IDs unicos e estaveis para reexecucao sem duplicacao",
+          "status": "passed"
+        },
+        {
+          "nome": "gerador deterministico preserva UUID valido e converte identificadores textuais",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/senha.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "senha bcrypt gera hash com custo 10 e salt independente",
+          "status": "passed"
+        },
+        {
+          "nome": "senha bcrypt rejeita hashes invalidos sem autenticar",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/server.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "server startup fails production boot with a clear sanitized JWT validation error",
+          "status": "passed"
+        },
+        {
+          "nome": "server startup fails production boot with a clear sanitized JWT validation error",
+          "status": "passed"
+        },
+        {
+          "nome": "server startup sanitizes asynchronous listen failure on an occupied loopback port",
+          "status": "passed"
+        },
+        {
+          "nome": "server startup imports without starting a listener or writing output",
+          "status": "passed"
+        },
+        {
+          "nome": "server startup binds startup explicitly to IPv4 loopback",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/usuario.service.unit.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "normalizarEmail lowercases the address",
+          "status": "passed"
+        },
+        {
+          "nome": "normalizarEmail trims surrounding whitespace",
+          "status": "passed"
+        },
+        {
+          "nome": "normalizarEmail keeps an already normalized address unchanged",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/worker.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "worker entrypoint imports without starting resources or writing output",
+          "status": "passed"
+        },
+        {
+          "nome": "worker entrypoint sanitizes invalid environment at the entrypoint",
+          "status": "passed"
+        },
+        {
+          "nome": "worker entrypoint sanitizes queue startup failures and releases resources",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

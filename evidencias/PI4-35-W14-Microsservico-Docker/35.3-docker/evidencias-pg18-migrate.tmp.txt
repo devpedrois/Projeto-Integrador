@@ -1,0 +1,53 @@
+
+> origem-backend@1.0.0 db:migrate
+> prisma migrate deploy
+
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma\schema.prisma.
+Datasource "db": PostgreSQL database "origem_tests", schema "public" at "127.0.0.1:55436"
+
+12 migrations found in prisma/migrations
+
+Applying migration `20260914000000_init_fccpd`
+Applying migration `20260915023849_add_intencao_notificacao`
+Applying migration `20260915154901_add_dominio_completo`
+Applying migration `20260915163805_add_dominio_not_null`
+Applying migration `20261013213237_reconciliar_modelo_logico`
+Applying migration `20261013230000_tecnica_regiao_referencias`
+Applying migration `20261013230100_add_notificacao`
+Applying migration `20261014010000_indices_consultas`
+Applying migration `20261014160000_checkout_web09`
+Applying migration `20261025160000_status_item_pedido`
+Applying migration `20261104160116_views_contrato_recomendacao`
+Applying migration `20261104165644_indice_perfil_tecnica_principal`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20260914000000_init_fccpd/
+    └─ migration.sql
+  └─ 20260915023849_add_intencao_notificacao/
+    └─ migration.sql
+  └─ 20260915154901_add_dominio_completo/
+    └─ migration.sql
+  └─ 20260915163805_add_dominio_not_null/
+    └─ migration.sql
+  └─ 20261013213237_reconciliar_modelo_logico/
+    └─ migration.sql
+  └─ 20261013230000_tecnica_regiao_referencias/
+    └─ migration.sql
+  └─ 20261013230100_add_notificacao/
+    └─ migration.sql
+  └─ 20261014010000_indices_consultas/
+    └─ migration.sql
+  └─ 20261014160000_checkout_web09/
+    └─ migration.sql
+  └─ 20261025160000_status_item_pedido/
+    └─ migration.sql
+  └─ 20261104160116_views_contrato_recomendacao/
+    └─ migration.sql
+  └─ 20261104165644_indice_perfil_tecnica_principal/
+    └─ migration.sql
+
+All migrations have been successfully applied.

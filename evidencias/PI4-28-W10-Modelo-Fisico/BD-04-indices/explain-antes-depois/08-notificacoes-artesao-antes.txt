@@ -1,0 +1,159 @@
+Consulta: notificacoes-artesao
+Fase: antes
+Captura original UTC: 2026-10-14T02:22:27.150Z
+Schema isolado: bd04_951b24127b014d84969945506e99dcda
+PostgreSQL: PostgreSQL 18.6 (653b019) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+enable_seqscan: on
+Contagens: {"produtos":1000,"pedidos":1500,"artesaos":50,"compradores":300,"intencoes":1500,"notificacoes":1500,"itenscarrinho":300}
+Parametros: ["78d8d81e-d1d7-57e9-8ce6-70cdf250bb13",false]
+
+SQL executado:
+EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)
+SELECT "id", "pedidoId", "tipo", "lida", "criadoEm"
+FROM "Notificacao"
+WHERE "usuarioId" = $1::uuid AND "lida" = $2::boolean
+ORDER BY "criadoEm" DESC
+LIMIT 24;
+
+Saida original PostgreSQL em FORMAT JSON:
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 24.12,
+      "Total Cost": 24.18,
+      "Plan Rows": 24,
+      "Plan Width": 45,
+      "Actual Startup Time": 0.087,
+      "Actual Total Time": 0.09,
+      "Actual Rows": 24,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 19,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 24.12,
+          "Total Cost": 24.2,
+          "Plan Rows": 33,
+          "Plan Width": 45,
+          "Actual Startup Time": 0.085,
+          "Actual Total Time": 0.086,
+          "Actual Rows": 24,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Sort Key": [
+            "\"criadoEm\" DESC"
+          ],
+          "Sort Method": "quicksort",
+          "Sort Space Used": 27,
+          "Sort Space Type": "Memory",
+          "Shared Hit Blocks": 19,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Bitmap Heap Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "Notificacao",
+              "Alias": "Notificacao",
+              "Startup Cost": 4.66,
+              "Total Cost": 23.29,
+              "Plan Rows": 33,
+              "Plan Width": 45,
+              "Actual Startup Time": 0.04,
+              "Actual Total Time": 0.072,
+              "Actual Rows": 41,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Recheck Cond": "(\"usuarioId\" = '78d8d81e-d1d7-57e9-8ce6-70cdf250bb13'::uuid)",
+              "Rows Removed by Index Recheck": 0,
+              "Filter": "(NOT lida)",
+              "Rows Removed by Filter": 9,
+              "Exact Heap Blocks": 17,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 19,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "Notificacao_usuarioId_pedidoId_tipo_key",
+                  "Startup Cost": 0,
+                  "Total Cost": 4.65,
+                  "Plan Rows": 50,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.024,
+                  "Actual Total Time": 0.025,
+                  "Actual Rows": 50,
+                  "Actual Loops": 1,
+                  "Disabled": false,
+                  "Index Cond": "(\"usuarioId\" = '78d8d81e-d1d7-57e9-8ce6-70cdf250bb13'::uuid)",
+                  "Index Searches": 1,
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 0,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.115,
+    "Triggers": [],
+    "Execution Time": 0.119
+  }
+]

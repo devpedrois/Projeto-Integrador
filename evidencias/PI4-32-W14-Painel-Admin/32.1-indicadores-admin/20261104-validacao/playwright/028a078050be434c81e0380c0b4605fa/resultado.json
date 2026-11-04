@@ -1,0 +1,482 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright/028a078050be434c81e0380c0b4605fa/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "360px",
+        "name": "360px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/playwright/028a078050be434c81e0380c0b4605fa/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "1280px",
+        "name": "1280px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.1-indicadores-admin\\20261104-validacao\\playwright\\028a078050be434c81e0380c0b4605fa\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "360px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 360,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "360px"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.1-indicadores-admin\\20261104-validacao\\playwright\\028a078050be434c81e0380c0b4605fa\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "1280px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "1280px"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.1-indicadores-admin\\20261104-validacao\\playwright\\028a078050be434c81e0380c0b4605fa\\html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.1-indicadores-admin\\20261104-validacao\\playwright\\028a078050be434c81e0380c0b4605fa\\resultado.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "admin-indicadores.spec.ts",
+      "file": "admin-indicadores.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "32.1 indicadores reais: dez recargas e tres larguras",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mede dez recargas no mesmo viewport.",
+                  "location": {
+                    "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\admin-indicadores.spec.ts",
+                    "line": 8,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 390,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T19:25:26.374Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Mede dez recargas no mesmo viewport.",
+                      "location": {
+                        "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\admin-indicadores.spec.ts",
+                        "line": 8,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "43f71f1fe71fba6bde39-61914a2c89f0054af5bf",
+          "file": "admin-indicadores.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "32.1 indicadores reais: dez recargas e tres larguras",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T19:25:41.556Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Indicadores reais e tempos",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.1-indicadores-admin\\20261104-validacao\\playwright\\028a078050be434c81e0380c0b4605fa\\results\\admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px\\attachments\\Indicadores-reais-e-tempos-509c4949d5dbde0e8b4243333bed3527d20bd87d.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "43f71f1fe71fba6bde39-ab752dddc0c634f14865",
+          "file": "admin-indicadores.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fluxos.spec.ts",
+      "file": "fluxos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6925,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 2172
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 1907
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 1751
+                    }
+                  ],
+                  "startTime": "2026-11-04T19:25:27.009Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-3dd579238a1600c1af4e",
+          "file": "fluxos.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7063,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 1449
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 802
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 280
+                    },
+                    {
+                      "title": "Cadastro inicia sessao de artesao sem login separado",
+                      "duration": 1807
+                    }
+                  ],
+                  "startTime": "2026-11-04T19:25:33.941Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-5fd1245ca8efa7d599b5",
+          "file": "fluxos.spec.ts",
+          "line": 173,
+          "column": 1
+        },
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3002,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 1420
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 904
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 265
+                    }
+                  ],
+                  "startTime": "2026-11-04T19:25:47.794Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-322fd6ac0efb1fcba6e7",
+          "file": "fluxos.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4393,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 962
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 827
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 294
+                    },
+                    {
+                      "title": "Cadastro inicia sessao de artesao sem login separado",
+                      "duration": 984
+                    }
+                  ],
+                  "startTime": "2026-11-04T19:25:50.803Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-eb3f7ae786b46b8a8e36",
+          "file": "fluxos.spec.ts",
+          "line": 173,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T19:25:19.574Z",
+    "duration": 36562.77,
+    "expected": 5,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

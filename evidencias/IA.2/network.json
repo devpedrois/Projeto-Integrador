@@ -1,0 +1,267 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/auth/me",
+    "status": 401
+  },
+  {
+    "method": "GET",
+    "path": "/api/produtos/5df54ce4-697f-57a7-aef8-8312239abbcd",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/categorias",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/regioes",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/avaliacoes?produtoId=5df54ce4-697f-57a7-aef8-8312239abbcd",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/recomendacoes?produtoId=5df54ce4-697f-57a7-aef8-8312239abbcd",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/recomendacoes?produtoId=5df54ce4-697f-57a7-aef8-8312239abbcd",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/auth/me",
+    "status": 401
+  },
+  {
+    "method": "GET",
+    "path": "/api/produtos/7bcae074-7451-5794-8ae2-d01bc4a7922d",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/categorias",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/regioes",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/avaliacoes?produtoId=7bcae074-7451-5794-8ae2-d01bc4a7922d",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/recomendacoes?produtoId=7bcae074-7451-5794-8ae2-d01bc4a7922d",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/recomendacoes?produtoId=7bcae074-7451-5794-8ae2-d01bc4a7922d",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/auth/me",
+    "status": 401
+  },
+  {
+    "method": "GET",
+    "path": "/api/produtos/1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/categorias",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/regioes",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/avaliacoes?produtoId=1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/recomendacoes?produtoId=1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/recomendacoes?produtoId=1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/9b45586e-ccae-57dc-af34-b7b9d197a8e2/perfil-artesao",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/usuarios/625c5b82-6a7f-5b57-8be8-9595face40b0/perfil-artesao",
+    "status": 200
+  }
+]

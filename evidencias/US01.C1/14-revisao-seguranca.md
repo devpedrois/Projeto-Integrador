@@ -26,7 +26,7 @@ A revisão considerou os testes de integração e E2E executados.
 Nenhum achado bloqueante identificado nesta correção.
 Não foi executado smoke em produção nem CI remoto.
 
-Referências: [RED backend](01-backend-red.log),
-[GREEN backend](02-backend-green.log),
-[GREEN frontend](04-frontend-green.log),
-[E2E](06-e2e-green.log).
+Referências: [RED backend](01-backend-red.txt),
+[GREEN backend](02-backend-green.txt),
+[GREEN frontend](04-frontend-green.txt),
+[E2E](06-e2e-green.txt).

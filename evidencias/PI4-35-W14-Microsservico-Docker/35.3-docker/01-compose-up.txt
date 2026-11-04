@@ -1,0 +1,293 @@
+TAP version 13
+# \#1 [internal] load local bake definitions
+# \#1 reading from stdin 2.69kB 0.0s done
+# \#1 DONE 0.0s
+# \#2 [recomendacao internal] load build definition from Dockerfile
+# \#2 transferring dockerfile: 1.19kB done
+# \#2 DONE 0.0s
+# \#3 [migrate internal] load build definition from Dockerfile
+# \#3 transferring dockerfile: 1.26kB done
+# \#3 DONE 0.0s
+# \#4 [auth] library/node:pull token for registry-1.docker.io
+# \#4 DONE 0.0s
+# \#5 [migrate internal] load metadata for docker.io/library/node:22-slim
+# \#5 DONE 0.9s
+# \#6 [recomendacao internal] load .dockerignore
+# \#6 transferring context: 118B done
+# \#6 DONE 0.0s
+# \#7 [worker internal] load .dockerignore
+# \#7 transferring context: 140B done
+# \#7 DONE 0.0s
+# \#8 [recomendacao-setup internal] load build context
+# \#8 transferring context: 1.46kB done
+# \#8 DONE 0.0s
+# \#9 [api build 1/8] FROM docker.io/library/node:22-slim@sha256:4b150b48b4116e2a22f2c39cc27025fbf4f153e2078fd3b14d159fdb5c7279da
+# \#9 resolve docker.io/library/node:22-slim@sha256:4b150b48b4116e2a22f2c39cc27025fbf4f153e2078fd3b14d159fdb5c7279da 0.0s done
+# \#9 DONE 0.0s
+# \#10 [recomendacao-setup build 7/8] COPY tsconfig.json tsconfig.docker.json ./
+# \#10 CACHED
+# \#11 [recomendacao-setup runtime 5/6] COPY --from=build --chown=node:node /app/dist ./dist
+# \#11 CACHED
+# \#12 [recomendacao-setup build 6/8] COPY scripts ./scripts
+# \#12 CACHED
+# \#13 [recomendacao-setup build 3/8] COPY package.json package-lock.json ./
+# \#13 CACHED
+# \#14 [recomendacao-setup build 5/8] COPY src ./src
+# \#14 CACHED
+# \#15 [recomendacao-setup build 4/8] RUN npm ci
+# \#15 CACHED
+# \#16 [recomendacao-setup runtime 3/6] COPY --from=production-dependencies --chown=node:node /app/node_modules ./node_modules
+# \#16 CACHED
+# \#17 [recomendacao-setup production-dependencies 4/4] RUN npm pkg set 'scripts.bootstrap:permissoes=node dist/scripts/bootstrap-permissoes.js'     'scripts.migrate=node dist/scripts/migrate.js'     && npm ci --omit=dev && npm cache clean --force
+# \#17 CACHED
+# \#18 [recomendacao-setup build 8/8] RUN npm run build -- --project tsconfig.docker.json
+# \#18 CACHED
+# \#19 [recomendacao-setup build 2/8] WORKDIR /app
+# \#19 CACHED
+# \#20 [recomendacao-setup runtime 4/6] COPY --from=production-dependencies --chown=node:node /app/package*.json ./
+# \#20 CACHED
+# \#21 [recomendacao runtime 6/6] COPY --chown=node:node migrations ./dist/migrations
+# \#21 CACHED
+# \#22 [worker internal] load build context
+# \#22 transferring context: 247.94kB 0.0s done
+# \#22 DONE 0.1s
+# \#23 [migrate internal] load build context
+# \#23 transferring context: 247.89kB 0.0s done
+# \#23 DONE 0.1s
+# \#24 [recomendacao-setup] exporting to image
+# \#24 exporting layers done
+# \#24 exporting manifest sha256:b97be2f2e15516da8600e7f5ba1b0149ab2d67b14801d9d5ba1718b62c95c313
+# \#24 ...
+# \#25 [migrate base 2/3] RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates     && rm -rf /var/lib/apt/lists/*
+# \#25 CACHED
+# \#26 [migrate base 3/3] WORKDIR /app
+# \#26 CACHED
+# \#27 [migrate build 1/6] COPY package.json package-lock.json ./
+# \#27 DONE 0.1s
+# \#24 [recomendacao-setup] exporting to image
+# \#24 exporting manifest sha256:b97be2f2e15516da8600e7f5ba1b0149ab2d67b14801d9d5ba1718b62c95c313 0.0s done
+# \#24 exporting config sha256:bcf18dc7ee884b45119216735b3d483632ac9dcb38cedfc720853f77d8f312cc 0.0s done
+# \#24 exporting attestation manifest sha256:0c14457847c0a4094c79613c641f09fe5a551a15e26367baa123cf1309cee4aa
+# \#24 ...
+# \#28 [migrate build 1/6] COPY package.json package-lock.json ./
+# \#28 CACHED
+# \#24 [recomendacao-setup] exporting to image
+# \#24 exporting attestation manifest sha256:0c14457847c0a4094c79613c641f09fe5a551a15e26367baa123cf1309cee4aa 0.0s done
+# \#24 exporting manifest list sha256:d0146cebdb4846711daa3734942efc7935f8ef2acef609c4e51f1276ea618ee1 0.0s done
+# \#24 naming to docker.io/library/origem-recomendacao:local 0.0s done
+# \#24 unpacking to docker.io/library/origem-recomendacao:local
+# \#24 unpacking to docker.io/library/origem-recomendacao:local 0.0s done
+# \#24 DONE 0.3s
+# \#29 [recomendacao] exporting to image
+# \#29 exporting layers done
+# \#29 exporting manifest sha256:9bd71ca2f9550b46769cbe78f4b702a2c269b338d7f6309a8ac996c85057961d 0.0s done
+# \#29 exporting config sha256:4bf0b703e16e17fdf655f395ecf281ec67723314d2d65b5e3fb9fa3297016149 0.0s done
+# \#29 exporting attestation manifest sha256:0efc0f90d5d1d935cb0b8b8fb990146838d744ea06ee22887801a4aa0facccc3 0.1s done
+# \#29 exporting manifest list sha256:1996cb25f0c63eacd189b3c791097db8f6abfd1ba69808ed32c9d240a455877b 0.0s done
+# \#29 naming to docker.io/library/origem-recomendacao:local 0.0s done
+# \#29 unpacking to docker.io/library/origem-recomendacao:local 0.0s done
+# \#29 DONE 0.3s
+# \#30 [migrate build 2/6] RUN npm ci
+# \#30 ...
+# \#31 [recomendacao] resolving provenance for metadata file
+# \#31 DONE 0.0s
+# \#32 [recomendacao-setup] resolving provenance for metadata file
+# \#32 DONE 0.0s
+# \#33 [worker production-dependencies 2/2] RUN npm ci --omit=dev --omit=optional && npm cache clean --force
+# \#33 4.988 
+# \#33 4.988 added 142 packages, and audited 143 packages in 5s
+# \#33 4.988 
+# \#33 4.988 39 packages are looking for funding
+# \#33 4.988   run `npm fund` for details
+# \#33 4.993 
+# \#33 4.993 4 vulnerabilities (1 moderate, 2 high, 1 critical)
+# \#33 4.993 
+# \#33 4.993 To address all issues, run:
+# \#33 4.993   npm audit fix
+# \#33 4.993 
+# \#33 4.993 Run `npm audit` for details.
+# \#33 4.994 npm notice
+# \#33 4.994 npm notice New major version of npm available! 10.9.9 -> 12.2.1
+# \#33 4.994 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+# \#33 4.994 npm notice To update run: npm install -g npm@12.2.1
+# \#33 4.994 npm notice
+# \#33 5.076 npm warn using --force Recommended protections disabled.
+# \#33 DONE 11.7s
+# \#30 [migrate build 2/6] RUN npm ci
+# \#30 ...
+# \#33 [api production-dependencies 2/2] RUN npm ci --omit=dev --omit=optional && npm cache clean --force
+# \#33 DONE 11.7s
+# \#30 [migrate build 2/6] RUN npm ci
+# \#30 ...
+# \#34 [worker runtime 1/4] COPY --from=production-dependencies --chown=node:node /app/node_modules ./node_modules
+# \#34 CACHED
+# \#35 [worker runtime 2/4] COPY --from=production-dependencies --chown=node:node /app/package*.json ./
+# \#35 DONE 0.5s
+# \#30 [migrate build 2/6] RUN npm ci
+# \#30 ...
+# \#35 [worker runtime 2/4] COPY --from=production-dependencies --chown=node:node /app/package*.json ./
+# \#35 DONE 0.5s
+# \#30 [migrate build 2/6] RUN npm ci
+# \#30 31.01 
+# \#30 31.01 added 437 packages, and audited 438 packages in 31s
+# \#30 31.01 
+# \#30 31.01 97 packages are looking for funding
+# \#30 31.01   run `npm fund` for details
+# \#30 31.16 
+# \#30 31.16 23 vulnerabilities (14 moderate, 8 high, 1 critical)
+# \#30 31.16 
+# \#30 31.16 To address issues that do not require attention, run:
+# \#30 31.16   npm audit fix
+# \#30 31.16 
+# \#30 31.16 To address all issues (including breaking changes), run:
+# \#30 31.16   npm audit fix --force
+# \#30 31.16 
+# \#30 31.16 Run `npm audit` for details.
+# \#30 31.16 npm notice
+# \#30 31.16 npm notice New major version of npm available! 10.9.9 -> 12.2.1
+# \#30 31.16 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+# \#30 31.16 npm notice To update run: npm install -g npm@12.2.1
+# \#30 31.16 npm notice
+# \#30 DONE 31.3s
+# \#36 [api build 3/6] COPY prisma ./prisma
+# \#36 DONE 0.1s
+# \#36 [api build 3/6] COPY prisma ./prisma
+# \#36 DONE 0.1s
+# \#37 [migrate build 4/6] COPY src ./src
+# \#37 DONE 0.0s
+# \#38 [api build 5/6] COPY tsconfig.json tsconfig.docker.json ./
+# \#38 DONE 0.0s
+# \#38 [migrate build 5/6] COPY tsconfig.json tsconfig.docker.json ./
+# \#38 DONE 0.0s
+# \#39 [worker build 6/6] RUN npx prisma generate --config prisma/generate.config.ts     && npx tsc --project tsconfig.docker.json
+# \#39 0.772 Loaded Prisma config from prisma/generate.config.ts.
+# \#39 0.772 
+# \#39 0.836 Prisma schema loaded from prisma/schema.prisma.
+# \#39 0.940 
+# \#39 0.940 ✔ Generated Prisma Client (7.10.0) to ./src/generated/prisma in 67ms
+# \#39 0.940 
+# \#39 DONE 3.0s
+# \#39 [worker build 6/6] RUN npx prisma generate --config prisma/generate.config.ts     && npx tsc --project tsconfig.docker.json
+# \#39 DONE 3.0s
+# \#40 [migrate migrate 1/1] COPY prisma.config.ts ./
+# \#40 DONE 0.0s
+# \#41 [worker build 2/6] RUN npm ci
+# \#41 CACHED
+# \#42 [worker build 4/6] COPY src ./src
+# \#42 CACHED
+# \#43 [worker build 3/6] COPY prisma ./prisma
+# \#43 CACHED
+# \#44 [worker build 6/6] RUN npx prisma generate --config prisma/generate.config.ts     && npx tsc --project tsconfig.docker.json
+# \#44 CACHED
+# \#45 [worker build 5/6] COPY tsconfig.json tsconfig.docker.json ./
+# \#45 CACHED
+# \#46 [worker runtime 3/4] COPY --from=build --chown=node:node /app/dist ./dist
+# \#46 ...
+# \#44 [api build 6/6] RUN npx prisma generate --config prisma/generate.config.ts     && npx tsc --project tsconfig.docker.json
+# \#44 CACHED
+# \#45 [api build 5/6] COPY tsconfig.json tsconfig.docker.json ./
+# \#45 CACHED
+# \#41 [api build 2/6] RUN npm ci
+# \#41 CACHED
+# \#42 [api build 4/6] COPY src ./src
+# \#42 CACHED
+# \#43 [api build 3/6] COPY prisma ./prisma
+# \#43 CACHED
+# \#46 [api runtime 3/4] COPY --from=build --chown=node:node /app/dist ./dist
+# \#46 DONE 0.3s
+# \#47 [migrate] exporting to image
+# \#47 exporting layers
+# \#47 ...
+# \#46 [api runtime 3/4] COPY --from=build --chown=node:node /app/dist ./dist
+# \#46 DONE 0.3s
+# \#48 [api runtime 4/4] COPY --chown=node:node docker ./docker
+# \#48 DONE 0.1s
+# \#49 [api] exporting to image
+# \#49 exporting layers 0.1s done
+# \#49 exporting manifest sha256:ba9308b8649db32ba6aded966f6420296af821d8a63d2b0d53515de6a2a722d2 0.0s done
+# \#49 exporting config sha256:390a916444a5f9632daf8410bd8d6786a5e17277cc2dc6caebd857d136ee69f5 0.0s done
+# \#49 exporting attestation manifest sha256:f70a53a1d4116d978621066808e7b849700919e50a1c8b38c0c3506e13dd2806 0.0s done
+# \#49 exporting manifest list sha256:1536e94ffc66479dd6967f19bcf9703f3daaf99a103fb3e1940d88f52114dc92
+# \#49 exporting manifest list sha256:1536e94ffc66479dd6967f19bcf9703f3daaf99a103fb3e1940d88f52114dc92 0.0s done
+# \#49 naming to docker.io/library/origem-backend:local done
+# \#49 unpacking to docker.io/library/origem-backend:local 0.1s done
+# \#49 DONE 0.4s
+# \#50 [worker] exporting to image
+# \#50 exporting layers 0.1s done
+# \#50 exporting manifest sha256:52bbcb026a63eb186aa168f0630156e0cc19b1bce7a44ebebbb02760dba8937e 0.0s done
+# \#50 exporting config sha256:eba701b54d8b9a380901ef96f300fdc2d01ee64dc26b302306b95723f7f57537 0.0s done
+# \#50 exporting attestation manifest sha256:dc18a983e36017812045a44ed6fe8854320b0e88c321dc4425c5126948f81042 0.0s done
+# \#50 exporting manifest list sha256:40aa84ab3cc790f84b12c538b7a1461b592e2da40f52256096cd8f638b485c1f 0.0s done
+# \#50 naming to docker.io/library/origem-backend:local done
+# \#50 unpacking to docker.io/library/origem-backend:local 0.1s done
+# \#50 DONE 0.4s
+# \#51 [api] resolving provenance for metadata file
+# \#51 DONE 0.0s
+# \#52 [worker] resolving provenance for metadata file
+# \#52 DONE 0.0s
+# \#47 [migrate] exporting to image
+# \#47 exporting layers 12.8s done
+# \#47 exporting manifest sha256:9d8b9aa16ced74b65dca2b3fd81c15dd234b68eb514ff7a2a3762ef9624da1b8
+# \#47 exporting manifest sha256:9d8b9aa16ced74b65dca2b3fd81c15dd234b68eb514ff7a2a3762ef9624da1b8 0.5s done
+# \#47 exporting config sha256:3a8df353000e29673b8d656e3aeb91925bd98640fc316b07a3d0fcc7e546f62e
+# \#47 exporting config sha256:3a8df353000e29673b8d656e3aeb91925bd98640fc316b07a3d0fcc7e546f62e 0.5s done
+# \#47 exporting attestation manifest sha256:14fc07acb98892e8a723a4b11386cf9879a2994e0e7f6b3b06ee0aa02f24f792
+# \#47 exporting attestation manifest sha256:14fc07acb98892e8a723a4b11386cf9879a2994e0e7f6b3b06ee0aa02f24f792 0.3s done
+# \#47 exporting manifest list sha256:b2199225a08b103214b0c34c733155ea0c0c4b77a4036c59961e5a85d900623e
+# \#47 exporting manifest list sha256:b2199225a08b103214b0c34c733155ea0c0c4b77a4036c59961e5a85d900623e 0.1s done
+# \#47 naming to docker.io/library/origem-backend-migrate:local
+# \#47 naming to docker.io/library/origem-backend-migrate:local done
+# \#47 unpacking to docker.io/library/origem-backend-migrate:local
+# \#47 unpacking to docker.io/library/origem-backend-migrate:local 2.7s done
+# \#47 DONE 17.4s
+# \#53 [migrate] resolving provenance for metadata file
+# \#53 DONE 0.0s
+# Subtest: compose inicia imagens isoladas e processa pedidos exclusivamente no worker
+    # Subtest: serviços saudáveis e preparações concluídas
+    ok 1 - serviços saudáveis e preparações concluídas
+      ---
+      duration_ms: 386.9439
+      ...
+    # Subtest: runtime sem root, ferramentas de desenvolvimento ou segredos nas camadas
+    ok 2 - runtime sem root, ferramentas de desenvolvimento ou segredos nas camadas
+      ---
+      duration_ms: 1767.8089
+      ...
+    # Subtest: contratos e isolamento PostgreSQL reais
+    ok 3 - contratos e isolamento PostgreSQL reais
+      ---
+      duration_ms: 890.2747
+      ...
+    # Subtest: API recebe recomendações reais do microsserviço
+    ok 4 - API recebe recomendações reais do microsserviço
+      ---
+      duration_ms: 468.6974
+      ...
+# worker-1  | 
+# worker-1  | > origem-backend@1.0.0 start:worker
+# worker-1  | > node dist/src/worker.js
+# worker-1  | 
+# worker-1  | 
+# worker-1  | > origem-backend@1.0.0 start:worker
+# worker-1  | > node dist/src/worker.js
+# worker-1  | 
+# worker-1  | {"event":"notificacao-processada","pedidoId":"b6001365-e4cc-49f4-b820-5e14e1771e80","intencaoId":"dce5d5c5-619e-4751-807c-a37ad1371f84"}
+    # Subtest: pedido aguarda consumidor e gera log somente no worker
+    ok 5 - pedido aguarda consumidor e gera log somente no worker
+      ---
+      duration_ms: 11377.7871
+      ...
+    1..5
+ok 1 - compose inicia imagens isoladas e processa pedidos exclusivamente no worker
+  ---
+  duration_ms: 97918.4228
+  ...
+1..1
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 97986.0602

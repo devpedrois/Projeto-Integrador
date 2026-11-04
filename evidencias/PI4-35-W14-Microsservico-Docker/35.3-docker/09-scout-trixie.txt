@@ -1,0 +1,460 @@
+
+
+## Overview
+
+                   │                                       Analyzed Image                                       
+───────────────────┼────────────────────────────────────────────────────────────────────────────────────────────
+ Target            │  registry://node:22-trixie-slim                                                            
+   digest          │  b0ea3309e539                                                                              
+   platform        │ linux/amd64                                                                                
+   provenance      │ https://github.com/nodejs/docker-node.git                                                  
+                   │  https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253                                                  
+   vulnerabilities │    0C    11H     0M     0L                                                                 
+   size            │ 82 MB                                                                                      
+   packages        │ 300                                                                                        
+                   │                                                                                            
+ Base image        │  oisupport/staging-amd64:a23d668a798d7a5266992da1282ebff1906008a9b26f79ddbbe29c35034231e7  
+                   │  1e1a22175fbf                                                                              
+
+
+## Packages and Vulnerabilities
+
+   0C     5H     0M     0L  brace-expansion 2.0.2
+pkg:npm/brace-expansion@2.0.2
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/trixie-slim/Dockerfile#L8-L58
+RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+    && case "${dpkgArch##*-}" in \
+      amd64) ARCH='x64' OPENSSL_ARCH='linux-x86_64';; \
+      ppc64el) ARCH='ppc64le' OPENSSL_ARCH='linux-ppc64le';; \
+      s390x) ARCH='s390x' OPENSSL_ARCH='linux*-s390x';; \
+      arm64) ARCH='arm64' OPENSSL_ARCH='linux-aarch64';; \
+      *) echo "unsupported architecture"; exit 1 ;; \
+    esac \
+    && set -ex \
+    && apt-get update && apt-get install -y ca-certificates curl wget gnupg dirmngr xz-utils libatomic1 --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/* \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+      { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+      { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+    && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+    && apt-mark auto '.*' > /dev/null \
+    && find /usr/local -type f -executable -exec ldd '{}' ';' \
+      | awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); print so }' \
+      | sort -u \
+      | xargs -r dpkg-query --search \
+      | cut -d: -f1 \
+      | sort -u \
+      | xargs -r apt-mark manual \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+    # smoke tests
+    && node --version \
+    && npm --version \
+    && rm -rf /tmp/*
+
+    x HIGH CVE-2026-13149 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-13149?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.2
+      Affected range : >=2.0.0                                                                                           
+                     : <2.1.2                                                                                            
+      Fixed version  : 2.1.2                                                                                             
+      CVSS Score     : 7.7                                                                                               
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P/S:N/AU:Y/R:U/V:D/RE:M/U:Amber 
+    
+    x HIGH CVE-2026-69152 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-69152?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.4
+      Affected range : >=2.0.0                                      
+                     : <2.1.4                                       
+      Fixed version  : 2.1.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-14257 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-14257?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.3
+      Affected range : >=2.0.0                                      
+                     : <2.1.3                                       
+      Fixed version  : 5.0.8                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-102278 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102278?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.6
+      Affected range : >=2.0.0                                      
+                     : <2.1.6                                       
+      Fixed version  : 2.1.6                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-102276 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102276?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.5
+      Affected range : >=2.0.0                                      
+                     : <2.1.5                                       
+      Fixed version  : 2.1.5                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+   0C     1H     0M     0L  sigstore 3.1.0
+pkg:npm/sigstore@3.1.0
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/trixie-slim/Dockerfile#L8-L58
+RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+    && case "${dpkgArch##*-}" in \
+      amd64) ARCH='x64' OPENSSL_ARCH='linux-x86_64';; \
+      ppc64el) ARCH='ppc64le' OPENSSL_ARCH='linux-ppc64le';; \
+      s390x) ARCH='s390x' OPENSSL_ARCH='linux*-s390x';; \
+      arm64) ARCH='arm64' OPENSSL_ARCH='linux-aarch64';; \
+      *) echo "unsupported architecture"; exit 1 ;; \
+    esac \
+    && set -ex \
+    && apt-get update && apt-get install -y ca-certificates curl wget gnupg dirmngr xz-utils libatomic1 --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/* \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+      { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+      { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+    && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+    && apt-mark auto '.*' > /dev/null \
+    && find /usr/local -type f -executable -exec ldd '{}' ';' \
+      | awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); print so }' \
+      | sort -u \
+      | xargs -r dpkg-query --search \
+      | cut -d: -f1 \
+      | sort -u \
+      | xargs -r apt-mark manual \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+    # smoke tests
+    && node --version \
+    && npm --version \
+    && rm -rf /tmp/*
+
+    x HIGH CVE-2026-48815 [Improper Verification of Cryptographic Signature]
+      https://scout.docker.com/v/CVE-2026-48815?s=github&n=sigstore&t=npm&vr=%3C%3D4.1.0
+      Affected range : <=4.1.0                                      
+      Fixed version  : 4.1.1                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N 
+    
+
+   0C     1H     0M     0L  picomatch 4.0.3
+pkg:npm/picomatch@4.0.3
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/trixie-slim/Dockerfile#L8-L58
+RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+    && case "${dpkgArch##*-}" in \
+      amd64) ARCH='x64' OPENSSL_ARCH='linux-x86_64';; \
+      ppc64el) ARCH='ppc64le' OPENSSL_ARCH='linux-ppc64le';; \
+      s390x) ARCH='s390x' OPENSSL_ARCH='linux*-s390x';; \
+      arm64) ARCH='arm64' OPENSSL_ARCH='linux-aarch64';; \
+      *) echo "unsupported architecture"; exit 1 ;; \
+    esac \
+    && set -ex \
+    && apt-get update && apt-get install -y ca-certificates curl wget gnupg dirmngr xz-utils libatomic1 --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/* \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+      { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+      { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+    && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+    && apt-mark auto '.*' > /dev/null \
+    && find /usr/local -type f -executable -exec ldd '{}' ';' \
+      | awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); print so }' \
+      | sort -u \
+      | xargs -r dpkg-query --search \
+      | cut -d: -f1 \
+      | sort -u \
+      | xargs -r apt-mark manual \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+    # smoke tests
+    && node --version \
+    && npm --version \
+    && rm -rf /tmp/*
+
+    x HIGH CVE-2026-33671 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-33671?s=github&n=picomatch&t=npm&vr=%3E%3D4.0.0%2C%3C4.0.4
+      Affected range : >=4.0.0                                      
+                     : <4.0.4                                       
+      Fixed version  : 4.0.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+   0C     1H     0M     0L  pacote 19.0.2
+pkg:npm/pacote@19.0.2
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/trixie-slim/Dockerfile#L8-L58
+RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+    && case "${dpkgArch##*-}" in \
+      amd64) ARCH='x64' OPENSSL_ARCH='linux-x86_64';; \
+      ppc64el) ARCH='ppc64le' OPENSSL_ARCH='linux-ppc64le';; \
+      s390x) ARCH='s390x' OPENSSL_ARCH='linux*-s390x';; \
+      arm64) ARCH='arm64' OPENSSL_ARCH='linux-aarch64';; \
+      *) echo "unsupported architecture"; exit 1 ;; \
+    esac \
+    && set -ex \
+    && apt-get update && apt-get install -y ca-certificates curl wget gnupg dirmngr xz-utils libatomic1 --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/* \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+      { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+      { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+    && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+    && apt-mark auto '.*' > /dev/null \
+    && find /usr/local -type f -executable -exec ldd '{}' ';' \
+      | awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); print so }' \
+      | sort -u \
+      | xargs -r dpkg-query --search \
+      | cut -d: -f1 \
+      | sort -u \
+      | xargs -r apt-mark manual \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+    # smoke tests
+    && node --version \
+    && npm --version \
+    && rm -rf /tmp/*
+
+    x HIGH CVE-2026-9496 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-9496?s=github&n=pacote&t=npm&vr=%3E%3D11.2.7%2C%3C21.5.1
+      Affected range : >=11.2.7                                                            
+                     : <21.5.1                                                             
+      Fixed version  : 21.5.1                                                              
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+
+   0C     1H     0M     0L  zlib 1:1.3.dfsg+really1.3.1-1
+pkg:deb/debian/zlib@1%3A1.3.dfsg%2Breally1.3.1-1?os_distro=trixie&os_name=debian&os_version=13
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/trixie-slim/Dockerfile#L0-L0
+
+
+    x HIGH CVE-2026-85091
+      https://scout.docker.com/v/CVE-2026-85091?s=debian&n=zlib&ns=debian&t=deb&osn=debian&osv=13&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     1H     0M     0L  ip-address 10.1.0
+pkg:npm/ip-address@10.1.0
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/trixie-slim/Dockerfile#L8-L58
+RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+    && case "${dpkgArch##*-}" in \
+      amd64) ARCH='x64' OPENSSL_ARCH='linux-x86_64';; \
+      ppc64el) ARCH='ppc64le' OPENSSL_ARCH='linux-ppc64le';; \
+      s390x) ARCH='s390x' OPENSSL_ARCH='linux*-s390x';; \
+      arm64) ARCH='arm64' OPENSSL_ARCH='linux-aarch64';; \
+      *) echo "unsupported architecture"; exit 1 ;; \
+    esac \
+    && set -ex \
+    && apt-get update && apt-get install -y ca-certificates curl wget gnupg dirmngr xz-utils libatomic1 --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/* \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+      { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+      { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+    && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+    && apt-mark auto '.*' > /dev/null \
+    && find /usr/local -type f -executable -exec ldd '{}' ';' \
+      | awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); print so }' \
+      | sort -u \
+      | xargs -r dpkg-query --search \
+      | cut -d: -f1 \
+      | sort -u \
+      | xargs -r apt-mark manual \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+    # smoke tests
+    && node --version \
+    && npm --version \
+    && rm -rf /tmp/*
+
+    x HIGH CVE-2026-69192 [Improper Input Validation]
+      https://scout.docker.com/v/CVE-2026-69192?s=github&n=ip-address&t=npm&vr=%3C%3D10.3.0
+      Affected range : <=10.3.0                                                        
+      Fixed version  : 10.3.1                                                          
+      CVSS Score     : 7.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N 
+    
+
+   0C     1H     0M     0L  pacote 20.0.1
+pkg:npm/pacote@20.0.1
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/trixie-slim/Dockerfile#L8-L58
+RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+    && case "${dpkgArch##*-}" in \
+      amd64) ARCH='x64' OPENSSL_ARCH='linux-x86_64';; \
+      ppc64el) ARCH='ppc64le' OPENSSL_ARCH='linux-ppc64le';; \
+      s390x) ARCH='s390x' OPENSSL_ARCH='linux*-s390x';; \
+      arm64) ARCH='arm64' OPENSSL_ARCH='linux-aarch64';; \
+      *) echo "unsupported architecture"; exit 1 ;; \
+    esac \
+    && set -ex \
+    && apt-get update && apt-get install -y ca-certificates curl wget gnupg dirmngr xz-utils libatomic1 --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/* \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+      { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+      { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+    && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+    && apt-mark auto '.*' > /dev/null \
+    && find /usr/local -type f -executable -exec ldd '{}' ';' \
+      | awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); print so }' \
+      | sort -u \
+      | xargs -r dpkg-query --search \
+      | cut -d: -f1 \
+      | sort -u \
+      | xargs -r apt-mark manual \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+    # smoke tests
+    && node --version \
+    && npm --version \
+    && rm -rf /tmp/*
+
+    x HIGH CVE-2026-9496 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-9496?s=github&n=pacote&t=npm&vr=%3E%3D11.2.7%2C%3C21.5.1
+      Affected range : >=11.2.7                                                            
+                     : <21.5.1                                                             
+      Fixed version  : 21.5.1                                                              
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+
+
+11 vulnerabilities found in 7 packages
+  CRITICAL  0  
+  HIGH      11 
+  MEDIUM    0  
+  LOW       0  
+

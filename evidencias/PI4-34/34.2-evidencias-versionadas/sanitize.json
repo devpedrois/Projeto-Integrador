@@ -1,0 +1,184 @@
+{
+  "scanned": 1180,
+  "affected": 17,
+  "findings": [
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-03-autenticacao/04-logout-me-401.txt",
+      "findings": [
+        {
+          "kind": "session-cookie",
+          "count": 2
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-04-autorizacao/12-resultados-adicionais.json",
+      "findings": [
+        {
+          "kind": "session-cookie",
+          "count": 4
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/fluxo-real-2026-10-14T03-18-45-160Z/02-fluxo-real.json",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-05-http-sessao/fluxo-real-2026-10-14T03-30-51-255Z/02-fluxo-real.json",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-30/benchmark-recomendacao/ambiente-red.txt",
+      "findings": [
+        {
+          "kind": "database-uri",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/backend-coverage/cobertura/coverage-final.json",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/backend-coverage/vitest.json",
+      "findings": [
+        {
+          "kind": "database-uri",
+          "count": 2
+        },
+        {
+          "kind": "credential-value",
+          "count": 11
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/frontend-coverage/vitest.json",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 12
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-31/31.1/backend-github-run2-failure.txt",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-31/31.1/tools/docs/checks.md",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/03-backend-tests.txt",
+      "findings": [
+        {
+          "kind": "database-uri",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/08-revisao-seguranca.md",
+      "findings": [
+        {
+          "kind": "service-credential",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/evidencias-backend-tests.tmp.txt",
+      "findings": [
+        {
+          "kind": "database-uri",
+          "count": 1
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/PI4-35/35.1/testes-backend.json",
+      "findings": [
+        {
+          "kind": "database-uri",
+          "count": 4
+        },
+        {
+          "kind": "credential-value",
+          "count": 10
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/backend-final.json",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 5
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/frontend-canonical.json",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 6
+        }
+      ],
+      "sanitized": true
+    },
+    {
+      "path": "evidencias/correcoes-integracao-producao/frontend-final.json",
+      "findings": [
+        {
+          "kind": "credential-value",
+          "count": 6
+        }
+      ],
+      "sanitized": true
+    }
+  ]
+}

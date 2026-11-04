@@ -1,0 +1,6 @@
+Subtarefa: 30.2
+Branch: codex/30-2-sequencia-checkout
+Base consultada: 8e78cdc
+Commit 10, subtarefa 30.1: 1dfce1b66401f95a49b8e810cb3f542d26dfc296
+Nenhum commit desta entrega foi criado.
+Nenhum push realizado.

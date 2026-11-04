@@ -1,0 +1,26 @@
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:39426
+   - Network:      http://127.0.0.1:39426
+
+ ✓ Starting...
+ ✓ Ready in 1672ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1153ms (800 modules)
+ GET / 200 in 1493ms
+ ✓ Compiled /produto/[id] in 379ms (811 modules)
+ GET / 200 in 50ms
+ GET /produto/68a46887-bd62-4e01-8e38-7e676e13972f 200 in 1046ms
+ ○ Compiling /artesao/[id] ...
+ ✓ Compiled /artesao/[id] in 740ms (826 modules)
+ GET /artesao/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b 200 in 1156ms
+ GET /artesao/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b 200 in 28ms
+ ✓ Compiled /middleware in 99ms (118 modules)
+ ✓ Compiled /painel-artesao in 478ms (839 modules)
+ GET /painel-artesao 200 in 660ms
+ ✓ Compiled /painel-artesao/perfil in 239ms (848 modules)
+ GET /painel-artesao/perfil 200 in 286ms
+ GET /painel-artesao 200 in 68ms
+ GET /artesao/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b 200 in 50ms
+ GET /artesao/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b 200 in 38ms
+ GET /artesao/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b 200 in 37ms
+ GET /artesao/47ca2ff0-1357-4c7a-b56b-dc3c85c1de9b 200 in 40ms

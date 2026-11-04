@@ -1,0 +1,44 @@
+{
+  "data": "2026-11-04",
+  "frontend": {
+    "testes": 980,
+    "arquivos": 104,
+    "build": true,
+    "lint": true,
+    "typecheck": true
+  },
+  "microsservico": {
+    "testes": 58,
+    "arquivos": 5,
+    "build": true,
+    "lint": true,
+    "typecheck": true
+  },
+  "e2e": {
+    "testes": 4,
+    "viewports": [
+      360,
+      1280
+    ],
+    "chamadasMicrosservico": 16,
+    "retries": 0,
+    "skips": 0,
+    "execucao": "7bf98311233f4ed8b704172e57720e18"
+  },
+  "ciRemotoExecutado": false,
+  "commitCriado": false,
+  "pushExecutado": false,
+  "backend": {
+    "testes": 786,
+    "arquivos": 72,
+    "suite": "mesmos filtros do job backend",
+    "build": true,
+    "lint": true,
+    "typecheck": true,
+    "openapi": true
+  },
+  "compatibilidadeMetricasLegadas": {
+    "testes": 2,
+    "aprovados": true
+  }
+}

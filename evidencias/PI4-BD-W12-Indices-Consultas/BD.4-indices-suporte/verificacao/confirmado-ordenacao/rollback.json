@@ -1,0 +1,6 @@
+{
+  "rollback": true,
+  "candidate": "confirmado-ordenacao",
+  "candidateAbsent": true,
+  "connectionSource": "DATABASE_URL_VOLUME"
+}

@@ -14,7 +14,7 @@ A instalação local completa mascarava essa dependência indevida.
 
 O [run 41504513337](https://github.com/devpedrois/Projeto-Integrador/actions/runs/41504513337)
 confirma esses três erros no typecheck de 1786ad0.
-[Log consultado](00-github-falha.log).
+[Log consultado](00-github-falha.txt).
 O log Render fornecido contém os mesmos diagnósticos.
 
 ## Correção
@@ -40,18 +40,18 @@ Remove somente seu diretório temporário no finally.
 
 | Evidência | Resultado |
 | --- | --- |
-| [01-red.log](01-red.log) | Falha pelos mesmos TS2307 e dois TS7006. |
-| [02-green.log](02-green.log) | Regressão aprovada após a correção. |
-| [03-build.log](03-build.log) | npm run build aprovado. |
-| [04-lint.log](04-lint.log) | Lint aprovado. |
-| [05-typecheck.log](05-typecheck.log) | Typecheck aprovado. |
-| [06-backend-tests.log](06-backend-tests.log) | Suíte padrão: 759 aprovados, 1 timeout de 5s no catálogo, 73 arquivos. |
-| [07-npm-ci-isolado.log](07-npm-ci-isolado.log) | npm ci --include=dev em instalação nova. |
-| [08-build-isolado.log](08-build-isolado.log) | npm run build sem frontend/node_modules aprovado. |
-| [09-typecheck-isolado.log](09-typecheck-isolado.log) | Typecheck da instalação nova aprovado. |
-| [10-teste-isolado.log](10-teste-isolado.log) | Regressão executada na instalação nova: 1/1. |
-| [11-format.log](11-format.log) | Formatação aprovada. |
-| [12-ci-tests.log](12-ci-tests.log) | 743/743 em 69 arquivos, com limites/exclusões do CI. Catálogo também aprovado. |
+| [01-red.txt](01-red.txt) | Falha pelos mesmos TS2307 e dois TS7006. |
+| [02-green.txt](02-green.txt) | Regressão aprovada após a correção. |
+| [03-build.txt](03-build.txt) | npm run build aprovado. |
+| [04-lint.txt](04-lint.txt) | Lint aprovado. |
+| [05-typecheck.txt](05-typecheck.txt) | Typecheck aprovado. |
+| [06-backend-tests.txt](06-backend-tests.txt) | Suíte padrão: 759 aprovados, 1 timeout de 5s no catálogo, 73 arquivos. |
+| [07-npm-ci-isolado.txt](07-npm-ci-isolado.txt) | npm ci --include=dev em instalação nova. |
+| [08-build-isolado.txt](08-build-isolado.txt) | npm run build sem frontend/node_modules aprovado. |
+| [09-typecheck-isolado.txt](09-typecheck-isolado.txt) | Typecheck da instalação nova aprovado. |
+| [10-teste-isolado.txt](10-teste-isolado.txt) | Regressão executada na instalação nova: 1/1. |
+| [11-format.txt](11-format.txt) | Formatação aprovada. |
+| [12-ci-tests.txt](12-ci-tests.txt) | 743/743 em 69 arquivos, com limites/exclusões do CI. Catálogo também aprovado. |
 
 A instalação independente não recebeu arquivos .env reais.
 Prisma generate utilizou configuração sintética, sem acessar banco.

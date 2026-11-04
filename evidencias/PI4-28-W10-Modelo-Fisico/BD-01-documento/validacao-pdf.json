@@ -1,0 +1,173 @@
+{
+  "paginas": 24,
+  "tabelas_inteiras": 41,
+  "imagens_mermaid": 2,
+  "produtor": "WeasyPrint 70.0",
+  "texto_dentro_das_margens": true,
+  "tabelas_por_pagina": [
+    {
+      "tabela": 1,
+      "pagina": 2
+    },
+    {
+      "tabela": 2,
+      "pagina": 6
+    },
+    {
+      "tabela": 3,
+      "pagina": 6
+    },
+    {
+      "tabela": 4,
+      "pagina": 7
+    },
+    {
+      "tabela": 5,
+      "pagina": 7
+    },
+    {
+      "tabela": 6,
+      "pagina": 7
+    },
+    {
+      "tabela": 7,
+      "pagina": 8
+    },
+    {
+      "tabela": 8,
+      "pagina": 8
+    },
+    {
+      "tabela": 9,
+      "pagina": 9
+    },
+    {
+      "tabela": 10,
+      "pagina": 9
+    },
+    {
+      "tabela": 11,
+      "pagina": 10
+    },
+    {
+      "tabela": 12,
+      "pagina": 10
+    },
+    {
+      "tabela": 13,
+      "pagina": 11
+    },
+    {
+      "tabela": 14,
+      "pagina": 11
+    },
+    {
+      "tabela": 15,
+      "pagina": 12
+    },
+    {
+      "tabela": 16,
+      "pagina": 12
+    },
+    {
+      "tabela": 17,
+      "pagina": 13
+    },
+    {
+      "tabela": 18,
+      "pagina": 13
+    },
+    {
+      "tabela": 19,
+      "pagina": 14
+    },
+    {
+      "tabela": 20,
+      "pagina": 14
+    },
+    {
+      "tabela": 21,
+      "pagina": 14
+    },
+    {
+      "tabela": 22,
+      "pagina": 15
+    },
+    {
+      "tabela": 23,
+      "pagina": 15
+    },
+    {
+      "tabela": 24,
+      "pagina": 16
+    },
+    {
+      "tabela": 25,
+      "pagina": 16
+    },
+    {
+      "tabela": 26,
+      "pagina": 16
+    },
+    {
+      "tabela": 27,
+      "pagina": 17
+    },
+    {
+      "tabela": 28,
+      "pagina": 17
+    },
+    {
+      "tabela": 29,
+      "pagina": 18
+    },
+    {
+      "tabela": 30,
+      "pagina": 18
+    },
+    {
+      "tabela": 31,
+      "pagina": 18
+    },
+    {
+      "tabela": 32,
+      "pagina": 19
+    },
+    {
+      "tabela": 33,
+      "pagina": 19
+    },
+    {
+      "tabela": 34,
+      "pagina": 19
+    },
+    {
+      "tabela": 35,
+      "pagina": 19
+    },
+    {
+      "tabela": 36,
+      "pagina": 20
+    },
+    {
+      "tabela": 37,
+      "pagina": 20
+    },
+    {
+      "tabela": 38,
+      "pagina": 21
+    },
+    {
+      "tabela": 39,
+      "pagina": 21
+    },
+    {
+      "tabela": 40,
+      "pagina": 22
+    },
+    {
+      "tabela": 41,
+      "pagina": 22
+    }
+  ]
+}

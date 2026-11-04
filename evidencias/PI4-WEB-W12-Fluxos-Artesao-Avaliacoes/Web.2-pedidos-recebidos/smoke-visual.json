@@ -1,0 +1,92 @@
+{
+  "envios": 5,
+  "loginsComprador": 1,
+  "itemAlheioPreservado": true,
+  "errosJavascript": [],
+  "viewports": [
+    {
+      "tela": "artesao-antes",
+      "largura": 360,
+      "viewport": 360,
+      "conteudo": 360,
+      "excedentes": []
+    },
+    {
+      "tela": "comprador-antes",
+      "largura": 360,
+      "viewport": 360,
+      "conteudo": 360,
+      "excedentes": []
+    },
+    {
+      "tela": "artesao-antes",
+      "largura": 768,
+      "viewport": 768,
+      "conteudo": 768,
+      "excedentes": []
+    },
+    {
+      "tela": "comprador-antes",
+      "largura": 768,
+      "viewport": 768,
+      "conteudo": 768,
+      "excedentes": []
+    },
+    {
+      "tela": "artesao-antes",
+      "largura": 1280,
+      "viewport": 1280,
+      "conteudo": 1280,
+      "excedentes": []
+    },
+    {
+      "tela": "comprador-antes",
+      "largura": 1280,
+      "viewport": 1280,
+      "conteudo": 1280,
+      "excedentes": []
+    },
+    {
+      "tela": "artesao-depois",
+      "largura": 360,
+      "viewport": 360,
+      "conteudo": 360,
+      "excedentes": []
+    },
+    {
+      "tela": "comprador-depois",
+      "largura": 360,
+      "viewport": 360,
+      "conteudo": 360,
+      "excedentes": []
+    },
+    {
+      "tela": "artesao-depois",
+      "largura": 768,
+      "viewport": 768,
+      "conteudo": 768,
+      "excedentes": []
+    },
+    {
+      "tela": "comprador-depois",
+      "largura": 768,
+      "viewport": 768,
+      "conteudo": 768,
+      "excedentes": []
+    },
+    {
+      "tela": "artesao-depois",
+      "largura": 1280,
+      "viewport": 1280,
+      "conteudo": 1280,
+      "excedentes": []
+    },
+    {
+      "tela": "comprador-depois",
+      "largura": 1280,
+      "viewport": 1280,
+      "conteudo": 1280,
+      "excedentes": []
+    }
+  ]
+}

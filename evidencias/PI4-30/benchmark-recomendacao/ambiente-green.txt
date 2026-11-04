@@ -1,0 +1,13 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/bench-recomendacao-lote.test.ts tests/unit/bench-recomendacao-cli.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+
+ Test Files  2 passed (2)
+      Tests  17 passed (17)
+   Start at  17:38:22
+   Duration  492ms (import 45%, transform 29%, tests 23%, worker 2%)
+

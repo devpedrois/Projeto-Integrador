@@ -1,0 +1,17 @@
+[
+  {
+    "comando": "testes IA-04",
+    "exitCode": 0,
+    "log": "testes-ia04.log"
+  },
+  {
+    "comando": "lint",
+    "exitCode": 0,
+    "log": "lint.log"
+  },
+  {
+    "comando": "typecheck",
+    "exitCode": 0,
+    "log": "typecheck.log"
+  }
+]

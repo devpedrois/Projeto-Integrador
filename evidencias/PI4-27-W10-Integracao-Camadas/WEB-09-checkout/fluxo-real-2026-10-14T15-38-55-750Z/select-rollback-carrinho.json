@@ -1,0 +1,28 @@
+{
+  "countsAntes": {
+    "pedidos": 1,
+    "itens": 2,
+    "pagamentos": 1,
+    "intencoes": 1
+  },
+  "countsDepois": {
+    "pedidos": 1,
+    "itens": 2,
+    "pagamentos": 1,
+    "intencoes": 1
+  },
+  "carrinhoPreservado": true,
+  "estoqueEVendasPreservados": true,
+  "itensCarrinho": [
+    {
+      "produtoId": "dcdd2473-40d3-49cb-90f2-80dadd3178b0",
+      "quantidade": 1,
+      "precoUnitario": "0.1"
+    },
+    {
+      "produtoId": "dac69c35-9a4e-4acd-8eb0-8cae4054ed82",
+      "quantidade": 2,
+      "precoUnitario": "13.37"
+    }
+  ]
+}

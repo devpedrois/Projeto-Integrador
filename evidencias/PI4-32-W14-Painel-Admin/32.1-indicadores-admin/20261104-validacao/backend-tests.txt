@@ -1,0 +1,13 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/concorrencia-script.integration.test.ts tests/integration/db-explain.integration.test.ts tests/integration/recomendacao-volume.integration.test.ts tests/integration/seed-volume.integration.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+
+ Test Files  4 passed (4)
+      Tests  17 passed (17)
+   Start at  16:21:41
+   Duration  29.52s (tests 92%, import 4%, transform 4%)
+

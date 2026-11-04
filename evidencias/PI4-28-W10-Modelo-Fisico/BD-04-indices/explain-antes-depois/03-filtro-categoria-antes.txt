@@ -1,0 +1,163 @@
+Consulta: filtro-categoria
+Fase: antes
+Captura original UTC: 2026-10-14T02:22:27.150Z
+Schema isolado: bd04_951b24127b014d84969945506e99dcda
+PostgreSQL: PostgreSQL 18.6 (653b019) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+enable_seqscan: on
+Contagens: {"produtos":1000,"pedidos":1500,"artesaos":50,"compradores":300,"intencoes":1500,"notificacoes":1500,"itenscarrinho":300}
+Parametros: ["de5eee0a-2a66-5362-94d7-0fea750da385"]
+
+SQL executado:
+EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)
+SELECT p."id", p."nome", p."descricao", p."preco",
+       p."quantidadeEstoque", p."categoriaId", p."tecnicaId",
+       p."artesaoId", p."criadoEm"
+FROM "Produto" p
+WHERE p."ativo" AND NOT p."desativadoPorAdmin"
+  AND p."quantidadeEstoque" > 0
+  AND p."categoriaId" = $1::uuid
+ORDER BY p."criadoEm" DESC
+LIMIT 24;
+
+Saida original PostgreSQL em FORMAT JSON:
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 42.49,
+      "Total Cost": 42.55,
+      "Plan Rows": 24,
+      "Plan Width": 176,
+      "Actual Startup Time": 0.169,
+      "Actual Total Time": 0.172,
+      "Actual Rows": 24,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 28,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 42.49,
+          "Total Cost": 43,
+          "Plan Rows": 204,
+          "Plan Width": 176,
+          "Actual Startup Time": 0.168,
+          "Actual Total Time": 0.169,
+          "Actual Rows": 24,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Sort Key": [
+            "\"criadoEm\" DESC"
+          ],
+          "Sort Method": "top-N heapsort",
+          "Sort Space Used": 31,
+          "Sort Space Type": "Memory",
+          "Shared Hit Blocks": 28,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Bitmap Heap Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "Produto",
+              "Alias": "p",
+              "Startup Cost": 5.73,
+              "Total Cost": 36.79,
+              "Plan Rows": 204,
+              "Plan Width": 176,
+              "Actual Startup Time": 0.033,
+              "Actual Total Time": 0.111,
+              "Actual Rows": 204,
+              "Actual Loops": 1,
+              "Disabled": false,
+              "Recheck Cond": "(\"categoriaId\" = 'de5eee0a-2a66-5362-94d7-0fea750da385'::uuid)",
+              "Rows Removed by Index Recheck": 0,
+              "Filter": "(ativo AND (NOT \"desativadoPorAdmin\") AND (\"quantidadeEstoque\" > 0))",
+              "Rows Removed by Filter": 0,
+              "Exact Heap Blocks": 27,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 28,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "Produto_categoriaId_idx",
+                  "Startup Cost": 0,
+                  "Total Cost": 5.68,
+                  "Plan Rows": 204,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.017,
+                  "Actual Total Time": 0.017,
+                  "Actual Rows": 204,
+                  "Actual Loops": 1,
+                  "Disabled": false,
+                  "Index Cond": "(\"categoriaId\" = 'de5eee0a-2a66-5362-94d7-0fea750da385'::uuid)",
+                  "Index Searches": 1,
+                  "Shared Hit Blocks": 1,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 0,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.109,
+    "Triggers": [],
+    "Execution Time": 0.2
+  }
+]

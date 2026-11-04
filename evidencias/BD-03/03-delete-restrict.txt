@@ -1,0 +1,16 @@
+BD-03 - Evidencia real de ON DELETE RESTRICT
+Executado em: 13/10/2026, 19:10:04 - America/Sao_Paulo
+Banco: PostgreSQL de desenvolvimento; conexao omitida.
+
+BEGIN;
+DELETE FROM "Tecnica" WHERE "id" = 'tecnica-torno-ceramico';
+
+ERROR: update or delete on table "Tecnica" violates RESTRICT setting of foreign key constraint "Produto_tecnicaId_fkey" on table "Produto"
+SQLSTATE: 23001
+DETAIL: Key (id)=(tecnica-torno-ceramico) is referenced from table "Produto".
+CONSTRAINT: Produto_tecnicaId_fkey
+
+ROLLBACK;
+
+Confirmacao apos rollback: [{"id":"tecnica-torno-ceramico","nome":"Torno Cerâmico"}]
+Nenhum registro foi removido.

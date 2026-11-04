@@ -1,0 +1,107 @@
+{
+  "measurement": "Indice preparado, antes da inclusao dos metadados finais desta auditoria",
+  "evidenceFiles": 1452,
+  "evidenceBytes": 52466881,
+  "evidenceMiB": 50.04,
+  "headEvidenceBytes": 168646,
+  "addedEvidenceBytes": 52298235,
+  "limitBytes": 67108864,
+  "withinLimit": true,
+  "extensions": {
+    ".md": {
+      "files": 142,
+      "bytes": 574198
+    },
+    ".json": {
+      "files": 593,
+      "bytes": 10308563
+    },
+    ".txt": {
+      "files": 418,
+      "bytes": 3293091
+    },
+    ".sql": {
+      "files": 11,
+      "bytes": 28620
+    },
+    ".png": {
+      "files": 253,
+      "bytes": 35318829
+    },
+    ".jpg": {
+      "files": 28,
+      "bytes": 2918835
+    },
+    ".csv": {
+      "files": 7,
+      "bytes": 24745
+    }
+  },
+  "largest": [
+    {
+      "path": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/01-swagger-render.png",
+      "bytes": 1210785
+    },
+    {
+      "path": "evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/04-vitrine-compose-1280.png",
+      "bytes": 916249
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/vitrine-network.png",
+      "bytes": 780899
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-00-13-799Z/vitrine-network.png",
+      "bytes": 780742
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-02-06-107Z/vitrine-network.png",
+      "bytes": 780683
+    },
+    {
+      "path": "evidencias/PI4-29-W10-Recomendacao-Integrada/IA-02-http-carrossel/fluxo-real-2026-10-14T14-03-20-971Z/erro-vitrine.png",
+      "bytes": 761646
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Documentacao-API/WEB-15/02-exemplo-rota-409.png",
+      "bytes": 730816
+    },
+    {
+      "path": "evidencias/PI4-30/benchmark-fila/execucao-2026-10-25T19-34-45.068Z/resultado.json",
+      "bytes": 702905
+    },
+    {
+      "path": "evidencias/IA.1/vitrine.png",
+      "bytes": 701783
+    },
+    {
+      "path": "evidencias/PI4-27-W10-Integracao-Camadas/WEB-06-catalogo/fluxo-real-2026-10-14T13-18-38-711Z/url-outra-aba.png",
+      "bytes": 626179
+    }
+  ],
+  "gitBefore": {
+    "count": 4714,
+    "size": 30398,
+    "in-pack": 299,
+    "packs": 1,
+    "size-pack": 258,
+    "prune-packable": 95,
+    "garbage": 0,
+    "size-garbage": 0
+  },
+  "gitAfter": {
+    "count": 5938,
+    "size": 65559,
+    "in-pack": 299,
+    "packs": 1,
+    "size-pack": 258,
+    "prune-packable": 95,
+    "garbage": 0,
+    "size-garbage": 0
+  },
+  "gitObjectGrowthKiB": 35161,
+  "gitObjectGrowthMiB": 34.34,
+  "legacyLogsUntracked": 27,
+  "originalLogsPreserved": true,
+  "note": "Dados logicos do indice. Metadados finais acrescentam poucos KiB. Crescimento do Git inclui objetos locais sem compactacao."
+}

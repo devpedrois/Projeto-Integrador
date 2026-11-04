@@ -1,0 +1,34 @@
+{
+  "tipo": "Revisao equivalente nesta conversa, autorizada pelo responsavel",
+  "bloqueiosEncontrados": 0,
+  "verificacoes": [
+    "GET /artesaos seleciona somente id e nome no PostgreSQL e retorna constantes papel e ativo. Nao seleciona e-mail, senha ou sessao.",
+    "Somente Usuario com papel artesao e ativo=true integra a lista publica. A rota administrativa continua autenticada e protegida por papel.",
+    "O adapter HTTP valida identidades, rejeita papeis inesperados e descarta campos adicionais. Cadastro e autenticacao mantem contratos existentes.",
+    "Swagger usa caminhos relativos constantes, sem confiar em cabecalhos externos para construir redirecionamentos.",
+    "A validacao de BACKEND_URL continua rejeitando credenciais, query, fragmento e caminhos arbitrarios.",
+    "O token do Blob foi transferido em memoria diretamente da Vercel ao Render, sem reveal, arquivo local, mensagem ou relatorio com o valor. Clipboard foi limpo.",
+    "As seis imagens publicadas sao SVGs sinteticos locais sem scripts, referencias externas ou dados pessoais.",
+    "A correcao das fotos usou parametros SQL, comparacao dos IDs e URLs anteriores, transacao serializable e comparacao das 15 tabelas.",
+    "O upload real usou conta temporaria exclusiva, PNG de um pixel, verificacao da origem do Blob e logout. A conta foi removida sem tocar contas anteriores.",
+    "CLAUDE.md e o documento de sprint continuam fora do rastreamento e ignorados. Arquivos .env permanecem fora da entrega.",
+    "A canonicalizacao limita-se a /api/docs. O middleware mantem as protecoes das rotas privadas e libera somente a documentacao publica. Regressao real inclui acesso com e sem barra."
+  ],
+  "evidencias": {
+    "backend": {
+      "total": 762,
+      "passou": 762,
+      "falhou": 0
+    },
+    "frontend": {
+      "total": 969,
+      "passou": 969,
+      "falhou": 0
+    },
+    "regressoesBackendDirecionadas": 43,
+    "buildBackend": "passou",
+    "buildFrontend": "passou apos liberar acesso a Google Fonts",
+    "lint": "backend e frontend passaram",
+    "typecheck": "backend e frontend passaram"
+  }
+}

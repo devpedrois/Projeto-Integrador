@@ -1,0 +1,260 @@
+
+> origem-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/services/avaliacoes.service.test.ts (23 tests) 58ms
+ ✓ tests/services/usuarios.service.test.ts (16 tests) 42ms
+ ✓ tests/services/moderacao.service.test.ts (22 tests) 22ms
+ ✓ tests/services/produtos.service.test.ts (43 tests) 62ms
+ ✓ tests/services/pedidos.service.test.ts (16 tests) 9ms
+ ✓ tests/store/carrinho-http.store.test.ts (10 tests) 181ms
+ ✓ tests/components/artesao/perfil-artesao-publico.test.tsx (8 tests) 311ms
+ ✓ tests/components/produto/detalhe-produto.test.tsx (23 tests) 1143ms
+ ✓ tests/hooks/use-perfil-publico-artesao.test.tsx (9 tests) 642ms
+ ✓ tests/components/meus-pedidos.test.tsx (9 tests) 748ms
+ ✓ tests/components/gate-acesso.test.tsx (18 tests) 1051ms
+ ✓ tests/components/admin/painel-moderacao.test.tsx (12 tests) 2138ms
+   ✓ PainelModeracao > busca por nome ou e-mail ignorando acentos e limpa os filtros 698ms
+ ✓ tests/hooks/atualizacao-vitrine.test.tsx (7 tests) 80ms
+ ✓ tests/app/vitrine.test.tsx (21 tests) 2164ms
+   ✓ Vitrine (Home) > substitui o catalogo aberto quando os produtos mudam no servidor 548ms
+ ✓ tests/components/avaliacao-pedido.web3.test.tsx (11 tests) 2078ms
+   ✓ Web.3 avaliacao no detalhe do pedido > erro de envio preserva campos e permite tentar novamente 560ms
+ ✓ tests/services/fake-recommendation.adapter.test.ts (9 tests) 7ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts (24 tests) 3107ms
+   ✓ HttpRecommendationAdapter no container > produz o mesmo resultado completo da fake para a fixture contratual 540ms
+ ✓ tests/components/meus-produtos-list.test.tsx (14 tests) 2957ms
+   ✓ MeusProdutosList > editar produto chama service.update com o artesaoId da sessao e atualiza a lista 937ms
+   ✓ MeusProdutosList > painel de edicao mostra o preco com virgula e salva o numero correto 608ms
+   ✓ MeusProdutosList > fechar o painel de edicao descarta as alteracoes sem chamar o service 372ms
+   ✓ MeusProdutosList > mostra erro no painel quando a edicao falha e mantem o painel aberto 453ms
+ ✓ tests/services/http/catalogo.service.test.ts (14 tests) 20ms
+ ✓ tests/components/perfil-artesao-form.test.tsx (12 tests) 4660ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso 1363ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo 1090ms
+   ✓ PerfilArtesaoForm > previa do perfil publico mostra nome, tecnica e a historia digitada 420ms
+   ✓ PerfilArtesaoForm > mostra erro recuperavel quando salvar falha e mantem o botao habilitado 1130ms
+ ❯ tests/app/route-protection.test.tsx (12 tests | 3 failed) 660ms
+   ✓ protecao de rotas > /painel-artesao nega visitante e preserva destino de retorno 318ms
+   × protecao de rotas > /admin nega visitante e preserva destino de retorno 66ms
+     → [vitest] No "obterIndicadoresAdminService" export is defined on the "@/services/fake/container" mock. Did you forget to return it from "vi.mock"?
+If you need to partially mock a module, you can use "importOriginal" helper inside:
+
+   × protecao de rotas > /admin nega papel incorreto 3ms
+     → [vitest] No "obterIndicadoresAdminService" export is defined on the "@/services/fake/container" mock. Did you forget to return it from "vi.mock"?
+If you need to partially mock a module, you can use "importOriginal" helper inside:
+
+   × protecao de rotas > /admin aceita papel admin 2ms
+     → [vitest] No "obterIndicadoresAdminService" export is defined on the "@/services/fake/container" mock. Did you forget to return it from "vi.mock"?
+If you need to partially mock a module, you can use "importOriginal" helper inside:
+
+ ✓ tests/store/carrinho.store.test.ts (17 tests) 8ms
+ ✓ tests/components/pedidos-recebidos.web2.test.tsx (13 tests) 925ms
+ ✓ tests/fake-api/repositories/produto.repository.test.ts (15 tests) 9ms
+ ✓ tests/components/produto-card.test.tsx (19 tests) 465ms
+ ✓ tests/app/produto-detalhe.test.tsx (4 tests) 739ms
+   ✓ Pagina de detalhes do produto > consulta o produto pelo id da rota 487ms
+ ✓ tests/components/filtros-produtos.test.tsx (12 tests) 542ms
+ ✓ tests/domain/produto-visibilidade.test.ts (20 tests) 4ms
+ ✓ tests/fake-api/repositories/usuario.repository.test.ts (14 tests) 7ms
+ ✓ tests/services/perfil-artesao.service.test.ts (8 tests) 5ms
+ ✓ tests/hooks/use-detalhe-produto.test.tsx (6 tests) 416ms
+ ✓ tests/fake-api/repositories/perfil-artesao.repository.test.ts (12 tests) 6ms
+ ✓ tests/services/container-http.test.ts (5 tests) 565ms
+ ✓ tests/services/http/perfil-artesao.service.test.ts (10 tests) 149ms
+ ✓ tests/app/admin-indicadores.test.tsx (9 tests) 404ms
+ ✓ tests/components/login-form.test.tsx (7 tests) 2311ms
+   ✓ LoginForm > login valido chama o service, cria a sessao e redireciona 600ms
+   ✓ LoginForm > credenciais invalidas mostram mensagem generica sem apontar o campo 532ms
+   ✓ LoginForm > mostra loading e desabilita o botao durante o envio 559ms
+   ✓ LoginForm > email em formato invalido bloqueia envio e mostra erro no campo 495ms
+ ✓ tests/services/http/pedidos-historico.service.test.ts (17 tests) 14ms
+ ✓ tests/components/cadastro-form.test.tsx (13 tests) 7933ms
+   ✓ CadastroForm > cadastro valido de artesao hidrata sessao e redireciona para painel-artesao 913ms
+   ✓ CadastroForm > cadastro valido de comprador hidrata sessao e redireciona para vitrine 820ms
+   ✓ CadastroForm > senha curta bloqueia envio e mostra erro no campo 777ms
+   ✓ CadastroForm > mostra loading e desabilita o botao durante o envio 827ms
+   ✓ CadastroForm > email ja cadastrado associa a mensagem ao campo email 777ms
+   ✓ CadastroForm > mostra erro recuperavel quando o service falha 880ms
+   ✓ CadastroForm com adapters reais > fake cadastra 'comprador', persiste sessao e navega para '/' 944ms
+   ✓ CadastroForm com adapters reais > fake cadastra 'artesao', persiste sessao e navega para '/painel-artesao' 921ms
+   ✓ CadastroForm com adapters reais > HTTP hidrata sessao pelo cadastro sem chamar login nem usar storage local 901ms
+ ✓ tests/services/http/api-client.test.ts (15 tests) 64ms
+ ✓ tests/services/http/catalogo-escrita.web12.test.ts (5 tests) 13ms
+ ✓ tests/fake-api/storage/sessao.storage.test.ts (20 tests) 6ms
+ ✓ tests/hooks/use-busca-produtos.test.tsx (6 tests) 406ms
+ ✓ tests/components/checkout-http.test.tsx (3 tests) 1007ms
+   ✓ confirma por HTTP, mostra numero real e limpa estado sem DELETE posterior 527ms
+ ✓ tests/components/route-guard.test.tsx (8 tests) 110ms
+ ✓ tests/validators/produto.validator.test.ts (27 tests) 9ms
+ ✓ tests/services/http/usuarios.service.test.ts (11 tests) 57ms
+ ✓ tests/store/sessao.store.test.ts (12 tests) 7ms
+ ✓ tests/components/notificacoes-artesao.test.tsx (5 tests) 173ms
+ ✓ tests/services/pedidos-historico.fake.test.ts (5 tests) 6ms
+ ✓ tests/components/indicadores-artesao.web5.test.tsx (5 tests) 240ms
+ ✓ tests/hooks/use-meus-produtos.test.tsx (6 tests) 403ms
+ ✓ tests/services/indicadores-artesao.fake.web5.test.ts (4 tests) 7ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (7 tests) 332ms
+ ✓ tests/fake-api/repositories/avaliacao.repository.test.ts (9 tests) 5ms
+ ✓ tests/components/sessao-http.test.tsx (4 tests) 904ms
+   ✓ login respeita retorno local preservado pelo middleware 663ms
+ ✓ tests/utils/produto-query-url.test.ts (10 tests) 7ms
+ ✓ tests/services/http/avaliacoes.web3.test.ts (14 tests) 13ms
+ ✓ tests/hooks/use-filtros-url.test.tsx (8 tests) 29ms
+ ✓ tests/components/faixa-recomendacoes.test.tsx (6 tests) 159ms
+ ✓ tests/validators/perfil-artesao.validator.test.ts (18 tests) 7ms
+ ✓ tests/app/minha-conta.test.tsx (5 tests) 458ms
+   ✓ Minha conta > mostra nome, e-mail e papel do usuario da sessao 313ms
+ ✓ tests/utils/rota-segura.test.ts (18 tests) 5ms
+ ✓ tests/components/resultado-busca.test.tsx (8 tests) 327ms
+ ✓ tests/fake-api/repositories/pedido.repository.test.ts (8 tests) 8ms
+ ✓ tests/store/sessao-http.store.test.ts (5 tests) 4ms
+ ✓ tests/hooks/perfil-artesao-http.test.tsx (3 tests) 364ms
+ ✓ tests/fake-api/usuario.repository.test.ts (4 tests) 4ms
+ ✓ tests/components/pendencia-perfil-artesao.test.tsx (4 tests) 124ms
+ ✓ tests/services/http/carrinho.service.test.ts (5 tests) 17ms
+ ✓ tests/services/verificar-usuario-ativo.test.ts (5 tests) 4ms
+ ✓ tests/services/http/indicadores-artesao.web5.test.ts (19 tests) 18ms
+ ✓ tests/fake-api/seeds/avaliacoes.seed.test.ts (7 tests) 6ms
+ ✓ tests/services/http/elegibilidade-avaliacao.web4.test.ts (11 tests) 15ms
+stderr | tests/hooks/use-artesaos-ativos.test.tsx > useArtesaosAtivos > comeca carregando quando o service ainda nao resolveu
+An update to TestComponent inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ tests/config/middleware.test.ts (9 tests) 56ms
+ ✓ tests/hooks/use-artesaos-ativos.test.tsx (4 tests) 165ms
+ ✓ tests/hooks/use-opcoes-filtro.test.tsx (4 tests) 169ms
+ ✓ tests/config/next-config.test.ts (14 tests) 10ms
+ ✓ tests/validators/cadastro.validator.test.ts (8 tests) 3ms
+ ✓ tests/app/pedidos-recebidos.web2.test.tsx (1 test) 97ms
+ ✓ tests/services/http/indicadores-admin.test.ts (19 tests) 12ms
+ ✓ tests/domain/perfil-artesao-completo.test.ts (6 tests) 3ms
+ ✓ tests/services/container-indicadores.web5.test.ts (2 tests) 560ms
+   ✓ seleciona fake explicitamente, exige artesao e nao faz fetch 449ms
+ ✓ tests/fake-api/seeds/produtos.seed.test.ts (7 tests) 6ms
+ ✓ tests/app/painel-indicadores.web5.test.tsx (1 test) 234ms
+ ✓ tests/utils/foto-url-segura.test.ts (8 tests) 5ms
+ ✓ tests/validators/avaliacao.validator.test.ts (7 tests) 3ms
+ ✓ tests/fake-api/storage/carrinho.storage.test.ts (8 tests) 4ms
+ ✓ tests/services/opcoes-filtro.service.test.ts (4 tests) 44ms
+ ✓ tests/fake-api/storage/modo-acesso.storage.test.ts (3 tests) 2ms
+ ✓ tests/hooks/use-sessao.test.tsx (2 tests) 13ms
+ ✓ tests/config/e2e-traces.test.ts (1 test) 14ms
+ ✓ tests/services/container-indicadores-admin.test.ts (2 tests) 133ms
+ ✓ tests/validators/foto-perfil.validator.test.ts (5 tests) 5ms
+ ✓ tests/utils/normalizar-texto.test.ts (5 tests) 2ms
+ ✓ tests/domain/resumo-avaliacoes.test.ts (3 tests) 3ms
+ ✓ tests/utils/preco-campo.test.ts (11 tests) 4ms
+ ✓ tests/services/recomendacao-contrato.test.ts (1 test) 2ms
+ ✓ tests/types/usuario.test.ts (1 test) 2ms
+ ✓ tests/fake-api/seeds/categorias.seed.test.ts (3 tests) 3ms
+ ✓ tests/utils/formatar-moeda.test.ts (4 tests) 3ms
+ ✓ tests/utils/rotulo-papel.test.ts (3 tests) 2ms
+ ✓ tests/components/autenticacao/layout-autenticacao.test.tsx (1 test) 66ms
+stdout | tests/config/docs-proxy.test.ts
+   Using tsconfig file: tsconfig.build.json
+
+ ✓ tests/app/not-found.test.tsx (1 test) 69ms
+ ✓ tests/services/container-avaliacoes.test.ts (1 test) 314ms
+   ✓ obterAvaliacoesService > expõe o recurso de avaliacoes pela camada organizada 313ms
+ ❯ tests/config/docs-proxy.test.ts (2 tests | 2 failed) 2492ms
+   × encaminha a barra final do Swagger sem redirecionamento circular 9ms
+     → fetch failed
+   × canonicaliza o endereco publico sem barra antes do rewrite 8ms
+     → fetch failed
+ ✓ tests/components/produto-form.test.tsx (13 tests) 24948ms
+   ✓ carrega categoria HTTP com UUID e cadastra pelo formulario 1592ms
+   ✓ ProdutoForm > campos ausentes bloqueiam criacao e mostram erros por campo 422ms
+   ✓ ProdutoForm > preco 0 bloqueia criacao 2201ms
+   ✓ ProdutoForm > preco -1 bloqueia criacao 2389ms
+   ✓ ProdutoForm > preco -0.5 bloqueia criacao 2301ms
+   ✓ ProdutoForm > preco -100 bloqueia criacao 2303ms
+   ✓ ProdutoForm > preco -0.01 bloqueia criacao 2303ms
+   ✓ ProdutoForm > produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao 2152ms
+   ✓ ProdutoForm > aceita preco com virgula e envia o numero correto 2401ms
+   ✓ ProdutoForm > mostra loading e desabilita o botao durante o envio 2310ms
+   ✓ ProdutoForm > nao envia duas vezes ao clicar repetidamente antes da resposta 2463ms
+   ✓ ProdutoForm > mostra erro recuperavel quando o service falha e permite tentar novamente 2066ms
+ ✓ tests/config/build-typescript.test.ts (2 tests) 4081ms
+   ✓ TypeScript do build de produção > verifica a aplicação sem importar testes ou código do backend 2155ms
+   ✓ TypeScript do build de produção > preserva a checagem dos testes e contratos entre as camadas 1925ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/app/route-protection.test.tsx > protecao de rotas > /admin nega visitante e preserva destino de retorno
+ FAIL  tests/app/route-protection.test.tsx > protecao de rotas > /admin nega papel incorreto
+ FAIL  tests/app/route-protection.test.tsx > protecao de rotas > /admin aceita papel admin
+Error: [vitest] No "obterIndicadoresAdminService" export is defined on the "@/services/fake/container" mock. Did you forget to return it from "vi.mock"?
+If you need to partially mock a module, you can use "importOriginal" helper inside:
+
+vi.mock(import("@/services/fake/container"), async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...actual,
+    // your mocked methods
+  }
+})
+
+ ❯ src/app/admin/page.tsx:32:27
+     30|     setSessionStore(obterSessionStore());
+     31|     setModeracaoService(obterModeracaoService());
+     32|     setIndicadoresService(obterIndicadoresAdminService());
+       |                           ^
+     33|   }, []);
+     34| 
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28656:20
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ commitHookEffectListMount node_modules/react-dom/cjs/react-dom-client.development.js:13748:29
+ ❯ commitHookPassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:13835:11
+ ❯ commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:16906:13
+ ❯ recursivelyTraversePassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:16851:13
+ ❯ commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:16941:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/config/docs-proxy.test.ts > encaminha a barra final do Swagger sem redirecionamento circular
+TypeError: fetch failed
+ ❯ tests/config/docs-proxy.test.ts:51:20
+     49| }, 30000);
+     50| 
+     51| it("encaminha a barra final do Swagger sem redirecionamento circular",…
+       |                    ^
+     52|   const response = await fetch(`${origin}/api/docs/`, { redirect: "man…
+     53|   expect(response.status).toBe(200);
+
+Caused by: Error: connect EACCES 127.0.0.1:61284
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4092, code: 'EACCES', syscall: 'connect', address: '127.0.0.1', port: 61284 }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/config/docs-proxy.test.ts > canonicaliza o endereco publico sem barra antes do rewrite
+TypeError: fetch failed
+ ❯ tests/config/docs-proxy.test.ts:56:20
+     55| });
+     56| 
+     57| it("canonicaliza o endereco publico sem barra antes do rewrite", async…
+       |                  ^
+     58|   const response = await fetch(`${origin}/api/docs`, { redirect: "manu…
+     59|   expect(response.status).toBe(308);
+
+Caused by: Error: connect EACCES 127.0.0.1:61284
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4092, code: 'EACCES', syscall: 'connect', address: '127.0.0.1', port: 61284 }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ Test Files  2 failed | 105 passed (107)
+      Tests  5 failed | 1005 passed (1010)
+   Start at  16:21:39
+   Duration  33.88s (transform 4.48s, setup 47.01s, collect 30.30s, tests 75.49s, environment 385.77s, prepare 26.04s)
+

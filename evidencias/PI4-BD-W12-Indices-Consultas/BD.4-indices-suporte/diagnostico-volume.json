@@ -1,0 +1,23 @@
+{
+  "volumeSchema": "public",
+  "missingItemPedidoColumns": [
+    "status",
+    "enviadoEm"
+  ],
+  "prismaReadErrorCode": "P2022",
+  "initialBackendRun": {
+    "passed": 723,
+    "failed": 3,
+    "filesPassed": 67,
+    "filesFailed": 2
+  },
+  "failures": [
+    "authorization.routes.integration.test.ts: POST /pedidos como comprador retorna 201",
+    "pedidos.integration.test.ts: mantem checkout concorrente com cookie: uma criacao e um conflito",
+    "pedidos.integration.test.ts: creates an order and decrements stock exactly by the requested quantity"
+  ],
+  "observedHttpStatus": 503,
+  "existingMigration": "20261025160000_status_item_pedido",
+  "appliedToVolumePublic": false,
+  "temporaryDatabaseAndCleanupAuthorized": true
+}

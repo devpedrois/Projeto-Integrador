@@ -1,0 +1,14 @@
+{
+  "aprovado": true,
+  "rodadas": 15,
+  "contextosPorRodada": 1000,
+  "aquecimentosDescartados": 3,
+  "divergencias": 0,
+  "sha256Unico": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+  "png": {
+    "largura": 1760,
+    "altura": 800
+  },
+  "formulasRecalculadas": true,
+  "picoEsperaPool": 0
+}

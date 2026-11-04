@@ -1,0 +1,40 @@
+✔ politica Git inclui evidencias/relatorio.md (51.9625ms)
+✔ politica Git inclui evidencias/entrega/saida.txt (49.1493ms)
+✔ politica Git inclui evidencias/entrega/medicoes.csv (48.6035ms)
+✔ politica Git inclui evidencias/entrega/resultado.json (49.7347ms)
+✔ politica Git inclui evidencias/entrega/consulta.sql (49.1995ms)
+✔ politica Git inclui evidencias/entrega/tela.png (48.2636ms)
+✔ politica Git inclui evidencias/entrega/tela.jpg (57.67ms)
+✔ politica Git exclui evidencias/entrega/trace.zip (48.5753ms)
+✔ politica Git exclui evidencias/entrega/trace.json (47.3667ms)
+✔ politica Git exclui evidencias/entrega/traces/resultado.json (46.4944ms)
+✔ politica Git exclui evidencias/entrega/video.webm (47.2891ms)
+✔ politica Git exclui evidencias/entrega/video.mp4 (47.5703ms)
+✔ politica Git exclui evidencias/entrega/animacao.gif (49.2281ms)
+✔ politica Git exclui evidencias/entrega/.env.json (46.6107ms)
+✔ politica Git exclui evidencias/entrega/copia.env.txt (47.2979ms)
+✔ politica Git exclui evidencias/entrega/playwright-report/data/tela.png (48.8595ms)
+✔ politica Git exclui evidencias/entrega/html/data/tela.png (51.708ms)
+✔ politica Git exclui evidencias/entrega/coverage/resultado.json (46.9877ms)
+✔ politica Git exclui evidencias/entrega/backend-coverage/cobertura/coverage-final.json (48.1072ms)
+✔ politica Git exclui evidencias/entrega/frontend-coverage/vitest.json (49.0394ms)
+✔ politica Git exclui evidencias/entrega/checkout-limpo/package.json (50.5801ms)
+✔ politica Git exclui evidencias/entrega/instalacao-limpa/package.json (47.0146ms)
+✔ politica Git exclui evidencias/entrega/node_modules/pkg/package.json (53.3256ms)
+✔ politica Git exclui evidencias/entrega/.next/cache/resultado.json (58.826ms)
+✔ politica Git exclui evidencias/.audit-private/resultado.json (57.4275ms)
+✔ anonimiza URLs, credenciais e cookies sem invalidar JSON (1.2162ms)
+✔ anonimiza JSON serializado dentro de logs e comandos (0.2432ms)
+✔ detecta senhas conhecidas fora de campos nomeados (0.3528ms)
+✔ nao altera contagens, hashes e placeholders anonimizados (0.0977ms)
+✔ revisao visual vale somente para o hash exato e rotulos (0.2693ms)
+✔ anonimiza logs UTF-16 preservando codificacao e contagens (1.5444ms)
+✔ converte log sem apagar original nem restaurar credenciais (111.0733ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1525.2206

@@ -1,0 +1,181 @@
+{
+  "estrategia": "categoria",
+  "itens": [
+    {
+      "id": "a3634951-efa0-441b-b4ba-a485ca88b314",
+      "nome": "Peca IA02 10",
+      "descricao": "Peca sintetica de barro artesanal",
+      "preco": 89.9,
+      "categoriaId": "2307cf16-03ac-4d49-aa93-8c2776dd695f",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "5f2a93ae-87c9-4ac4-a10b-74657eb02942",
+      "fotos": [
+        {
+          "url": "/produtos/ceramica-barro.svg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 4,
+      "quantidadeVendida": 100,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-10-14T14:00:22.714Z"
+    },
+    {
+      "id": "0fe51436-8afb-4618-b27e-cca903f28899",
+      "nome": "Peca IA02 09",
+      "descricao": "Peca sintetica de barro artesanal",
+      "preco": 89.9,
+      "categoriaId": "2307cf16-03ac-4d49-aa93-8c2776dd695f",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "5f2a93ae-87c9-4ac4-a10b-74657eb02942",
+      "fotos": [
+        {
+          "url": "/produtos/ceramica-barro.svg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 4,
+      "quantidadeVendida": 90,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-10-14T14:00:22.342Z"
+    },
+    {
+      "id": "b7c6e748-9473-4331-a752-25703c9d3797",
+      "nome": "Peca IA02 08",
+      "descricao": "Peca sintetica de barro artesanal",
+      "preco": 89.9,
+      "categoriaId": "2307cf16-03ac-4d49-aa93-8c2776dd695f",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "5f2a93ae-87c9-4ac4-a10b-74657eb02942",
+      "fotos": [
+        {
+          "url": "/produtos/ceramica-barro.svg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 4,
+      "quantidadeVendida": 80,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-10-14T14:00:21.973Z"
+    },
+    {
+      "id": "4ed7f186-c084-4df4-ba7b-53ebc74fdfac",
+      "nome": "Peca IA02 07",
+      "descricao": "Peca sintetica de barro artesanal",
+      "preco": 89.9,
+      "categoriaId": "2307cf16-03ac-4d49-aa93-8c2776dd695f",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "5f2a93ae-87c9-4ac4-a10b-74657eb02942",
+      "fotos": [
+        {
+          "url": "/produtos/ceramica-barro.svg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 4,
+      "quantidadeVendida": 70,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-10-14T14:00:21.602Z"
+    },
+    {
+      "id": "acbf3390-c970-480b-8faf-cb958a4684e7",
+      "nome": "Peca IA02 06",
+      "descricao": "Peca sintetica de barro artesanal",
+      "preco": 89.9,
+      "categoriaId": "2307cf16-03ac-4d49-aa93-8c2776dd695f",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "5f2a93ae-87c9-4ac4-a10b-74657eb02942",
+      "fotos": [
+        {
+          "url": "/produtos/ceramica-barro.svg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 4,
+      "quantidadeVendida": 60,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-10-14T14:00:21.232Z"
+    },
+    {
+      "id": "1931b1f5-6d9f-4f46-bcaa-588b8349911e",
+      "nome": "Peca IA02 05",
+      "descricao": "Peca sintetica de barro artesanal",
+      "preco": 89.9,
+      "categoriaId": "2307cf16-03ac-4d49-aa93-8c2776dd695f",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "5f2a93ae-87c9-4ac4-a10b-74657eb02942",
+      "fotos": [
+        {
+          "url": "/produtos/ceramica-barro.svg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 4,
+      "quantidadeVendida": 50,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-10-14T14:00:20.860Z"
+    },
+    {
+      "id": "9684a27d-8a6c-4ba7-a298-c22d31db4eee",
+      "nome": "Peca IA02 04",
+      "descricao": "Peca sintetica de barro artesanal",
+      "preco": 89.9,
+      "categoriaId": "2307cf16-03ac-4d49-aa93-8c2776dd695f",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "5f2a93ae-87c9-4ac4-a10b-74657eb02942",
+      "fotos": [
+        {
+          "url": "/produtos/ceramica-barro.svg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 4,
+      "quantidadeVendida": 40,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-10-14T14:00:20.489Z"
+    },
+    {
+      "id": "07a8bfaf-f277-4e39-b345-2afd8ba3e2e5",
+      "nome": "Peca IA02 03",
+      "descricao": "Peca sintetica de barro artesanal",
+      "preco": 89.9,
+      "categoriaId": "2307cf16-03ac-4d49-aa93-8c2776dd695f",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "5f2a93ae-87c9-4ac4-a10b-74657eb02942",
+      "fotos": [
+        {
+          "url": "/produtos/ceramica-barro.svg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 4,
+      "quantidadeVendida": 30,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-10-14T14:00:20.054Z"
+    }
+  ]
+}

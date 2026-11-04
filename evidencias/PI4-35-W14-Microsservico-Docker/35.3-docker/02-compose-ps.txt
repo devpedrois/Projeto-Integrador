@@ -1,0 +1,7 @@
+NAME                                     IMAGE                          COMMAND                  SERVICE              CREATED         STATUS                     PORTS
+origem-35-3-final-api-1                  origem-backend:local           "docker-entrypoint.s…"   api                  3 minutes ago   Up 3 minutes (healthy)     127.0.0.1:3001->3001/tcp
+origem-35-3-final-migrate-1              origem-backend-migrate:local   "docker-entrypoint.s…"   migrate              3 minutes ago   Exited (0) 3 minutes ago   
+origem-35-3-final-postgres-1             postgres:16                    "docker-entrypoint.s…"   postgres             3 minutes ago   Up 3 minutes (healthy)     5432/tcp
+origem-35-3-final-recomendacao-1         origem-recomendacao:local      "docker-entrypoint.s…"   recomendacao         3 minutes ago   Up 3 minutes (healthy)     3002/tcp
+origem-35-3-final-recomendacao-setup-1   origem-recomendacao:local      "docker-entrypoint.s…"   recomendacao-setup   3 minutes ago   Exited (0) 3 minutes ago   
+origem-35-3-final-worker-1               origem-backend:local           "docker-entrypoint.s…"   worker               3 minutes ago   Up 3 minutes (healthy)     3001/tcp

@@ -1,0 +1,27 @@
+
+> origem-frontend@1.0.0 dev
+> next dev --hostname 127.0.0.1
+
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:3000
+   - Network:      http://127.0.0.1:3000
+
+ ✓ Starting...
+   Using tsconfig file: tsconfig.build.json
+ ✓ Ready in 1795ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1302ms (828 modules)
+ GET / 200 in 1716ms
+ ✓ Compiled /_not-found in 452ms (832 modules)
+ GET / 404 in 651ms
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\Desktop\Projeto integrador\frontend\.next\server\app\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\.next\\server\\app\\page.js',
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 528ms (1171 modules)
+ GET / 500 in 1004ms
+[?25h

@@ -1,0 +1,99 @@
+{
+  "data": "2026-10-22T22:41:04.859Z",
+  "fonte": "DATABASE_URL_VOLUME",
+  "schema": "public",
+  "metodo": "HTTP autenticado e SQL simples independente no mesmo snapshot REPEATABLE READ READ ONLY",
+  "massa": {
+    "produtos": 1000,
+    "pedidosConfirmados": 1500
+  },
+  "artesaosConferidos": 5,
+  "divergencias": 0,
+  "resultados": [
+    {
+      "artesaoId": "06327cbd-c956-5f91-baa0-03882afc7a33",
+      "http": {
+        "quantidadeVendida": 74,
+        "receitaTotal": 18659.71,
+        "numeroPedidos": 38,
+        "ultimaVenda": "2026-08-02T00:20:00.000Z",
+        "atualizadoEm": "2026-10-22T22:41:04.607Z"
+      },
+      "sqlIndependente": {
+        "quantidadeVendida": 74,
+        "receitaTotal": 18659.71,
+        "numeroPedidos": 38,
+        "ultimaVenda": "2026-08-02T00:20:00.000Z"
+      },
+      "divergencias": 0
+    },
+    {
+      "artesaoId": "07d5864f-d6da-528e-8b18-a9f2fa825b62",
+      "http": {
+        "quantidadeVendida": 85,
+        "receitaTotal": 22453.27,
+        "numeroPedidos": 37,
+        "ultimaVenda": "2026-08-01T20:46:00.000Z",
+        "atualizadoEm": "2026-10-22T22:41:04.808Z"
+      },
+      "sqlIndependente": {
+        "quantidadeVendida": 85,
+        "receitaTotal": 22453.27,
+        "numeroPedidos": 37,
+        "ultimaVenda": "2026-08-01T20:46:00.000Z"
+      },
+      "divergencias": 0
+    },
+    {
+      "artesaoId": "0f017774-494e-537d-bfa3-9589be5bdf9a",
+      "http": {
+        "quantidadeVendida": 51,
+        "receitaTotal": 11622.75,
+        "numeroPedidos": 24,
+        "ultimaVenda": "2026-08-01T23:30:00.000Z",
+        "atualizadoEm": "2026-10-22T22:41:05.000Z"
+      },
+      "sqlIndependente": {
+        "quantidadeVendida": 51,
+        "receitaTotal": 11622.75,
+        "numeroPedidos": 24,
+        "ultimaVenda": "2026-08-01T23:30:00.000Z"
+      },
+      "divergencias": 0
+    },
+    {
+      "artesaoId": "10742c09-06e2-5c14-a12b-4d092308120f",
+      "http": {
+        "quantidadeVendida": 54,
+        "receitaTotal": 12505.38,
+        "numeroPedidos": 26,
+        "ultimaVenda": "2026-08-02T00:52:00.000Z",
+        "atualizadoEm": "2026-10-22T22:41:05.192Z"
+      },
+      "sqlIndependente": {
+        "quantidadeVendida": 54,
+        "receitaTotal": 12505.38,
+        "numeroPedidos": 26,
+        "ultimaVenda": "2026-08-02T00:52:00.000Z"
+      },
+      "divergencias": 0
+    },
+    {
+      "artesaoId": "1163534c-0c75-5895-ac4b-ee33fc488aba",
+      "http": {
+        "quantidadeVendida": 72,
+        "receitaTotal": 16002.83,
+        "numeroPedidos": 37,
+        "ultimaVenda": "2026-08-02T00:03:00.000Z",
+        "atualizadoEm": "2026-10-22T22:41:05.384Z"
+      },
+      "sqlIndependente": {
+        "quantidadeVendida": 72,
+        "receitaTotal": 16002.83,
+        "numeroPedidos": 37,
+        "ultimaVenda": "2026-08-02T00:03:00.000Z"
+      },
+      "divergencias": 0
+    }
+  ]
+}

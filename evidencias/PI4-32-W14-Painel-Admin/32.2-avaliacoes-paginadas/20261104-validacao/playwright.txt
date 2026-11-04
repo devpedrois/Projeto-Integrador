@@ -1,0 +1,132 @@
+[WebServer] (node:48424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:43080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+  -  1 [360px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras
+  ok 2 [360px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (6.0s)
+  ok 3 [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (6.6s)
+  x  4 [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (15.6s)
+  x  5 [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (retry #1) (151ms)
+  ok 6 [1280px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras (6.7s)
+  ok 7 [1280px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (3.1s)
+  ok 8 [1280px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (5.0s)
+  x  9 [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (15.5s)
+  x  10 [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (retry #1) (141ms)
+
+
+  1) [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4') with timeout 15000ms
+      - waiting for getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')
+
+
+      19 |   });
+      20 |   for (let pagina = 1; pagina <= 4; pagina += 1) {
+    > 21 |     await expect(comentarios.getByText(`Página ${pagina} de 4`)).toBeVisible();
+         |                                                                  ^
+      22 |     await expect(comentarios.getByRole("listitem")).toHaveCount(
+      23 |       pagina === 4 ? 5 : 10,
+      24 |     );
+        at C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\produto-avaliacoes.spec.ts:21:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserContext.newPage: Executable doesn't exist at C:\Users\Pedro\AppData\Local\ms-playwright\ffmpeg-1013\ffmpeg-win64.exe
+    ╔═════════════════════════════════════════════════════════════════╗
+    ║ Video rendering requires ffmpeg binary.                         ║
+    ║ Downloading it will not affect any of the system-wide settings. ║
+    ║ Please run the following command:                               ║
+    ║                                                                 ║
+    ║     npx playwright install ffmpeg                               ║
+    ║                                                                 ║
+    ║ <3 Playwright Team                                              ║
+    ╚═════════════════════════════════════════════════════════════════╝
+
+    Error Context: ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4') with timeout 15000ms
+      - waiting for getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')
+
+
+      19 |   });
+      20 |   for (let pagina = 1; pagina <= 4; pagina += 1) {
+    > 21 |     await expect(comentarios.getByText(`Página ${pagina} de 4`)).toBeVisible();
+         |                                                                  ^
+      22 |     await expect(comentarios.getByRole("listitem")).toHaveCount(
+      23 |       pagina === 4 ? 5 : 10,
+      24 |     );
+        at C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\produto-avaliacoes.spec.ts:21:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserContext.newPage: Executable doesn't exist at C:\Users\Pedro\AppData\Local\ms-playwright\ffmpeg-1013\ffmpeg-win64.exe
+    ╔═════════════════════════════════════════════════════════════════╗
+    ║ Video rendering requires ffmpeg binary.                         ║
+    ║ Downloading it will not affect any of the system-wide settings. ║
+    ║ Please run the following command:                               ║
+    ║                                                                 ║
+    ║     npx playwright install ffmpeg                               ║
+    ║                                                                 ║
+    ║ <3 Playwright Team                                              ║
+    ╚═════════════════════════════════════════════════════════════════╝
+
+    Error Context: ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\results\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais 
+    [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais 
+  1 skipped
+  5 passed (1.2m)
+Schema E2E removido e ausencia confirmada.
+Chamadas ao microsservico E2E: 16
+Traces ZIP sanitizados: 4
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\37d9de5cb1424a67be181a190733b1df\html\index.html

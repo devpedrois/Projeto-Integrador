@@ -1,0 +1,172 @@
+WEB-04 | Coleta adicional real
+Coletado em: 13/10/2026, 22:57:41 | America/Sao_Paulo
+curl.exe, Express e PostgreSQL reais; dados sintéticos em schema isolado removido ao terminar.
+JWTs, senhas e cookies redigidos. Nenhuma conta real foi alterada.
+
+Cookie ausente: HTTP 401
+JWT invalido: HTTP 401
+JWT expirado controlado: HTTP 401
+Comprador desativado apos login: HTTP 401
+Admin desativado apos login: HTTP 401
+
+=== Cookie ausente ===
+POST http://127.0.0.1:49275/pedidos
+Cookie: ausente
+Request: {"itens":[{"produtoId":"8702db84-a960-4016-974c-ed3b5cf2b8e5","quantidade":1}]}
+HTTP/1.1 401 Unauthorized
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 76
+ETag: W/"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"NAO_AUTENTICADO","message":"Sessao invalida ou ausente."}}
+
+=== JWT invalido ===
+POST http://127.0.0.1:49275/pedidos
+Cookie: [REDIGIDO]
+Request: {"itens":[{"produtoId":"8702db84-a960-4016-974c-ed3b5cf2b8e5","quantidade":1}]}
+HTTP/1.1 401 Unauthorized
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 76
+ETag: W/"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"NAO_AUTENTICADO","message":"Sessao invalida ou ausente."}}
+
+=== JWT expirado controlado ===
+POST http://127.0.0.1:49275/pedidos
+Cookie: [REDIGIDO]
+Request: {"itens":[{"produtoId":"8702db84-a960-4016-974c-ed3b5cf2b8e5","quantidade":1}]}
+HTTP/1.1 401 Unauthorized
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 76
+ETag: W/"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"NAO_AUTENTICADO","message":"Sessao invalida ou ausente."}}
+
+=== Sessao ativa antes da desativacao ===
+GET http://127.0.0.1:49275/auth/me
+Cookie: [REDIGIDO]
+Request: null
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 171
+ETag: W/"ab-JjJUsrymJVMfl+DrrIMDGbdkXV8"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":"e023cffb-6ed4-4c49-9551-1c71429070f4","nome":"Comprador sintetico WEB04","email":"web04-evid-e6d36bcd-6bc6-423d-9264-f0c5f878b6ab@teste.origem","papel":"comprador"}
+
+=== Comprador desativado apos login ===
+POST http://127.0.0.1:49275/pedidos
+Cookie: [REDIGIDO]
+Request: {"itens":[{"produtoId":"8702db84-a960-4016-974c-ed3b5cf2b8e5","quantidade":1}]}
+HTTP/1.1 401 Unauthorized
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 76
+ETag: W/"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"NAO_AUTENTICADO","message":"Sessao invalida ou ausente."}}
+
+=== Admin desativado apos login ===
+PATCH http://127.0.0.1:49275/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel
+Cookie: [REDIGIDO]
+Request: {"papel":"comprador"}
+HTTP/1.1 401 Unauthorized
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 76
+ETag: W/"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"NAO_AUTENTICADO","message":"Sessao invalida ou ausente."}}

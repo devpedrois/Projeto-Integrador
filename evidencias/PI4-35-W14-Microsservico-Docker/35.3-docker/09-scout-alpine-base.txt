@@ -1,0 +1,20 @@
+
+
+## Overview
+
+                   │                  Analyzed Image                  
+───────────────────┼──────────────────────────────────────────────────
+ Target            │  registry://alpine:3.22                          
+   digest          │  dc92f017beea                                    
+   platform        │ linux/amd64                                      
+   provenance      │ https://github.com/alpinelinux/docker-alpine.git 
+                   │  https://github.com/alpinelinux/docker-alpine/blob/0f41d588b1c2b004dfc99868bbe7ce4d37b99790        
+   vulnerabilities │    0C     0H     0M     0L                       
+   size            │ 3.8 MB                                           
+   packages        │ 20                                               
+
+
+## Packages and Vulnerabilities
+
+  No vulnerable packages detected
+

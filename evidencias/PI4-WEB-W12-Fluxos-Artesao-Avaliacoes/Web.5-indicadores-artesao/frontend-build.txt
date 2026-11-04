@@ -1,0 +1,49 @@
+
+> origem-frontend@1.0.0 build
+> next build
+
+   ▲ Next.js 15.5.25
+
+   Creating an optimized production build ...
+   Using tsconfig file: tsconfig.build.json
+   Using tsconfig file: tsconfig.build.json
+   Using tsconfig file: tsconfig.build.json
+ ✓ Compiled successfully in 5.6s
+   Linting and checking validity of types ...
+
+ ⚠ The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/app/api-reference/config/eslint#migrating-existing-config
+   Collecting page data ...
+   Generating static pages (0/14) ...
+   Generating static pages (3/14) 
+   Generating static pages (6/14) 
+   Generating static pages (10/14) 
+ ✓ Generating static pages (14/14)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    10.4 kB         136 kB
+├ ○ /_not-found                            123 B         103 kB
+├ ○ /admin                               6.79 kB         132 kB
+├ ƒ /artesao/[id]                        3.48 kB         125 kB
+├ ○ /cadastro                            3.52 kB         134 kB
+├ ○ /carrinho                            3.44 kB         129 kB
+├ ○ /checkout                             4.1 kB         129 kB
+├ ○ /login                               3.16 kB         134 kB
+├ ○ /minha-conta                         6.35 kB         132 kB
+├ ○ /painel-artesao                      4.25 kB         133 kB
+├ ○ /painel-artesao/pedidos              4.39 kB         130 kB
+├ ○ /painel-artesao/perfil               2.85 kB         132 kB
+├ ○ /painel-artesao/produtos             4.43 kB         133 kB
+└ ƒ /produto/[id]                        5.54 kB         131 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-37e0f0325134c4d7.js       46.4 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.99 kB
+
+
+ƒ Middleware                             34.4 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

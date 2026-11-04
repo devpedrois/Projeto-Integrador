@@ -1,0 +1,32 @@
+{
+  "suite": "integridade",
+  "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+  "sourceBefore": {
+    "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+    "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+    "dirty": ""
+  },
+  "sourceAfter": {
+    "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+    "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+    "dirty": ""
+  },
+  "startedAt": "2026-10-26T16:41:21.478Z",
+  "finishedAt": "2026-10-26T16:41:28.657Z",
+  "durationMs": 7314.607,
+  "cwd": "backend",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+    "run",
+    "test:integridade",
+    "--",
+    "--reporter=default",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-31-W12-Testes-Executados\\31.6-relatorio\\integridade\\vitest.json"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "terminalSha256": "abc31de05d1e8d127ba8fc810839c99839c1d18712a0827ea9f9ca90539f420d",
+  "redaction": "Somente credenciais conhecidas, URLs PostgreSQL e tokens JWT."
+}

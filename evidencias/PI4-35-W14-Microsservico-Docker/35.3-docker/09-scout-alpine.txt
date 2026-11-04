@@ -1,0 +1,1323 @@
+
+
+## Overview
+
+                   │                                       Analyzed Image                                       
+───────────────────┼────────────────────────────────────────────────────────────────────────────────────────────
+ Target            │  registry://node:22-alpine                                                                 
+   digest          │  025b8e975a61                                                                              
+   platform        │ linux/amd64                                                                                
+   provenance      │ https://github.com/nodejs/docker-node.git                                                  
+                   │  https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253                                                  
+   vulnerabilities │    0C    10H     0M     0L                                                                 
+   size            │ 61 MB                                                                                      
+   packages        │ 212                                                                                        
+                   │                                                                                            
+ Base image        │  oisupport/staging-amd64:3f0e175fe06d5d6229283bcfe5a96aa30544be1d62ec1dfbe118bea29b23e39e  
+                   │  c26612752c78                                                                              
+
+
+## Packages and Vulnerabilities
+
+   0C     5H     0M     0L  brace-expansion 2.0.2
+pkg:npm/brace-expansion@2.0.2
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/alpine3.24/Dockerfile#L5-L81
+RUN addgroup -g 1000 node \
+    && adduser -u 1000 -G node -s /bin/sh -D node \
+    && apk add --no-cache \
+        libatomic \
+        libstdc++ \
+    && apk add --no-cache --virtual .build-deps \
+        gnupg \
+        curl \
+    && ARCH= OPENSSL_ARCH='linux*' && alpineArch="$(apk --print-arch)" \
+      && case "${alpineArch##*-}" in \
+        x86_64) ARCH='x64' OPENSSL_ARCH=linux-x86_64;; \
+        aarch64) OPENSSL_ARCH=linux-aarch64;; \
+        arm*) OPENSSL_ARCH=linux-armv4;; \
+        s390x) OPENSSL_ARCH=linux-s390x;; \
+        *) echo "unsupported architecture"; exit 1 ;; \
+      esac \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && set -ex \
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+        { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+        { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+  && if [ "$ARCH" = "x64" ]; then \
+    curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs; \
+  else \
+    echo "Building from source" \
+    && apk add --no-cache --virtual .build-deps-full \
+        binutils-gold \
+        g++ \
+        gcc \
+        libgcc \
+        linux-headers \
+        make \
+        python3 \
+        py-setuptools \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xf "node-v$NODE_VERSION.tar.xz" \
+    && cd "node-v$NODE_VERSION" \
+    && ./configure \
+    && make -j$(getconf _NPROCESSORS_ONLN) V= \
+    && make install \
+    && apk del .build-deps-full \
+    && cd .. \
+    && rm -Rf "node-v$NODE_VERSION" \
+    && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt; \
+  fi \
+  # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+  && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+  && apk del .build-deps \
+  # smoke tests
+  && node --version \
+  && npm --version \
+  && rm -rf /tmp/*
+
+    x HIGH CVE-2026-13149 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-13149?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.2
+    
+      ### Summary                                                                           
+                                                                                            
+      brace-expansion's expand() exhibits exponential-time - O(2ⁿ) - behavior in the number 
+      of                                                                                    
+      consecutive non-expanding {} groups. A short, all-ASCII input (~90 bytes/30 groups)   
+      blocks the calling thread for minutes; a slightly longer input hangs it effectively   
+      indefinitely. Because the dominant consumers run on Node's single-threaded event loop,
+      one small input can fully stall a worker/process.                                     
+                                                                                            
+      In expand_, post is computed unconditionally at the top of the function, before the   
+      early-return branches that don't use it:                                              
+                                                                                            
+        const post = m.post.length ? expand_(m.post, max, false) : [''];   // always        
+      recurses                                                                              
+          ...                                                                               
+        if (!isSequence && !isOptions) {                                                    
+          if (m.post.match(/,(?!,).*}/)) {                                                  
+            str = m.pre + '{' + m.body + escClose + m.post;                                 
+            return expand_(str, max, true); // restart — `post` discarded                   
+          }                                                                                 
+          return [str];                                                                     
+        }                                                                                   
+                                                                                            
+      For input like a{},{},…, the first {} is non-expanding, so control reaches the {a},b} 
+      rewrite branch - but expand_ has already recursed into post over the entire remaining 
+      tail, only to throw the result away. Each level therefore spawns two recursive        
+      expansions over essentially the same remaining work: T(n) = 2·T(n−1) ⇒ O(2ⁿ).         
+                                                                                            
+      The max option does not mitigate this: max only bounds the output-building loops;     
+      neither the post recursion nor the rewrite recursion consults it.                     
+                                                                                            
+      Measured on 5.0.6:                                                                    
+                                                                                            
+       groups (n)                 | input bytes               | time                        
+      ----------------------------|---------------------------|---------------------------  
+       20                         | 60                        | 130 ms                      
+       24                         | 72                        | 1.9 s                       
+       26                         | 78                        | 7.8 s                       
+       30 (PoC)                   | 90                        | ~2 min                      
+                                                                                            
+      ### Proof of concept                                                                  
+                                                                                            
+        const { expand } = require('brace-expansion');                                      
+        // 30 non-expanding groups, ~90 bytes — blocks for minutes:                         
+        expand('a{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
+      {},{},{},{},{}');                                                                     
+                                                                                            
+      ### Impact                                                                            
+                                                                                            
+      Any application that passes attacker-influenced strings to brace-expansion.expand() - 
+      directly or transitively via minimatch/glob brace patterns - can be driven into a     
+      multi-                                                                                
+      minute-to-indefinite CPU hang by a tiny request, denying service on that              
+      thread/process.                                                                       
+                                                                                            
+      ### Remediation                                                                       
+                                                                                            
+      Upgrade to a patched release. The fix:                                                
+                                                                                            
+      1. Defers computing post until after the early-return branches (and computes it       
+      locally in the $-suffix branch), so post is only expanded when a brace set actually   
+      expands and the value is used. This alone removes the exponential.                    
+      2. Converts the {a},b} rewrite from recursion to an in-function loop, so a long run of
+      rewrites cannot grow the call stack.                                                  
+                                                                                            
+      Verified: the PoC drops from ~2 min to 0.55 ms, 5,000 groups complete in ~344 ms, and 
+      output is identical to 5.0.6 across a behavioral-equivalence suite (sequences, padding,
+      $-prefix, a{},b}c, {},a}b, x{{a,b}}y, etc.). Post-fix complexity is ~O(n²) on this    
+      input                                                                                 
+      class - acceptable for the security fix; a linear rewrite can be a non-urgent follow- 
+      up.                                                                                   
+                                                                                            
+      If immediate upgrade isn't possible, avoid passing untrusted input to expand() / glob 
+      brace patterns, or run such expansion under a timeout/worker.                         
+    
+    
+      Affected range : >=2.0.0                                                                                           
+                     : <2.1.2                                                                                            
+      Fixed version  : 2.1.2                                                                                             
+      CVSS Score     : 7.7                                                                                               
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P/S:N/AU:Y/R:U/V:D/RE:M/U:Amber 
+    
+    x HIGH CVE-2026-69152 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-69152?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.4
+    
+      ### Summary                                                                           
+                                                                                            
+      The maxLength mitigation added in 5.0.8 for GHSA-mh99-v99m-4gvg / CVE-2026-14257 is   
+      incomplete. It bounds the accumulator where results are *combined*, but not the       
+      intermediate arrays that feed it. A ~25 KB input still crashes the Node process with  
+      an **uncatchable** out-of-memory error, so try/catch around expand() does not help.   
+                                                                                            
+      A second, related path in the same function lets a ~400 KB input block the event loop 
+      for over two minutes without ever exceeding the memory bound.                         
+                                                                                            
+      ### Details                                                                           
+                                                                                            
+      maxLength was enforced in combine(), the single place output grows. Two arrays are    
+      built *before* combine() runs, and neither was bounded.                               
+                                                                                            
+      **1. Comma alternatives accumulate without a running total (memory exhaustion)**      
+                                                                                            
+      Each alternative in {a,b,c,...} is expanded by its own recursive expand_() call, so   
+      each receives a full, independent maxLength allowance. The results were then          
+      concatenated into a single values array with no cumulative limit:                     
+                                                                                            
+        values = []                                                                         
+        for (let j = 0; j < n.length; j++) {                                                
+          values.push.apply(values, expand_(n[j], max, maxLength, false))                   
+        }                                                                                   
+                                                                                            
+        acc = combine(acc, pre, values, max, maxLength, ...)                                
+                                                                                            
+      With A alternatives, values can reach A * maxLength characters before combine() gets a
+      chance to truncate it. At the default maxLength of 4,000,000 and 400 alternatives,    
+      that is well past any default heap.                                                   
+                                                                                            
+      **2. Padded sequences ignore **maxLength** while generating (CPU exhaustion)**        
+                                                                                            
+      expandSequence() was bounded by max (the result *count*) but never consulted          
+      maxLength. A padded sequence's element width follows the input, so {0...01..100000}   
+      with a wide pad generates max elements, each as wide as the input, only for combine() 
+      to discard all but a handful.                                                         
+                                                                                            
+      Memory stays flat here, because V8 represents the padded strings as cons-strings,     
+      which                                                                                 
+      is likely why this path was not caught alongside the original issue. The cost is time:
+      work proportional to max * width.                                                     
+                                                                                            
+       pad width      | input bytes    | results kept   | time (5.0.8)   | time (patched)   
+      ----------------|----------------|----------------|----------------|----------------  
+       20,000         | 20 KB          | 199            | ~7.3 s         | ~20 ms           
+       100,000        | 100 KB         | 39             | ~32 s          | ~20 ms           
+       400,000        | 400 KB         | 9              | ~124 s         | ~18 ms           
+                                                                                            
+      Output is byte-identical before and after the fix; only the wasted work is removed.   
+                                                                                            
+      ### Proof of concept                                                                  
+                                                                                            
+      Memory exhaustion, against 5.0.8:                                                     
+                                                                                            
+        import { expand } from 'brace-expansion'                                            
+                                                                                            
+        const part = '{' + '0'.repeat(50) + '1..100000}'                                    
+        const input = '{' + Array(400).fill(part).join(',') + '}'  // ~25 KB                
+                                                                                            
+        try {                                                                               
+          expand(input)                                                                     
+        } catch (e) {                                                                       
+          // never reached - the process is already dead                                    
+        }                                                                                   
+                                                                                            
+        FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed -          
+      JavaScript heap out of memory                                                         
+        Aborted                                                                             
+                                                                                            
+      Event-loop stall, against 5.0.8:                                                      
+                                                                                            
+        import { expand } from 'brace-expansion'                                            
+                                                                                            
+        // ~400 KB input, returns 9 results after roughly two minutes of blocking CPU       
+        expand('{' + '0'.repeat(400_000) + '1..100000}')                                    
+                                                                                            
+      ### Impact                                                                            
+                                                                                            
+      Denial of service. Any application that passes attacker-controlled input to expand(), 
+      directly or transitively through a glob or pattern-matching library, can be remotely  
+      crashed or stalled. The out-of-memory variant terminates the process and cannot be    
+      handled with try/catch.                                                               
+                                                                                            
+      Applications already on 5.0.8 are affected: the 5.0.8 mitigation does not cover these 
+      paths.                                                                                
+                                                                                            
+      ### Patches                                                                           
+                                                                                            
+      Both intermediate arrays are now bounded as they are built, using the same max and    
+      maxLength limits already applied in combine():                                        
+                                                                                            
+      • values tracks a running result count and character length while alternatives are    
+      appended, and stops once either bound is reached.                                     
+      • expandSequence() accepts maxLength and stops generating once the sequence's own     
+      characters reach it.                                                                  
+                                                                                            
+      As with the existing limits, output is truncated rather than allowed to grow without  
+      bound, which matches how max already behaves. The defaults sit well above any         
+      realistic expansion, so legitimate input is unaffected.                               
+                                                                                            
+      ### Workarounds                                                                       
+                                                                                            
+      If upgrading is not immediately possible, avoid passing untrusted input to expand() or
+      to glob brace patterns, or pass an explicitly small max **and** maxLength.            
+                                                                                            
+      Note that a small maxLength alone was not sufficient on affected versions: it was     
+      applied per alternative rather than cumulatively, which is the root of the first issue
+      above.                                                                                
+                                                                                            
+      ### Credits                                                                           
+                                                                                            
+      The memory-exhaustion bypass was reported by Alessio Della Libera, CEO & Co-founder at
+      Numyra https://numyra.ai/.                                                            
+                                                                                            
+      The sequence-generation issue was found while verifying that report.                  
+    
+    
+      Affected range : >=2.0.0                                      
+                     : <2.1.4                                       
+      Fixed version  : 2.1.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-14257 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-14257?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.3
+    
+      ### Summary                                                                           
+                                                                                            
+      expand() bounds the *number* of results it produces (the max option, 100_000 by       
+      default) but not their *length*. By chaining many brace groups, an attacker keeps the 
+      result count under max while making every result grow with the number of groups.      
+      Building max long results — plus the intermediate arrays combined at each brace group 
+      — exhausts memory and crashes the Node process with an **uncatchable** out-of-memory  
+      error. try/catch around expand() does not help: the fatal error terminates the        
+      process.                                                                              
+                                                                                            
+      A ~7.5 KB input ('{a,b}'.repeat(1500)) is enough to crash a default Node process.     
+                                                                                            
+      ### Details                                                                           
+                                                                                            
+      For N chained brace groups such as '{a,b}'.repeat(N):                                 
+                                                                                            
+      • the result count is 2^N, immediately capped at max (100_000), so the                
+      max protection appears to hold, but                                                   
+      • each result is N characters long, so the total output size is                       
+      max × N characters, which grows without bound in N.                                   
+                                                                                            
+      expand_ combines each brace set with the fully-expanded tail:                         
+                                                                                            
+        const post = m.post.length ? expand_(m.post, max, false) : ['']                     
+        ...                                                                                 
+        for (let j = 0; j < N.length; j++) {                                                
+          for (let k = 0; k < post.length && expansions.length < max; k++) {                
+            const expansion = pre + N[j] + post[k]   // grows one group longer per level    
+            ...                                                                             
+            expansions.push(expansion)                                                      
+          }                                                                                 
+        }                                                                                   
+                                                                                            
+      The loop guard expansions.length < max limits how many strings are built, but nothing 
+      limits how long they get. Each recursion level materializes another array of up to max
+      strings, one character longer than the level below, and — because V8 represents pre + 
+      N[j] + post[k] as a cons-string (rope) that references post[k] — those intermediate   
+      strings stay reachable through the whole chain. Memory therefore scales with max × N. 
+                                                                                            
+      Measured on 5.0.7 ('{a,b}'.repeat(N), default max):                                   
+                                                                                            
+       groups (N)          | input bytes        | result count       | peak RSS             
+      ---------------------|--------------------|--------------------|--------------------  
+       20                  | 100                | 100,000            | ~80 MB               
+       50                  | 250                | 100,000            | ~214 MB              
+       100                 | 500                | 100,000            | ~409 MB              
+       300                 | 1,500              | 100,000            | ~1,148 MB            
+       1500                | 7,500              | —                  | **OOM crash**        
+                                                                                            
+      ### Proof of concept                                                                  
+                                                                                            
+        const { expand } = require('brace-expansion')                                       
+                                                                                            
+        // ~7.5 KB input — crashes the process with a fatal, uncatchable OOM:               
+        //   FATAL ERROR: ... JavaScript heap out of memory                                 
+        try {                                                                               
+          expand('{a,b}'.repeat(1500))                                                      
+        } catch (e) {                                                                       
+          // never reached — the process is already dead                                    
+        }                                                                                   
+                                                                                            
+      ### Impact                                                                            
+                                                                                            
+      Any application that passes attacker-influenced strings to brace-expansion.expand() — 
+      directly, or transitively via minimatch / glob brace patterns — can be crashed by a   
+      small request. Because the failure is a fatal V8 out-of-memory error rather than a    
+      thrown exception, it cannot be caught and it takes down the whole worker/process,     
+      denying service.                                                                      
+                                                                                            
+      ### Remediation                                                                       
+                                                                                            
+      Upgrade to a patched release. The fix bounds the total number of characters a single  
+      expand() call may accumulate (EXPANSION_MAX_LENGTH, default 4_000_000, configurable   
+      via a new maxLength option), applied inside the output-building loops so intermediate 
+      arrays are bounded too. Once the limit is reached, output is truncated — consistent   
+      with how max already truncates — instead of growing without bound. The limit sits well
+      above any realistic expansion (100,000 results hitting max measure ~1M characters), so
+      legitimate input is unaffected.                                                       
+                                                                                            
+      After the fix, '{a,b}'.repeat(1500) returns a bounded, truncated result in ~0.7 s     
+      using ~340 MB and never crashes, including under a constrained 512 MB heap.           
+                                                                                            
+      The fix bounds memory but the algorithm still rebuilds intermediate arrays at each    
+      level (roughly O(N × maxLength) work on this input class). A streaming rewrite that   
+      produces output in O(total output size) can be a non-urgent follow-up.                
+                                                                                            
+      If immediate upgrade isn't possible, avoid passing untrusted input to expand() / glob 
+      brace patterns, or pass a small explicit max **and** maxLength.                       
+    
+    
+      Affected range : >=2.0.0                                      
+                     : <2.1.3                                       
+      Fixed version  : 5.0.8                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-102278 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102278?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.6
+    
+      ### Summary                                                                           
+                                                                                            
+      expand_() recurses once per level of brace *nesting*. Deeply nested input exhausts the
+      native stack and crashes the process.                                                 
+                                                                                            
+      This is distinct from CVE-2026-14257 / GHSA-mh99-v99m-4gvg, which made the *tail*     
+      iterative                                                                             
+      (recursion on m.post, driven by how many groups are chained). Nesting depth drives a  
+      different recursion that the tail fix never touched, so the documented constant-stack-
+      depth guarantee only ever covered chained input, not nested input.                    
+                                                                                            
+      It is also distinct from GHSA-6j4f-fj2g-mc7p, which fixed recursion in                
+      parseCommaParts().                                                                    
+      Both payloads below still crash with that fix applied.                                
+                                                                                            
+      ### Two recursion sites                                                               
+                                                                                            
+      **Comma members.** Each alternative of a brace set is expanded by a recursive call, so
+      nesting a set inside every alternative recurses once per level:                       
+                                                                                            
+        expand('{a,'.repeat(4000) + 'z' + '}'.repeat(4000))                                 
+        // RangeError: Maximum call stack size exceeded                                     
+                                                                                            
+      Crashes at depth 3,907 - about **15.6 KB** of input.                                  
+                                                                                            
+      **Single set.** A brace set whose body parses to a single part is expanded by a       
+      recursive call before being re-wrapped (x{{a,b}}y -> x{a}y x{b}y), which recurses once
+      per nesting level:                                                                    
+                                                                                            
+        expand('{'.repeat(3200) + 'a,b' + '}'.repeat(3200))                                 
+        // RangeError: Maximum call stack size exceeded                                     
+                                                                                            
+      Crashes at depth 3,125 - about **6.25 KB** of input. This is the cheapest stack-      
+      exhaustion payload known against this package: roughly a quarter the input of GHSA-   
+      6j4f-                                                                                 
+      fj2g-mc7p (29 KB), and about a tenth of minimatch's MAX_PATTERN_LENGTH (65,536).      
+                                                                                            
+      ### Why max and maxLength do not help                                                 
+                                                                                            
+      Both crashes happen while recursing into sub-expansions, before the result set grows. 
+      The payloads produce almost no output - the single-set case yields 2 results - so     
+      neither                                                                               
+      bound is ever the limiter. expand(payload, { max: 1, maxLength: 1 }) still overflows. 
+                                                                                            
+      ### Impact                                                                            
+                                                                                            
+      Any application passing an untrusted string to expand(), directly or through minimatch
+      / glob as a user-supplied glob pattern, can be crashed. In Node a RangeError the      
+      application does not catch terminates the process, so a server globbing user input is 
+      exposed to remote unauthenticated denial of service.                                  
+                                                                                            
+      Availability only. No code execution, no data exposure.                               
+                                                                                            
+      ### Affected versions                                                                 
+                                                                                            
+      Verified affected on 1.1.18, 2.1.4, 3.0.6 and 5.0.9, at near-identical depths on every
+      line (single set: 3,125 on all four; comma members: 3,907-4,102). Not a regression    
+      from                                                                                  
+      any recent fix - the gap predates them.                                               
+                                                                                            
+      ### Patch                                                                             
+                                                                                            
+      A maxDepth bound (default EXPANSION_MAX_DEPTH) is threaded through expand_(). Past the
+      cap a group is treated as non-expanding and returned literally, which is how the      
+      parser                                                                                
+      already handles a group that cannot expand. This matches the existing max / maxLength 
+      caps, which truncate rather than throw, so expand() continues never to throw on any   
+      input.                                                                                
+                                                                                            
+      The default sits far above any realistic nesting depth and well below the crash       
+      threshold.                                                                            
+    
+    
+      Affected range : >=2.0.0                                      
+                     : <2.1.6                                       
+      Fixed version  : 2.1.6                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-102276 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102276?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.5
+    
+      ### Summary                                                                           
+                                                                                            
+      parseCommaParts() can exhaust the native stack and crash the process. There are two   
+      distinct ways to trigger it, both reachable from a single untrusted pattern string.   
+                                                                                            
+      This is the parsing-side counterpart to CVE-2026-14257 / GHSA-mh99-v99m-4gvg. That fix
+      made                                                                                  
+      expand_() iterative and documented a constant-stack-depth guarantee, but              
+      parseCommaParts() was left recursive, so the guarantee only held for one of the two   
+      parsing paths.                                                                        
+                                                                                            
+      ### Vector 1 - unbounded recursion on post                                            
+                                                                                            
+      parseCommaParts() recursed on the remainder of the string once per brace group:       
+                                                                                            
+        const postParts = parseCommaParts(post)   // unbounded                              
+                                                                                            
+      A brace group containing many comma-separated groups drives one recursion level per   
+      group:                                                                                
+                                                                                            
+        expand('{' + '{a},'.repeat(7000) + 'b}')                                            
+        // RangeError: Maximum call stack size exceeded                                     
+                                                                                            
+      About 7,300 repetitions - roughly 29 KB of input - is enough on Node 24; roughly 6,300
+      (25 KB) on Node 18. The threshold is identical on every affected release line.        
+                                                                                            
+      ### Vector 2 - push.apply with an unbounded array                                     
+                                                                                            
+      Even with the recursion removed, parseCommaParts() spread whole arrays into an        
+      argument list:                                                                        
+                                                                                            
+        p.push.apply(p, postParts)                                                          
+        parts.push.apply(parts, p)                                                          
+                                                                                            
+      Function.prototype.apply places one argument per element on the stack, so a single    
+      large array overflows it. This needs **no recursion depth at all** - the following    
+      reaches a recursion depth of exactly 1:                                               
+                                                                                            
+        expand('{{x},' + 'a,'.repeat(125000) + 'b}')                                        
+        // RangeError: Maximum call stack size exceeded                                     
+                                                                                            
+      Threshold is about 124,300 repetitions (~249 KB). This vector was not part of the     
+      original report; it was found while verifying the fix. A patch that only de-recurses  
+      but keeps push.apply leaves a working denial of service behind.                       
+                                                                                            
+      ### Why max and maxLength do not help                                                 
+                                                                                            
+      Both crashes happen during **parsing**, before any expansion. The payloads produce one
+      result per group, so output size grows linearly with input and is never the limiter.  
+      expand(payload, { max: 1, maxLength: 1 }) still overflows.                            
+                                                                                            
+      ### Impact                                                                            
+                                                                                            
+      Any application that passes an untrusted string to expand() - directly, or through    
+      minimatch / glob where it is a user-supplied glob pattern - can be crashed. In Node, a
+      RangeError that the application does not catch terminates the process, so a server    
+      that globs user input is exposed to remote unauthenticated denial of service.         
+                                                                                            
+      minimatch's own MAX_PATTERN_LENGTH cap (65,536) does not help against vector 1: the   
+      overflow threshold sits well below it. Confirmed on minimatch 10.2.6 - a 64,003-byte  
+      pattern passes the length check and overflows both minimatch.braceExpand() and new    
+      minimatch.Minimatch().                                                                
+                                                                                            
+      This is an availability-only issue. No code execution and no data exposure.           
+                                                                                            
+      ### Not a regression                                                                  
+                                                                                            
+      5.0.8 and 5.0.9 overflow at the same repetition count, so the gap predates the recent 
+      advisories; those fixes simply did not reach it. Verified affected on 1.1.18, 2.1.4,  
+      3.0.6, 5.0.8 and 5.0.9, all at an identical threshold.                                
+                                                                                            
+      ### Patch                                                                             
+                                                                                            
+      parseCommaParts() is rewritten as a loop that carries the partial part across chunks, 
+      and every array append uses an element-by-element loop rather than push.apply. The    
+      redundant if (!str) return [''] guard is dropped - the loop returns [''] for the empty
+      string on its own.                                                                    
+                                                                                            
+      Equivalence of the old and new implementations was checked by differential testing:   
+      exhaustive over every string of {, }, ,, a up to length 7 plus 300,000 random inputs -
+      322,000 cases, zero mismatches.                                                       
+                                                                                            
+      ### Severity note                                                                     
+                                                                                            
+      Scored 7.5 High under CVSS 3.1 for consistency with the other availability advisories 
+      on this package (GHSA-mh99-v99m-4gvg, GHSA-rgw5-rvv9-x895), which use the same vector.
+      The                                                                                   
+      reporter self-assessed 6.9 Medium under CVSS 4.0                                      
+      (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N).                    
+                                                                                            
+      ### Credit                                                                            
+                                                                                            
+      Reported by baeseungwon1010, with a working proof of concept and a proposed patch.    
+      Vector 2 was identified during maintainer verification.                               
+    
+    
+      Affected range : >=2.0.0                                      
+                     : <2.1.5                                       
+      Fixed version  : 2.1.5                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+   0C     1H     0M     0L  sigstore 3.1.0
+pkg:npm/sigstore@3.1.0
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/alpine3.24/Dockerfile#L5-L81
+RUN addgroup -g 1000 node \
+    && adduser -u 1000 -G node -s /bin/sh -D node \
+    && apk add --no-cache \
+        libatomic \
+        libstdc++ \
+    && apk add --no-cache --virtual .build-deps \
+        gnupg \
+        curl \
+    && ARCH= OPENSSL_ARCH='linux*' && alpineArch="$(apk --print-arch)" \
+      && case "${alpineArch##*-}" in \
+        x86_64) ARCH='x64' OPENSSL_ARCH=linux-x86_64;; \
+        aarch64) OPENSSL_ARCH=linux-aarch64;; \
+        arm*) OPENSSL_ARCH=linux-armv4;; \
+        s390x) OPENSSL_ARCH=linux-s390x;; \
+        *) echo "unsupported architecture"; exit 1 ;; \
+      esac \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && set -ex \
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+        { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+        { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+  && if [ "$ARCH" = "x64" ]; then \
+    curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs; \
+  else \
+    echo "Building from source" \
+    && apk add --no-cache --virtual .build-deps-full \
+        binutils-gold \
+        g++ \
+        gcc \
+        libgcc \
+        linux-headers \
+        make \
+        python3 \
+        py-setuptools \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xf "node-v$NODE_VERSION.tar.xz" \
+    && cd "node-v$NODE_VERSION" \
+    && ./configure \
+    && make -j$(getconf _NPROCESSORS_ONLN) V= \
+    && make install \
+    && apk del .build-deps-full \
+    && cd .. \
+    && rm -Rf "node-v$NODE_VERSION" \
+    && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt; \
+  fi \
+  # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+  && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+  && apk del .build-deps \
+  # smoke tests
+  && node --version \
+  && npm --version \
+  && rm -rf /tmp/*
+
+    x HIGH CVE-2026-48815 [Improper Verification of Cryptographic Signature]
+      https://scout.docker.com/v/CVE-2026-48815?s=github&n=sigstore&t=npm&vr=%3C%3D4.1.0
+    
+      ### Summary                                                                           
+                                                                                            
+      The documented certificateOIDs option in sigstore.verify() is accepted by the public  
+      API but discarded before verification, so required certificate extension OIDs are     
+      never checked.                                                                        
+                                                                                            
+      ### Details                                                                           
+                                                                                            
+      The public verify options include certificateOIDs and the documentation says those    
+      OID/value pairs “must be present in the certificate’s extension list.” The policy-    
+      construction path used by sigstore.verify() and createVerifier() only copies the SAN  
+      and issuer settings into the verification policy and completely ignores               
+      certificateOIDs.                                                                      
+                                                                                            
+      As a result, callers can believe they are constraining verification to certificates   
+      carrying specific Fulcio or workload-identifying OIDs, while the actual verifier never
+      receives those constraints. Any bundle that satisfies the remaining checks is accepted
+      even if the required OID extensions are absent or mismatched.                         
+                                                                                            
+      This is reachable from supported usage through the documented certificateOIDs verify  
+      option.                                                                               
+                                                                                            
+      ### PoC                                                                               
+                                                                                            
+        const { createVerificationPolicy } = require("sigstore/dist/config");               
+                                                                                            
+        const policy = createVerificationPolicy({                                           
+          certificateIssuer: "https://issuer.example",                                      
+          certificateIdentityEmail: "victim@example.com",                                   
+          certificateOIDs: {                                                                
+            "1.2.3.4": "required-value",                                                    
+          },                                                                                
+        });                                                                                 
+                                                                                            
+        console.log("certificateOIDs" in policy, JSON.stringify(policy));                   
+        // false {"subjectAlternativeName":"victim@example.com",                            
+      "extensions":{"issuer":"https://issuer.example"}}                                     
+                                                                                            
+      ### Impact                                                                            
+                                                                                            
+      Applications that rely on certificateOIDs to restrict which certificates may sign     
+      artifacts receive no such protection. Unauthorized certificates that should be        
+      rejected on extension policy can be accepted as long as they satisfy the remaining    
+      verification checks.                                                                  
+    
+    
+      Affected range : <=4.1.0                                      
+      Fixed version  : 4.1.1                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N 
+    
+
+   0C     1H     0M     0L  picomatch 4.0.3
+pkg:npm/picomatch@4.0.3
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/alpine3.24/Dockerfile#L5-L81
+RUN addgroup -g 1000 node \
+    && adduser -u 1000 -G node -s /bin/sh -D node \
+    && apk add --no-cache \
+        libatomic \
+        libstdc++ \
+    && apk add --no-cache --virtual .build-deps \
+        gnupg \
+        curl \
+    && ARCH= OPENSSL_ARCH='linux*' && alpineArch="$(apk --print-arch)" \
+      && case "${alpineArch##*-}" in \
+        x86_64) ARCH='x64' OPENSSL_ARCH=linux-x86_64;; \
+        aarch64) OPENSSL_ARCH=linux-aarch64;; \
+        arm*) OPENSSL_ARCH=linux-armv4;; \
+        s390x) OPENSSL_ARCH=linux-s390x;; \
+        *) echo "unsupported architecture"; exit 1 ;; \
+      esac \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && set -ex \
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+        { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+        { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+  && if [ "$ARCH" = "x64" ]; then \
+    curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs; \
+  else \
+    echo "Building from source" \
+    && apk add --no-cache --virtual .build-deps-full \
+        binutils-gold \
+        g++ \
+        gcc \
+        libgcc \
+        linux-headers \
+        make \
+        python3 \
+        py-setuptools \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xf "node-v$NODE_VERSION.tar.xz" \
+    && cd "node-v$NODE_VERSION" \
+    && ./configure \
+    && make -j$(getconf _NPROCESSORS_ONLN) V= \
+    && make install \
+    && apk del .build-deps-full \
+    && cd .. \
+    && rm -Rf "node-v$NODE_VERSION" \
+    && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt; \
+  fi \
+  # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+  && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+  && apk del .build-deps \
+  # smoke tests
+  && node --version \
+  && npm --version \
+  && rm -rf /tmp/*
+
+    x HIGH CVE-2026-33671 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-33671?s=github&n=picomatch&t=npm&vr=%3E%3D4.0.0%2C%3C4.0.4
+    
+      ### Impact                                                                            
+                                                                                            
+      picomatch is vulnerable to Regular Expression Denial of Service (ReDoS) when          
+      processing crafted extglob patterns. Certain patterns using extglob quantifiers such  
+      as +() and *(), especially when combined with overlapping alternatives or nested      
+      extglobs, are compiled into regular expressions that can exhibit catastrophic         
+      backtracking on non-matching input.                                                   
+                                                                                            
+      Examples of problematic patterns include +(a|aa), +(*|?), +(+(a)), *(+(a)), and       
+      +(+(+(a))). In local reproduction, these patterns caused multi-second event-loop      
+      blocking with relatively short inputs. For example, +(a|aa) compiled to               
+      ^(?:(?=.)(?:a|aa)+)$ and took about 2 seconds to reject a 41-character non-matching   
+      input, while nested patterns such as +(+(a)) and *(+(a)) took around 29 seconds to    
+      reject a 33-character input on a modern M1 MacBook.                                   
+                                                                                            
+      Applications are impacted when they allow untrusted users to supply glob patterns that
+      are passed to picomatch for compilation or matching. In those cases, an attacker can  
+      cause excessive CPU consumption and block the Node.js event loop, resulting in a      
+      denial of service. Applications that only use trusted, developer-controlled glob      
+      patterns are much less likely to be exposed in a security-relevant way.               
+                                                                                            
+      ### Patches                                                                           
+                                                                                            
+      This issue is fixed in picomatch 4.0.4, 3.0.2 and 2.3.2.                              
+                                                                                            
+      Users should upgrade to one of these versions or later, depending on their supported  
+      release line.                                                                         
+                                                                                            
+      ### Workarounds                                                                       
+                                                                                            
+      If upgrading is not immediately possible, avoid passing untrusted glob patterns to    
+      picomatch.                                                                            
+                                                                                            
+      Possible mitigations include:                                                         
+                                                                                            
+      • disable extglob support for untrusted patterns by using noextglob: true             
+      • reject or sanitize patterns containing nested extglobs or extglob quantifiers such  
+      as +() and *()                                                                        
+      • enforce strict allowlists for accepted pattern syntax                               
+      • run matching in an isolated worker or separate process with time and resource limits
+      • apply application-level request throttling and input validation for any endpoint    
+      that accepts glob patterns                                                            
+                                                                                            
+      ### Resources                                                                         
+                                                                                            
+      • Picomatch repository: https://github.com/micromatch/picomatch                       
+      • lib/parse.js and lib/constants.js are involved in generating the vulnerable regex   
+      forms                                                                                 
+      • Comparable ReDoS precedent: CVE-2024-4067 (micromatch)                              
+      • Comparable generated-regex precedent: CVE-2024-45296 (path-to-regexp)               
+    
+    
+      Affected range : >=4.0.0                                      
+                     : <4.0.4                                       
+      Fixed version  : 4.0.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+   0C     1H     0M     0L  ip-address 10.1.0
+pkg:npm/ip-address@10.1.0
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/alpine3.24/Dockerfile#L5-L81
+RUN addgroup -g 1000 node \
+    && adduser -u 1000 -G node -s /bin/sh -D node \
+    && apk add --no-cache \
+        libatomic \
+        libstdc++ \
+    && apk add --no-cache --virtual .build-deps \
+        gnupg \
+        curl \
+    && ARCH= OPENSSL_ARCH='linux*' && alpineArch="$(apk --print-arch)" \
+      && case "${alpineArch##*-}" in \
+        x86_64) ARCH='x64' OPENSSL_ARCH=linux-x86_64;; \
+        aarch64) OPENSSL_ARCH=linux-aarch64;; \
+        arm*) OPENSSL_ARCH=linux-armv4;; \
+        s390x) OPENSSL_ARCH=linux-s390x;; \
+        *) echo "unsupported architecture"; exit 1 ;; \
+      esac \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && set -ex \
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+        { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+        { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+  && if [ "$ARCH" = "x64" ]; then \
+    curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs; \
+  else \
+    echo "Building from source" \
+    && apk add --no-cache --virtual .build-deps-full \
+        binutils-gold \
+        g++ \
+        gcc \
+        libgcc \
+        linux-headers \
+        make \
+        python3 \
+        py-setuptools \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xf "node-v$NODE_VERSION.tar.xz" \
+    && cd "node-v$NODE_VERSION" \
+    && ./configure \
+    && make -j$(getconf _NPROCESSORS_ONLN) V= \
+    && make install \
+    && apk del .build-deps-full \
+    && cd .. \
+    && rm -Rf "node-v$NODE_VERSION" \
+    && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt; \
+  fi \
+  # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+  && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+  && apk del .build-deps \
+  # smoke tests
+  && node --version \
+  && npm --version \
+  && rm -rf /tmp/*
+
+    x HIGH CVE-2026-69192 [Improper Input Validation]
+      https://scout.docker.com/v/CVE-2026-69192?s=github&n=ip-address&t=npm&vr=%3C%3D10.3.0
+    
+      ### Summary                                                                           
+                                                                                            
+      Address4 accepts an octet written with a leading zero and decodes it as decimal, while
+      the WHATWG URL host parser, inet_aton, and getaddrinfo all decode a leading zero as   
+      octal. The library and the network stack therefore disagree about which host a string 
+      names. new Address4('012.0.0.1') reports correctForm() of 12.0.0.1 and isPrivate() of 
+      false, but fetch('http://012.0.0.1/') connects to 10.0.0.1.                           
+                                                                                            
+      An application that builds a network trust-boundary decision on these checks (for     
+      example a filter intended to block Server-Side Request Forgery, or SSRF) will classify
+      an internal target as external and allow the request. SSRF is an attack in which a    
+      user-supplied address coaxes the server into making a request to an internal          
+      destination the user could not otherwise reach, such as a loopback service or a cloud 
+      metadata endpoint.                                                                    
+                                                                                            
+      ### Details                                                                           
+                                                                                            
+      Address4.parse gates untrusted input on RE_ADDRESS (src/v4/constants.ts:5), whose per-
+      octet alternative is:                                                                 
+                                                                                            
+        (25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)                                              
+                                                                                            
+      The [01]?[0-9][0-9]? branch matches a leading zero, so 012 passes validation. Every   
+      downstream decode then reads the octet with parseInt(part, 10) (src/common.ts:87),    
+      yielding 12. A resolver reading the same string treats the leading 0 as base 8 and    
+      yields 10.                                                                            
+                                                                                            
+      The defect is in the parse gate rather than in any one classifier, so every consumer  
+      of Address4 inherits it: isPrivate(), isLoopback(), isLinkLocal(), isCGNAT(),         
+      isInSubnet(), isHostInSubnet(), and correctForm() are all computed from the mis-      
+      decoded                                                                               
+      octets.                                                                               
+                                                                                            
+      Address6 already rejects this notation on its IPv4-in-IPv6 path, throwing "IPv4       
+      addresses can't have leading zeroes." (src/ipv6.ts:751-762), so Address4 is the       
+      outlier                                                                               
+      within the library.                                                                   
+                                                                                            
+      ### Affected versions                                                                 
+                                                                                            
+      <= 10.3.0. Unlike GHSA-22jq-vg5j-6vgg and GHSA-4xrf-jv44-h6hh, which were bounded     
+      below by                                                                              
+      the is* classification API introduced in 10.1.1, this defect is in parse and reaches  
+      every release: a guard built on isInSubnet() against the RFC 1918 ranges is affected  
+      in versions predating that API.                                                       
+                                                                                            
+      ### Impact                                                                            
+                                                                                            
+      The disagreement runs in both directions. Under-blocking is the security-relevant case;
+      over-blocking is a correctness and availability problem.                              
+                                                                                            
+       Input           | correctForm() | Classified … | Resolver reac… | Effect             
+      -----------------|---------------|--------------|----------------|------------------  
+       012.0.0.1       | 12.0.0.1      | public       | 10.0.0.1       | internal target    
+                       |               |              |                | allowed            
+       012.012.012.012 | 12.12.12.12   | public       | 10.10.10.10    | internal target    
+                       |               |              |                | allowed            
+       010.0.0.1       | 10.0.0.1      | private      | 8.0.0.1        | public target      
+                       |               |              |                | blocked            
+                                                                                            
+      Reachable targets are those whose leading octet is expressible as a three-character   
+      octal literal, which covers the whole of 10.0.0.0/8 and 0.0.0.0/8. A four-character   
+      octet such as 0177 for 127 is rejected by the regex, so loopback is not reachable     
+      through this path; see the note on rejection below for why rejection is not the same  
+      as safety.                                                                            
+                                                                                            
+      ### Reachability                                                                      
+                                                                                            
+      A leading-zero address is a legal URL host, so this is reachable through the ordinary 
+      URL path with no unusual application shape required:                                  
+                                                                                            
+        new URL('http://012.0.0.1/').hostname   // '10.0.0.1'                               
+                                                                                            
+      This distinguishes it from GHSA-4xrf-jv44-h6hh, where the /0 CIDR suffix could not    
+      survive URL parsing and exploitation therefore required an application that accepted a
+      bare suffix-bearing string. Here the attack rides the same code path a normal user-   
+      supplied URL takes.                                                                   
+                                                                                            
+      ### Proof of concept                                                                  
+                                                                                            
+      npm i ip-address@10.3.0, then:                                                        
+                                                                                            
+        const { Address4 } = require('ip-address');                                         
+                                                                                            
+        // A guard of the shape the library documents.                                      
+        function isBlocked(host) {                                                          
+          return Address4.isValid(host) && new Address4(host).isPrivate();                  
+        }                                                                                   
+                                                                                            
+        for (const h of ['10.0.0.1', '012.0.0.1', '012.012.012.012']) {                     
+          console.log(isBlocked(h) ? 'BLOCK' : 'ALLOW', h,                                  
+                      '-> resolver reaches', new URL('http://' + h + '/').hostname);        
+        }                                                                                   
+                                                                                            
+      On affected versions:                                                                 
+                                                                                            
+        BLOCK 10.0.0.1 -> resolver reaches 10.0.0.1                                         
+        ALLOW 012.0.0.1 -> resolver reaches 10.0.0.1                                        
+        ALLOW 012.012.012.012 -> resolver reaches 10.10.10.10                               
+                                                                                            
+      The literal RFC 1918 address is blocked as expected; the octal-ambiguous spellings of 
+      the same destinations are allowed through.                                            
+                                                                                            
+      ### Remediation                                                                       
+                                                                                            
+      Upgrade to the patched release. In the fix, Address4.parse rejects any octet with a   
+      leading zero followed by further digits, mirroring the check Address6 already applies 
+      at src/ipv6.ts:751, and RE_ADDRESS is tightened so those forms no longer appear in the
+      valid corpus. After upgrading, Address4.isValid('012.0.0.1') returns false and the    
+      constructor throws AddressError.                                                      
+                                                                                            
+      This rejects input that previous releases accepted. An application that deliberately  
+      feeds zero-padded addresses such as 010.010.010.010 from a legacy system must strip   
+      the                                                                                   
+      padding before parsing.                                                               
+                                                                                            
+      If you cannot upgrade immediately, reject any host whose octets carry a leading zero  
+      before you parse it:                                                                  
+                                                                                            
+        if (host.split('.').some((octet) => /^0\d/.test(octet))) throw new Error('ambiguous 
+      address');                                                                            
+                                                                                            
+      ### A note on SSRF defense                                                            
+                                                                                            
+      These methods are address classifiers, not a complete SSRF defense. Regardless of this
+      fix, a robust SSRF guard must resolve the hostname and validate the *resolved* IP     
+      against the socket it connects to, and account for DNS rebinding and redirects. Treat 
+      these checks as one layer, not the only one.                                          
+                                                                                            
+      One specific pitfall is worth naming, because the fix above does not remove it.       
+      Address4.isValid() returning false means "this is not a dotted-quad IPv4 literal"; it 
+      does not mean "this is not an address that will reach an internal host". Every one of 
+      the following is rejected by isValid() and still resolves to loopback:                
+                                                                                            
+        0177.0.0.1    0x7f.0.0.1    0x7f000001    2130706433                                
+        127.1         127.0.1       127.0.0.1.    １２７.0.0.1                              
+                                                                                            
+      A guard shaped if (Address4.isValid(h)) { check() } else { treatAsHostname() }        
+      therefore routes all of them past the IP check. Rejecting these is correct behavior   
+      for an IPv4 parser and is not changed by this advisory, but a guard must treat "not a 
+      valid literal" as a case to resolve and re-check, never as a case to allow.           
+    
+    
+      Affected range : <=10.3.0                                                        
+      Fixed version  : 10.3.1                                                          
+      CVSS Score     : 7.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N 
+    
+
+   0C     1H     0M     0L  pacote 20.0.1
+pkg:npm/pacote@20.0.1
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/alpine3.24/Dockerfile#L5-L81
+RUN addgroup -g 1000 node \
+    && adduser -u 1000 -G node -s /bin/sh -D node \
+    && apk add --no-cache \
+        libatomic \
+        libstdc++ \
+    && apk add --no-cache --virtual .build-deps \
+        gnupg \
+        curl \
+    && ARCH= OPENSSL_ARCH='linux*' && alpineArch="$(apk --print-arch)" \
+      && case "${alpineArch##*-}" in \
+        x86_64) ARCH='x64' OPENSSL_ARCH=linux-x86_64;; \
+        aarch64) OPENSSL_ARCH=linux-aarch64;; \
+        arm*) OPENSSL_ARCH=linux-armv4;; \
+        s390x) OPENSSL_ARCH=linux-s390x;; \
+        *) echo "unsupported architecture"; exit 1 ;; \
+      esac \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && set -ex \
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+        { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+        { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+  && if [ "$ARCH" = "x64" ]; then \
+    curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs; \
+  else \
+    echo "Building from source" \
+    && apk add --no-cache --virtual .build-deps-full \
+        binutils-gold \
+        g++ \
+        gcc \
+        libgcc \
+        linux-headers \
+        make \
+        python3 \
+        py-setuptools \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xf "node-v$NODE_VERSION.tar.xz" \
+    && cd "node-v$NODE_VERSION" \
+    && ./configure \
+    && make -j$(getconf _NPROCESSORS_ONLN) V= \
+    && make install \
+    && apk del .build-deps-full \
+    && cd .. \
+    && rm -Rf "node-v$NODE_VERSION" \
+    && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt; \
+  fi \
+  # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+  && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+  && apk del .build-deps \
+  # smoke tests
+  && node --version \
+  && npm --version \
+  && rm -rf /tmp/*
+
+    x HIGH CVE-2026-9496 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-9496?s=github&n=pacote&t=npm&vr=%3E%3D11.2.7%2C%3C21.5.1
+    
+      Versions of the package pacote from 11.2.7 are vulnerable to Denial of Service (DoS)  
+      via the addGitSha function. An attacker can exploit this vulnerability by supplying a 
+      specially crafted spec.rawSpec value that triggers the function’s regex replacement   
+      and string-manipulation logic, causing excessive CPU consumption and potentially      
+      stalling or crashing the process.                                                     
+    
+    
+      Affected range : >=11.2.7                                                            
+                     : <21.5.1                                                             
+      Fixed version  : 21.5.1                                                              
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+
+   0C     1H     0M     0L  pacote 19.0.2
+pkg:npm/pacote@19.0.2
+
+https://github.com/nodejs/docker-node/blob/80f02a542da739e6a662451d1db66456a0dea253/22/alpine3.24/Dockerfile#L5-L81
+RUN addgroup -g 1000 node \
+    && adduser -u 1000 -G node -s /bin/sh -D node \
+    && apk add --no-cache \
+        libatomic \
+        libstdc++ \
+    && apk add --no-cache --virtual .build-deps \
+        gnupg \
+        curl \
+    && ARCH= OPENSSL_ARCH='linux*' && alpineArch="$(apk --print-arch)" \
+      && case "${alpineArch##*-}" in \
+        x86_64) ARCH='x64' OPENSSL_ARCH=linux-x86_64;; \
+        aarch64) OPENSSL_ARCH=linux-aarch64;; \
+        arm*) OPENSSL_ARCH=linux-armv4;; \
+        s390x) OPENSSL_ARCH=linux-s390x;; \
+        *) echo "unsupported architecture"; exit 1 ;; \
+      esac \
+    # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+    && export GNUPGHOME="$(mktemp -d)" \
+    # gpg keys listed at https://github.com/nodejs/node#release-keys
+    && set -ex \
+    && for key in \
+      5BE8A3F6C8A5C01D106C0AD820B1A390B168D356 \
+      DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7 \
+      CC68F5A3106FF448322E48ED27F5E38D5B0A215F \
+      890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
+      C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+      108F52B48DB57BB0CC439B2997B01419BD92F80A \
+      655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD \
+      A363A499291CBBC940DD62E41F10027AF002F8B0 \
+    ; do \
+        { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" && gpg --batch --fingerprint "$key"; } || \
+        { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" && gpg --batch --fingerprint "$key"; } ; \
+    done \
+  && if [ "$ARCH" = "x64" ]; then \
+    curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xJf "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+    && rm "node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs; \
+  else \
+    echo "Building from source" \
+    && apk add --no-cache --virtual .build-deps-full \
+        binutils-gold \
+        g++ \
+        gcc \
+        libgcc \
+        linux-headers \
+        make \
+        python3 \
+        py-setuptools \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
+    && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+    && gpgconf --kill all \
+    && rm -rf "$GNUPGHOME" \
+    && grep " node-v$NODE_VERSION.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
+    && tar -xf "node-v$NODE_VERSION.tar.xz" \
+    && cd "node-v$NODE_VERSION" \
+    && ./configure \
+    && make -j$(getconf _NPROCESSORS_ONLN) V= \
+    && make install \
+    && apk del .build-deps-full \
+    && cd .. \
+    && rm -Rf "node-v$NODE_VERSION" \
+    && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt; \
+  fi \
+  # Remove unused OpenSSL headers to save ~34MB. See this NodeJS issue: https://github.com/nodejs/node/issues/46451
+  && find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name "$OPENSSL_ARCH" -exec rm -rf {} \; \
+  && apk del .build-deps \
+  # smoke tests
+  && node --version \
+  && npm --version \
+  && rm -rf /tmp/*
+
+    x HIGH CVE-2026-9496 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-9496?s=github&n=pacote&t=npm&vr=%3E%3D11.2.7%2C%3C21.5.1
+    
+      Versions of the package pacote from 11.2.7 are vulnerable to Denial of Service (DoS)  
+      via the addGitSha function. An attacker can exploit this vulnerability by supplying a 
+      specially crafted spec.rawSpec value that triggers the function’s regex replacement   
+      and string-manipulation logic, causing excessive CPU consumption and potentially      
+      stalling or crashing the process.                                                     
+    
+    
+      Affected range : >=11.2.7                                                            
+                     : <21.5.1                                                             
+      Fixed version  : 21.5.1                                                              
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+
+
+10 vulnerabilities found in 6 packages
+  CRITICAL  0  
+  HIGH      10 
+  MEDIUM    0  
+  LOW       0  
+

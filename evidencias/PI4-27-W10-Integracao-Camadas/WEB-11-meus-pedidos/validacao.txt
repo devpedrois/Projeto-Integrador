@@ -1,0 +1,59 @@
+WEB-11 - Historico e detalhe de pedidos
+Executado em 14/10/2026.
+Branch: codex/web11-meus-pedidos.
+
+Ambiente: Next.js + Express + PostgreSQL reais, em schema isolado.
+Nenhuma operacao desta validacao acessou o deploy publicado.
+
+TDD:
+- Backend: 18 testes falharam pelas rotas GET ausentes.
+- Adapter HTTP e interface: 25 testes falharam antes da implementacao.
+- Fake API: 5 testes falharam antes da extensao.
+- O teste focado final do backend passou com 20 verificacoes.
+
+Validacoes finais:
+- Backend: npm test - 436 testes, 45 arquivos, exit code 0.
+- Frontend: npm test - 824 testes, 86 arquivos, exit code 0.
+- Frontend relacionado: 68 testes, 7 arquivos, exit code 0.
+- npm run lint e npm run typecheck passaram em ambos os projetos.
+- npm run build passou no frontend.
+- Prettier --check --end-of-line auto passou em todos os TS/TSX alterados.
+- git -c core.whitespace=cr-at-eol diff --check passou.
+
+Aceite no navegador real:
+- 3 pedidos e 6 itens conferidos contra SELECT no PostgreSQL.
+- Lista ordenada do mais recente para o mais antigo.
+- Status pendente, confirmado e cancelado visiveis.
+- Pagamentos aprovado e recusado visiveis na lista e no detalhe.
+- API e UI mantiveram valores unitarios, subtotais e totais persistidos.
+- Pedido de terceiro: 404, mesma resposta do UUID inexistente.
+- Sem cookie: GET /pedidos retornou 401.
+- Lista e detalhe sem overflow horizontal em 360/768/1280px.
+- Nenhum pageerror no navegador.
+
+Pasta da execucao aprovada:
+fluxo-real-2026-10-14T17-00-01-360Z/
+
+Arquivos para anexar:
+- 01-lista-http.png
+- 02-detalhe-pedido-1-postgresql.png
+- 02-detalhe-pedido-2-postgresql.png
+- 02-detalhe-pedido-3-postgresql.png
+- 03-terceiro-404-e-conta-vazia.png
+- lista-360.png, lista-768.png, lista-1280.png
+- detalhe-360.png, detalhe-768.png, detalhe-1280.png
+- select-tres-pedidos.json
+- 404-terceiro.json
+- resultado.json
+
+Os paineis das capturas identificam chamadas reais da automacao.
+Eles mostram consultas reais; nao representam DevTools nativo.
+Video WEBM gravado pelo navegador dentro da mesma pasta.
+Os status variados foram preparados como fixtures sinteticas.
+
+Reproducao:
+No diretorio backend, executar:
+node --import tsx ../evidencias/PI4-27-W10-Integracao-Camadas/WEB-11-meus-pedidos/validar-fluxo-real.mjs
+
+Avisos existentes: SSL do pg, act no frontend e plugin ESLint Next.js.
+Sem commit, push ou deploy nesta subtarefa.

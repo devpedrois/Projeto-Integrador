@@ -1,0 +1,16 @@
+{
+  "dataConsolidacao": "2026-10-26",
+  "branch": "codex/30-7-relatorio-desempenho-u2",
+  "base": "a21910b",
+  "branchB2Conferida": {
+    "referencia": "codex/30-6-benchmark-recomendacao",
+    "head": "376c5f95429ab9e74558384fb210c4072d932c73",
+    "verificacao": "git rev-parse codex/30-6-benchmark-recomendacao"
+  },
+  "benchmarksExecutados": false,
+  "confirmacaoHumana": {
+    "fonte": "Mensagem direta do responsavel neste chat em 26/10/2026",
+    "texto": "todas subtarefas teve revisao humana e tbm codificação e refatoração de codigo gerado pela ia por humanos. Por quem e como(tanto pelo responsavel declarado na declaração quanto pelo revisor). nao deixe as lacunas explicitas",
+    "interpretacao": "Responsaveis e revisores ja declarados revisaram, codificaram e refatoraram codigo gerado pela IA. Nao foram informados nomes adicionais nem confirmados regiao e plano Neon."
+  }
+}

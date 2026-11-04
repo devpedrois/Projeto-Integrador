@@ -1,0 +1,15 @@
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:39426
+   - Network:      http://127.0.0.1:39426
+
+ ✓ Starting...
+ ✓ Ready in 2.3s
+ ○ Compiling / ...
+ ✓ Compiled / in 904ms (798 modules)
+ GET / 200 in 1155ms
+ ✓ Compiled /produto/[id] in 329ms (809 modules)
+ GET /produto/ed6d7020-d538-4260-b053-e49536b5c4d2 200 in 730ms
+ GET /produto/ed6d7020-d538-4260-b053-e49536b5c4d2 200 in 24ms
+ GET /produto/17cfecaf-03ce-4e96-9993-72d64b8240e6 200 in 96ms
+ GET / 200 in 30ms
+ GET /produto/ed6d7020-d538-4260-b053-e49536b5c4d2 200 in 28ms

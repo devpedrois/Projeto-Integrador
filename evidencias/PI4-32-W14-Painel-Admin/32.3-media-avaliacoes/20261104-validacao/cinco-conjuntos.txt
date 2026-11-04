@@ -1,0 +1,23 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:40892) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere 5 / 1 = 5 132ms
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (1 + 2) / 2 = 1.5 104ms
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (4 + 4 + 5) / 3 = 4.333... -> 4.3 104ms
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (1 + 2 + 3 + 4 + 5 + 5) / 6 = 3.333... … 103ms
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (4 + 5 + 5) / 3 = 4.666... -> 4.7 104ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  16:34:22
+   Duration  4.74s (tests 83%, import 10%, transform 7%)
+

@@ -1,0 +1,34 @@
+[
+  {
+    "width": 1280,
+    "status": 200,
+    "estrategia": "fallback-geral",
+    "produtoIds": [
+      "92c0add2-a938-586c-8a8c-542b22cffb50",
+      "bea28e1c-8186-5541-a254-16c3fdc795fc",
+      "03610ae2-3a84-5fd5-af17-1d078bb7e623",
+      "7bcae074-7451-5794-8ae2-d01bc4a7922d",
+      "a30d8332-3396-5b8e-839e-7892752eb1ec",
+      "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+      "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+      "9e9d4981-9ddd-5d72-b957-d33b520aed65"
+    ],
+    "erros": []
+  },
+  {
+    "width": 360,
+    "status": 200,
+    "estrategia": "fallback-geral",
+    "produtoIds": [
+      "92c0add2-a938-586c-8a8c-542b22cffb50",
+      "bea28e1c-8186-5541-a254-16c3fdc795fc",
+      "03610ae2-3a84-5fd5-af17-1d078bb7e623",
+      "7bcae074-7451-5794-8ae2-d01bc4a7922d",
+      "a30d8332-3396-5b8e-839e-7892752eb1ec",
+      "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+      "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+      "9e9d4981-9ddd-5d72-b957-d33b520aed65"
+    ],
+    "erros": []
+  }
+]

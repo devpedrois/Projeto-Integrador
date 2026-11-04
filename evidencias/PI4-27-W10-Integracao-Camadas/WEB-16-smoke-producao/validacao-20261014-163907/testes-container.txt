@@ -1,0 +1,18 @@
+
+> origem-frontend@1.0.0 test
+> vitest run tests/services/container-http.test.ts --reporter=verbose
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/services/container-http.test.ts > HTTP permite somente pendencias de artesao e admin no checkpoint WEB-16
+ ✓ tests/services/container-http.test.ts > HTTP seleciona adapters reais para todos os services do fluxo comprador
+ ✓ tests/services/container-http.test.ts > HTTP usa storage somente para visitante e persiste comprador no servidor
+ ✓ tests/services/container-http.test.ts > HTTP informa pendencias apenas em desenvolvimento
+ ✓ tests/services/container-http.test.ts > fonte desconhecida falha explicitamente
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  13:39:07
+   Duration  1.15s (transform 169ms, setup 86ms, collect 17ms, tests 329ms, environment 460ms, prepare 117ms)
+

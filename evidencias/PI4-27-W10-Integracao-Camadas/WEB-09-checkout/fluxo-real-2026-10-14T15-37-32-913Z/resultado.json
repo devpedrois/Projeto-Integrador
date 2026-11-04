@@ -1,0 +1,318 @@
+{
+  "sucesso": true,
+  "ambiente": "Next.js + Express + PostgreSQL reais, schema temporario",
+  "pedido": {
+    "pedido": {
+      "id": "fa344b56-b755-4173-8655-4c11a906bd16",
+      "compradorId": "165d28cf-3246-44a0-bf4f-e6c7d6a0c788",
+      "numero": "ORG-2026-000001",
+      "total": 27.04,
+      "status": "confirmado",
+      "criadoEm": "2026-10-14T15:37:49.654Z"
+    },
+    "itens": [
+      {
+        "produtoId": "63cf8a99-41a8-4e3f-a597-348a05151a57",
+        "quantidade": 2,
+        "nome": "Vaso WEB09 Sintetico",
+        "precoUnitario": 13.37,
+        "subtotal": 26.74
+      },
+      {
+        "produtoId": "b3b5780e-1cc7-459c-aaad-961dff327db7",
+        "quantidade": 3,
+        "nome": "Cesta WEB09 Sintetica",
+        "precoUnitario": 0.1,
+        "subtotal": 0.3
+      }
+    ]
+  },
+  "select": [
+    {
+      "numero": "ORG-2026-000001",
+      "pedidoStatus": "confirmado",
+      "total": "27.04",
+      "nome": "Vaso WEB09 Sintetico",
+      "quantidade": 2,
+      "precoUnitario": "13.37",
+      "subtotal": "26.74",
+      "metodo": "pix_simulado",
+      "pagamentoStatus": "aprovado",
+      "valor": "27.04",
+      "quantidadeEstoque": 18,
+      "quantidadeVendida": 2,
+      "intencaoStatus": "pendente"
+    },
+    {
+      "numero": "ORG-2026-000001",
+      "pedidoStatus": "confirmado",
+      "total": "27.04",
+      "nome": "Cesta WEB09 Sintetica",
+      "quantidade": 3,
+      "precoUnitario": "0.10",
+      "subtotal": "0.30",
+      "metodo": "pix_simulado",
+      "pagamentoStatus": "aprovado",
+      "valor": "27.04",
+      "quantidadeEstoque": 17,
+      "quantidadeVendida": 3,
+      "intencaoStatus": "pendente"
+    }
+  ],
+  "conflito": {
+    "status": 409,
+    "details": {
+      "produtoId": "63cf8a99-41a8-4e3f-a597-348a05151a57",
+      "nome": "Vaso WEB09 Sintetico"
+    },
+    "visivelNaTela": true
+  },
+  "rollback": {
+    "countsAntes": {
+      "pedidos": 1,
+      "itens": 2,
+      "pagamentos": 1,
+      "intencoes": 1
+    },
+    "countsDepois": {
+      "pedidos": 1,
+      "itens": 2,
+      "pagamentos": 1,
+      "intencoes": 1
+    },
+    "carrinhoPreservado": true,
+    "estoqueEVendasPreservados": true,
+    "itensCarrinho": [
+      {
+        "produtoId": "63cf8a99-41a8-4e3f-a597-348a05151a57",
+        "quantidade": 2,
+        "precoUnitario": "13.37"
+      },
+      {
+        "produtoId": "b3b5780e-1cc7-459c-aaad-961dff327db7",
+        "quantidade": 1,
+        "precoUnitario": "0.1"
+      }
+    ]
+  },
+  "numeros": [
+    "ORG-2026-000002",
+    "ORG-2026-000003",
+    "ORG-2026-000004",
+    "ORG-2026-000005",
+    "ORG-2026-000006",
+    "ORG-2026-000007",
+    "ORG-2026-000008",
+    "ORG-2026-000009",
+    "ORG-2026-000010",
+    "ORG-2026-000011"
+  ],
+  "responsividade": [
+    {
+      "tela": "checkout",
+      "width": 360,
+      "semOverflow": true
+    },
+    {
+      "tela": "checkout",
+      "width": 768,
+      "semOverflow": true
+    },
+    {
+      "tela": "checkout",
+      "width": 1280,
+      "semOverflow": true
+    }
+  ],
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "body": {
+        "itens": [
+          {
+            "produtoId": "63cf8a99-41a8-4e3f-a597-348a05151a57",
+            "quantidade": 2
+          },
+          {
+            "produtoId": "b3b5780e-1cc7-459c-aaad-961dff327db7",
+            "quantidade": 3
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 409,
+      "body": {
+        "itens": [
+          {
+            "produtoId": "63cf8a99-41a8-4e3f-a597-348a05151a57",
+            "quantidade": 2
+          },
+          {
+            "produtoId": "b3b5780e-1cc7-459c-aaad-961dff327db7",
+            "quantidade": 1
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/pedidos",
+      "status": 201,
+      "origem": "cliente HTTP autenticado da automacao"
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    }
+  ],
+  "frames": [
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-09-checkout\\fluxo-real-2026-10-14T15-37-32-913Z\\01-carrinho-servidor.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-09-checkout\\fluxo-real-2026-10-14T15-37-32-913Z\\02-revisao-checkout.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-09-checkout\\fluxo-real-2026-10-14T15-37-32-913Z\\03-confirmacao-numero-real.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-09-checkout\\fluxo-real-2026-10-14T15-37-32-913Z\\04-select-pedido-itens-pagamento.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-09-checkout\\fluxo-real-2026-10-14T15-37-32-913Z\\05-carrinho-vazio-apos-sucesso.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-09-checkout\\fluxo-real-2026-10-14T15-37-32-913Z\\06-409-item-em-falta.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-09-checkout\\fluxo-real-2026-10-14T15-37-32-913Z\\07-rollback-carrinho-preservado.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-09-checkout\\fluxo-real-2026-10-14T15-37-32-913Z\\08-dez-numeros-sequenciais.png"
+  ]
+}

@@ -1,0 +1,5 @@
+
+> origem-backend@1.0.0 bench:recomendacao
+> tsx scripts/bench-recomendacao-lote.ts --isolado
+
+Benchmark de recomendacao: argumentos invalidos.

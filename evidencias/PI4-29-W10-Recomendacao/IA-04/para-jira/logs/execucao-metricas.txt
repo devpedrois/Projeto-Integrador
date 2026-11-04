@@ -1,0 +1,22 @@
+
+> origem-backend@1.0.0 metricas:recomendacao
+> tsx scripts/metricas-recomendacao.ts --isolado --output ../evidencias/PI4-29-W10-Recomendacao/IA-04/para-jira/medicao/recomendacao-volume.json
+
+Medindo demo por HTTP real...
+(node:41488) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Medindo volume por HTTP real...
+| Base | Estrategia | Contextos | Cobertura catalogo % | Cobertura v0 % | Fallback % | Diversidade media | Frio media/p95 ms | Quente media/p95 ms | Cache quente |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|
+| demo | categoria | 30 | 100.00 | 100.00 | 0.00 | 1.00 | 115.696/117.666 | 1.52/2.234 | HIT |
+| demo | historico | 2 | 20.00 | 100.00 | 0.00 | 1.00 | 131.321/135.871 | 137.937/156.842 | BYPASS |
+| volume | categoria | 1000 | 4.50 | 100.00 | 0.00 | 1.00 | 117.318/120.563 | 1.197/1.973 | HIT |
+| volume | historico | 300 | 4.30 | 100.00 | 0.33 | 2.83 | 118.485/121.104 | 118.688/120.71 | BYPASS |
+JSON de metricas salvo.

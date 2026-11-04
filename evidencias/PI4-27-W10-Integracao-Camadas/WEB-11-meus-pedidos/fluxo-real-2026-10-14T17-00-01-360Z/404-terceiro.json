@@ -1,0 +1,10 @@
+{
+  "status": 404,
+  "igualAoInexistente": true,
+  "resposta": {
+    "error": {
+      "code": "PEDIDO_NAO_ENCONTRADO",
+      "message": "Pedido nao encontrado."
+    }
+  }
+}

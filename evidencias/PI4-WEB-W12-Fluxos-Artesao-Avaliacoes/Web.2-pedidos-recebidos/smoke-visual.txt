@@ -1,0 +1,14 @@
+(node:8880) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Tela artesao: ['Pedidos recebidos', 'ORG-2026-000001', 'Peca sintetica 2', 'Vaso artesanal nomeextensoparaverificarquebranomeextensoparaverificarquebranomeextensoparaverificarquebranomeextensoparaverificarquebra', 'Peca sintetica 5', 'Peca sintetica 4', 'Peca sintetica 3']
+Acoes artesao: ['Sair', 'Marcar como enviado', 'Marcar como enviado', 'Marcar como enviado', 'Marcar como enviado', 'Marcar como enviado', 'P�gina anterior', 'Pr�xima p�gina', '']
+Tela comprador: ['Minha conta', 'Meus pedidos']
+{"envios": 5, "loginsComprador": 1, "itemAlheioPreservado": true, "errosJavascript": [], "viewports": [{"tela": "artesao-antes", "largura": 360, "viewport": 360, "conteudo": 360, "excedentes": []}, {"tela": "comprador-antes", "largura": 360, "viewport": 360, "conteudo": 360, "excedentes": []}, {"tela": "artesao-antes", "largura": 768, "viewport": 768, "conteudo": 768, "excedentes": []}, {"tela": "comprador-antes", "largura": 768, "viewport": 768, "conteudo": 768, "excedentes": []}, {"tela": "artesao-antes", "largura": 1280, "viewport": 1280, "conteudo": 1280, "excedentes": []}, {"tela": "comprador-antes", "largura": 1280, "viewport": 1280, "conteudo": 1280, "excedentes": []}, {"tela": "artesao-depois", "largura": 360, "viewport": 360, "conteudo": 360, "excedentes": []}, {"tela": "comprador-depois", "largura": 360, "viewport": 360, "conteudo": 360, "excedentes": []}, {"tela": "artesao-depois", "largura": 768, "viewport": 768, "conteudo": 768, "excedentes": []}, {"tela": "comprador-depois", "largura": 768, "viewport": 768, "conteudo": 768, "excedentes": []}, {"tela": "artesao-depois", "largura": 1280, "viewport": 1280, "conteudo": 1280, "excedentes": []}, {"tela": "comprador-depois", "largura": 1280, "viewport": 1280, "conteudo": 1280, "excedentes": []}]}
+Schema isolado do smoke removido.

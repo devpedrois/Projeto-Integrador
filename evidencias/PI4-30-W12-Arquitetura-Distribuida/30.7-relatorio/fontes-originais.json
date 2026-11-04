@@ -1,0 +1,14 @@
+{
+  "evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/rodadas-50-clientes.json": "a68bc9a4f8b781368d7de871e4d82065c52e9cd774dfef7fbbde82918a0c8f56",
+  "evidencias/PI4-30/benchmark-fila/execucao-2026-10-25T19-34-45.068Z/resultado.json": "3b6f76e5cec6944e9d116198c5c25f6b5e6e773aa81b9c1f6b8d5780916116c1",
+  "evidencias/PI4-30/benchmark-fila/execucao-2026-10-25T19-34-45.068Z/rodadas.csv": "c5e6585d646c1b2df0b16afdabbd55822de653094c5f028cf009e6a9d1f8b06d",
+  "evidencias/PI4-30/benchmark-fila/execucao-2026-10-25T19-34-45.068Z/interrupcao.json": "f10ed9395982c683aae47714442ac1417d386d2c6a650511b069e2212d4fcf4a",
+  "evidencias/PI4-30/benchmark-fila/execucao-2026-10-25T19-34-45.068Z/limpeza.json": "2c32a052d78ee4e7d2286f60514c256151f5c53f425c2857e5d28a3686978d39",
+  "evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/resultado.json": "d8395507b80094df0b4a3a372e22073fe13285fc37803efe957b8f785a1b9bad",
+  "evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/rodadas.csv": "429f6aaadc5810921ea11eaaf49a472c478b43c23dce5a4bec28cc1b9e6a8816",
+  "evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/diff.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/sequencial.json": "361bbb25e4c580f722d24f5fbd615012c420b5616c0b16de8a9abc7f3da392d9",
+  "evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/throughput.png": "8ba1bacf79ed27749c3d754b6b4b0226d90a5e7352d4e997b2ef0b58fa2acb34",
+  "evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/04-benchmark-volume-final/resultado.json": "a98cc6bdeed07cd3077b9ff7137d596ea035da4951e0ed326894ede03a79700a",
+  "evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/04-benchmark-volume-final/bruto.csv": "a8a45263b5ed255a27df8bf04898f7993b77c3a71f58c442569db348620e0ccc"
+}

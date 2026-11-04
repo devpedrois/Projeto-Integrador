@@ -1,0 +1,6 @@
+{
+  "migration": "20261104165644_indice_perfil_tecnica_principal",
+  "checksum": "6ac787eb7ef263059c7c6e375b807a76739a06bdc3ac48bfdd55f3e65659794c",
+  "aplicada": true,
+  "checksumConfere": true
+}

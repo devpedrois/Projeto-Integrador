@@ -1,0 +1,5 @@
+
+> origem-backend@1.0.0 bench:fila
+> tsx scripts/bench-fila.ts ../evidencias/PI4-30/benchmark-fila/contraprova-lock
+
+Benchmark da fila: argumentos invalidos ou pasta de saida existente; use uma pasta nova.

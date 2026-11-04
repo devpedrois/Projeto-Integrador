@@ -1,0 +1,26 @@
+WEB-03 | Saída real da suíte supertest
+Coletado em: 13/10/2026, 22:22:10 | America/Sao_Paulo
+Node.js: v24.19.0
+Comando: node node_modules/vitest/vitest.mjs run tests/integration/auth.routes.integration.test.ts
+Banco PostgreSQL real; fixtures da suíte em schema temporário isolado.
+Exit code: 0
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+
+ Test Files  1 passed (1)
+      Tests  36 passed (36)
+   Start at  22:22:05
+   Duration  5.09s (tests 93%, import 4%, transform 2%)
+
+
+(node:37652) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)

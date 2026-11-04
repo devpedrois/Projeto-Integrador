@@ -1,0 +1,231 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/environment.test.ts tests/unit/http-recomendacao.client.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ❯ tests/unit/environment.test.ts (82 tests | 19 failed) 31ms
+   ❯ environment validation (64)
+     × rejects missing connection variables without exposing values 5ms
+   × configura timeout HTTP padrao de 800ms 1ms
+   × aceita timeout 100 0ms
+   × aceita timeout 5000 0ms
+   × recusa timeout 99 1ms
+   × recusa timeout 5001 1ms
+   × recusa timeout  0ms
+   × recusa timeout NaN 0ms
+   × recusa timeout 100.5 0ms
+   × recusa destino com credenciais ou caminho 0ms
+   × recusa destino com credenciais ou caminho 0ms
+   × recusa destino com credenciais ou caminho 0ms
+   × recusa destino com credenciais ou caminho 0ms
+   × recusa destino com credenciais ou caminho 0ms
+   × aceita origem HTTP: https://internal.example 0ms
+   × aceita origem HTTP: http://127.0.0.1:3002 0ms
+   × recusa token ausente ou curto 0ms
+   × recusa token ausente ou curto 0ms
+   × recusa token ausente ou curto 0ms
+ ❯ tests/unit/http-recomendacao.client.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/http-recomendacao.client.test.ts [ tests/unit/http-recomendacao.client.test.ts ]
+Error: Cannot find module '../../src/integrations/recommendation/http-recomendacao.client.js' imported from C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/http-recomendacao.client.test.ts
+ ❯ tests/unit/http-recomendacao.client.test.ts:3:1
+      1| import { createServer, type Server, type RequestListener } from "node:…
+      2| import { afterEach, describe, expect, it } from "vitest";
+      3| import { HttpRecomendacaoClient } from "../../src/integrations/recomme…
+       | ^
+      4| import { RecomendacaoIndisponivelError } from "../../src/errors/recome…
+      5| import fixture from "../../../fixtures/recomendacao-selecao.fixture.js…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/20]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 19 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/environment.test.ts > environment validation > rejects missing connection variables without exposing values
+AssertionError: expected [Function] to throw error including 'Invalid environment variables: DATABA…' but got 'Invalid environment variables: DATABA…'
+
+Expected: "Invalid environment variables: DATABASE_URL, DIRECT_URL, RECOMENDACAO_SERVICE_TOKEN, RECOMENDACAO_URL"
+Received: "Invalid environment variables: DATABASE_URL, DIRECT_URL"
+
+ ❯ tests/unit/environment.test.ts:238:40
+    236|
+    237|   it("rejects missing connection variables without exposing values", (…
+    238|     expect(() => parseEnvironment({})).toThrow(
+       |                                        ^
+    239|       "Invalid environment variables: DATABASE_URL, DIRECT_URL, RECOME…
+    240|     );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/20]⎯
+
+ FAIL  tests/unit/environment.test.ts > configura timeout HTTP padrao de 800ms
+AssertionError: expected undefined to be 800 // Object.is equality
+
+- Expected:
+800
+
++ Received:
+undefined
+
+ ❯ tests/unit/environment.test.ts:264:79
+    262| };
+    263| it("configura timeout HTTP padrao de 800ms", () => {
+    264|   expect(parseEnvironment(recommendationEnvironment).RECOMENDACAO_TIME…
+       |                                                                               ^
+    265| });
+    266| it.each(["100", "5000"])("aceita timeout %s", (value) => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/20]⎯
+
+ FAIL  tests/unit/environment.test.ts > aceita timeout 100
+AssertionError: expected undefined to be 100 // Object.is equality
+
+- Expected:
+100
+
++ Received:
+undefined
+
+ ❯ tests/unit/environment.test.ts:267:116
+    265| });
+    266| it.each(["100", "5000"])("aceita timeout %s", (value) => {
+    267|   expect(parseEnvironment({...recommendationEnvironment, RECOMENDACAO_…
+       |                                                                                                                    ^
+    268| });
+    269| it.each(["99", "5001", "", "NaN", "100.5"])("recusa timeout %s", (valu…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/20]⎯
+
+ FAIL  tests/unit/environment.test.ts > aceita timeout 5000
+AssertionError: expected undefined to be 5000 // Object.is equality
+
+- Expected:
+5000
+
++ Received:
+undefined
+
+ ❯ tests/unit/environment.test.ts:267:116
+    265| });
+    266| it.each(["100", "5000"])("aceita timeout %s", (value) => {
+    267|   expect(parseEnvironment({...recommendationEnvironment, RECOMENDACAO_…
+       |                                                                                                                    ^
+    268| });
+    269| it.each(["99", "5001", "", "NaN", "100.5"])("recusa timeout %s", (valu…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/20]⎯
+
+ FAIL  tests/unit/environment.test.ts > recusa timeout 99
+ FAIL  tests/unit/environment.test.ts > recusa timeout 5001
+ FAIL  tests/unit/environment.test.ts > recusa timeout 
+ FAIL  tests/unit/environment.test.ts > recusa timeout NaN
+ FAIL  tests/unit/environment.test.ts > recusa timeout 100.5
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/environment.test.ts:270:98
+    268| });
+    269| it.each(["99", "5001", "", "NaN", "100.5"])("recusa timeout %s", (valu…
+    270|   expect(() => parseEnvironment({...recommendationEnvironment, RECOMEN…
+       |                                                                                                  ^
+    271| });
+    272| it.each(["ftp://internal", "http://user:secret@internal", "http://inte…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/20]⎯
+
+ FAIL  tests/unit/environment.test.ts > recusa destino com credenciais ou caminho
+ FAIL  tests/unit/environment.test.ts > recusa destino com credenciais ou caminho
+ FAIL  tests/unit/environment.test.ts > recusa destino com credenciais ou caminho
+ FAIL  tests/unit/environment.test.ts > recusa destino com credenciais ou caminho
+ FAIL  tests/unit/environment.test.ts > recusa destino com credenciais ou caminho
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/environment.test.ts:273:91
+    271| });
+    272| it.each(["ftp://internal", "http://user:secret@internal", "http://inte…
+    273|   expect(() => parseEnvironment({...recommendationEnvironment, RECOMEN…
+       |                                                                                           ^
+    274| });
+    275| it.each(["https://internal.example", "http://127.0.0.1:3002"])("aceita…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/20]⎯
+
+ FAIL  tests/unit/environment.test.ts > aceita origem HTTP: https://internal.example
+AssertionError: expected undefined to be 'https://internal.example' // Object.is equality
+
+- Expected:
+"https://internal.example"
+
++ Received:
+undefined
+
+ ❯ tests/unit/environment.test.ts:276:102
+    274| });
+    275| it.each(["https://internal.example", "http://127.0.0.1:3002"])("aceita…
+    276|   expect(parseEnvironment({...recommendationEnvironment, RECOMENDACAO_…
+       |                                                                                                      ^
+    277| });
+    278| it.each(["", "short", " ".repeat(32)])("recusa token ausente ou curto"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/20]⎯
+
+ FAIL  tests/unit/environment.test.ts > aceita origem HTTP: http://127.0.0.1:3002
+AssertionError: expected undefined to be 'http://127.0.0.1:3002' // Object.is equality
+
+- Expected:
+"http://127.0.0.1:3002"
+
++ Received:
+undefined
+
+ ❯ tests/unit/environment.test.ts:276:102
+    274| });
+    275| it.each(["https://internal.example", "http://127.0.0.1:3002"])("aceita…
+    276|   expect(parseEnvironment({...recommendationEnvironment, RECOMENDACAO_…
+       |                                                                                                      ^
+    277| });
+    278| it.each(["", "short", " ".repeat(32)])("recusa token ausente ou curto"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/20]⎯
+
+ FAIL  tests/unit/environment.test.ts > recusa token ausente ou curto
+ FAIL  tests/unit/environment.test.ts > recusa token ausente ou curto
+ FAIL  tests/unit/environment.test.ts > recusa token ausente ou curto
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/unit/environment.test.ts:279:101
+    277| });
+    278| it.each(["", "short", " ".repeat(32)])("recusa token ausente ou curto"…
+    279|   expect(() => parseEnvironment({...recommendationEnvironment, RECOMEN…
+       |                                                                                                     ^
+    280| });
+    281|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/20]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  19 failed | 63 passed (82)
+   Start at  14:33:32
+   Duration  526ms (import 54%, transform 21%, tests 18%, worker 7%)
+

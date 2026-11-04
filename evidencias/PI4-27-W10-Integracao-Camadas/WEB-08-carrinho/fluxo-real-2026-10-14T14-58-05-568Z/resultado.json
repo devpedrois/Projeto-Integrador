@@ -1,0 +1,124 @@
+{
+  "sucesso": true,
+  "visitante": {
+    "quantidade": 4,
+    "chamadasCarrinho": 0
+  },
+  "mesclagem": {
+    "quantidadeAnterior": 3,
+    "quantidadeFinal": 5,
+    "estoque": 5,
+    "ocultoDescartadoComAviso": true,
+    "localLimpo": true
+  },
+  "conflito": {
+    "status": 409,
+    "details": {
+      "produtoId": "5c4acd8d-832c-4f85-a06e-e79bfbfe2fb1",
+      "nome": "Vaso WEB08 Sintetico"
+    },
+    "avisoVisivel": true
+  },
+  "persistencia": [
+    {
+      "rodada": 1,
+      "quantidadeAposLogin": 5,
+      "visitanteVazioAposLogout": true
+    },
+    {
+      "rodada": 2,
+      "quantidadeAposLogin": 5,
+      "visitanteVazioAposLogout": true
+    },
+    {
+      "rodada": 3,
+      "quantidadeAposLogin": 5,
+      "visitanteVazioAposLogout": true
+    }
+  ],
+  "linhasItemCarrinho": [
+    {
+      "carrinhoId": "ef15fdfb-eda9-4fbb-8948-a4f84e6e32cb",
+      "produtoId": "5c4acd8d-832c-4f85-a06e-e79bfbfe2fb1",
+      "quantidade": 5,
+      "precoUnitario": 25.5
+    }
+  ],
+  "remocaoConfirmadaNoPostgreSQL": true,
+  "responsividade": [
+    {
+      "width": 360,
+      "semOverflow": true
+    },
+    {
+      "width": 768,
+      "semOverflow": true
+    },
+    {
+      "width": 1280,
+      "semOverflow": true
+    }
+  ],
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/carrinho/itens",
+      "status": 200
+    },
+    {
+      "metodo": "PATCH",
+      "caminho": "/api/carrinho/itens/5c4acd8d-832c-4f85-a06e-e79bfbfe2fb1",
+      "status": 409
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/carrinho",
+      "status": 200
+    },
+    {
+      "metodo": "DELETE",
+      "caminho": "/api/carrinho/itens/5c4acd8d-832c-4f85-a06e-e79bfbfe2fb1",
+      "status": 200
+    }
+  ],
+  "frames": [
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-08-carrinho\\fluxo-real-2026-10-14T14-58-05-568Z\\01-carrinho-visitante.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-08-carrinho\\fluxo-real-2026-10-14T14-58-05-568Z\\02-login-mesclagem-limitada.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-08-carrinho\\fluxo-real-2026-10-14T14-58-05-568Z\\03-linhas-item-carrinho-postgresql.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-08-carrinho\\fluxo-real-2026-10-14T14-58-05-568Z\\04-409-nome-na-tela.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-08-carrinho\\fluxo-real-2026-10-14T14-58-05-568Z\\05-persistencia-rodada-1.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-08-carrinho\\fluxo-real-2026-10-14T14-58-05-568Z\\05-persistencia-rodada-2.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-08-carrinho\\fluxo-real-2026-10-14T14-58-05-568Z\\05-persistencia-rodada-3.png",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-08-carrinho\\fluxo-real-2026-10-14T14-58-05-568Z\\06-remocao-servidor.png"
+  ]
+}

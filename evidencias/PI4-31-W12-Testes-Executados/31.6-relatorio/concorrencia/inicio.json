@@ -1,0 +1,15 @@
+{
+  "suite": "concorrencia",
+  "startedAt": "2026-10-26T16:41:28.985Z",
+  "commit": "58996b984639983e9a9d2d2bc7599bb5495adadd",
+  "tree": "5c1f2e0194f624bb821adb23f3f0c160c86924fb",
+  "dirty": "",
+  "args": [
+    "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+    "run",
+    "test:concorrencia",
+    "--",
+    "--saida",
+    "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-31-W12-Testes-Executados\\31.6-relatorio\\concorrencia\\rodadas.json"
+  ]
+}

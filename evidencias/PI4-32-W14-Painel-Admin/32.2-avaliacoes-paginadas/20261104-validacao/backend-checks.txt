@@ -1,0 +1,8 @@
+
+> origem-backend@1.0.0 lint
+> eslint .
+
+
+> origem-backend@1.0.0 typecheck
+> tsc --noEmit
+

@@ -1,0 +1,19 @@
+{
+  "swaggerUrl": "https://origem-marketplace.vercel.app/api/docs/#/Cat%C3%A1logo/listarArtesaosPublicos",
+  "swaggerOperacao": "GET /api/artesaos",
+  "swaggerResposta": 200,
+  "filtroArtesaoVisitante": true,
+  "filtroSelecionado": "Maria do Pilar",
+  "produtosFiltrados": 4,
+  "imagensPerfilCarregadas": 4,
+  "vercel": {
+    "commit": "6f55c3817b6173a4405abe33856bbaca51a94464",
+    "status": "Ready",
+    "deployment": "8CYNv8z6ifttZ7TBeu6NrNf9jrrc"
+  },
+  "render": {
+    "commit": "345631a5e1d5ab852e50541a44046329c687f5f5",
+    "status": "Live",
+    "deployment": "dep-dbkg5g95efls73afqj80"
+  }
+}

@@ -1,0 +1,692 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "360px",
+        "name": "360px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright/37d9de5cb1424a67be181a190733b1df/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "1280px",
+        "name": "1280px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "360px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 360,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "360px"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "1280px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "1280px"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\resultado.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "admin-indicadores.spec.ts",
+      "file": "admin-indicadores.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "32.1 indicadores reais: dez recargas e tres larguras",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mede dez recargas no mesmo viewport.",
+                  "location": {
+                    "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\admin-indicadores.spec.ts",
+                    "line": 8,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 356,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T19:48:34.216Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Mede dez recargas no mesmo viewport.",
+                      "location": {
+                        "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\admin-indicadores.spec.ts",
+                        "line": 8,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "43f71f1fe71fba6bde39-61914a2c89f0054af5bf",
+          "file": "admin-indicadores.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "32.1 indicadores reais: dez recargas e tres larguras",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6658,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T19:49:04.498Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Indicadores reais e tempos",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px\\attachments\\Indicadores-reais-e-tempos-2633896504730bc0c3386138feae38c7e2489a89.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "43f71f1fe71fba6bde39-ab752dddc0c634f14865",
+          "file": "admin-indicadores.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fluxos.spec.ts",
+      "file": "fluxos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5965,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 2118
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 2006
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 748
+                    }
+                  ],
+                  "startTime": "2026-11-04T19:48:34.840Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-3dd579238a1600c1af4e",
+          "file": "fluxos.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6622,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 1461
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 759
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 280
+                    },
+                    {
+                      "title": "Cadastro inicia sessao de artesao sem login separado",
+                      "duration": 1787
+                    }
+                  ],
+                  "startTime": "2026-11-04T19:48:40.813Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-5fd1245ca8efa7d599b5",
+          "file": "fluxos.spec.ts",
+          "line": 173,
+          "column": 1
+        },
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3089,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 1570
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 814
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 293
+                    }
+                  ],
+                  "startTime": "2026-11-04T19:49:11.393Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-322fd6ac0efb1fcba6e7",
+          "file": "fluxos.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5037,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 1521
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 741
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 302
+                    },
+                    {
+                      "title": "Cadastro inicia sessao de artesao sem login separado",
+                      "duration": 1092
+                    }
+                  ],
+                  "startTime": "2026-11-04T19:49:14.488Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-eb3f7ae786b46b8a8e36",
+          "file": "fluxos.spec.ts",
+          "line": 173,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "produto-avaliacoes.spec.ts",
+      "file": "produto-avaliacoes.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "32.2 produto demo mostra quatro paginas de avaliacoes reais",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 15588,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\u001b[22m\n\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts:21:66",
+                    "location": {
+                      "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts",
+                      "column": 66,
+                      "line": 21
+                    },
+                    "snippet": "  19 |   });\n  20 |   for (let pagina = 1; pagina <= 4; pagina += 1) {\n> 21 |     await expect(comentarios.getByText(`Página ${pagina} de 4`)).toBeVisible();\n     |                                                                  ^\n  22 |     await expect(comentarios.getByRole(\"listitem\")).toHaveCount(\n  23 |       pagina === 4 ? 5 : 10,\n  24 |     );"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts",
+                        "column": 66,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\u001b[22m\n\n\n  19 |   });\n  20 |   for (let pagina = 1; pagina <= 4; pagina += 1) {\n> 21 |     await expect(comentarios.getByText(`Página ${pagina} de 4`)).toBeVisible();\n     |                                                                  ^\n  22 |     await expect(comentarios.getByRole(\"listitem\")).toHaveCount(\n  23 |       pagina === 4 ? 5 : 10,\n  24 |     );\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts:21:66"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T19:48:47.462Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts",
+                    "column": 66,
+                    "line": 21
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 151,
+                  "error": {
+                    "message": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-11-04T19:49:03.630Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px-retry1\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px-retry1\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84da38f025b923bf2756-da1eac688bed7c56380c",
+          "file": "produto-avaliacoes.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "32.2 produto demo mostra quatro paginas de avaliacoes reais",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 15512,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\u001b[22m\n\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts:21:66",
+                    "location": {
+                      "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts",
+                      "column": 66,
+                      "line": 21
+                    },
+                    "snippet": "  19 |   });\n  20 |   for (let pagina = 1; pagina <= 4; pagina += 1) {\n> 21 |     await expect(comentarios.getByText(`Página ${pagina} de 4`)).toBeVisible();\n     |                                                                  ^\n  22 |     await expect(comentarios.getByRole(\"listitem\")).toHaveCount(\n  23 |       pagina === 4 ? 5 : 10,\n  24 |     );"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts",
+                        "column": 66,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Avaliações do produto' }).getByText('Página 1 de 4')\u001b[22m\n\n\n  19 |   });\n  20 |   for (let pagina = 1; pagina <= 4; pagina += 1) {\n> 21 |     await expect(comentarios.getByText(`Página ${pagina} de 4`)).toBeVisible();\n     |                                                                  ^\n  22 |     await expect(comentarios.getByRole(\"listitem\")).toHaveCount(\n  23 |       pagina === 4 ? 5 : 10,\n  24 |     );\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts:21:66"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T19:49:19.552Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\produto-avaliacoes.spec.ts",
+                    "column": 66,
+                    "line": 21
+                  }
+                },
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 141,
+                  "error": {
+                    "message": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-11-04T19:49:35.606Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px-retry1\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-32-W14-Painel-Admin\\32.2-avaliacoes-paginadas\\20261104-validacao\\playwright\\37d9de5cb1424a67be181a190733b1df\\results\\produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px-retry1\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84da38f025b923bf2756-a952e6725222435e729f",
+          "file": "produto-avaliacoes.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T19:48:25.750Z",
+    "duration": 70898.18599999999,
+    "expected": 5,
+    "skipped": 1,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

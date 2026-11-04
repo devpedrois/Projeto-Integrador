@@ -1,0 +1,33 @@
+{
+  "diagramaSincronizado": true,
+  "referenciasVerificadas": [
+    "frontend/src/app/",
+    "frontend/src/services/http/",
+    "frontend/next.config.ts",
+    "backend/src/server.ts",
+    "backend/src/app.ts",
+    "backend/src/queues/bootstrap.ts",
+    "backend/src/queues/notificacao.publisher.ts",
+    "backend/src/routes/recomendacao.routes.ts",
+    "backend/src/integrations/recommendation/categoria-recomendacao.strategy.ts",
+    "backend/src/utils/cache.ts",
+    "backend/src/utils/cache-http.ts",
+    "backend/prisma/schema.prisma",
+    "backend/src/queues/pg-boss.client.ts",
+    "backend/src/jobs/notificar-artesao.worker.ts",
+    "backend/src/jobs/notificar-artesao.handler.ts",
+    "backend/src/worker.ts",
+    "backend/package.json"
+  ],
+  "alteracoesRastreadas": [
+    "docs/uso-de-ia.md"
+  ],
+  "novoRegistroIaFormatado": true,
+  "png": {
+    "width": 4752,
+    "height": 2670,
+    "scale": 3
+  },
+  "painelRender": "Login exigido; configuracao remota nao confirmada",
+  "codigoAlterado": false
+}

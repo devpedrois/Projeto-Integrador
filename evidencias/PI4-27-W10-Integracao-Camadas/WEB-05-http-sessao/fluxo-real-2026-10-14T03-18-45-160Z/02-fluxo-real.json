@@ -1,0 +1,57 @@
+{
+  "sucesso": true,
+  "inputs": [
+    {
+      "id": "cadastro-nome",
+      "tipo": "text"
+    },
+    {
+      "id": "cadastro-email",
+      "tipo": "email"
+    },
+    {
+      "id": "cadastro-senha",
+      "[CREDENCIAL_REMOVIDA]": "password"
+    }
+  ],
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/auth/register",
+      "status": 201
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "caminho": "/api/auth/logout",
+      "status": 204
+    }
+  ],
+  "redirectSemCookie": 307,
+  "cookieHttpOnly": true,
+  "persistiuAposReload": true,
+  "adminLocalStorageIgnorado": true,
+  "papelIncorretoNegado": true,
+  "logoutStatus": 204,
+  "meAposLogout": 401,
+  "usuarioConfirmadoNoPostgreSQL": 1
+}

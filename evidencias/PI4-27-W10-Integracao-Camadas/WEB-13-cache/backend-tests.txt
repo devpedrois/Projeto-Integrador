@@ -1,0 +1,571 @@
+
+> origem-backend@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:17128) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21544) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21544) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(node:23424) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45004) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25476) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32420) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32420) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(node:41268) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"desativadoPorAdmin":true}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.281}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"ativo":false}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.276}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"quantidadeEstoque":0}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.292}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.286}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.301}
+
+ ❯ tests/integration/recomendacoes-contrato.integration.test.ts (11 tests | 5 failed) 10424ms
+   ❯ IA-01 contrato publico de recomendacoes (11)
+     × omite produtos invisiveis sem reordenar restantes: {"desativadoPorAdmin":true} 87ms
+     × omite produtos invisiveis sem reordenar restantes: {"ativo":false} 82ms
+     × omite produtos invisiveis sem reordenar restantes: {"quantidadeEstoque":0} 82ms
+     × omite produtos de artesao indisponivel: {"ativo":false} 85ms
+     × omite produtos de artesao indisponivel: {"papel":"comprador"} 82ms
+(node:31008) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43192) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8892) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8440) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8440) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(node:13848) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35652) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14516) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43904) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42152) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31768) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:908) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13924) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:44360) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28352) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:34776) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:33564) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:34652) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:38676) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:18032) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26416) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41160) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25964) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:19424) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28272) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:27392) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22160) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:37568) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:27168) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"desativadoPorAdmin":true}
+ FAIL  tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"ativo":false}
+ FAIL  tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"quantidadeEstoque":0}
+AssertionError: expected [ …(8) ] to not include '8f5c649b-53c7-4bbb-bfcb-083b6ee4a2aa'
+ ❯ tests/integration/recomendacoes-contrato.integration.test.ts:268:25
+    266|
+    267|   it.each([
+    268|     { tipo: "moderacao", input: { ativo: false } },
+       |                         ^
+    269|     { tipo: "produto", input: { ativo: false } },
+    270|     { tipo: "estoque", input: { quantidadeEstoque: 0 } },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+ FAIL  tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+AssertionError: expected [ { …(15) }, { …(15) }, …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "artesaoId": "3d6a2f1f-8bf8-40d4-8140-da6ff47802de",
++     "ativo": true,
++     "categoriaId": "0f3fa9bd-e4a2-4713-bf2a-6d6529431683",
++     "criadoEm": "2026-08-02T00:00:00.000Z",
++     "desativadoPorAdmin": false,
++     "descricao": "Maior numero de vendas da categoria: deve ocupar a primeira posicao.",
++     "fotos": [
++       {
++         "ordem": 0,
++         "url": "/produtos/fixture.svg",
++       },
++       {
++         "ordem": 1,
++         "url": "/produtos/segunda.svg",
++       },
++     ],
++     "id": "83bc74c3-7cea-4b16-816a-2ed624c6630c",
++     "nome": "Produto Fixture P01",
++     "notaMedia": 4,
++     "preco": 89.9,
++     "quantidadeEstoque": 10,
++     "quantidadeVendida": 100,
++     "regiaoId": "regiao-alto-moura-caruaru",
++     "tecnicaId": "tecnica-modelagem-argila",
++   },
++   {
++     "artesaoId": "3d6a2f1f-8bf8-40d4-8140-da6ff47802de",
++     "ativo": true,
++     "categoriaId": "0f3fa9bd-e4a2-4713-bf2a-6d6529431683",
++     "criadoEm": "2026-08-04T00:00:00.000Z",
++     "desativadoPorAdmin": false,
++     "descricao": "Empata em vendas e nota media com P05; possui o menor id e deve vir antes dele.",
++     "fotos": [
++       {
++         "ordem": 0,
++         "url": "/produtos/fixture.svg",
++       },
++     ],
++     "id": "8f5c649b-53c7-4bbb-bfcb-083b6ee4a2aa",
++     "nome": "Produto Fixture P03",
++     "notaMedia": 4.8,
++     "preco": 50,
++     "quantidadeEstoque": 10,
++     "quantidadeVendida": 90,
++     "regiaoId": "regiao-alto-moura-caruaru",
++     "tecnicaId": "tecnica-modelagem-argila",
++   },
++   {
++     "artesaoId": "3d6a2f1f-8bf8-40d4-8140-da6ff47802de",
++     "ativo": true,
++     "categoriaId": "0f3fa9bd-e4a2-4713-bf2a-6d6529431683",
++     "criadoEm": "2026-08-03T00:00:00.000Z",
++     "desativadoPorAdmin": false,
++     "descricao": "Empata em vendas e nota media com P03; possui o maior id e deve vir depois dele.",
++     "fotos": [
++       {
++         "ordem": 0,
++         "url": "/produtos/fixture.svg",
++       },
++     ],
++     "id": "94546d5c-5dde-4b03-bdee-f91e63b1d749",
++     "nome": "Produto Fixture P05",
++     "notaMedia": 4.8,
++     "preco": 50,
++     "quantidadeEstoque": 10,
++     "quantidadeVendida": 90,
++     "regiaoId": "regiao-alto-moura-caruaru",
++     "tecnicaId": "tecnica-modelagem-argila",
++   },
++   {
++     "artesaoId": "3d6a2f1f-8bf8-40d4-8140-da6ff47802de",
++     "ativo": true,
++     "categoriaId": "0f3fa9bd-e4a2-4713-bf2a-6d6529431683",
++     "criadoEm": "2026-08-05T00:00:00.000Z",
++     "desativadoPorAdmin": false,
++     "descricao": "Mesmas vendas de P03/P05, mas nota media menor: fica depois dos dois.",
++     "fotos": [
++       {
++         "ordem": 0,
++         "url": "/produtos/fixture.svg",
++       },
++     ],
++     "id": "923113c4-c3e7-4c19-8e3b-b3b93d18f176",
++     "nome": "Produto Fixture P04",
++     "notaMedia": 3,
++     "preco": 50,
++     "quantidadeEstoque": 10,
++     "quantidadeVendida": 90,
++     "regiaoId": "regiao-alto-moura-caruaru",
++     "tecnicaId": "tecnica-modelagem-argila",
++   },
++   {
++     "artesaoId": "3d6a2f1f-8bf8-40d4-8140-da6ff47802de",
++     "ativo": true,
++     "categoriaId": "0f3fa9bd-e4a2-4713-bf2a-6d6529431683",
++     "criadoEm": "2026-08-06T00:00:00.000Z",
++     "desativadoPorAdmin": false,
++     "descricao": "Quinta posicao esperada, por quantidade vendida.",
++     "fotos": [
++       {
++         "ordem": 0,
++         "url": "/produtos/fixture.svg",
++       },
++     ],
++     "id": "85bc45d8-7f41-447a-8625-ee90e888a3af",
++     "nome": "Produto Fixture P02",
++     "notaMedia": 5,
++     "preco": 50,
++     "quantidadeEstoque": 10,
++     "quantidadeVendida": 80,
++     "regiaoId": "regiao-alto-moura-caruaru",
++     "tecnicaId": "tecnica-modelagem-argila",
++   },
++   {
++     "artesaoId": "3d6a2f1f-8bf8-40d4-8140-da6ff47802de",
++     "ativo": true,
++     "categoriaId": "0f3fa9bd-e4a2-4713-bf2a-6d6529431683",
++     "criadoEm": "2026-08-07T00:00:00.000Z",
++     "desativadoPorAdmin": false,
++     "descricao": "Sexta posicao esperada, por quantidade vendida.",
++     "fotos": [
++       {
++         "ordem": 0,
++         "url": "/produtos/fixture.svg",
++       },
++     ],
++     "id": "c34a0e40-010f-43f2-8665-e96b30a2f94f",
++     "nome": "Produto Fixture P06",
++     "notaMedia": 4,
++     "preco": 50,
++     "quantidadeEstoque": 10,
++     "quantidadeVendida": 70,
++     "regiaoId": "regiao-alto-moura-caruaru",
++     "tecnicaId": "tecnica-modelagem-argila",
++   },
++   {
++     "artesaoId": "3d6a2f1f-8bf8-40d4-8140-da6ff47802de",
++     "ativo": true,
++     "categoriaId": "0f3fa9bd-e4a2-4713-bf2a-6d6529431683",
++     "criadoEm": "2026-08-08T00:00:00.000Z",
++     "desativadoPorAdmin": false,
++     "descricao": "Setima posicao esperada, por quantidade vendida.",
++     "fotos": [
++       {
++         "ordem": 0,
++         "url": "/produtos/fixture.svg",
++       },
++     ],
++     "id": "d4bd809f-1a24-40ef-a198-cf3b43aa9cf2",
++     "nome": "Produto Fixture P07",
++     "notaMedia": 4,
++     "preco": 50,
++     "quantidadeEstoque": 10,
++     "quantidadeVendida": 60,
++     "regiaoId": "regiao-alto-moura-caruaru",
++     "tecnicaId": "tecnica-modelagem-argila",
++   },
++   {
++     "artesaoId": "3d6a2f1f-8bf8-40d4-8140-da6ff47802de",
++     "ativo": true,
++     "categoriaId": "0f3fa9bd-e4a2-4713-bf2a-6d6529431683",
++     "criadoEm": "2026-08-09T00:00:00.000Z",
++     "desativadoPorAdmin": false,
++     "descricao": "Oitava e ultima posicao esperada: o limite de oito itens corta P09 e P10.",
++     "fotos": [
++       {
++         "ordem": 0,
++         "url": "/produtos/fixture.svg",
++       },
++     ],
++     "id": "de21195e-307b-478c-a560-91f5993436b9",
++     "nome": "Produto Fixture P08",
++     "notaMedia": 4,
++     "preco": 50,
++     "quantidadeEstoque": 10,
++     "quantidadeVendida": 50,
++     "regiaoId": "regiao-alto-moura-caruaru",
++     "tecnicaId": "tecnica-modelagem-argila",
++   },
++ ]
+
+ ❯ tests/integration/recomendacoes-contrato.integration.test.ts:290:60
+    289|           .get("/recomendacoes")
+    290|           .query({ produtoId: contextoId });
+    291|         const resultado = resultadoSchema.parse(response.body);
+       |               ^
+    292|         const ordem = resultado.itens.map((produto) => produto.id);
+    293|         expect(ordem).not.toContain(id);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+
+ Test Files  1 failed | 47 passed (48)
+      Tests  5 failed | 489 passed (494)
+   Start at  16:26:16
+   Duration  275.68s (tests 97%, import 2%)
+

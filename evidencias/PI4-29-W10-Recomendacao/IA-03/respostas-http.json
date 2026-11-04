@@ -1,0 +1,37 @@
+[
+  {
+    "caso": "visitante",
+    "status": 200,
+    "estrategia": "fallback-geral",
+    "produtos": [
+      "Tecido Popular",
+      "Vaso de Barro Comprado",
+      "Bowl de Ceramica",
+      "Jarra de Ceramica"
+    ]
+  },
+  {
+    "caso": "ceramica",
+    "status": 200,
+    "estrategia": "historico-compra",
+    "produtos": [
+      "Bowl de Ceramica",
+      "Jarra de Ceramica"
+    ],
+    "cacheControl": "no-store",
+    "xCache": null
+  },
+  {
+    "caso": "sem-historico",
+    "status": 200,
+    "estrategia": "fallback-geral",
+    "produtos": [
+      "Tecido Popular",
+      "Vaso de Barro Comprado",
+      "Bowl de Ceramica",
+      "Jarra de Ceramica"
+    ],
+    "cacheControl": "no-store",
+    "xCache": null
+  }
+]

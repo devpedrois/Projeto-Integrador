@@ -1,0 +1,13 @@
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma\schema.prisma.
+Datasource "db": PostgreSQL database "neondb", schema "public" at "<neon-dev-host>"
+
+Applying migration `20261013213237_reconciliar_modelo_logico`
+
+The following migration(s) have been applied:
+
+migrations/
+
+Your database is now in sync with your schema.
+

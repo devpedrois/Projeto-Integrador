@@ -221,8 +221,8 @@ As chamadas `POST /pedidos` foram disparadas por `Promise.all`.
 | 3      |          50 |        1 |       49 |             0 |       1 |          1 |                     0 |
 
 Fontes locais: [JSON das rodadas](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/rodadas-50-clientes.json),
-[log com SQL parametrizado](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/execucao-50-clientes.log)
-e [conferência independente](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/conferencia-independente.log).
+[log com SQL parametrizado](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/execucao-50-clientes.txt)
+e [conferência independente](../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/conferencia-independente.txt).
 O SQL contou pedidos e pagamentos somente daquele produto.
 A conferência ocorreu antes da remoção do schema temporário.
 O log registra `exitCode=0` e `schemaRemovido=true`.

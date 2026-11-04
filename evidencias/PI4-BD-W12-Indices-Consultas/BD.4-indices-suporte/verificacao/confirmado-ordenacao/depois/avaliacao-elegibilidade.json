@@ -1,0 +1,599 @@
+{
+  "phase": "depois",
+  "context": {
+    "schema": "public",
+    "capturedAt": "2026-10-25T21:11:39.687Z",
+    "version": "PostgreSQL 18.6 (fd34222) on aarch64-unknown-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+    "enableSeqscan": "on",
+    "planCacheMode": "auto",
+    "counts": {
+      "produtos": 1000,
+      "pedidos": 1500,
+      "itensPedido": 1550,
+      "avaliacoes": 0,
+      "pedidosConfirmados": 1500,
+      "artesaos": 50,
+      "compradores": 300,
+      "intencoes": 1000,
+      "notificacoes": 9,
+      "itensCarrinho": 0
+    },
+    "indexes": [
+      {
+        "indexname": "Avaliacao_compradorId_produtoId_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Avaliacao_compradorId_produtoId_key\" ON public.\"Avaliacao\" USING btree (\"compradorId\", \"produtoId\")",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Avaliacao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Avaliacao_pkey\" ON public.\"Avaliacao\" USING btree (id)",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Avaliacao_produtoId_idx",
+        "indexdef": "CREATE INDEX \"Avaliacao_produtoId_idx\" ON public.\"Avaliacao\" USING btree (\"produtoId\")",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Carrinho_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Carrinho_pkey\" ON public.\"Carrinho\" USING btree (\"usuarioId\")",
+        "sizeBytes": "32768"
+      },
+      {
+        "indexname": "Categoria_nome_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Categoria_nome_key\" ON public.\"Categoria\" USING btree (nome)",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Categoria_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Categoria_pkey\" ON public.\"Categoria\" USING btree (id)",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "IntencaoNotificacao_pedidoId_key",
+        "indexdef": "CREATE UNIQUE INDEX \"IntencaoNotificacao_pedidoId_key\" ON public.\"IntencaoNotificacao\" USING btree (\"pedidoId\")",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "IntencaoNotificacao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"IntencaoNotificacao_pkey\" ON public.\"IntencaoNotificacao\" USING btree (id)",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "IntencaoNotificacao_status_idx",
+        "indexdef": "CREATE INDEX \"IntencaoNotificacao_status_idx\" ON public.\"IntencaoNotificacao\" USING btree (status)",
+        "sizeBytes": "40960"
+      },
+      {
+        "indexname": "ItemCarrinho_carrinhoId_produtoId_key",
+        "indexdef": "CREATE UNIQUE INDEX \"ItemCarrinho_carrinhoId_produtoId_key\" ON public.\"ItemCarrinho\" USING btree (\"carrinhoId\", \"produtoId\")",
+        "sizeBytes": "8192"
+      },
+      {
+        "indexname": "ItemCarrinho_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"ItemCarrinho_pkey\" ON public.\"ItemCarrinho\" USING btree (id)",
+        "sizeBytes": "8192"
+      },
+      {
+        "indexname": "ItemCarrinho_produtoId_idx",
+        "indexdef": "CREATE INDEX \"ItemCarrinho_produtoId_idx\" ON public.\"ItemCarrinho\" USING btree (\"produtoId\")",
+        "sizeBytes": "8192"
+      },
+      {
+        "indexname": "ItemPedido_pedidoId_idx",
+        "indexdef": "CREATE INDEX \"ItemPedido_pedidoId_idx\" ON public.\"ItemPedido\" USING btree (\"pedidoId\")",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "ItemPedido_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"ItemPedido_pkey\" ON public.\"ItemPedido\" USING btree (id)",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "ItemPedido_produtoId_idx",
+        "indexdef": "CREATE INDEX \"ItemPedido_produtoId_idx\" ON public.\"ItemPedido\" USING btree (\"produtoId\")",
+        "sizeBytes": "57344"
+      },
+      {
+        "indexname": "Notificacao_pedidoId_idx",
+        "indexdef": "CREATE INDEX \"Notificacao_pedidoId_idx\" ON public.\"Notificacao\" USING btree (\"pedidoId\")",
+        "sizeBytes": "57344"
+      },
+      {
+        "indexname": "Notificacao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Notificacao_pkey\" ON public.\"Notificacao\" USING btree (id)",
+        "sizeBytes": "57344"
+      },
+      {
+        "indexname": "Notificacao_usuarioId_lida_criadoEm_idx",
+        "indexdef": "CREATE INDEX \"Notificacao_usuarioId_lida_criadoEm_idx\" ON public.\"Notificacao\" USING btree (\"usuarioId\", lida, \"criadoEm\" DESC)",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "Notificacao_usuarioId_pedidoId_tipo_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Notificacao_usuarioId_pedidoId_tipo_key\" ON public.\"Notificacao\" USING btree (\"usuarioId\", \"pedidoId\", tipo)",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "Pagamento_pedidoId_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Pagamento_pedidoId_key\" ON public.\"Pagamento\" USING btree (\"pedidoId\")",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "Pagamento_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Pagamento_pkey\" ON public.\"Pagamento\" USING btree (id)",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "Pedido_compradorId_criadoEm_idx",
+        "indexdef": "CREATE INDEX \"Pedido_compradorId_criadoEm_idx\" ON public.\"Pedido\" USING btree (\"compradorId\", \"criadoEm\" DESC)",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "Pedido_confirmado_criadoEm_id_idx",
+        "indexdef": "CREATE INDEX \"Pedido_confirmado_criadoEm_id_idx\" ON public.\"Pedido\" USING btree (\"criadoEm\" DESC, id DESC) WHERE (status = 'confirmado'::\"StatusPedido\")",
+        "sizeBytes": "81920"
+      },
+      {
+        "indexname": "Pedido_numero_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Pedido_numero_key\" ON public.\"Pedido\" USING btree (numero)",
+        "sizeBytes": "73728"
+      },
+      {
+        "indexname": "Pedido_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Pedido_pkey\" ON public.\"Pedido\" USING btree (id)",
+        "sizeBytes": "90112"
+      },
+      {
+        "indexname": "PerfilArtesao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"PerfilArtesao_pkey\" ON public.\"PerfilArtesao\" USING btree (\"usuarioId\")",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "PerfilArtesao_regiaoId_idx",
+        "indexdef": "CREATE INDEX \"PerfilArtesao_regiaoId_idx\" ON public.\"PerfilArtesao\" USING btree (\"regiaoId\")",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "ProdutoFoto_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"ProdutoFoto_pkey\" ON public.\"ProdutoFoto\" USING btree (id)",
+        "sizeBytes": "8192"
+      },
+      {
+        "indexname": "ProdutoFoto_produtoId_ordem_key",
+        "indexdef": "CREATE UNIQUE INDEX \"ProdutoFoto_produtoId_ordem_key\" ON public.\"ProdutoFoto\" USING btree (\"produtoId\", ordem)",
+        "sizeBytes": "8192"
+      },
+      {
+        "indexname": "Produto_artesaoId_idx",
+        "indexdef": "CREATE INDEX \"Produto_artesaoId_idx\" ON public.\"Produto\" USING btree (\"artesaoId\")",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Produto_categoriaId_idx",
+        "indexdef": "CREATE INDEX \"Produto_categoriaId_idx\" ON public.\"Produto\" USING btree (\"categoriaId\")",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Produto_descricao_trgm_idx",
+        "indexdef": "CREATE INDEX \"Produto_descricao_trgm_idx\" ON public.\"Produto\" USING gin (descricao gin_trgm_ops)",
+        "sizeBytes": "1310720"
+      },
+      {
+        "indexname": "Produto_nome_trgm_idx",
+        "indexdef": "CREATE INDEX \"Produto_nome_trgm_idx\" ON public.\"Produto\" USING gin (nome gin_trgm_ops)",
+        "sizeBytes": "761856"
+      },
+      {
+        "indexname": "Produto_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Produto_pkey\" ON public.\"Produto\" USING btree (id)",
+        "sizeBytes": "57344"
+      },
+      {
+        "indexname": "Produto_tecnicaId_idx",
+        "indexdef": "CREATE INDEX \"Produto_tecnicaId_idx\" ON public.\"Produto\" USING btree (\"tecnicaId\")",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Produto_vitrine_criadoEm_idx",
+        "indexdef": "CREATE INDEX \"Produto_vitrine_criadoEm_idx\" ON public.\"Produto\" USING btree (\"criadoEm\" DESC) WHERE (ativo AND (NOT \"desativadoPorAdmin\") AND (\"quantidadeEstoque\" > 0))",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Regiao_nome_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Regiao_nome_key\" ON public.\"Regiao\" USING btree (nome)",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Regiao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Regiao_pkey\" ON public.\"Regiao\" USING btree (id)",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Tecnica_nome_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Tecnica_nome_key\" ON public.\"Tecnica\" USING btree (nome)",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Tecnica_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Tecnica_pkey\" ON public.\"Tecnica\" USING btree (id)",
+        "sizeBytes": "16384"
+      },
+      {
+        "indexname": "Usuario_email_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Usuario_email_key\" ON public.\"Usuario\" USING btree (email)",
+        "sizeBytes": "57344"
+      },
+      {
+        "indexname": "Usuario_email_lower_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Usuario_email_lower_key\" ON public.\"Usuario\" USING btree (lower(email))",
+        "sizeBytes": "57344"
+      },
+      {
+        "indexname": "Usuario_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Usuario_pkey\" ON public.\"Usuario\" USING btree (id)",
+        "sizeBytes": "40960"
+      },
+      {
+        "indexname": "_prisma_migrations_pkey",
+        "indexdef": "CREATE UNIQUE INDEX _prisma_migrations_pkey ON public._prisma_migrations USING btree (id)",
+        "sizeBytes": "16384"
+      }
+    ],
+    "categories": [
+      {
+        "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+        "quantidade": 192
+      },
+      {
+        "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+        "quantidade": 192
+      },
+      {
+        "categoriaId": "2f12d0cc-9c25-5541-ab2b-44eaa5c0e062",
+        "quantidade": 32
+      },
+      {
+        "categoriaId": "b4752149-b8c4-5d27-bf22-31eb9f3e1cd8",
+        "quantidade": 192
+      },
+      {
+        "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+        "quantidade": 198
+      },
+      {
+        "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+        "quantidade": 194
+      }
+    ],
+    "techniques": [
+      {
+        "tecnicaId": "tecnica-bijuteria-sementes",
+        "quantidade": 64
+      },
+      {
+        "tecnicaId": "tecnica-bordado-mao",
+        "quantidade": 97
+      },
+      {
+        "tecnicaId": "tecnica-costura-autoral",
+        "quantidade": 128
+      },
+      {
+        "tecnicaId": "tecnica-entalhe-madeira",
+        "quantidade": 128
+      },
+      {
+        "tecnicaId": "tecnica-marcenaria-artesanal",
+        "quantidade": 64
+      },
+      {
+        "tecnicaId": "tecnica-modelagem-argila",
+        "quantidade": 99
+      },
+      {
+        "tecnicaId": "tecnica-renda-irlandesa",
+        "quantidade": 97
+      },
+      {
+        "tecnicaId": "tecnica-tecelagem-manual",
+        "quantidade": 64
+      },
+      {
+        "tecnicaId": "tecnica-torno-ceramico",
+        "quantidade": 99
+      },
+      {
+        "tecnicaId": "tecnica-trancado-fibra",
+        "quantidade": 160
+      }
+    ],
+    "regions": [
+      {
+        "regiaoId": "regiao-alto-moura-caruaru",
+        "quantidade": 325
+      },
+      {
+        "regiaoId": "regiao-pilar-recife",
+        "quantidade": 359
+      },
+      {
+        "regiaoId": "regiao-tracunhaem",
+        "quantidade": 316
+      }
+    ]
+  },
+  "name": "avaliacao-elegibilidade",
+  "expectedIndexes": [
+    "Pedido_compradorId_criadoEm_idx",
+    "ItemPedido_produtoId_idx",
+    "Avaliacao_compradorId_produtoId_key"
+  ],
+  "sql": "SELECT EXISTS (\r\n  SELECT 1 FROM \"Pedido\" pedido\r\n  JOIN \"ItemPedido\" item ON item.\"pedidoId\" = pedido.\"id\"\r\n  WHERE pedido.\"compradorId\" = $1::uuid\r\n    AND pedido.\"status\" = 'confirmado' AND item.\"produtoId\" = $2::uuid\r\n) AS comprou,\r\nEXISTS (\r\n  SELECT 1 FROM \"Avaliacao\"\r\n  WHERE \"compradorId\" = $1::uuid AND \"produtoId\" = $2::uuid\r\n) AS avaliou;\r\n",
+  "parameters": [
+    "3d0f231f-28eb-5072-bf4b-a81a1b6b1e16",
+    "5fb4e72a-1aca-5bf9-be94-5333b49a5eff"
+  ],
+  "resultHash": "f0c5c16d14643f0dd1db9bde1c4d3183492141d622d46c4a5926b05de211bc1f",
+  "rowCount": 1,
+  "explain": [
+    {
+      "Plan": {
+        "Node Type": "Result",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 26.26,
+        "Total Cost": 26.27,
+        "Plan Rows": 1,
+        "Plan Width": 2,
+        "Actual Startup Time": 0.037,
+        "Actual Total Time": 0.038,
+        "Actual Rows": 1,
+        "Actual Loops": 1,
+        "Disabled": false,
+        "Shared Hit Blocks": 11,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Nested Loop",
+            "Parent Relationship": "InitPlan",
+            "Subplan Name": "InitPlan 1",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Join Type": "Inner",
+            "Startup Cost": 8.6,
+            "Total Cost": 25.26,
+            "Plan Rows": 1,
+            "Plan Width": 0,
+            "Actual Startup Time": 0.03,
+            "Actual Total Time": 0.031,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Disabled": false,
+            "Inner Unique": false,
+            "Join Filter": "(item.\"pedidoId\" = pedido.id)",
+            "Rows Removed by Join Filter": 5,
+            "Shared Hit Blocks": 10,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Bitmap Heap Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "Pedido",
+                "Alias": "pedido",
+                "Startup Cost": 4.31,
+                "Total Cost": 14.71,
+                "Plan Rows": 4,
+                "Plan Width": 16,
+                "Actual Startup Time": 0.015,
+                "Actual Total Time": 0.018,
+                "Actual Rows": 3,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Recheck Cond": "(\"compradorId\" = '3d0f231f-28eb-5072-bf4b-a81a1b6b1e16'::uuid)",
+                "Rows Removed by Index Recheck": 0,
+                "Filter": "(status = 'confirmado'::\"StatusPedido\")",
+                "Rows Removed by Filter": 0,
+                "Exact Heap Blocks": 3,
+                "Lossy Heap Blocks": 0,
+                "Shared Hit Blocks": 6,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "Pedido_compradorId_criadoEm_idx",
+                    "Startup Cost": 0,
+                    "Total Cost": 4.31,
+                    "Plan Rows": 4,
+                    "Plan Width": 0,
+                    "Actual Startup Time": 0.007,
+                    "Actual Total Time": 0.007,
+                    "Actual Rows": 4,
+                    "Actual Loops": 1,
+                    "Disabled": false,
+                    "Index Cond": "(\"compradorId\" = '3d0f231f-28eb-5072-bf4b-a81a1b6b1e16'::uuid)",
+                    "Index Searches": 1,
+                    "Shared Hit Blocks": 2,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                  }
+                ]
+              },
+              {
+                "Node Type": "Materialize",
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 4.29,
+                "Total Cost": 10.43,
+                "Plan Rows": 2,
+                "Plan Width": 16,
+                "Actual Startup Time": 0.003,
+                "Actual Total Time": 0.004,
+                "Actual Rows": 2,
+                "Actual Loops": 3,
+                "Disabled": false,
+                "Storage": "Memory",
+                "Maximum Storage": 17,
+                "Shared Hit Blocks": 4,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Relation Name": "ItemPedido",
+                    "Alias": "item",
+                    "Startup Cost": 4.29,
+                    "Total Cost": 10.42,
+                    "Plan Rows": 2,
+                    "Plan Width": 16,
+                    "Actual Startup Time": 0.007,
+                    "Actual Total Time": 0.008,
+                    "Actual Rows": 2,
+                    "Actual Loops": 1,
+                    "Disabled": false,
+                    "Recheck Cond": "(\"produtoId\" = '5fb4e72a-1aca-5bf9-be94-5333b49a5eff'::uuid)",
+                    "Rows Removed by Index Recheck": 0,
+                    "Exact Heap Blocks": 2,
+                    "Lossy Heap Blocks": 0,
+                    "Shared Hit Blocks": 4,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0,
+                    "Plans": [
+                      {
+                        "Node Type": "Bitmap Index Scan",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Index Name": "ItemPedido_produtoId_idx",
+                        "Startup Cost": 0,
+                        "Total Cost": 4.29,
+                        "Plan Rows": 2,
+                        "Plan Width": 0,
+                        "Actual Startup Time": 0.003,
+                        "Actual Total Time": 0.003,
+                        "Actual Rows": 2,
+                        "Actual Loops": 1,
+                        "Disabled": false,
+                        "Index Cond": "(\"produtoId\" = '5fb4e72a-1aca-5bf9-be94-5333b49a5eff'::uuid)",
+                        "Index Searches": 1,
+                        "Shared Hit Blocks": 2,
+                        "Shared Read Blocks": 0,
+                        "Shared Dirtied Blocks": 0,
+                        "Shared Written Blocks": 0,
+                        "Local Hit Blocks": 0,
+                        "Local Read Blocks": 0,
+                        "Local Dirtied Blocks": 0,
+                        "Local Written Blocks": 0,
+                        "Temp Read Blocks": 0,
+                        "Temp Written Blocks": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "InitPlan",
+            "Subplan Name": "InitPlan 2",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "Avaliacao",
+            "Alias": "Avaliacao",
+            "Startup Cost": 0,
+            "Total Cost": 1,
+            "Plan Rows": 1,
+            "Plan Width": 0,
+            "Actual Startup Time": 0.005,
+            "Actual Total Time": 0.005,
+            "Actual Rows": 0,
+            "Actual Loops": 1,
+            "Disabled": false,
+            "Filter": "((\"compradorId\" = '3d0f231f-28eb-5072-bf4b-a81a1b6b1e16'::uuid) AND (\"produtoId\" = '5fb4e72a-1aca-5bf9-be94-5333b49a5eff'::uuid))",
+            "Rows Removed by Filter": 0,
+            "Shared Hit Blocks": 1,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 16,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.23,
+      "Triggers": [],
+      "Execution Time": 0.064
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:33020) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/indicadores-plataforma.repository.integration.test.ts (3 tests | 3 failed) 4734ms
+   ❯ 33.3 indicadores agregados da plataforma (3)
+     × conta papeis, visibilidade e status sem multiplicar por itens, fotos ou notas 3ms
+     × usa exatamente os produtos visiveis pelo catalogo 55ms
+     × retorna zeros e Decimal quando nao existem registros 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores-plataforma.repository.integration.test.ts > 33.3 indicadores agregados da plataforma > conta papeis, visibilidade e status sem multiplicar por itens, fotos ou notas
+Error: Consultas da plataforma ainda nao implementadas
+ ❯ PrismaIndicadoresPlataformaRepository.obterDaPlataforma src/repositories/indicadores-plataforma.repository.ts:18:11
+     16|
+     17|   obterDaPlataforma(): Promise<IndicadoresPlataforma> {
+     18|     throw new Error("Consultas da plataforma ainda nao implementadas");
+       |           ^
+     19|   }
+     20| }
+ ❯ tests/integration/indicadores-plataforma.repository.integration.test.ts:85:40
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/integration/indicadores-plataforma.repository.integration.test.ts > 33.3 indicadores agregados da plataforma > usa exatamente os produtos visiveis pelo catalogo
+Error: Consultas da plataforma ainda nao implementadas
+ ❯ PrismaIndicadoresPlataformaRepository.obterDaPlataforma src/repositories/indicadores-plataforma.repository.ts:18:11
+     16|
+     17|   obterDaPlataforma(): Promise<IndicadoresPlataforma> {
+     18|     throw new Error("Consultas da plataforma ainda nao implementadas");
+       |           ^
+     19|   }
+     20| }
+ ❯ tests/integration/indicadores-plataforma.repository.integration.test.ts:96:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/integration/indicadores-plataforma.repository.integration.test.ts > 33.3 indicadores agregados da plataforma > retorna zeros e Decimal quando nao existem registros
+Error: Consultas da plataforma ainda nao implementadas
+ ❯ PrismaIndicadoresPlataformaRepository.obterDaPlataforma src/repositories/indicadores-plataforma.repository.ts:18:11
+     16|
+     17|   obterDaPlataforma(): Promise<IndicadoresPlataforma> {
+     18|     throw new Error("Consultas da plataforma ainda nao implementadas");
+       |           ^
+     19|   }
+     20| }
+ ❯ tests/integration/indicadores-plataforma.repository.integration.test.ts:100:85
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  15:14:16
+   Duration  5.01s (tests 97%, transform 2%, import 2%)
+

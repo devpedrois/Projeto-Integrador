@@ -1,0 +1,14 @@
+commit f03999b94333b8bf81f26a1d57d2d427ab77ed37
+Author: devpedrois <pedeoiranildo@gmail.com>
+Date:   Wed Nov 4 15:28:27 2026 -0300
+
+    feat(db): add platform-wide indicator queries for admin
+
+ .../conferencia-indicadores-plataforma.sql         |  18 ++
+ backend/scripts/conferir-indicadores-plataforma.ts | 214 ++++++++++++++++++
+ .../indicadores-plataforma.repository.ts           |  64 ++++++
+ ...dores-plataforma.repository.integration.test.ts | 240 +++++++++++++++++++++
+ .../unit/conferir-indicadores-plataforma.test.ts   |  19 ++
+ docs/indices-u2.md                                 | 109 ++++++++++
+ docs/uso-de-ia.md                                  |   9 +
+ 7 files changed, 673 insertions(+)

@@ -1,0 +1,7 @@
+# NOTIFICACAO_LATENCIA_MS=200; latencia simulada de canal externo por job; sem envio externo
+# 1000 jobs; WORKER_CONCURRENCY=1; polling=1000ms; 5 medicoes + 1 aquecimento descartado por W
+# duracao_ms: relogio monotono, antes do primeiro publish ate observar a ultima intencao processada; observacao=250ms
+workers,rodada,aquecimento,itens,duracao_ms,valida,publicacao_ms,processadas,notificacoes,notificacoes_esperadas,duplicadas,tentativas_min,tentativas_max,tentativas_total
+1,0,true,1000,1004654.1656000001,true,110314.45349999999,1000,1050,1050,0,1,1,1000
+1,1,false,1000,1008631.1762,true,109824.78690000006,1000,1050,1050,0,1,1,1000
+1,2,false,1000,1005532.3977999999,true,99429.88480000012,1000,1050,1050,0,1,1,1000

@@ -1,0 +1,9 @@
+{
+  "build_start": true,
+  "health": 200,
+  "sem_token": 401,
+  "recomendacoes": 200,
+  "historico": 200,
+  "limite_respeitado": true,
+  "configuracao_invalida_exit_1_sem_valores": true
+}

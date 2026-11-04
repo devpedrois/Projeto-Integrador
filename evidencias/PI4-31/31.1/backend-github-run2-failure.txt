@@ -1,0 +1,920 @@
+backend	Testar sem cargas e benchmarks	﻿2026-10-22T20:52:06.2660529Z ##[group]Run npm test -- --testTimeout=15000 --hookTimeout=30000 --exclude tests/integration/concorrencia-script.integration.test.ts --exclude tests/integration/db-explain.integration.test.ts --exclude tests/integration/recomendacao-volume.integration.test.ts --exclude tests/integration/seed-volume.integration.test.ts
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2663522Z ^[[36;1mnpm test -- --testTimeout=15000 --hookTimeout=30000 --exclude tests/integration/concorrencia-script.integration.test.ts --exclude tests/integration/db-explain.integration.test.ts --exclude tests/integration/recomendacao-volume.integration.test.ts --exclude tests/integration/seed-volume.integration.test.ts^[[0m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2743444Z shell: /usr/bin/bash -e {0}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2743808Z env:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2744087Z   NODE_ENV: test
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2745185Z   DATABASE_URL: ***
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2746074Z   DIRECT_URL: ***
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2746353Z   HOST: 127.0.0.1
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2746672Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2747120Z   COOKIE_SECURE: false
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2747859Z   JWT_SECRET: ***
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.2748051Z ##[endgroup]
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.3963635Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.3964188Z > origem-backend@1.0.0 test
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.3965747Z > vitest run --testTimeout=15000 --hookTimeout=30000 --exclude tests/integration/concorrencia-script.integration.test.ts --exclude tests/integration/db-explain.integration.test.ts --exclude tests/integration/recomendacao-volume.integration.test.ts --exclude tests/integration/seed-volume.integration.test.ts
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.3966649Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.6322374Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.6325181Z ^[[1m^[[30m^[[46m RUN ^[[49m^[[39m^[[22m ^[[36mv5.0.0 ^[[39m^[[90m/home/runner/work/Projeto-Integrador/Projeto-Integrador/backend^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:06.6325785Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2203786Z (node:2497) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2204922Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2205407Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2205525Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2205988Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2206735Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2206982Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2207381Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:07.2208050Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:14.6695015Z (node:2497) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:50.0727150Z ^[[90mstdout^[[2m | tests/integration/catalogo-moderacao.web12.integration.test.ts^[[2m > ^[[22m^[[2mWEB-12 catalogo e moderacao^[[2m > ^[[22m^[[2mmodera artesao reversivelmente e invalida login e sessao
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:50.0728361Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":178.087}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:50.0728601Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:51.6359322Z ^[[90mstdout^[[2m | tests/integration/catalogo-moderacao.web12.integration.test.ts^[[2m > ^[[22m^[[2mWEB-12 catalogo e moderacao^[[2m > ^[[22m^[[2mmodera artesao reversivelmente e invalida login e sessao
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:51.6360240Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":168.809}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:51.6360471Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:56.2012188Z ^[[90mstdout^[[2m | tests/integration/catalogo-moderacao.web12.integration.test.ts^[[2m > ^[[22m^[[2mWEB-12 catalogo e moderacao^[[2m > ^[[22m^[[2mmoderacao preserva soft delete e dono nao reativa produto moderado
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:56.2013121Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":168.034}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:56.2013345Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:58.3699672Z ^[[90mstdout^[[2m | tests/integration/catalogo-moderacao.web12.integration.test.ts^[[2m > ^[[22m^[[2mWEB-12 catalogo e moderacao^[[2m > ^[[22m^[[2mmoderacao preserva soft delete e dono nao reativa produto moderado
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:58.3701678Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":167.768}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:52:58.3702026Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7885267Z  ^[[32m✓^[[39m tests/integration/catalogo-moderacao.web12.integration.test.ts ^[[2m(^[[22m^[[2m26 tests^[[22m^[[2m)^[[22m^[[33m 81574^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7886411Z    ^[[32m✓^[[39m WEB-12 catalogo e moderacao ^[[2m(26)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7887113Z      ^[[33m^[[2m✓^[[22m^[[39m matriz de propriedade PATCH^[[33m 8319^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7888023Z      ^[[33m^[[2m✓^[[22m^[[39m matriz de propriedade DELETE^[[33m 8000^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7888760Z      ^[[33m^[[2m✓^[[22m^[[39m matriz de propriedade ESTOQUE^[[33m 8008^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7889482Z      ^[[33m^[[2m✓^[[22m^[[39m cria pelo token, valida referencias e rejeita identidade externa^[[33m 4689^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7890285Z      ^[[33m^[[2m✓^[[22m^[[39m lista todos os produtos proprios incluindo inativos e sem estoque^[[33m 3261^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7890910Z      ^[[33m^[[2m✓^[[22m^[[39m protege todas as rotas admin antes de validar entradas^[[33m 2451^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7891892Z      ^[[33m^[[2m✓^[[22m^[[39m modera artesao reversivelmente e invalida login e sessao^[[33m 3926^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7892545Z      ^[[33m^[[2m✓^[[22m^[[39m moderacao preserva soft delete e dono nao reativa produto moderado^[[33m 11341^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7893160Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita estoque invalido {"quantidadeEstoque":-1}^[[33m 673^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7893721Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita estoque invalido {"quantidadeEstoque":1.5}^[[33m 673^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7894302Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita estoque invalido {"quantidadeEstoque":2147483648}^[[33m 672^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7894875Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita estoque invalido {"quantidadeEstoque":"3"}^[[33m 672^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7895512Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita estoque invalido {"quantidadeEstoque":2,"artesaoId":"externo"}^[[33m 672^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7896205Z      ^[[33m^[[2m✓^[[22m^[[39m listas administrativas incluem inativos sem dados secretos^[[33m 2370^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7896858Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {"nome":""} sem alterar produto^[[33m 689^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7897635Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {"preco":0} sem alterar produto^[[33m 682^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7898292Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {"preco":1.234} sem alterar produto^[[33m 682^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7898978Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {"categoriaId":"invalido"} sem alterar produto^[[33m 684^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7899786Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {"fotos":[{"url":"javascript:alert(1)"}]} sem alterar produto^[[33m 682^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7900485Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {"fotos":[]} sem alterar produto^[[33m 681^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7901194Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {"desativadoPorAdmin":false} sem alterar produto^[[33m 685^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7901902Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {"artesaoId":"externo"} sem alterar produto^[[33m 680^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7902690Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH rejeita entrada invalida {} sem alterar produto^[[33m 686^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7903416Z      ^[[33m^[[2m✓^[[22m^[[39m soft delete preserva itens de pedidos anteriores^[[33m 5607^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7904041Z      ^[[33m^[[2m✓^[[22m^[[39m checkout simultaneo com estoque manual preserva ordem dos commits^[[33m 4798^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:28.7904721Z      ^[[33m^[[2m✓^[[22m^[[39m revalida bloqueio administrativo depois de esperar o lock do produto^[[33m 2936^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1537607Z (node:2527) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1538858Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1539393Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1539502Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1539891Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1540433Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1540748Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1541088Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:29.1541712Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7022937Z  ^[[32m✓^[[39m tests/integration/auth.routes.integration.test.ts ^[[2m(^[[22m^[[2m36 tests^[[22m^[[2m)^[[22m^[[33m 17554^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7023987Z    ^[[32m✓^[[39m POST /auth/register ^[[2m(15)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7025502Z      ^[[33m^[[2m✓^[[22m^[[39m normaliza email, persiste bcrypt custo 10 e cria carrinho sem iniciar sessao^[[33m 2162^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7026569Z      ^[[33m^[[2m✓^[[22m^[[39m cria perfil de artesao incompleto^[[33m 1063^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7027190Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida ou campos extras: {"senha":"[CREDENCIAL_REMOVIDA]"}^[[33m 419^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7028268Z      ^[[33m^[[2m✓^[[22m^[[39m retorna 409 para email em uso com caixa e espacos distintos^[[33m 562^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7029264Z      ^[[33m^[[2m✓^[[22m^[[39m mantem unicidade em cadastros simultaneos^[[33m 1062^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7030223Z      ^[[33m^[[2m✓^[[22m^[[39m reverte Usuario se o segundo insert falhar para comprador^[[33m 1618^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7031233Z      ^[[33m^[[2m✓^[[22m^[[39m reverte Usuario se o segundo insert falhar para artesao^[[33m 1620^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7032145Z    ^[[32m✓^[[39m POST /auth/login ^[[2m(11)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7032997Z      ^[[33m^[[2m✓^[[22m^[[39m retorna status e corpo byte a byte iguais nos tres logins invalidos^[[33m 388^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7033700Z      ^[[33m^[[2m✓^[[22m^[[39m executa bcrypt real contra o mesmo hash fixo para email inexistente^[[33m 442^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7034189Z    ^[[32m✓^[[39m GET /auth/me e POST /auth/logout ^[[2m(10)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7034709Z      ^[[33m^[[2m✓^[[22m^[[39m retorna somente usuario publico e encerra sessao no logout^[[33m 397^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:46.7035333Z      ^[[33m^[[2m✓^[[22m^[[39m reconsulta o usuario e recusa sessao de usuario desativado^[[33m 1283^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1699437Z (node:2542) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1705578Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1706083Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1706206Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1706570Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1707056Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1707311Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1707857Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:53:47.1708640Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4195210Z  ^[[32m✓^[[39m tests/integration/authorization.routes.integration.test.ts ^[[2m(^[[22m^[[2m30 tests^[[22m^[[2m)^[[22m^[[33m 68376^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4196320Z    ^[[32m✓^[[39m WEB-04: matriz de autorizacao ^[[2m(8)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4197862Z      ^[[33m^[[2m✓^[[22m^[[39m POST /pedidos como anonimo retorna 401^[[33m 2130^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4198771Z      ^[[33m^[[2m✓^[[22m^[[39m POST /pedidos como comprador retorna 201^[[33m 4174^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4199660Z      ^[[33m^[[2m✓^[[22m^[[39m POST /pedidos como artesao retorna 403^[[33m 2516^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4200459Z      ^[[33m^[[2m✓^[[22m^[[39m POST /pedidos como admin retorna 403^[[33m 2233^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4201374Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH /admin/usuarios/:id/papel como anonimo retorna 401^[[33m 2114^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4202481Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH /admin/usuarios/:id/papel como comprador retorna 403^[[33m 2284^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4203536Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH /admin/usuarios/:id/papel como artesao retorna 403^[[33m 2282^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4204547Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH /admin/usuarios/:id/papel como admin retorna 200^[[33m 2625^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4205325Z    ^[[32m✓^[[39m WEB-04: sessao protegida ^[[2m(7)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4206047Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita JWT invalido ou expirado em pedido^[[33m 1723^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4207134Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita JWT invalido ou expirado em admin^[[33m 1723^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4208171Z      ^[[33m^[[2m✓^[[22m^[[39m nega sessao desativada depois do login em pedido^[[33m 1885^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4209039Z      ^[[33m^[[2m✓^[[22m^[[39m nega sessao desativada depois do login em admin^[[33m 1884^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4209912Z      ^[[33m^[[2m✓^[[22m^[[39m usa o papel atual do banco apos alteracao administrativa^[[33m 2405^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4210908Z      ^[[33m^[[2m✓^[[22m^[[39m retira acesso administrativo mesmo com papel admin no JWT antigo^[[33m 1888^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4211903Z      ^[[33m^[[2m✓^[[22m^[[39m recusa elevar privilegio confiando apenas nas claims^[[33m 1713^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4212682Z    ^[[32m✓^[[39m WEB-04: entradas e limites administrativos ^[[2m(15)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4213394Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita a chave extra compradorId no checkout^[[33m 2231^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4214160Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita a chave extra compradorRef no checkout^[[33m 2226^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4214908Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita a chave extra outro no checkout^[[33m 2225^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4215723Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita campos extras dentro dos itens do checkout^[[33m 1983^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4216645Z      ^[[33m^[[2m✓^[[22m^[[39m impede admin alterar o proprio papel com UUID maiusculo=false^[[33m 2057^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4218203Z      ^[[33m^[[2m✓^[[22m^[[39m impede admin alterar o proprio papel com UUID maiusculo=true^[[33m 2055^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4218795Z      ^[[33m^[[2m✓^[[22m^[[39m valida papel e campos extras: {"papel":"admin"}^[[33m 2054^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4219363Z      ^[[33m^[[2m✓^[[22m^[[39m valida papel e campos extras: {"papel":"outro"}^[[33m 2056^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4219916Z      ^[[33m^[[2m✓^[[22m^[[39m valida papel e campos extras: {"papel":""}^[[33m 2055^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4220457Z      ^[[33m^[[2m✓^[[22m^[[39m valida papel e campos extras: {"papel":1}^[[33m 2054^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4220929Z      ^[[33m^[[2m✓^[[22m^[[39m valida papel e campos extras: {}^[[33m 2053^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4221471Z      ^[[33m^[[2m✓^[[22m^[[39m valida papel e campos extras: {"papel":"artesao","ativo":false}^[[33m 2055^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4221980Z      ^[[33m^[[2m✓^[[22m^[[39m valida UUID do usuario alvo^[[33m 1882^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4222462Z      ^[[33m^[[2m✓^[[22m^[[39m retorna 404 para usuario alvo ausente^[[33m 2058^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.4223083Z      ^[[33m^[[2m✓^[[22m^[[39m permite admin alterar artesao para comprador preservando dados pessoais^[[33m 2794^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7525322Z (node:2565) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7527067Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7528841Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7529198Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7529966Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7530928Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7531529Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7532189Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:54:55.7533178Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5210330Z  ^[[31m❯^[[39m tests/integration/checkout.web09.integration.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m | ^[[22m^[[31m1 failed^[[39m^[[2m)^[[22m^[[33m 101775^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5211598Z    ^[[31m❯^[[39m WEB-09 checkout transacional real ^[[2m(11)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5213121Z      ^[[33m^[[2m✓^[[22m^[[39m persiste valores atuais, pagamento e outbox; limpa somente o carrinho do comprador^[[33m 12872^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5214878Z      ^[[33m^[[2m✓^[[22m^[[39m nomeia item insuficiente e preserva todos os registros^[[33m 9032^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5216001Z ^[[31m     ^[[31m×^[[31m gera dez numeros distintos e sequenciais pelo PostgreSQL^[[39m^[[33m 21006^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5216951Z      ^[[33m^[[2m✓^[[22m^[[39m preserva concorrencia entre compradores, rodada 1^[[33m 10613^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5218116Z      ^[[33m^[[2m✓^[[22m^[[39m preserva concorrencia entre compradores, rodada 2^[[33m 9574^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5219023Z      ^[[33m^[[2m✓^[[22m^[[39m preserva concorrencia entre compradores, rodada 3^[[33m 10555^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5219915Z      ^[[33m^[[2m✓^[[22m^[[39m rollback inclui baixas e carrinho quando Pagamento falha^[[33m 7246^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5220946Z      ^[[33m^[[2m✓^[[22m^[[39m rollback inclui baixas e carrinho quando IntencaoNotificacao falha^[[33m 7732^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5221868Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita produto oculto: {"ativo":false}^[[33m 2359^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5222705Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita produto oculto: {"desativadoPorAdmin":true}^[[33m 2353^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.5223567Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita total fora da capacidade monetaria sem gravacoes^[[33m 2350^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8555254Z (node:2630) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8556498Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8557000Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8557140Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8557685Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8558178Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8558536Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8558839Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:56:37.8559592Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9465870Z  ^[[32m✓^[[39m tests/integration/recomendacoes-historico.integration.test.ts ^[[2m(^[[22m^[[2m16 tests^[[22m^[[2m)^[[22m^[[33m 40097^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9466636Z    ^[[32m✓^[[39m IA-03: historico real do comprador autenticado ^[[2m(16)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9467199Z      ^[[33m^[[2m✓^[[22m^[[39m Strategy sem historico identifica fallback geral^[[33m 340^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9468053Z      ^[[33m^[[2m✓^[[22m^[[39m recomenda ceramica, exclui compras e preserva vendas, nota, UUID e limite^[[33m 526^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9469138Z      ^[[33m^[[2m✓^[[22m^[[39m comprador sem pedidos recebe fallback identificado^[[33m 679^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9469840Z      ^[[33m^[[2m✓^[[22m^[[39m pedidos pendentes e cancelados nao criam historico nem excluem produtos^[[33m 2526^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9470857Z      ^[[33m^[[2m✓^[[22m^[[39m usa todas as categorias confirmadas e nunca historico alheio^[[33m 4058^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9471722Z      ^[[33m^[[2m✓^[[22m^[[39m fallback com categoria esgotada nao reintroduz produtos comprados^[[33m 2031^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9472343Z      ^[[33m^[[2m✓^[[22m^[[39m revalida usuario ativo e papel atual apos emitir token^[[33m 849^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:17.9473191Z      ^[[33m^[[2m✓^[[22m^[[39m nao acessa cache compartilhado e atualiza depois de nova compra^[[33m 2198^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2834637Z (node:2646) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2835816Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2836836Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2837018Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2837645Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2838318Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2838634Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2838967Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:18.2839666Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8695102Z  ^[[31m❯^[[39m tests/integration/recomendacoes-contrato.integration.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m | ^[[22m^[[33m11 skipped^[[39m^[[2m)^[[22m^[[33m 30587^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8696161Z    ^[[2m^[[90m↓^[[39m^[[22m IA-01 contrato publico de recomendacoes ^[[2m(11)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8696881Z      ^[[2m^[[90m↓^[[39m^[[22m retorna o ProdutoDTO completo e identico ao catalogo
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8699633Z      ^[[2m^[[90m↓^[[39m^[[22m preserva exatamente o ranking esperado da fixture
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8700473Z      ^[[2m^[[90m↓^[[39m^[[22m Strategy retorna somente IDs ordenados e nome da estrategia
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8701204Z      ^[[2m^[[90m↓^[[39m^[[22m nao recomenda o proprio produto em categoria
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8701871Z      ^[[2m^[[90m↓^[[39m^[[22m nao recomenda o proprio produto em fallback-geral
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8702503Z      ^[[2m^[[90m↓^[[39m^[[22m fallback tambem retorna produtos completos
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8703099Z      ^[[2m^[[90m↓^[[39m^[[22m omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8703826Z      ^[[2m^[[90m↓^[[39m^[[22m omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8704555Z      ^[[2m^[[90m↓^[[39m^[[22m omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8705142Z      ^[[2m^[[90m↓^[[39m^[[22m omite produtos de artesao indisponivel: {"ativo":false}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:48.8705637Z      ^[[2m^[[90m↓^[[39m^[[22m omite produtos de artesao indisponivel: {"papel":"comprador"}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2247947Z (node:2666) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2248941Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2249401Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2249516Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2249897Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2250375Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2250629Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2251287Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:57:49.2251781Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:00.9001148Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mimpede cache publico de catalogo e detalhe moderavel
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:00.9001985Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":175.727}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:00.9002209Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.0776697Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mimpede cache publico de catalogo e detalhe moderavel
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.0778217Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":172.415}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.0778562Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.6008775Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mcombina termo e todos os filtros sem vazar produtos ocultos
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.6009664Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":172.284}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.6009887Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.7756429Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mcombina termo e todos os filtros sem vazar produtos ocultos
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.7757851Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":172.154}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.7758074Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9501548Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mcombina termo e todos os filtros sem vazar produtos ocultos
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9502497Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":172.489}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9502807Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9525735Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mvalida o contrato Produto e agrega fotos, notas e vendas confirmadas
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9527257Z ^[[22m^[[39m{"rota":"/produtos","cache":"HIT","duracaoMs":0.289}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9527912Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9579537Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mvalida o contrato Produto e agrega fotos, notas e vendas confirmadas
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9580389Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"HIT","duracaoMs":0.277}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:01.9580609Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.1331034Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mocultos e inexistentes devolvem o mesmo 404
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.1331873Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":172.631}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.1332096Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.3076429Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mocultos e inexistentes devolvem o mesmo 404
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.3077298Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":171.739}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.3078634Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.4816395Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mocultos e inexistentes devolvem o mesmo 404
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.4817265Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":172.033}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.4817642Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.6549286Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mocultos e inexistentes devolvem o mesmo 404
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.6550102Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":171.72}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.6550329Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.8284214Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mocultos e inexistentes devolvem o mesmo 404
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:02.8285759Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":171.922}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:03.8715043Z (node:2666) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:03.8715755Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:05.0694600Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mreflete moderacao e estoque imediatamente nas leituras
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:05.0695859Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":172.142}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:05.0696187Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:05.2431271Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mreflete moderacao e estoque imediatamente nas leituras
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:05.2432571Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":172.109}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:05.2432928Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:13.2769950Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mreflete moderacao e estoque imediatamente nas leituras
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:13.2773322Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":172.691}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:13.2773556Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:13.4505990Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mreflete moderacao e estoque imediatamente nas leituras
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:13.4507260Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":172.07}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:13.4507822Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.0206338Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mbusca na descricao e trata curingas como texto literal
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.0207815Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":1184.9}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.0208172Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.1915295Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mbusca na descricao e trata curingas como texto literal
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.1916592Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":169.039}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.1916930Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.3621363Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mbusca na descricao e trata curingas como texto literal
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.3622891Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":168.848}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.3623457Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.5323571Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mbusca na descricao e trata curingas como texto literal
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.5324426Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":168.512}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.5324667Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.7036647Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mpagina com ordem estavel e sem duplicar registros
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.7038103Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":169.399}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.7038357Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.8744311Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mpagina com ordem estavel e sem duplicar registros
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.8745574Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":168.728}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:19.8745904Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:20.0447234Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mpagina com ordem estavel e sem duplicar registros
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:20.0448638Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":168.834}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:20.0448978Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:20.2151513Z ^[[90mstdout^[[2m | tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22m^[[2mcatalogo publico WEB-06^[[2m > ^[[22m^[[2mpagina com ordem estavel e sem duplicar registros
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:20.2153262Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":168.612}
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:20.2153500Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4712580Z  ^[[31m❯^[[39m tests/integration/catalogo.routes.integration.test.ts ^[[2m(^[[22m^[[2m27 tests^[[22m^[[2m | ^[[22m^[[31m1 failed^[[39m^[[2m)^[[22m^[[33m 33253^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4713303Z    ^[[31m❯^[[39m catalogo publico WEB-06 ^[[2m(27)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4713841Z      ^[[33m^[[2m✓^[[22m^[[39m impede cache publico de catalogo e detalhe moderavel^[[33m 711^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4714456Z      ^[[33m^[[2m✓^[[22m^[[39m combina termo e todos os filtros sem vazar produtos ocultos^[[33m 525^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4715073Z      ^[[32m✓^[[39m valida o contrato Produto e agrega fotos, notas e vendas confirmadas^[[32m 8^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4715638Z      ^[[33m^[[2m✓^[[22m^[[39m ocultos e inexistentes devolvem o mesmo 404^[[33m 871^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4716294Z ^[[31m     ^[[31m×^[[31m reflete moderacao e estoque imediatamente nas leituras^[[39m^[[33m 15004^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4717292Z      ^[[33m^[[2m✓^[[22m^[[39m busca na descricao e trata curingas como texto literal^[[33m 1699^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4718294Z      ^[[33m^[[2m✓^[[22m^[[39m pagina com ordem estavel e sem duplicar registros^[[33m 683^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4719098Z      ^[[32m✓^[[39m rejeita query invalida: categoriaId=texto^[[32m 2^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4719847Z      ^[[32m✓^[[39m rejeita query invalida: artesaoId=texto^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4720521Z      ^[[32m✓^[[39m rejeita query invalida: tecnicaId=^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4721193Z      ^[[32m✓^[[39m rejeita query invalida: regiaoId=../x^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4721897Z      ^[[32m✓^[[39m rejeita query invalida: regiaoId=x%27^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4722715Z      ^[[32m✓^[[39m rejeita query invalida: categoriaId=a&categoriaId=b^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4723478Z      ^[[32m✓^[[39m rejeita query invalida: limit=101^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4724152Z      ^[[32m✓^[[39m rejeita query invalida: limit=0^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4724811Z      ^[[32m✓^[[39m rejeita query invalida: limit=-1^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4725340Z      ^[[32m✓^[[39m rejeita query invalida: limit=1.5^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4725748Z      ^[[32m✓^[[39m rejeita query invalida: offset=-1^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4726158Z      ^[[32m✓^[[39m rejeita query invalida: offset=10001^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4726595Z      ^[[32m✓^[[39m rejeita query invalida: offset=Infinity^[[32m 2^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4727012Z      ^[[32m✓^[[39m rejeita query invalida: limit=^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4728897Z      ^[[32m✓^[[39m rejeita query invalida: termo=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4730250Z      ^[[32m✓^[[39m rejeita query invalida: desconhecido=1^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4730680Z      ^[[32m✓^[[39m rejeita ID invalido no detalhe^[[32m 1^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4731141Z      ^[[33m^[[2m✓^[[22m^[[39m lista opcoes reais sem dados de usuarios^[[33m 511^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4731704Z      ^[[33m^[[2m✓^[[22m^[[39m retorna avaliacoes e resumo consistente sem credenciais^[[33m 677^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.4732252Z      ^[[33m^[[2m✓^[[22m^[[39m avaliações ocultas nao revelam o produto^[[33m 855^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6937178Z (node:2686) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6938959Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6940141Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6940422Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6941083Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6941607Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6941858Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6942161Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:58:22.6942678Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8021703Z  ^[[32m✓^[[39m tests/integration/fila-notificacao.integration.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[33m 48116^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8022785Z    ^[[32m✓^[[39m fila de notificacao ao artesao ^[[2m(7)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8023774Z      ^[[33m^[[2m✓^[[22m^[[39m creates a pending IntencaoNotificacao in the same transaction as the order^[[33m 4649^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8025050Z      ^[[33m^[[2m✓^[[22m^[[39m publishes a pending intention and the worker processes it to processada^[[33m 5763^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8026999Z      ^[[33m^[[2m✓^[[22m^[[39m retries after a simulated worker failure and still reaches processada, keeping the order confirmed^[[33m 7735^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8028488Z      ^[[33m^[[2m✓^[[22m^[[39m recovers a pending intention after a simulated restart^[[33m 8418^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8029596Z      ^[[33m^[[2m✓^[[22m^[[39m keeps a single effect on duplicate redelivery of the same job data^[[33m 5274^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8030742Z      ^[[33m^[[2m✓^[[22m^[[39m preserves the original processadaEm under concurrent redelivery^[[33m 5121^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:10.8031907Z      ^[[33m^[[2m✓^[[22m^[[39m does not regress processada back to publicada when the publisher revisits it^[[33m 4412^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1560287Z (node:2701) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1561827Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1562551Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1562705Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1563258Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1564009Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1564411Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1564888Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:11.1565659Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T20:59:25.4919527Z (node:2701) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7091465Z  ^[[32m✓^[[39m tests/integration/cache.web13.integration.test.ts ^[[2m(^[[22m^[[2m15 tests^[[22m^[[2m)^[[22m^[[33m 50560^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7092521Z    ^[[32m✓^[[39m WEB-13 cache HTTP publico ^[[2m(15)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7093397Z      ^[[33m^[[2m✓^[[22m^[[39m segunda chamada e HIT com consulta mais rapida e log seguro^[[33m 1237^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7094429Z      ^[[33m^[[2m✓^[[22m^[[39m normaliza query validada, ordem, defaults e UUIDs^[[33m 865^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7095126Z      ^[[33m^[[2m✓^[[22m^[[39m nao compartilha recomendacoes por usuario nem cacheia rotas privadas^[[33m 4406^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7095846Z      ^[[33m^[[2m✓^[[22m^[[39m criar invalida catalogo e recomendacoes apos commit^[[33m 4717^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7096859Z      ^[[33m^[[2m✓^[[22m^[[39m editar invalida catalogo e recomendacoes apos commit^[[33m 4871^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7098628Z      ^[[33m^[[2m✓^[[22m^[[39m remover invalida catalogo e recomendacoes apos commit^[[33m 5231^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7099643Z      ^[[33m^[[2m✓^[[22m^[[39m estoque invalida catalogo e recomendacoes apos commit^[[33m 4855^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7100601Z      ^[[33m^[[2m✓^[[22m^[[39m moderar-produto invalida catalogo e recomendacoes apos commit^[[33m 4028^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7101243Z      ^[[33m^[[2m✓^[[22m^[[39m moderar-artesao invalida catalogo e recomendacoes apos commit^[[33m 3033^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7101838Z      ^[[33m^[[2m✓^[[22m^[[39m pedido invalida catalogo e recomendacoes apos commit^[[33m 4053^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7102391Z      ^[[33m^[[2m✓^[[22m^[[39m perfil invalida catalogo e recomendacoes apos commit^[[33m 3367^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7102946Z      ^[[33m^[[2m✓^[[22m^[[39m papel invalida catalogo e recomendacoes apos commit^[[33m 2528^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7103502Z      ^[[33m^[[2m✓^[[22m^[[39m escrita rejeitada nao invalida dados confirmados^[[33m 851^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7104095Z      ^[[33m^[[2m✓^[[22m^[[39m TTL configurado expira usando relogio fake e banco real^[[33m 684^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.7104707Z      ^[[33m^[[2m✓^[[22m^[[39m 404 repetido continua MISS e registra duracao sem armazenar erro^[[33m 682^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8829765Z (node:2719) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8831080Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8831561Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8831670Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8832049Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8832589Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8833010Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8833364Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:01.8833874Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.3458265Z  ^[[32m✓^[[39m tests/integration/recomendacao.strategy.integration.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[33m 19471^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.3459532Z    ^[[32m✓^[[39m CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) ^[[2m(4)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.3460500Z      ^[[33m^[[2m✓^[[22m^[[39m reproduz o mesmo ranking da fixture usada pelo FakeRecommendationAdapter^[[33m 1406^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.3461171Z      ^[[33m^[[2m✓^[[22m^[[39m nunca retorna mais itens que o limite documentado^[[33m 337^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.3461834Z      ^[[33m^[[2m✓^[[22m^[[39m nunca inclui o produto de contexto no resultado^[[33m 337^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.3462787Z      ^[[33m^[[2m✓^[[22m^[[39m nunca inclui produto de outra categoria, inativo ou sem estoque^[[33m 337^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.3463783Z    ^[[32m✓^[[39m CategoriaRecomendacaoStrategy - desempate deterministico por UUID ^[[2m(1)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.3464721Z      ^[[33m^[[2m✓^[[22m^[[39m ordena vendas iguais e notas iguais pelo UUID crescente^[[33m 2028^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6980584Z (node:2738) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6981950Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6982416Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6982531Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6982896Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6983386Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6983647Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6983949Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:00:21.6984859Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8323123Z  ^[[32m✓^[[39m tests/integration/carrinho.routes.integration.test.ts ^[[2m(^[[22m^[[2m16 tests^[[22m^[[2m)^[[22m^[[33m 61141^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8323834Z    ^[[32m✓^[[39m WEB-08 carrinho do comprador ^[[2m(16)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8324306Z      ^[[33m^[[2m✓^[[22m^[[39m protege todas as rotas para anonimo^[[33m 541^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8324801Z      ^[[33m^[[2m✓^[[22m^[[39m protege todas as rotas para artesao^[[33m 1206^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8325271Z      ^[[33m^[[2m✓^[[22m^[[39m protege todas as rotas para admin^[[33m 1198^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8325787Z      ^[[33m^[[2m✓^[[22m^[[39m le carrinho vazio somente da sessao e impede cache^[[33m 2383^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8326374Z      ^[[33m^[[2m✓^[[22m^[[39m POST soma, grava preco do banco e persiste entre sessoes^[[33m 10084^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8327005Z      ^[[33m^[[2m✓^[[22m^[[39m PATCH substitui quantidade e atualiza preco a partir do banco^[[33m 6281^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8327787Z      ^[[33m^[[2m✓^[[22m^[[39m DELETE remove somente da sessao atual e permite limpar ocultos^[[33m 6945^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8328832Z      ^[[33m^[[2m✓^[[22m^[[39m 409 inclui produto e nome sem alterar quantidade ou preco^[[33m 7110^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8329485Z      ^[[33m^[[2m✓^[[22m^[[39m produto oculto, inexistente ou artesao inativo retorna 404^[[33m 8326^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8330004Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita quantidade invalida 0^[[33m 950^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8330441Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita quantidade invalida -1^[[33m 855^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8330886Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita quantidade invalida 1.5^[[33m 857^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8331316Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita quantidade invalida 2^[[33m 853^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8331779Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita quantidade invalida 2147483648^[[33m 855^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8332323Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita identidade ou preco externos e query na leitura^[[33m 1368^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:22.8332969Z      ^[[33m^[[2m✓^[[22m^[[39m adicoes concorrentes nao perdem quantidade nem ultrapassam estoque^[[33m 4567^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1785546Z (node:2762) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1786826Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1787377Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1787909Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1788547Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1789333Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1789803Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1790319Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:23.1791146Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7000435Z  ^[[32m✓^[[39m tests/integration/notificacoes.web14.integration.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[33m 25528^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7001087Z    ^[[32m✓^[[39m WEB-14 notificacoes ^[[2m(7)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7001612Z      ^[[33m^[[2m✓^[[22m^[[39m grava um aviso por artesao distinto antes de processar^[[33m 2382^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7002225Z      ^[[33m^[[2m✓^[[22m^[[39m redelivery concorrente preserva leitura, id e timestamp^[[33m 4884^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7002874Z      ^[[33m^[[2m✓^[[22m^[[39m falha parcial deixa intencao pendente e retry completa sem duplicar^[[33m 3710^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7003544Z      ^[[33m^[[2m✓^[[22m^[[39m lista somente token com nao lidas primeiro e data decrescente^[[33m 2701^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7004654Z      ^[[33m^[[2m✓^[[22m^[[39m marca somente propria e retorna 404 indistinguivel para outra^[[33m 3193^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7005197Z      ^[[33m^[[2m✓^[[22m^[[39m protege rota get por sessao e papel^[[33m 1745^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:48.7005693Z      ^[[33m^[[2m✓^[[22m^[[39m protege rota patch por sessao e papel^[[33m 1743^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0489909Z (node:2777) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0490871Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0491312Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0491421Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0491786Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0492266Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0492555Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0492856Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:01:49.0493721Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3151258Z  ^[[32m✓^[[39m tests/integration/meus-pedidos.web11.integration.test.ts ^[[2m(^[[22m^[[2m20 tests^[[22m^[[2m)^[[22m^[[33m 31273^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3152259Z    ^[[32m✓^[[39m WEB-11 meus pedidos em PostgreSQL real ^[[2m(20)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3153191Z      ^[[33m^[[2m✓^[[22m^[[39m lista somente os pedidos do token, em data decrescente e com pagamento^[[33m 2358^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3153949Z      ^[[33m^[[2m✓^[[22m^[[39m pagina sem repetir pedidos e informa total^[[33m 2353^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3154539Z      ^[[33m^[[2m✓^[[22m^[[39m confere itens e valores do pedido 0 contra o banco^[[33m 2196^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3155096Z      ^[[33m^[[2m✓^[[22m^[[39m confere itens e valores do pedido 1 contra o banco^[[33m 1176^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3155679Z      ^[[33m^[[2m✓^[[22m^[[39m confere itens e valores do pedido 2 contra o banco^[[33m 1176^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3156284Z      ^[[33m^[[2m✓^[[22m^[[39m pedido de terceiro e UUID inexistente retornam o mesmo 404^[[33m 1347^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3156828Z      ^[[33m^[[2m✓^[[22m^[[39m impede cache das leituras privadas^[[33m 1885^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.3157397Z      ^[[33m^[[2m✓^[[22m^[[39m preserva ausencia de valores e pagamento em pedido legado^[[33m 843^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4885475Z (node:2793) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4887339Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4888529Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4888959Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4889742Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4890376Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4890661Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4891045Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:20.4891561Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.3406097Z  ^[[32m✓^[[39m tests/integration/recomendacao-fallback.strategy.integration.test.ts ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 13860^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.3407710Z    ^[[32m✓^[[39m CategoriaRecomendacaoStrategy - fallback geral ^[[2m(6)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.3408387Z      ^[[33m^[[2m✓^[[22m^[[39m ordena o universo geral por vendas, nota media e UUID, limitado a oito^[[33m 1583^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.3409003Z      ^[[33m^[[2m✓^[[22m^[[39m nunca repete IDs e nunca supera oito itens^[[33m 508^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.3410358Z      ^[[33m^[[2m✓^[[22m^[[39m nunca inclui produto inativo ou sem estoque^[[33m 509^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.3411515Z      ^[[33m^[[2m✓^[[22m^[[39m aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria^[[33m 508^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.3412709Z      ^[[33m^[[2m✓^[[22m^[[39m aciona o fallback quando o produto de contexto nao existe^[[33m 339^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7019623Z (node:2807) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7020837Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7021563Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7021787Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7022515Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7023370Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7023793Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7024290Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:34.7025631Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5776008Z  ^[[32m✓^[[39m tests/integration/pedidos.integration.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[33m 20882^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5776630Z    ^[[32m✓^[[39m POST /pedidos ^[[2m(7)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5777180Z      ^[[33m^[[2m✓^[[22m^[[39m mantem checkout concorrente com cookie: uma criacao e um conflito^[[33m 3723^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5778074Z      ^[[33m^[[2m✓^[[22m^[[39m creates an order and decrements stock exactly by the requested quantity^[[33m 3394^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5779001Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an order referencing a missing product^[[33m 1690^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5779831Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an order with an invalid quantity^[[33m 1513^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5780651Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an order when stock is insufficient^[[33m 2261^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5781581Z      ^[[33m^[[2m✓^[[22m^[[39m rolls back the whole order when one item among several fails^[[33m 2522^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.5782714Z      ^[[33m^[[2m✓^[[22m^[[39m treats case-variant duplicate produtoId as the same product and never goes negative^[[33m 2355^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6935034Z (node:2820) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6936882Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6938129Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6938450Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6939321Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6940369Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6940926Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6941553Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:02:55.6942563Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:04.9430665Z  ^[[32m✓^[[39m tests/integration/indices-consultas.integration.test.ts ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[33m 9255^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:04.9431760Z    ^[[32m✓^[[39m BD-04 em PostgreSQL real ^[[2m(10)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:04.9432622Z      ^[[33m^[[2m✓^[[22m^[[39m busca encontra nome e descricao sem diferenciar caixa^[[33m 336^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:04.9433626Z      ^[[33m^[[2m✓^[[22m^[[39m filtro-categoria preserva visibilidade e ordenacao^[[33m 336^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:04.9434529Z      ^[[33m^[[2m✓^[[22m^[[39m filtro-tecnica preserva visibilidade e ordenacao^[[33m 336^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:04.9436043Z      ^[[33m^[[2m✓^[[22m^[[39m filtro-regiao preserva visibilidade e ordenacao^[[33m 350^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:04.9437034Z      ^[[33m^[[2m✓^[[22m^[[39m notificacoes restringem usuario e estado de leitura^[[33m 338^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:04.9438257Z      ^[[33m^[[2m✓^[[22m^[[39m carrinho usa o prefixo do unique sem indice redundante^[[33m 336^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2882995Z (node:2832) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2884559Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2885288Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2885450Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2885989Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2886664Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2886949Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2887249Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:05.2887966Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:12.5156584Z ^[[90mstdout^[[2m | tests/integration/perfil-artesao.routes.integration.test.ts^[[2m > ^[[22m^[[2mWEB-07 perfil do artesao^[[2m > ^[[22m^[[2mpublica somente campos publicos e reaproveita produtos por artesao
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:12.5157679Z ^[[22m^[[39m{"rota":"/produtos/:id","cache":"MISS","duracaoMs":175.342}
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:12.5158006Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:13.0370338Z ^[[90mstdout^[[2m | tests/integration/perfil-artesao.routes.integration.test.ts^[[2m > ^[[22m^[[2mWEB-07 perfil do artesao^[[2m > ^[[22m^[[2mpublica somente campos publicos e reaproveita produtos por artesao
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:13.0371230Z ^[[22m^[[39m{"rota":"/produtos","cache":"MISS","duracaoMs":170.487}
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:13.0371458Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1142218Z  ^[[32m✓^[[39m tests/integration/perfil-artesao.routes.integration.test.ts ^[[2m(^[[22m^[[2m22 tests^[[22m^[[2m)^[[22m^[[33m 24832^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1142963Z    ^[[32m✓^[[39m WEB-07 perfil do artesao ^[[2m(22)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1143537Z      ^[[33m^[[2m✓^[[22m^[[39m publica somente campos publicos e reaproveita produtos por artesao^[[33m 881^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1144207Z      ^[[33m^[[2m✓^[[22m^[[39m inativo, inexistente e outros papeis retornam o mesmo 404^[[33m 1534^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1144823Z      ^[[33m^[[2m✓^[[22m^[[39m artesao sem campos preenchidos possui perfil publico incompleto^[[33m 510^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1145405Z      ^[[33m^[[2m✓^[[22m^[[39m bloqueia PATCH como anonimo sem alterar o banco^[[33m 349^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1145943Z      ^[[33m^[[2m✓^[[22m^[[39m bloqueia PATCH como terceiro sem alterar o banco^[[33m 515^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1146464Z      ^[[33m^[[2m✓^[[22m^[[39m bloqueia PATCH como admin sem alterar o banco^[[33m 511^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1147029Z      ^[[33m^[[2m✓^[[22m^[[39m bloqueia PATCH como comprador sem alterar o banco^[[33m 511^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1147799Z      ^[[33m^[[2m✓^[[22m^[[39m salva o proprio perfil normalizando UUID e recalculando completo^[[33m 4155^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1148477Z      ^[[33m^[[2m✓^[[22m^[[39m aceita exatamente mil caracteres e preserva campos omitidos^[[33m 1355^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1149060Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 0^[[33m 508^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1149611Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 1^[[33m 507^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1150137Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 2^[[33m 507^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1150665Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 3^[[33m 508^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1151195Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 4^[[33m 507^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1152138Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 5^[[33m 508^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1152681Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 6^[[33m 676^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1153220Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 7^[[33m 678^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1153731Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 8^[[33m 508^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1154243Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 9^[[33m 507^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1154820Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita entrada invalida sem alterar o banco 10^[[33m 507^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.1155608Z      ^[[33m^[[2m✓^[[22m^[[39m limpa referencias e recalcula pendencias sem aceitar completo do cliente^[[33m 1346^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.5498691Z  ^[[32m✓^[[39m tests/unit/openapi.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[32m 79^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6639925Z (node:2859) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6641894Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6642675Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6642843Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6643394Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6643882Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6644142Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6644453Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:30.6644993Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.3368673Z  ^[[32m✓^[[39m tests/integration/ddl-fisico.integration.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 9679^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.3369373Z    ^[[32m✓^[[39m BD-01: modelo fisico documentado ^[[2m(4)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.3369948Z      ^[[33m^[[2m✓^[[22m^[[39m recria o catalogo das migrations sem alterar o schema existente^[[33m 2043^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.3370591Z      ^[[33m^[[2m✓^[[22m^[[39m documenta todas as tabelas e suas colunas fisicas^[[33m 2700^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.3371143Z      ^[[33m^[[2m✓^[[22m^[[39m vincula todos os indices e CHECKs ao documento^[[33m 335^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.3371707Z      ^[[33m^[[2m✓^[[22m^[[39m gera numeros de pedido usando a sequence restaurada^[[33m 672^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4530968Z (node:2875) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4532412Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4533035Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4533280Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4533836Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4534429Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4534694Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4534992Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:03:40.4535527Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1492760Z  ^[[32m✓^[[39m tests/integridade/modelo-fisico.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[33m 22702^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1493951Z    ^[[32m✓^[[39m BD-07: integridade do modelo fisico ^[[2m(9)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1494868Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita estoque negativo com 23514^[[33m 3376^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1495800Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita preco 0.00 com 23514^[[33m 2344^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1497258Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita preco -0.01 com 23514^[[33m 2346^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1498243Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita nota 6 com 23514^[[33m 2743^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1499506Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita email duplicado com caixa diferente com 23505^[[33m 2344^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1500694Z      ^[[33m^[[2m✓^[[22m^[[39m restringe exclusao de produto com pedido com 23001^[[33m 2514^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1501909Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita dois pagamentos para o mesmo pedido com 23505^[[33m 2343^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1503077Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita notificacao duplicada com 23505^[[33m 2344^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.1504187Z      ^[[33m^[[2m✓^[[22m^[[39m restringe exclusao de Tecnica referenciada com 23001^[[33m 2345^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3145757Z (node:2890) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3147119Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3148388Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3148555Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3149127Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3149900Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3150303Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3150794Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:03.3151570Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.1872472Z  ^[[32m✓^[[39m tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 10880^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.1873868Z    ^[[32m✓^[[39m CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) ^[[2m(4)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.1875043Z      ^[[33m^[[2m✓^[[22m^[[39m sem reforco, preserva a ordenacao baseline por vendas, ignorando regiao^[[33m 1413^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.1876093Z      ^[[33m^[[2m✓^[[22m^[[39m com reforco, prioriza candidatos da mesma regiao do contexto antes de olhar vendas^[[33m 341^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.1877358Z      ^[[33m^[[2m✓^[[22m^[[39m com reforco, desempate dentro de cada grupo regional continua deterministico por UUID^[[33m 2058^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.1878718Z      ^[[33m^[[2m✓^[[22m^[[39m com reforco, o limite de oito itens permanece respeitado^[[33m 341^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3024095Z (node:2902) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3025256Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3025764Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3025925Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3026295Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3026847Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3027120Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3027660Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:14.3028239Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0763026Z  ^[[32m✓^[[39m tests/integration/reconciliacao-modelo-logico.integration.test.ts ^[[2m(^[[22m^[[2m13 tests^[[22m^[[2m)^[[22m^[[33m 13780^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0764220Z    ^[[32m✓^[[39m Produto reconciled with the logical model (BD-02) ^[[2m(5)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0764942Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a product without descricao^[[33m 1878^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0765458Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a product without preco^[[33m 842^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0766364Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a product with preco 0^[[33m 842^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0766841Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a product with a negative stock^[[33m 843^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0767385Z      ^[[33m^[[2m✓^[[22m^[[39m defaults desativadoPorAdmin to false^[[33m 1016^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0768044Z    ^[[32m✓^[[39m monetary non-negativity (BD-02) ^[[2m(5)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0768547Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a negative ItemPedido.precoUnitario^[[33m 1347^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0769061Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a negative ItemPedido.subtotal^[[33m 1543^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0769578Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a negative ItemCarrinho.precoUnitario^[[33m 1413^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0770069Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a negative Pedido.total^[[33m 675^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0770521Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a Pagamento with valor 0^[[33m 1346^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0770995Z    ^[[32m✓^[[39m Usuario reconciled with the logical model (BD-02) ^[[2m(2)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0771549Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an email that differs from an existing one only by case^[[33m 686^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0772324Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an empty senhaHash^[[33m 505^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0772721Z    ^[[32m✓^[[39m Pedido legacy compradorRef (BD-02) ^[[2m(1)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.0773193Z      ^[[33m^[[2m✓^[[22m^[[39m accepts an order without the legacy compradorRef^[[33m 841^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1909150Z (node:2938) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1910719Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1911429Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1911627Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1912178Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1912652Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1912918Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1913220Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:28.1913726Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7957416Z  ^[[32m✓^[[39m tests/integration/dominio-completo.constraints.integration.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[33m 11611^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7958662Z    ^[[32m✓^[[39m full domain schema constraints (PI4-19.5) ^[[2m(11)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7959756Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an order without a comprador (usuario)^[[33m 1555^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7960705Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an item without a pedido^[[33m 1022^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7961280Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an item without a produto^[[33m 853^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7961905Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a produto without an artesao^[[33m 681^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7962703Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a produto without a categoria^[[33m 681^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7963414Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a duplicate email^[[33m 681^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7964213Z      ^[[33m^[[2m✓^[[22m^[[39m rejects negative stock on the full domain schema^[[33m 856^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7965070Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a nota of 0 outside the 1-5 range^[[33m 1192^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7965868Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a nota of 6 outside the 1-5 range^[[33m 1192^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7966534Z      ^[[33m^[[2m✓^[[22m^[[39m rejects a second pagamento for the same pedido^[[33m 1022^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:39.7967146Z      ^[[33m^[[2m✓^[[22m^[[39m preserves ItemPedido when the produto is logically deactivated^[[33m 1874^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.1724379Z  ^[[32m✓^[[39m tests/unit/seed-volume.test.ts ^[[2m(^[[22m^[[2m13 tests^[[22m^[[2m)^[[22m^[[32m 250^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.3275470Z  ^[[32m✓^[[39m tests/unit/environment.test.ts ^[[2m(^[[22m^[[2m34 tests^[[22m^[[2m)^[[22m^[[32m 15^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4879281Z (node:2967) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4880378Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4880854Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4881000Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4881365Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4881932Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4882185Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4882597Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:40.4883101Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.5705147Z  ^[[32m✓^[[39m tests/integration/recomendacao-metricas.integration.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[33m 10089^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.5705949Z    ^[[32m✓^[[39m calcularMetricasBaseline - carga sintetica real (PI4-20.5) ^[[2m(3)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.5706703Z      ^[[33m^[[2m✓^[[22m^[[39m reproduz cobertura e acerto por categoria calculados de forma independente da base^[[33m 1529^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.5707643Z      ^[[33m^[[2m✓^[[22m^[[39m produz o mesmo resultado em execucoes repetidas sobre os mesmos dados^[[33m 2708^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.5708429Z      ^[[33m^[[2m✓^[[22m^[[39m nunca gera denominador zero quando ha carga sintetica com produtos ativos e com estoque^[[33m 1356^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6859117Z (node:2979) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6860255Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6860761Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6860928Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6861314Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6861803Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6862062Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6862359Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:04:50.6863000Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0038537Z  ^[[32m✓^[[39m tests/integration/tecnica-regiao-migration.integration.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[33m 28324^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0039567Z    ^[[32m✓^[[39m BD-03: migracao dos textos legados ^[[2m(7)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0040377Z      ^[[33m^[[2m✓^[[22m^[[39m converte textos normalizados e preserva os nove produtos^[[33m 4929^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0041414Z      ^[[33m^[[2m✓^[[22m^[[39m converte Marcenaria e renda e Caruaru - Alto do Moura sem preencher campos ausentes^[[33m 3767^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0042199Z      ^[[33m^[[2m✓^[[22m^[[39m converte  BORDADO À MÃO  e TRACUNHAÉM sem preencher campos ausentes^[[33m 3764^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0042823Z      ^[[33m^[[2m✓^[[22m^[[39m converte null e null sem preencher campos ausentes^[[33m 3761^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0043448Z      ^[[33m^[[2m✓^[[22m^[[39m aborta e preserva textos quando tecnicaPrincipal e desconhecida^[[33m 4251^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0044108Z      ^[[33m^[[2m✓^[[22m^[[39m aborta e preserva textos quando regiao e desconhecida^[[33m 4260^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.0044685Z      ^[[33m^[[2m✓^[[22m^[[39m aborta para produto sem mapeamento explicito^[[33m 3589^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4126549Z (node:2997) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4127793Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4128394Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4128508Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4128975Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4129452Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4129809Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4130115Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:19.4130707Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.3140426Z  ^[[32m✓^[[39m tests/integration/notificacao-auto-publish.integration.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[33m 12917^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.3141229Z    ^[[32m✓^[[39m auto-publish of pending notification intentions ^[[2m(1)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.3141944Z      ^[[33m^[[2m✓^[[22m^[[39m moves a real POST /pedidos intention from pendente to processada without manual queue calls^[[33m 12577^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.4210687Z  ^[[32m✓^[[39m tests/unit/cache.test.ts ^[[2m(^[[22m^[[2m17 tests^[[22m^[[2m)^[[22m^[[32m 10^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.5250863Z  ^[[32m✓^[[39m tests/unit/schema-structure.test.ts ^[[2m(^[[22m^[[2m29 tests^[[22m^[[2m)^[[22m^[[32m 8^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6467413Z (node:3026) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6469232Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6470010Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6470171Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6470713Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6471490Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6471934Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6472443Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:32.6473263Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5020897Z  ^[[32m✓^[[39m tests/integration/tecnica-regiao.integration.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[33m 8862^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5021646Z    ^[[32m✓^[[39m BD-03: referencias Tecnica e Regiao no PostgreSQL ^[[2m(11)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5022253Z      ^[[33m^[[2m✓^[[22m^[[39m Tecnica preserva os mesmos IDs e nomes dos seeds frontais^[[33m 1561^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5022872Z      ^[[33m^[[2m✓^[[22m^[[39m Regiao preserva os mesmos IDs e nomes dos seeds frontais^[[33m 509^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5023496Z      ^[[33m^[[2m✓^[[22m^[[39m resolve tecnica e regiao de todos os produtos existentes^[[33m 509^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5024082Z      ^[[33m^[[2m✓^[[22m^[[39m bloqueia exclusao de tecnica referenciada por produto^[[33m 1018^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5024728Z      ^[[33m^[[2m✓^[[22m^[[39m bloqueia exclusao da referencia tecnicaPrincipalId do perfil^[[33m 848^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5025326Z      ^[[33m^[[2m✓^[[22m^[[39m bloqueia exclusao da referencia regiaoId do perfil^[[33m 847^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5025863Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita tecnica inexistente em produto^[[33m 1017^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5026338Z      ^[[33m^[[2m✓^[[22m^[[39m nao aceita produto sem tecnica^[[33m 1017^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5026775Z      ^[[33m^[[2m✓^[[22m^[[39m Tecnica exige nome unico^[[33m 509^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5027185Z      ^[[33m^[[2m✓^[[22m^[[39m Regiao exige nome unico^[[33m 510^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.5028322Z      ^[[33m^[[2m✓^[[22m^[[39m remove textos legados e mantem regiao somente no perfil^[[33m 514^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8504564Z (node:3039) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8506201Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8506932Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8507107Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8507879Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8508652Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8509072Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8509586Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:41.8510420Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:45.1302616Z ^[[90mstdout^[[2m | tests/integration/recomendacoes.route.integration.test.ts^[[2m > ^[[22m^[[2mGET /recomendacoes^[[2m > ^[[22m^[[2mreturns category-based recommendations for a valid produtoId
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:45.1304357Z ^[[22m^[[39m{"rota":"/recomendacoes","cache":"MISS","duracaoMs":1586.945}
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:45.1304592Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:45.4797973Z ^[[90mstdout^[[2m | tests/integration/recomendacoes.route.integration.test.ts^[[2m > ^[[22m^[[2mGET /recomendacoes^[[2m > ^[[22m^[[2mreturns the general fallback without a context
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:45.4799331Z ^[[22m^[[39m{"rota":"/recomendacoes","cache":"MISS","duracaoMs":341.218}
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:45.4799611Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.0017199Z ^[[90mstdout^[[2m | tests/integration/recomendacoes.route.integration.test.ts^[[2m > ^[[22m^[[2mGET /recomendacoes^[[2m > ^[[22m^[[2mfalls back to the general recommendation when the product does not exist
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.0018732Z ^[[22m^[[39m{"rota":"/recomendacoes","cache":"MISS","duracaoMs":510.7}
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.0019056Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.5088323Z  ^[[32m✓^[[39m tests/integration/recomendacoes.route.integration.test.ts ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 4665^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.5088993Z    ^[[32m✓^[[39m GET /recomendacoes ^[[2m(6)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.5089608Z      ^[[33m^[[2m✓^[[22m^[[39m returns category-based recommendations for a valid produtoId^[[33m 1600^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.5090221Z      ^[[33m^[[2m✓^[[22m^[[39m returns the general fallback without a context^[[33m 343^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.5090864Z      ^[[33m^[[2m✓^[[22m^[[39m falls back to the general recommendation when the product does not exist^[[33m 513^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6252318Z (node:3051) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6254192Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6256065Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6256471Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6257202Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6257933Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6258220Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6258604Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:46.6259159Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5243818Z  ^[[32m✓^[[39m tests/integration/constraints.integration.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[33m 7905^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5244821Z    ^[[32m✓^[[39m reduced FCCPD schema constraints ^[[2m(8)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5245468Z      ^[[33m^[[2m✓^[[22m^[[39m rejects negative stock^[[33m 1869^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5245943Z      ^[[33m^[[2m✓^[[22m^[[39m rejects zero item quantity^[[33m 1342^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5246869Z      ^[[33m^[[2m✓^[[22m^[[39m rejects missing required relationships^[[33m 502^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5247416Z      ^[[33m^[[2m✓^[[22m^[[39m rejects unknown relationship references^[[33m 504^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5248114Z      ^[[33m^[[2m✓^[[22m^[[39m rejects missing pedidoId with a valid produtoId^[[33m 1005^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5248671Z      ^[[33m^[[2m✓^[[22m^[[39m rejects unknown pedidoId with a valid produtoId^[[33m 1005^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5249220Z      ^[[33m^[[2m✓^[[22m^[[39m rejects missing produtoId with a valid pedidoId^[[33m 838^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.5249750Z      ^[[33m^[[2m✓^[[22m^[[39m rejects unknown produtoId with a valid pedidoId^[[33m 837^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7386585Z (node:3069) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7388692Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7389719Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7390026Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7390763Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7392233Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7392808Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7393458Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:05:54.7394463Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:56.9386619Z  ^[[32m✓^[[39m tests/integration/seed.integration.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 62206^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:56.9387853Z    ^[[32m✓^[[39m BD-05 demo no PostgreSQL real ^[[2m(4)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:56.9388649Z      ^[[33m^[[2m✓^[[22m^[[39m mantem contagens apos duas execucoes^[[33m 2375^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:56.9389516Z      ^[[33m^[[2m✓^[[22m^[[39m autentica todas as contas documentadas^[[33m 1110^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:56.9390485Z      ^[[33m^[[2m✓^[[22m^[[39m preserva catalogo, fotos e referencias da Fake API^[[33m 12239^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:56.9391086Z      ^[[33m^[[2m✓^[[22m^[[39m confirma pedidos com itens e pagamento coerente^[[33m 511^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2835980Z (node:3089) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2837949Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2838800Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2839029Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2839593Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2840378Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2840797Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2841337Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:06:57.2842172Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.5354575Z  ^[[32m✓^[[39m tests/integration/server-queue-bootstrap.integration.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[33m 15268^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.5355352Z    ^[[32m✓^[[39m startServer bootstraps the notification queue ^[[2m(2)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.5355951Z      ^[[33m^[[2m✓^[[22m^[[39m serves health in production on the configured wildcard host^[[33m 4688^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.5356699Z      ^[[33m^[[2m✓^[[22m^[[39m accepts and processes a job right after the backend boots, without a manual worker registration^[[33m 10243^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7522449Z (node:3101) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7524373Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7525944Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7526214Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7526864Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7528068Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7528610Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7529214Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:12.7530160Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:21.0099437Z  ^[[32m✓^[[39m tests/integration/notificacao.repository.integration.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[33m 8316^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:21.0100515Z    ^[[32m✓^[[39m BD-06: PrismaNotificacaoRepository ^[[2m(5)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:21.0101243Z      ^[[33m^[[2m✓^[[22m^[[39m dois registros iguais resultam em uma linha^[[33m 2664^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:21.0101880Z      ^[[33m^[[2m✓^[[22m^[[39m reentrega preserva estado lido, ID e data originais^[[33m 1884^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:21.0102720Z      ^[[33m^[[2m✓^[[22m^[[39m pedidos distintos produzem notificacoes distintas^[[33m 1708^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:21.0104005Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita usuarioId inexistente^[[33m 1031^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:21.0104688Z      ^[[33m^[[2m✓^[[22m^[[39m rejeita pedidoId inexistente^[[33m 1024^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:21.3499410Z  ^[[32m✓^[[39m tests/unit/recomendacao-volume.unit.test.ts ^[[2m(^[[22m^[[2m13 tests^[[22m^[[2m)^[[22m^[[32m 10^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:27.6301363Z  ^[[32m✓^[[39m tests/unit/server.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[33m 6184^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:27.6301924Z    ^[[32m✓^[[39m server startup ^[[2m(5)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:27.6302467Z      ^[[33m^[[2m✓^[[22m^[[39m fails production boot with a clear sanitized JWT validation error^[[33m 663^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:27.6303185Z      ^[[33m^[[2m✓^[[22m^[[39m fails production boot with a clear sanitized JWT validation error^[[33m 483^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:27.6303845Z      ^[[33m^[[2m✓^[[22m^[[39m sanitizes asynchronous listen failure on an occupied loopback port^[[33m 504^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:27.6304495Z      ^[[33m^[[2m✓^[[22m^[[39m imports without starting a listener or writing output^[[33m 479^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:27.6305039Z      ^[[33m^[[2m✓^[[22m^[[39m binds startup explicitly to IPv4 loopback^[[33m 4053^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.2014397Z  ^[[32m✓^[[39m tests/unit/db-explain.test.ts ^[[2m(^[[22m^[[2m17 tests^[[22m^[[2m)^[[22m^[[33m 483^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.2015381Z    ^[[32m✓^[[39m entrada db:explain ^[[2m(17)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.2016246Z      ^[[33m^[[2m✓^[[22m^[[39m CLI retorna erro sanitizado para argumento invalido^[[33m 361^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4439648Z (node:3210) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4442151Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4443011Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4443323Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4444031Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4445034Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4445568Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4446155Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:28.4447407Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.3358716Z  ^[[32m✓^[[39m tests/integration/usuario.service.integration.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[33m 2979^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.3359691Z    ^[[32m✓^[[39m UsuarioService.criar ^[[2m(2)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.3360423Z      ^[[33m^[[2m✓^[[22m^[[39m persists the email trimmed and lowercased^[[33m 2460^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.3361536Z      ^[[33m^[[2m✓^[[22m^[[39m rejects an email that differs from an existing one only by case or spaces^[[33m 347^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.6955650Z  ^[[32m✓^[[39m tests/unit/health-cookie.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[32m 36^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8035802Z (node:3230) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8037211Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8037874Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8038110Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8038608Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8039167Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8039541Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8040050Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:31.8040564Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.7474216Z  ^[[32m✓^[[39m tests/integration/notificacao-migration.integration.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[33m 3950^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.7475058Z    ^[[33m^[[2m✓^[[22m^[[39m BD-06 aplica apos o historico existente em PostgreSQL real^[[33m 3948^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9699292Z (node:3243) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9708612Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9737816Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9748223Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9749076Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9750023Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9750525Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9751136Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:35.9752061Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.0187369Z  ^[[32m✓^[[39m tests/integration/schema-completo.smoke.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[33m 3122^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.0188648Z    ^[[32m✓^[[39m schema completo: smoke test com Prisma real ^[[2m(2)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.0189659Z      ^[[33m^[[2m✓^[[22m^[[39m consulta as onze entidades de dominio sem erro^[[33m 2951^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4254671Z (node:3255) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4262099Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4262890Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4263057Z To prepare for this change:
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4263639Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4264400Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4264809Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4265298Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:39.4266125Z (Use `node --trace-warnings ...` to show where the warning was created)
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:40.7860900Z ^[[90mstdout^[[2m | tests/integration/health.integration.test.ts^[[2m > ^[[22m^[[2mGET /health^[[2m > ^[[22m^[[2msets security headers on /recomendacoes without advertising Express
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:40.7862284Z ^[[22m^[[39m{"rota":"/recomendacoes","cache":"MISS","duracaoMs":170.414}
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:40.7862655Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:40.9627000Z  ^[[32m✓^[[39m tests/integration/health.integration.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 1603^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:40.9628134Z    ^[[32m✓^[[39m GET /health ^[[2m(4)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:41.0526691Z      ^[[33m^[[2m✓^[[22m^[[39m sets security headers on /health without advertising Express^[[33m 1252^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:41.0528179Z  ^[[32m✓^[[39m tests/unit/perfil-artesao-completo.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[32m 4^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:41.1434298Z  ^[[32m✓^[[39m tests/unit/recomendacao-metricas.unit.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 4^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:41.4630483Z  ^[[32m✓^[[39m tests/unit/concorrencia-resultado.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 3^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:41.9734742Z  ^[[32m✓^[[39m tests/unit/seed-demo.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[32m 90^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.2844660Z  ^[[32m✓^[[39m tests/unit/senha.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[32m 213^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3752491Z  ^[[32m✓^[[39m tests/unit/usuario.service.unit.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[32m 3^[[2mms^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3795130Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3795669Z ^[[31m⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Failed Suites 1 ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3795952Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3808726Z ^[[41m^[[1m FAIL ^[[22m^[[49m tests/integration/recomendacoes-contrato.integration.test.ts^[[2m [ tests/integration/recomendacoes-contrato.integration.test.ts ]^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3809410Z ^[[31m^[[1mError^[[22m: Hook timed out in 30000ms.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3810072Z If this is a long-running hook, pass a timeout value as the last argument or configure it globally with "hookTimeout".^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3859423Z ^[[36m ^[[2m❯^[[22m tests/integration/recomendacoes-contrato.integration.test.ts:^[[2m58:1^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3860156Z     ^[[90m 56|^[[39m }
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3860510Z     ^[[90m 57|^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3860896Z     ^[[90m 58|^[[39m beforeAll(async () => {
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3861403Z     ^[[90m   |^[[39m ^[[31m^^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3861877Z     ^[[90m 59|^[[39m   banco = await criarBancoAuth();
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3862632Z     ^[[90m 60|^[[39m   app = createApp(banco.prisma, { JWT_SECRET: secret, COOKIE_SECURE: f…
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3863079Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3863423Z ^[[31m^[[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3863691Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3863700Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3864100Z ^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Failed Tests 2 ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3864425Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3865557Z ^[[41m^[[1m FAIL ^[[22m^[[49m tests/integration/catalogo.routes.integration.test.ts^[[2m > ^[[22mcatalogo publico WEB-06^[[2m > ^[[22mreflete moderacao e estoque imediatamente nas leituras
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3866681Z ^[[31m^[[1mError^[[22m: Test timed out in 15000ms.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3867858Z If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3869024Z ^[[36m ^[[2m❯^[[22m tests/integration/catalogo.routes.integration.test.ts:^[[2m231:3^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3893078Z     ^[[90m229|^[[39m   });
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3893473Z     ^[[90m230|^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3894138Z     ^[[90m231|^[[39m   it("reflete moderacao e estoque imediatamente nas leituras", async (…
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3894766Z     ^[[90m   |^[[39m   ^[[31m^^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3895244Z     ^[[90m232|^[[39m     for (const { rota, data } of [
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3895678Z     ^[[90m233|^[[39m       {
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3895874Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3896195Z ^[[31m^[[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3896475Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3897829Z ^[[41m^[[1m FAIL ^[[22m^[[49m tests/integration/checkout.web09.integration.test.ts^[[2m > ^[[22mWEB-09 checkout transacional real^[[2m > ^[[22mgera dez numeros distintos e sequenciais pelo PostgreSQL
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3899015Z ^[[31m^[[1mError^[[22m: Test timed out in 20000ms.
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3900048Z If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3901534Z ^[[36m ^[[2m❯^[[22m tests/integration/checkout.web09.integration.test.ts:^[[2m233:3^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3948109Z     ^[[90m231|^[[39m   });
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3948359Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3978041Z     ^[[90m232|^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3978869Z ^[[2m Test Files ^[[22m ^[[1m^[[31m3 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m47 passed^[[39m^[[22m^[[90m (50)^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3980056Z ^[[2m      Tests ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m523 passed^[[39m^[[22m^[[2m | ^[[22m^[[33m11 skipped^[[39m^[[90m (536)^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3980832Z ^[[2m   Start at ^[[22m 20:52:06
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3981404Z ^[[2m   Duration ^[[22m 935.74s^[[2m (tests 99%, import 1%)^[[22m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3981722Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3982617Z     ^[[90m233|^[[39m   it("gera dez numeros distintos e sequenciais pelo PostgreSQL", async…
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3983475Z     ^[[90m   |^[[39m   ^[[31m^^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3984248Z     ^[[90m234|^[[39m     const vaso = await produto();
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3984840Z     ^[[90m235|^[[39m     const numeros: string[] = [];
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3985135Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3985463Z ^[[31m^[[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯^[[22m^[[39m
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3985759Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.3987788Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.4013345Z ##[error]Error: Test timed out in 15000ms.
+backend	Testar sem cargas e benchmarks	If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+backend	Testar sem cargas e benchmarks	 ❯ tests/integration/catalogo.routes.integration.test.ts:231:3
+backend	Testar sem cargas e benchmarks	
+backend	Testar sem cargas e benchmarks	
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.4023137Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.4025833Z ##[error]Error: Test timed out in 20000ms.
+backend	Testar sem cargas e benchmarks	If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+backend	Testar sem cargas e benchmarks	 ❯ tests/integration/checkout.web09.integration.test.ts:233:3
+backend	Testar sem cargas e benchmarks	
+backend	Testar sem cargas e benchmarks	
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.4027392Z 
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.4030105Z ##[error]Error: Hook timed out in 30000ms.
+backend	Testar sem cargas e benchmarks	If this is a long-running hook, pass a timeout value as the last argument or configure it globally with "hookTimeout".
+backend	Testar sem cargas e benchmarks	 ❯ tests/integration/recomendacoes-contrato.integration.test.ts:58:1
+backend	Testar sem cargas e benchmarks	
+backend	Testar sem cargas e benchmarks	
+backend	Testar sem cargas e benchmarks	2026-10-22T21:07:42.4327376Z ##[error]Process completed with exit code 1.

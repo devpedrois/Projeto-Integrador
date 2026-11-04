@@ -1,0 +1,5474 @@
+{
+  "project": "frontend",
+  "exitCode": 0,
+  "total": 969,
+  "passou": 969,
+  "falhou": 0,
+  "pendente": 0,
+  "sucesso": true,
+  "suites": [
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/app/minha-conta.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Minha conta mostra nome, e-mail e papel do usuario da sessao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Minha conta mostra estado vazio em Meus pedidos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Minha conta rotula o papel admin como Administrador",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Minha conta sair encerra a sessao e volta para a vitrine",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Minha conta sem sessao redireciona para o login",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/app/not-found.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Pagina 404 mostra titulo, texto curto e link de volta para a vitrine",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/app/painel-indicadores.web5.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "integra card ao painel e descarta dados da conta anterior",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/app/pedidos-recebidos.web2.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "descarta pedidos anteriores quando a conta do artesao muda",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/app/produto-detalhe.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Pagina de detalhes do produto consulta o produto pelo id da rota",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Pagina de detalhes do produto visitante adiciona no carrinho local sem redirecionamento",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Pagina de detalhes do produto comprador adiciona ate o limite do estoque e recebe erro acima dele",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Pagina de detalhes do produto produto fora da vitrine publica mostra indisponivel sem botao de compra",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/app/route-protection.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "protecao de rotas /painel-artesao nega visitante e preserva destino de retorno",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /painel-artesao nega papel incorreto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /painel-artesao aceita papel artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /admin nega visitante e preserva destino de retorno",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /admin nega papel incorreto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /admin aceita papel admin",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /minha-conta nega visitante e preserva destino de retorno",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /minha-conta aceita qualquer papel autenticado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /checkout nega visitante e preserva destino de retorno",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /checkout nega papel artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /checkout nega papel admin",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "protecao de rotas /checkout aceita papel comprador",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/app/vitrine.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Vitrine (Home) mostra carregando e depois a lista de produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) mostra estado vazio quando nao ha produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) mostra erro recuperavel quando o service falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) visitante: usa fallback geral",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) usuario com sessao restaurada: usa o usuarioId como contexto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) consulta fallback mesmo sem produtos carregados",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) artesao usa fallback publico",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) admin usa fallback publico",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) visitante adiciona ao carrinho local sem redirecionamento",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) comprador autenticado adiciona o produto ao carrinho normalmente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) busca controla o termo e consulta o service ao digitar, mostrando loading e resultado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) busca ativa esconde o catalogo completo, mostrando somente o resultado da busca",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) busca mostra erro recuperavel quando o service falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) inicializa termo e filtros a partir da URL e ja consulta o resultado combinado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) selecionar uma categoria atualiza a URL removendo parametros vazios",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) busca sem correspondencia mostra estado vazio e limpar filtros pela faixa vazia restaura o catalogo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Vitrine (Home) botao Limpar filtros remove termo e filtros da URL e volta ao catalogo completo",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/avaliacao-pedido.web3.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido Web.4 nao mostra botao nem formulario quando a API informa que nao comprou",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido Web.4 remove o formulario se a compra deixar de ser valida antes do envio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido mostra um formulario por item e impede envio sem nota",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido valida 501 caracteres sem chamar o servidor",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido mostra envio e sucesso, bloqueando tentativas simultaneas",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido 409 mostra ja avaliado, sem permitir novo envio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido identifica avaliacao anterior apos reabrir o pedido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido erro de envio preserva campos e permite tentar novamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido falha ao consultar ja avaliado permite recuperar a leitura",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido nao oferece formulario no pedido pendente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 avaliacao no detalhe do pedido nao oferece formulario no pedido cancelado",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/cadastro-form.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "CadastroForm exibe aviso de protótipo associado ao campo de senha",
+          "[CREDENCIAL_REMOVIDA]": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm possui labels associadas a cada campo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm o seletor de papel oferece somente comprador e artesao, com comprador marcado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm cadastro valido de artesao hidrata sessao e redireciona para painel-artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm cadastro valido de comprador hidrata sessao e redireciona para vitrine",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm senha curta bloqueia envio e mostra erro no campo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm foca o primeiro campo invalido apos tentativa de envio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm mostra loading e desabilita o botao durante o envio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm email ja cadastrado associa a mensagem ao campo email",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm mostra erro recuperavel quando o service falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm com adapters reais fake cadastra 'comprador', persiste sessao e navega para '/'",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm com adapters reais fake cadastra 'artesao', persiste sessao e navega para '/painel-artesao'",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CadastroForm com adapters reais HTTP hidrata sessao pelo cadastro sem chamar login nem usar storage local",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/checkout-http.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "confirma por HTTP, mostra numero real e limpa estado sem DELETE posterior",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "409 identifica o item e preserva carrinho para tentar novamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "falha ao carregar carrinho oferece recuperacao no checkout",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/faixa-recomendacoes.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FaixaRecomendacoes mostra estado de carregando antes do service resolver",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FaixaRecomendacoes mostra os produtos recomendados apos sucesso",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FaixaRecomendacoes mostra estado vazio quando nao ha recomendacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FaixaRecomendacoes mostra fallback geral com navegacao para o produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FaixaRecomendacoes mostra erro recuperavel quando o service falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FaixaRecomendacoes nao renderiza produtos quando nao ha contexto real ainda",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/filtros-produtos.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FiltrosProdutos mostra as opcoes de categoria, tecnica e regiao vindas da Fake API",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos mostra as opcoes de artesao vindas da Fake API",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos desabilita os selects enquanto as opcoes ainda carregam",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos selecionar um artesao delega ao callback com o id escolhido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos botao Limpar filtros fica habilitado quando somente o artesao esta ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos digitar o termo apenas captura a selecao e delega ao callback",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos selecionar uma categoria delega ao callback com o id escolhido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos voltar para a opcao Todas as tecnicas remove o filtro (undefined)",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos reflete os valores ja ativos vindos da URL",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos botao Limpar filtros fica desabilitado quando nenhum filtro esta ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos botao Limpar filtros fica habilitado quando ha ao menos um filtro ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FiltrosProdutos clicar em Limpar filtros chama onLimpar",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/gate-acesso.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "falha ao sincronizar carrinho no login aparece com recuperacao na vitrine",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso sem sessao e sem escolha previa, mostra a tela Entrar como e nao renderiza o conteudo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso clicar em continuar como visitante grava a escolha e libera o conteudo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso usuario ja autenticado pula a tela de escolha e ve o conteudo direto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso escolha de visitante anterior (mesma aba) libera o conteudo sem mostrar a tela de novo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso clicar em sair pede confirmacao antes de deslogar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso cancelar a confirmacao mantem a sessao ativa",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso confirmar a saida desloga e volta a pedir a escolha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso confirmar a saida a partir do carrinho redireciona para a vitrine",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso artesao autenticado ve links para o painel e para meus produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso admin autenticado ve link para o painel administrativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso comprador autenticado nao ve links de artesao nem de admin",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso visitante ve a opcao de entrar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso visitante clica em entrar e ve as 3 opcoes de papel para login",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso na pagina de login, mostra o conteudo mesmo sem sessao e sem ter escolhido visitante",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso nao mostra a barra de conta na propria pagina de login",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso na pagina de cadastro, mostra o formulario sem sessao e sem a barra de conta",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "GateAcesso a tela de escolha leva comprador, artesao e administrador ao login",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/indicadores-artesao.web5.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "mostra loading sem antecipar nenhuma venda",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "mostra quantidade, receita BRL, pedidos e instante retornados pela API",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "mostra vazio somente depois da resposta sem pedidos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "recupera falha sem apresentar valores inventados",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ignora resposta antiga quando muda o service",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/login-form.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "LoginForm possui labels associadas a cada campo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "LoginForm login valido chama o service, cria a sessao e redireciona",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "LoginForm credenciais invalidas mostram mensagem generica sem apontar o campo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "LoginForm mostra loading e desabilita o botao durante o envio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "LoginForm email em formato invalido bloqueia envio e mostra erro no campo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "LoginForm oferece link para criar cadastro",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "LoginForm alterna a visibilidade da senha",
+          "[CREDENCIAL_REMOVIDA]": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/meus-pedidos.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "mostra loading sem anunciar estado vazio prematuramente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "mostra vazio apos carregar lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "mostra lista, detalhe, itens e pagamento",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "recupera erro da lista ao tentar novamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "detalhe mostra loading e erro 404 recuperavel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "pagina os pedidos sem solicitar o detalhe de cada linha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "artesao nao consulta historico de comprador",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "atualiza status do item no detalhe sem refazer login",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "diferencia pedido pendente e cancelado e pagamento recusado",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/meus-produtos-list.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "MeusProdutosList mostra estado de carregamento inicialmente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList mostra estado vazio quando o artesao nao possui produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList mostra estado de erro quando a listagem falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList lista somente produtos do artesao da sessao, isolando duas contas diferentes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList editar produto chama service.update com o artesaoId da sessao e atualiza a lista",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList sinaliza produto desativado pela moderacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList sinaliza produto removido preservado no catalogo privado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList remover exige confirmacao antes de chamar o service",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList confirmar remocao chama service.remove e o produto some da lista",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList cancelar remocao mantem o produto na lista sem chamar o service",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList mostra erro recuperavel quando a remocao e rejeitada (ex.: produto de outra conta)",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList painel de edicao mostra o preco com virgula e salva o numero correto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList fechar o painel de edicao descarta as alteracoes sem chamar o service",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "MeusProdutosList mostra erro no painel quando a edicao falha e mantem o painel aberto",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/notificacoes-artesao.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "mostra novo pedido no polling de 15s e permite leitura",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "para na aba oculta, retoma imediatamente e limpa desmontagem",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "aba inicialmente oculta espera visibilidade",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "erro recuperavel permite tentar novamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "adapter rejeita resposta invalida e identificador invalido",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/pedidos-recebidos.web2.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "mostra carregando, lista e dados sem consultar storage local",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "exige confirmacao e permite cancelar antes do PATCH",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "confirma envio uma vez, bloqueia duplo clique e mostra enviado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "recupera falha de leitura e mostra vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "mantem confirmacao apos erro de envio e permite repetir",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "reconsulta estado autoritativo quando outro envio vence",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "pagina pedidos usando limit e offset",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta invalida antes de mostrar acao: 0",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta invalida antes de mostrar acao: 1",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta invalida antes de mostrar acao: 2",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta invalida antes de mostrar acao: 3",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "nao consulta servidor com identificador de envio invalido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita confirmacao de envio de outro item",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/pendencia-perfil-artesao.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "PendenciaPerfilArtesao mostra loading enquanto verifica o perfil",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PendenciaPerfilArtesao perfil incompleto lista os campos pendentes e leva para Meu perfil",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PendenciaPerfilArtesao perfil completo nao mostra aviso",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PendenciaPerfilArtesao mostra erro quando a verificacao falha",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/perfil-artesao-form.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "PerfilArtesaoForm Web.6 mostra previa local e salva URL retornada sem reenviar URL antiga",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm Web.6 rejeita PNG de 3 MB no formulario",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm Web.6 rejeita GIF no formulario",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm Web.6 rejeita PDF renomeado sem enviar ou exibir previa",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm mostra loading enquanto carrega perfil e opcoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm pre-preenche os campos quando o artesao ja possui perfil salvo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm mostra contador de caracteres da historia e bloqueia acima de 1000 caracteres",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm previa do perfil publico mostra nome, tecnica e a historia digitada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm mostra erro recuperavel quando o carregamento falha e permite tentar novamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoForm mostra erro recuperavel quando salvar falha e mantem o botao habilitado",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/produto-card.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "ProdutoCard mostra nome e preco do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard linka o card ao perfil publico do artesao correto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 0: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 1: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 2: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 3: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 4: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 5: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 6: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 7: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 8: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard amostra 9: link aponta para o artesao dono do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard link e acessivel por teclado (tabIndex natural de ancora)",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard usa texto descritivo mesmo antes do nome do artesao carregar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard imagem e nome abrem a pagina de detalhes do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard nao renderiza imagem com protocolo inseguro",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard aciona onAdicionarAoCarrinho ao clicar no botao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard mostra erro de carrinho vinculado ao botao por aria-describedby",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoCard nao mostra alerta de erro quando nao ha erro de carrinho",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/produto-form.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "carrega categoria HTTP com UUID e cadastra pelo formulario",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm possui labels associadas a cada campo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm campos ausentes bloqueiam criacao e mostram erros por campo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm preco 0 bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm preco -1 bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm preco -0.5 bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm preco -100 bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm preco -0.01 bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm aceita preco com virgula e envia o numero correto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm mostra loading e desabilita o botao durante o envio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm nao envia duas vezes ao clicar repetidamente antes da resposta",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ProdutoForm mostra erro recuperavel quando o service falha e permite tentar novamente",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/resultado-busca.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "ResultadoBusca - estado vazio mostra estado vazio acessivel e distinto de erro quando a busca nao encontra produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ResultadoBusca - estado vazio nao mostra estado vazio durante o carregamento",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ResultadoBusca - estado vazio oferece botao para limpar filtros no estado vazio e o aciona ao clicar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ResultadoBusca - estado vazio mostra estado vazio para a busca sem correspondencia 'zzz-termo-um'",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ResultadoBusca - estado vazio mostra estado vazio para a busca sem correspondencia 'zzz-termo-dois'",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ResultadoBusca - estado vazio mostra estado vazio para a busca sem correspondencia 'zzz-termo-tres'",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ResultadoBusca - estado vazio mostra estado vazio para a busca sem correspondencia 'zzz-termo-quatro'",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ResultadoBusca - estado vazio mostra estado vazio para a busca sem correspondencia 'zzz-termo-cinco'",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/route-guard.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "RouteGuard nao decide nem renderiza conteudo antes da sessao ser restaurada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "RouteGuard visitante sem sessao e redirecionado ao login preservando destino seguro",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "RouteGuard papel incorreto nao acessa o conteudo protegido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "RouteGuard artesao negado recebe atalho para o proprio painel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "RouteGuard admin negado recebe atalho para o painel admin",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "RouteGuard papel correto acessa a area protegida",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "RouteGuard qualquer usuario autenticado acessa rota sem restricao de papel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "RouteGuard nao aceita destino externo ao montar a URL de retorno",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/sessao-http.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "guarda aguarda me sem redirecionar nem revelar conteudo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "falha de me oferece recuperacao sem tratar como visitante",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Gate aguarda logout HTTP antes de navegar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "login respeita retorno local preservado pelo middleware",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/domain/perfil-artesao-completo.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "verificarPerfilCompleto perfil com todos os campos preenchidos e completo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "verificarPerfilCompleto perfil sem historia fica incompleto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "verificarPerfilCompleto perfil sem tecnica principal fica incompleto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "verificarPerfilCompleto perfil sem regiao fica incompleto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "verificarPerfilCompleto foto ausente nao influencia a regra",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "verificarPerfilCompleto perfil ausente fica incompleto com todos os campos pendentes",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/domain/produto-visibilidade.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "produtoVisivelPublicamente produto ativo com estoque e visivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "produtoVisivelPublicamente produto com estoque zero nao e visivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "produtoVisivelPublicamente produto inativo nao e visivel mesmo com estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "filtrarProdutosVisiveis - contexto visitante remove produtos com estoque zero",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "filtrarProdutosVisiveis - contexto visitante remove produtos inativos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "filtrarProdutosVisiveis - contexto visitante visitante autenticado como outro usuario nao ve produto zerado de terceiros",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "filtrarProdutosVisiveis - contexto dono dono ve o proprio produto mesmo com estoque zero",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "filtrarProdutosVisiveis - contexto dono dono nao ve produto de outro artesao mesmo sendo dono de outros produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "filtrarProdutosVisiveis - contexto dono perfil publico do artesao aplica a mesma politica para visitante",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "visibilidade com artesao desativado produto de artesao desativado nao aparece publicamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "visibilidade com artesao desativado produto de artesao ativo continua visivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "visibilidade com artesao desativado visitante nao ve produtos de artesao desativado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "visibilidade com artesao desativado dono continua vendo os proprios produtos ativos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "idsArtesaosInativos retorna somente artesaos desativados",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "produto desativado pela moderacao nao aparece publicamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "produto desativado pela moderacao continua no painel do dono",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "produtoDisponivelParaVenda aceita produto ativo de artesao ativo mesmo sem estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "produtoDisponivelParaVenda rejeita produto removido pelo dono",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "produtoDisponivelParaVenda rejeita produto desativado pela moderacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "produtoDisponivelParaVenda rejeita produto de artesao desativado",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/domain/resumo-avaliacoes.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "calcularResumoAvaliacoes retorna media zero e quantidade zero sem avaliacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "calcularResumoAvaliacoes calcula a media aritmetica das notas",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "calcularResumoAvaliacoes arredonda a media para uma casa decimal",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/config/build-typescript.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "TypeScript do build de produção verifica a aplicação sem importar testes ou código do backend",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "TypeScript do build de produção preserva a checagem dos testes e contratos entre as camadas",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/config/docs-proxy.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "encaminha a barra final do Swagger sem redirecionamento circular",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "canonicaliza o endereco publico sem barra antes do rewrite",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/config/e2e-traces.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "31.3 remove senhas e cookies sem perder eventos e imagens",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/config/middleware.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Swagger sem barra preserva prefixo e query no redirecionamento",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Swagger publico nao exige cookie em /api/docs/",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Swagger publico nao exige cookie em /api/docs/openapi.json",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Swagger publico nao exige cookie em /api/docs/swagger-ui.css",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "sem cookie redireciona /admin no servidor",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "sem cookie redireciona /painel-artesao/produtos no servidor",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "sem cookie redireciona /minha-conta?aba=pedidos no servidor",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "cookie nao vazio permite que API e guarda decidam papel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fake mantem navegacao sem cookie",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/config/next-config.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "proxy da API não registra rewrite sem BACKEND_URL",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API não registra rewrite sem BACKEND_URL",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API não registra rewrite sem BACKEND_URL",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API encaminha /api para a origem https://origem-backend.example",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API encaminha /api para a origem https://origem-backend.example/",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API encaminha /api para a origem http://127.0.0.1:3001",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API não usa a variável pública como destino",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API rejeita destino inválido sem revelar valores",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API rejeita destino inválido sem revelar valores",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API rejeita destino inválido sem revelar valores",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API rejeita destino inválido sem revelar valores",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API rejeita destino inválido sem revelar valores",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API rejeita destino inválido sem revelar valores",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "proxy da API rejeita destino inválido sem revelar valores",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/perfil-artesao-http.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "nome do artesao usa endpoint publico com adapter real",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "perfil publico HTTP mostra nome e estado vazio sem listar usuarios",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "perfil HTTP inexistente mostra nao encontrado",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-artesaos-ativos.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "useArtesaosAtivos comeca carregando quando o service ainda nao resolveu",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useArtesaosAtivos permanece carregando quando o service e null",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useArtesaosAtivos retorna somente usuarios com papel artesao e ativos, ordenados por nome",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useArtesaosAtivos retorna erro recuperavel quando o service falha",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-busca-produtos.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "useBuscaProdutos inicia em carregando quando o service esta disponivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useBuscaProdutos retorna sucesso com os produtos encontrados pela consulta",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useBuscaProdutos envia tecnica, regiao e categoria juntos na mesma consulta",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useBuscaProdutos retorna vazio quando a consulta nao encontra produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useBuscaProdutos retorna erro quando o service falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useBuscaProdutos refaz a busca quando a consulta muda",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-detalhe-produto.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "useDetalheProduto comeca carregando enquanto os services nao existem",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useDetalheProduto retorna produto, nomes de categoria/tecnica/regiao e resumo das avaliacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useDetalheProduto marca indisponivel quando o service nao retorna produto publico",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useDetalheProduto marca indisponivel sem consultar o service quando o id esta ausente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useDetalheProduto mostra erro recuperavel e recarrega com sucesso",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useDetalheProduto falha no resumo de avaliacoes tambem vira erro recuperavel",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-filtros-url.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "useFiltrosUrl inicializa a consulta a partir dos parametros presentes na URL",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useFiltrosUrl inicializa com consulta vazia quando a URL nao possui filtros",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useFiltrosUrl ignora parametros invalidos ou desconhecidos na inicializacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useFiltrosUrl atualizar() envia ao router a URL com os filtros ativos combinados",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useFiltrosUrl atualizar() remove o parametro quando o novo valor e vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useFiltrosUrl atualizar() navega para o caminho puro quando nenhum filtro permanece ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useFiltrosUrl limpar() remove termo e todos os filtros da URL de uma vez",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useFiltrosUrl limpar() nao falha quando a URL ja esta sem filtros",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-meus-produtos.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "useMeusProdutos inicia em carregando quando service e artesaoId estao disponiveis",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useMeusProdutos retorna sucesso com os produtos do artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useMeusProdutos retorna vazio quando o artesao nao possui produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useMeusProdutos retorna erro quando o service falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useMeusProdutos recarregar busca a lista novamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useMeusProdutos nao chama o service quando artesaoId e nulo",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-opcoes-filtro.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "useOpcoesFiltro inicia em carregando quando o service esta disponivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useOpcoesFiltro carrega categorias, tecnicas e regioes em paralelo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useOpcoesFiltro retorna erro quando alguma lista falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useOpcoesFiltro mantem carregando quando o service ainda nao esta pronto",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-perfil-publico-artesao.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "usePerfilPublicoArtesao inicia em carregando quando todos os servicos estao disponiveis",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usePerfilPublicoArtesao retorna sucesso com perfil, nomes de tecnica/regiao e produtos visiveis",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usePerfilPublicoArtesao oculta produtos inativos ou sem estoque da grade publica",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usePerfilPublicoArtesao mantem perfil acessivel e incompleto quando nao ha perfil salvo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usePerfilPublicoArtesao retorna naoEncontrado quando o usuario nao existe",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usePerfilPublicoArtesao retorna naoEncontrado quando o usuario nao e artesao ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usePerfilPublicoArtesao retorna erro quando algum servico falha",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usePerfilPublicoArtesao recarregar busca os dados novamente apos erro",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usePerfilPublicoArtesao nao chama os servicos quando artesaoId e nulo",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-recomendacoes.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "useRecomendacoes consulta fallback quando contexto passa de null para vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useRecomendacoes permanece em carregando quando nao ha service ou contexto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useRecomendacoes retorna sucesso quando o service resolve com itens",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useRecomendacoes retorna vazio quando o service resolve sem itens",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useRecomendacoes retorna erro recuperavel quando o service rejeita",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useRecomendacoes nunca invoca o service sem contexto real",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useRecomendacoes chama o service com o contexto informado",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/hooks/use-sessao.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "useSessao retorna a sessao ja restaurada no primeiro render, sem piscar null",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "useSessao reage a login e logout do store",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/usuario.repository.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BrowserUsuarioRepository semeia exatamente cinco usuarios na primeira execucao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository nao sobrescreve alteracoes existentes ao repetir o seed",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository armazena os usuarios sob chave versionada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository adiciona um novo usuario e o mantem na listagem seguinte",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/avaliacoes.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.4 elegibilidade na Fake API considera compra confirmada e avaliacao existente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade na Fake API nao concede elegibilidade para pedidos pendentes, cancelados ou alheios",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.listByProduto retorna uma Promise",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.listByProduto retorna avaliacoes semeadas para pelo menos tres produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.listByProduto ordena da avaliacao mais recente para a mais antiga",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.listByProduto retorna lista vazia para produto sem avaliacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.listByProduto respeita a latencia configurada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.resumo retorna media e quantidade das avaliacoes do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.resumo retorna media zero e quantidade zero para produto sem avaliacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create persiste avaliacao valida e reflete no resumo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create aceita avaliacao sem comentario",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita nota 0 fora do intervalo inteiro de 1 a 5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita nota 6 fora do intervalo inteiro de 1 a 5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita nota -1 fora do intervalo inteiro de 1 a 5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita nota 3.5 fora do intervalo inteiro de 1 a 5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita nota NaN fora do intervalo inteiro de 1 a 5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita comentario acima do limite",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita comprador ausente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita produto inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita produto inativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create rejeita segunda avaliacao do mesmo comprador para o mesmo produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create - produto fora da vitrine por moderacao rejeita produto desativado pelo admin sem gravar avaliacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeAvaliacoesService.create - produto fora da vitrine por moderacao rejeita produto de artesao desativado sem gravar avaliacao",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/container-avaliacoes.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "obterAvaliacoesService expõe o recurso de avaliacoes pela camada organizada",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/container-http.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "HTTP nao possui pendencias depois de WEB-12",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP seleciona adapters reais para todos os services do fluxo comprador",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP usa storage somente para visitante e persiste comprador no servidor",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP nao avisa pendencias inexistentes em desenvolvimento",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fonte desconhecida falha explicitamente",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/container-indicadores.web5.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "seleciona HTTP explicitamente e nao usa storage privado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "seleciona fake explicitamente, exige artesao e nao faz fetch",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/fake-recommendation.adapter.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FakeRecommendationAdapter - fixture contratual por produto reproduz o ranking esperado documentado na fixture",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeRecommendationAdapter - fixture contratual por produto nunca retorna mais itens que o limite documentado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeRecommendationAdapter - fixture contratual por produto nunca inclui o produto de contexto no resultado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeRecommendationAdapter - fixture contratual por produto nunca inclui produto de outra categoria, inativo ou sem estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeRecommendationAdapter - fallback geral vitrine sem contexto recebe fallback do repositorio local real",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeRecommendationAdapter - fallback geral usa fallback geral quando o contexto e usuarioId",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeRecommendationAdapter - fallback geral usa fallback geral quando o produtoId de contexto nao existe",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeRecommendationAdapter - fallback geral usa fallback geral quando a categoria do contexto nao tem candidatos elegiveis",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeRecommendationAdapter - repositorio real do navegador usa o repositorio local real e persiste apos nova instancia",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/indicadores-artesao.fake.web5.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "agrega pedidos confirmados, precos congelados e pedidos distintos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "retorna vazio para artesao sem vendas, sem fabricar receita",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "exige sessao de artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "propaga falha do storage sem produzir indicadores zerados",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/moderacao.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FakeModeracaoService - listagens lista os quatro artesaos sem expor senha",
+          "[CREDENCIAL_REMOVIDA]": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeModeracaoService - listagens lista todos os produtos, inclusive os desativados",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de produto quatro produtos desativados somem da vitrine, busca, perfil e recomendacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de produto dados dos produtos desativados permanecem no storage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de produto quatro produtos reativados voltam a aparecer na vitrine",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de produto produto desativado pelo admin continua no painel do dono",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de produto reativar pelo admin nao restaura produto removido pelo artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de produto rejeita produto inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de artesao quatro artesaos desativados nao iniciam sessao e seus produtos somem",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de artesao dono continua vendo os proprios produtos ativos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de artesao dados dos artesaos desativados permanecem no storage sem mudar papel ou senha",
+          "[CREDENCIAL_REMOVIDA]": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de artesao quatro artesaos reativados voltam a entrar e seus produtos reaparecem",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de artesao rejeita alvo que nao e artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "US17 - desativacao e reativacao de artesao admin nao desativa a si mesmo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeModeracaoService - autorizacao rejeita todas as operacoes para comprador",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeModeracaoService - autorizacao rejeita todas as operacoes para artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeModeracaoService - autorizacao rejeita todas as operacoes para inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeModeracaoService - autorizacao rejeita admin desativado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "pedidos existentes apos moderacao preservam nome e preco do produto desativado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "checkout apos moderacao rejeita produto desativado pelo admin sem baixar estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "checkout apos moderacao rejeita produto de artesao desativado que ja estava no carrinho",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "checkout apos moderacao aceita o pedido depois da reativacao",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/opcoes-filtro.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FakeOpcoesFiltroService categorias() retorna uma Promise com a mesma massa da Fake API",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeOpcoesFiltroService tecnicas() retorna a mesma massa de tecnicas da Fake API",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeOpcoesFiltroService regioes() retorna a mesma massa de regioes da Fake API",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeOpcoesFiltroService respeita a latencia configurada",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/pedidos-historico.fake.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Fake API lista apenas a conta atual, ordenada e paginada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Fake API usa 404 identico para terceiro e inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Fake API exige sessao de comprador para leitura",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Fake API preserva valores gravados e nao inventa pagamento legado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Fake API registra pagamento simulado para novos pedidos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/pedidos.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FakePedidosService.confirmar — pedido valido confirma o pedido, reduz estoque e incrementa quantidade vendida",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — pedido valido congela nome e preco unitario do produto no momento da confirmacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — pedido valido nunca aceita compradorId, preco ou total forjados na entrada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — pedido valido gera numero de confirmacao distinto em 10 pedidos consecutivos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — carrinho vazio rejeita confirmacao sem itens e nao grava pedido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — estoque insuficiente rejeita e nomeia o produto em falta, sem gravar pedido nem alterar estoque de nenhum item",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — produto inativo rejeita confirmacao com produto inativo e nao grava pedido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — produto inativo rejeita confirmacao com produto inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — itens adulterados rejeita quantidade zero sem gravar pedido nem alterar estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — itens adulterados rejeita quantidade negativa sem gravar pedido nem alterar estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — itens adulterados rejeita quantidade fracionada sem gravar pedido nem alterar estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — itens adulterados rejeita quantidade NaN sem gravar pedido nem alterar estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — itens adulterados rejeita quantidade infinita sem gravar pedido nem alterar estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — itens adulterados rejeita quantidade texto sem gravar pedido nem alterar estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — itens adulterados rejeita o mesmo produto repetido sem vender acima do estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePedidosService.confirmar — itens adulterados rejeita item invalido mesmo quando os demais sao validos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/perfil-artesao.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FakePerfilArtesaoService.obter retorna null quando o artesao ainda nao possui perfil salvo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePerfilArtesaoService.obter retorna o perfil semeado do artesao informado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePerfilArtesaoService.salvar preserva foto existente quando o formulario omite fotoUrl",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePerfilArtesaoService.salvar cria o perfil vinculado ao artesao da sessao, ignorando artesaoId da entrada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePerfilArtesaoService.salvar perfil salvo persiste e e recuperavel por obter",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePerfilArtesaoService.salvar atualizar o proprio perfil substitui o anterior sem duplicar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePerfilArtesaoService.salvar rejeita historia acima de 1000 caracteres sem salvar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakePerfilArtesaoService.salvar nao altera o perfil de outro artesao ao salvar com um artesaoId de sessao diferente",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/produtos.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FakeProdutosService.list retorna uma Promise",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.list retorna exatamente trinta produtos na primeira execucao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.list cinco categorias possuem produtos e a sexta permanece cadastrada e vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.list respeita a latencia configurada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.list dados sobrevivem a uma nova instancia do repositorio na mesma chave",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.list oculta da vitrine produto com estoque zerado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.list oculta da vitrine produto inativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.create cria o produto vinculado ao artesao informado, ignorando qualquer artesaoId da entrada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.create produto criado aparece na listagem do repositorio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.create rejeita entrada invalida sem criar produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.listByArtesao retorna somente produtos ativos do artesao informado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.listByArtesao nao retorna produtos de outro artesao mesmo com mesmo prefixo de id",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.listByArtesao retorna array vazio quando o artesao nao possui produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.listByArtesao o proprio artesao ainda ve produto com estoque zerado em Meus produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.listByArtesao produto removido logicamente permanece na listagem privada do dono",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.update atualiza os campos e preserva o artesaoId original",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.update ignora artesaoId manipulado na entrada e preserva o original",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.update rejeita atualizacao de produto de outra conta",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.update rejeita atualizacao de produto inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.update rejeita entrada invalida sem alterar o produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search retorna exatamente os tres produtos-semente conhecidos para o termo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search ignora caixa ao buscar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search ignora acentos ao buscar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search busca tambem no campo descricao, nao somente no nome",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search retorna array vazio quando nenhum produto corresponde ao termo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search retorna a lista completa quando o termo e vazio ou so espacos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search retorna a lista completa quando nenhum filtro esta ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search filtra por artesaoId retornando somente os produtos daquele artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search oculta da busca produto com estoque zerado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search oculta da busca produto inativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search cinco combinacoes de filtros ativos (semantica AND) combinacao 1: somente categoria retorna os seis produtos da categoria",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search cinco combinacoes de filtros ativos (semantica AND) combinacao 2: somente tecnica retorna os quatro produtos trancados em fibra",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search cinco combinacoes de filtros ativos (semantica AND) combinacao 3: somente regiao retorna os dez produtos de Tracunhaem",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search cinco combinacoes de filtros ativos (semantica AND) combinacao 4: categoria e regiao juntas aplicam AND e restringem para dois produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.search cinco combinacoes de filtros ativos (semantica AND) combinacao 5: termo, categoria e tecnica juntos aplicam AND e restringem para tres produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.remove marca o produto como inativo (remocao logica) sem apagar o registro",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.remove rejeita remocao de produto de outra conta e preserva o registro ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.remove rejeita remocao de produto inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.obterPublico retorna o produto ativo e com estoque pelo id",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.obterPublico retorna null para produto inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.obterPublico retorna null para id vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.obterPublico retorna null para produto inativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeProdutosService.obterPublico retorna null para produto sem estoque",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/recomendacao-contrato.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "resposta backend implementa RecomendacaoResultado do frontend",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/usuarios.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "FakeUsuariosService.list retorna uma Promise",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.list retorna exatamente cinco DTOs publicos na primeira execucao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.list nunca inclui a senha no retorno",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.list respeita a latencia configurada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.register cria um usuario comprador e retorna DTO publico sem senha",
+          "[CREDENCIAL_REMOVIDA]": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.register persiste o usuario criado na lista",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.register rejeita papel admin",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.register rejeita senha curta",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.register rejeita email identico ao ja cadastrado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.register rejeita email duplicado com diferenca de maiusculas e espacos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.register aceita cadastro com email realmente novo apos tentativa duplicada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.login autentica um usuario do seed com credenciais corretas",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.login nunca inclui a senha no resultado do login",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.login rejeita senha incorreta com mensagem generica",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.login rejeita email inexistente com a mesma mensagem generica da senha incorreta",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "FakeUsuariosService.login usuario inativo nao inicia sessao mesmo com credenciais corretas",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/verificar-usuario-ativo.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "criarVerificadorUsuarioAtivo considera ativo um usuario do seed sem precisar de seed previo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "criarVerificadorUsuarioAtivo considera inativo um usuario desativado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "criarVerificadorUsuarioAtivo considera inativo um usuario inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "criarVerificadorUsuarioAtivo rejeita sessao com papel diferente do cadastro",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "criarVerificadorUsuarioAtivo rejeita sessao com email diferente do cadastro",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/store/carrinho-http.store.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "descarta ID legado da fake API rejeitado pelo backend com aviso",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "mesclagem parcial retoma sem duplicar o item ja confirmado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "hidrata e persiste no servidor sem cache local do comprador",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "mescla uma vez somando ate o estoque e limpa visitante",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "descarta produto oculto com aviso e preserva carrinho remoto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "estoque reduzido limita tambem a quantidade existente no servidor",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "falha de rede preserva local e permite recarregar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "usa estoque atual do servidor e exibe nome no 409",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "serializa mutacoes e quantidade zero remove pelo DELETE",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "logout invalida resposta atrasada e bloqueia chamadas seguintes",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/store/carrinho.store.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "CartStore adiciona um produto novo ao carrinho",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore adicionar novamente o mesmo produto soma a quantidade",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore remove um item do carrinho",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore altera a quantidade de um item existente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore remove o item ao alterar a quantidade para zero",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore recalcula o total apos cada mudanca",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore limpar esvazia o carrinho e persiste o estado vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque aceita adicionar quantidade igual ao estoque disponivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque aceita adicionar quantidade um a menos que o estoque disponivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque bloqueia adicionar quando o estoque disponivel e zero",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque bloqueia adicionar quantidade acima do estoque disponivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque bloqueia adicionar novamente um produto ja presente quando a soma ultrapassa o estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque aceita adicionar novamente um produto ja presente somando ao existente dentro do estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque usa o codigo de erro ESTOQUE_INSUFICIENTE ao bloquear a adicao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque bloqueia alterarQuantidade acima do estoque registrado no item",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque aceita alterarQuantidade ate o limite do estoque registrado no item",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CartStore validacao de estoque nao altera o storage quando a operacao e bloqueada",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/store/sessao-http.store.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "HTTP hidrata pelo servidor e ignora localStorage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "401 vira visitante; erro de rede permanece recuperavel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "hidratação atrasada nao apaga login mais recente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "logout HTTP so encerra sessao apos sucesso",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "logout impede sessao antiga restaurada por requisicao pendente",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/store/sessao.store.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "SessionStore comeca sem sessao quando o storage esta vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore restaura a sessao ja persistida na construcao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore login define a sessao em memoria e persiste no storage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore login notifica os ouvintes inscritos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore logout limpa a sessao em memoria e no storage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore unsubscribe para de notificar o ouvinte",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore sessao sobrevive a tres recarregamentos consecutivos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore revalidar encerra a sessao quando o usuario esta desativado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore revalidar mantem a sessao quando o usuario esta ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore revalidar nao consulta nada quando nao ha sessao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore revalidar nao encerra sessao trocada durante a verificacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionStore revalidar encerra a sessao quando a verificacao falha",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/types/usuario.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "paraUsuarioPublico remove a senha do DTO publico",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/validators/avaliacao.validator.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.3 validacao de avaliacao preserva as regras de UUID usadas pelo schema do servidor",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 validacao de avaliacao rejeita nota 0",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 validacao de avaliacao rejeita nota 6",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 validacao de avaliacao rejeita nota 3.5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 validacao de avaliacao rejeita nota NaN",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 validacao de avaliacao aceita limites e aplica o limite do comentario apos trim",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 validacao de avaliacao rejeita campos extras e exige UUID somente no transporte HTTP",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/validators/cadastro.validator.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "validarCadastro nao retorna erros para um cadastro valido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarCadastro rejeita nome com menos de 3 caracteres",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarCadastro rejeita email em formato invalido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarCadastro rejeita senha com menos de oito caracteres",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarCadastro aceita senha com exatamente oito caracteres",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarCadastro aceita papel artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarCadastro rejeita papel admin mesmo forcado via cast",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarCadastro rejeita papel vazio ou desconhecido",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/validators/foto-perfil.validator.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.6 validacao da foto rejeita PDF renomeado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.6 validacao da foto rejeita PNG 3 MB",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.6 validacao da foto rejeita GIF",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.6 validacao da foto rejeita MIME divergente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.6 validacao da foto aceita JPG 500 KB",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/validators/perfil-artesao.validator.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "validarPerfilArtesao nao gera erros para entrada valida",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao bloqueia historia com mais de 1000 caracteres",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao aceita historia com exatamente 1000 caracteres",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao bloqueia historia vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao bloqueia tecnicaId invalida",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao bloqueia regiaoId invalida",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao aceita fotoUrl ausente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao bloqueia fotoUrl em branco quando informada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao aceita fotoUrl https://origem.test/fotos/ana.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao aceita fotoUrl /fotos/ana.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao rejeita fotoUrl http://origem.test/foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao rejeita fotoUrl javascript:alert(1)",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao rejeita fotoUrl data:image/png;base64,AAAA",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao rejeita fotoUrl //evil.com/foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao rejeita fotoUrl /%5Cevil.com/foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao rejeita fotoUrl ftp://origem.test/foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao rejeita fotoUrl foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarPerfilArtesao rejeita fotoUrl com barra invertida",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/validators/produto.validator.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "validarProduto entrada valida nao produz erros",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto nome ausente bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto descricao ausente bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto categoria ausente bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto categoria desconhecida bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto nenhuma foto bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto foto com url vazia bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto estoque ausente bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto preco %p bloqueia criacao 0",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto preco %p bloqueia criacao -1",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto preco %p bloqueia criacao -0.5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto preco %p bloqueia criacao -100",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto preco %p bloqueia criacao NaN",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto estoque fracionario bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto estoque negativo bloqueia criacao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto estoque zero e permitido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto aceita foto https://origem.test/fotos/vaso.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto aceita foto /fotos/vaso.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita foto http://origem.test/foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita foto javascript:alert(1)",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita foto data:image/png;base64,AAAA",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita foto //evil.com/foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita foto /%5Cevil.com/foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita foto ftp://origem.test/foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita foto foto.jpg",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita foto com barra invertida",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "validarProduto rejeita quando qualquer uma das fotos e insegura",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/utils/formatar-moeda.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "formatarMoeda 89.9 vira R$ 89,90",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "formatarMoeda 0.01 vira R$ 0,01",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "formatarMoeda 100 vira R$ 100,00",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "formatarMoeda 1234.56 vira R$ 1.234,56",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/utils/foto-url-segura.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "fotoUrlSegura aceita caminho local",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fotoUrlSegura aceita URL https",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fotoUrlSegura rejeita valor ausente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fotoUrlSegura rejeita caminhos que escapam da origem",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fotoUrlSegura rejeita URL http",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fotoUrlSegura rejeita esquemas perigosos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fotoUrlAceita aceita https e caminho local",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "fotoUrlAceita rejeita http, esquemas e caminhos inseguros",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/utils/normalizar-texto.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "normalizarTexto converte para minusculas",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "normalizarTexto remove acentos de forma deterministica",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "normalizarTexto colapsa espacos internos multiplos em um unico espaco",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "normalizarTexto remove espacos nas extremidades",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "normalizarTexto combina minusculas, acentos e espacos na mesma chamada",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/utils/preco-campo.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "formatarPrecoCampo 39.9 vira 39,90",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "formatarPrecoCampo 45.5 vira 45,50",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "formatarPrecoCampo 100 vira 100,00",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "formatarPrecoCampo 0.01 vira 0,01",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lerPrecoCampo 39,90 vira 39.9",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lerPrecoCampo 45,5 vira 45.5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lerPrecoCampo 89.90 vira 89.9",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lerPrecoCampo  12,00  vira 12",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lerPrecoCampo -0.5 vira -0.5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lerPrecoCampo 1.234,56 vira 1234.56",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lerPrecoCampo texto nao numerico vira NaN",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/utils/produto-query-url.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "parseProdutoQuery le termo e filtros presentes na URL",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "parseProdutoQuery omite campos ausentes da URL",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "parseProdutoQuery ignora parametros vazios com seguranca",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "parseProdutoQuery ignora parametros desconhecidos com seguranca",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "parseProdutoQuery ignora espacos em branco como se o parametro estivesse vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "serializeProdutoQuery gera querystring somente com campos ativos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "serializeProdutoQuery inclui o artesao selecionado na querystring",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "serializeProdutoQuery remove parametros vazios ou ausentes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "serializeProdutoQuery retorna string vazia quando nao ha filtro ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "parseProdutoQuery e serializeProdutoQuery uma URL copiada reconstroi exatamente o mesmo conjunto de filtros",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/utils/rota-segura.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "paraDestinoSeguro aceita caminho interno simples",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro aceita caminho interno de produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro aceita caminho interno com query string",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita destino vazio ou ausente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita caminho protocolo-relativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita barra invertida logo apos a barra inicial",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita barra invertida em qualquer posicao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita barra invertida codificada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita barra dupla codificada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita codificacao malformada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita caracteres de controle",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita URL absoluta externa",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita esquema javascript",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita esquema embutido no caminho",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "paraDestinoSeguro rejeita caminho que nao comeca com barra",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "caminhoLocalSeguro aceita caminho local",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "caminhoLocalSeguro aceita a raiz",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "caminhoLocalSeguro rejeita caminhos que escapam da origem",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/utils/rotulo-papel.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "ROTULO_PAPEL comprador vira Comprador",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ROTULO_PAPEL artesao vira Artesão",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ROTULO_PAPEL admin vira Administrador",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/admin/painel-moderacao.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "PainelModeracao mostra carregamento enquanto as listagens nao chegam",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao mostra erro recuperavel e tenta novamente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao mostra estado vazio em cada aba",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao lista artesaos e produtos com status visivel e sem senha",
+          "[CREDENCIAL_REMOVIDA]": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao mostra a quantidade de cadastros em cada aba",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao busca por nome ou e-mail ignorando acentos e limpa os filtros",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao filtra por status sem chamar o servico de novo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao pede confirmacao antes de desativar e nao age ao cancelar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao desativa artesao apos confirmar e mostra sucesso",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao reativa produto apos confirmar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao sinaliza produto removido pelo artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PainelModeracao mostra erro quando a acao falha e permite tentar de novo",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/artesao/perfil-artesao-publico.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "PerfilArtesaoPublico exibe historia, tecnica, regiao e grade de produtos ativos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoPublico nao quebra layout quando perfil esta incompleto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoPublico renderiza fotoUrl com caminho local do proprio site",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoPublico nao renderiza fotoUrl com esquema diferente de http(s)",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoPublico nao exibe produto inativo ou sem estoque",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoPublico exibe estado vazio quando o artesao nao possui produtos visiveis",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoPublico exibe estado de nao encontrado quando o artesao nao existe",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PerfilArtesaoPublico exibe erro recuperavel quando o carregamento falha",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/produto/detalhe-produto.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "DetalheProduto mostra carregando antes do produto chegar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra todos os dados do produto no sucesso",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra as fotos na ordem definida",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto descarta fotos com protocolo inseguro",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra nota media e quantidade vindas do AvaliacoesService",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto indica quando o produto ainda nao tem avaliacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto linka para o perfil publico do artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto usa o produtoId da pagina como contexto das recomendacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra Pecas relacionadas com link e acao do ProdutoCard",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra erro de recomendacao sem ocultar o detalhe",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto limita as pecas relacionadas aos primeiros oito itens da API",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto exclui o produto atual na posicao 0 antes de limitar os relacionados",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto exclui o produto atual na posicao 4 antes de limitar os relacionados",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto exclui o produto atual na posicao 10 antes de limitar os relacionados",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra loading dos relacionados mantendo o produto visivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra vazio com 'API sem itens'",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra vazio com 'API apenas com o produto atual'",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto renderiza os itens do fallback geral no carrossel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto aciona onAdicionarAoCarrinho com o produto carregado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra erro de carrinho vinculado ao botao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra confirmacao quando o item entra no carrinho",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto produto indisponivel ou inexistente nao pode ser comprado nem gera recomendacoes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "DetalheProduto mostra erro recuperavel e tenta novamente",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/components/autenticacao/layout-autenticacao.test.tsx",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "LayoutAutenticacao exibe a foto de maos modelando barro no painel lateral",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/repositories/avaliacao.repository.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BrowserAvaliacaoRepository seed popula a carga sintetica na primeira execucao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserAvaliacaoRepository seed e idempotente e nao sobrescreve alteracoes existentes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserAvaliacaoRepository listByProdutoId retorna somente avaliacoes do produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserAvaliacaoRepository create persiste a avaliacao e sobrevive a nova instancia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserAvaliacaoRepository com valor corrompido descarta {json-invalido e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserAvaliacaoRepository com valor corrompido descarta {\"nao\":\"lista\"} e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserAvaliacaoRepository com valor corrompido descarta null e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserAvaliacaoRepository com valor corrompido seed repopula depois de descartar valor corrompido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserAvaliacaoRepository com valor corrompido ignora entradas que nao sao objetos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/repositories/pedido.repository.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BrowserPedidoRepository list retorna array vazio quando nada foi criado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPedidoRepository create adiciona o pedido e persiste no storage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPedidoRepository create preserva pedidos ja existentes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPedidoRepository dados sobrevivem a uma nova instancia apontando para a mesma chave",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPedidoRepository com valor corrompido descarta {json-invalido e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPedidoRepository com valor corrompido descarta {\"nao\":\"lista\"} e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPedidoRepository com valor corrompido descarta null e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPedidoRepository com valor corrompido ignora entradas que nao sao objetos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/repositories/perfil-artesao.repository.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BrowserPerfilArtesaoRepository seed popula exatamente dois perfis na primeira execucao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository seed e idempotente e nao sobrescreve alteracoes existentes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository findByArtesaoId retorna o perfil correspondente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository findByArtesaoId retorna null quando o perfil nao existe",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository upsert cria um novo perfil quando o artesao ainda nao possui um",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository upsert substitui o perfil existente do mesmo artesao e preserva os demais",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository dados sobrevivem a uma nova instancia apontando para a mesma chave",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository com valor corrompido descarta {json-invalido e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository com valor corrompido descarta {\"nao\":\"lista\"} e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository com valor corrompido descarta null e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository com valor corrompido seed repopula depois de descartar valor corrompido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserPerfilArtesaoRepository com valor corrompido ignora entradas que nao sao objetos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/repositories/produto.repository.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BrowserProdutoRepository seed popula exatamente trinta produtos na primeira execucao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository seed e idempotente e nao sobrescreve alteracoes existentes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository dados sobrevivem a uma nova instancia apontando para a mesma chave",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository list retorna array vazio quando nada foi semeado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository create adiciona o produto e persiste no storage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository create preserva produtos ja existentes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository findById retorna o produto correspondente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository findById retorna null quando o produto nao existe",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository update altera somente os campos informados e preserva o restante",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository update retorna null quando o produto nao existe",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository com valor corrompido descarta {json-invalido e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository com valor corrompido descarta {\"nao\":\"lista\"} e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository com valor corrompido descarta null e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository com valor corrompido seed repopula depois de descartar valor corrompido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserProdutoRepository com valor corrompido ignora entradas que nao sao objetos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/repositories/usuario.repository.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BrowserUsuarioRepository.create rejeita email identico ao ja cadastrado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository.create rejeita email com diferenca de maiusculas e minusculas",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository.create rejeita email com espacos externos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository.create aceita cadastro de email realmente novo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository.create nao cria registro parcial quando o email e duplicado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository.update altera o status ativo e persiste no storage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository.update retorna null para usuario inexistente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository.update preserva id, email, senha e papel mesmo com alteracoes manipuladas",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository.update nao altera os demais usuarios",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository com valor corrompido descarta {json-invalido e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository com valor corrompido descarta {\"nao\":\"lista\"} e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository com valor corrompido descarta null e segue com lista vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository com valor corrompido seed repopula depois de descartar valor corrompido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserUsuarioRepository com valor corrompido ignora entradas que nao sao objetos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/storage/carrinho.storage.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BrowserCarrinhoStorage retorna null quando nao ha carrinho salvo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserCarrinhoStorage persiste e le o carrinho salvo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserCarrinhoStorage descarta valor corrompido {json-invalido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserCarrinhoStorage descarta valor corrompido \"texto\"",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserCarrinhoStorage descarta valor corrompido null",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserCarrinhoStorage descarta valor corrompido {\"itens\":\"nao-lista\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserCarrinhoStorage descarta valor corrompido []",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserCarrinhoStorage ignora itens que nao sao objetos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/storage/modo-acesso.storage.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "SessionModoAcessoStorage ehVisitante retorna falso quando nada foi escolhido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionModoAcessoStorage definirVisitante grava a escolha e ehVisitante passa a retornar verdadeiro",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "SessionModoAcessoStorage usa sessionStorage, nao localStorage",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/storage/sessao.storage.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "BrowserSessaoStorage retorna null quando nao ha sessao salva",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage persiste e le a sessao salva",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage persiste somente id, nome, email e papel mesmo com campos extras no objeto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage limpar remove a sessao salva",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta sessao antiga salva sem email",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage nao quebra ao ler um valor corrompido no storage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com id vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com id ausente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com id nao string",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com email vazio",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com email nao string",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com papel desconhecido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com papel ausente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com valor nao objeto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage descarta e limpa sessao com valor nulo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage limpa o storage quando o valor esta corrompido",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage aceita papel comprador",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage aceita papel artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage aceita papel admin",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "BrowserSessaoStorage restaura somente os campos conhecidos da sessao",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/api-client.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "ApiClient usa /api, JSON, no-store e cookie da mesma origem",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia status 401 e codigo undefined",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia status 401 e codigo CREDENCIAIS_INVALIDAS",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia status 403 e codigo undefined",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia status 404 e codigo undefined",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia status 409 e codigo EMAIL_JA_CADASTRADO",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia status 400 e codigo VALIDACAO",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia status 413 e codigo FOTO_MUITO_GRANDE",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia status 503 e codigo undefined",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient 204 nao tenta interpretar JSON",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient mapeia erro de rede sem expor detalhes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient timeout aborta fetch mesmo quando transporte nao responde",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient timeout cobre leitura do corpo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient rejeita JSON invalido e mantem status de erro sem JSON",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "ApiClient nao envia cookies para destinos externos",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/avaliacoes.web3.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.3 HttpAvaliacoesService cria por HTTP, aplica trim e envia somente os campos do corpo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService preserva create como compatibilidade com o contrato AV1",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita entrada invalida antes do HTTP: {\"nota\":0}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita entrada invalida antes do HTTP: {\"nota\":6}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita entrada invalida antes do HTTP: {\"nota\":3.5}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita entrada invalida antes do HTTP: {\"comentario\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita entrada invalida antes do HTTP: {\"produtoId\":\"invalido\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita entrada invalida antes do HTTP: {\"compradorId\":\"alheio\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService propaga 409 como avaliacao duplicada",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita resposta fora do contrato: {\"nota\":3.5}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita resposta fora do contrato: {\"produtoId\":\"outro\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita resposta fora do contrato: {\"compradorId\":null}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita resposta fora do contrato: {\"comentario\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.3 HttpAvaliacoesService rejeita resposta fora do contrato: {\"criadoEm\":\"ontem\"}",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/carrinho.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "409 preserva somente produto e nome permitidos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "adapter valida DTO e chama somente rotas do token",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita DTO invalido {\"total\":\"20\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita DTO invalido {\"itens\":[{\"produtoId\":\"b04aec23-d737-4a5b-aac1-edabf3aa0947\",\"nome\":\"Vaso\",\"precoUnitario\":-1,\"quantidade\":2,\"estoqueDisponivel\":5}]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita DTO invalido {\"itens\":[{\"produtoId\":\"b04aec23-d737-4a5b-aac1-edabf3aa0947\",\"nome\":\"Vaso\",\"precoUnitario\":10,\"quantidade\":0,\"estoqueDisponivel\":5}]}",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/catalogo-escrita.web12.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "escreve produtos com cookie sem enviar identidade do artesao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lista catalogo privado sem filtros publicos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "atualiza estoque pelo endpoint dedicado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "moderacao HTTP usa todas as rotas administrativas sem adminId externo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "UsuariosService.list valida a lista publica e descarta dados privados",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/catalogo.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "HTTP catalogo mantem ProdutoDTO compativel com o tipo Produto do frontend",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo lista e combina filtros pelos nomes do contrato backend",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo obterPublico traduz 404 em null e preserva falhas recuperaveis",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo rejeita produto fora do contrato: {\"preco\":\"89.90\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo rejeita produto fora do contrato: {\"fotos\":[\"url\"]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo rejeita produto fora do contrato: {\"quantidadeEstoque\":-1}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo rejeita produto fora do contrato: {\"notaMedia\":6}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo rejeita produto fora do contrato: {\"criadoEm\":\"ontem\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo remocao usa DELETE autenticado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo carrega categorias, tecnicas e regioes do HTTP",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo rejeita opcoes malformadas sem fallback fake",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo adapta itens e resumo total ao contrato de leitura existente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo resumo de produto oculto fica vazio para o detalhe indisponivel",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HTTP catalogo rejeita avaliacoes e resumos fora do contrato",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/elegibilidade-avaliacao.web4.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "Web.4 elegibilidade HTTP consulta sessao e valida resposta {\"podeAvaliar\":true,\"motivo\":null}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP consulta sessao e valida resposta {\"podeAvaliar\":false,\"motivo\":\"nao_comprou\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP consulta sessao e valida resposta {\"podeAvaliar\":false,\"motivo\":\"ja_avaliou\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP nao concede acesso com resposta invalida {\"podeAvaliar\":true,\"motivo\":\"nao_comprou\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP nao concede acesso com resposta invalida {\"podeAvaliar\":false,\"motivo\":null}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP nao concede acesso com resposta invalida {\"podeAvaliar\":false,\"motivo\":\"outro\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP nao concede acesso com resposta invalida {\"podeAvaliar\":false,\"motivo\":[\"nao_comprou\"]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP nao concede acesso com resposta invalida {\"podeAvaliar\":\"true\",\"motivo\":null}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP nao concede acesso com resposta invalida {}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP valida UUID antes de consultar",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "Web.4 elegibilidade HTTP preserva codigo estavel de compra nao verificada no POST",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/indicadores-artesao.web5.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "le indicadores privados sem enviar identidade externa",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "aceita ausencia de vendas e preserva data da consulta",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 0",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 1",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 2",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 3",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 4",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 6",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 7",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 8",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 9",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 10",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 11",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 12",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita payload invalido antes de exibir valores: 13",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "propaga HTTP 401 sem fallback local",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "propaga HTTP 403 sem fallback local",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "propaga HTTP 503 sem fallback local",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/pedidos-historico.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "lista pedidos paginados por HTTP com status de pedido e pagamento",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "obtem valores persistidos e pagamento do detalhe",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "propaga 404 sem fallback para o storage local",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "valida paginacao antes do fetch: {\"pagina\":0}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "valida paginacao antes do fetch: {\"pagina\":1.5}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "valida paginacao antes do fetch: {\"limite\":101}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "valida paginacao antes do fetch: {\"limite\":0}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "valida paginacao antes do fetch: {\"pagina\":10001}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "valida id antes do fetch: ",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "valida id antes do fetch: ../auth/me",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "valida id antes do fetch: nao-uuid",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta de detalhe inconsistente: 0",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta de detalhe inconsistente: 1",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta de detalhe inconsistente: 2",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta de detalhe inconsistente: 3",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "rejeita resposta de detalhe inconsistente: 4",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "aceita legado sem valores ou pagamento, sem inventar comprovante",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/perfil-artesao.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "WEB-07 adapters HTTP Web.6 envia FormData com cookie sem Content-Type manual",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP perfil sai de pendentes e carrega sem acessar storage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP salva pela rota PATCH com cookie e campos permitidos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP resolve o nome pela API publica sem listar usuarios",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP lista produtos publicos do artesao pelo filtro existente",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP 404 vira null e 403 e 503 continuam erros recuperaveis",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP rejeita resposta malformada {\"nome\":123}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP rejeita resposta malformada {\"completo\":\"sim\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP rejeita resposta malformada {\"historia\":null}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "WEB-07 adapters HTTP rejeita resposta malformada {\"fotoUrl\":\"javascript:alert(1)\"}",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/recomendacoes.adapter.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "HttpRecommendationAdapter no container produz o mesmo resultado completo da fake para a fixture contratual",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container consulta /api/recomendacoes com contexto real: {\"produtoId\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container consulta /api/recomendacoes com contexto real: {\"usuarioId\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container consulta /api/recomendacoes com contexto real: {}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container sai de PENDENTES_HTTP sem consultar localStorage",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container preserva ranking e fallback sem executar ranking local",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container exclui o contexto, duplicados e invisiveis antes do limite oito",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita resposta fora do contrato: null",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita resposta fora do contrato: %j",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita resposta fora do contrato: {}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita resposta fora do contrato: {\"estrategia\":\"\",\"itens\":[]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita resposta fora do contrato: {\"estrategia\":3,\"itens\":[]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita resposta fora do contrato: {\"estrategia\":\"categoria\",\"itens\":[{\"id\":\"cccccccc-cccc-4ccc-8ccc-cccccccccccc\",\"nome\":\"Vaso recomendado\",\"descricao\":\"Sintetico\",\"preco\":\"89.90\",\"categoriaId\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"tecnicaId\":\"tecnica-modelagem-argila\",\"regiaoId\":\"regiao-pilar-recife\",\"artesaoId\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"fotos\":[{\"url\":\"/produtos/fixture.svg\",\"ordem\":0}],\"quantidadeEstoque\":4,\"quantidadeVendida\":10,\"notaMedia\":4.5,\"ativo\":true,\"criadoEm\":\"2026-10-14T00:00:00.000Z\"}]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita resposta fora do contrato: {\"estrategia\":\"categoria\",\"itens\":[{\"id\":\"cccccccc-cccc-4ccc-8ccc-cccccccccccc\",\"nome\":\"Vaso recomendado\",\"descricao\":\"Sintetico\",\"preco\":89.9,\"categoriaId\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"tecnicaId\":\"tecnica-modelagem-argila\",\"regiaoId\":\"regiao-pilar-recife\",\"artesaoId\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"fotos\":[\"url\"],\"quantidadeEstoque\":4,\"quantidadeVendida\":10,\"notaMedia\":4.5,\"ativo\":true,\"criadoEm\":\"2026-10-14T00:00:00.000Z\"}]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita resposta fora do contrato: {\"estrategia\":\"categoria\",\"itens\":[{\"id\":\"cccccccc-cccc-4ccc-8ccc-cccccccccccc\",\"nome\":\"Vaso recomendado\",\"descricao\":\"Sintetico\",\"preco\":89.9,\"categoriaId\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"tecnicaId\":\"tecnica-modelagem-argila\",\"regiaoId\":\"regiao-pilar-recife\",\"artesaoId\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"fotos\":[{\"url\":\"/produtos/fixture.svg\",\"ordem\":0}],\"quantidadeEstoque\":4,\"quantidadeVendida\":10,\"notaMedia\":7,\"ativo\":true,\"criadoEm\":\"2026-10-14T00:00:00.000Z\"}]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita contexto invalido antes da rede: {\"produtoId\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\",\"usuarioId\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita contexto invalido antes da rede: {\"produtoId\":\"\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita contexto invalido antes da rede: {\"produtoId\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\",\"extra\":true}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita contexto invalido antes da rede: {\"usuarioId\":[]}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container rejeita contexto invalido antes da rede: {\"produtoId\":\"x&usuarioId=y\"}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container propaga HTTP 400 sem fallback fake",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container propaga HTTP 404 sem fallback fake",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container propaga HTTP 503 sem fallback fake",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "HttpRecommendationAdapter no container propaga falha de rede",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/services/http/usuarios.service.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "cadastro usa auth/register e retorna usuario publico ativo",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "login, me e logout seguem os endpoints reais",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "cadastro admin e rejeitado sem requisicao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "resposta sem identidade valida nao cria sessao",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "papel recebido como array e rejeitado",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "listagem nao utiliza usuarios sinteticos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "lista artesaos publicos sem consultar administracao nem expor e-mail",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "recusa identidade invalida na lista publica: {\"id\":\"\",\"nome\":\"Maria\",\"papel\":\"artesao\",\"ativo\":true}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "recusa identidade invalida na lista publica: {\"id\":\"a1\",\"nome\":\" \",\"papel\":\"artesao\",\"ativo\":true}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "recusa identidade invalida na lista publica: {\"id\":\"a1\",\"nome\":\"Maria\",\"papel\":\"admin\",\"ativo\":true}",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "recusa identidade invalida na lista publica: {\"id\":\"a1\",\"nome\":\"Maria\",\"papel\":\"artesao\",\"ativo\":false}",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/seeds/avaliacoes.seed.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "AVALIACOES_SEED cobre pelo menos tres produtos existentes",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "AVALIACOES_SEED usa somente compradores sinteticos da carga de usuarios",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "AVALIACOES_SEED possui notas inteiras entre 1 e 5",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "AVALIACOES_SEED possui ids unicos e no maximo uma avaliacao por comprador e produto",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "AVALIACOES_SEED possui datas ISO validas",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "AVALIACOES_SEED mantem Produto.notaMedia coerente com as avaliacoes semeadas",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "AVALIACOES_SEED e deterministico entre execucoes do modulo",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/seeds/categorias.seed.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "CATEGORIAS_SEED cadastra exatamente as seis categorias oficiais",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CATEGORIAS_SEED possui ids unicos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "CATEGORIAS_SEED inclui Arte Reciclada e Sustentavel como sexta categoria",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    },
+    {
+      "arquivo": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/tests/fake-api/seeds/produtos.seed.test.ts",
+      "status": "passed",
+      "testes": [
+        {
+          "nome": "PRODUTOS_SEED gera exatamente trinta produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PRODUTOS_SEED possui ids unicos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PRODUTOS_SEED distribui produtos por cinco categorias, deixando a sexta vazia",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PRODUTOS_SEED distribui produtos entre pelo menos dois artesaos sinteticos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PRODUTOS_SEED varia o estoque entre os produtos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PRODUTOS_SEED todo produto possui ao menos uma foto e textos preenchidos",
+          "status": "passed",
+          "falhas": []
+        },
+        {
+          "nome": "PRODUTOS_SEED e deterministico entre execucoes do modulo",
+          "status": "passed",
+          "falhas": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "data": "2026-10-22",
+  "destino": "DATABASE_URL_VOLUME",
+  "autorizacao": "Nove migrations existentes e seed apenas na branch de volume",
+  "demoAntes": {
+    "Avaliacao": 4,
+    "Carrinho": 3,
+    "Categoria": 6,
+    "IntencaoNotificacao": 0,
+    "ItemCarrinho": 1,
+    "ItemPedido": 6,
+    "Notificacao": 0,
+    "Pagamento": 3,
+    "Pedido": 3,
+    "PerfilArtesao": 2,
+    "Produto": 9,
+    "ProdutoFoto": 10,
+    "Regiao": 3,
+    "Tecnica": 10,
+    "Usuario": 7,
+    "_prisma_migrations": 9
+  },
+  "volumeAntes": {},
+  "migrations": [
+    "20260914000000_init_fccpd",
+    "20260915023849_add_intencao_notificacao",
+    "20260915154901_add_dominio_completo",
+    "20260915163805_add_dominio_not_null",
+    "20261013213237_reconciliar_modelo_logico",
+    "20261013230000_tecnica_regiao_referencias",
+    "20261013230100_add_notificacao",
+    "20261014010000_indices_consultas",
+    "20261014160000_checkout_web09"
+  ],
+  "primeiroSeed": {
+    "Avaliacao": 0,
+    "Carrinho": 300,
+    "Categoria": 6,
+    "IntencaoNotificacao": 0,
+    "ItemCarrinho": 0,
+    "ItemPedido": 1550,
+    "Notificacao": 0,
+    "Pagamento": 1500,
+    "Pedido": 1500,
+    "PerfilArtesao": 50,
+    "Produto": 1000,
+    "ProdutoFoto": 0,
+    "Regiao": 3,
+    "Tecnica": 10,
+    "Usuario": 350,
+    "_prisma_migrations": 9
+  },
+  "segundoSeed": {
+    "Avaliacao": 0,
+    "Carrinho": 300,
+    "Categoria": 6,
+    "IntencaoNotificacao": 0,
+    "ItemCarrinho": 0,
+    "ItemPedido": 1550,
+    "Notificacao": 0,
+    "Pagamento": 1500,
+    "Pedido": 1500,
+    "PerfilArtesao": 50,
+    "Produto": 1000,
+    "ProdutoFoto": 0,
+    "Regiao": 3,
+    "Tecnica": 10,
+    "Usuario": 350,
+    "_prisma_migrations": 9
+  },
+  "idempotente": true,
+  "todosRegistrosEIdsPreservados": true,
+  "pedidosConfirmadosPagosMultiartesao": 50,
+  "cobertura": [
+    {
+      "dimensao": "categoria",
+      "nome": "Arte Reciclada e Sustentável",
+      "produtos": 32
+    },
+    {
+      "dimensao": "categoria",
+      "nome": "Bijuteria e Acessórios Artesanais",
+      "produtos": 192
+    },
+    {
+      "dimensao": "categoria",
+      "nome": "Cerâmica e Barro",
+      "produtos": 198
+    },
+    {
+      "dimensao": "categoria",
+      "nome": "Madeira Entalhada e Marcenaria Artesanal",
+      "produtos": 192
+    },
+    {
+      "dimensao": "categoria",
+      "nome": "Renda e Bordado",
+      "produtos": 194
+    },
+    {
+      "dimensao": "categoria",
+      "nome": "Têxtil e Costura Autoral",
+      "produtos": 192
+    },
+    {
+      "dimensao": "regiao",
+      "nome": "Alto do Moura - Caruaru",
+      "produtos": 325
+    },
+    {
+      "dimensao": "regiao",
+      "nome": "Comunidade do Pilar - Recife",
+      "produtos": 359
+    },
+    {
+      "dimensao": "regiao",
+      "nome": "Tracunhaém",
+      "produtos": 316
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Bijuteria em Sementes Naturais",
+      "produtos": 64
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Bordado à Mão",
+      "produtos": 97
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Costura Autoral",
+      "produtos": 128
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Entalhe em Madeira",
+      "produtos": 128
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Marcenaria Artesanal",
+      "produtos": 64
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Modelagem em Argila",
+      "produtos": 99
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Renda Irlandesa",
+      "produtos": 97
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Tecelagem Manual",
+      "produtos": 64
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Torno Cerâmico",
+      "produtos": 99
+    },
+    {
+      "dimensao": "tecnica",
+      "nome": "Trançado em Fibra Natural",
+      "produtos": 160
+    }
+  ],
+  "pedidosComValoresInconsistentes": 0,
+  "usuariosPorPapel": [
+    {
+      "papel": "artesao",
+      "total": 50
+    },
+    {
+      "papel": "comprador",
+      "total": 300
+    }
+  ],
+  "demoDepois": {
+    "Avaliacao": 4,
+    "Carrinho": 3,
+    "Categoria": 6,
+    "IntencaoNotificacao": 0,
+    "ItemCarrinho": 1,
+    "ItemPedido": 6,
+    "Notificacao": 0,
+    "Pagamento": 3,
+    "Pedido": 3,
+    "PerfilArtesao": 2,
+    "Produto": 9,
+    "ProdutoFoto": 10,
+    "Regiao": 3,
+    "Tecnica": 10,
+    "Usuario": 7,
+    "_prisma_migrations": 9
+  },
+  "demoDadosESequencePreservados": true,
+  "mutacoesRestritasAoVolume": true
+}

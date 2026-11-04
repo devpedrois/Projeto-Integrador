@@ -1,0 +1,16 @@
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma\schema.prisma.
+Datasource "db": PostgreSQL database "neondb", schema "public" at "ep-solitary-fire-ack2rila.sa-east-1.aws.neon.tech"
+
+12 migrations found in prisma/migrations
+
+Applying migration `20261104165644_indice_perfil_tecnica_principal`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261104165644_indice_perfil_tecnica_principal/
+    └─ migration.sql
+
+All migrations have been successfully applied.

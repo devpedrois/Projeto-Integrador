@@ -1,0 +1,6 @@
+{
+  "rollback": true,
+  "candidate": "confirmado-comprador",
+  "candidateAbsent": true,
+  "connectionSource": "DATABASE_URL_VOLUME"
+}

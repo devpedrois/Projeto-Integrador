@@ -1,0 +1,21 @@
+{
+  "dataConsulta": "2026-10-26",
+  "refatoracoesDocumentadas": 2,
+  "commitsExistentes": [
+    "1529f71b4cf126a6dfc74b77a43dc45c206a1501",
+    "2a37f91b909bcb2d2c2b9a90c8d6e93ebd9db010",
+    "8daa70b32c6661dd2d28264b025518b601d863ef",
+    "fdce565eb8364460b6a37adb5404a32d9de5a866"
+  ],
+  "linksLocaisValidos": 19,
+  "arquivosTesteVerdesCI": 9,
+  "ciVerde": "40232946842",
+  "ciMaisRecente": "40239567812",
+  "resultadoCiMaisRecente": "failure",
+  "testesBackendMaisRecentes": "skipped",
+  "snapshotAnteriorConferido": true,
+  "testesLocaisAntes": 19,
+  "testesLocaisDepois": 69,
+  "alteracoesCodigoExecutavel": false,
+  "aceiteCiAtual": "pendente"
+}

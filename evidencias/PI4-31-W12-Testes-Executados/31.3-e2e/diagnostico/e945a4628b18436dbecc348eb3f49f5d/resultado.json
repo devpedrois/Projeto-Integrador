@@ -1,0 +1,256 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--project=360px",
+      "--retries=0",
+      "--trace=on"
+    ],
+    "configFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/diagnostico/e945a4628b18436dbecc348eb3f49f5d/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "360px",
+        "name": "360px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/diagnostico/e945a4628b18436dbecc348eb3f49f5d/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "1280px",
+        "name": "1280px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-31-W12-Testes-Executados\\31.3-e2e\\diagnostico\\e945a4628b18436dbecc348eb3f49f5d\\results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "360px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 360,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "360px"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-31-W12-Testes-Executados\\31.3-e2e\\diagnostico\\e945a4628b18436dbecc348eb3f49f5d\\html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-31-W12-Testes-Executados\\31.3-e2e\\diagnostico\\e945a4628b18436dbecc348eb3f49f5d\\resultado.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fluxos.spec.ts",
+      "file": "fluxos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "(a) cadastro ate Meus pedidos com numero confirmado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9037,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro e login do comprador novo",
+                      "duration": 2788
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 1926
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 1791
+                    }
+                  ],
+                  "startTime": "2026-10-25T21:30:52.750Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-31-W12-Testes-Executados\\31.3-e2e\\diagnostico\\e945a4628b18436dbecc348eb3f49f5d\\results\\fluxos--a-cadastro-ate-Meus-pedidos-com-numero-confirmado-360px\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-06ff3f5702c5993877d3",
+          "file": "fluxos.spec.ts",
+          "line": 118,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6903,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro e login do comprador novo",
+                      "duration": 1612
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 794
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 869
+                    }
+                  ],
+                  "startTime": "2026-10-25T21:31:02.249Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-31-W12-Testes-Executados\\31.3-e2e\\diagnostico\\e945a4628b18436dbecc348eb3f49f5d\\results\\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-360px\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-5fd1245ca8efa7d599b5",
+          "file": "fluxos.spec.ts",
+          "line": 124,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T21:30:40.091Z",
+    "duration": 30189.659000000003,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

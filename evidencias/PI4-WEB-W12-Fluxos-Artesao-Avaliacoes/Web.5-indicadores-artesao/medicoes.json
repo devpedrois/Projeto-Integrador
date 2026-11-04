@@ -1,0 +1,158 @@
+{
+  "dataUtc": "2026-10-25T19:06:26.495991+00:00",
+  "ambiente": "Next.js build de producao local, API Express local, PostgreSQL Neon real com seed oficial em schema isolado",
+  "artesao": "João Artesão, seed-artesao-01",
+  "metodologia": "Login e primeira abertura fora da amostra. Dez recargas consecutivas; sem descartar rodadas. Requisicao por Resource Timing; renderizacao desde navigationStart ate DOM completo e requestAnimationFrame.",
+  "browser": "155.0.8059.86",
+  "limiteMs": 2000,
+  "medicoes": [
+    {
+      "rodada": 1,
+      "requisicaoMs": 169.9,
+      "inicioRequisicaoMs": 87.8,
+      "cardRenderMs": 259.9,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:26.205Z"
+      }
+    },
+    {
+      "rodada": 2,
+      "requisicaoMs": 151.5,
+      "inicioRequisicaoMs": 75.4,
+      "cardRenderMs": 229.8,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:26.475Z"
+      }
+    },
+    {
+      "rodada": 3,
+      "requisicaoMs": 151.7,
+      "inicioRequisicaoMs": 73.5,
+      "cardRenderMs": 235.4,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:26.736Z"
+      }
+    },
+    {
+      "rodada": 4,
+      "requisicaoMs": 151.3,
+      "inicioRequisicaoMs": 71.7,
+      "cardRenderMs": 228.8,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:26.992Z"
+      }
+    },
+    {
+      "rodada": 5,
+      "requisicaoMs": 151.4,
+      "inicioRequisicaoMs": 76,
+      "cardRenderMs": 231.1,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:27.259Z"
+      }
+    },
+    {
+      "rodada": 6,
+      "requisicaoMs": 150.7,
+      "inicioRequisicaoMs": 73.4,
+      "cardRenderMs": 236,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:27.518Z"
+      }
+    },
+    {
+      "rodada": 7,
+      "requisicaoMs": 150.5,
+      "inicioRequisicaoMs": 74,
+      "cardRenderMs": 228.4,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:27.780Z"
+      }
+    },
+    {
+      "rodada": 8,
+      "requisicaoMs": 150.7,
+      "inicioRequisicaoMs": 72.9,
+      "cardRenderMs": 234.6,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:28.038Z"
+      }
+    },
+    {
+      "rodada": 9,
+      "requisicaoMs": 150.9,
+      "inicioRequisicaoMs": 71.7,
+      "cardRenderMs": 236.5,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:28.297Z"
+      }
+    },
+    {
+      "rodada": 10,
+      "requisicaoMs": 151,
+      "inicioRequisicaoMs": 73.9,
+      "cardRenderMs": 226.3,
+      "valoresConferem": true,
+      "resposta": {
+        "quantidadeVendida": 2,
+        "receitaTotal": 118.8,
+        "numeroPedidos": 2,
+        "ultimaVenda": "2026-09-03T12:00:00.000Z",
+        "atualizadoEm": "2026-10-25T19:06:28.560Z"
+      }
+    }
+  ],
+  "maxRequisicaoMs": 169.9,
+  "maxCardRenderMs": 259.9,
+  "capturas": [
+    360,
+    768,
+    1280
+  ],
+  "errosJavascript": []
+}

@@ -1,0 +1,58 @@
+
+
+## Overview
+
+                   │         Analyzed Image         
+───────────────────┼────────────────────────────────
+ Target            │  local://origem-backend:local  
+   digest          │  eca9aee07734                  
+   platform        │ linux/amd64                    
+   vulnerabilities │    1C     2H     0M     0L     
+   size            │ 106 MB                         
+   packages        │ 305                            
+
+
+## Packages and Vulnerabilities
+
+   1C     0H     0M     0L  proxy-addr 2.0.7
+pkg:npm/proxy-addr@2.0.7
+
+    x CRITICAL CVE-2026-90711 [Authentication Bypass by Spoofing]
+      https://scout.docker.com/v/CVE-2026-90711?s=github&n=proxy-addr&t=npm&vr=%3E%3D1.1.0%2C%3C2.0.8
+      Affected range : >=1.1.0                                      
+                     : <2.0.8                                       
+      Fixed version  : 2.0.8                                        
+      CVSS Score     : 9.1                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N 
+    
+
+   0C     1H     0M     0L  body-parser 2.3.0
+pkg:npm/body-parser@2.3.0
+
+    x HIGH CVE-2026-111181 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-111181?s=github&n=body-parser&t=npm&vr=%3E%3D2.0.0%2C%3C2.4.0
+      Affected range : >=2.0.0                                      
+                     : <2.4.0                                       
+      Fixed version  : 2.4.0                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+   0C     1H     0M     0L  zod 4.6.5
+pkg:npm/zod@4.6.5
+
+    x HIGH CVE-2023-54404 [Allocation of Resources Without Limits or Throttling]
+      https://scout.docker.com/v/CVE-2023-54404?s=github&n=zod&t=npm&vr=%3C4.6.6
+      Affected range : <4.6.6                                                          
+      Fixed version  : 4.6.6                                                           
+      CVSS Score     : 8.2                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N 
+    
+
+
+3 vulnerabilities found in 3 packages
+  CRITICAL  1 
+  HIGH      2 
+  MEDIUM    0 
+  LOW       0 
+

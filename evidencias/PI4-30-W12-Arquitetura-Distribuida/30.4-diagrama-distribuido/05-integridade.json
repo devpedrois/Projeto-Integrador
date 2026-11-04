@@ -1,0 +1,17 @@
+[
+  {
+    "path": "docs/arquitetura-distribuida.md",
+    "bytes": 14834,
+    "sha256": "b115bbaa6b91b3a36f01d7bd79044f267b8144c932df36c354b223783c818247"
+  },
+  {
+    "path": "docs/arquitetura-distribuida.mmd",
+    "bytes": 1534,
+    "sha256": "0f5f34a42381d9716d9a6abd565a0e92b521a8f64c6fe8914148117947948536"
+  },
+  {
+    "path": "docs/arquitetura-distribuida.png",
+    "bytes": 437302,
+    "sha256": "fb2e815195d33ef25ada841a59630b7f7162d6f03592ebd9cd3960b2d4d7a8bf"
+  }
+]

@@ -1,0 +1,24 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+{"event":"notificacao-processada","pedidoId":"4ff9461e-72c6-4b31-a9f4-4e66cb78de80","intencaoId":"3bba409b-259f-4145-8bea-36ff2749e035"}
+{"event":"notificacao-processada","pedidoId":"c670fee0-4dcb-4e36-9108-1ada6098a501","intencaoId":"6fc83c6a-37a8-4a1d-b774-27b23c82fba6"}
+{"event":"notificacao-processada","pedidoId":"cfd1cc47-f71c-4a1b-9ee1-304cb8c366f3","intencaoId":"400612f4-fd41-4f76-967b-e601c60063e9"}
+(node:28840) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:48844) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"event":"notificacao-processada","pedidoId":"76f0ed58-74b2-4a52-9b20-e1b06aeec6fa","intencaoId":"b37f806a-4fbb-43f2-8839-99e2334ce48e"}
+(node:43336) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:15764) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+ Test Files  75 passed (75)
+      Tests  802 passed (802)
+   Start at  16:22:47
+   Duration  129.59s (tests 78%, import 21%, transform 1%)
+
+    Isolate  75 workers spawned · ~122ms startup each (spawn + environment, per file)
+             at least ~9.00s faster with isolate: false — reuses workers across files instead of one per file
+

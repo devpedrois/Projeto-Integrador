@@ -1,0 +1,168 @@
+
+> origem-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/services/usuarios.service.test.ts (16 tests) 54ms
+ ✓ tests/services/pedidos.service.test.ts (16 tests) 13ms
+ ✓ tests/services/produtos.service.test.ts (43 tests) 66ms
+ ✓ tests/services/moderacao.service.test.ts (22 tests) 26ms
+ ✓ tests/services/avaliacoes.service.test.ts (23 tests) 51ms
+ ✓ tests/store/carrinho-http.store.test.ts (10 tests) 218ms
+ ✓ tests/components/artesao/perfil-artesao-publico.test.tsx (8 tests) 200ms
+ ✓ tests/hooks/use-perfil-publico-artesao.test.tsx (9 tests) 641ms
+ ✓ tests/components/meus-pedidos.test.tsx (9 tests) 758ms
+ ✓ tests/components/gate-acesso.test.tsx (18 tests) 886ms
+ ✓ tests/components/produto/detalhe-produto.test.tsx (23 tests) 1033ms
+ ✓ tests/services/fake-recommendation.adapter.test.ts (9 tests) 7ms
+ ✓ tests/app/vitrine.test.tsx (17 tests) 2226ms
+   ✓ Vitrine (Home) > mostra carregando e depois a lista de produtos 862ms
+ ✓ tests/components/admin/painel-moderacao.test.tsx (12 tests) 2024ms
+   ✓ PainelModeracao > busca por nome ou e-mail ignorando acentos e limpa os filtros 703ms
+ ✓ tests/components/avaliacao-pedido.web3.test.tsx (11 tests) 2013ms
+   ✓ Web.3 avaliacao no detalhe do pedido > erro de envio preserva campos e permite tentar novamente 503ms
+ ✓ tests/services/http/catalogo.service.test.ts (14 tests) 15ms
+ ✓ tests/store/carrinho.store.test.ts (17 tests) 7ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts (24 tests) 3364ms
+   ✓ HttpRecommendationAdapter no container > produz o mesmo resultado completo da fake para a fixture contratual 669ms
+ ✓ tests/components/pedidos-recebidos.web2.test.tsx (13 tests) 990ms
+ ✓ tests/fake-api/repositories/produto.repository.test.ts (15 tests) 11ms
+ ✓ tests/components/meus-produtos-list.test.tsx (14 tests) 3066ms
+   ✓ MeusProdutosList > editar produto chama service.update com o artesaoId da sessao e atualiza a lista 913ms
+   ✓ MeusProdutosList > painel de edicao mostra o preco com virgula e salva o numero correto 616ms
+   ✓ MeusProdutosList > fechar o painel de edicao descarta as alteracoes sem chamar o service 359ms
+   ✓ MeusProdutosList > mostra erro no painel quando a edicao falha e mantem o painel aberto 491ms
+ ✓ tests/app/route-protection.test.tsx (12 tests) 921ms
+   ✓ protecao de rotas > /painel-artesao nega visitante e preserva destino de retorno 435ms
+ ✓ tests/components/produto-card.test.tsx (19 tests) 504ms
+ ✓ tests/domain/produto-visibilidade.test.ts (20 tests) 6ms
+ ✓ tests/components/perfil-artesao-form.test.tsx (12 tests) 4509ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso 1146ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo 1077ms
+   ✓ PerfilArtesaoForm > previa do perfil publico mostra nome, tecnica e a historia digitada 450ms
+   ✓ PerfilArtesaoForm > mostra erro recuperavel quando salvar falha e mantem o botao habilitado 1162ms
+ ✓ tests/fake-api/repositories/usuario.repository.test.ts (14 tests) 10ms
+ ✓ tests/app/produto-detalhe.test.tsx (4 tests) 524ms
+ ✓ tests/components/cadastro-form.test.tsx (10 tests) 5017ms
+   ✓ CadastroForm > escolher artesao envia o papel artesao 880ms
+   ✓ CadastroForm > cadastro valido chama o service e redireciona para login com confirmacao 789ms
+   ✓ CadastroForm > senha curta bloqueia envio e mostra erro no campo 790ms
+   ✓ CadastroForm > mostra loading e desabilita o botao durante o envio 725ms
+   ✓ CadastroForm > email ja cadastrado associa a mensagem ao campo email 802ms
+   ✓ CadastroForm > mostra erro recuperavel quando o service falha 839ms
+ ✓ tests/components/filtros-produtos.test.tsx (12 tests) 530ms
+ ✓ tests/services/perfil-artesao.service.test.ts (8 tests) 7ms
+ ✓ tests/hooks/use-detalhe-produto.test.tsx (6 tests) 402ms
+ ✓ tests/services/container-http.test.ts (5 tests) 543ms
+ ✓ tests/fake-api/repositories/perfil-artesao.repository.test.ts (12 tests) 7ms
+ ✓ tests/services/http/perfil-artesao.service.test.ts (10 tests) 146ms
+ ✓ tests/services/http/api-client.test.ts (15 tests) 53ms
+ ✓ tests/services/http/pedidos-historico.service.test.ts (17 tests) 20ms
+ ✓ tests/services/http/catalogo-escrita.web12.test.ts (5 tests) 14ms
+ ✓ tests/components/login-form.test.tsx (7 tests) 2148ms
+   ✓ LoginForm > login valido chama o service, cria a sessao e redireciona 583ms
+   ✓ LoginForm > credenciais invalidas mostram mensagem generica sem apontar o campo 515ms
+   ✓ LoginForm > mostra loading e desabilita o botao durante o envio 442ms
+   ✓ LoginForm > email em formato invalido bloqueia envio e mostra erro no campo 512ms
+ ✓ tests/fake-api/storage/sessao.storage.test.ts (20 tests) 6ms
+ ✓ tests/hooks/use-busca-produtos.test.tsx (6 tests) 408ms
+ ✓ tests/components/checkout-http.test.tsx (3 tests) 885ms
+   ✓ confirma por HTTP, mostra numero real e limpa estado sem DELETE posterior 406ms
+ ✓ tests/validators/produto.validator.test.ts (27 tests) 9ms
+ ✓ tests/store/sessao.store.test.ts (12 tests) 8ms
+ ✓ tests/components/route-guard.test.tsx (8 tests) 110ms
+ ✓ tests/components/notificacoes-artesao.test.tsx (5 tests) 168ms
+ ✓ tests/services/pedidos-historico.fake.test.ts (5 tests) 5ms
+ ✓ tests/components/indicadores-artesao.web5.test.tsx (5 tests) 224ms
+ ✓ tests/hooks/use-meus-produtos.test.tsx (6 tests) 398ms
+ ✓ tests/services/indicadores-artesao.fake.web5.test.ts (4 tests) 6ms
+ ✓ tests/components/sessao-http.test.tsx (4 tests) 821ms
+   ✓ login respeita retorno local preservado pelo middleware 596ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (7 tests) 346ms
+ ✓ tests/fake-api/repositories/avaliacao.repository.test.ts (9 tests) 6ms
+ ✓ tests/utils/produto-query-url.test.ts (10 tests) 5ms
+ ✓ tests/components/resultado-busca.test.tsx (8 tests) 241ms
+ ✓ tests/components/faixa-recomendacoes.test.tsx (6 tests) 158ms
+ ✓ tests/services/http/usuarios.service.test.ts (6 tests) 57ms
+ ✓ tests/app/minha-conta.test.tsx (5 tests) 408ms
+ ✓ tests/services/http/avaliacoes.web3.test.ts (14 tests) 15ms
+ ✓ tests/validators/perfil-artesao.validator.test.ts (18 tests) 5ms
+ ✓ tests/hooks/use-filtros-url.test.tsx (8 tests) 35ms
+ ✓ tests/utils/rota-segura.test.ts (18 tests) 4ms
+ ✓ tests/fake-api/repositories/pedido.repository.test.ts (8 tests) 6ms
+ ✓ tests/store/sessao-http.store.test.ts (5 tests) 3ms
+ ✓ tests/hooks/perfil-artesao-http.test.tsx (3 tests) 343ms
+ ✓ tests/fake-api/usuario.repository.test.ts (4 tests) 4ms
+ ✓ tests/components/pendencia-perfil-artesao.test.tsx (4 tests) 113ms
+ ✓ tests/services/verificar-usuario-ativo.test.ts (5 tests) 3ms
+ ✓ tests/services/http/carrinho.service.test.ts (5 tests) 15ms
+ ✓ tests/services/http/indicadores-artesao.web5.test.ts (19 tests) 18ms
+stderr | tests/hooks/use-artesaos-ativos.test.tsx > useArtesaosAtivos > comeca carregando quando o service ainda nao resolveu
+An update to TestComponent inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ tests/hooks/use-artesaos-ativos.test.tsx (4 tests) 171ms
+ ✓ tests/fake-api/seeds/avaliacoes.seed.test.ts (7 tests) 5ms
+ ✓ tests/services/http/elegibilidade-avaliacao.web4.test.ts (11 tests) 17ms
+ ✓ tests/validators/cadastro.validator.test.ts (8 tests) 4ms
+ ✓ tests/hooks/use-opcoes-filtro.test.tsx (4 tests) 171ms
+ ✓ tests/domain/perfil-artesao-completo.test.ts (6 tests) 3ms
+ ✓ tests/app/pedidos-recebidos.web2.test.tsx (1 test) 63ms
+ ✓ tests/config/next-config.test.ts (14 tests) 9ms
+ ✓ tests/fake-api/seeds/produtos.seed.test.ts (7 tests) 6ms
+ ✓ tests/services/container-indicadores.web5.test.ts (2 tests) 549ms
+   ✓ seleciona fake explicitamente, exige artesao e nao faz fetch 418ms
+ ✓ tests/validators/avaliacao.validator.test.ts (7 tests) 3ms
+ ✓ tests/app/painel-indicadores.web5.test.tsx (1 test) 135ms
+ ✓ tests/utils/foto-url-segura.test.ts (8 tests) 3ms
+ ✓ tests/fake-api/storage/carrinho.storage.test.ts (8 tests) 4ms
+ ✓ tests/services/opcoes-filtro.service.test.ts (4 tests) 35ms
+ ✓ tests/config/middleware.test.ts (5 tests) 30ms
+ ✓ tests/config/e2e-traces.test.ts (1 test) 13ms
+ ✓ tests/fake-api/storage/modo-acesso.storage.test.ts (3 tests) 2ms
+ ✓ tests/hooks/use-sessao.test.tsx (2 tests) 13ms
+ ✓ tests/validators/foto-perfil.validator.test.ts (5 tests) 9ms
+ ✓ tests/utils/normalizar-texto.test.ts (5 tests) 2ms
+ ✓ tests/domain/resumo-avaliacoes.test.ts (3 tests) 2ms
+ ✓ tests/utils/preco-campo.test.ts (11 tests) 2ms
+ ✓ tests/types/usuario.test.ts (1 test) 2ms
+ ✓ tests/services/recomendacao-contrato.test.ts (1 test) 1ms
+ ✓ tests/fake-api/seeds/categorias.seed.test.ts (3 tests) 2ms
+ ✓ tests/utils/formatar-moeda.test.ts (4 tests) 2ms
+ ✓ tests/utils/rotulo-papel.test.ts (3 tests) 1ms
+ ✓ tests/components/autenticacao/layout-autenticacao.test.tsx (1 test) 66ms
+ ✓ tests/app/not-found.test.tsx (1 test) 62ms
+ ✓ tests/services/container-avaliacoes.test.ts (1 test) 304ms
+   ✓ obterAvaliacoesService > expõe o recurso de avaliacoes pela camada organizada 303ms
+ ✓ tests/config/build-typescript.test.ts (2 tests) 3042ms
+   ✓ TypeScript do build de produção > verifica a aplicação sem importar testes ou código do backend 1453ms
+   ✓ TypeScript do build de produção > preserva a checagem dos testes e contratos entre as camadas 1589ms
+ ✓ tests/components/produto-form.test.tsx (13 tests) 23549ms
+   ✓ carrega categoria HTTP com UUID e cadastra pelo formulario 1670ms
+   ✓ ProdutoForm > campos ausentes bloqueiam criacao e mostram erros por campo 453ms
+   ✓ ProdutoForm > preco 0 bloqueia criacao 2181ms
+   ✓ ProdutoForm > preco -1 bloqueia criacao 2215ms
+   ✓ ProdutoForm > preco -0.5 bloqueia criacao 2251ms
+   ✓ ProdutoForm > preco -100 bloqueia criacao 2262ms
+   ✓ ProdutoForm > preco -0.01 bloqueia criacao 2276ms
+   ✓ ProdutoForm > produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao 2143ms
+   ✓ ProdutoForm > aceita preco com virgula e envia o numero correto 1399ms
+   ✓ ProdutoForm > mostra loading e desabilita o botao durante o envio 2213ms
+   ✓ ProdutoForm > nao envia duas vezes ao clicar repetidamente antes da resposta 2288ms
+   ✓ ProdutoForm > mostra erro recuperavel quando o service falha e permite tentar novamente 2172ms
+
+ Test Files  102 passed (102)
+      Tests  955 passed (955)
+   Start at  19:08:06
+   Duration  29.80s (transform 4.69s, setup 33.38s, collect 23.65s, tests 66.15s, environment 270.11s, prepare 19.04s)
+

@@ -1,0 +1,24 @@
+{
+  "data": "2026-11-04",
+  "branch": "codex/33-3-consultas-admin",
+  "commit": "f03999b94333b8bf81f26a1d57d2d427ab77ed37",
+  "testesBackend": {
+    "aprovados": 791,
+    "arquivos": 74,
+    "filtros": "mesmos filtros do job backend"
+  },
+  "lint": true,
+  "typecheck": true,
+  "build": true,
+  "formatacaoTypeScript": true,
+  "conferenciaVolume": {
+    "produtos": 1000,
+    "usuarios": 350,
+    "pedidos": 1500,
+    "divergencias": 0
+  },
+  "receitaTotal": "807365.08",
+  "tipoReceita": "Prisma.Decimal",
+  "indicesNovos": 0,
+  "push": false
+}

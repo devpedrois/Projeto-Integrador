@@ -1,0 +1,36 @@
+{
+  "captured_at": "2026-10-13T20:06:35-03:00",
+  "kind": "Transcrição visual de comandos executados, sem captura de terminal",
+  "results": [
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "stdout": "> origem-backend@1.0.0 build\n> prisma generate && tsc\n\n\n✔ Generated Prisma Client (7.10.0) to .\\src\\generated\\prisma in 84ms",
+      "stderr": "Loaded Prisma config from prisma.config.ts.\n\nPrisma schema loaded from prisma\\schema.prisma."
+    },
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "stdout": "> origem-backend@1.0.0 lint\n> eslint .",
+      "stderr": ""
+    },
+    {
+      "command": "npm.cmd run typecheck",
+      "exit_code": 0,
+      "stdout": "> origem-backend@1.0.0 typecheck\n> tsc --noEmit",
+      "stderr": ""
+    },
+    {
+      "command": "npm.cmd test -- tests/unit/environment.test.ts",
+      "exit_code": 0,
+      "stdout": "> origem-backend@1.0.0 test\n> vitest run tests/unit/environment.test.ts\n\n\n RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend\n\n\n Test Files  1 passed (1)\n      Tests  31 passed (31)\n   Start at  20:06:33\n   Duration  176ms (import 52%, transform 28%, tests 16%, worker 4%)",
+      "stderr": ""
+    },
+    {
+      "command": "node C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-27-W10-Integracao-Camadas\\WEB-01-backend-producao\\validar-producao.mjs",
+      "exit_code": 0,
+      "stdout": "Invalid JWT_SECRET: exit 1, sanitized variable name only.\nNODE_ENV=production; HOST=0.0.0.0; pg-boss bootstrap completed.\n{\"status\":\"ok\",\"database\":\"reachable\"}\nHTTP_STATUS:200",
+      "stderr": "(node:9548) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.\nIn the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.\n\nTo prepare for this change:\n- If you want the current behavior, explicitly use 'sslmode=verify-full'\n- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'\n\nSee https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    }
+  ]
+}

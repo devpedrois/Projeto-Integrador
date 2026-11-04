@@ -1,0 +1,101 @@
+WEB-04 | Coleta adicional real
+Coletado em: 13/10/2026, 22:57:41 | America/Sao_Paulo
+curl.exe, Express e PostgreSQL reais; dados sintéticos em schema isolado removido ao terminar.
+JWTs, senhas e cookies redigidos. Nenhuma conta real foi alterada.
+
+Body com compradorId: HTTP 400
+Body com compradorRef: HTTP 400
+Item com preco extra: HTTP 400
+Identidade do pedido persistido, conferida por SELECT parametrizado:
+{
+  "compradorSessao": "e023cffb-6ed4-4c49-9551-1c71429070f4",
+  "consulta": "SELECT \"id\", \"compradorId\", \"compradorRef\" FROM \"Pedido\" WHERE \"id\" = $1::uuid;",
+  "resultados": [
+    {
+      "id": "c422393b-35e0-4389-b56b-2c56943a8a9d",
+      "compradorId": "e023cffb-6ed4-4c49-9551-1c71429070f4",
+      "compradorRef": null
+    }
+  ]
+}
+
+=== Body com compradorId ===
+POST http://127.0.0.1:49275/pedidos
+Cookie: [REDIGIDO]
+Request: {"itens":[{"produtoId":"8702db84-a960-4016-974c-ed3b5cf2b8e5","quantidade":1}],"compradorId":"bcc32c67-0301-499d-933c-87f219857292"}
+HTTP/1.1 400 Bad Request
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 59
+ETag: W/"3b-wZpk00X4TrW9YUfnR40iI3vatXs"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"VALIDACAO","message":"Pedido invalido."}}
+
+=== Body com compradorRef ===
+POST http://127.0.0.1:49275/pedidos
+Cookie: [REDIGIDO]
+Request: {"itens":[{"produtoId":"8702db84-a960-4016-974c-ed3b5cf2b8e5","quantidade":1}],"compradorRef":"referencia-nao-aceita"}
+HTTP/1.1 400 Bad Request
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 59
+ETag: W/"3b-wZpk00X4TrW9YUfnR40iI3vatXs"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"VALIDACAO","message":"Pedido invalido."}}
+
+=== Item com preco extra ===
+POST http://127.0.0.1:49275/pedidos
+Cookie: [REDIGIDO]
+Request: {"itens":[{"produtoId":"8702db84-a960-4016-974c-ed3b5cf2b8e5","quantidade":1,"preco":0.01}]}
+HTTP/1.1 400 Bad Request
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 59
+ETag: W/"3b-wZpk00X4TrW9YUfnR40iI3vatXs"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"VALIDACAO","message":"Pedido invalido."}}

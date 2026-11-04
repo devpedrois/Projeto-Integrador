@@ -1,0 +1,498 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/e2e/c28ceefaf86b47b19bbd36fdd1baa878/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "360px",
+        "name": "360px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/e2e/c28ceefaf86b47b19bbd36fdd1baa878/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "1280px",
+        "name": "1280px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "360px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 360,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "360px"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "1280px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "1280px"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\resultado.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fluxos.spec.ts",
+      "file": "fluxos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15029,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 3881
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 2858
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 3213
+                    }
+                  ],
+                  "startTime": "2026-11-04T17:41:34.892Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-3dd579238a1600c1af4e",
+          "file": "fluxos.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15330,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 3371
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 1105
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 1091
+                    },
+                    {
+                      "title": "Cadastro inicia sessao de artesao sem login separado",
+                      "duration": 4268
+                    }
+                  ],
+                  "startTime": "2026-11-04T17:41:52.459Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-5fd1245ca8efa7d599b5",
+          "file": "fluxos.spec.ts",
+          "line": 173,
+          "column": 1
+        },
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 90048,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts",
+                        "column": 10,
+                        "line": 33
+                      },
+                      "message": "Error: locator.fill: Test timeout of 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Nome', { exact: true })\u001b[22m\n\n\n  31 |       await page\n  32 |         .getByLabel(\"Nome\", { exact: true })\n> 33 |         .fill(\"Pessoa sintética E2E\");\n     |          ^\n  34 |       await page.getByLabel(\"E-mail\", { exact: true }).fill(email);\n  35 |       await page.getByLabel(\"Senha\", { exact: true }).fill(senha);\n  36 |       await page\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:33:10\n    at cadastrar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:29:5)\n    at comprar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:69:3)\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:170:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 89927,
+                      "error": {
+                        "message": "Error: locator.fill: Test timeout of 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Nome', { exact: true })\u001b[22m\n",
+                        "stack": "Error: locator.fill: Test timeout of 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Nome', { exact: true })\u001b[22m\n\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:33:10\n    at cadastrar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:29:5)\n    at comprar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:69:3)\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:170:3",
+                        "location": {
+                          "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts",
+                          "column": 10,
+                          "line": 33
+                        },
+                        "snippet": "  31 |       await page\n  32 |         .getByLabel(\"Nome\", { exact: true })\n> 33 |         .fill(\"Pessoa sintética E2E\");\n     |          ^\n  34 |       await page.getByLabel(\"E-mail\", { exact: true }).fill(email);\n  35 |       await page.getByLabel(\"Senha\", { exact: true }).fill(senha);\n  36 |       await page"
+                      }
+                    }
+                  ],
+                  "startTime": "2026-11-04T17:42:08.355Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results\\fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-1280px\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results\\fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-1280px\\error-context.md"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 146,
+                  "error": {
+                    "message": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-11-04T17:43:39.177Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results\\fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-1280px-retry1\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results\\fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-1280px-retry1\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-322fd6ac0efb1fcba6e7",
+          "file": "fluxos.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 90099,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 90000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts",
+                        "column": 10,
+                        "line": 33
+                      },
+                      "message": "Error: locator.fill: Test timeout of 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Nome', { exact: true })\u001b[22m\n\n\n  31 |       await page\n  32 |         .getByLabel(\"Nome\", { exact: true })\n> 33 |         .fill(\"Pessoa sintética E2E\");\n     |          ^\n  34 |       await page.getByLabel(\"E-mail\", { exact: true }).fill(email);\n  35 |       await page.getByLabel(\"Senha\", { exact: true }).fill(senha);\n  36 |       await page\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:33:10\n    at cadastrar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:29:5)\n    at comprar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:69:3)\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:177:18"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 89984,
+                      "error": {
+                        "message": "Error: locator.fill: Test timeout of 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Nome', { exact: true })\u001b[22m\n",
+                        "stack": "Error: locator.fill: Test timeout of 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Nome', { exact: true })\u001b[22m\n\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:33:10\n    at cadastrar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:29:5)\n    at comprar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:69:3)\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:177:18",
+                        "location": {
+                          "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts",
+                          "column": 10,
+                          "line": 33
+                        },
+                        "snippet": "  31 |       await page\n  32 |         .getByLabel(\"Nome\", { exact: true })\n> 33 |         .fill(\"Pessoa sintética E2E\");\n     |          ^\n  34 |       await page.getByLabel(\"E-mail\", { exact: true }).fill(email);\n  35 |       await page.getByLabel(\"Senha\", { exact: true }).fill(senha);\n  36 |       await page"
+                      }
+                    }
+                  ],
+                  "startTime": "2026-11-04T17:43:40.044Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results\\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-1280px\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results\\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-1280px\\error-context.md"
+                    }
+                  ]
+                },
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 151,
+                  "error": {
+                    "message": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝",
+                    "stack": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: browserContext.newPage: Executable doesn't exist at C:\\Users\\Pedro\\AppData\\Local\\ms-playwright\\ffmpeg-1013\\ffmpeg-win64.exe\n╔═════════════════════════════════════════════════════════════════╗\n║ Video rendering requires ffmpeg binary.                         ║\n║ Downloading it will not affect any of the system-wide settings. ║\n║ Please run the following command:                               ║\n║                                                                 ║\n║     npx playwright install ffmpeg                               ║\n║                                                                 ║\n║ <3 Playwright Team                                              ║\n╚═════════════════════════════════════════════════════════════════╝"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-11-04T17:45:10.870Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results\\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-1280px-retry1\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\PI4-35-W14-Microsservico-Docker\\35.2-cliente-http\\e2e\\c28ceefaf86b47b19bbd36fdd1baa878\\results\\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-1280px-retry1\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-eb3f7ae786b46b8a8e36",
+          "file": "fluxos.spec.ts",
+          "line": 173,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T17:41:14.276Z",
+    "duration": 237788.254,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

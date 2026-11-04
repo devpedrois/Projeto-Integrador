@@ -1,0 +1,16 @@
+
+> origem-frontend@1.0.0 test
+> vitest run tests/components/produto/detalhe-produto.test.tsx tests/components/faixa-recomendacoes.test.tsx tests/hooks/use-recomendacoes.test.tsx
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/components/faixa-recomendacoes.test.tsx (6 tests) 101ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (7 tests) 274ms
+ ✓ tests/components/produto/detalhe-produto.test.tsx (23 tests) 493ms
+
+ Test Files  3 passed (3)
+      Tests  36 passed (36)
+   Start at  16:14:30
+   Duration  2.58s (transform 139ms, setup 561ms, collect 709ms, tests 868ms, environment 3.38s, prepare 559ms)
+

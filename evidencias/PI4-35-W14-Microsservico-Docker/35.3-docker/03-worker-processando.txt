@@ -1,0 +1,9 @@
+worker-1  | 
+worker-1  | > origem-backend@1.0.0 start:worker
+worker-1  | > node dist/src/worker.js
+worker-1  | 
+worker-1  | 
+worker-1  | > origem-backend@1.0.0 start:worker
+worker-1  | > node dist/src/worker.js
+worker-1  | 
+worker-1  | {"event":"notificacao-processada","pedidoId":"b6001365-e4cc-49f4-b820-5e14e1771e80","intencaoId":"dce5d5c5-619e-4751-807c-a37ad1371f84"}

@@ -15,12 +15,12 @@ Não existe chamada adicional de login após cadastro.
 
 | Execução | Resultado |
 | --- | --- |
-| [01-backend-red.log](01-backend-red.log) | 6 falhas esperadas, 47 aprovações. Cookies e OpenAPI ausentes; falha pós-commit ainda retornava 201. PostgreSQL real. |
-| [02-backend-green.log](02-backend-green.log) | 53/53: auth 39, OpenAPI 14. |
-| [03-frontend-red.log](03-frontend-red.log) | 5 falhas esperadas, 8 aprovações. Formulário ainda navegava para login e não autenticava o store. |
-| [04-frontend-green.log](04-frontend-green.log) | 31/31: cadastro, login, store HTTP e adapter HTTP. |
-| [05b-e2e-red.log](05b-e2e-red.log) | Falha esperada em 360px: /login?cadastro=sucesso em vez de /. |
-| [06-e2e-green.log](06-e2e-green.log) | 4/4 em 360px e 1280px; zero skips, falhas e flaky. |
+| [01-backend-red.txt](01-backend-red.txt) | 6 falhas esperadas, 47 aprovações. Cookies e OpenAPI ausentes; falha pós-commit ainda retornava 201. PostgreSQL real. |
+| [02-backend-green.txt](02-backend-green.txt) | 53/53: auth 39, OpenAPI 14. |
+| [03-frontend-red.txt](03-frontend-red.txt) | 5 falhas esperadas, 8 aprovações. Formulário ainda navegava para login e não autenticava o store. |
+| [04-frontend-green.txt](04-frontend-green.txt) | 31/31: cadastro, login, store HTTP e adapter HTTP. |
+| [05b-e2e-red.txt](05b-e2e-red.txt) | Falha esperada em 360px: /login?cadastro=sucesso em vez de /. |
+| [06-e2e-green.txt](06-e2e-green.txt) | 4/4 em 360px e 1280px; zero skips, falhas e flaky. |
 
 O RED E2E restaurou temporariamente o formulário anterior.
 Um finally restaurou automaticamente o formulário corrigido.
@@ -52,13 +52,13 @@ Os avisos existentes do pg não representam falhas.
 
 | Verificação | Resultado |
 | --- | --- |
-| [Lint backend](07-backend-lint.log) | Aprovado. |
-| [Typecheck backend](08-backend-typecheck.log) | Aprovado. |
-| [Lint frontend](10-frontend-lint.log) | Aprovado. |
-| [Typecheck frontend](11-frontend-typecheck.log) | Aprovado. |
-| [Suíte backend](09-backend-tests.log) | 759/759 em 72 arquivos, PostgreSQL real. |
-| [Suíte frontend](12-frontend-tests.log) | 958/958 em 102 arquivos. |
-| [Prettier dos arquivos alterados](13-format.log) | Aprovado; finais de linha existentes preservados. |
+| [Lint backend](07-backend-lint.txt) | Aprovado. |
+| [Typecheck backend](08-backend-typecheck.txt) | Aprovado. |
+| [Lint frontend](10-frontend-lint.txt) | Aprovado. |
+| [Typecheck frontend](11-frontend-typecheck.txt) | Aprovado. |
+| [Suíte backend](09-backend-tests.txt) | 759/759 em 72 arquivos, PostgreSQL real. |
+| [Suíte frontend](12-frontend-tests.txt) | 958/958 em 102 arquivos. |
+| [Prettier dos arquivos alterados](13-format.txt) | Aprovado; finais de linha existentes preservados. |
 
 ## Relatório E2E validado
 

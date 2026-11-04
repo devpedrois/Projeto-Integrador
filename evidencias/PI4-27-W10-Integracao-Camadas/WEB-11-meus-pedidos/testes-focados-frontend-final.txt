@@ -1,0 +1,20 @@
+
+> origem-frontend@1.0.0 test
+> vitest run tests/app/minha-conta.test.tsx tests/app/route-protection.test.tsx tests/services/pedidos-historico.fake.test.ts tests/services/pedidos.service.test.ts tests/services/http/pedidos-historico.service.test.ts tests/components/meus-pedidos.test.tsx tests/services/container-http.test.ts
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/services/http/pedidos-historico.service.test.ts (17 tests) 11ms
+ ✓ tests/services/pedidos-historico.fake.test.ts (5 tests) 4ms
+ ✓ tests/services/pedidos.service.test.ts (16 tests) 8ms
+ ✓ tests/app/minha-conta.test.tsx (5 tests) 231ms
+ ✓ tests/services/container-http.test.ts (5 tests) 402ms
+ ✓ tests/app/route-protection.test.tsx (12 tests) 410ms
+ ✓ tests/components/meus-pedidos.test.tsx (8 tests) 364ms
+
+ Test Files  7 passed (7)
+      Tests  68 passed (68)
+   Start at  14:04:58
+   Duration  1.59s (transform 668ms, setup 721ms, collect 1.05s, tests 1.43s, environment 3.88s, prepare 891ms)
+

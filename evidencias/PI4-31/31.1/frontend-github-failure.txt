@@ -1,0 +1,650 @@
+frontend	Run npm test	﻿2026-10-22T20:27:02.8152198Z ##[group]Run npm test
+frontend	Run npm test	2026-10-22T20:27:02.8152370Z ^[[36;1mnpm test^[[0m
+frontend	Run npm test	2026-10-22T20:27:02.8205228Z shell: /usr/bin/bash -e {0}
+frontend	Run npm test	2026-10-22T20:27:02.8205380Z env:
+frontend	Run npm test	2026-10-22T20:27:02.8205495Z   NEXT_TELEMETRY_DISABLED: 1
+frontend	Run npm test	2026-10-22T20:27:02.8205633Z ##[endgroup]
+frontend	Run npm test	2026-10-22T20:27:02.8974121Z 
+frontend	Run npm test	2026-10-22T20:27:02.8974675Z > origem-frontend@1.0.0 test
+frontend	Run npm test	2026-10-22T20:27:02.8974976Z > vitest run
+frontend	Run npm test	2026-10-22T20:27:02.8975093Z 
+frontend	Run npm test	2026-10-22T20:27:03.0841003Z 
+frontend	Run npm test	2026-10-22T20:27:03.0842557Z ^[[1m^[[7m^[[36m RUN ^[[39m^[[27m^[[22m ^[[36mv2.1.9 ^[[39m^[[90m/home/runner/work/Projeto-Integrador/Projeto-Integrador/frontend^[[39m
+frontend	Run npm test	2026-10-22T20:27:03.0844201Z 
+frontend	Run npm test	2026-10-22T20:27:03.9685187Z  ^[[32m✓^[[39m tests/services/moderacao.service.test.ts ^[[2m(^[[22m^[[2m22 tests^[[22m^[[2m)^[[22m^[[90m 33^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:03.9690013Z  ^[[32m✓^[[39m tests/services/produtos.service.test.ts ^[[2m(^[[22m^[[2m43 tests^[[22m^[[2m)^[[22m^[[90m 66^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:05.0344843Z  ^[[32m✓^[[39m tests/app/vitrine.test.tsx ^[[2m(^[[22m^[[2m17 tests^[[22m^[[2m)^[[22m^[[33m 1164^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:05.0358039Z    ^[[33m^[[2m✓^[[22m^[[39m Vitrine (Home)^[[2m > ^[[22mmostra carregando e depois a lista de produtos ^[[33m313^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:05.2953925Z  ^[[32m✓^[[39m tests/components/gate-acesso.test.tsx ^[[2m(^[[22m^[[2m18 tests^[[22m^[[2m)^[[22m^[[33m 463^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:06.1767276Z  ^[[32m✓^[[39m tests/components/produto/detalhe-produto.test.tsx ^[[2m(^[[22m^[[2m16 tests^[[22m^[[2m)^[[22m^[[33m 465^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:06.7130631Z  ^[[32m✓^[[39m tests/store/carrinho-http.store.test.ts ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[90m 22^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:06.7676170Z  ^[[32m✓^[[39m tests/components/admin/painel-moderacao.test.tsx ^[[2m(^[[22m^[[2m12 tests^[[22m^[[2m)^[[22m^[[33m 762^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:06.8299015Z  ^[[32m✓^[[39m tests/components/meus-produtos-list.test.tsx ^[[2m(^[[22m^[[2m14 tests^[[22m^[[2m)^[[22m^[[33m 1839^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:06.8355004Z    ^[[33m^[[2m✓^[[22m^[[39m MeusProdutosList^[[2m > ^[[22meditar produto chama service.update com o artesaoId da sessao e atualiza a lista ^[[33m586^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:06.8384434Z    ^[[33m^[[2m✓^[[22m^[[39m MeusProdutosList^[[2m > ^[[22mpainel de edicao mostra o preco com virgula e salva o numero correto ^[[33m430^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:06.8385560Z    ^[[33m^[[2m✓^[[22m^[[39m MeusProdutosList^[[2m > ^[[22mmostra erro no painel quando a edicao falha e mantem o painel aberto ^[[33m390^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:07.4720431Z  ^[[32m✓^[[39m tests/services/pedidos.service.test.ts ^[[2m(^[[22m^[[2m16 tests^[[22m^[[2m)^[[22m^[[90m 7^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:07.4955021Z  ^[[32m✓^[[39m tests/services/usuarios.service.test.ts ^[[2m(^[[22m^[[2m16 tests^[[22m^[[2m)^[[22m^[[90m 41^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:09.2723873Z  ^[[32m✓^[[39m tests/components/perfil-artesao-form.test.tsx ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[33m 1096^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:09.2725735Z    ^[[33m^[[2m✓^[[22m^[[39m PerfilArtesaoForm^[[2m > ^[[22mcenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso ^[[33m345^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:09.3109199Z  ^[[32m✓^[[39m tests/components/cadastro-form.test.tsx ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[33m 1133^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.0449850Z  ^[[32m✓^[[39m tests/components/artesao/perfil-artesao-publico.test.tsx ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[90m 110^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.3865206Z  ^[[32m✓^[[39m tests/hooks/use-perfil-publico-artesao.test.tsx ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[33m 455^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4395011Z  ^[[31m❯^[[39m tests/components/produto-form.test.tsx ^[[2m(^[[22m^[[2m13 tests^[[22m^[[2m | ^[[22m^[[31m10 failed^[[39m^[[2m)^[[22m^[[33m 2994^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4414177Z    ^[[33m^[[2m✓^[[22m^[[39m carrega categoria HTTP com UUID e cadastra pelo formulario ^[[33m553^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4415097Z    ^[[33m^[[2m✓^[[22m^[[39m ProdutoForm^[[2m > ^[[22mcampos ausentes bloqueiam criacao e mostram erros por campo ^[[33m341^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4415904Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mpreco 0 bloqueia criacao^[[90m 242^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4417243Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4417480Z 
+frontend	Run npm test	2026-10-22T20:27:10.4417653Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4417937Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4418267Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4420448Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4422189Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4422523Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4422889Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4423378Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4423589Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4423851Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4424138Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4424398Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4424619Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4424848Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4425086Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4425626Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mpreco -1 bloqueia criacao^[[90m 217^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4426228Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4426461Z 
+frontend	Run npm test	2026-10-22T20:27:10.4426626Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4426939Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4427227Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4429523Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4431428Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4431733Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4432040Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4432291Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4432485Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4432738Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4433170Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4433565Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4463576Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4484432Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4484985Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4485904Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mpreco -0.5 bloqueia criacao^[[90m 208^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4486595Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4486916Z 
+frontend	Run npm test	2026-10-22T20:27:10.4487144Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4487504Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4487847Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4490061Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4492237Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4492675Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4493208Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4493733Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4494121Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4494506Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4494911Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4495265Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4495575Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4495910Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4496255Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4496909Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mpreco -100 bloqueia criacao^[[90m 222^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4497601Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4497953Z 
+frontend	Run npm test	2026-10-22T20:27:10.4498210Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4498590Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4498964Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4501323Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4503397Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4503838Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4504281Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4504655Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4505084Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4505475Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4505857Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4506204Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4506778Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4530315Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4530886Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4531554Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mpreco -0.01 bloqueia criacao^[[90m 239^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4564562Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4593278Z 
+frontend	Run npm test	2026-10-22T20:27:10.4594545Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4595057Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4595457Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4597711Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4599725Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4600202Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4600701Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4601092Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4601428Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4601809Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4602219Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4602593Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4603220Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4603591Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4603949Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4604884Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mproduto valido chama o service vinculado ao artesao da sessao e mostra confirmacao^[[90m 207^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4605752Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4606128Z 
+frontend	Run npm test	2026-10-22T20:27:10.4606435Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4607233Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4607625Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4609921Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4611730Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4612183Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4612642Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4613195Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4613513Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4613887Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4614315Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4614672Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4614990Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4615324Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4615669Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4616380Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22maceita preco com virgula e envia o numero correto^[[90m 231^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4617150Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4617495Z 
+frontend	Run npm test	2026-10-22T20:27:10.4617753Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4618132Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4618506Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4620726Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4622750Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4623511Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4623917Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4624181Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4624390Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4624641Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4624927Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4625158Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4625369Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4625597Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4625824Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4626494Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mmostra loading e desabilita o botao durante o envio^[[90m 178^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4627252Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4627499Z 
+frontend	Run npm test	2026-10-22T20:27:10.4627646Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4627923Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4628187Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4630338Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4632016Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4632324Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4632644Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4633440Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4633638Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4633893Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4634176Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4634413Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4634620Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4634838Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4635074Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4635759Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mnao envia duas vezes ao clicar repetidamente antes da resposta^[[90m 186^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4636426Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4636647Z 
+frontend	Run npm test	2026-10-22T20:27:10.4636809Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4637108Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4637385Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4639477Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4641165Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4641464Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4641775Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4642026Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4642222Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4642468Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4642746Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4643160Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4643367Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4643601Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4643844Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4644776Z ^[[31m   ^[[31m×^[[31m ProdutoForm^[[2m > ^[[22mmostra erro recuperavel quando o service falha e permite tentar novamente^[[90m 154^[[2mms^[[22m^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.4645456Z ^[[31m     → Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:10.4645685Z 
+frontend	Run npm test	2026-10-22T20:27:10.4645816Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:10.4646134Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4646384Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4648428Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4650086Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4650415Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4650715Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4650964Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4651156Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4651403Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4651681Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4651918Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4652120Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:10.4652342Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:10.4652574Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:10.5447127Z  ^[[32m✓^[[39m tests/services/avaliacoes.service.test.ts ^[[2m(^[[22m^[[2m21 tests^[[22m^[[2m)^[[22m^[[90m 46^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:11.0374895Z  ^[[32m✓^[[39m tests/services/fake-recommendation.adapter.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[90m 13^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:11.0912299Z  ^[[32m✓^[[39m tests/services/http/catalogo.service.test.ts ^[[2m(^[[22m^[[2m14 tests^[[22m^[[2m)^[[22m^[[90m 20^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:11.6855075Z  ^[[32m✓^[[39m tests/store/carrinho.store.test.ts ^[[2m(^[[22m^[[2m17 tests^[[22m^[[2m)^[[22m^[[90m 9^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:11.7198864Z  ^[[32m✓^[[39m tests/components/meus-pedidos.test.tsx ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[33m 306^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:12.2440772Z  ^[[32m✓^[[39m tests/components/produto-card.test.tsx ^[[2m(^[[22m^[[2m19 tests^[[22m^[[2m)^[[22m^[[33m 364^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:12.3233938Z  ^[[32m✓^[[39m tests/fake-api/repositories/produto.repository.test.ts ^[[2m(^[[22m^[[2m15 tests^[[22m^[[2m)^[[22m^[[90m 8^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:12.8004556Z  ^[[32m✓^[[39m tests/app/route-protection.test.tsx ^[[2m(^[[22m^[[2m12 tests^[[22m^[[2m)^[[22m^[[33m 342^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:13.3274921Z  ^[[32m✓^[[39m tests/app/produto-detalhe.test.tsx ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[90m 284^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:13.4172011Z  ^[[32m✓^[[39m tests/domain/produto-visibilidade.test.ts ^[[2m(^[[22m^[[2m20 tests^[[22m^[[2m)^[[22m^[[90m 6^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:13.7883945Z  ^[[32m✓^[[39m tests/components/login-form.test.tsx ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[33m 695^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:13.9455514Z  ^[[32m✓^[[39m tests/fake-api/repositories/usuario.repository.test.ts ^[[2m(^[[22m^[[2m14 tests^[[22m^[[2m)^[[22m^[[90m 9^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:14.5484876Z  ^[[32m✓^[[39m tests/services/http/recomendacoes.adapter.test.ts ^[[2m(^[[22m^[[2m22 tests^[[22m^[[2m)^[[22m^[[33m 479^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:14.8001466Z  ^[[32m✓^[[39m tests/components/filtros-produtos.test.tsx ^[[2m(^[[22m^[[2m12 tests^[[22m^[[2m)^[[22m^[[33m 372^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:14.9715232Z  ^[[32m✓^[[39m tests/hooks/use-detalhe-produto.test.tsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 305^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:15.2408336Z  ^[[32m✓^[[39m tests/services/container-http.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 137^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:15.4017309Z  ^[[32m✓^[[39m tests/fake-api/repositories/perfil-artesao.repository.test.ts ^[[2m(^[[22m^[[2m12 tests^[[22m^[[2m)^[[22m^[[90m 7^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:15.9135111Z  ^[[32m✓^[[39m tests/services/http/api-client.test.ts ^[[2m(^[[22m^[[2m14 tests^[[22m^[[2m)^[[22m^[[90m 32^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:16.0375315Z  ^[[32m✓^[[39m tests/components/checkout-http.test.tsx ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[33m 311^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:16.1008193Z  ^[[32m✓^[[39m tests/services/http/catalogo-escrita.web12.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 15^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:16.6579391Z  ^[[32m✓^[[39m tests/services/perfil-artesao.service.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[90m 5^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:16.7323504Z  ^[[32m✓^[[39m tests/fake-api/storage/sessao.storage.test.ts ^[[2m(^[[22m^[[2m20 tests^[[22m^[[2m)^[[22m^[[90m 7^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:16.9344674Z  ^[[32m✓^[[39m tests/hooks/use-busca-produtos.test.tsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[90m 291^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:17.2715217Z  ^[[32m✓^[[39m tests/services/http/pedidos-historico.service.test.ts ^[[2m(^[[22m^[[2m17 tests^[[22m^[[2m)^[[22m^[[90m 17^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:17.4901597Z  ^[[32m✓^[[39m tests/components/route-guard.test.tsx ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[90m 96^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:17.5484802Z  ^[[32m✓^[[39m tests/store/sessao.store.test.ts ^[[2m(^[[22m^[[2m12 tests^[[22m^[[2m)^[[22m^[[90m 8^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:17.9094920Z  ^[[32m✓^[[39m tests/validators/produto.validator.test.ts ^[[2m(^[[22m^[[2m27 tests^[[22m^[[2m)^[[22m^[[90m 12^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:18.3430776Z  ^[[32m✓^[[39m tests/components/notificacoes-artesao.test.tsx ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 124^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:18.5954271Z  ^[[32m✓^[[39m tests/hooks/use-meus-produtos.test.tsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 310^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:18.9547705Z  ^[[32m✓^[[39m tests/components/sessao-http.test.tsx ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 346^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:19.1980133Z  ^[[32m✓^[[39m tests/services/http/perfil-artesao.service.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[90m 45^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:19.2060922Z  ^[[32m✓^[[39m tests/hooks/use-recomendacoes.test.tsx ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[90m 240^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:19.4823328Z  ^[[32m✓^[[39m tests/services/pedidos-historico.fake.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 7^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:20.0431121Z  ^[[32m✓^[[39m tests/components/faixa-recomendacoes.test.tsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[90m 136^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:20.1414772Z  ^[[32m✓^[[39m tests/fake-api/repositories/avaliacao.repository.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[90m 9^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:20.1415679Z  ^[[32m✓^[[39m tests/components/resultado-busca.test.tsx ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[90m 180^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:20.7464820Z  ^[[32m✓^[[39m tests/services/http/usuarios.service.test.ts ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[90m 23^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:20.7784467Z  ^[[32m✓^[[39m tests/utils/produto-query-url.test.ts ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[90m 10^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:20.9551865Z  ^[[32m✓^[[39m tests/app/minha-conta.test.tsx ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 219^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:21.3752319Z  ^[[32m✓^[[39m tests/validators/perfil-artesao.validator.test.ts ^[[2m(^[[22m^[[2m18 tests^[[22m^[[2m)^[[22m^[[90m 5^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:21.4555928Z  ^[[32m✓^[[39m tests/hooks/use-filtros-url.test.tsx ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[90m 26^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:21.5389051Z  ^[[32m✓^[[39m tests/utils/rota-segura.test.ts ^[[2m(^[[22m^[[2m18 tests^[[22m^[[2m)^[[22m^[[90m 4^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:21.9174826Z  ^[[32m✓^[[39m tests/fake-api/repositories/pedido.repository.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[90m 4^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:22.1329134Z  ^[[32m✓^[[39m tests/store/sessao-http.store.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 7^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:22.4089738Z  ^[[32m✓^[[39m tests/hooks/perfil-artesao-http.test.tsx ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[90m 215^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:22.6358256Z  ^[[32m✓^[[39m tests/components/pendencia-perfil-artesao.test.tsx ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[90m 109^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:22.6656136Z  ^[[32m✓^[[39m tests/fake-api/usuario.repository.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[90m 4^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:23.0384844Z  ^[[32m✓^[[39m tests/services/verificar-usuario-ativo.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:23.2904517Z  ^[[32m✓^[[39m tests/services/http/carrinho.service.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 11^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:23.3985109Z ^[[90mstderr^[[2m | tests/hooks/use-artesaos-ativos.test.tsx^[[2m > ^[[22m^[[2museArtesaosAtivos^[[2m > ^[[22m^[[2mcomeca carregando quando o service ainda nao resolveu
+frontend	Run npm test	2026-10-22T20:27:23.3986531Z ^[[22m^[[39mAn update to TestComponent inside a test was not wrapped in act(...).
+frontend	Run npm test	2026-10-22T20:27:23.3987021Z 
+frontend	Run npm test	2026-10-22T20:27:23.3987532Z When testing, code that causes React state updates should be wrapped into act(...):
+frontend	Run npm test	2026-10-22T20:27:23.3988156Z 
+frontend	Run npm test	2026-10-22T20:27:23.3988380Z act(() => {
+frontend	Run npm test	2026-10-22T20:27:23.3988793Z   /* fire events that update state */
+frontend	Run npm test	2026-10-22T20:27:23.3989212Z });
+frontend	Run npm test	2026-10-22T20:27:23.3989551Z /* assert on the output */
+frontend	Run npm test	2026-10-22T20:27:23.3989871Z 
+frontend	Run npm test	2026-10-22T20:27:23.3990549Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+frontend	Run npm test	2026-10-22T20:27:23.3991262Z 
+frontend	Run npm test	2026-10-22T20:27:23.5002462Z  ^[[32m✓^[[39m tests/hooks/use-artesaos-ativos.test.tsx ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[90m 131^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:23.6414823Z  ^[[32m✓^[[39m tests/fake-api/seeds/avaliacoes.seed.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[90m 5^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:24.0182493Z  ^[[32m✓^[[39m tests/validators/cadastro.validator.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:24.0315454Z  ^[[32m✓^[[39m tests/hooks/use-opcoes-filtro.test.tsx ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[90m 129^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:24.2514895Z  ^[[32m✓^[[39m tests/domain/perfil-artesao-completo.test.ts ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:24.6132733Z  ^[[32m✓^[[39m tests/fake-api/seeds/produtos.seed.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[90m 9^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:24.6414442Z  ^[[32m✓^[[39m tests/config/next-config.test.ts ^[[2m(^[[22m^[[2m14 tests^[[22m^[[2m)^[[22m^[[90m 10^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:24.8254717Z  ^[[32m✓^[[39m tests/utils/foto-url-segura.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[90m 5^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:25.2225689Z  ^[[32m✓^[[39m tests/fake-api/storage/carrinho.storage.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[90m 4^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:25.2968160Z  ^[[32m✓^[[39m tests/config/middleware.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 24^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:25.4744894Z  ^[[32m✓^[[39m tests/services/opcoes-filtro.service.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[90m 34^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:25.9174935Z  ^[[32m✓^[[39m tests/fake-api/storage/modo-acesso.storage.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:25.9476843Z  ^[[32m✓^[[39m tests/hooks/use-sessao.test.tsx ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[90m 24^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:26.1573940Z  ^[[32m✓^[[39m tests/utils/normalizar-texto.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:26.5324122Z  ^[[32m✓^[[39m tests/domain/resumo-avaliacoes.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:26.5349149Z  ^[[32m✓^[[39m tests/utils/preco-campo.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[90m 3^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:26.9268626Z  ^[[32m✓^[[39m tests/components/autenticacao/layout-autenticacao.test.tsx ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[90m 66^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:27.1255634Z  ^[[32m✓^[[39m tests/types/usuario.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[90m 2^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:27.1745118Z  ^[[32m✓^[[39m tests/services/recomendacao-contrato.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[90m 1^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:27.5634939Z  ^[[32m✓^[[39m tests/fake-api/seeds/categorias.seed.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[90m 2^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:27.8988826Z  ^[[32m✓^[[39m tests/app/not-found.test.tsx ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[90m 58^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:28.1145211Z  ^[[32m✓^[[39m tests/utils/formatar-moeda.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[90m 2^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:28.1515309Z  ^[[32m✓^[[39m tests/services/container-avaliacoes.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[33m 303^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:28.1546002Z    ^[[33m^[[2m✓^[[22m^[[39m obterAvaliacoesService^[[2m > ^[[22mexpõe o recurso de avaliacoes pela camada organizada ^[[33m302^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:28.4535368Z  ^[[32m✓^[[39m tests/utils/rotulo-papel.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[90m 1^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.0609744Z  ^[[32m✓^[[39m tests/config/build-typescript.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[33m 1389^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.0610535Z    ^[[33m^[[2m✓^[[22m^[[39m TypeScript do build de produção^[[2m > ^[[22mverifica a aplicação sem importar testes ou código do backend ^[[33m672^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.0611365Z    ^[[33m^[[2m✓^[[22m^[[39m TypeScript do build de produção^[[2m > ^[[22mpreserva a checagem dos testes e contratos entre as camadas ^[[33m716^[[2mms^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.0964489Z ^[[31m⎯⎯⎯⎯⎯⎯^[[1m^[[7m Failed Tests 10 ^[[27m^[[22m⎯⎯⎯⎯⎯⎯⎯^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.0964823Z 
+frontend	Run npm test	2026-10-22T20:27:30.0973824Z 
+frontend	Run npm test	2026-10-22T20:27:30.0984477Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mpreco 0 bloqueia criacao
+frontend	Run npm test	2026-10-22T20:27:30.0986029Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mpreco -1 bloqueia criacao
+frontend	Run npm test	2026-10-22T20:27:30.0987169Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mpreco -0.5 bloqueia criacao
+frontend	Run npm test	2026-10-22T20:27:30.0988708Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mpreco -100 bloqueia criacao
+frontend	Run npm test	2026-10-22T20:27:30.0989808Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mpreco -0.01 bloqueia criacao
+frontend	Run npm test	2026-10-22T20:27:30.0991167Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mproduto valido chama o service vinculado ao artesao da sessao e mostra confirmacao
+frontend	Run npm test	2026-10-22T20:27:30.0992563Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22maceita preco com virgula e envia o numero correto
+frontend	Run npm test	2026-10-22T20:27:30.0994013Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mmostra loading e desabilita o botao durante o envio
+frontend	Run npm test	2026-10-22T20:27:30.0995377Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mnao envia duas vezes ao clicar repetidamente antes da resposta
+frontend	Run npm test	2026-10-22T20:27:30.0996866Z ^[[31m^[[1m^[[7m FAIL ^[[27m^[[22m^[[39m tests/components/produto-form.test.tsx^[[2m > ^[[22mProdutoForm^[[2m > ^[[22mmostra erro recuperavel quando o service falha e permite tentar novamente
+frontend	Run npm test	2026-10-22T20:27:30.0998053Z ^[[31m^[[1mTestingLibraryElementError^[[22m: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	2026-10-22T20:27:30.0998576Z 
+frontend	Run npm test	2026-10-22T20:27:30.0998853Z Ignored nodes: comments, script, style
+frontend	Run npm test	2026-10-22T20:27:30.0999309Z ^[[36m<select^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.0999757Z   ^[[33maria-invalid^[[31m=^[[32m"false"^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1002191Z   ^[[33mclass^[[31m=^[[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1004488Z   ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1004983Z   ^[[33mid^[[31m=^[[32m"produto-categoria"^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1005480Z   ^[[33mname^[[31m=^[[32m"categoriaId"^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1005902Z ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1006267Z   ^[[36m<option^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1006691Z     ^[[33mdisabled^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1007169Z     ^[[33mvalue^[[31m=^[[32m""^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1007568Z   ^[[36m>^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1007943Z     ^[[0mSelecione^[[0m
+frontend	Run npm test	2026-10-22T20:27:30.1008325Z   ^[[36m</option>^[[31m
+frontend	Run npm test	2026-10-22T20:27:30.1008733Z ^[[36m</select>^[[31m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1009593Z ^[[90m ^[[2m❯^[[22m Object.getElementError node_modules/@testing-library/dom/dist/config.js:^[[2m37:19^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1010630Z ^[[90m ^[[2m❯^[[22m node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:^[[2m37:35^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1011802Z ^[[90m ^[[2m❯^[[22m Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:^[[2m29:38^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1013085Z ^[[90m ^[[2m❯^[[22m Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:^[[2m16:30^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1014137Z ^[[90m ^[[2m❯^[[22m node_modules/@testing-library/user-event/dist/esm/setup/setup.js:^[[2m83:35^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1015091Z ^[[90m ^[[2m❯^[[22m Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:^[[2m88:28^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1016104Z ^[[90m ^[[2m❯^[[22m wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:^[[2m6:24^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1017238Z ^[[90m ^[[2m❯^[[22m Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:^[[2m83:16^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1018468Z ^[[36m ^[[2m❯^[[22m preencherFormularioValido tests/components/produto-form.test.tsx:^[[2m88:14^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1100608Z     ^[[90m 86| ^[[39m  )^[[33m;^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1101448Z     ^[[90m 87| ^[[39m  ^[[35mawait^[[39m user^[[33m.^[[39m^[[34mtype^[[39m(screen^[[33m.^[[39m^[[34mgetByLabelText^[[39m(^[[36m/preço/i^[[39m)^[[33m,^[[39m ^[[32m"89.90"^[[39m)^[[33m;^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1102191Z     ^[[90m 88| ^[[39m  ^[[35mawait^[[39m user^[[33m.^[[39m^[[34mselectOptions^[[39m(
+frontend	Run npm test	2026-10-22T20:27:30.1102587Z     ^[[90m   | ^[[39m             ^[[31m^^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1103211Z     ^[[90m 89| ^[[39m    screen^[[33m.^[[39m^[[34mgetByLabelText^[[39m(^[[36m/categoria/i^[[39m)^[[33m,^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1103779Z     ^[[90m 90| ^[[39m    ^[[33mCATEGORIA_IDS^[[39m^[[33m.^[[39mceramicaBarro^[[33m,^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1104015Z 
+frontend	Run npm test	2026-10-22T20:27:30.1104260Z ^[[31m^[[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯^[[22m^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1104437Z 
+frontend	Run npm test	2026-10-22T20:27:30.1110497Z ^[[2m Test Files ^[[22m ^[[1m^[[31m1 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m88 passed^[[39m^[[22m^[[90m (89)^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1113640Z ^[[2m      Tests ^[[22m ^[[1m^[[31m10 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m832 passed^[[39m^[[22m^[[90m (842)^[[39m
+frontend	Run npm test	2026-10-22T20:27:30.1114153Z ^[[2m   Start at ^[[22m 20:27:03
+frontend	Run npm test	2026-10-22T20:27:30.1116072Z ^[[2m   Duration ^[[22m 27.01s^[[2m (transform 1.68s, setup 4.30s, collect 6.63s, tests 19.10s, environment 30.42s, prepare 5.39s)^[[22m
+frontend	Run npm test	2026-10-22T20:27:30.1116477Z 
+frontend	Run npm test	2026-10-22T20:27:30.1131033Z 
+frontend	Run npm test	2026-10-22T20:27:30.1160929Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1174193Z 
+frontend	Run npm test	2026-10-22T20:27:30.1185086Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1191868Z (node:2437) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 unhandledRejection listeners added to [process]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+frontend	Run npm test	2026-10-22T20:27:30.1192750Z (Use `node --trace-warnings ...` to show where the warning was created)
+frontend	Run npm test	2026-10-22T20:27:30.1193142Z 
+frontend	Run npm test	2026-10-22T20:27:30.1202812Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1207845Z 
+frontend	Run npm test	2026-10-22T20:27:30.1217380Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1222759Z 
+frontend	Run npm test	2026-10-22T20:27:30.1232546Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1238203Z 
+frontend	Run npm test	2026-10-22T20:27:30.1248226Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1253232Z 
+frontend	Run npm test	2026-10-22T20:27:30.1263588Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1269112Z 
+frontend	Run npm test	2026-10-22T20:27:30.1278186Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1282767Z 
+frontend	Run npm test	2026-10-22T20:27:30.1291382Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1296643Z 
+frontend	Run npm test	2026-10-22T20:27:30.1305063Z ##[error]TestingLibraryElementError: Value "categoria-ceramica-barro" not found in options
+frontend	Run npm test	
+frontend	Run npm test	Ignored nodes: comments, script, style
+frontend	Run npm test	<select
+frontend	Run npm test	  aria-invalid="false"
+frontend	Run npm test	  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] cursor-pointer appearance-none pr-[42px] pl-3.5"
+frontend	Run npm test	  disabled=""
+frontend	Run npm test	  id="produto-categoria"
+frontend	Run npm test	  name="categoriaId"
+frontend	Run npm test	>
+frontend	Run npm test	  <option
+frontend	Run npm test	    disabled=""
+frontend	Run npm test	    value=""
+frontend	Run npm test	  >
+frontend	Run npm test	    Selecione
+frontend	Run npm test	  </option>
+frontend	Run npm test	</select>
+frontend	Run npm test	 ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:37:35
+frontend	Run npm test	 ❯ Object.selectOptionsBase node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:29:38
+frontend	Run npm test	 ❯ Object.selectOptions node_modules/@testing-library/user-event/dist/esm/utility/selectOptions.js:16:30
+frontend	Run npm test	 ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+frontend	Run npm test	 ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+frontend	Run npm test	 ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+frontend	Run npm test	 ❯ Object.method [as selectOptions] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+frontend	Run npm test	 ❯ preencherFormularioValido tests/components/produto-form.test.tsx:88:14
+frontend	Run npm test	
+frontend	Run npm test	
+frontend	Run npm test	2026-10-22T20:27:30.1533081Z ##[error]Process completed with exit code 1.

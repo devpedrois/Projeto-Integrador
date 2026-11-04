@@ -1,0 +1,5 @@
+Vitest tests/integration/http-recomendacao.integration.test.ts
+4 testes: 3 passaram, 1 falhou.
+microsservico desligado gera falha tipada e rota controlada
+Esperado: 503. Recebido: 200.
+A composicao ainda executava a Strategy local.

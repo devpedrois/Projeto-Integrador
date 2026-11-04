@@ -1,0 +1,341 @@
+{
+  "sucesso": true,
+  "viewports": [
+    {
+      "viewport": 360,
+      "pagina": 360,
+      "trilho": 328,
+      "conteudo": 2192,
+      "display": "grid",
+      "autoColumns": "260px",
+      "templateColumns": "260px 260px 260px 260px 260px 260px 260px 260px",
+      "autoFlow": "column",
+      "cards": [
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        }
+      ]
+    },
+    {
+      "viewport": 768,
+      "pagina": 768,
+      "trilho": 720,
+      "conteudo": 2192,
+      "display": "grid",
+      "autoColumns": "260px",
+      "templateColumns": "260px 260px 260px 260px 260px 260px 260px 260px",
+      "autoFlow": "column",
+      "cards": [
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        }
+      ]
+    },
+    {
+      "viewport": 1280,
+      "pagina": 1280,
+      "trilho": 1192,
+      "conteudo": 2192,
+      "display": "grid",
+      "autoColumns": "260px",
+      "templateColumns": "260px 260px 260px 260px 260px 260px 260px 260px",
+      "autoFlow": "column",
+      "cards": [
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        },
+        {
+          "width": 260,
+          "height": 465.296875
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "categoria": [
+        "5e254fc4-5a5b-4725-99d2-b3e621034ae1",
+        "b7431736-5ea1-4fa1-b632-a1c94b0ec5a4",
+        "5660aa87-dfc4-46a1-9958-110a2d9cc20f",
+        "b4154e87-0870-4876-9467-c83589fc362f",
+        "00b44290-9045-4378-b866-66abd30b1425",
+        "7f1e4fa7-daf2-4c09-b1d6-0d4b6992bbf9",
+        "2f161e48-3414-4cef-b59c-54a76c8df720",
+        "6763424c-46a8-49be-9a5c-8c90a6199675"
+      ],
+      "fallback": [
+        "5e254fc4-5a5b-4725-99d2-b3e621034ae1",
+        "b7431736-5ea1-4fa1-b632-a1c94b0ec5a4",
+        "5660aa87-dfc4-46a1-9958-110a2d9cc20f",
+        "b4154e87-0870-4876-9467-c83589fc362f",
+        "00b44290-9045-4378-b866-66abd30b1425",
+        "7f1e4fa7-daf2-4c09-b1d6-0d4b6992bbf9",
+        "2f161e48-3414-4cef-b59c-54a76c8df720",
+        "6763424c-46a8-49be-9a5c-8c90a6199675"
+      ],
+      "semAutorrecomendacao": true
+    }
+  ],
+  "falha503ControladaVisivel": true,
+  "painelNetwork": "Instrumentacao visual da automacao usando eventos HTTP reais do navegador, nao DevTools nativo",
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/avaliacoes?produtoId=48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/322d65b0-5672-478d-b807-d3eec3145be7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/avaliacoes?produtoId=322d65b0-5672-478d-b807-d3eec3145be7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=322d65b0-5672-478d-b807-d3eec3145be7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=322d65b0-5672-478d-b807-d3eec3145be7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 503
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/produtos/48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/tecnicas",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/categorias",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/regioes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/avaliacoes?produtoId=48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 503
+    },
+    {
+      "metodo": "GET",
+      "caminho": "/api/recomendacoes?produtoId=48e14342-9a77-4f7b-943b-77dcdfb37bc7",
+      "status": 503
+    }
+  ]
+}

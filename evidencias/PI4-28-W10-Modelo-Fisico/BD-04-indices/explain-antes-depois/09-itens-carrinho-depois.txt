@@ -1,0 +1,63 @@
+Consulta: itens-carrinho
+Fase: depois
+Captura original UTC: 2026-10-14T02:22:29.088Z
+Schema isolado: bd04_951b24127b014d84969945506e99dcda
+PostgreSQL: PostgreSQL 18.6 (653b019) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+enable_seqscan: on
+Contagens: {"produtos":1000,"pedidos":1500,"artesaos":50,"compradores":300,"intencoes":1500,"notificacoes":1500,"itenscarrinho":300}
+Parametros: ["0042ef61-0b25-56ef-a19f-60294f3cd0ba"]
+
+SQL executado:
+EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)
+SELECT "id", "produtoId", "quantidade", "precoUnitario"
+FROM "ItemCarrinho"
+WHERE "carrinhoId" = $1::uuid;
+
+Saida original PostgreSQL em FORMAT JSON:
+[
+  {
+    "Plan": {
+      "Node Type": "Seq Scan",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "ItemCarrinho",
+      "Alias": "ItemCarrinho",
+      "Startup Cost": 0,
+      "Total Cost": 7.75,
+      "Plan Rows": 1,
+      "Plan Width": 42,
+      "Actual Startup Time": 0.023,
+      "Actual Total Time": 0.043,
+      "Actual Rows": 1,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Filter": "(\"carrinhoId\" = '0042ef61-0b25-56ef-a19f-60294f3cd0ba'::uuid)",
+      "Rows Removed by Filter": 299,
+      "Shared Hit Blocks": 4,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning": {
+      "Shared Hit Blocks": 0,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.117,
+    "Triggers": [],
+    "Execution Time": 0.072
+  }
+]

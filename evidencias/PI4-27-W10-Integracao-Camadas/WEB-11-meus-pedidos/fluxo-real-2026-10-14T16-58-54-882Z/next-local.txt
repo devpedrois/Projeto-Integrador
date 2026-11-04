@@ -1,0 +1,10 @@
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:39452
+   - Network:      http://127.0.0.1:39452
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ✓ Compiled /middleware in 148ms (118 modules)
+ ○ Compiling /minha-conta ...
+ ✓ Compiled /minha-conta in 1313ms (792 modules)
+ GET /minha-conta 200 in 1774ms

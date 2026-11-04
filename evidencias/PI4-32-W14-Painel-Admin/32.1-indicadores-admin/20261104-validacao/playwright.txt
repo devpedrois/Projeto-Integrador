@@ -1,0 +1,20 @@
+[WebServer] (node:23876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:47732) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+  -  1 [360px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras
+  ok 2 [360px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (6.9s)
+  ok 3 [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (7.1s)
+  ok 4 [1280px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras (6.0s)
+  ok 5 [1280px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (3.0s)
+  ok 6 [1280px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (4.4s)
+
+  1 skipped
+  5 passed (36.6s)
+Schema E2E removido e ausencia confirmada.
+Chamadas ao microsservico E2E: 16
+Traces ZIP sanitizados: 0
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-32-W14-Painel-Admin\32.1-indicadores-admin\20261104-validacao\playwright\028a078050be434c81e0380c0b4605fa\html\index.html

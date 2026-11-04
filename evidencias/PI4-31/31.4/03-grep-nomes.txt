@@ -1,0 +1,179 @@
+backend/tests/integration/auth.routes.integration.test.ts: normaliza email, persiste bcrypt custo 10 e cria carrinho sem iniciar sessao
+63:  it("normaliza email, persiste bcrypt custo 10 e cria carrinho sem iniciar sessao", async () => {
+
+backend/tests/integration/auth.routes.integration.test.ts: retorna 409 para email em uso com caixa e espacos distintos
+135:  it("retorna 409 para email em uso com caixa e espacos distintos", async () => {
+
+backend/tests/integration/auth.routes.integration.test.ts: retorna somente usuario publico e encerra sessao no logout
+294:  it("retorna somente usuario publico e encerra sessao no logout", async () => {
+
+backend/tests/integration/auth.routes.integration.test.ts: retorna status e corpo byte a byte iguais nos tres logins invalidos
+216:  it("retorna status e corpo byte a byte iguais nos tres logins invalidos", async () => {
+
+backend/tests/integration/authorization.routes.integration.test.ts: PATCH /admin/usuarios/:id/papel como $papel retorna $adminStatus
+142:    "PATCH /admin/usuarios/:id/papel como $papel retorna $adminStatus",
+
+backend/tests/integration/avaliacoes.web4.integration.test.ts: nao comprou recebe 403 estavel, sem gravacao ou invalidacao de cache
+119:  it("nao comprou recebe 403 estavel, sem gravacao ou invalidacao de cache", async () => {
+
+backend/tests/integration/avaliacoes.web4.integration.test.ts: permite somente ao comprador com pedido confirmado e depois informa ja avaliado
+102:  it("permite somente ao comprador com pedido confirmado e depois informa ja avaliado", async () => {
+
+backend/tests/integration/busca-p95.integration.test.ts: mede seis cenarios sem cache e salva CSV e planos reais
+10:  it("mede seis cenarios sem cache e salva CSV e planos reais", async () => {
+
+backend/tests/integration/carrinho.routes.integration.test.ts: 409 inclui produto e nome sem alterar quantidade ou preco
+201:  it("409 inclui produto e nome sem alterar quantidade ou preco", async () => {
+
+backend/tests/integration/carrinho.routes.integration.test.ts: DELETE remove somente da sessao atual e permite limpar ocultos
+179:  it("DELETE remove somente da sessao atual e permite limpar ocultos", async () => {
+
+backend/tests/integration/carrinho.routes.integration.test.ts: POST soma, grava preco do banco e persiste entre sessoes
+111:  it("POST soma, grava preco do banco e persiste entre sessoes", async () => {
+
+backend/tests/integration/catalogo-moderacao.web12.integration.test.ts: cria pelo token, valida referencias e rejeita identidade externa
+118:  it("cria pelo token, valida referencias e rejeita identidade externa", async () => {
+
+backend/tests/integration/catalogo-moderacao.web12.integration.test.ts: matriz de propriedade %s
+86:    "matriz de propriedade %s",
+
+backend/tests/integration/catalogo-moderacao.web12.integration.test.ts: modera artesao reversivelmente e invalida login e sessao
+209:  it("modera artesao reversivelmente e invalida login e sessao", async () => {
+
+backend/tests/integration/catalogo-moderacao.web12.integration.test.ts: moderacao preserva soft delete e dono nao reativa produto moderado
+248:  it("moderacao preserva soft delete e dono nao reativa produto moderado", async () => {
+
+backend/tests/integration/catalogo-moderacao.web12.integration.test.ts: rejeita estoque invalido %j
+297:  ])("rejeita estoque invalido %j", async (body) => {
+
+backend/tests/integration/catalogo-moderacao.web12.integration.test.ts: soft delete preserva itens de pedidos anteriores
+351:  it("soft delete preserva itens de pedidos anteriores", async () => {
+
+backend/tests/integration/catalogo.routes.integration.test.ts: combina termo e todos os filtros sem vazar produtos ocultos
+171:  it("combina termo e todos os filtros sem vazar produtos ocultos", async () => {
+
+backend/tests/integration/catalogo.routes.integration.test.ts: reflete moderacao e estoque imediatamente nas leituras
+231:  it("reflete moderacao e estoque imediatamente nas leituras", async () => {
+
+backend/tests/integration/checkout.web09.integration.test.ts: preserva concorrencia entre compradores, rodada %i
+130:    "preserva concorrencia entre compradores, rodada %i",
+
+backend/tests/integration/meus-pedidos.web11.integration.test.ts: lista somente os pedidos do token, em data decrescente e com pagamento
+103:  it("lista somente os pedidos do token, em data decrescente e com pagamento", async () => {
+
+backend/tests/integration/pagamento.us20.integration.test.ts: US20 - cenário 1: estoque insuficiente retorna 409 sem pedido ou pagamento
+230:  it("US20 - cenário 1: estoque insuficiente retorna 409 sem pedido ou pagamento", async () => {
+
+backend/tests/integration/pagamento.us20.integration.test.ts: US20 - cenários 1 e 2: registra pagamento único e exibe o status no detalhe
+110:  it("US20 - cenários 1 e 2: registra pagamento único e exibe o status no detalhe", async () => {
+
+backend/tests/integration/pedidos-artesao.web1.integration.test.ts: isola o payload inteiro e soma somente os proprios itens
+149:  it("isola o payload inteiro e soma somente os proprios itens", async () => {
+
+backend/tests/integration/perfil-artesao.routes.integration.test.ts: limpa referencias e recalcula pendencias sem aceitar completo do cliente
+220:  it("limpa referencias e recalcula pendencias sem aceitar completo do cliente", async () => {
+
+backend/tests/integration/perfil-artesao.routes.integration.test.ts: publica somente campos publicos e reaproveita produtos por artesao
+81:  it("publica somente campos publicos e reaproveita produtos por artesao", async () => {
+
+backend/tests/integration/perfil-artesao.routes.integration.test.ts: salva o proprio perfil normalizando UUID e recalculando completo
+146:  it("salva o proprio perfil normalizando UUID e recalculando completo", async () => {
+
+backend/tests/integration/recomendacao-fallback.strategy.integration.test.ts: aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria
+222:  it("aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria", async () => {
+
+frontend/e2e/fluxos.spec.ts: (a) cadastro ate Meus pedidos com numero confirmado
+134:test("(a) cadastro ate Meus pedidos com numero confirmado", async ({
+
+frontend/e2e/fluxos.spec.ts: (b) artesao envia e comprador acompanha Enviado
+140:test("(b) artesao envia e comprador acompanha Enviado", async ({
+
+frontend/tests/app/minha-conta.test.tsx: sair encerra a sessao e volta para a vitrine
+108:  it("sair encerra a sessao e volta para a vitrine", async () => {
+
+frontend/tests/components/admin/painel-moderacao.test.tsx: desativa artesao apos confirmar e mostra sucesso
+201:  it("desativa artesao apos confirmar e mostra sucesso", async () => {
+
+frontend/tests/components/admin/painel-moderacao.test.tsx: reativa produto apos confirmar
+220:  it("reativa produto apos confirmar", async () => {
+
+frontend/tests/components/artesao/perfil-artesao-publico.test.tsx: exibe historia, tecnica, regiao e grade de produtos ativos
+100:  it("exibe historia, tecnica, regiao e grade de produtos ativos", async () => {
+
+frontend/tests/components/avaliacao-pedido.web3.test.tsx: Web.4 nao mostra botao nem formulario quando a API informa que nao comprou
+128:  it("Web.4 nao mostra botao nem formulario quando a API informa que nao comprou", async () => {
+
+frontend/tests/components/avaliacao-pedido.web3.test.tsx: mostra um formulario por item e impede envio sem nota
+167:  it("mostra um formulario por item e impede envio sem nota", async () => {
+
+frontend/tests/components/cadastro-form.test.tsx: cadastro valido chama o service e redireciona para login com confirmacao
+107:  it("cadastro valido chama o service e redireciona para login com confirmacao", async () => {
+
+frontend/tests/components/cadastro-form.test.tsx: email ja cadastrado associa a mensagem ao campo email
+198:  it("email ja cadastrado associa a mensagem ao campo email", async () => {
+
+frontend/tests/components/cadastro-form.test.tsx: senha curta bloqueia envio e mostra erro no campo
+137:  it("senha curta bloqueia envio e mostra erro no campo", async () => {
+
+frontend/tests/components/checkout-http.test.tsx: 409 identifica o item e preserva carrinho para tentar novamente
+129:it("409 identifica o item e preserva carrinho para tentar novamente", async () => {
+
+frontend/tests/components/checkout-http.test.tsx: confirma por HTTP, mostra numero real e limpa estado sem DELETE posterior
+110:it("confirma por HTTP, mostra numero real e limpa estado sem DELETE posterior", async () => {
+
+frontend/tests/components/login-form.test.tsx: credenciais invalidas mostram mensagem generica sem apontar o campo
+71:  it("credenciais invalidas mostram mensagem generica sem apontar o campo", async () => {
+
+frontend/tests/components/login-form.test.tsx: login valido chama o service, cria a sessao e redireciona
+49:  it("login valido chama o service, cria a sessao e redireciona", async () => {
+
+frontend/tests/components/meus-pedidos.test.tsx: diferencia pedido pendente e cancelado e pagamento recusado
+235:it("diferencia pedido pendente e cancelado e pagamento recusado", async () => {
+
+frontend/tests/components/meus-pedidos.test.tsx: mostra lista, detalhe, itens e pagamento
+70:it("mostra lista, detalhe, itens e pagamento", async () => {
+
+frontend/tests/components/meus-produtos-list.test.tsx: editar produto chama service.update com o artesaoId da sessao e atualiza a lista
+118:  it("editar produto chama service.update com o artesaoId da sessao e atualiza a lista", async () => {
+
+frontend/tests/components/perfil-artesao-form.test.tsx: cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso
+182:  it("cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso", async () => {
+
+frontend/tests/components/perfil-artesao-form.test.tsx: cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo
+206:  it("cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo", async () => {
+
+frontend/tests/components/produto-card.test.tsx: mostra erro de carrinho vinculado ao botao por aria-describedby
+185:  it("mostra erro de carrinho vinculado ao botao por aria-describedby", () => {
+
+frontend/tests/components/produto-form.test.tsx: campos ausentes bloqueiam criacao e mostram erros por campo
+117:  it("campos ausentes bloqueiam criacao e mostram erros por campo", async () => {
+
+frontend/tests/components/produto-form.test.tsx: produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao
+169:  it("produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao", async () => {
+
+frontend/tests/components/produto/detalhe-produto.test.tsx: mostra Pecas relacionadas com link e acao do ProdutoCard
+232:  it("mostra Pecas relacionadas com link e acao do ProdutoCard", async () => {
+
+frontend/tests/components/produto/detalhe-produto.test.tsx: renderiza os itens do fallback geral no carrossel
+376:  it("renderiza os itens do fallback geral no carrossel", async () => {
+
+frontend/tests/components/produto/detalhe-produto.test.tsx: usa o produtoId da pagina como contexto das recomendacoes
+221:  it("usa o produtoId da pagina como contexto das recomendacoes", async () => {
+
+frontend/tests/components/resultado-busca.test.tsx: mostra estado vazio acessivel e distinto de erro quando a busca nao encontra produtos
+56:  it("mostra estado vazio acessivel e distinto de erro quando a busca nao encontra produtos", async () => {
+
+frontend/tests/services/http/recomendacoes.adapter.test.ts: preserva ranking e fallback sem executar ranking local
+128:  it("preserva ranking e fallback sem executar ranking local", async () => {
+
+frontend/tests/services/produtos.service.test.ts: atualiza os campos e preserva o artesaoId original
+220:  it("atualiza os campos e preserva o artesaoId original", async () => {
+
+frontend/tests/services/produtos.service.test.ts: oculta da vitrine produto com estoque zerado
+91:  it("oculta da vitrine produto com estoque zerado", async () => {
+
+frontend/tests/store/carrinho-http.store.test.ts: usa estoque atual do servidor e exibe nome no 409
+247:it("usa estoque atual do servidor e exibe nome no 409", async () => {
+
+frontend/tests/store/carrinho.store.test.ts: recalcula o total apos cada mudanca
+94:  it("recalcula o total apos cada mudanca", () => {

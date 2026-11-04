@@ -1,0 +1,39 @@
+{
+  "atrasoMs": 14394,
+  "limiteMs": 20000,
+  "notificacoes": 1,
+  "lida": true,
+  "overflowMobile": false,
+  "chamadas": [
+    {
+      "metodo": "GET",
+      "rota": "/api/artesao/notificacoes",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/api/artesao/notificacoes",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/api/pedidos",
+      "status": 201
+    },
+    {
+      "metodo": "GET",
+      "rota": "/api/artesao/notificacoes",
+      "status": 200
+    },
+    {
+      "metodo": "PATCH",
+      "rota": "/api/artesao/notificacoes/1bca14df-7bb1-4a4a-bae5-a9da2dcad773/lida",
+      "status": 204
+    },
+    {
+      "metodo": "GET",
+      "rota": "/api/artesao/notificacoes",
+      "status": 200
+    }
+  ]
+}

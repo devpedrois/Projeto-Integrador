@@ -1,0 +1,36 @@
+{
+  "api_role": "origem_api_app",
+  "rec_role": "recomendacao_app",
+  "views": [
+    "rec_produtos_elegiveis",
+    "rec_compras_confirmadas"
+  ],
+  "tabelas_negadas": [
+    {
+      "tabela": "Produto",
+      "select_insert_update": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "tabela": "Pedido",
+      "select_insert_update": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "tabela": "Usuario",
+      "select_insert_update": [
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "api_schema_privado_negado": true,
+  "api_set_role_negado": true
+}

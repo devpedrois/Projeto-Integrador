@@ -1,0 +1,87 @@
+BD-03 - Testes reais de recomendacao
+Execucao: 13/10/2026, 19:10:59 - America/Sao_Paulo
+Diretorio: backend/
+Comando: npx.cmd vitest run tests/integration/recomendacao.strategy.integration.test.ts tests/integration/recomendacao-fallback.strategy.integration.test.ts tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts tests/integration/recomendacao-metricas.integration.test.ts tests/integration/recomendacoes.route.integration.test.ts --reporter verbose --no-color
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) > reproduz o mesmo ranking da fixture usada pelo FakeRecommendationAdapter 351ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) > nunca retorna mais itens que o limite documentado 76ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) > nunca inclui o produto de contexto no resultado 76ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) > nunca inclui produto de outra categoria, inativo ou sem estoque 77ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - desempate deterministico por UUID > ordena vendas iguais e notas iguais pelo UUID crescente 453ms
+ ✓ tests/integration/recomendacao-metricas.integration.test.ts > calcularMetricasBaseline - carga sintetica real (PI4-20.5) > reproduz cobertura e acerto por categoria calculados de forma independente da base 1333ms
+ ✓ tests/integration/recomendacao-metricas.integration.test.ts > calcularMetricasBaseline - carga sintetica real (PI4-20.5) > produz o mesmo resultado em execucoes repetidas sobre os mesmos dados 1519ms
+ ✓ tests/integration/recomendacao-metricas.integration.test.ts > calcularMetricasBaseline - carga sintetica real (PI4-20.5) > nunca gera denominador zero quando ha carga sintetica com produtos ativos e com estoque 754ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > ordena o universo geral por vendas, nota media e UUID, limitado a oito 383ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > nunca repete IDs e nunca supera oito itens 112ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > nunca inclui produto inativo ou sem estoque 112ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria 112ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback quando o produto de contexto nao existe 74ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback sintetico para contexto usuarioId na U1, sem consultar historico pessoal 38ms
+ ✓ tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) > sem reforco, preserva a ordenacao baseline por vendas, ignorando regiao 356ms
+ ✓ tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) > com reforco, prioriza candidatos da mesma regiao do contexto antes de olhar vendas 78ms
+ ✓ tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) > com reforco, desempate dentro de cada grupo regional continua deterministico por UUID 457ms
+ ✓ tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) > com reforco, o limite de oito itens permanece respeitado 78ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > returns category-based recommendations for a valid produtoId 366ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > returns the general fallback for a valid usuarioId 42ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > rejects a request with no context parameter 3ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > rejects a request with both context parameters at once 4ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > rejects an invalid UUID 3ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > falls back to the general recommendation when the product does not exist 78ms
+
+ Test Files  5 passed (5)
+      Tests  24 passed (24)
+   Start at  19:11:00
+   Duration  15.80s (tests 96%, import 3%, transform 1%)
+
+
+STDERR:
+(node:39060) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:688) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15376) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39232) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22748) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Codigo de saida: 0

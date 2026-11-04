@@ -1,0 +1,70 @@
+
+
+## Overview
+
+                   │           Analyzed Image           
+───────────────────┼────────────────────────────────────
+ Target            │  local://origem-node22-base:local  
+   digest          │  526220cd9ddd                      
+   platform        │ linux/amd64                        
+   vulnerabilities │    0C     3H     2M     0L         
+   size            │ 44 MB                              
+   packages        │ 1                                  
+
+
+## Packages and Vulnerabilities
+
+   0C     3H     2M     0L  undici 6.29.0
+pkg:npm/undici@6.29.0
+
+2: sha256:c4ae5e1bf4403fce524fd5aa7854b47a629c9b4dd19abbd944c905100d0ff7c7
+/usr/local/lib/node_modules/npm/node_modules/undici/package.json (evident by)
+
+    x HIGH CVE-2026-87018 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-87018?s=github&n=undici&t=npm&vr=%3E%3D4.2.1%2C%3C6.29.1
+      Affected range : >=4.2.1                                      
+                     : <6.29.1                                      
+      Fixed version  : 6.29.1                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-109869 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-109869?s=github&n=undici&t=npm&vr=%3E%3D6.23.0%2C%3C6.29.1
+      Affected range : >=6.23.0                                     
+                     : <6.29.1                                      
+      Fixed version  : 6.29.1                                       
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-109383 [Improper Certificate Validation]
+      https://scout.docker.com/v/CVE-2026-109383?s=github&n=undici&t=npm&vr=%3E%3D4.0.0%2C%3C6.29.1
+      Affected range : >=4.0.0                                      
+                     : <6.29.1                                      
+      Fixed version  : 6.29.1                                       
+      CVSS Score     : 7.4                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N 
+    
+    x MEDIUM CVE-2026-109932 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-109932?s=github&n=undici&t=npm&vr=%3E%3D5.15.0%2C%3C6.29.1
+      Affected range : >=5.15.0                                     
+                     : <6.29.1                                      
+      Fixed version  : 6.29.1                                       
+      CVSS Score     : 5.9                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x MEDIUM CVE-2026-109924 [Allocation of Resources Without Limits or Throttling]
+      https://scout.docker.com/v/CVE-2026-109924?s=github&n=undici&t=npm&vr=%3E%3D6.5.0%2C%3C6.29.1
+      Affected range : >=6.5.0                                      
+                     : <6.29.1                                      
+      Fixed version  : 6.29.1                                       
+      CVSS Score     : 5.9                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+
+5 vulnerabilities found in 1 package
+  CRITICAL  0 
+  HIGH      3 
+  MEDIUM    2 
+  LOW       0 
+

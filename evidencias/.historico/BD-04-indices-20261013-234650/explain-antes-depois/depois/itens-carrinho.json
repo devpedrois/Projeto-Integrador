@@ -1,0 +1,321 @@
+{
+  "phase": "depois",
+  "context": {
+    "schema": "bd04_15cb356ee39c4d9f86e11afc02f095ad",
+    "capturedAt": "2026-10-14T02:19:31.754Z",
+    "version": "PostgreSQL 18.6 (653b019) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+    "enableSeqscan": "on",
+    "counts": {
+      "produtos": 1000,
+      "pedidos": 1500,
+      "artesaos": 50,
+      "compradores": 300,
+      "intencoes": 1500,
+      "notificacoes": 1500,
+      "itenscarrinho": 300
+    },
+    "indexes": [
+      {
+        "indexname": "Avaliacao_compradorId_produtoId_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Avaliacao_compradorId_produtoId_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Avaliacao\" USING btree (\"compradorId\", \"produtoId\")"
+      },
+      {
+        "indexname": "Avaliacao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Avaliacao_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Avaliacao\" USING btree (id)"
+      },
+      {
+        "indexname": "Avaliacao_produtoId_idx",
+        "indexdef": "CREATE INDEX \"Avaliacao_produtoId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Avaliacao\" USING btree (\"produtoId\")"
+      },
+      {
+        "indexname": "Carrinho_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Carrinho_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Carrinho\" USING btree (\"usuarioId\")"
+      },
+      {
+        "indexname": "Categoria_nome_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Categoria_nome_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Categoria\" USING btree (nome)"
+      },
+      {
+        "indexname": "Categoria_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Categoria_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Categoria\" USING btree (id)"
+      },
+      {
+        "indexname": "IntencaoNotificacao_pedidoId_key",
+        "indexdef": "CREATE UNIQUE INDEX \"IntencaoNotificacao_pedidoId_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"IntencaoNotificacao\" USING btree (\"pedidoId\")"
+      },
+      {
+        "indexname": "IntencaoNotificacao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"IntencaoNotificacao_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"IntencaoNotificacao\" USING btree (id)"
+      },
+      {
+        "indexname": "IntencaoNotificacao_status_idx",
+        "indexdef": "CREATE INDEX \"IntencaoNotificacao_status_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"IntencaoNotificacao\" USING btree (status)"
+      },
+      {
+        "indexname": "ItemCarrinho_carrinhoId_produtoId_key",
+        "indexdef": "CREATE UNIQUE INDEX \"ItemCarrinho_carrinhoId_produtoId_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"ItemCarrinho\" USING btree (\"carrinhoId\", \"produtoId\")"
+      },
+      {
+        "indexname": "ItemCarrinho_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"ItemCarrinho_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"ItemCarrinho\" USING btree (id)"
+      },
+      {
+        "indexname": "ItemCarrinho_produtoId_idx",
+        "indexdef": "CREATE INDEX \"ItemCarrinho_produtoId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"ItemCarrinho\" USING btree (\"produtoId\")"
+      },
+      {
+        "indexname": "ItemPedido_pedidoId_idx",
+        "indexdef": "CREATE INDEX \"ItemPedido_pedidoId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"ItemPedido\" USING btree (\"pedidoId\")"
+      },
+      {
+        "indexname": "ItemPedido_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"ItemPedido_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"ItemPedido\" USING btree (id)"
+      },
+      {
+        "indexname": "ItemPedido_produtoId_idx",
+        "indexdef": "CREATE INDEX \"ItemPedido_produtoId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"ItemPedido\" USING btree (\"produtoId\")"
+      },
+      {
+        "indexname": "Notificacao_pedidoId_idx",
+        "indexdef": "CREATE INDEX \"Notificacao_pedidoId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Notificacao\" USING btree (\"pedidoId\")"
+      },
+      {
+        "indexname": "Notificacao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Notificacao_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Notificacao\" USING btree (id)"
+      },
+      {
+        "indexname": "Notificacao_usuarioId_lida_criadoEm_idx",
+        "indexdef": "CREATE INDEX \"Notificacao_usuarioId_lida_criadoEm_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Notificacao\" USING btree (\"usuarioId\", lida, \"criadoEm\" DESC)"
+      },
+      {
+        "indexname": "Notificacao_usuarioId_pedidoId_tipo_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Notificacao_usuarioId_pedidoId_tipo_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Notificacao\" USING btree (\"usuarioId\", \"pedidoId\", tipo)"
+      },
+      {
+        "indexname": "Pagamento_pedidoId_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Pagamento_pedidoId_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Pagamento\" USING btree (\"pedidoId\")"
+      },
+      {
+        "indexname": "Pagamento_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Pagamento_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Pagamento\" USING btree (id)"
+      },
+      {
+        "indexname": "Pedido_compradorId_criadoEm_idx",
+        "indexdef": "CREATE INDEX \"Pedido_compradorId_criadoEm_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Pedido\" USING btree (\"compradorId\", \"criadoEm\" DESC)"
+      },
+      {
+        "indexname": "Pedido_numero_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Pedido_numero_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Pedido\" USING btree (numero)"
+      },
+      {
+        "indexname": "Pedido_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Pedido_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Pedido\" USING btree (id)"
+      },
+      {
+        "indexname": "PerfilArtesao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"PerfilArtesao_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"PerfilArtesao\" USING btree (\"usuarioId\")"
+      },
+      {
+        "indexname": "PerfilArtesao_regiaoId_idx",
+        "indexdef": "CREATE INDEX \"PerfilArtesao_regiaoId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"PerfilArtesao\" USING btree (\"regiaoId\")"
+      },
+      {
+        "indexname": "ProdutoFoto_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"ProdutoFoto_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"ProdutoFoto\" USING btree (id)"
+      },
+      {
+        "indexname": "ProdutoFoto_produtoId_ordem_key",
+        "indexdef": "CREATE UNIQUE INDEX \"ProdutoFoto_produtoId_ordem_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"ProdutoFoto\" USING btree (\"produtoId\", ordem)"
+      },
+      {
+        "indexname": "Produto_artesaoId_idx",
+        "indexdef": "CREATE INDEX \"Produto_artesaoId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Produto\" USING btree (\"artesaoId\")"
+      },
+      {
+        "indexname": "Produto_categoriaId_idx",
+        "indexdef": "CREATE INDEX \"Produto_categoriaId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Produto\" USING btree (\"categoriaId\")"
+      },
+      {
+        "indexname": "Produto_descricao_trgm_idx",
+        "indexdef": "CREATE INDEX \"Produto_descricao_trgm_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Produto\" USING gin (descricao public.gin_trgm_ops)"
+      },
+      {
+        "indexname": "Produto_nome_trgm_idx",
+        "indexdef": "CREATE INDEX \"Produto_nome_trgm_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Produto\" USING gin (nome public.gin_trgm_ops)"
+      },
+      {
+        "indexname": "Produto_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Produto_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Produto\" USING btree (id)"
+      },
+      {
+        "indexname": "Produto_tecnicaId_idx",
+        "indexdef": "CREATE INDEX \"Produto_tecnicaId_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Produto\" USING btree (\"tecnicaId\")"
+      },
+      {
+        "indexname": "Produto_vitrine_criadoEm_idx",
+        "indexdef": "CREATE INDEX \"Produto_vitrine_criadoEm_idx\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Produto\" USING btree (\"criadoEm\" DESC) WHERE (ativo AND (NOT \"desativadoPorAdmin\") AND (\"quantidadeEstoque\" > 0))"
+      },
+      {
+        "indexname": "Regiao_nome_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Regiao_nome_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Regiao\" USING btree (nome)"
+      },
+      {
+        "indexname": "Regiao_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Regiao_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Regiao\" USING btree (id)"
+      },
+      {
+        "indexname": "Tecnica_nome_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Tecnica_nome_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Tecnica\" USING btree (nome)"
+      },
+      {
+        "indexname": "Tecnica_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Tecnica_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Tecnica\" USING btree (id)"
+      },
+      {
+        "indexname": "Usuario_email_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Usuario_email_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Usuario\" USING btree (email)"
+      },
+      {
+        "indexname": "Usuario_email_lower_key",
+        "indexdef": "CREATE UNIQUE INDEX \"Usuario_email_lower_key\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Usuario\" USING btree (lower(email))"
+      },
+      {
+        "indexname": "Usuario_pkey",
+        "indexdef": "CREATE UNIQUE INDEX \"Usuario_pkey\" ON bd04_15cb356ee39c4d9f86e11afc02f095ad.\"Usuario\" USING btree (id)"
+      }
+    ],
+    "categories": [
+      {
+        "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+        "quantidade": 198
+      },
+      {
+        "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+        "quantidade": 198
+      },
+      {
+        "categoriaId": "b4752149-b8c4-5d27-bf22-31eb9f3e1cd8",
+        "quantidade": 198
+      },
+      {
+        "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+        "quantidade": 204
+      },
+      {
+        "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+        "quantidade": 202
+      }
+    ],
+    "techniques": [
+      {
+        "tecnicaId": "tecnica-bijuteria-sementes",
+        "quantidade": 66
+      },
+      {
+        "tecnicaId": "tecnica-bordado-mao",
+        "quantidade": 101
+      },
+      {
+        "tecnicaId": "tecnica-costura-autoral",
+        "quantidade": 132
+      },
+      {
+        "tecnicaId": "tecnica-entalhe-madeira",
+        "quantidade": 132
+      },
+      {
+        "tecnicaId": "tecnica-marcenaria-artesanal",
+        "quantidade": 66
+      },
+      {
+        "tecnicaId": "tecnica-modelagem-argila",
+        "quantidade": 102
+      },
+      {
+        "tecnicaId": "tecnica-renda-irlandesa",
+        "quantidade": 101
+      },
+      {
+        "tecnicaId": "tecnica-tecelagem-manual",
+        "quantidade": 66
+      },
+      {
+        "tecnicaId": "tecnica-torno-ceramico",
+        "quantidade": 102
+      },
+      {
+        "tecnicaId": "tecnica-trancado-fibra",
+        "quantidade": 132
+      }
+    ],
+    "regions": [
+      {
+        "regiaoId": "regiao-alto-moura-caruaru",
+        "quantidade": 325
+      },
+      {
+        "regiaoId": "regiao-pilar-recife",
+        "quantidade": 359
+      },
+      {
+        "regiaoId": "regiao-tracunhaem",
+        "quantidade": 316
+      }
+    ]
+  },
+  "name": "itens-carrinho",
+  "expectedIndexes": [
+    "ItemCarrinho_carrinhoId_produtoId_key"
+  ],
+  "sql": "SELECT \"id\", \"produtoId\", \"quantidade\", \"precoUnitario\"\nFROM \"ItemCarrinho\"\nWHERE \"carrinhoId\" = $1::uuid;\n",
+  "parameters": [
+    "0042ef61-0b25-56ef-a19f-60294f3cd0ba"
+  ],
+  "explain": [
+    {
+      "Plan": {
+        "Node Type": "Seq Scan",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Relation Name": "ItemCarrinho",
+        "Alias": "ItemCarrinho",
+        "Startup Cost": 0,
+        "Total Cost": 7.75,
+        "Plan Rows": 1,
+        "Plan Width": 42,
+        "Actual Startup Time": 0.019,
+        "Actual Total Time": 0.038,
+        "Actual Rows": 1,
+        "Actual Loops": 1,
+        "Disabled": false,
+        "Filter": "(\"carrinhoId\" = '0042ef61-0b25-56ef-a19f-60294f3cd0ba'::uuid)",
+        "Rows Removed by Filter": 299,
+        "Shared Hit Blocks": 4,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning": {
+        "Shared Hit Blocks": 0,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.079,
+      "Triggers": [],
+      "Execution Time": 0.061
+    }
+  ]
+}

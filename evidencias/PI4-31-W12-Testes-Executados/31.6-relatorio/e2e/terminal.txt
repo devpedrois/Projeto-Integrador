@@ -1,0 +1,34 @@
+
+> origem-frontend@1.0.0 test:e2e
+> node e2e/run.mjs
+
+[WebServer] (node:36876) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+[WebServer] In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+[WebServer] 
+[WebServer] To prepare for this change:
+[WebServer] - If you want the current behavior, explicitly use 'sslmode=verify-full'
+[WebServer] - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+[WebServer] 
+[WebServer] See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+  ok 1 [360px] › e2e\fluxos.spec.ts:134:1 › (a) cadastro ate Meus pedidos com numero confirmado (7.3s)
+  ok 2 [360px] › e2e\fluxos.spec.ts:140:1 › (b) artesao envia e comprador acompanha Enviado (7.6s)
+  ok 3 [1280px] › e2e\fluxos.spec.ts:134:1 › (a) cadastro ate Meus pedidos com numero confirmado (4.9s)
+  ok 4 [1280px] › e2e\fluxos.spec.ts:140:1 › (b) artesao envia e comprador acompanha Enviado (6.8s)
+
+  4 passed (40.6s)
+(node:24632) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Schema E2E removido e ausencia confirmada.
+Traces ZIP sanitizados: 0
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-31-W12-Testes-Executados\31.6-relatorio\e2e\playwright\cb7fb518f3e246de9f693f8898d92c59\html\index.html

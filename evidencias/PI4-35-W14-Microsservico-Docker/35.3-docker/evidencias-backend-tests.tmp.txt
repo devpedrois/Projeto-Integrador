@@ -1,0 +1,1258 @@
+
+> origem-backend@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ❯ tests/integration/db-explain.integration.test.ts (3 tests | 3 failed) 89ms
+   × BD.4 compara candidatos reais sem persistir indices ou mudar resultados 80ms
+   × db:explain grava pares reais, tabela e reverte o schema 6ms
+   × db:explain atual mede tambem tabelas vazias sem alterar dados 2ms
+ ❯ tests/integration/metricas-reforco-regional.integration.test.ts (0 test)
+ ❯ tests/integration/recomendacoes-contrato.integration.test.ts (0 test)
+ ❯ tests/integration/catalogo-moderacao.web12.integration.test.ts (0 test)
+ ❯ tests/integration/checkout.web09.integration.test.ts (0 test)
+ ❯ tests/integration/worker-process.integration.test.ts (0 test)
+ ❯ tests/integration/cache.web13.integration.test.ts (0 test)
+ ❯ tests/integration/authorization.routes.integration.test.ts (0 test)
+ ❯ tests/integration/concorrencia-script.integration.test.ts (11 tests | 3 failed) 10362ms
+   × limpa schema quando a porta do servidor esta ocupada 992ms
+   × comando autentica cinco compradores, valida tres rodadas e remove seu schema 898ms
+   × recusa sobrescrever um arquivo JSON existente 916ms
+ ❯ tests/integration/seed.integration.test.ts (0 test)
+ ❯ tests/integration/carrinho.routes.integration.test.ts (0 test)
+ ❯ tests/integration/recomendacoes-historico.integration.test.ts (0 test)
+ ❯ tests/integration/busca-p95.integration.test.ts (0 test)
+ ❯ tests/integration/bench-fila.integration.test.ts (0 test)
+ ❯ tests/integration/fila-notificacao.integration.test.ts (0 test)
+ ❯ tests/integration/bench-recomendacao-lote.integration.test.ts (0 test)
+ ❯ tests/integration/avaliacoes.web3.integration.test.ts (0 test)
+ ❯ tests/integration/seed-volume.integration.test.ts (0 test)
+ ❯ tests/integration/recomendacao.strategy.integration.test.ts (0 test)
+ ❯ tests/integration/recomendacao-volume.integration.test.ts (0 test)
+ ❯ tests/integration/pagamento.us20.integration.test.ts (0 test)
+ ❯ tests/integration/catalogo.routes.integration.test.ts (0 test)
+ ❯ tests/integration/recomendacao-fallback.strategy.integration.test.ts (0 test)
+ ❯ tests/integration/notificacoes.web14.integration.test.ts (0 test)
+ ❯ tests/integration/meus-pedidos.web11.integration.test.ts (0 test)
+ ❯ tests/integration/foto-perfil.routes.integration.test.ts (0 test)
+ ❯ tests/integration/envio-item.web2.integration.test.ts (0 test)
+ ❯ tests/integration/pedidos-artesao.web1.integration.test.ts (0 test)
+ ❯ tests/integration/tecnica-regiao-migration.integration.test.ts (7 tests | 7 failed) 14ms
+   ❯ BD-03: migracao dos textos legados (7)
+     × converte textos normalizados e preserva os nove produtos 6ms
+     × converte Marcenaria e renda e Caruaru - Alto do Moura sem preencher campos ausentes 1ms
+     × converte  BORDADO À MÃO  e TRACUNHAÉM sem preencher campos ausentes 1ms
+     × converte null e null sem preencher campos ausentes 1ms
+     × aborta e preserva textos quando tecnicaPrincipal e desconhecida 1ms
+     × aborta e preserva textos quando regiao e desconhecida 1ms
+     × aborta para produto sem mapeamento explicito 1ms
+ ❯ tests/integration/recomendacao-metricas.integration.test.ts (0 test)
+ ❯ tests/integration/http-recomendacao.integration.test.ts (0 test)
+ ❯ tests/integration/perfil-artesao.routes.integration.test.ts (0 test)
+ ❯ tests/integration/avaliacoes.web4.integration.test.ts (0 test)
+ ❯ tests/integration/recomendacoes.route.integration.test.ts (0 test)
+ ❯ tests/integration/auth.routes.integration.test.ts (0 test)
+ ❯ tests/integridade/modelo-fisico.test.ts (0 test)
+ ❯ tests/integration/pedidos.integration.test.ts (0 test)
+ ❯ tests/integration/notificacao-auto-publish.integration.test.ts (0 test)
+ ❯ tests/integration/indicadores-plataforma.repository.integration.test.ts (0 test)
+ ❯ tests/unit/server.test.ts (5 tests | 1 failed) 5386ms
+   ❯ server startup (5)
+     × binds startup explicitly to IPv4 loopback 1019ms
+ ❯ tests/integration/server-queue-bootstrap.integration.test.ts (0 test)
+ ❯ tests/integration/indicadores.route.integration.test.ts (0 test)
+ ❯ tests/integration/reconciliacao-modelo-logico.integration.test.ts (0 test)
+ ❯ tests/unit/build-isolation.test.ts (1 test | 1 failed) 1739ms
+   × compila API e worker sem instalar dependencias do frontend 1738ms
+ ❯ tests/integration/dominio-completo.constraints.integration.test.ts (0 test)
+ ❯ tests/integration/ddl-fisico.integration.test.ts (0 test)
+ ❯ tests/integration/indices-consultas.integration.test.ts (0 test)
+ ❯ tests/integration/tecnica-regiao.integration.test.ts (0 test)
+ ❯ tests/integration/notificacao.repository.integration.test.ts (0 test)
+ ❯ tests/integration/constraints.integration.test.ts (0 test)
+ ❯ tests/unit/busca-p95.test.ts (23 tests | 21 failed) 2280ms
+   ❯ BD.2: configuracao do benchmark de busca (17)
+     × seleciona volume separado e termo com pelo menos tres caracteres 154ms
+     × recusa argumentos invalidos "--termo" 0ms
+     × recusa argumentos invalidos "--termo" 0ms
+     × recusa argumentos invalidos "--termo" 0ms
+     × recusa argumentos invalidos "--schema" 0ms
+     × recusa argumentos invalidos "--volume-env" 0ms
+     × recusa argumentos invalidos "--aquecimentos" 0ms
+     × recusa argumentos invalidos "--amostras" 0ms
+     × recusa argumentos invalidos "--desconhecido" 0ms
+     × recusa ambiente inadequado antes de conectar 0ms
+     × recusa ambiente inadequado antes de conectar 0ms
+     × recusa ambiente inadequado antes de conectar 0ms
+     × recusa ambiente inadequado antes de conectar 0ms
+     × recusa ambiente inadequado antes de conectar 0ms
+     × aceita schema isolado na mesma base e nome alternativo 0ms
+   ❯ BD.2: percentis independentes (6)
+     × calcula nearest-rank sem alterar amostras ou remover outliers 0ms
+     × reprova p95 igual a 500 ms 0ms
+     × recusa amostras insuficientes ou invalidas 0ms
+     × recusa amostras insuficientes ou invalidas 0ms
+     × recusa amostras insuficientes ou invalidas 0ms
+     × recusa amostras insuficientes ou invalidas 0ms
+ ❯ tests/integration/schema-completo.smoke.test.ts (0 test)
+ ❯ tests/integration/notificacao-migration.integration.test.ts (0 test)
+ ❯ tests/integration/usuario.service.integration.test.ts (0 test)
+ ❯ tests/integration/health.integration.test.ts (0 test)
+ ❯ tests/unit/db-explain.test.ts (19 tests | 18 failed) 446ms
+   ❯ entrada db:explain (19)
+     × seleciona volume e candidato permitido sem aceitar SQL externo 4ms
+     × volume exige branch separada e recusa producao 1ms
+     × usa leitura atual sem DDL por padrao 3ms
+     × rejeita entrada invalida "--schema" antes de conectar 1ms
+     × rejeita entrada invalida "--phase" antes de conectar 2ms
+     × rejeita entrada invalida "--termo" antes de conectar 2ms
+     × rejeita entrada invalida "--termo" antes de conectar 1ms
+     × rejeita entrada invalida "--termo" antes de conectar 1ms
+     × rejeita entrada invalida "--desconhecido" antes de conectar 1ms
+     × rejeita entrada invalida "--compare" antes de conectar 1ms
+     × escapa curingas, preservando a busca literal 1ms
+     × recusa comparacao sem ambiente de teste valido 1ms
+     × recusa comparacao sem ambiente de teste valido 1ms
+     × recusa comparacao sem ambiente de teste valido 1ms
+     × recusa comparacao sem ambiente de teste valido 1ms
+     × recusa comparacao sem ambiente de teste valido 1ms
+     × recusa comparacao sem ambiente de teste valido 2ms
+     × recusa URLs direta e da aplicacao em branches diferentes 1ms
+ ❯ tests/unit/e2e-server.test.ts (2 tests | 2 failed) 137ms
+   × 31.3 recusa ambiente inseguro antes de abrir conexao 136ms
+   × 31.3 usa conexao direta da branch de teste e porta local 1ms
+ ❯ tests/integridade/recomendacao-views.test.ts (0 test)
+ ❯ tests/integridade/fk-com-indice.integridade.test.ts (0 test)
+ ❯ tests/unit/http-recomendacao.client.test.ts (0 test)
+ ❯ tests/unit/seed-volume.test.ts (0 test)
+ ❯ tests/unit/senha.test.ts (0 test)
+ ❯ tests/unit/conferir-indicadores-plataforma.test.ts (1 test | 1 failed) 147ms
+   ❯ entrada da conferencia 33.3 (1)
+     × aceita apenas schema e destino dos artefatos 146ms
+ ❯ tests/unit/openapi.test.ts (0 test)
+ ❯ tests/unit/seed-demo.test.ts (0 test)
+ ❯ tests/unit/bench-recomendacao-lote.test.ts (0 test)
+ ❯ tests/unit/health-cookie.test.ts (0 test)
+ ❯ tests/unit/environment.test.ts (0 test)
+ ❯ tests/unit/recomendacao-volume.unit.test.ts (0 test)
+ ❯ tests/unit/cache.test.ts (0 test)
+ ❯ tests/unit/bench-recomendacao-cli.test.ts (0 test)
+ ❯ tests/unit/concorrencia-resultado.test.ts (0 test)
+ ❯ tests/unit/recomendacao-metricas.unit.test.ts (0 test)
+ ❯ tests/unit/usuario.service.unit.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 65 ⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integridade/fk-com-indice.integridade.test.ts [ tests/integridade/fk-com-indice.integridade.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integridade/fk-com-indice.integridade.test.ts:6:1
+      4|  */
+      5| import { afterAll, expect, it } from "vitest";
+      6| import { databasePool } from "../helpers/database.js";
+       | ^
+      7|
+      8| const MODO_ESTRITO = false;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/129]⎯
+
+ FAIL  tests/integridade/modelo-fisico.test.ts [ tests/integridade/modelo-fisico.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integridade/modelo-fisico.test.ts:4:1
+      2| import type { PoolClient } from "pg";
+      3| import { afterAll, afterEach, beforeEach, describe, expect, it } from …
+      4| import { databasePool } from "../helpers/database.js";
+       | ^
+      5| import {
+      6|   criarCategoria,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/129]⎯
+
+ FAIL  tests/integridade/recomendacao-views.test.ts [ tests/integridade/recomendacao-views.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integridade/recomendacao-views.test.ts:2:1
+      1| import { afterAll, expect, it } from "vitest";
+      2| import { databasePool } from "../helpers/database.js";
+       | ^
+      3|
+      4| afterAll(async () => databasePool.end());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/129]⎯
+
+ FAIL  tests/unit/bench-recomendacao-cli.test.ts [ tests/unit/bench-recomendacao-cli.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\82f9dfbd9ee9c4956c6c0cbb2056924bbe03336c'
+ ❯ scripts/bench-recomendacao-lote.ts:8:1
+      6| import { fileURLToPath, pathToFileURL } from "node:url";
+      7| import { parseArgs } from "node:util";
+      8| import {
+       | ^
+      9|   BenchLoteError,
+     10|   medirConfiguracaoLote,
+ ❯ tests/unit/bench-recomendacao-cli.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/129]⎯
+
+ FAIL  tests/unit/bench-recomendacao-lote.test.ts [ tests/unit/bench-recomendacao-lote.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\82f9dfbd9ee9c4956c6c0cbb2056924bbe03336c'
+ ❯ tests/unit/bench-recomendacao-lote.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import {
+       | ^
+      3|   compararResultados,
+      4|   executarPool,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/129]⎯
+
+ FAIL  tests/unit/cache.test.ts [ tests/unit/cache.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\f1539c99b9109d92175063d6742c68758fce128d'
+ ❯ tests/unit/cache.test.ts:2:1
+      1| import { afterEach, describe, expect, it, vi } from "vitest";
+      2| import {
+       | ^
+      3|   CachePublico,
+      4|   MemoryCacheStore,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/129]⎯
+
+ FAIL  tests/unit/concorrencia-resultado.test.ts [ tests/unit/concorrencia-resultado.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ scripts/concorrencia-checkout.ts:8:1
+      6| import { parseArgs } from "node:util";
+      7| import { z } from "zod";
+      8| import { createApp } from "../src/app.js";
+       | ^
+      9| import { Prisma } from "../src/generated/prisma/client.js";
+     10| import { criarBancoConcorrencia } from "./helpers/concorrencia-databas…
+ ❯ tests/unit/concorrencia-resultado.test.ts:2:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/129]⎯
+
+ FAIL  tests/unit/environment.test.ts [ tests/unit/environment.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\bb51c4896e58b3f5e91404ca223cd7f9834ad046'
+ ❯ tests/unit/environment.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import { parseEnvironment } from "../../src/config/environment.js";
+       | ^
+      3|
+      4| describe("environment validation", () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/129]⎯
+
+ FAIL  tests/unit/health-cookie.test.ts [ tests/unit/health-cookie.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/unit/health-cookie.test.ts:3:1
+      1| import request from "supertest";
+      2| import { afterAll, describe, expect, it } from "vitest";
+      3| import { createApp } from "../../src/app.js";
+       | ^
+      4| import { createPrismaClient } from "../../src/database/prisma/client.j…
+      5|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/129]⎯
+
+ FAIL  tests/unit/http-recomendacao.client.test.ts [ tests/unit/http-recomendacao.client.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\af86f83233be594bf14257cb22b50efd62cae86b'
+ ❯ tests/unit/http-recomendacao.client.test.ts:3:1
+      1| import { createServer, type Server, type RequestListener } from "node:…
+      2| import { afterEach, describe, expect, it } from "vitest";
+      3| import { HttpRecomendacaoClient } from "../../src/integrations/recomme…
+       | ^
+      4| import { RecomendacaoIndisponivelError } from "../../src/errors/recome…
+      5| import fixture from "../../../fixtures/recomendacao-selecao.fixture.js…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/129]⎯
+
+ FAIL  tests/unit/openapi.test.ts [ tests/unit/openapi.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/unit/openapi.test.ts:4:1
+      2| import express from "express";
+      3| import { afterAll, describe, expect, it } from "vitest";
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { createPrismaClient } from "../../src/database/prisma/client.j…
+      6| import { registry } from "../../src/docs/openapi.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/129]⎯
+
+ FAIL  tests/unit/recomendacao-metricas.unit.test.ts [ tests/unit/recomendacao-metricas.unit.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b7564af6f21fe882b439a0374076143cde9e8af5'
+ ❯ tests/unit/recomendacao-metricas.unit.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import {
+       | ^
+      3|   calcularAcertoCategoria,
+      4|   calcularCobertura,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/129]⎯
+
+ FAIL  tests/unit/recomendacao-volume.unit.test.ts [ tests/unit/recomendacao-volume.unit.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b7564af6f21fe882b439a0374076143cde9e8af5'
+ ❯ tests/unit/recomendacao-volume.unit.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import {
+       | ^
+      3|   resumirTempos,
+      4|   resumirRecomendacoes,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/129]⎯
+
+ FAIL  tests/unit/seed-demo.test.ts [ tests/unit/seed-demo.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\da1fbefcb135629a1c0e7989b8b8268034182982'
+ ❯ tests/unit/seed-demo.test.ts:2:1
+      1| import { expect, it } from "vitest";
+      2| import { DEMO } from "../../prisma/seeds/demo.js";
+       | ^
+      3| import { lerSeedFrontal } from "../helpers/frontend-seeds.js";
+      4|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/129]⎯
+
+ FAIL  tests/unit/seed-volume.test.ts [ tests/unit/seed-volume.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\ca96bac1ca5c5d70d5af8ec04d54e0514ad6d767'
+ ❯ tests/unit/seed-volume.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import {
+       | ^
+      3|   gerarVolume,
+      4|   validarVolumeEnvironment,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/129]⎯
+
+ FAIL  tests/unit/senha.test.ts [ tests/unit/senha.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\68e46f5270a4d0d82c5f9b1fb1d12f2e6596d468'
+ ❯ tests/unit/senha.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import { gerarHash, compararSenha } from "../../src/utils/senha.js";
+       | ^
+      3|
+      4| describe("senha bcrypt", () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/129]⎯
+
+ FAIL  tests/unit/usuario.service.unit.test.ts [ tests/unit/usuario.service.unit.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\59e0aa58e4f6e3c9de0242cf870c4a118b64b525'
+ ❯ src/services/usuario.service.ts:6:1
+      4|   UsuarioRepository,
+      5| } from "../repositories/usuario.repository.js";
+      6| import { AppError } from "../errors/app-error.js";
+       | ^
+      7| import type { CachePublico } from "../utils/cache.js";
+      8|
+ ❯ tests/unit/usuario.service.unit.test.ts:2:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/129]⎯
+
+ FAIL  tests/integration/auth.routes.integration.test.ts [ tests/integration/auth.routes.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/auth.routes.integration.test.ts:6:1
+      4| import request from "supertest";
+      5| import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
+      6| import { createApp } from "../../src/app.js";
+       | ^
+      7| import { gerarHash, compararSenha } from "../../src/utils/senha.js";
+      8| import { criarBancoAuth } from "../helpers/auth-database.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/129]⎯
+
+ FAIL  tests/integration/authorization.routes.integration.test.ts [ tests/integration/authorization.routes.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/authorization.routes.integration.test.ts:6:1
+      4| import request from "supertest";
+      5| import { afterAll, afterEach, beforeAll, describe, expect, it } from "…
+      6| import { createApp } from "../../src/app.js";
+       | ^
+      7| import { createPrismaClient } from "../../src/database/prisma/client.j…
+      8| import type { PapelUsuario } from "../../src/generated/prisma/enums.js…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/129]⎯
+
+ FAIL  tests/integration/avaliacoes.web3.integration.test.ts [ tests/integration/avaliacoes.web3.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/avaliacoes.web3.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { criarBancoRecomendacao as criarBancoAuth } from "../helpers/r…
+      7|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/129]⎯
+
+ FAIL  tests/integration/avaliacoes.web4.integration.test.ts [ tests/integration/avaliacoes.web4.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/avaliacoes.web4.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { criarBancoAuth } from "../helpers/auth-database.js";
+      7|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/129]⎯
+
+ FAIL  tests/integration/bench-fila.integration.test.ts [ tests/integration/bench-fila.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\3f70951dd16a7c259b386788ce55d76ade150e6e'
+ ❯ tests/integration/bench-fila.integration.test.ts:4:1
+      2| import { randomUUID } from "node:crypto";
+      3| import { expect, it } from "vitest";
+      4| import { runVolumeSeed } from "../../prisma/seed-volume.js";
+       | ^
+      5| import { gerarVolume } from "../../prisma/seeds/volume.js";
+      6| import { executarRodada } from "../../scripts/bench-fila.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/129]⎯
+
+ FAIL  tests/integration/bench-recomendacao-lote.integration.test.ts [ tests/integration/bench-recomendacao-lote.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\6aeb65a99b172d24b30ca180b350cdab0088a11e'
+ ❯ scripts/lib/bench-recomendacao-lote.ts:6:1
+      4| import type { PoolClient } from "pg";
+      5| import { PrismaPg } from "@prisma/adapter-pg";
+      6| import { PrismaClient } from "../../src/generated/prisma/client.js";
+       | ^
+      7| import {
+      8|   CategoriaRecomendacaoStrategy,
+ ❯ tests/integration/bench-recomendacao-lote.integration.test.ts:2:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/129]⎯
+
+ FAIL  tests/integration/busca-p95.integration.test.ts [ tests/integration/busca-p95.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\62bc4c91f789d444096f9734f6ce9dd99d6a0a15'
+ ❯ tests/integration/busca-p95.integration.test.ts:6:1
+      4| import { join } from "node:path";
+      5| import { describe, expect, it } from "vitest";
+      6| import { criarBancoAuth } from "../helpers/auth-database.js";
+       | ^
+      7| import { runVolumeSeed } from "../../prisma/seed-volume.js";
+      8|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/129]⎯
+
+ FAIL  tests/integration/cache.web13.integration.test.ts [ tests/integration/cache.web13.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/cache.web13.integration.test.ts:14:1
+     12|   vi,
+     13| } from "vitest";
+     14| import { createApp } from "../../src/app.js";
+       | ^
+     15| import { criarBancoRecomendacao as criarBancoAuth } from "../helpers/r…
+     16|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/129]⎯
+
+ FAIL  tests/integration/carrinho.routes.integration.test.ts [ tests/integration/carrinho.routes.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/carrinho.routes.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, beforeEach, describe, expect, it } from …
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { criarBancoAuth } from "../helpers/auth-database.js";
+      7|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/129]⎯
+
+ FAIL  tests/integration/catalogo-moderacao.web12.integration.test.ts [ tests/integration/catalogo-moderacao.web12.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/catalogo-moderacao.web12.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, beforeEach, describe, expect, it } from …
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { gerarHash } from "../../src/utils/senha.js";
+      7| import { criarBancoAuth } from "../helpers/auth-database.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/129]⎯
+
+ FAIL  tests/integration/catalogo.routes.integration.test.ts [ tests/integration/catalogo.routes.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/catalogo.routes.integration.test.ts:6:1
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { z } from "zod";
+      6| import { createApp } from "../../src/app.js";
+       | ^
+      7| import { criarBancoAuth } from "../helpers/auth-database.js";
+      8|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/129]⎯
+
+ FAIL  tests/integration/checkout.web09.integration.test.ts [ tests/integration/checkout.web09.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/checkout.web09.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { afterAll, beforeAll, beforeEach, describe, expect, it } from …
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { criarBancoAuth } from "../helpers/auth-database.js";
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/129]⎯
+
+ FAIL  tests/integration/constraints.integration.test.ts [ tests/integration/constraints.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integration/constraints.integration.test.ts:4:1
+      2| import type { PoolClient } from "pg";
+      3| import { afterAll, afterEach, beforeEach, describe, it } from "vitest";
+      4| import { databasePool } from "../helpers/database.js";
+       | ^
+      5| import {
+      6|   criarCategoria,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/129]⎯
+
+ FAIL  tests/integration/ddl-fisico.integration.test.ts [ tests/integration/ddl-fisico.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integration/ddl-fisico.integration.test.ts:5:1
+      3| import type { PoolClient } from "pg";
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { databasePool } from "../helpers/database.js";
+       | ^
+      6|
+      7| const prismaRoot = new URL("../../prisma/", import.meta.url);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/129]⎯
+
+ FAIL  tests/integration/dominio-completo.constraints.integration.test.ts [ tests/integration/dominio-completo.constraints.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integration/dominio-completo.constraints.integration.test.ts:4:1
+      2| import type { PoolClient } from "pg";
+      3| import { afterAll, afterEach, beforeEach, describe, expect, it } from …
+      4| import { databasePool } from "../helpers/database.js";
+       | ^
+      5| import {
+      6|   criarCategoria,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/129]⎯
+
+ FAIL  tests/integration/envio-item.web2.integration.test.ts [ tests/integration/envio-item.web2.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/envio-item.web2.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { criarBancoAuth } from "../helpers/auth-database.js";
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[33/129]⎯
+
+ FAIL  tests/integration/fila-notificacao.integration.test.ts [ tests/integration/fila-notificacao.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\8cf26b5048859f0f32791b5a551a47c3ec1e9e99'
+ ❯ tests/integration/fila-notificacao.integration.test.ts:5:1
+      3| import type { PgBoss } from "pg-boss";
+      4| import { afterAll, afterEach, beforeAll, describe, expect, it } from "…
+      5| import { StatusIntencao } from "../../src/generated/prisma/enums.js";
+       | ^
+      6| import { notificarArtesao } from "../../src/jobs/notificar-artesao.han…
+      7| import type { NotificarArtesaoJobData } from "../../src/jobs/notificar…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[34/129]⎯
+
+ FAIL  tests/integration/foto-perfil.routes.integration.test.ts [ tests/integration/foto-perfil.routes.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/foto-perfil.routes.integration.test.ts:8:1
+      6| import request from "supertest";
+      7| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      8| import { createApp } from "../../src/app.js";
+       | ^
+      9| import { criarBancoAuth } from "../helpers/auth-database.js";
+     10| import { FotoDiscoTemporario } from "../helpers/foto-storage.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[35/129]⎯
+
+ FAIL  tests/integration/health.integration.test.ts [ tests/integration/health.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/health.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { afterAll, describe, expect, it } from "vitest";
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { createPrismaClient } from "../../src/database/prisma/client.j…
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[36/129]⎯
+
+ FAIL  tests/integration/http-recomendacao.integration.test.ts [ tests/integration/http-recomendacao.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/http-recomendacao.integration.test.ts:6:1
+      4| import { escapeIdentifier } from "pg";
+      5| import { afterAll, beforeAll, expect, it } from "vitest";
+      6| import { createApp } from "../../src/app.js";
+       | ^
+      7| import { HttpRecomendacaoClient } from "../../src/integrations/recomme…
+      8| import { RecomendacaoIndisponivelError } from "../../src/errors/recome…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[37/129]⎯
+
+ FAIL  tests/integration/indicadores-plataforma.repository.integration.test.ts [ tests/integration/indicadores-plataforma.repository.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\6aeb65a99b172d24b30ca180b350cdab0088a11e'
+ ❯ tests/integration/indicadores-plataforma.repository.integration.test.ts:6:1
+      4| import { join } from "node:path";
+      5| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      6| import { Prisma } from "../../src/generated/prisma/client.js";
+       | ^
+      7| import { PrismaCatalogoRepository } from "../../src/repositories/catal…
+      8| import { PrismaIndicadoresPlataformaRepository } from "../../src/repos…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[38/129]⎯
+
+ FAIL  tests/integration/indicadores.route.integration.test.ts [ tests/integration/indicadores.route.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/indicadores.route.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import type { StatusPedido } from "../../src/generated/prisma/enums.js…
+      7| import { criarBancoAuth } from "../helpers/auth-database.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39/129]⎯
+
+ FAIL  tests/integration/indices-consultas.integration.test.ts [ tests/integration/indices-consultas.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integration/indices-consultas.integration.test.ts:5:1
+      3| import type { PoolClient } from "pg";
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { databasePool } from "../helpers/database.js";
+       | ^
+      6|
+      7| const migrationsRoot = new URL("../../prisma/migrations/", import.meta…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[40/129]⎯
+
+ FAIL  tests/integration/metricas-reforco-regional.integration.test.ts [ tests/integration/metricas-reforco-regional.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\62bc4c91f789d444096f9734f6ce9dd99d6a0a15'
+ ❯ tests/integration/metricas-reforco-regional.integration.test.ts:3:1
+      1| import { randomUUID } from "node:crypto";
+      2| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      3| import { criarBancoAuth } from "../helpers/auth-database.js";
+       | ^
+      4| import {
+      5|   medirReforcoRegional,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[41/129]⎯
+
+ FAIL  tests/integration/meus-pedidos.web11.integration.test.ts [ tests/integration/meus-pedidos.web11.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/meus-pedidos.web11.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { criarBancoAuth } from "../helpers/auth-database.js";
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[42/129]⎯
+
+ FAIL  tests/integration/notificacao-auto-publish.integration.test.ts [ tests/integration/notificacao-auto-publish.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\8cf26b5048859f0f32791b5a551a47c3ec1e9e99'
+ ❯ tests/integration/notificacao-auto-publish.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { describe, expect, it } from "vitest";
+      4| import { StatusIntencao } from "../../src/generated/prisma/enums.js";
+       | ^
+      5| import { startServer } from "../../src/server.js";
+      6| import { gerarHash } from "../../src/utils/senha.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[43/129]⎯
+
+ FAIL  tests/integration/notificacao-migration.integration.test.ts [ tests/integration/notificacao-migration.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integration/notificacao-migration.integration.test.ts:4:1
+      2| import { readFileSync, readdirSync } from "node:fs";
+      3| import { afterAll, expect, it } from "vitest";
+      4| import { databasePool } from "../helpers/database.js";
+       | ^
+      5|
+      6| const migrationName = "20261013230100_add_notificacao";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[44/129]⎯
+
+ FAIL  tests/integration/notificacao.repository.integration.test.ts [ tests/integration/notificacao.repository.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\10612bc1de8b094949c1de54c72f2a5eef5cc4d2'
+ ❯ tests/integration/notificacao.repository.integration.test.ts:5:1
+      3| import { afterAll, describe, expect, it } from "vitest";
+      4| import type { Prisma } from "../../src/generated/prisma/client.js";
+      5| import { createPrismaClient } from "../../src/database/prisma/client.j…
+       | ^
+      6| import { PrismaNotificacaoRepository } from "../../src/repositories/no…
+      7|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[45/129]⎯
+
+ FAIL  tests/integration/notificacoes.web14.integration.test.ts [ tests/integration/notificacoes.web14.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/notificacoes.web14.integration.test.ts:6:1
+      4| import request from "supertest";
+      5| import { afterAll, beforeAll, beforeEach, describe, expect, it } from …
+      6| import { createApp } from "../../src/app.js";
+       | ^
+      7| import { notificarArtesao } from "../../src/jobs/notificar-artesao.han…
+      8| import { PrismaIntencaoNotificacaoRepository } from "../../src/reposit…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[46/129]⎯
+
+ FAIL  tests/integration/pagamento.us20.integration.test.ts [ tests/integration/pagamento.us20.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/pagamento.us20.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { afterAll, beforeAll, beforeEach, describe, expect, it } from …
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { criarBancoAuth } from "../helpers/auth-database.js";
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[47/129]⎯
+
+ FAIL  tests/integration/pedidos-artesao.web1.integration.test.ts [ tests/integration/pedidos-artesao.web1.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/pedidos-artesao.web1.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { criarBancoAuth } from "../helpers/auth-database.js";
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[48/129]⎯
+
+ FAIL  tests/integration/pedidos.integration.test.ts [ tests/integration/pedidos.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/pedidos.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, afterEach, beforeAll, describe, expect, it } from "…
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { createPrismaClient } from "../../src/database/prisma/client.j…
+      7| import { gerarHash } from "../../src/utils/senha.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[49/129]⎯
+
+ FAIL  tests/integration/perfil-artesao.routes.integration.test.ts [ tests/integration/perfil-artesao.routes.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/perfil-artesao.routes.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, beforeEach, describe, expect, it } from …
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { criarBancoAuth } from "../helpers/auth-database.js";
+      7|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[50/129]⎯
+
+ FAIL  tests/integration/recomendacao-fallback.strategy.integration.test.ts [ tests/integration/recomendacao-fallback.strategy.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\d4b783bd046124e8d2342e9f19f9f2858420c559'
+ ❯ tests/integration/recomendacao-fallback.strategy.integration.test.ts:4:1
+      2| import "dotenv/config";
+      3| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      4| import { criarBancoRecomendacao } from "../helpers/recomendacao-databa…
+       | ^
+      5| import type { HttpRecomendacaoClient } from "../../src/integrations/re…
+      6| import {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[51/129]⎯
+
+ FAIL  tests/integration/recomendacao-metricas.integration.test.ts [ tests/integration/recomendacao-metricas.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\d4b783bd046124e8d2342e9f19f9f2858420c559'
+ ❯ tests/integration/recomendacao-metricas.integration.test.ts:4:1
+      2| import type { HttpRecomendacaoClient } from "../../src/integrations/re…
+      3| import { calcularMetricasBaseline } from "../../scripts/helpers/recome…
+      4| import { criarBancoRecomendacao as criarBancoAuth } from "../helpers/r…
+       | ^
+      5|
+      6| let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[52/129]⎯
+
+ FAIL  tests/integration/recomendacao-volume.integration.test.ts [ tests/integration/recomendacao-volume.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\62bc4c91f789d444096f9734f6ce9dd99d6a0a15'
+ ❯ tests/integration/recomendacao-volume.integration.test.ts:6:1
+      4| import { join } from "node:path";
+      5| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      6| import { criarBancoAuth } from "../helpers/auth-database.js";
+       | ^
+      7| import { medirBaseRecomendacao } from "../../scripts/lib/recomendacao-…
+      8| import {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[53/129]⎯
+
+ FAIL  tests/integration/recomendacao.strategy.integration.test.ts [ tests/integration/recomendacao.strategy.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\62bc4c91f789d444096f9734f6ce9dd99d6a0a15'
+ ❯ tests/helpers/recomendacao-database.ts:1:1
+      1| import { criarBancoAuth } from "./auth-database.js";
+       | ^
+      2| import { iniciarRecomendacao } from "../../scripts/helpers/recomendaca…
+      3| import { HttpRecomendacaoClient } from "../../src/integrations/recomme…
+ ❯ tests/integration/recomendacao.strategy.integration.test.ts:4:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[54/129]⎯
+
+ FAIL  tests/integration/recomendacoes-contrato.integration.test.ts [ tests/integration/recomendacoes-contrato.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\6aeb65a99b172d24b30ca180b350cdab0088a11e'
+ ❯ src/repositories/usuario.repository.ts:1:1
+      1| import { Prisma, type PrismaClient } from "../generated/prisma/client.…
+       | ^
+      2| import type { PapelUsuario } from "../generated/prisma/enums.js";
+      3| import { AppError } from "../errors/app-error.js";
+ ❯ src/app.ts:15:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[55/129]⎯
+
+ FAIL  tests/integration/recomendacoes-historico.integration.test.ts [ tests/integration/recomendacoes-historico.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/recomendacoes-historico.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { HttpRecomendacaoClient } from "../../src/integrations/recomme…
+      7| import type {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[56/129]⎯
+
+ FAIL  tests/integration/recomendacoes.route.integration.test.ts [ tests/integration/recomendacoes.route.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/recomendacoes.route.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { criarBancoRecomendacao } from "../helpers/recomendacao-databa…
+      7| import {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[57/129]⎯
+
+ FAIL  tests/integration/reconciliacao-modelo-logico.integration.test.ts [ tests/integration/reconciliacao-modelo-logico.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integration/reconciliacao-modelo-logico.integration.test.ts:4:1
+      2| import type { PoolClient } from "pg";
+      3| import { afterAll, afterEach, beforeEach, describe, expect, it } from …
+      4| import { databasePool } from "../helpers/database.js";
+       | ^
+      5| import {
+      6|   criarCategoria,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[58/129]⎯
+
+ FAIL  tests/integration/schema-completo.smoke.test.ts [ tests/integration/schema-completo.smoke.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\10612bc1de8b094949c1de54c72f2a5eef5cc4d2'
+ ❯ tests/integration/schema-completo.smoke.test.ts:3:1
+      1| import "dotenv/config";
+      2| import { afterAll, describe, expect, it } from "vitest";
+      3| import { createPrismaClient } from "../../src/database/prisma/client.j…
+       | ^
+      4|
+      5| const databaseUrl = process.env.DATABASE_URL;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[59/129]⎯
+
+ FAIL  tests/integration/seed-volume.integration.test.ts [ tests/integration/seed-volume.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\3f70951dd16a7c259b386788ce55d76ade150e6e'
+ ❯ tests/integration/seed-volume.integration.test.ts:2:1
+      1| import { expect, it } from "vitest";
+      2| import { runVolumeSeed } from "../../prisma/seed-volume.js";
+       | ^
+      3| import { criarBancoSeed, contagensSeed } from "../helpers/seed-databas…
+      4|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[60/129]⎯
+
+ FAIL  tests/integration/seed.integration.test.ts [ tests/integration/seed.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\10612bc1de8b094949c1de54c72f2a5eef5cc4d2'
+ ❯ prisma/seed.ts:5:1
+      3| import type { Prisma } from "../src/generated/prisma/client.js";
+      4| import { parseEnvironment } from "../src/config/environment.js";
+      5| import { createPrismaClient } from "../src/database/prisma/client.js";
+       | ^
+      6| import { gerarHash } from "../src/utils/senha.js";
+      7| import { TECNICAS_SEED, REGIOES_SEED } from "./seeds/referencias.js";
+ ❯ tests/integration/seed.integration.test.ts:3:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[61/129]⎯
+
+ FAIL  tests/integration/server-queue-bootstrap.integration.test.ts [ tests/integration/server-queue-bootstrap.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\8cf26b5048859f0f32791b5a551a47c3ec1e9e99'
+ ❯ tests/integration/server-queue-bootstrap.integration.test.ts:3:1
+      1| import "dotenv/config";
+      2| import { afterAll, describe, expect, it } from "vitest";
+      3| import { StatusIntencao } from "../../src/generated/prisma/enums.js";
+       | ^
+      4| import { NOTIFICAR_ARTESAO_QUEUE } from "../../src/queues/pg-boss.clie…
+      5| import { startServer } from "../../src/server.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[62/129]⎯
+
+ FAIL  tests/integration/tecnica-regiao.integration.test.ts [ tests/integration/tecnica-regiao.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\65e29973f80ae6092adcd1ae87bb06c365054c09'
+ ❯ tests/integration/tecnica-regiao.integration.test.ts:5:1
+      3| import type { PoolClient } from "pg";
+      4| import { afterAll, afterEach, beforeEach, describe, expect, it } from …
+      5| import { databasePool } from "../helpers/database.js";
+       | ^
+      6| import {
+      7|   criarCategoria,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[63/129]⎯
+
+ FAIL  tests/integration/usuario.service.integration.test.ts [ tests/integration/usuario.service.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\10612bc1de8b094949c1de54c72f2a5eef5cc4d2'
+ ❯ tests/integration/usuario.service.integration.test.ts:4:1
+      2| import "dotenv/config";
+      3| import { afterAll, describe, expect, it } from "vitest";
+      4| import { createPrismaClient } from "../../src/database/prisma/client.j…
+       | ^
+      5| import { AppError } from "../../src/errors/app-error.js";
+      6| import { PrismaUsuarioRepository } from "../../src/repositories/usuari…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[64/129]⎯
+
+ FAIL  tests/integration/worker-process.integration.test.ts [ tests/integration/worker-process.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ src/server.ts:4:1
+      2| import { pathToFileURL } from "node:url";
+      3| import type { PgBoss } from "pg-boss";
+      4| import { createApp } from "./app.js";
+       | ^
+      5| import {
+      6|   EnvironmentValidationError,
+ ❯ tests/integration/worker-process.integration.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[65/129]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 57 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/build-isolation.test.ts > compila API e worker sem instalar dependencias do frontend
+Error: EPERM: operation not permitted, symlink 'C:\Users\Pedro\Desktop\Projeto integrador\backend\node_modules' -> 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\origem-backend-build-VmwksW\backend\node_modules'
+ ❯ tests/unit/build-isolation.test.ts:40:5
+     38|       });
+     39|     }
+     40|     symlinkSync(
+       |     ^
+     41|       join(backendRoot, "node_modules"),
+     42|       join(backend, "node_modules"),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[66/129]⎯
+
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > seleciona volume separado e termo com pelo menos tres caracteres
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa argumentos invalidos "--termo"
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa argumentos invalidos "--termo"
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa argumentos invalidos "--termo"
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa argumentos invalidos "--schema"
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa argumentos invalidos "--volume-env"
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa argumentos invalidos "--aquecimentos"
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa argumentos invalidos "--amostras"
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa argumentos invalidos "--desconhecido"
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa ambiente inadequado antes de conectar
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa ambiente inadequado antes de conectar
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa ambiente inadequado antes de conectar
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa ambiente inadequado antes de conectar
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > recusa ambiente inadequado antes de conectar
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: configuracao do benchmark de busca > aceita schema isolado na mesma base e nome alternativo
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: percentis independentes > calcula nearest-rank sem alterar amostras ou remover outliers
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: percentis independentes > reprova p95 igual a 500 ms
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: percentis independentes > recusa amostras insuficientes ou invalidas
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: percentis independentes > recusa amostras insuficientes ou invalidas
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: percentis independentes > recusa amostras insuficientes ou invalidas
+ FAIL  tests/unit/busca-p95.test.ts > BD.2: percentis independentes > recusa amostras insuficientes ou invalidas
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ scripts/busca-p95.ts:11:1
+      9| import { PrismaPg } from "@prisma/adapter-pg";
+     10| import { z } from "zod";
+     11| import { createApp } from "../src/app.js";
+       | ^
+     12| import { PrismaClient } from "../src/generated/prisma/client.js";
+     13| import { MemoryCacheStore } from "../src/utils/cache.js";
+ ❯ tests/unit/busca-p95.test.ts:9:35
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[67/129]⎯
+
+ FAIL  tests/unit/conferir-indicadores-plataforma.test.ts > entrada da conferencia 33.3 > aceita apenas schema e destino dos artefatos
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\6aeb65a99b172d24b30ca180b350cdab0088a11e'
+ ❯ scripts/conferir-indicadores-plataforma.ts:10:1
+      8| import { Pool, escapeIdentifier } from "pg";
+      9| import { z } from "zod";
+     10| import { Prisma, PrismaClient } from "../src/generated/prisma/client.j…
+       | ^
+     11| import {
+     12|   CONSULTAS_INDICADORES_PLATAFORMA,
+ ❯ tests/unit/conferir-indicadores-plataforma.test.ts:6:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[68/129]⎯
+
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > seleciona volume e candidato permitido sem aceitar SQL externo
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\5fe3c31eb54de492c4d86b1c7344fe298dac7958'
+ ❯ tests/unit/db-explain.test.ts:17:37
+     15| describe("entrada db:explain", () => {
+     16|   it("seleciona volume e candidato permitido sem aceitar SQL externo",…
+     17|     const { parseExplainOptions } = await carregarScript();
+       |                                     ^
+     18|     expect(
+     19|       parseExplainOptions(["--volume", "--candidate", "confirmado-comp…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[69/129]⎯
+
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > volume exige branch separada e recusa producao
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\5fe3c31eb54de492c4d86b1c7344fe298dac7958'
+ ❯ tests/unit/db-explain.test.ts:31:44
+     29|
+     30|   it("volume exige branch separada e recusa producao", async () => {
+     31|     const { validateExplainEnvironment } = await carregarScript();
+       |                                            ^
+     32|     const env = {
+     33|       DIRECT_URL: "[BANCO_REMOVIDO]",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[70/129]⎯
+
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > usa leitura atual sem DDL por padrao
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\5fe3c31eb54de492c4d86b1c7344fe298dac7958'
+ ❯ tests/unit/db-explain.test.ts:85:37
+     83|   });
+     84|   it("usa leitura atual sem DDL por padrao", async () => {
+     85|     const { parseExplainOptions } = await carregarScript();
+       |                                     ^
+     86|     expect(parseExplainOptions([])).toMatchObject({
+     87|       compare: false,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[71/129]⎯
+
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > rejeita entrada invalida "--schema" antes de conectar
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > rejeita entrada invalida "--phase" antes de conectar
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > rejeita entrada invalida "--termo" antes de conectar
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > rejeita entrada invalida "--termo" antes de conectar
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > rejeita entrada invalida "--termo" antes de conectar
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > rejeita entrada invalida "--desconhecido" antes de conectar
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > rejeita entrada invalida "--compare" antes de conectar
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\5fe3c31eb54de492c4d86b1c7344fe298dac7958'
+ ❯ tests/unit/db-explain.test.ts:109:37
+    107|     ["--compare", "--schema", "public"],
+    108|   ])("rejeita entrada invalida %j antes de conectar", async (...args) …
+    109|     const { parseExplainOptions } = await carregarScript();
+       |                                     ^
+    110|     expect(() => parseExplainOptions(args)).toThrow();
+    111|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[72/129]⎯
+
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > escapa curingas, preservando a busca literal
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\5fe3c31eb54de492c4d86b1c7344fe298dac7958'
+ ❯ tests/unit/db-explain.test.ts:114:31
+    112|
+    113|   it("escapa curingas, preservando a busca literal", async () => {
+    114|     const { searchPattern } = await carregarScript();
+       |                               ^
+    115|     expect(searchPattern("  barro%_\\  ")).toBe("%barro\\%\\_\\\\%");
+    116|     expect(searchPattern("'; DROP TABLE Produto; --")).toBe(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[73/129]⎯
+
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > recusa comparacao sem ambiente de teste valido
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > recusa comparacao sem ambiente de teste valido
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > recusa comparacao sem ambiente de teste valido
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > recusa comparacao sem ambiente de teste valido
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > recusa comparacao sem ambiente de teste valido
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > recusa comparacao sem ambiente de teste valido
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\5fe3c31eb54de492c4d86b1c7344fe298dac7958'
+ ❯ tests/unit/db-explain.test.ts:137:44
+    135|     },
+    136|   ])("recusa comparacao sem ambiente de teste valido", async (env) => {
+    137|     const { validateExplainEnvironment } = await carregarScript();
+       |                                            ^
+    138|     expect(() => validateExplainEnvironment(env, true)).toThrow();
+    139|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[74/129]⎯
+
+ FAIL  tests/unit/db-explain.test.ts > entrada db:explain > recusa URLs direta e da aplicacao em branches diferentes
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\5fe3c31eb54de492c4d86b1c7344fe298dac7958'
+ ❯ tests/unit/db-explain.test.ts:142:44
+    140|
+    141|   it("recusa URLs direta e da aplicacao em branches diferentes", async…
+    142|     const { validateExplainEnvironment } = await carregarScript();
+       |                                            ^
+    143|     expect(() =>
+    144|       validateExplainEnvironment(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[75/129]⎯
+
+ FAIL  tests/unit/e2e-server.test.ts > 31.3 recusa ambiente inseguro antes de abrir conexao
+ FAIL  tests/unit/e2e-server.test.ts > 31.3 usa conexao direta da branch de teste e porta local
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{f8f0f5c4-ba0c-49ce-9f20-ef599de2499b}\AC\Temp\R1PLpq6CQ1rvfP8Gu3Q7C\ssr\6aeb65a99b172d24b30ca180b350cdab0088a11e'
+ ❯ scripts/e2e-server.ts:8:1
+      6| import { PrismaPg } from "@prisma/adapter-pg";
+      7| import { z } from "zod";
+      8| import { PrismaClient } from "../src/generated/prisma/client.js";
+       | ^
+      9| import { createApp } from "../src/app.js";
+     10| import { runSeed } from "../prisma/seed.js";
+ ❯ tests/unit/e2e-server.test.ts:11:38
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[76/129]⎯
+
+ FAIL  tests/unit/server.test.ts > server startup > binds startup explicitly to IPv4 loopback
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/unit/server.test.ts:136:25
+    134|     );
+    135|
+    136|     expect(result.code).toBe(0);
+       |                         ^
+    137|     expect(result.stdout).toBe("127.0.0.1");
+    138|     expect(result.stderr).toBe("");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[77/129]⎯
+
+ FAIL  tests/integration/concorrencia-script.integration.test.ts > limpa schema quando a porta do servidor esta ocupada
+AssertionError: expected 'Falha no teste de concorrencia.\n' to contain 'CONCURRENCY_TEST_PORT'
+
+- Expected
++ Received
+
+- CONCURRENCY_TEST_PORT
++ Falha no teste de concorrencia.
++
+
+ ❯ tests/integration/concorrencia-script.integration.test.ts:56:30
+     54|     ]);
+     55|     expect(resultado.code).toBe(1);
+     56|     expect(resultado.stderr).toContain("CONCURRENCY_TEST_PORT");
+       |                              ^
+     57|     const schema = /^Schema temporario: (web10_[a-f0-9]{32})$/m.exec(
+     58|       resultado.stdout,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[78/129]⎯
+
+ FAIL  tests/integration/concorrencia-script.integration.test.ts > comando autentica cinco compradores, valida tres rodadas e remove seu schema
+AssertionError: Falha no teste de concorrencia.
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/integration/concorrencia-script.integration.test.ts:81:63
+     79|   });
+     80|   const resultado = await executar(["--clientes", "5", "--saida", said…
+     81|   expect(resultado.code, resultado.stderr + resultado.stdout).toBe(0);
+       |                                                               ^
+     82|   const rodadas = resultado.stdout.split(/\r?\n/).flatMap((linha) => {
+     83|     const match = /^Rodada [1-3]: (.+)$/.exec(linha);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[79/129]⎯
+
+ FAIL  tests/integration/concorrencia-script.integration.test.ts > recusa sobrescrever um arquivo JSON existente
+AssertionError: expected 'Falha no teste de concorrencia.\n' to contain 'Nao foi possivel gravar --saida em ar…'
+
+- Expected
++ Received
+
+- Nao foi possivel gravar --saida em arquivo novo.
++ Falha no teste de concorrencia.
++
+
+ ❯ tests/integration/concorrencia-script.integration.test.ts:163:28
+    161|   ]);
+    162|   expect(resultado.code).toBe(1);
+    163|   expect(resultado.stderr).toContain(
+       |                            ^
+    164|     "Nao foi possivel gravar --saida em arquivo novo.",
+    165|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[80/129]⎯
+
+ FAIL  tests/integration/db-explain.integration.test.ts > BD.4 compara candidatos reais sem persistir indices ou mudar resultados
+Error: connect EACCES 127.0.0.1:55435
+ ❯ node_modules/pg-pool/index.js:45:11
+ ❯ criarBancoAuth tests/helpers/auth-database.ts:15:18
+     13|     options: `-c search_path=${schema},public`,
+     14|   });
+     15|   const client = await pool.connect();
+       |                  ^
+     16|   try {
+     17|     await client.query("BEGIN");
+ ❯ tests/integration/db-explain.integration.test.ts:14:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[81/129]⎯
+
+ FAIL  tests/integration/db-explain.integration.test.ts > db:explain grava pares reais, tabela e reverte o schema
+Error: connect EACCES 127.0.0.1:55435
+ ❯ node_modules/pg-pool/index.js:45:11
+ ❯ runExplain scripts/db-explain.ts:537:14
+    535|   let transactionStarted = false;
+    536|   try {
+    537|     client = await pool.connect();
+       |              ^
+    538|     await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ");
+    539|     transactionStarted = true;
+ ❯ tests/integration/db-explain.integration.test.ts:82:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[82/129]⎯
+
+ FAIL  tests/integration/db-explain.integration.test.ts > db:explain atual mede tambem tabelas vazias sem alterar dados
+Error: connect EACCES 127.0.0.1:55435
+ ❯ node_modules/pg-pool/index.js:45:11
+ ❯ runExplain scripts/db-explain.ts:537:14
+    535|   let transactionStarted = false;
+    536|   try {
+    537|     client = await pool.connect();
+       |              ^
+    538|     await client.query("BEGIN ISOLATION LEVEL REPEATABLE READ");
+    539|     transactionStarted = true;
+ ❯ tests/integration/db-explain.integration.test.ts:165:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[83/129]⎯
+
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte textos normalizados e preserva os nove produtos
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte Marcenaria e renda e Caruaru - Alto do Moura sem preencher campos ausentes
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte  BORDADO À MÃO  e TRACUNHAÉM sem preencher campos ausentes
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte null e null sem preencher campos ausentes
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta e preserva textos quando tecnicaPrincipal e desconhecida
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta e preserva textos quando regiao e desconhecida
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta para produto sem mapeamento explicito
+Error: connect EACCES 127.0.0.1:55435
+ ❯ node_modules/pg-pool/index.js:45:11
+ ❯ tests/integration/tecnica-regiao-migration.integration.test.ts:15:12
+     13|
+     14| beforeEach(async () => {
+     15|   client = await databasePool.connect();
+       |            ^
+     16|   schemaName = `bd03_${randomUUID().replaceAll("-", "")}`;
+     17|   await client.query(`BEGIN; CREATE SCHEMA "${schemaName}"; SET LOCAL …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[84/129]⎯
+
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte textos normalizados e preserva os nove produtos
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte Marcenaria e renda e Caruaru - Alto do Moura sem preencher campos ausentes
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte  BORDADO À MÃO  e TRACUNHAÉM sem preencher campos ausentes
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte null e null sem preencher campos ausentes
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta e preserva textos quando tecnicaPrincipal e desconhecida
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta e preserva textos quando regiao e desconhecida
+ FAIL  tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta para produto sem mapeamento explicito
+TypeError: Cannot read properties of undefined (reading 'query')
+ ❯ tests/integration/tecnica-regiao-migration.integration.test.ts:33:16
+     31|
+     32| afterEach(async () => {
+     33|   await client.query("ROLLBACK");
+       |                ^
+     34|   client.release();
+     35| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[85/129]⎯
+
+
+ Test Files  74 failed | 4 passed (78)
+      Tests  57 failed | 62 passed (119)
+   Start at  15:40:58
+   Duration  45.30s (tests 95%, import 2%, worker 2%, transform 1%)
+
+    Isolate  78 workers spawned · ~140ms startup each (spawn + environment, per file)
+             at least ~10.79s faster with isolate: false — reuses workers across files instead of one per file
+

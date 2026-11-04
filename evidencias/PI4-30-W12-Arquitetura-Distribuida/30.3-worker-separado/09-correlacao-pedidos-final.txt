@@ -1,0 +1,36 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/worker-process.integration.test.ts --testTimeout=15000 --hookTimeout=15000 --silent=false --reporter=verbose
+
+
+ RUN  v5.0.0 C:/Users/Desktop/Projeto integrador/backend
+
+(node:38812) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/worker-process.integration.test.ts > API and independent worker processes > keeps orders unprocessed until 1 worker processes start, with one notification per order
+{"etapa":"API","pid":38812,"consumidores":1,"intencoes":[{"id":"c6c5a95e-2122-4089-855f-e726d9974001","pedidoId":"74a66a27-0b0d-4c0a-8571-c57790501472","status":"publicada","tentativas":0}]}
+
+stdout | tests/integration/worker-process.integration.test.ts > API and independent worker processes > keeps orders unprocessed until 1 worker processes start, with one notification per order
+{"etapa":"worker","consumidores":1,"pids":[27248],"intencoes":[{"id":"c6c5a95e-2122-4089-855f-e726d9974001","pedidoId":"74a66a27-0b0d-4c0a-8571-c57790501472","status":"processada","tentativas":1}],"notificacoes":1,"unicas":1}
+
+ ✓ tests/integration/worker-process.integration.test.ts > API and independent worker processes > keeps orders unprocessed until 1 worker processes start, with one notification per order 7477ms
+stdout | tests/integration/worker-process.integration.test.ts > API and independent worker processes > keeps orders unprocessed until 2 worker processes start, with one notification per order
+{"etapa":"API","pid":38812,"consumidores":2,"intencoes":[{"id":"b382e209-38e6-471b-a205-911569824f54","pedidoId":"827da526-1e6f-4052-8342-3ab86018c0b8","status":"publicada","tentativas":0},{"id":"49b054ae-2473-4a1a-a99b-60ea19ad6fc0","pedidoId":"6009987f-d218-4cbe-aef4-90c4e1364634","status":"publicada","tentativas":0},{"id":"f11cf03c-e4fd-48e6-a73d-4544e304e461","pedidoId":"1f6c52fe-33e7-409e-a6d9-5339c48c2c90","status":"publicada","tentativas":0},{"id":"9422e5d7-96fe-4aaf-9430-0b17ee602f9e","pedidoId":"965f1ef5-76c8-4523-ae5e-1d194d588a6c","status":"publicada","tentativas":0},{"id":"538cebfb-09dd-451c-ba12-527b930940d8","pedidoId":"7c926498-4daf-471d-aa96-d71119d3012d","status":"publicada","tentativas":0},{"id":"6b54b202-aae7-4e3b-9998-777af1a87afe","pedidoId":"07206911-b88f-4c24-9670-0bd919bb6fec","status":"publicada","tentativas":0}]}
+
+stdout | tests/integration/worker-process.integration.test.ts > API and independent worker processes > keeps orders unprocessed until 2 worker processes start, with one notification per order
+{"etapa":"worker","consumidores":2,"pids":[36200,30244],"intencoes":[{"id":"b382e209-38e6-471b-a205-911569824f54","pedidoId":"827da526-1e6f-4052-8342-3ab86018c0b8","status":"processada","tentativas":1},{"id":"49b054ae-2473-4a1a-a99b-60ea19ad6fc0","pedidoId":"6009987f-d218-4cbe-aef4-90c4e1364634","status":"processada","tentativas":1},{"id":"f11cf03c-e4fd-48e6-a73d-4544e304e461","pedidoId":"1f6c52fe-33e7-409e-a6d9-5339c48c2c90","status":"processada","tentativas":1},{"id":"9422e5d7-96fe-4aaf-9430-0b17ee602f9e","pedidoId":"965f1ef5-76c8-4523-ae5e-1d194d588a6c","status":"processada","tentativas":1},{"id":"538cebfb-09dd-451c-ba12-527b930940d8","pedidoId":"7c926498-4daf-471d-aa96-d71119d3012d","status":"processada","tentativas":1},{"id":"6b54b202-aae7-4e3b-9998-777af1a87afe","pedidoId":"07206911-b88f-4c24-9670-0bd919bb6fec","status":"processada","tentativas":1}],"notificacoes":6,"unicas":6}
+
+ ✓ tests/integration/worker-process.integration.test.ts > API and independent worker processes > keeps orders unprocessed until 2 worker processes start, with one notification per order 11628ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  18:36:10
+   Duration  19.78s (tests 97%, import 2%, transform 1%)
+

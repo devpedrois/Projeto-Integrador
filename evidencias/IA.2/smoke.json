@@ -1,0 +1,537 @@
+{
+  "dataUtc": "2026-10-25T19:19:04.577Z",
+  "ambiente": "Next.js dev HTTP local + API Express local + PostgreSQL Neon real, seed oficial em schema isolado removido ao concluir",
+  "painel": "Instrumentação visual de respostas Playwright, sem interceptação ou mocks; não representa DevTools nativo",
+  "browser": "155.0.8059.86",
+  "resultados": [
+    {
+      "categoria": {
+        "id": "0c738311-eb70-5df6-948d-77e55053be3e",
+        "nome": "Bijuteria e Acessórios Artesanais",
+        "produtos": [
+          {
+            "id": "5df54ce4-697f-57a7-aef8-8312239abbcd",
+            "nome": "Pulseira em Miçangas"
+          }
+        ]
+      },
+      "produto": {
+        "id": "5df54ce4-697f-57a7-aef8-8312239abbcd",
+        "nome": "Pulseira em Miçangas"
+      },
+      "resposta": {
+        "estrategia": "categoria",
+        "itens": [
+          {
+            "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+            "nome": "Brinco Trançado em Fibra",
+            "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+            "preco": 59.4,
+            "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+            "tecnicaId": "tecnica-trancado-fibra",
+            "regiaoId": "",
+            "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+            "fotos": [
+              {
+                "url": "/produtos/bijuteria-acessorios.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 8,
+            "quantidadeVendida": 0,
+            "notaMedia": 4,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-26T00:00:00.000Z"
+          },
+          {
+            "id": "76c2ddf4-3c9e-5934-ba44-ba72f13c78f0",
+            "nome": "Colar em Sementes Naturais",
+            "descricao": "Colar artesanal com sementes regionais selecionadas.",
+            "preco": 39.9,
+            "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+            "tecnicaId": "tecnica-bijuteria-sementes",
+            "regiaoId": "regiao-pilar-recife",
+            "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+            "fotos": [
+              {
+                "url": "/produtos/bijuteria-acessorios.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 3,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-25T00:00:00.000Z"
+          },
+          {
+            "id": "7d4b4108-1791-5fd0-8f95-824c07629660",
+            "nome": "Bolsa de Palha Trançada",
+            "descricao": "Pequena bolsa em palha trançada com fechamento em madeira.",
+            "preco": 104.4,
+            "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+            "tecnicaId": "tecnica-trancado-fibra",
+            "regiaoId": "regiao-pilar-recife",
+            "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+            "fotos": [
+              {
+                "url": "/produtos/bijuteria-acessorios.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 23,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-29T00:00:00.000Z"
+          },
+          {
+            "id": "92ca891e-6c38-566f-8d4f-c6206c868f35",
+            "nome": "Chapéu de Palha Artesanal",
+            "descricao": "Chapéu confeccionado em palha trançada da região.",
+            "preco": 123.9,
+            "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+            "tecnicaId": "tecnica-trancado-fibra",
+            "regiaoId": "",
+            "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+            "fotos": [
+              {
+                "url": "/produtos/bijuteria-acessorios.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 28,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-30T00:00:00.000Z"
+          },
+          {
+            "id": "e29465a7-4a63-5754-a90f-7c61cd14adb6",
+            "nome": "Anel em Fibra Trançada",
+            "descricao": "Anel confeccionado em fibra natural trançada à mão.",
+            "preco": 84.9,
+            "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+            "tecnicaId": "tecnica-trancado-fibra",
+            "regiaoId": "",
+            "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+            "fotos": [
+              {
+                "url": "/produtos/bijuteria-acessorios.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 18,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-28T00:00:00.000Z"
+          }
+        ]
+      },
+      "exibidos": [
+        {
+          "nome": "Brinco Trançado em Fibra",
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c"
+        },
+        {
+          "nome": "Colar em Sementes Naturais",
+          "id": "76c2ddf4-3c9e-5934-ba44-ba72f13c78f0"
+        },
+        {
+          "nome": "Bolsa de Palha Trançada",
+          "id": "7d4b4108-1791-5fd0-8f95-824c07629660"
+        },
+        {
+          "nome": "Chapéu de Palha Artesanal",
+          "id": "92ca891e-6c38-566f-8d4f-c6206c868f35"
+        },
+        {
+          "nome": "Anel em Fibra Trançada",
+          "id": "e29465a7-4a63-5754-a90f-7c61cd14adb6"
+        }
+      ],
+      "requisicoes": [
+        {
+          "method": "GET",
+          "path": "/api/produtos/5df54ce4-697f-57a7-aef8-8312239abbcd",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/recomendacoes?produtoId=5df54ce4-697f-57a7-aef8-8312239abbcd",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/recomendacoes?produtoId=5df54ce4-697f-57a7-aef8-8312239abbcd",
+          "status": 200
+        }
+      ],
+      "arquivo": "produto-1-network.png",
+      "responsivo": [
+        360,
+        768,
+        1280
+      ]
+    },
+    {
+      "categoria": {
+        "id": "de5eee0a-2a66-5362-94d7-0fea750da385",
+        "nome": "Cerâmica e Barro",
+        "produtos": [
+          {
+            "id": "7bcae074-7451-5794-8ae2-d01bc4a7922d",
+            "nome": "Boneca de Barro Pintada"
+          }
+        ]
+      },
+      "produto": {
+        "id": "7bcae074-7451-5794-8ae2-d01bc4a7922d",
+        "nome": "Boneca de Barro Pintada"
+      },
+      "resposta": {
+        "estrategia": "categoria",
+        "itens": [
+          {
+            "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+            "nome": "Vaso de Barro Trançado",
+            "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+            "preco": 39.9,
+            "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+            "tecnicaId": "tecnica-modelagem-argila",
+            "regiaoId": "regiao-pilar-recife",
+            "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+            "fotos": [
+              {
+                "url": "/produtos/ceramica-barro.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 3,
+            "quantidadeVendida": 1,
+            "notaMedia": 4.5,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-01T00:00:00.000Z"
+          },
+          {
+            "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+            "nome": "Panela de Barro Vidrada",
+            "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+            "preco": 59.4,
+            "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+            "tecnicaId": "tecnica-torno-ceramico",
+            "regiaoId": "",
+            "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+            "fotos": [
+              {
+                "url": "/produtos/ceramica-barro.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 8,
+            "quantidadeVendida": 1,
+            "notaMedia": 4,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-02T00:00:00.000Z"
+          },
+          {
+            "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+            "nome": "Prato Decorativo em Barro",
+            "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+            "preco": 104.4,
+            "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+            "tecnicaId": "tecnica-modelagem-argila",
+            "regiaoId": "regiao-pilar-recife",
+            "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+            "fotos": [
+              {
+                "url": "/produtos/ceramica-barro.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 23,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-05T00:00:00.000Z"
+          },
+          {
+            "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+            "nome": "Jarra Cerâmica Esculpida",
+            "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+            "preco": 84.9,
+            "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+            "tecnicaId": "tecnica-torno-ceramico",
+            "regiaoId": "",
+            "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+            "fotos": [
+              {
+                "url": "/produtos/ceramica-barro.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 18,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-04T00:00:00.000Z"
+          },
+          {
+            "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+            "nome": "Conjunto de Xícaras de Barro",
+            "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+            "preco": 123.9,
+            "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+            "tecnicaId": "tecnica-torno-ceramico",
+            "regiaoId": "",
+            "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+            "fotos": [
+              {
+                "url": "/produtos/ceramica-barro.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 28,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-06T00:00:00.000Z"
+          }
+        ]
+      },
+      "exibidos": [
+        {
+          "nome": "Vaso de Barro Trançado",
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50"
+        },
+        {
+          "nome": "Panela de Barro Vidrada",
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc"
+        },
+        {
+          "nome": "Prato Decorativo em Barro",
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7"
+        },
+        {
+          "nome": "Jarra Cerâmica Esculpida",
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8"
+        },
+        {
+          "nome": "Conjunto de Xícaras de Barro",
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2"
+        }
+      ],
+      "requisicoes": [
+        {
+          "method": "GET",
+          "path": "/api/produtos/7bcae074-7451-5794-8ae2-d01bc4a7922d",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/recomendacoes?produtoId=7bcae074-7451-5794-8ae2-d01bc4a7922d",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/recomendacoes?produtoId=7bcae074-7451-5794-8ae2-d01bc4a7922d",
+          "status": 200
+        }
+      ],
+      "arquivo": "produto-2-network.png",
+      "responsivo": [
+        360,
+        768,
+        1280
+      ]
+    },
+    {
+      "categoria": {
+        "id": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+        "nome": "Madeira Entalhada e Marcenaria Artesanal",
+        "produtos": [
+          {
+            "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+            "nome": "Colher de Pau Esculpida"
+          }
+        ]
+      },
+      "produto": {
+        "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+        "nome": "Colher de Pau Esculpida"
+      },
+      "resposta": {
+        "estrategia": "categoria",
+        "itens": [
+          {
+            "id": "1e806d20-8bb8-5628-b030-e7fb605bda04",
+            "nome": "Porta-Retrato em Madeira",
+            "descricao": "Porta-retrato entalhado com moldura floral artesanal.",
+            "preco": 78.9,
+            "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+            "tecnicaId": "tecnica-entalhe-madeira",
+            "regiaoId": "regiao-pilar-recife",
+            "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+            "fotos": [
+              {
+                "url": "/produtos/madeira-entalhada.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 33,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-15T00:00:00.000Z"
+          },
+          {
+            "id": "23b4b7fa-2d32-57db-af3f-0bf72ccb797d",
+            "nome": "Jogo de Talheres em Madeira",
+            "descricao": "Jogo de talheres de servir esculpidos em madeira nativa.",
+            "preco": 123.9,
+            "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+            "tecnicaId": "tecnica-marcenaria-artesanal",
+            "regiaoId": "",
+            "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+            "fotos": [
+              {
+                "url": "/produtos/madeira-entalhada.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 8,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-18T00:00:00.000Z"
+          },
+          {
+            "id": "b9b84b27-6cd6-51dc-9602-c2bc4908ad13",
+            "nome": "Escultura de Ave em Madeira",
+            "descricao": "Escultura entalhada representando a fauna nordestina.",
+            "preco": 104.4,
+            "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+            "tecnicaId": "tecnica-entalhe-madeira",
+            "regiaoId": "regiao-pilar-recife",
+            "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+            "fotos": [
+              {
+                "url": "/produtos/madeira-entalhada.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 3,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-17T00:00:00.000Z"
+          },
+          {
+            "id": "df5fc172-fb45-57e2-a18a-d3cef6dbf9be",
+            "nome": "Banco Rústico de Marcenaria",
+            "descricao": "Banco baixo produzido em marcenaria artesanal sólida.",
+            "preco": 84.9,
+            "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+            "tecnicaId": "tecnica-marcenaria-artesanal",
+            "regiaoId": "",
+            "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+            "fotos": [
+              {
+                "url": "/produtos/madeira-entalhada.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 38,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-16T00:00:00.000Z"
+          },
+          {
+            "id": "fd22bd57-6ac0-5372-9eb1-f334facf22d5",
+            "nome": "Caixa Entalhada em Madeira",
+            "descricao": "Caixa decorativa entalhada à mão com motivos regionais.",
+            "preco": 39.9,
+            "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+            "tecnicaId": "tecnica-entalhe-madeira",
+            "regiaoId": "regiao-pilar-recife",
+            "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+            "fotos": [
+              {
+                "url": "/produtos/madeira-entalhada.svg",
+                "ordem": 0
+              }
+            ],
+            "quantidadeEstoque": 23,
+            "quantidadeVendida": 0,
+            "notaMedia": 0,
+            "ativo": true,
+            "desativadoPorAdmin": false,
+            "criadoEm": "2026-08-13T00:00:00.000Z"
+          }
+        ]
+      },
+      "exibidos": [
+        {
+          "nome": "Porta-Retrato em Madeira",
+          "id": "1e806d20-8bb8-5628-b030-e7fb605bda04"
+        },
+        {
+          "nome": "Jogo de Talheres em Madeira",
+          "id": "23b4b7fa-2d32-57db-af3f-0bf72ccb797d"
+        },
+        {
+          "nome": "Escultura de Ave em Madeira",
+          "id": "b9b84b27-6cd6-51dc-9602-c2bc4908ad13"
+        },
+        {
+          "nome": "Banco Rústico de Marcenaria",
+          "id": "df5fc172-fb45-57e2-a18a-d3cef6dbf9be"
+        },
+        {
+          "nome": "Caixa Entalhada em Madeira",
+          "id": "fd22bd57-6ac0-5372-9eb1-f334facf22d5"
+        }
+      ],
+      "requisicoes": [
+        {
+          "method": "GET",
+          "path": "/api/produtos/1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/recomendacoes?produtoId=1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/api/recomendacoes?produtoId=1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "status": 200
+        }
+      ],
+      "arquivo": "produto-3-network.png",
+      "responsivo": [
+        360,
+        768,
+        1280
+      ]
+    }
+  ],
+  "errosJavascript": []
+}

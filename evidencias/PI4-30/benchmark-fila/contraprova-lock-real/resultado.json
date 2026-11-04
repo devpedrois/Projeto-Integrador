@@ -1,0 +1,27 @@
+{
+  "estado": "falha",
+  "configuracao": {
+    "itens": 1000,
+    "rodadas": 5,
+    "aquecimentos": 1,
+    "workers": [
+      1,
+      2,
+      4
+    ],
+    "latenciaMs": 200,
+    "concorrencia": 1,
+    "pollingMs": 1000,
+    "observacaoMs": 250
+  },
+  "schemaFila": "bench_fila_80244dc0314d42da8f6404be28c503bf",
+  "ambiente": {
+    "node": "v22.12.0",
+    "plataforma": "win32",
+    "arquitetura": "x64",
+    "cpu": "Intel(R) Core(TM) Ultra 7 265KF",
+    "volumeUsaPooler": true
+  },
+  "rodadas": [],
+  "erro": "Benchmark da fila: outro benchmark esta ativo nesta branch."
+}

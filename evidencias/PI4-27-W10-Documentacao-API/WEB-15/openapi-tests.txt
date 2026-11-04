@@ -1,0 +1,13 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/openapi.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Desktop/Projeto integrador/backend
+
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  00:19:04
+   Duration  696ms (import 47%, transform 42%, tests 11%, worker 1%)
+

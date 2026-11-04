@@ -1,0 +1,24 @@
+
+> origem-backend@1.0.0 bench:busca
+> tsx scripts/busca-p95.ts --output ../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/04-benchmark-volume-final
+
+(node:38372) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+┌─────────┬──────────────┬──────────┬──────────┬──────────┬──────────┐
+│ (index) │ cenario      │ p50Ms    │ p95Ms    │ maxMs    │ aprovado │
+├─────────┼──────────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0       │ 'sem-filtro' │ '41.600' │ '45.370' │ '46.162' │ true     │
+│ 1       │ 'termo'      │ '41.384' │ '44.601' │ '44.951' │ true     │
+│ 2       │ 'categoria'  │ '40.731' │ '49.102' │ '49.894' │ true     │
+│ 3       │ 'tecnica'    │ '40.723' │ '41.883' │ '42.327' │ true     │
+│ 4       │ 'regiao'     │ '40.724' │ '42.661' │ '46.236' │ true     │
+│ 5       │ 'combinado'  │ '40.566' │ '42.377' │ '42.871' │ true     │
+└─────────┴──────────────┴──────────┴──────────┴──────────┴──────────┘
+Benchmark salvo em C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-BD-W12-Indices-Consultas\BD.2-busca-p95\04-benchmark-volume-final

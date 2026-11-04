@@ -1,0 +1,129 @@
+
+> origem-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/fake-api/repositories/produto.repository.test.ts (15 tests) 5ms
+ ✓ tests/store/carrinho.store.test.ts (17 tests) 6ms
+ ✓ tests/services/usuarios.service.test.ts (16 tests) 41ms
+ ✓ tests/services/pedidos.service.test.ts (16 tests) 8ms
+ ✓ tests/services/fake-recommendation.adapter.test.ts (8 tests) 6ms
+ ✓ tests/services/moderacao.service.test.ts (22 tests) 17ms
+ ✓ tests/services/produtos.service.test.ts (43 tests) 49ms
+ ✓ tests/services/avaliacoes.service.test.ts (21 tests) 40ms
+ ✓ tests/components/artesao/perfil-artesao-publico.test.tsx (8 tests) 183ms
+ ✓ tests/hooks/use-perfil-publico-artesao.test.tsx (9 tests) 550ms
+ ✓ tests/components/produto/detalhe-produto.test.tsx (13 tests) 491ms
+ ✓ tests/components/produto-card.test.tsx (19 tests) 526ms
+ ✓ tests/domain/produto-visibilidade.test.ts (20 tests) 3ms
+ ✓ tests/fake-api/repositories/usuario.repository.test.ts (14 tests) 7ms
+ ✓ tests/fake-api/repositories/perfil-artesao.repository.test.ts (12 tests) 4ms
+ ✓ tests/components/gate-acesso.test.tsx (17 tests) 828ms
+ ✓ tests/services/perfil-artesao.service.test.ts (7 tests) 4ms
+ ✓ tests/app/produto-detalhe.test.tsx (4 tests) 361ms
+ ✓ tests/components/filtros-produtos.test.tsx (12 tests) 443ms
+ ✓ tests/app/route-protection.test.tsx (12 tests) 336ms
+ ✓ tests/app/vitrine.test.tsx (15 tests) 1408ms
+   ✓ Vitrine (Home) > mostra carregando e depois a lista de produtos 470ms
+ ✓ tests/fake-api/storage/sessao.storage.test.ts (20 tests) 4ms
+ ✓ tests/hooks/use-detalhe-produto.test.tsx (6 tests) 384ms
+ ✓ tests/validators/produto.validator.test.ts (27 tests) 7ms
+ ✓ tests/store/sessao.store.test.ts (12 tests) 4ms
+ ✓ tests/components/route-guard.test.tsx (8 tests) 78ms
+ ✓ tests/hooks/use-busca-produtos.test.tsx (6 tests) 386ms
+ ✓ tests/services/http/api-client.test.ts (14 tests) 39ms
+ ✓ tests/components/admin/painel-moderacao.test.tsx (12 tests) 1557ms
+   ✓ PainelModeracao > busca por nome ou e-mail ignorando acentos e limpa os filtros 520ms
+ ✓ tests/components/meus-produtos-list.test.tsx (13 tests) 1566ms
+   ✓ MeusProdutosList > editar produto chama service.update com o artesaoId da sessao e atualiza a lista 493ms
+ ✓ tests/utils/produto-query-url.test.ts (10 tests) 4ms
+ ✓ tests/fake-api/repositories/avaliacao.repository.test.ts (9 tests) 4ms
+ ✓ tests/hooks/use-meus-produtos.test.tsx (6 tests) 368ms
+ ✓ tests/hooks/use-filtros-url.test.tsx (8 tests) 22ms
+ ✓ tests/validators/perfil-artesao.validator.test.ts (18 tests) 3ms
+ ✓ tests/utils/rota-segura.test.ts (18 tests) 3ms
+ ✓ tests/fake-api/repositories/pedido.repository.test.ts (8 tests) 5ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (6 tests) 230ms
+ ✓ tests/app/minha-conta.test.tsx (5 tests) 229ms
+ ✓ tests/components/resultado-busca.test.tsx (8 tests) 256ms
+ ✓ tests/services/http/usuarios.service.test.ts (5 tests) 17ms
+ ✓ tests/store/sessao-http.store.test.ts (5 tests) 3ms
+ ✓ tests/components/faixa-recomendacoes.test.tsx (5 tests) 146ms
+ ✓ tests/components/pendencia-perfil-artesao.test.tsx (4 tests) 126ms
+ ✓ tests/components/login-form.test.tsx (7 tests) 1870ms
+   ✓ LoginForm > login valido chama o service, cria a sessao e redireciona 468ms
+   ✓ LoginForm > credenciais invalidas mostram mensagem generica sem apontar o campo 442ms
+   ✓ LoginForm > mostra loading e desabilita o botao durante o envio 483ms
+   ✓ LoginForm > email em formato invalido bloqueia envio e mostra erro no campo 383ms
+ ✓ tests/fake-api/usuario.repository.test.ts (4 tests) 3ms
+ ✓ tests/components/sessao-http.test.tsx (4 tests) 706ms
+   ✓ login respeita retorno local preservado pelo middleware 509ms
+ ✓ tests/services/verificar-usuario-ativo.test.ts (5 tests) 3ms
+ ✓ tests/fake-api/seeds/avaliacoes.seed.test.ts (7 tests) 3ms
+ ✓ tests/validators/cadastro.validator.test.ts (8 tests) 2ms
+ ✓ tests/domain/perfil-artesao-completo.test.ts (6 tests) 2ms
+stderr | tests/hooks/use-artesaos-ativos.test.tsx > useArtesaosAtivos > comeca carregando quando o service ainda nao resolveu
+An update to TestComponent inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ tests/config/next-config.test.ts (14 tests) 8ms
+ ✓ tests/fake-api/seeds/produtos.seed.test.ts (7 tests) 4ms
+ ✓ tests/hooks/use-artesaos-ativos.test.tsx (4 tests) 146ms
+ ✓ tests/utils/foto-url-segura.test.ts (8 tests) 4ms
+ ✓ tests/hooks/use-opcoes-filtro.test.tsx (4 tests) 140ms
+ ✓ tests/fake-api/storage/carrinho.storage.test.ts (8 tests) 3ms
+ ✓ tests/services/container-http.test.ts (3 tests) 160ms
+ ✓ tests/services/opcoes-filtro.service.test.ts (4 tests) 37ms
+ ✓ tests/config/middleware.test.ts (5 tests) 31ms
+ ✓ tests/hooks/use-sessao.test.tsx (2 tests) 14ms
+ ✓ tests/fake-api/storage/modo-acesso.storage.test.ts (3 tests) 2ms
+ ✓ tests/utils/normalizar-texto.test.ts (5 tests) 2ms
+ ✓ tests/components/perfil-artesao-form.test.tsx (8 tests) 3629ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso 1136ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo 864ms
+   ✓ PerfilArtesaoForm > previa do perfil publico mostra nome, tecnica e a historia digitada 404ms
+   ✓ PerfilArtesaoForm > mostra erro recuperavel quando salvar falha e mantem o botao habilitado 927ms
+ ✓ tests/domain/resumo-avaliacoes.test.ts (3 tests) 2ms
+ ✓ tests/utils/preco-campo.test.ts (11 tests) 2ms
+ ✓ tests/types/usuario.test.ts (1 test) 1ms
+ ✓ tests/fake-api/seeds/categorias.seed.test.ts (3 tests) 2ms
+ ✓ tests/components/autenticacao/layout-autenticacao.test.tsx (1 test) 45ms
+ ✓ tests/utils/formatar-moeda.test.ts (4 tests) 1ms
+ ✓ tests/utils/rotulo-papel.test.ts (3 tests) 1ms
+ ✓ tests/app/not-found.test.tsx (1 test) 43ms
+ ✓ tests/components/cadastro-form.test.tsx (10 tests) 4193ms
+   ✓ CadastroForm > escolher artesao envia o papel artesao 805ms
+   ✓ CadastroForm > cadastro valido chama o service e redireciona para login com confirmacao 621ms
+   ✓ CadastroForm > senha curta bloqueia envio e mostra erro no campo 624ms
+   ✓ CadastroForm > mostra loading e desabilita o botao durante o envio 671ms
+   ✓ CadastroForm > email ja cadastrado associa a mensagem ao campo email 610ms
+   ✓ CadastroForm > mostra erro recuperavel quando o service falha 645ms
+ ✓ tests/services/container-avaliacoes.test.ts (1 test) 303ms
+   ✓ obterAvaliacoesService > expõe o recurso de avaliacoes pela camada organizada 303ms
+ ✓ tests/components/produto-form.test.tsx (12 tests) 12952ms
+   ✓ ProdutoForm > preco 0 bloqueia criacao 1703ms
+   ✓ ProdutoForm > preco -1 bloqueia criacao 1591ms
+   ✓ ProdutoForm > preco -0.5 bloqueia criacao 1434ms
+   ✓ ProdutoForm > preco -100 bloqueia criacao 1333ms
+   ✓ ProdutoForm > preco -0.01 bloqueia criacao 1188ms
+   ✓ ProdutoForm > produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao 1167ms
+   ✓ ProdutoForm > aceita preco com virgula e envia o numero correto 1159ms
+   ✓ ProdutoForm > mostra loading e desabilita o botao durante o envio 972ms
+   ✓ ProdutoForm > nao envia duas vezes ao clicar repetidamente antes da resposta 1122ms
+   ✓ ProdutoForm > mostra erro recuperavel quando o service falha e permite tentar novamente 1096ms
+
+ Test Files  75 passed (75)
+      Tests  719 passed (719)
+   Start at  00:11:59
+   Duration  14.32s (transform 2.80s, setup 5.13s, collect 8.31s, tests 35.07s, environment 37.17s, prepare 5.67s)
+

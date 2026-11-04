@@ -1,0 +1,18 @@
+                 Table "public.PerfilArtesao"
+       Column       |  Type   | Collation | Nullable | Default 
+--------------------+---------+-----------+----------+---------
+ usuarioId          | uuid    |           | not null | 
+ historia           | text    |           |          | 
+ foto               | text    |           |          | 
+ completo           | boolean |           | not null | false
+ tecnicaPrincipalId | text    |           |          | 
+ regiaoId           | text    |           |          | 
+Indexes:
+    "PerfilArtesao_pkey" PRIMARY KEY, btree ("usuarioId")
+    "PerfilArtesao_regiaoId_idx" btree ("regiaoId")
+    "PerfilArtesao_tecnicaPrincipalId_idx" btree ("tecnicaPrincipalId")
+Foreign-key constraints:
+    "PerfilArtesao_regiaoId_fkey" FOREIGN KEY ("regiaoId") REFERENCES "Regiao"(id) ON UPDATE CASCADE ON DELETE RESTRICT
+    "PerfilArtesao_tecnicaPrincipalId_fkey" FOREIGN KEY ("tecnicaPrincipalId") REFERENCES "Tecnica"(id) ON UPDATE CASCADE ON DELETE RESTRICT
+    "PerfilArtesao_usuarioId_fkey" FOREIGN KEY ("usuarioId") REFERENCES "Usuario"(id) ON UPDATE CASCADE ON DELETE CASCADE
+

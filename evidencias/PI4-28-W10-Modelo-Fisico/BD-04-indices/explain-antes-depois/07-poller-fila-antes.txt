@@ -1,0 +1,63 @@
+Consulta: poller-fila
+Fase: antes
+Captura original UTC: 2026-10-14T02:22:27.150Z
+Schema isolado: bd04_951b24127b014d84969945506e99dcda
+PostgreSQL: PostgreSQL 18.6 (653b019) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+enable_seqscan: on
+Contagens: {"produtos":1000,"pedidos":1500,"artesaos":50,"compradores":300,"intencoes":1500,"notificacoes":1500,"itenscarrinho":300}
+Parametros: []
+
+SQL executado:
+EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)
+SELECT "id", "pedidoId"
+FROM "IntencaoNotificacao"
+WHERE "status" IN ('pendente'::"StatusIntencao", 'falha'::"StatusIntencao");
+
+Saida original PostgreSQL em FORMAT JSON:
+[
+  {
+    "Plan": {
+      "Node Type": "Seq Scan",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "IntencaoNotificacao",
+      "Alias": "IntencaoNotificacao",
+      "Startup Cost": 0,
+      "Total Cost": 34.75,
+      "Plan Rows": 10,
+      "Plan Width": 32,
+      "Actual Startup Time": 0.022,
+      "Actual Total Time": 0.154,
+      "Actual Rows": 10,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Filter": "(status = ANY ('{pendente,falha}'::\"StatusIntencao\"[]))",
+      "Rows Removed by Filter": 1490,
+      "Shared Hit Blocks": 16,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning": {
+      "Shared Hit Blocks": 0,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.087,
+    "Triggers": [],
+    "Execution Time": 0.179
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "armazenamento": "disco temporario via interface",
+  "banco": "PostgreSQL real, schema isolado",
+  "producaoBlobValidada": false,
+  "resultados": [
+    {
+      "caso": "pdf-renomeado",
+      "bytes": 8,
+      "cliente": "O conteúdo deve corresponder a JPG ou PNG.",
+      "servidor": 400
+    },
+    {
+      "caso": "png-3mb",
+      "bytes": 3145728,
+      "cliente": "A foto deve ter até 2 MB.",
+      "servidor": 413
+    },
+    {
+      "caso": "gif",
+      "bytes": 6,
+      "cliente": "Selecione uma foto JPG ou PNG.",
+      "servidor": 400
+    },
+    {
+      "caso": "jpg-500kb",
+      "bytes": 512000,
+      "cliente": "Perfil salvo com sucesso.",
+      "servidor": 200
+    }
+  ],
+  "fotoPersistida": true
+}

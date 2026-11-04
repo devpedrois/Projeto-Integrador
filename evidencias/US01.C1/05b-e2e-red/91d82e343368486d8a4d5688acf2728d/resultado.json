@@ -1,0 +1,234 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--project=360px",
+      "--grep",
+      "\\(a\\)",
+      "--retries=0"
+    ],
+    "configFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/US01.C1/05b-e2e-red/91d82e343368486d8a4d5688acf2728d/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "360px",
+        "name": "360px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/Pedro/Desktop/Projeto integrador/evidencias/US01.C1/05b-e2e-red/91d82e343368486d8a4d5688acf2728d/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "1280px",
+        "name": "1280px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\US01.C1\\05b-e2e-red\\91d82e343368486d8a4d5688acf2728d\\results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "360px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 360,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "360px"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\US01.C1\\05b-e2e-red\\91d82e343368486d8a4d5688acf2728d\\html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\US01.C1\\05b-e2e-red\\91d82e343368486d8a4d5688acf2728d\\resultado.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fluxos.spec.ts",
+      "file": "fluxos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16852,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    5 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"http://127.0.0.1:3113/cadastro\"\u001b[22m\n\u001b[2m    28 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    5 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"http://127.0.0.1:3113/cadastro\"\u001b[22m\n\u001b[2m    28 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[22m\n\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:38:26\n    at cadastrar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:26:5)\n    at comprar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:53:3)\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:154:3",
+                    "location": {
+                      "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts",
+                      "column": 26,
+                      "line": 38
+                    },
+                    "snippet": "  36 |       expect((await cadastro).status()).toBe(201);\n  37 |       const destino = papel === \"artesao\" ? \"/painel-artesao\" : \"/\";\n> 38 |       await expect(page).toHaveURL(new RegExp(`${destino}$`));\n     |                          ^\n  39 |       const me = await page.request.get(\"/api/auth/me\");\n  40 |       expect(me.status()).toBe(200);\n  41 |       expect(await me.json()).toMatchObject({ email, papel });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts",
+                        "column": 26,
+                        "line": 38
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    5 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"http://127.0.0.1:3113/cadastro\"\u001b[22m\n\u001b[2m    28 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[22m\n\n\n  36 |       expect((await cadastro).status()).toBe(201);\n  37 |       const destino = papel === \"artesao\" ? \"/painel-artesao\" : \"/\";\n> 38 |       await expect(page).toHaveURL(new RegExp(`${destino}$`));\n     |                          ^\n  39 |       const me = await page.request.get(\"/api/auth/me\");\n  40 |       expect(me.status()).toBe(200);\n  41 |       expect(await me.json()).toMatchObject({ email, papel });\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:38:26\n    at cadastrar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:26:5)\n    at comprar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:53:3)\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:154:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 16631,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    5 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"http://127.0.0.1:3113/cadastro\"\u001b[22m\n\u001b[2m    28 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 15000ms\u001b[22m\n\u001b[2m    5 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"http://127.0.0.1:3113/cadastro\"\u001b[22m\n\u001b[2m    28 × locator resolved to <html lang=\"pt-BR\" class=\"__variable_a7b3bd __variable_e59a90\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"http://127.0.0.1:3113/login?cadastro=sucesso\"\u001b[22m\n\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:38:26\n    at cadastrar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:26:5)\n    at comprar (C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:53:3)\n    at C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts:154:3",
+                        "location": {
+                          "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts",
+                          "column": 26,
+                          "line": 38
+                        },
+                        "snippet": "  36 |       expect((await cadastro).status()).toBe(201);\n  37 |       const destino = papel === \"artesao\" ? \"/painel-artesao\" : \"/\";\n> 38 |       await expect(page).toHaveURL(new RegExp(`${destino}$`));\n     |                          ^\n  39 |       const me = await page.request.get(\"/api/auth/me\");\n  40 |       expect(me.status()).toBe(200);\n  41 |       expect(await me.json()).toMatchObject({ email, papel });"
+                      }
+                    }
+                  ],
+                  "startTime": "2026-11-02T18:35:05.257Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\US01.C1\\05b-e2e-red\\91d82e343368486d8a4d5688acf2728d\\results\\fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-360px\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\evidencias\\US01.C1\\05b-e2e-red\\91d82e343368486d8a4d5688acf2728d\\results\\fluxos--a-cadastro-autenti-2d809--pedidos-sem-login-separado-360px\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\fluxos.spec.ts",
+                    "column": 26,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-3dd579238a1600c1af4e",
+          "file": "fluxos.spec.ts",
+          "line": 151,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-02T18:34:50.046Z",
+    "duration": 33178.996,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

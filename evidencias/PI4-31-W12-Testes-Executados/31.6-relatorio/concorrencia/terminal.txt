@@ -1,0 +1,35 @@
+
+> origem-backend@1.0.0 test:concorrencia
+> tsx scripts/concorrencia-checkout.ts --saida C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-31-W12-Testes-Executados\31.6-relatorio\concorrencia\rodadas.json
+
+(node:8788) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Schema temporario: web10_d5fd04a9b0214f8e9e4a74077a780864
+Compradores sinteticos autenticados: 50
+Rodada 1: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1,"respostasInesperadas":0}
+Rodada 2: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1,"respostasInesperadas":0}
+Rodada 3: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1,"respostasInesperadas":0}
+Consulta SQL de conferencia:
+SET search_path TO "web10_d5fd04a9b0214f8e9e4a74077a780864";
+SELECT p."quantidadeEstoque" AS "estoqueFinal",
+          (SELECT COUNT(DISTINCT i."pedidoId")::integer FROM "ItemPedido" i WHERE i."produtoId" = p."id") AS "pedidosProduto",
+          (SELECT COUNT(DISTINCT pg."id")::integer
+           FROM "Pagamento" pg JOIN "ItemPedido" i ON i."pedidoId" = pg."pedidoId"
+           WHERE i."produtoId" = p."id") AS "pagamentosCriados"
+        FROM "Produto" p WHERE p."id" = $1::uuid;
+Parametros rodada 1: ["fdd13f1f-f7f1-44d7-ba5e-cd77c852b44b"]
+Conferencia rodada 1: {"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1}
+Parametros rodada 2: ["97a2b5b0-2b57-4a81-bfee-2b574d369680"]
+Conferencia rodada 2: {"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1}
+Parametros rodada 3: ["15869ebd-b88d-4535-897c-5c58ce180e04"]
+Conferencia rodada 3: {"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1}
+Conferencia realizada antes da remocao do schema temporario.
+Resumo: {"compradores":50,"cadastros":50,"logins":50,"schemaRemovido":true}
+Concorrencia validada: 3/3 rodadas. Dados sinteticos removidos.

@@ -1,0 +1,2224 @@
+
+> origem-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/store/carrinho-http.store.test.ts (10 tests) 89ms
+ ✓ tests/services/usuarios.service.test.ts (16 tests) 47ms
+ ✓ tests/services/fake-recommendation.adapter.test.ts (8 tests) 5ms
+ ✓ tests/services/http/catalogo.service.test.ts (14 tests) 15ms
+ ✓ tests/services/pedidos.service.test.ts (16 tests) 9ms
+ ✓ tests/services/avaliacoes.service.test.ts (21 tests) 52ms
+ ✓ tests/services/moderacao.service.test.ts (22 tests) 24ms
+ ✓ tests/services/produtos.service.test.ts (43 tests) 58ms
+ ✓ tests/hooks/use-perfil-publico-artesao.test.tsx (9 tests) 555ms
+ ✓ tests/components/meus-pedidos.test.tsx (8 tests) 588ms
+ ✓ tests/components/produto/detalhe-produto.test.tsx (16 tests) 731ms
+ ✓ tests/components/gate-acesso.test.tsx (18 tests) 888ms
+ ✓ tests/store/carrinho.store.test.ts (17 tests) 8ms
+ ✓ tests/fake-api/repositories/produto.repository.test.ts (15 tests) 6ms
+ ❯ tests/app/route-protection.test.tsx (12 tests | 1 failed) 443ms
+   × protecao de rotas > /painel-artesao aceita papel artesao 27ms
+     → [vitest] No "obterOpcoesFiltroService" export is defined on the "@/services/fake/container" mock. Did you forget to return it from "vi.mock"?
+If you need to partially mock a module, you can use "importOriginal" helper inside:
+
+ ✓ tests/domain/produto-visibilidade.test.ts (20 tests) 4ms
+ ✓ tests/components/produto-card.test.tsx (19 tests) 481ms
+ ✓ tests/app/vitrine.test.tsx (15 tests) 2052ms
+   ✓ Vitrine (Home) > mostra carregando e depois a lista de produtos 655ms
+ ✓ tests/app/produto-detalhe.test.tsx (4 tests) 398ms
+ ✓ tests/components/admin/painel-moderacao.test.tsx (12 tests) 1971ms
+   ✓ PainelModeracao > busca por nome ou e-mail ignorando acentos e limpa os filtros 675ms
+ ✓ tests/components/filtros-produtos.test.tsx (12 tests) 452ms
+ ✓ tests/fake-api/repositories/usuario.repository.test.ts (14 tests) 6ms
+ ❯ tests/components/artesao/perfil-artesao-publico.test.tsx (8 tests | 3 failed) 2203ms
+   × PerfilArtesaoPublico > exibe historia, tecnica, regiao e grade de produtos ativos 39ms
+     → Unable to find an element with the text: Toalha de Renda. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<header[39m
+      [33mclass[39m=[32m"border-b border-border-default bg-linho-100"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"[39m
+          [36m>[39m
+            [0mMD[0m
+          [36m</span>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"[39m
+        [36m>[39m
+          [36m<h1[39m
+            [33mclass[39m=[32m"m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"[39m
+          [36m>[39m
+            [0mMaria das Rendas[0m
+          [36m</h1>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"18"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m18 15 4-4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mRenda de Bilro[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"18"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"12"[39m
+                  [33mcy[39m=[32m"10"[39m
+                  [33mr[39m=[32m"3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mPilar, Recife[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"[39m
+          [36m>[39m
+            [0mAprendi a arte da renda com minha avo no Pilar.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</header>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"[39m
+    [36m>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Produtos do artesão"[39m
+        [33mclass[39m=[32m"flex flex-col gap-5"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+        [36m>[39m
+          [0mProdutos[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mheight[39m=[32m"32"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"32"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M21 8 12 3 3 8v8l9 5 9-5V8Z"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m3 8 9 5 9-5M12 13v8"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [0mNenhum produto disponível no momento.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × PerfilArtesaoPublico > nao exibe produto inativo ou sem estoque 1017ms
+     → Unable to find an element with the text: Peca visivel. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<header[39m
+      [33mclass[39m=[32m"border-b border-border-default bg-linho-100"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"[39m
+          [36m>[39m
+            [0mMD[0m
+          [36m</span>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"[39m
+        [36m>[39m
+          [36m<h1[39m
+            [33mclass[39m=[32m"m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"[39m
+          [36m>[39m
+            [0mMaria das Rendas[0m
+          [36m</h1>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"18"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m18 15 4-4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mRenda de Bilro[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"18"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"12"[39m
+                  [33mcy[39m=[32m"10"[39m
+                  [33mr[39m=[32m"3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mPilar, Recife[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"[39m
+          [36m>[39m
+            [0mAprendi a arte da renda com minha avo no Pilar.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</header>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"[39m
+    [36m>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Produtos do artesão"[39m
+        [33mclass[39m=[32m"flex flex-col gap-5"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+        [36m>[39m
+          [0mProdutos[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mheight[39m=[32m"32"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"32"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M21 8 12 3 3 8v8l9 5 9-5V8Z"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m3 8 9 5 9-5M12 13v8"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [0mNenhum produto disponível no momento.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"border-b border-border-default bg-linho-100"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"[39m
+            [36m>[39m
+              [0mMD[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"[39m
+          [36m>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"[39m
+            [36m>[39m
+              [0mMaria das Rendas[0m
+            [36m</h1>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"18"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"18"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m18 15 4-4"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [0mRenda de Bilro[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"18"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"18"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"[39m
+                  [36m/>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"12"[39m
+                    [33mcy[39m=[32m"10"[39m
+                    [33mr[39m=[32m"3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [0mPilar, Recife[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"[39m
+            [36m>[39m
+              [0mAprendi a arte da renda com minha avo no Pilar.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-label[39m=[32m"Produtos do artesão"[39m
+          [33mclass[39m=[32m"flex flex-col gap-5"[39m
+        [36m>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+          [36m>[39m
+            [0mProdutos[0m
+          [36m</h2>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"32"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"32"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M21 8 12 3 3 8v8l9 5 9-5V8Z"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m3 8 9 5 9-5M12 13v8"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</span>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"[39m
+              [33mrole[39m=[32m"status"[39m
+            [36m>[39m
+              [0mNenhum produto disponível no momento.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   × PerfilArtesaoPublico > exibe erro recuperavel quando o carregamento falha 1013ms
+     → Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<header[39m
+      [33mclass[39m=[32m"border-b border-border-default bg-linho-100"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"[39m
+          [36m>[39m
+            [0mMD[0m
+          [36m</span>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"[39m
+        [36m>[39m
+          [36m<h1[39m
+            [33mclass[39m=[32m"m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"[39m
+          [36m>[39m
+            [0mMaria das Rendas[0m
+          [36m</h1>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"18"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m18 15 4-4"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mRenda de Bilro[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"18"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"12"[39m
+                  [33mcy[39m=[32m"10"[39m
+                  [33mr[39m=[32m"3"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [0mPilar, Recife[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"[39m
+          [36m>[39m
+            [0mAprendi a arte da renda com minha avo no Pilar.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</header>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"[39m
+    [36m>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Produtos do artesão"[39m
+        [33mclass[39m=[32m"flex flex-col gap-5"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+        [36m>[39m
+          [0mProdutos[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mfocusable[39m=[32m"false"[39m
+              [33mheight[39m=[32m"32"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"32"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M21 8 12 3 3 8v8l9 5 9-5V8Z"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"m3 8 9 5 9-5M12 13v8"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</span>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [0mNenhum produto disponível no momento.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"border-b border-border-default bg-linho-100"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"[39m
+            [36m>[39m
+              [0mMD[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"[39m
+          [36m>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"[39m
+            [36m>[39m
+              [0mMaria das Rendas[0m
+            [36m</h1>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"18"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"18"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m18 15 4-4"[39m
+                  [36m/>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [0mRenda de Bilro[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"inline-flex items-center gap-2"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                  [33mclass[39m=[32m"flex-none text-fg-brand"[39m
+                  [33mfill[39m=[32m"none"[39m
+                  [33mfocusable[39m=[32m"false"[39m
+                  [33mheight[39m=[32m"18"[39m
+                  [33mstroke[39m=[32m"currentColor"[39m
+                  [33mstroke-linecap[39m=[32m"round"[39m
+                  [33mstroke-linejoin[39m=[32m"round"[39m
+                  [33mstroke-width[39m=[32m"2"[39m
+                  [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [33mwidth[39m=[32m"18"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33md[39m=[32m"M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"[39m
+                  [36m/>[39m
+                  [36m<circle[39m
+                    [33mcx[39m=[32m"12"[39m
+                    [33mcy[39m=[32m"10"[39m
+                    [33mr[39m=[32m"3"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+                [0mPilar, Recife[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"[39m
+            [36m>[39m
+              [0mAprendi a arte da renda com minha avo no Pilar.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-label[39m=[32m"Produtos do artesão"[39m
+          [33mclass[39m=[32m"flex flex-col gap-5"[39m
+        [36m>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+          [36m>[39m
+            [0mProdutos[0m
+          [36m</h2>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+              [33mclass[39m=[32m"mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"32"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"32"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M21 8 12 3 3 8v8l9 5 9-5V8Z"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"m3 8 9 5 9-5M12 13v8"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</span>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"[39m
+              [33mrole[39m=[32m"status"[39m
+            [36m>[39m
+              [0mNenhum produto disponível no momento.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ✓ tests/services/http/recomendacoes.adapter.test.ts (22 tests) 1014ms
+ ✓ tests/fake-api/repositories/perfil-artesao.repository.test.ts (12 tests) 6ms
+ ✓ tests/services/container-http.test.ts (5 tests) 230ms
+ ✓ tests/hooks/use-detalhe-produto.test.tsx (6 tests) 398ms
+ ✓ tests/services/http/api-client.test.ts (14 tests) 35ms
+ ✓ tests/services/http/pedidos-historico.service.test.ts (17 tests) 14ms
+ ✓ tests/services/http/catalogo-escrita.web12.test.ts (5 tests) 9ms
+ ✓ tests/services/perfil-artesao.service.test.ts (7 tests) 5ms
+ ✓ tests/components/meus-produtos-list.test.tsx (13 tests) 2802ms
+   ✓ MeusProdutosList > editar produto chama service.update com o artesaoId da sessao e atualiza a lista 942ms
+   ✓ MeusProdutosList > painel de edicao mostra o preco com virgula e salva o numero correto 611ms
+   ✓ MeusProdutosList > mostra erro no painel quando a edicao falha e mantem o painel aberto 412ms
+ ✓ tests/components/login-form.test.tsx (7 tests) 1757ms
+   ✓ LoginForm > login valido chama o service, cria a sessao e redireciona 421ms
+   ✓ LoginForm > credenciais invalidas mostram mensagem generica sem apontar o campo 424ms
+   ✓ LoginForm > mostra loading e desabilita o botao durante o envio 497ms
+   ✓ LoginForm > email em formato invalido bloqueia envio e mostra erro no campo 353ms
+ ✓ tests/components/checkout-http.test.tsx (3 tests) 541ms
+ ✓ tests/fake-api/storage/sessao.storage.test.ts (20 tests) 4ms
+ ✓ tests/validators/produto.validator.test.ts (27 tests) 8ms
+ ✓ tests/hooks/use-busca-produtos.test.tsx (6 tests) 349ms
+ ✓ tests/store/sessao.store.test.ts (12 tests) 7ms
+ ✓ tests/components/route-guard.test.tsx (8 tests) 97ms
+ ✓ tests/services/http/perfil-artesao.service.test.ts (9 tests) 57ms
+ ✓ tests/hooks/use-meus-produtos.test.tsx (6 tests) 364ms
+ ✓ tests/components/perfil-artesao-form.test.tsx (8 tests) 4229ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso 1366ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo 1112ms
+   ✓ PerfilArtesaoForm > previa do perfil publico mostra nome, tecnica e a historia digitada 338ms
+   ✓ PerfilArtesaoForm > mostra erro recuperavel quando salvar falha e mantem o botao habilitado 1061ms
+ ✓ tests/services/pedidos-historico.fake.test.ts (5 tests) 4ms
+ ✓ tests/components/cadastro-form.test.tsx (10 tests) 4594ms
+   ✓ CadastroForm > escolher artesao envia o papel artesao 842ms
+   ✓ CadastroForm > cadastro valido chama o service e redireciona para login com confirmacao 826ms
+   ✓ CadastroForm > senha curta bloqueia envio e mostra erro no campo 685ms
+   ✓ CadastroForm > mostra loading e desabilita o botao durante o envio 709ms
+   ✓ CadastroForm > email ja cadastrado associa a mensagem ao campo email 652ms
+   ✓ CadastroForm > mostra erro recuperavel quando o service falha 715ms
+ ✓ tests/fake-api/repositories/avaliacao.repository.test.ts (9 tests) 5ms
+ ✓ tests/utils/produto-query-url.test.ts (10 tests) 5ms
+ ✓ tests/components/sessao-http.test.tsx (4 tests) 754ms
+   ✓ login respeita retorno local preservado pelo middleware 521ms
+ ✓ tests/components/faixa-recomendacoes.test.tsx (6 tests) 162ms
+ ✓ tests/services/http/usuarios.service.test.ts (6 tests) 25ms
+ ✓ tests/components/resultado-busca.test.tsx (8 tests) 283ms
+ ✓ tests/utils/rota-segura.test.ts (18 tests) 3ms
+ ✓ tests/app/minha-conta.test.tsx (5 tests) 287ms
+ ✓ tests/hooks/use-filtros-url.test.tsx (8 tests) 26ms
+ ✓ tests/fake-api/repositories/pedido.repository.test.ts (8 tests) 4ms
+ ✓ tests/validators/perfil-artesao.validator.test.ts (18 tests) 4ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (6 tests) 221ms
+ ✓ tests/store/sessao-http.store.test.ts (5 tests) 3ms
+ ✓ tests/fake-api/usuario.repository.test.ts (4 tests) 3ms
+ ✓ tests/hooks/perfil-artesao-http.test.tsx (3 tests) 252ms
+ ✓ tests/components/pendencia-perfil-artesao.test.tsx (4 tests) 114ms
+ ✓ tests/services/verificar-usuario-ativo.test.ts (5 tests) 3ms
+ ✓ tests/services/http/carrinho.service.test.ts (5 tests) 9ms
+ ✓ tests/fake-api/seeds/avaliacoes.seed.test.ts (7 tests) 4ms
+stderr | tests/hooks/use-artesaos-ativos.test.tsx > useArtesaosAtivos > comeca carregando quando o service ainda nao resolveu
+An update to TestComponent inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ tests/domain/perfil-artesao-completo.test.ts (6 tests) 3ms
+ ✓ tests/hooks/use-opcoes-filtro.test.tsx (4 tests) 159ms
+ ✓ tests/validators/cadastro.validator.test.ts (8 tests) 2ms
+ ✓ tests/hooks/use-artesaos-ativos.test.tsx (4 tests) 156ms
+ ✓ tests/utils/foto-url-segura.test.ts (8 tests) 3ms
+ ✓ tests/config/next-config.test.ts (14 tests) 7ms
+ ✓ tests/fake-api/storage/carrinho.storage.test.ts (8 tests) 3ms
+ ✓ tests/fake-api/seeds/produtos.seed.test.ts (7 tests) 4ms
+ ✓ tests/services/opcoes-filtro.service.test.ts (4 tests) 34ms
+ ✓ tests/fake-api/storage/modo-acesso.storage.test.ts (3 tests) 2ms
+ ✓ tests/hooks/use-sessao.test.tsx (2 tests) 14ms
+ ✓ tests/config/middleware.test.ts (5 tests) 32ms
+ ✓ tests/utils/normalizar-texto.test.ts (5 tests) 2ms
+ ✓ tests/domain/resumo-avaliacoes.test.ts (3 tests) 2ms
+ ✓ tests/utils/preco-campo.test.ts (11 tests) 2ms
+ ✓ tests/services/recomendacao-contrato.test.ts (1 test) 1ms
+ ✓ tests/components/autenticacao/layout-autenticacao.test.tsx (1 test) 52ms
+ ✓ tests/types/usuario.test.ts (1 test) 2ms
+ ✓ tests/fake-api/seeds/categorias.seed.test.ts (3 tests) 2ms
+ ✓ tests/utils/formatar-moeda.test.ts (4 tests) 2ms
+ ✓ tests/utils/rotulo-papel.test.ts (3 tests) 1ms
+ ✓ tests/app/not-found.test.tsx (1 test) 53ms
+ ✓ tests/services/container-avaliacoes.test.ts (1 test) 311ms
+   ✓ obterAvaliacoesService > expõe o recurso de avaliacoes pela camada organizada 311ms
+ ✓ tests/config/build-typescript.test.ts (2 tests) 1804ms
+   ✓ TypeScript do build de produção > verifica a aplicação sem importar testes ou código do backend 926ms
+   ✓ TypeScript do build de produção > preserva a checagem dos testes e contratos entre as camadas 878ms
+ ❯ tests/components/produto-form.test.tsx (13 tests | 1 failed) 17250ms
+   ✓ carrega categoria HTTP com UUID e cadastra pelo formulario 1541ms
+   × ProdutoForm > campos ausentes bloqueiam criacao e mostram erros por campo 1062ms
+     → Unable to find an element with the text: /nome com ao menos/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"flex flex-col gap-6"[39m
+      [33mnovalidate[39m=[32m""[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col gap-6 rounded-card border border-border-subtle bg-surface-card p-5 shadow-sm sm:p-8"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-1 gap-5 sm:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sm:col-span-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex min-w-0 flex-col gap-1.5"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"[39m
+                [33mfor[39m=[32m"produto-nome"[39m
+              [36m>[39m
+                [0mNome[0m
+              [36m</label>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative flex items-center"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] pl-3.5 pr-3.5"[39m
+                  [33mid[39m=[32m"produto-nome"[39m
+                  [33mname[39m=[32m"nome"[39m
+                  [33mtype[39m=[32m"text"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sm:col-span-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex min-w-0 flex-col gap-1.5"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"[39m
+                [33mfor[39m=[32m"produto-descricao"[39m
+              [36m>[39m
+                [0mDescrição[0m
+              [36m</label>[39m
+              [36m<textarea[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus block min-h-24 resize-y px-3.5 py-3 leading-normal"[39m
+                [33mid[39m=[32m"produto-descricao"[39m
+                [33mname[39m=[32m"descricao"[39m
+                [33mrows[39m=[32m"4"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col gap-1.5"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"[39m
+              [33mfor[39m=[32m"produto-preco"[39m
+            [36m>[39m
+              [0mPreço[0m
+            [36m</label>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative flex items-center"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"pointer-events-none absolute left-3.5 text-fg-muted"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"18"[39m
+              [36m>[39m
+                [36m<rect[39m
+                  [33mheight[39m=[32m"12"[39m
+                  [33mrx[39m=[32m"2"[39m
+                  [33mwidth[39m=[32m"20"[39m
+                  [33mx[39m=[32m"2"[39m
+                  [33my[39m=[32m"6"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"12"[39m
+                  [33mcy[39m=[32m"12"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M6 12h.01M18 12h.01"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] pl-[42px] pr-3.5"[39m
+                [33mid[39m=[32m"produto-preco"[39m
+                [33minputmode[39m=[32m"decimal"[39m
+                [33mname[39m=[32m"preco"[39m
+                [33mplaceholder[39m=[32m"0,00"[39m
+                [33mtype[39m=[32m"text"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col gap-1.5"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"[39m
+              [33mfor[39m=[32m"produto-categoria"[39m
+            [36m>[39m
+              [0mCategoria[0m
+            [36m</label>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative flex items-center"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring...
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"flex flex-col gap-6"[39m
+      [33mnovalidate[39m=[32m""[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-col gap-6 rounded-card border border-border-subtle bg-surface-card p-5 shadow-sm sm:p-8"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-1 gap-5 sm:grid-cols-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sm:col-span-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex min-w-0 flex-col gap-1.5"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"[39m
+                [33mfor[39m=[32m"produto-nome"[39m
+              [36m>[39m
+                [0mNome[0m
+              [36m</label>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative flex items-center"[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33maria-invalid[39m=[32m"false"[39m
+                  [33mclass[39m=[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] pl-3.5 pr-3.5"[39m
+                  [33mid[39m=[32m"produto-nome"[39m
+                  [33mname[39m=[32m"nome"[39m
+                  [33mtype[39m=[32m"text"[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sm:col-span-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex min-w-0 flex-col gap-1.5"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"[39m
+                [33mfor[39m=[32m"produto-descricao"[39m
+              [36m>[39m
+                [0mDescrição[0m
+              [36m</label>[39m
+              [36m<textarea[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus block min-h-24 resize-y px-3.5 py-3 leading-normal"[39m
+                [33mid[39m=[32m"produto-descricao"[39m
+                [33mname[39m=[32m"descricao"[39m
+                [33mrows[39m=[32m"4"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col gap-1.5"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"[39m
+              [33mfor[39m=[32m"produto-preco"[39m
+            [36m>[39m
+              [0mPreço[0m
+            [36m</label>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative flex items-center"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"pointer-events-none absolute left-3.5 text-fg-muted"[39m
+                [33mfill[39m=[32m"none"[39m
+                [33mfocusable[39m=[32m"false"[39m
+                [33mheight[39m=[32m"18"[39m
+                [33mstroke[39m=[32m"currentColor"[39m
+                [33mstroke-linecap[39m=[32m"round"[39m
+                [33mstroke-linejoin[39m=[32m"round"[39m
+                [33mstroke-width[39m=[32m"2"[39m
+                [33mviewBox[39m=[32m"0 0 24 24"[39m
+                [33mwidth[39m=[32m"18"[39m
+              [36m>[39m
+                [36m<rect[39m
+                  [33mheight[39m=[32m"12"[39m
+                  [33mrx[39m=[32m"2"[39m
+                  [33mwidth[39m=[32m"20"[39m
+                  [33mx[39m=[32m"2"[39m
+                  [33my[39m=[32m"6"[39m
+                [36m/>[39m
+                [36m<circle[39m
+                  [33mcx[39m=[32m"12"[39m
+                  [33mcy[39m=[32m"12"[39m
+                  [33mr[39m=[32m"2"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M6 12h.01M18 12h.01"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+              [36m<input[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] pl-[42px] pr-3.5"[39m
+                [33mid[39m=[32m"produto-preco"[39m
+                [33minputmode[39m=[32m"decimal"[39m
+                [33mname[39m=[32m"preco"[39m
+                [33mplaceholder[39m=[32m"0,00"[39m
+                [33mtype[39m=[32m"text"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex min-w-0 flex-col gap-1.5"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"[39m
+              [33mfor[39m=[32m"produto-categoria"[39m
+            [36m>[39m
+              [0mCategoria[0m
+            [36m</label>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"relative flex items-center"[39m
+            [36m>[39m
+              [36m<select[39m
+                [33maria-invalid[39m=[32m"false"[39m
+                [33mclass[39m=[32m"w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring...
+   ✓ ProdutoForm > preco 0 bloqueia criacao 1653ms
+   ✓ ProdutoForm > preco -1 bloqueia criacao 2166ms
+   ✓ ProdutoForm > preco -0.5 bloqueia criacao 1490ms
+   ✓ ProdutoForm > preco -100 bloqueia criacao 1346ms
+   ✓ ProdutoForm > preco -0.01 bloqueia criacao 1285ms
+   ✓ ProdutoForm > produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao 1398ms
+   ✓ ProdutoForm > aceita preco com virgula e envia o numero correto 1335ms
+   ✓ ProdutoForm > mostra loading e desabilita o botao durante o envio 1260ms
+   ✓ ProdutoForm > nao envia duas vezes ao clicar repetidamente antes da resposta 1405ms
+   ✓ ProdutoForm > mostra erro recuperavel quando o service falha e permite tentar novamente 1280ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/app/route-protection.test.tsx > protecao de rotas > /painel-artesao aceita papel artesao
+Error: [vitest] No "obterOpcoesFiltroService" export is defined on the "@/services/fake/container" mock. Did you forget to return it from "vi.mock"?
+If you need to partially mock a module, you can use "importOriginal" helper inside:
+
+vi.mock(import("@/services/fake/container"), async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...actual,
+    // your mocked methods
+  }
+})
+
+ ❯ src/hooks/use-categorias-produto.ts:20:5
+     18|     let cancelado = false;
+     19|     setEstado({ status: "carregando" });
+     20|     obterOpcoesFiltroService()
+       |     ^
+     21|       .categorias()
+     22|       .then((categorias) => {
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28656:20
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ commitHookEffectListMount node_modules/react-dom/cjs/react-dom-client.development.js:13748:29
+ ❯ commitHookPassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:13835:11
+ ❯ commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:16906:13
+ ❯ recursivelyTraversePassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:16851:13
+ ❯ commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:17183:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/components/produto-form.test.tsx > ProdutoForm > campos ausentes bloqueiam criacao e mostram erros por campo
+TestingLibraryElementError: Unable to find an element with the text: /nome com ao menos/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="flex flex-col gap-6"
+      novalidate=""
+    >
+      <div
+        class="flex flex-col gap-6 rounded-card border border-border-subtle bg-surface-card p-5 shadow-sm sm:p-8"
+      >
+        <div
+          class="grid grid-cols-1 gap-5 sm:grid-cols-2"
+        >
+          <div
+            class="sm:col-span-2"
+          >
+            <div
+              class="flex min-w-0 flex-col gap-1.5"
+            >
+              <label
+                class="flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"
+                for="produto-nome"
+              >
+                Nome
+              </label>
+              <div
+                class="relative flex items-center"
+              >
+                <input
+                  aria-invalid="false"
+                  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] pl-3.5 pr-3.5"
+                  id="produto-nome"
+                  name="nome"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="sm:col-span-2"
+          >
+            <div
+              class="flex min-w-0 flex-col gap-1.5"
+            >
+              <label
+                class="flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"
+                for="produto-descricao"
+              >
+                Descrição
+              </label>
+              <textarea
+                aria-invalid="false"
+                class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus block min-h-24 resize-y px-3.5 py-3 leading-normal"
+                id="produto-descricao"
+                name="descricao"
+                rows="4"
+              />
+            </div>
+          </div>
+          <div
+            class="flex min-w-0 flex-col gap-1.5"
+          >
+            <label
+              class="flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"
+              for="produto-preco"
+            >
+              Preço
+            </label>
+            <div
+              class="relative flex items-center"
+            >
+              <svg
+                aria-hidden="true"
+                class="pointer-events-none absolute left-3.5 text-fg-muted"
+                fill="none"
+                focusable="false"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <rect
+                  height="12"
+                  rx="2"
+                  width="20"
+                  x="2"
+                  y="6"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="2"
+                />
+                <path
+                  d="M6 12h.01M18 12h.01"
+                />
+              </svg>
+              <input
+                aria-invalid="false"
+                class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] pl-[42px] pr-3.5"
+                id="produto-preco"
+                inputmode="decimal"
+                name="preco"
+                placeholder="0,00"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="flex min-w-0 flex-col gap-1.5"
+          >
+            <label
+              class="flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"
+              for="produto-categoria"
+            >
+              Categoria
+            </label>
+            <div
+              class="relative flex items-center"
+            >
+              <select
+                aria-invalid="false"
+                class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring...
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="flex flex-col gap-6"
+      novalidate=""
+    >
+      <div
+        class="flex flex-col gap-6 rounded-card border border-border-subtle bg-surface-card p-5 shadow-sm sm:p-8"
+      >
+        <div
+          class="grid grid-cols-1 gap-5 sm:grid-cols-2"
+        >
+          <div
+            class="sm:col-span-2"
+          >
+            <div
+              class="flex min-w-0 flex-col gap-1.5"
+            >
+              <label
+                class="flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"
+                for="produto-nome"
+              >
+                Nome
+              </label>
+              <div
+                class="relative flex items-center"
+              >
+                <input
+                  aria-invalid="false"
+                  class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] pl-3.5 pr-3.5"
+                  id="produto-nome"
+                  name="nome"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="sm:col-span-2"
+          >
+            <div
+              class="flex min-w-0 flex-col gap-1.5"
+            >
+              <label
+                class="flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"
+                for="produto-descricao"
+              >
+                Descrição
+              </label>
+              <textarea
+                aria-invalid="false"
+                class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus block min-h-24 resize-y px-3.5 py-3 leading-normal"
+                id="produto-descricao"
+                name="descricao"
+                rows="4"
+              />
+            </div>
+          </div>
+          <div
+            class="flex min-w-0 flex-col gap-1.5"
+          >
+            <label
+              class="flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"
+              for="produto-preco"
+            >
+              Preço
+            </label>
+            <div
+              class="relative flex items-center"
+            >
+              <svg
+                aria-hidden="true"
+                class="pointer-events-none absolute left-3.5 text-fg-muted"
+                fill="none"
+                focusable="false"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <rect
+                  height="12"
+                  rx="2"
+                  width="20"
+                  x="2"
+                  y="6"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="2"
+                />
+                <path
+                  d="M6 12h.01M18 12h.01"
+                />
+              </svg>
+              <input
+                aria-invalid="false"
+                class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring)] focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:opacity-70 border-border-input focus:border-border-focus h-[var(--control-h-md)] pl-[42px] pr-3.5"
+                id="produto-preco"
+                inputmode="decimal"
+                name="preco"
+                placeholder="0,00"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="flex min-w-0 flex-col gap-1.5"
+          >
+            <label
+              class="flex items-baseline gap-1.5 text-sm leading-[1.3] font-semibold text-fg-strong"
+              for="produto-categoria"
+            >
+              Categoria
+            </label>
+            <div
+              class="relative flex items-center"
+            >
+              <select
+                aria-invalid="false"
+                class="w-full rounded-control border bg-surface-card text-base text-fg-strong inset-shadow-xs transition-[border-color,box-shadow] duration-[var(--dur-fast)] ease-out hover:border-linho-400 focus:shadow-[var(--focus-ring...
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/components/produto-form.test.tsx:130:25
+    128|     );
+    129| 
+    130|     expect(await screen.findByText(/nome com ao menos/i)).toBeInTheDoc…
+       |                         ^
+    131|     expect(screen.getByText(/descrição com ao menos/i)).toBeInTheDocum…
+    132|     expect(screen.getByText(/preço maior que zero/i)).toBeInTheDocumen…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/components/artesao/perfil-artesao-publico.test.tsx > PerfilArtesaoPublico > exibe historia, tecnica, regiao e grade de produtos ativos
+TestingLibraryElementError: Unable to find an element with the text: Toalha de Renda. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <header
+      class="border-b border-border-default bg-linho-100"
+    >
+      <div
+        class="mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"
+      >
+        <div
+          class="aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"
+        >
+          <span
+            aria-hidden="true"
+            class="grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"
+          >
+            MD
+          </span>
+        </div>
+        <div
+          class="flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"
+        >
+          <h1
+            class="m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"
+          >
+            Maria das Rendas
+          </h1>
+          <div
+            class="flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"
+          >
+            <span
+              class="inline-flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="flex-none text-fg-brand"
+                fill="none"
+                focusable="false"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <path
+                  d="m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"
+                />
+                <path
+                  d="m18 15 4-4"
+                />
+                <path
+                  d="m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"
+                />
+              </svg>
+              Renda de Bilro
+            </span>
+            <span
+              class="inline-flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="flex-none text-fg-brand"
+                fill="none"
+                focusable="false"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <path
+                  d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"
+                />
+                <circle
+                  cx="12"
+                  cy="10"
+                  r="3"
+                />
+              </svg>
+              Pilar, Recife
+            </span>
+          </div>
+          <p
+            class="m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"
+          >
+            Aprendi a arte da renda com minha avo no Pilar.
+          </p>
+        </div>
+      </div>
+    </header>
+    <div
+      class="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"
+    >
+      <section
+        aria-label="Produtos do artesão"
+        class="flex flex-col gap-5"
+      >
+        <h2
+          class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+        >
+          Produtos
+        </h2>
+        <div
+          class="flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"
+        >
+          <span
+            aria-hidden="true"
+            class="mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="32"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="32"
+            >
+              <path
+                d="M21 8 12 3 3 8v8l9 5 9-5V8Z"
+              />
+              <path
+                d="m3 8 9 5 9-5M12 13v8"
+              />
+            </svg>
+          </span>
+          <p
+            class="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"
+            role="status"
+          >
+            Nenhum produto disponível no momento.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ tests/components/artesao/perfil-artesao-publico.test.tsx:111:19
+    109|     expect(screen.getByText("Renda de Bilro")).toBeInTheDocument();
+    110|     expect(screen.getByText("Pilar, Recife")).toBeInTheDocument();
+    111|     expect(screen.getByText("Toalha de Renda")).toBeInTheDocument();
+       |                   ^
+    112|   });
+    113| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/components/artesao/perfil-artesao-publico.test.tsx > PerfilArtesaoPublico > nao exibe produto inativo ou sem estoque
+TestingLibraryElementError: Unable to find an element with the text: Peca visivel. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <header
+      class="border-b border-border-default bg-linho-100"
+    >
+      <div
+        class="mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"
+      >
+        <div
+          class="aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"
+        >
+          <span
+            aria-hidden="true"
+            class="grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"
+          >
+            MD
+          </span>
+        </div>
+        <div
+          class="flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"
+        >
+          <h1
+            class="m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"
+          >
+            Maria das Rendas
+          </h1>
+          <div
+            class="flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"
+          >
+            <span
+              class="inline-flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="flex-none text-fg-brand"
+                fill="none"
+                focusable="false"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <path
+                  d="m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"
+                />
+                <path
+                  d="m18 15 4-4"
+                />
+                <path
+                  d="m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"
+                />
+              </svg>
+              Renda de Bilro
+            </span>
+            <span
+              class="inline-flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="flex-none text-fg-brand"
+                fill="none"
+                focusable="false"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <path
+                  d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"
+                />
+                <circle
+                  cx="12"
+                  cy="10"
+                  r="3"
+                />
+              </svg>
+              Pilar, Recife
+            </span>
+          </div>
+          <p
+            class="m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"
+          >
+            Aprendi a arte da renda com minha avo no Pilar.
+          </p>
+        </div>
+      </div>
+    </header>
+    <div
+      class="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"
+    >
+      <section
+        aria-label="Produtos do artesão"
+        class="flex flex-col gap-5"
+      >
+        <h2
+          class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+        >
+          Produtos
+        </h2>
+        <div
+          class="flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"
+        >
+          <span
+            aria-hidden="true"
+            class="mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="32"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="32"
+            >
+              <path
+                d="M21 8 12 3 3 8v8l9 5 9-5V8Z"
+              />
+              <path
+                d="m3 8 9 5 9-5M12 13v8"
+              />
+            </svg>
+          </span>
+          <p
+            class="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"
+            role="status"
+          >
+            Nenhum produto disponível no momento.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <header
+        class="border-b border-border-default bg-linho-100"
+      >
+        <div
+          class="mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"
+        >
+          <div
+            class="aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"
+          >
+            <span
+              aria-hidden="true"
+              class="grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"
+            >
+              MD
+            </span>
+          </div>
+          <div
+            class="flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"
+          >
+            <h1
+              class="m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"
+            >
+              Maria das Rendas
+            </h1>
+            <div
+              class="flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"
+            >
+              <span
+                class="inline-flex items-center gap-2"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-none text-fg-brand"
+                  fill="none"
+                  focusable="false"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                >
+                  <path
+                    d="m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"
+                  />
+                  <path
+                    d="m18 15 4-4"
+                  />
+                  <path
+                    d="m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"
+                  />
+                </svg>
+                Renda de Bilro
+              </span>
+              <span
+                class="inline-flex items-center gap-2"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-none text-fg-brand"
+                  fill="none"
+                  focusable="false"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                >
+                  <path
+                    d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"
+                  />
+                  <circle
+                    cx="12"
+                    cy="10"
+                    r="3"
+                  />
+                </svg>
+                Pilar, Recife
+              </span>
+            </div>
+            <p
+              class="m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"
+            >
+              Aprendi a arte da renda com minha avo no Pilar.
+            </p>
+          </div>
+        </div>
+      </header>
+      <div
+        class="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"
+      >
+        <section
+          aria-label="Produtos do artesão"
+          class="flex flex-col gap-5"
+        >
+          <h2
+            class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+          >
+            Produtos
+          </h2>
+          <div
+            class="flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"
+          >
+            <span
+              aria-hidden="true"
+              class="mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                focusable="false"
+                height="32"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="32"
+              >
+                <path
+                  d="M21 8 12 3 3 8v8l9 5 9-5V8Z"
+                />
+                <path
+                  d="m3 8 9 5 9-5M12 13v8"
+                />
+              </svg>
+            </span>
+            <p
+              class="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"
+              role="status"
+            >
+              Nenhum produto disponível no momento.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
+ ❯ Proxy.waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ tests/components/artesao/perfil-artesao-publico.test.tsx:196:11
+    194|     );
+    195| 
+    196|     await waitFor(() => expect(screen.getByText("Peca visivel")).toBeI…
+       |           ^
+    197|     expect(screen.queryByText("Peca inativa")).not.toBeInTheDocument();
+    198|     expect(screen.queryByText("Peca sem estoque")).not.toBeInTheDocume…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/components/artesao/perfil-artesao-publico.test.tsx > PerfilArtesaoPublico > exibe erro recuperavel quando o carregamento falha
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <header
+      class="border-b border-border-default bg-linho-100"
+    >
+      <div
+        class="mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"
+      >
+        <div
+          class="aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"
+        >
+          <span
+            aria-hidden="true"
+            class="grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"
+          >
+            MD
+          </span>
+        </div>
+        <div
+          class="flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"
+        >
+          <h1
+            class="m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"
+          >
+            Maria das Rendas
+          </h1>
+          <div
+            class="flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"
+          >
+            <span
+              class="inline-flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="flex-none text-fg-brand"
+                fill="none"
+                focusable="false"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <path
+                  d="m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"
+                />
+                <path
+                  d="m18 15 4-4"
+                />
+                <path
+                  d="m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"
+                />
+              </svg>
+              Renda de Bilro
+            </span>
+            <span
+              class="inline-flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="flex-none text-fg-brand"
+                fill="none"
+                focusable="false"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+              >
+                <path
+                  d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"
+                />
+                <circle
+                  cx="12"
+                  cy="10"
+                  r="3"
+                />
+              </svg>
+              Pilar, Recife
+            </span>
+          </div>
+          <p
+            class="m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"
+          >
+            Aprendi a arte da renda com minha avo no Pilar.
+          </p>
+        </div>
+      </div>
+    </header>
+    <div
+      class="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"
+    >
+      <section
+        aria-label="Produtos do artesão"
+        class="flex flex-col gap-5"
+      >
+        <h2
+          class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+        >
+          Produtos
+        </h2>
+        <div
+          class="flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"
+        >
+          <span
+            aria-hidden="true"
+            class="mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="32"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="32"
+            >
+              <path
+                d="M21 8 12 3 3 8v8l9 5 9-5V8Z"
+              />
+              <path
+                d="m3 8 9 5 9-5M12 13v8"
+              />
+            </svg>
+          </span>
+          <p
+            class="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"
+            role="status"
+          >
+            Nenhum produto disponível no momento.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <header
+        class="border-b border-border-default bg-linho-100"
+      >
+        <div
+          class="mx-auto flex max-w-[var(--container-max)] flex-wrap items-end gap-6 px-4 pt-7 pb-8 sm:gap-12 sm:px-6 sm:pt-14 sm:pb-12"
+        >
+          <div
+            class="aspect-[4/5] flex-none overflow-hidden rounded-[999px_999px_14px_14px] bg-barro-100 w-[148px] shadow-md sm:w-[200px] lg:w-[240px]"
+          >
+            <span
+              aria-hidden="true"
+              class="grid size-full place-items-center font-display font-semibold tracking-tight text-[44px] text-barro-700 sm:text-[64px]"
+            >
+              MD
+            </span>
+          </div>
+          <div
+            class="flex min-w-0 flex-[1_1_320px] flex-col gap-[18px] pb-1"
+          >
+            <h1
+              class="m-0 font-display text-[36px] leading-[1.05] font-semibold tracking-display break-words text-fg-strong sm:text-[52px]"
+            >
+              Maria das Rendas
+            </h1>
+            <div
+              class="flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-fg-body"
+            >
+              <span
+                class="inline-flex items-center gap-2"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-none text-fg-brand"
+                  fill="none"
+                  focusable="false"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                >
+                  <path
+                    d="m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"
+                  />
+                  <path
+                    d="m18 15 4-4"
+                  />
+                  <path
+                    d="m21.5 11.5-1.9-1.9A2 2 0 0 1 19 8.2V7l-2.3-2.3a6 6 0 0 0-4.2-1.7L9 3l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"
+                  />
+                </svg>
+                Renda de Bilro
+              </span>
+              <span
+                class="inline-flex items-center gap-2"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="flex-none text-fg-brand"
+                  fill="none"
+                  focusable="false"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                >
+                  <path
+                    d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"
+                  />
+                  <circle
+                    cx="12"
+                    cy="10"
+                    r="3"
+                  />
+                </svg>
+                Pilar, Recife
+              </span>
+            </div>
+            <p
+              class="m-0 max-w-[600px] text-base leading-[1.6] break-words whitespace-pre-line text-fg-body sm:text-body-lg"
+            >
+              Aprendi a arte da renda com minha avo no Pilar.
+            </p>
+          </div>
+        </div>
+      </header>
+      <div
+        class="mx-auto max-w-[var(--container-max)] px-[var(--container-pad)] pt-8 pb-16 sm:pt-12 sm:pb-20"
+      >
+        <section
+          aria-label="Produtos do artesão"
+          class="flex flex-col gap-5"
+        >
+          <h2
+            class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+          >
+            Produtos
+          </h2>
+          <div
+            class="flex flex-col items-center gap-3.5 rounded-lg border border-dashed border-border-strong bg-surface-raised px-6 py-12 text-center"
+          >
+            <span
+              aria-hidden="true"
+              class="mb-1 grid h-[84px] w-[72px] place-items-center rounded-[999px_999px_14px_14px] bg-barro-50 text-barro-600"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                focusable="false"
+                height="32"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="32"
+              >
+                <path
+                  d="M21 8 12 3 3 8v8l9 5 9-5V8Z"
+                />
+                <path
+                  d="m3 8 9 5 9-5M12 13v8"
+                />
+              </svg>
+            </span>
+            <p
+              class="m-0 font-display text-2xl leading-[1.2] font-semibold text-fg-strong"
+              role="status"
+            >
+              Nenhum produto disponível no momento.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
+ ❯ Proxy.waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ tests/components/artesao/perfil-artesao-publico.test.tsx:250:11
+    248|     );
+    249| 
+    250|     await waitFor(() => expect(screen.getByRole("alert")).toBeInTheDoc…
+       |           ^
+    251|   });
+    252| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+ Test Files  3 failed | 85 passed (88)
+      Tests  5 failed | 827 passed (832)
+   Start at  14:34:22
+   Duration  20.19s (transform 6.20s, setup 13.08s, collect 16.30s, tests 49.68s, environment 89.62s, prepare 10.58s)
+

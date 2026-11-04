@@ -1,0 +1,350 @@
+BD-06 - Suite completa do backend
+Comando: npx.cmd vitest run --reporter verbose --no-color
+
+
+ RUN  v5.0.0 C:/Users/Desktop/Projeto integrador/backend
+
+ ✓ tests/integration/seed.integration.test.ts > database seed: carga sintetica representativa > mantem contagens estaveis apos execucao repetida (idempotencia) 665ms
+ ✓ tests/integration/seed.integration.test.ts > database seed: carga sintetica representativa > distribui produtos pelas seis categorias oficiais 54ms
+ ✓ tests/integration/seed.integration.test.ts > database seed: carga sintetica representativa > inclui um produto sem estoque, visivel apenas para o artesao dono 52ms
+ ✓ tests/integration/seed.integration.test.ts > database seed: carga sintetica representativa > inclui um produto inativo 50ms
+ ✓ tests/integration/seed.integration.test.ts > database seed: carga sintetica representativa > inclui um produto sem nenhuma venda registrada 54ms
+ ✓ tests/integration/seed.integration.test.ts > database seed: carga sintetica representativa > distribui artesaos por regioes diferentes 51ms
+ ✓ tests/integration/seed.integration.test.ts > database seed: carga sintetica representativa > nunca grava senha em texto plano reconhecivel como credencial real 50ms
+ ✓ tests/integration/seed.integration.test.ts > database seed: carga sintetica representativa > admin so existe via carga sintetica, nunca via cadastro publico simulado 51ms
+ ✓ tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > creates a pending IntencaoNotificacao in the same transaction as the order 1196ms
+ ✓ tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > publishes a pending intention and the worker processes it to processada 1256ms
+ ✓ tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > retries after a simulated worker failure and still reaches processada, keeping the order confirmed 2974ms
+ ✓ tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > recovers a pending intention after a simulated restart 2248ms
+ ✓ tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > keeps a single effect on duplicate redelivery of the same job data 905ms
+ ✓ tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > preserves the original processadaEm under concurrent redelivery 882ms
+ ✓ tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > does not regress processada back to publicada when the publisher revisits it 919ms
+ ✓ tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte textos normalizados e preserva os nove produtos 1503ms
+ ✓ tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte Marcenaria e renda e Caruaru - Alto do Moura sem preencher campos ausentes 1168ms
+ ✓ tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte  BORDADO À MÃO  e TRACUNHAÉM sem preencher campos ausentes 1179ms
+ ✓ tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > converte null e null sem preencher campos ausentes 1188ms
+ ✓ tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta e preserva textos quando tecnicaPrincipal e desconhecida 1339ms
+ ✓ tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta e preserva textos quando regiao e desconhecida 1328ms
+ ✓ tests/integration/tecnica-regiao-migration.integration.test.ts > BD-03: migracao dos textos legados > aborta para produto sem mapeamento explicito 1136ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) > reproduz o mesmo ranking da fixture usada pelo FakeRecommendationAdapter 459ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) > nunca retorna mais itens que o limite documentado 101ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) > nunca inclui o produto de contexto no resultado 101ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1) > nunca inclui produto de outra categoria, inativo ou sem estoque 101ms
+ ✓ tests/integration/recomendacao.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - desempate deterministico por UUID > ordena vendas iguais e notas iguais pelo UUID crescente 618ms
+ ✓ tests/integration/recomendacao-metricas.integration.test.ts > calcularMetricasBaseline - carga sintetica real (PI4-20.5) > reproduz cobertura e acerto por categoria calculados de forma independente da base 1886ms
+ ✓ tests/integration/recomendacao-metricas.integration.test.ts > calcularMetricasBaseline - carga sintetica real (PI4-20.5) > produz o mesmo resultado em execucoes repetidas sobre os mesmos dados 2307ms
+ ✓ tests/integration/recomendacao-metricas.integration.test.ts > calcularMetricasBaseline - carga sintetica real (PI4-20.5) > nunca gera denominador zero quando ha carga sintetica com produtos ativos e com estoque 1125ms
+ ✓ tests/integration/notificacao-auto-publish.integration.test.ts > auto-publish of pending notification intentions > moves a real POST /pedidos intention from pendente to processada without manual queue calls 3742ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > ordena o universo geral por vendas, nota media e UUID, limitado a oito 532ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > nunca repete IDs e nunca supera oito itens 161ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > nunca inclui produto inativo ou sem estoque 164ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria 161ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback quando o produto de contexto nao existe 109ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback sintetico para contexto usuarioId na U1, sem consultar historico pessoal 54ms
+ ✓ tests/integration/server-queue-bootstrap.integration.test.ts > startServer bootstraps the notification queue > accepts and processes a job right after the backend boots, without a manual worker registration 3694ms
+ ✓ tests/integration/pedidos.integration.test.ts > POST /pedidos > creates an order and decrements stock exactly by the requested quantity 1089ms
+ ✓ tests/integration/pedidos.integration.test.ts > POST /pedidos > rejects an order referencing a missing product 347ms
+ ✓ tests/integration/pedidos.integration.test.ts > POST /pedidos > rejects an order with an invalid quantity 349ms
+ ✓ tests/integration/pedidos.integration.test.ts > POST /pedidos > rejects an order when stock is insufficient 495ms
+ ✓ tests/integration/pedidos.integration.test.ts > POST /pedidos > rolls back the whole order when one item among several fails 666ms
+ ✓ tests/integration/pedidos.integration.test.ts > POST /pedidos > treats case-variant duplicate produtoId as the same product and never goes negative 556ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > Produto reconciled with the logical model (BD-02) > rejects a product without descricao 575ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > Produto reconciled with the logical model (BD-02) > rejects a product without preco 247ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > Produto reconciled with the logical model (BD-02) > rejects a product with preco 0 261ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > Produto reconciled with the logical model (BD-02) > rejects a product with a negative stock 270ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > Produto reconciled with the logical model (BD-02) > defaults desativadoPorAdmin to false 300ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > monetary non-negativity (BD-02) > rejects a negative ItemPedido.precoUnitario 406ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > monetary non-negativity (BD-02) > rejects a negative ItemPedido.subtotal 392ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > monetary non-negativity (BD-02) > rejects a negative ItemCarrinho.precoUnitario 394ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > monetary non-negativity (BD-02) > rejects a negative Pedido.total 200ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > monetary non-negativity (BD-02) > rejects a Pagamento with valor 0 399ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > Usuario reconciled with the logical model (BD-02) > rejects an email that differs from an existing one only by case 197ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > Usuario reconciled with the logical model (BD-02) > rejects an empty senhaHash 149ms
+ ✓ tests/integration/reconciliacao-modelo-logico.integration.test.ts > Pedido legacy compradorRef (BD-02) > accepts an order without the legacy compradorRef 248ms
+ ✓ tests/integration/notificacao.repository.integration.test.ts > BD-06: PrismaNotificacaoRepository > dois registros iguais resultam em uma linha 916ms
+ ✓ tests/integration/notificacao.repository.integration.test.ts > BD-06: PrismaNotificacaoRepository > reentrega preserva estado lido, ID e data originais 597ms
+ ✓ tests/integration/notificacao.repository.integration.test.ts > BD-06: PrismaNotificacaoRepository > pedidos distintos produzem notificacoes distintas 538ms
+ ✓ tests/integration/notificacao.repository.integration.test.ts > BD-06: PrismaNotificacaoRepository > rejeita usuarioId inexistente 327ms
+ ✓ tests/integration/notificacao.repository.integration.test.ts > BD-06: PrismaNotificacaoRepository > rejeita pedidoId inexistente 324ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects an order without a comprador (usuario) 507ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects an item without a pedido 316ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects an item without a produto 264ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects a produto without an artesao 211ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects a produto without a categoria 210ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects a duplicate email 210ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects negative stock on the full domain schema 263ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects a nota of 0 outside the 1-5 range 369ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects a nota of 6 outside the 1-5 range 368ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > rejects a second pagamento for the same pedido 322ms
+ ✓ tests/integration/dominio-completo.constraints.integration.test.ts > full domain schema constraints (PI4-19.5) > preserves ItemPedido when the produto is logically deactivated 592ms
+ ✓ tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) > sem reforco, preserva a ordenacao baseline por vendas, ignorando regiao 471ms
+ ✓ tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) > com reforco, prioriza candidatos da mesma regiao do contexto antes de olhar vendas 108ms
+ ✓ tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) > com reforco, desempate dentro de cada grupo regional continua deterministico por UUID 618ms
+ ✓ tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) > com reforco, o limite de oito itens permanece respeitado 109ms
+ ✓ tests/unit/server.test.ts > server startup > sanitizes asynchronous listen failure on an occupied loopback port 446ms
+ ✓ tests/unit/server.test.ts > server startup > imports without starting a listener or writing output 369ms
+ ✓ tests/unit/server.test.ts > server startup > binds startup explicitly to IPv4 loopback 1512ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > Tecnica preserva os mesmos IDs e nomes dos seeds frontais 486ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > Regiao preserva os mesmos IDs e nomes dos seeds frontais 148ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > resolve tecnica e regiao de todos os produtos existentes 147ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > bloqueia exclusao de tecnica referenciada por produto 295ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > bloqueia exclusao da referencia tecnicaPrincipalId do perfil 245ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > bloqueia exclusao da referencia regiaoId do perfil 244ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > rejeita tecnica inexistente em produto 293ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > nao aceita produto sem tecnica 293ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > Tecnica exige nome unico 148ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > Regiao exige nome unico 148ms
+ ✓ tests/integration/tecnica-regiao.integration.test.ts > BD-03: referencias Tecnica e Regiao no PostgreSQL > remove textos legados e mantem regiao somente no perfil 150ms
+ ✓ tests/integration/constraints.integration.test.ts > reduced FCCPD schema constraints > rejects negative stock 580ms
+ ✓ tests/integration/constraints.integration.test.ts > reduced FCCPD schema constraints > rejects zero item quantity 395ms
+ ✓ tests/integration/constraints.integration.test.ts > reduced FCCPD schema constraints > rejects missing required relationships 148ms
+ ✓ tests/integration/constraints.integration.test.ts > reduced FCCPD schema constraints > rejects unknown relationship references 148ms
+ ✓ tests/integration/constraints.integration.test.ts > reduced FCCPD schema constraints > rejects missing pedidoId with a valid produtoId 297ms
+ ✓ tests/integration/constraints.integration.test.ts > reduced FCCPD schema constraints > rejects unknown pedidoId with a valid produtoId 296ms
+ ✓ tests/integration/constraints.integration.test.ts > reduced FCCPD schema constraints > rejects missing produtoId with a valid pedidoId 247ms
+ ✓ tests/integration/constraints.integration.test.ts > reduced FCCPD schema constraints > rejects unknown produtoId with a valid pedidoId 246ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > returns category-based recommendations for a valid produtoId 482ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > returns the general fallback for a valid usuarioId 59ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > rejects a request with no context parameter 3ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > rejects a request with both context parameters at once 2ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > rejects an invalid UUID 2ms
+ ✓ tests/integration/recomendacoes.route.integration.test.ts > GET /recomendacoes > falls back to the general recommendation when the product does not exist 109ms
+ ✓ tests/integration/notificacao-migration.integration.test.ts > BD-06 aplica apos o historico existente em PostgreSQL real 1014ms
+ ✓ tests/integration/schema-completo.smoke.test.ts > schema completo: smoke test com Prisma real > consulta as onze entidades de dominio sem erro 936ms
+ ✓ tests/integration/schema-completo.smoke.test.ts > schema completo: smoke test com Prisma real > consulta a estrutura tecnica de fila sem erro 50ms
+ ✓ tests/integration/usuario.service.integration.test.ts > UsuarioService.criar > persists the email trimmed and lowercased 909ms
+ ✓ tests/integration/usuario.service.integration.test.ts > UsuarioService.criar > rejects an email that differs from an existing one only by case or spaces 119ms
+ ✓ tests/integration/health.integration.test.ts > GET /health > confirms access to the real PostgreSQL database 471ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the Usuario domain model 1ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the PerfilArtesao domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the Categoria domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the Produto domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the ProdutoFoto domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the Carrinho domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the ItemCarrinho domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the Pedido domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the ItemPedido domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the Pagamento domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares the Avaliacao domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > keeps queue infrastructure under its own clearly named model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares enum PapelUsuario with its expected values 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares enum StatusPedido with its expected values 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares enum MetodoPagamento with its expected values 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares enum StatusPagamento with its expected values 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > declares enum StatusIntencao with its expected values 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > preserves the reduced FCCPD fields already relied on by services and tests 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > keeps compradorRef as an optional legacy field alongside the required compradorId FK 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > uses UUID identifiers on every domain model 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > uses Decimal for monetary fields 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > uses timezone-aware timestamps for creation dates 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > requires descricao on Produto 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > separates admin moderation from the artisan soft delete on Produto 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > marks Usuario email as unique 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > never cascades deletes over order history relations 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > allows at most one payment per order 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > prevents duplicate cart lines for the same product 0ms
+ ✓ tests/unit/schema-structure.test.ts > complete domain schema structure > prevents duplicate reviews from the same buyer for the same product 0ms
+ ✓ tests/unit/environment.test.ts > environment validation > rejects production runtime 3ms
+ ✓ tests/unit/environment.test.ts > environment validation > rejects missing connection variables without exposing values 0ms
+ ✓ tests/unit/environment.test.ts > environment validation > accepts PostgreSQL URLs and a valid port 0ms
+ ✓ tests/unit/recomendacao-metricas.unit.test.ts > calcularCobertura > calcula o percentual quando ha produtos elegiveis 1ms
+ ✓ tests/unit/recomendacao-metricas.unit.test.ts > calcularCobertura > retorna zero explicitamente quando o denominador e zero 0ms
+ ✓ tests/unit/recomendacao-metricas.unit.test.ts > calcularCobertura > retorna cem quando todo produto elegivel recebe recomendacao 0ms
+ ✓ tests/unit/recomendacao-metricas.unit.test.ts > calcularCobertura > retorna zero quando nenhum produto elegivel recebe recomendacao 0ms
+ ✓ tests/unit/recomendacao-metricas.unit.test.ts > calcularAcertoCategoria > calcula o percentual quando ha recomendacoes 0ms
+ ✓ tests/unit/recomendacao-metricas.unit.test.ts > calcularAcertoCategoria > retorna zero explicitamente quando o denominador e zero 0ms
+ ✓ tests/unit/recomendacao-metricas.unit.test.ts > calcularAcertoCategoria > retorna zero quando nenhuma recomendacao acerta a categoria 0ms
+ ✓ tests/unit/recomendacao-metricas.unit.test.ts > calcularAcertoCategoria > retorna cem quando toda recomendacao acerta a categoria 0ms
+ ✓ tests/unit/usuario.service.unit.test.ts > normalizarEmail > lowercases the address 1ms
+ ✓ tests/unit/usuario.service.unit.test.ts > normalizarEmail > trims surrounding whitespace 0ms
+ ✓ tests/unit/usuario.service.unit.test.ts > normalizarEmail > keeps an already normalized address unchanged 0ms
+
+ Test Files  25 passed (25)
+      Tests  154 passed (154)
+   Start at  19:20:39
+   Duration  107.00s (tests 98%, import 2%)
+
+
+STDERR:
+(node:14312) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:37408) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:19300) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7992) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22740) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39104) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:29852) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11368) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21292) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31852) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21572) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4248) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:40488) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39216) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22032) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:12296) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24488) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:37824) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17552) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36008) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Codigo de saida: 0

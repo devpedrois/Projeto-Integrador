@@ -1,0 +1,28 @@
+
+> origem-backend@1.0.0 lint
+> eslint .
+
+
+C:\Users\Pedro\Desktop\Projeto integrador\backend\scripts\bench-fila.ts
+   19:137  error  'RodadaBase' is defined but never used  @typescript-eslint/no-unused-vars
+  151:65   error  Unsafe usage of ThrowStatement          no-unsafe-finally
+  240:40   error  Unsafe usage of ThrowStatement          no-unsafe-finally
+
+C:\Users\Pedro\Desktop\Projeto integrador\backend\scripts\lib\bench-fila-processos.ts
+  33:10  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+
+C:\Users\Pedro\Desktop\Projeto integrador\backend\scripts\lib\bench-fila.ts
+  38:10  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+  66:40  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+  78:16  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+
+C:\Users\Pedro\Desktop\Projeto integrador\backend\tests\integration\bench-fila.integration.test.ts
+  17:23   error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+  25:18   error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+  27:104  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+
+C:\Users\Pedro\Desktop\Projeto integrador\backend\tests\unit\bench-fila.test.ts
+  48:39  error  Forbidden non-null assertion  @typescript-eslint/no-non-null-assertion
+
+✖ 11 problems (11 errors, 0 warnings)
+

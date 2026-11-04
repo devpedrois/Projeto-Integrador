@@ -1,0 +1,40 @@
+{
+  "pngPixels": [
+    3945,
+    5340
+  ],
+  "svgViewBox": [
+    1314.5,
+    1780.0
+  ],
+  "escalaMmdc": 3,
+  "a4Orientacao": "retrato",
+  "margensMm": 5,
+  "fonteDiagramaPt": 7.76,
+  "resolucaoEfetivaDpi": 501.0,
+  "paginasPdf": 3,
+  "paginasJustificativa": 2,
+  "fonteJustificativaPt": 11,
+  "mermaidIdentico": true,
+  "linksValidos": 26,
+  "funcoesConferidas": 20,
+  "codigosRastreaveis": [
+    "A",
+    "C",
+    "E",
+    "F",
+    "H",
+    "I",
+    "N",
+    "P",
+    "R",
+    "U",
+    "V",
+    "W"
+  ],
+  "ordemTransacionalConferida": true,
+  "rodadasHistoricasConferidas": 3,
+  "codigoExecutavelAlterado": false,
+  "revisaoDocumentalLocal": true,
+  "benchmarkExecutadoNestaEntrega": false
+}

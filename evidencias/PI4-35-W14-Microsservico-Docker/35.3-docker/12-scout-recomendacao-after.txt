@@ -1,0 +1,18 @@
+
+
+## Overview
+
+                   │           Analyzed Image            
+───────────────────┼─────────────────────────────────────
+ Target            │  local://origem-recomendacao:local  
+   digest          │  e244ae8f1c2f                       
+   platform        │ linux/amd64                         
+   vulnerabilities │    0C     0H     0M     0L          
+   size            │ 72 MB                               
+   packages        │ 249                                 
+
+
+## Packages and Vulnerabilities
+
+  No vulnerable packages detected
+

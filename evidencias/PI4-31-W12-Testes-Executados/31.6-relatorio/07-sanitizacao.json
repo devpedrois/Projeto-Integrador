@@ -1,0 +1,21 @@
+{
+  "file": "backend-coverage/vitest.json",
+  "redactions": 2,
+  "reason": "URLs sinteticas em nomes parametrizados dos testes, sem conexoes reais.",
+  "originalSha256": "57b37d80fb73b236e54e56042342492d2df9eda4548d56397cf0c05559325eb3",
+  "countsBefore": {
+    "numTotalTests": 755,
+    "numPassedTests": 755,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTodoTests": 0
+  },
+  "countsAfter": {
+    "numTotalTests": 755,
+    "numPassedTests": 755,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTodoTests": 0
+  },
+  "countsPreserved": true
+}

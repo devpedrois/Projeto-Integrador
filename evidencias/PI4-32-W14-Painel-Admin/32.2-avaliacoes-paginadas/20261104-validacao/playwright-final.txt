@@ -1,0 +1,15 @@
+[WebServer] (node:8764) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:47952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+  ok 1 [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (2.8s)
+  ok 2 [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (1.9s)
+
+  2 passed (13.1s)
+Schema E2E removido e ausencia confirmada.
+Chamadas ao microsservico E2E: 3
+Traces ZIP sanitizados: 0
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-32-W14-Painel-Admin\32.2-avaliacoes-paginadas\20261104-validacao\playwright\3ab0a7a8f8d244388bed80a8856fbdd2\html\index.html

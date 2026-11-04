@@ -1,0 +1,15 @@
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:3102
+   - Network:      http://127.0.0.1:3102
+
+ ✓ Starting...
+   Using tsconfig file: tsconfig.build.json
+ ✓ Ready in 1535ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1090ms (824 modules)
+ GET / 200 in 1405ms
+ ○ Compiling /produto/[id] ...
+ ✓ Compiled /produto/[id] in 567ms (835 modules)
+ GET /produto/5df54ce4-697f-57a7-aef8-8312239abbcd 200 in 1129ms
+ GET /produto/7bcae074-7451-5794-8ae2-d01bc4a7922d 200 in 50ms
+ GET /produto/1dfc1125-fdc5-59ea-8475-e6d80428cbf6 200 in 35ms

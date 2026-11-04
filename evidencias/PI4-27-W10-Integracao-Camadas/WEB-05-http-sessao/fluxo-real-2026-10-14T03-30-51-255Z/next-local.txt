@@ -1,0 +1,19 @@
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:39406
+   - Network:      http://127.0.0.1:39406
+
+ ✓ Starting...
+ ✓ Ready in 1356ms
+ ✓ Compiled /middleware in 113ms (118 modules)
+ ○ Compiling /cadastro ...
+ ✓ Compiled /cadastro in 862ms (766 modules)
+ GET /cadastro 200 in 1138ms
+ ✓ Compiled /login in 301ms (775 modules)
+ GET /login?cadastro=sucesso 200 in 379ms
+ GET /login?cadastro=sucesso 200 in 25ms
+ ✓ Compiled / in 171ms (798 modules)
+ GET / 200 in 213ms
+ GET / 200 in 98ms
+ ✓ Compiled /admin in 251ms (815 modules)
+ GET /admin 200 in 334ms
+ GET / 200 in 18ms

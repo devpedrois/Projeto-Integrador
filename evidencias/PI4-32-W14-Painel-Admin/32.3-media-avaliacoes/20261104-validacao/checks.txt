@@ -1,0 +1,10 @@
+
+> origem-backend@1.0.0 lint
+> eslint .
+
+
+> origem-backend@1.0.0 typecheck
+> tsc --noEmit
+
+tests/integration/avaliacoes-media.32-3.integration.test.ts(48,9): error TS7034: Variable 'compradores' implicitly has type 'any[]' in some locations where its type cannot be determined.
+tests/integration/avaliacoes-media.32-3.integration.test.ts(75,27): error TS7005: Variable 'compradores' implicitly has an 'any[]' type.

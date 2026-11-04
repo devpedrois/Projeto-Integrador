@@ -1,0 +1,108 @@
+WEB-03 | Sequência real executada com curl.exe
+Coletado em: 13/10/2026, 22:22:12 | America/Sao_Paulo
+Aplicação Express real em http://127.0.0.1:58563, usando PostgreSQL configurado localmente.
+Listener temporário criado com createApp; fila não foi iniciada nesta coleta de autenticação.
+Cookie jar temporário em diretório do sistema, removido após a coleta.
+Senha e JWT omitidos. Set-Cookie redigido antes da gravação.
+
+=== LOGIN ===
+curl.exe -sS -i -X POST -b [COOKIE_JAR_TEMPORÁRIO] -c [COOKIE_JAR_TEMPORÁRIO] http://127.0.0.1:58563/auth/login
+Body de request: [CREDENCIAIS SINTÉTICAS OMITIDAS]
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Set-Cookie: [COOKIE_REMOVIDO]; Max-Age=86400; Path=/; Expires=Thu, 15 Oct 2026 01:22:12 GMT; HttpOnly; SameSite=Lax
+Content-Type: application/json; charset=utf-8
+Content-Length: 175
+ETag: W/"af-qw1qeRQYZ7vZTGZxQ5esdTXNysw"
+Date: Wed, 14 Oct 2026 01:22:12 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":"741f7f0a-e96a-491d-aa49-f06fc71affa9","nome":"Comprador de evidencia WEB03","email":"web03-evidencia-97c63f3f8563473f8f13d0a9941ea454@teste.origem","papel":"comprador"}
+
+=== ME AUTENTICADO ===
+curl.exe -sS -i -X GET -b [COOKIE_JAR_TEMPORÁRIO] -c [COOKIE_JAR_TEMPORÁRIO] http://127.0.0.1:58563/auth/me
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 175
+ETag: W/"af-qw1qeRQYZ7vZTGZxQ5esdTXNysw"
+Date: Wed, 14 Oct 2026 01:22:12 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":"741f7f0a-e96a-491d-aa49-f06fc71affa9","nome":"Comprador de evidencia WEB03","email":"web03-evidencia-97c63f3f8563473f8f13d0a9941ea454@teste.origem","papel":"comprador"}
+
+=== LOGOUT ===
+curl.exe -sS -i -X POST -b [COOKIE_JAR_TEMPORÁRIO] -c [COOKIE_JAR_TEMPORÁRIO] http://127.0.0.1:58563/auth/logout
+HTTP/1.1 204 No Content
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Set-Cookie: [COOKIE_REMOVIDO]; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; SameSite=Lax
+Date: Wed, 14 Oct 2026 01:22:12 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+
+
+=== ME APÓS LOGOUT ===
+curl.exe -sS -i -X GET -b [COOKIE_JAR_TEMPORÁRIO] -c [COOKIE_JAR_TEMPORÁRIO] http://127.0.0.1:58563/auth/me
+HTTP/1.1 401 Unauthorized
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 76
+ETag: W/"4c-jnLweG3Hf9TaGTfQqKlDLiZCKUI"
+Date: Wed, 14 Oct 2026 01:22:12 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"NAO_AUTENTICADO","message":"Sessao invalida ou ausente."}}
+
+Sequência verificada: 200 -> 200 -> 204 -> 401

@@ -1,0 +1,33 @@
+{
+  "cenarios": 37,
+  "must": 27,
+  "shouldImplementados": 10,
+  "historias": 16,
+  "totaisStatus": {
+    "não implementado": 1,
+    "aprovado": 35,
+    "parcial": 1
+  },
+  "referenciasUnicasDeTeste": 60,
+  "arquivosTesteConferidos": 32,
+  "manualExclusivo": 0,
+  "missingMust": [],
+  "ciIntegralVerde": "40232946842",
+  "ciFrontendVerde": "40239567812",
+  "playwrightUltimaRodada": {
+    "startTime": "2026-10-25T21:38:43.435Z",
+    "duration": 40507.392,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "hashFonte": "9f19742b3f487f5907b581d9419500ef21de402a059de140ca9a66d50a422917",
+  "linhasDocumentoConferidas": 37,
+  "cenariosMustComLinha": 27,
+  "referenciasGrepReverificadas": 60,
+  "linksConferidos": 74,
+  "commitsConferidos": 6,
+  "passosDadoQuandoEntaoPreservados": true,
+  "codigoExecutavelAlterado": false
+}

@@ -1,0 +1,106 @@
+{
+  "postgres": "18.6 (653b019)",
+  "testesExitCode": 0,
+  "antes": {
+    "contagens": [
+      {
+        "tabela": "Avaliacao",
+        "total": 4
+      },
+      {
+        "tabela": "Categoria",
+        "total": 6
+      },
+      {
+        "tabela": "ItemPedido",
+        "total": 6
+      },
+      {
+        "tabela": "Notificacao",
+        "total": 0
+      },
+      {
+        "tabela": "Pagamento",
+        "total": 3
+      },
+      {
+        "tabela": "Pedido",
+        "total": 3
+      },
+      {
+        "tabela": "Produto",
+        "total": 9
+      },
+      {
+        "tabela": "Tecnica",
+        "total": 10
+      },
+      {
+        "tabela": "Usuario",
+        "total": 7
+      }
+    ],
+    "sequence": {
+      "last_value": "827",
+      "is_called": true
+    },
+    "residuos": {
+      "schemas_red": 0,
+      "produtos_bd07": 0,
+      "tecnicas_bd07": 0,
+      "pedidos_bd07": 0
+    }
+  },
+  "depois": {
+    "contagens": [
+      {
+        "tabela": "Avaliacao",
+        "total": 4
+      },
+      {
+        "tabela": "Categoria",
+        "total": 6
+      },
+      {
+        "tabela": "ItemPedido",
+        "total": 6
+      },
+      {
+        "tabela": "Notificacao",
+        "total": 0
+      },
+      {
+        "tabela": "Pagamento",
+        "total": 3
+      },
+      {
+        "tabela": "Pedido",
+        "total": 3
+      },
+      {
+        "tabela": "Produto",
+        "total": 9
+      },
+      {
+        "tabela": "Tecnica",
+        "total": 10
+      },
+      {
+        "tabela": "Usuario",
+        "total": 7
+      }
+    ],
+    "sequence": {
+      "last_value": "827",
+      "is_called": true
+    },
+    "residuos": {
+      "schemas_red": 0,
+      "produtos_bd07": 0,
+      "tecnicas_bd07": 0,
+      "pedidos_bd07": 0
+    }
+  },
+  "estadoPreservado": true,
+  "semResiduos": true
+}

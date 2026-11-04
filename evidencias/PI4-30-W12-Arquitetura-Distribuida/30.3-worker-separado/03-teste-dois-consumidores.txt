@@ -1,0 +1,114 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/worker-process.integration.test.ts tests/integration/server-queue-bootstrap.integration.test.ts tests/integration/fila-notificacao.integration.test.ts tests/integration/notificacao-auto-publish.integration.test.ts tests/unit/server.test.ts tests/unit/worker.test.ts tests/unit/environment.test.ts --testTimeout=15000 --hookTimeout=15000
+
+
+ RUN  v5.0.0 C:/Users/Desktop/Projeto integrador/backend
+
+(node:36200) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/worker-process.integration.test.ts (2 tests | 2 failed) 39451ms
+   ❯ API and independent worker processes (2)
+     × keeps orders unprocessed until 1 worker processes start, with one notification per order 19739ms
+     × keeps orders unprocessed until 2 worker processes start, with one notification per order 19711ms
+(node:16832) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/fila-notificacao.integration.test.ts (7 tests | 1 failed) 12227ms
+   ❯ fila de notificacao ao artesao (7)
+     × retries after a simulated worker failure and still reaches processada, keeping the order confirmed 2212ms
+(node:26948) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3524) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/unit/server.test.ts (5 tests | 1 failed) 3285ms
+   ❯ server startup (5)
+     × binds startup explicitly to IPv4 loopback 1357ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/fila-notificacao.integration.test.ts > fila de notificacao ao artesao > retries after a simulated worker failure and still reaches processada, keeping the order confirmed
+AssertionError: expected 1 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ tests/integration/fila-notificacao.integration.test.ts:227:22
+    225|     await waitForStatus(pedidoId, StatusIntencao.processada);
+    226|
+    227|     expect(attempts).toBe(2);
+       |                      ^
+    228|     const intencao = await fetchIntencao(pedidoId);
+    229|     expect(intencao.tentativas).toBe(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/integration/worker-process.integration.test.ts > API and independent worker processes > keeps orders unprocessed until 1 worker processes start, with one notification per order
+ FAIL  tests/integration/worker-process.integration.test.ts > API and independent worker processes > keeps orders unprocessed until 2 worker processes start, with one notification per order
+Error: Notification processing timed out
+ ❯ waitFor tests/integration/worker-process.integration.test.ts:13:38
+     11|   const deadline = Date.now() + 15_000;
+     12|   while (!(await check())) {
+     13|     if (Date.now() > deadline) throw new Error("Notification processin…
+       |                                      ^
+     14|     await new Promise((resolve) => setTimeout(resolve, 100));
+     15|   }
+ ❯ tests/integration/worker-process.integration.test.ts:82:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/unit/server.test.ts > server startup > binds startup explicitly to IPv4 loopback
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/server.test.ts:125:34
+    123|     expect(result.code).toBe(0);
+    124|     expect(result.stdout).toBe("127.0.0.1");
+    125|     expect(result.stderr === "").toBe(true);
+       |                                  ^
+    126|   }, 20_000);
+    127| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  3 failed | 4 passed (7)
+      Tests  4 failed | 67 passed (71)
+   Start at  18:28:12
+   Duration  66.29s (tests 98%, import 2%)
+

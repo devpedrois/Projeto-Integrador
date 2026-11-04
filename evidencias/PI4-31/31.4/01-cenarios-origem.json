@@ -1,0 +1,441 @@
+[
+  {
+    "us": "US01",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Cadastro bem-sucedido",
+        "passos": [
+          "**Dado** que sou um visitante na tela de cadastro",
+          "**Quando** informo um e-mail ainda não utilizado, uma senha que atende ao tamanho mínimo exigido e escolho meu papel (comprador ou artesão)",
+          "**Então** minha conta é criada com o papel escolhido **e** sou redirecionado para a área correspondente ao meu papel"
+        ]
+      },
+      {
+        "nome": "Tentativa de cadastro com e-mail já existente",
+        "passos": [
+          "**Dado** que já existe uma conta cadastrada com um determinado e-mail",
+          "**Quando** tento me cadastrar novamente usando esse mesmo e-mail",
+          "**Então** o cadastro é rejeitado com uma mensagem informando que o e-mail já está em uso"
+        ]
+      },
+      {
+        "nome": "Senha abaixo do tamanho mínimo",
+        "passos": [
+          "**Dado** que estou preenchendo o formulário de cadastro",
+          "**Quando** informo uma senha menor que o tamanho mínimo exigido",
+          "**Então** o cadastro não é concluído e uma mensagem de validação é exibida"
+        ]
+      },
+      {
+        "nome": "Papel não pode ser alterado pelo próprio usuário",
+        "passos": [
+          "**Dado** que já concluí meu cadastro com um papel definido (comprador ou artesão)",
+          "**Quando** tento alterar meu próprio papel pela minha conta",
+          "**Então** o sistema impede a alteração, permitindo a mudança apenas por intervenção do administrador"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US02",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Login com credenciais válidas",
+        "passos": [
+          "**Dado** que possuo uma conta cadastrada e ativa",
+          "**Quando** informo e-mail e senha corretos",
+          "**Então** acesso minha área correspondente ao meu papel **e** minha sessão permanece ativa enquanto navego pela plataforma"
+        ]
+      },
+      {
+        "nome": "Login com credenciais inválidas",
+        "passos": [
+          "**Dado** que informo um e-mail ou senha incorretos",
+          "**Quando** tento fazer login",
+          "**Então** vejo uma mensagem de erro clara e genérica, que não revela se o e-mail informado existe ou não no sistema"
+        ]
+      },
+      {
+        "nome": "Logout",
+        "passos": [
+          "**Dado** que estou autenticado na plataforma",
+          "**Quando** seleciono a opção de logout",
+          "**Então** minha sessão é encerrada e preciso fazer login novamente para acessar áreas restritas"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US03",
+    "prioridade": "Should",
+    "cenarios": [
+      {
+        "nome": "Perfil considerado completo",
+        "passos": [
+          "**Dado** que sou um artesão editando meu perfil",
+          "**Quando** preencho os campos de história, técnica principal e região",
+          "**Então** meu perfil passa a ser considerado \"completo\" (a foto permanece opcional na v0)"
+        ]
+      },
+      {
+        "nome": "Perfil incompleto",
+        "passos": [
+          "**Dado** que sou um artesão editando meu perfil",
+          "**Quando** deixo de preencher história, técnica principal ou região",
+          "**Então** meu perfil permanece marcado como incompleto"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US04",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Cadastro de produto válido",
+        "passos": [
+          "**Dado** que sou um artesão autenticado preenchendo o formulário de novo produto",
+          "**Quando** informo nome, descrição, preço, categoria, fotos e quantidade em estoque válidos",
+          "**Então** o produto é cadastrado e passa a integrar meu catálogo"
+        ]
+      },
+      {
+        "nome": "Campos obrigatórios ausentes",
+        "passos": [
+          "**Dado** que estou cadastrando um produto",
+          "**Quando** deixo de preencher um campo obrigatório",
+          "**Então** o sistema bloqueia o cadastro e indica o campo pendente"
+        ]
+      },
+      {
+        "nome": "Produto sem estoque não aparece na vitrine",
+        "passos": [
+          "**Dado** que cadastro um produto com quantidade em estoque igual a 0",
+          "**Quando** um comprador navega pela vitrine",
+          "**Então** esse produto não aparece como disponível para compra"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US05",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Edição pelo próprio artesão",
+        "passos": [
+          "**Dado** que sou o artesão dono de um produto",
+          "**Quando** edito seus dados",
+          "**Então** as alterações são salvas e refletidas na vitrine"
+        ]
+      },
+      {
+        "nome": "Bloqueio de edição por terceiros",
+        "passos": [
+          "**Dado** que um produto pertence a outro artesão",
+          "**Quando** tento editá-lo ou removê-lo",
+          "**Então** o sistema nega a ação, exceto quando quem realiza a ação é o administrador"
+        ]
+      },
+      {
+        "nome": "Remoção não quebra pedidos já feitos",
+        "passos": [
+          "**Dado** que um produto já foi incluído em pedidos anteriores",
+          "**Quando** o artesão remove esse produto (soft delete)",
+          "**Então** os pedidos já realizados permanecem consistentes e mantêm a referência ao produto removido"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US06",
+    "prioridade": "Should",
+    "cenarios": [
+      {
+        "nome": "Atualização manual refletida na vitrine",
+        "passos": [
+          "**Dado** que sou o artesão de um produto",
+          "**Quando** atualizo manualmente a quantidade em estoque",
+          "**Então** a vitrine reflete o novo valor imediatamente"
+        ]
+      },
+      {
+        "nome": "Estoque nunca fica negativo",
+        "passos": [
+          "**Dado** que um produto possui determinada quantidade em estoque",
+          "**Quando** uma operação tentaria reduzir o estoque para um valor abaixo de zero",
+          "**Então** o sistema impede a operação e o estoque permanece maior ou igual a zero"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US07",
+    "prioridade": "Could",
+    "cenarios": [
+      {
+        "nome": "Indicador calculado a partir de pedidos confirmados",
+        "passos": [
+          "**Dado** que existem pedidos confirmados contendo produtos de um artesão",
+          "**Quando** o artesão acessa o indicador de vendas",
+          "**Então** ele vê a quantidade vendida e a receita total calculadas a partir dos pedidos confirmados (a atualização não precisa ocorrer em tempo real)"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US08",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Busca com filtros combinados",
+        "passos": [
+          "**Dado** que existem produtos cadastrados na vitrine",
+          "**Quando** busco por palavra-chave e aplico filtros de técnica, região e/ou categoria simultaneamente",
+          "**Então** vejo apenas os produtos que atendem a todos os critérios combinados"
+        ]
+      },
+      {
+        "nome": "Busca sem resultados",
+        "passos": [
+          "**Dado** que realizo uma busca",
+          "**Quando** nenhum produto atende aos critérios informados",
+          "**Então** vejo uma mensagem clara de \"nenhum resultado encontrado\", e não uma tela de erro"
+        ]
+      },
+      {
+        "nome": "Tempo de resposta aceitável",
+        "passos": [
+          "**Dado** o volume de dados sintéticos definido para o projeto",
+          "**Quando** realizo uma busca",
+          "**Então** o resultado é exibido em tempo de resposta aceitável"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US09",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Visualização do perfil do artesão",
+        "passos": [
+          "**Dado** que um artesão possui perfil publicado",
+          "**Quando** um comprador acessa esse perfil",
+          "**Então** ele vê a história, a técnica, a região e a lista de produtos ativos do artesão"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US10",
+    "prioridade": "Should",
+    "cenarios": [
+      {
+        "nome": "Recomendação via módulo de IA",
+        "passos": [
+          "**Dado** que estou visualizando um produto",
+          "**Quando** o sistema consulta o módulo de recomendação via API",
+          "**Então** vejo produtos relacionados retornados por esse módulo"
+        ]
+      },
+      {
+        "nome": "Fallback por dados insuficientes",
+        "passos": [
+          "**Dado** que o módulo de recomendação não possui dados suficientes para um produto",
+          "**Quando** a área de recomendações é carregada",
+          "**Então** o sistema exibe um fallback baseado em popularidade/categoria"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US11",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Adicionar produto disponível",
+        "passos": [
+          "**Dado** que um produto possui estoque disponível",
+          "**Quando** adiciono esse produto ao carrinho",
+          "**Então** o item aparece no carrinho refletindo o preço e a disponibilidade atuais do produto"
+        ]
+      },
+      {
+        "nome": "Bloqueio ao exceder o estoque disponível",
+        "passos": [
+          "**Dado** que um produto tem uma quantidade limitada em estoque",
+          "**Quando** tento adicionar ao carrinho uma quantidade maior que a disponível",
+          "**Então** a ação é bloqueada e um aviso é exibido"
+        ]
+      },
+      {
+        "nome": "Remover produto do carrinho",
+        "passos": [
+          "**Dado** que um produto está no meu carrinho",
+          "**Quando** eu o removo",
+          "**Então** ele deixa de compor os itens e o total do carrinho"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US12",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Confirmação com estoque suficiente",
+        "passos": [
+          "**Dado** que todos os itens do carrinho possuem estoque suficiente no momento da confirmação",
+          "**Quando** finalizo o pedido",
+          "**Então** o pedido é confirmado e um número de confirmação é gerado e exibido ao comprador"
+        ]
+      },
+      {
+        "nome": "Estoque insuficiente durante a confirmação",
+        "passos": [
+          "**Dado** que ao menos um item do carrinho não possui estoque suficiente no momento da confirmação",
+          "**Quando** tento finalizar o pedido",
+          "**Então** o pedido não é confirmado e sou informado sobre o item em falta"
+        ]
+      },
+      {
+        "nome": "Concorrência entre dois compradores no checkout",
+        "passos": [
+          "**Dado** que dois compradores tentam finalizar pedidos com o mesmo produto ao mesmo tempo, havendo estoque suficiente apenas para um dos pedidos",
+          "**Quando** ambos confirmam o checkout simultaneamente",
+          "**Então** o controle de concorrência garante que a baixa de estoque seja aplicada de forma consistente **e** apenas um dos pedidos é confirmado com aquele item **e** o outro comprador é informado da indisponibilidade, sem venda duplicada do mesmo estoque"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US13",
+    "prioridade": "Should",
+    "cenarios": [
+      {
+        "nome": "Listagem ordenada com status visível",
+        "passos": [
+          "**Dado** que realizei um ou mais pedidos",
+          "**Quando** acesso meu histórico de pedidos",
+          "**Então** vejo a lista ordenada por data, com o status (pendente/confirmado/cancelado) de cada pedido visível"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US14",
+    "prioridade": "Should",
+    "cenarios": [
+      {
+        "nome": "Visibilidade restrita aos próprios itens",
+        "passos": [
+          "**Dado** que um pedido contém produtos de mais de um artesão",
+          "**Quando** um artesão acessa os pedidos recebidos",
+          "**Então** ele vê apenas os itens de pedido referentes aos próprios produtos, e não o pedido inteiro de outros artesãos"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US20",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Registro do pagamento ao confirmar o pedido",
+        "passos": [
+          "**Dado** que um pedido foi confirmado no checkout",
+          "**Quando** o processo de confirmação é concluído",
+          "**Então** um registro de Pagamento é criado vinculado ao pedido, com método simulado (ex.: `pix_simulado`), valor igual ao total do pedido e status \"aprovado\" (aprovação automática, por se tratar de simulação)"
+        ]
+      },
+      {
+        "nome": "Status do pagamento visível junto ao pedido",
+        "passos": [
+          "**Dado** que meu pedido possui um pagamento registrado",
+          "**Quando** acesso meu histórico de pedidos (US13)",
+          "**Então** vejo o status do pagamento exibido junto às informações do pedido"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US15",
+    "prioridade": "Should",
+    "cenarios": [
+      {
+        "nome": "Avaliação permitida após compra efetiva",
+        "passos": [
+          "**Dado** que comprei efetivamente um produto",
+          "**Quando** registro uma avaliação com nota (obrigatória) e comentário (opcional)",
+          "**Então** a avaliação é salva e associada ao produto"
+        ]
+      },
+      {
+        "nome": "Avaliação bloqueada sem compra",
+        "passos": [
+          "**Dado** que não comprei um determinado produto",
+          "**Quando** tento avaliá-lo",
+          "**Então** o sistema bloqueia a ação"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US16",
+    "prioridade": "Could",
+    "cenarios": [
+      {
+        "nome": "Recalcular a nota média a cada avaliação",
+        "passos": [
+          "**Dado** que um produto recebe uma nova avaliação",
+          "**Quando** a nota é salva",
+          "**Então** a nota média do produto é recalculada **e** a lista de comentários é exibida de forma paginada"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US17",
+    "prioridade": "Must",
+    "cenarios": [
+      {
+        "nome": "Desativação de artesão ou produto",
+        "passos": [
+          "**Dado** que sou administrador",
+          "**Quando** desativo um artesão ou um produto",
+          "**Então** ele deixa de aparecer na vitrine, mas seus dados não são apagados"
+        ]
+      },
+      {
+        "nome": "Reativação",
+        "passos": [
+          "**Dado** que um artesão ou produto está desativado",
+          "**Quando** o administrador o reativa",
+          "**Então** ele volta a aparecer na vitrine"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US18",
+    "prioridade": "Could",
+    "cenarios": [
+      {
+        "nome": "Painel com números agregados",
+        "passos": [
+          "**Dado** que existem artesãos, produtos e pedidos cadastrados na plataforma",
+          "**Quando** o administrador acessa o painel de indicadores",
+          "**Então** ele vê os números agregados de artesãos, produtos, pedidos e vendas totais (sem necessidade de gráficos sofisticados na v0)"
+        ]
+      }
+    ]
+  },
+  {
+    "us": "US19",
+    "prioridade": "Won't (nesta fase)",
+    "cenarios": []
+  }
+]

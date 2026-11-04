@@ -1,0 +1,62 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/notificacoes.web14.integration.test.ts tests/unit/bench-fila.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:50872) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/notificacoes.web14.integration.test.ts (8 tests | 1 failed) 7309ms
+   ❯ WEB-14 notificacoes (8)
+     × 30.5 aguarda a latencia antes de gravar sem alterar a idempotencia 673ms
+ ❯ tests/unit/bench-fila.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/bench-fila.test.ts [ tests/unit/bench-fila.test.ts ]
+Error: Cannot find module '../../scripts/lib/bench-fila.js' imported from C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/unit/bench-fila.test.ts
+ ❯ tests/unit/bench-fila.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import { validarBenchEnvironment, resumirRodadas, criarCsv, CONFIGURAC…
+       | ^
+      3|
+      4| const ambiente = {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/notificacoes.web14.integration.test.ts > WEB-14 notificacoes > 30.5 aguarda a latencia antes de gravar sem alterar a idempotencia
+AssertionError: expected 2 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 2
+
+ ❯ tests/integration/notificacoes.web14.integration.test.ts:98:21
+     96|     const durante = await banco.prisma.notificacao.count({ where: { pe…
+     97|     await processamento;
+     98|     expect(durante).toBe(0);
+       |                     ^
+     99|     expect(performance.now() - inicio).toBeGreaterThanOrEqual(800);
+    100|     const antes = await banco.prisma.notificacao.findMany({ where: { p…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  1 failed | 7 passed (8)
+   Start at  16:26:10
+   Duration  8.10s (tests 93%, import 4%, transform 4%)
+

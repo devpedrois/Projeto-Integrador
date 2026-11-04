@@ -1,0 +1,129 @@
+TAP version 13
+# Subtest: base Node 22 sem vulnerabilidades altas ou críticas
+not ok 1 - base Node 22 sem vulnerabilidades altas ou críticas
+  ---
+  duration_ms: 31613.2007
+  location: 'C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\docker\\base-security.mjs:21:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    
+    
+    ## Overview
+    
+                       │           Analyzed Image           
+    ───────────────────┼────────────────────────────────────
+     Target            │  local://origem-node22-base:local  
+       digest          │  526220cd9ddd                      
+       platform        │ linux/amd64                        
+       vulnerabilities │    0C     9H     0M     0L         
+       size            │ 44 MB                              
+       packages        │ 185                                
+    
+    
+    ## Packages and Vulnerabilities
+    
+       0C     6H     0M     0L  sqlite 3.49.2-r1
+    pkg:apk/alpine/sqlite@3.49.2-r1?os_name=alpine&os_version=3.22
+    
+        x HIGH CVE-2026-119586
+          https://scout.docker.com/v/CVE-2026-119586?s=alpine&n=sqlite&ns=alpine&t=apk&osn=alpine&osv=3.22&vr=%3C%3D3.49.2-r1
+          Affected range : <=3.49.2-r1 
+          Fixed version  : not fixed   
+        
+        x HIGH CVE-2026-119379
+          https://scout.docker.com/v/CVE-2026-119379?s=alpine&n=sqlite&ns=alpine&t=apk&osn=alpine&osv=3.22&vr=%3C%3D3.49.2-r1
+          Affected range : <=3.49.2-r1 
+          Fixed version  : not fixed   
+        
+        x HIGH CVE-2026-119374
+          https://scout.docker.com/v/CVE-2026-119374?s=alpine&n=sqlite&ns=alpine&t=apk&osn=alpine&osv=3.22&vr=%3C%3D3.49.2-r1
+          Affected range : <=3.49.2-r1 
+          Fixed version  : not fixed   
+        
+        x HIGH CVE-2026-119373
+          https://scout.docker.com/v/CVE-2026-119373?s=alpine&n=sqlite&ns=alpine&t=apk&osn=alpine&osv=3.22&vr=%3C%3D3.49.2-r1
+          Affected range : <=3.49.2-r1 
+          Fixed version  : not fixed   
+        
+        x HIGH CVE-2026-11824
+          https://scout.docker.com/v/CVE-2026-11824?s=alpine&n=sqlite&ns=alpine&t=apk&osn=alpine&osv=3.22&vr=%3C%3D3.49.2-r1
+          Affected range : <=3.49.2-r1 
+          Fixed version  : not fixed   
+        
+        x HIGH CVE-2025-70873
+          https://scout.docker.com/v/CVE-2025-70873?s=alpine&n=sqlite&ns=alpine&t=apk&osn=alpine&osv=3.22&vr=%3C%3D3.49.2-r1
+          Affected range : <=3.49.2-r1 
+          Fixed version  : not fixed   
+        
+    
+       0C     3H     0M     0L  undici 6.29.0
+    pkg:npm/undici@6.29.0
+    
+        x HIGH CVE-2026-87018 [Uncaught Exception]
+          https://scout.docker.com/v/CVE-2026-87018?s=github&n=undici&t=npm&vr=%3E%3D4.2.1%2C%3C6.29.1
+          Affected range : >=4.2.1                                      
+                         : <6.29.1                                      
+          Fixed version  : 6.29.1                                       
+          CVSS Score     : 7.5                                          
+          CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+        
+        x HIGH CVE-2026-109869 [Uncaught Exception]
+          https://scout.docker.com/v/CVE-2026-109869?s=github&n=undici&t=npm&vr=%3E%3D6.23.0%2C%3C6.29.1
+          Affected range : >=6.23.0                                     
+                         : <6.29.1                                      
+          Fixed version  : 6.29.1                                       
+          CVSS Score     : 7.5                                          
+          CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+        
+        x HIGH CVE-2026-109383 [Improper Certificate Validation]
+          https://scout.docker.com/v/CVE-2026-109383?s=github&n=undici&t=npm&vr=%3E%3D4.0.0%2C%3C6.29.1
+          Affected range : >=4.0.0                                      
+                         : <6.29.1                                      
+          Fixed version  : 6.29.1                                       
+          CVSS Score     : 7.4                                          
+          CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N 
+        
+    
+    
+    9 vulnerabilities found in 2 packages
+      CRITICAL  0 
+      HIGH      9 
+      MEDIUM    0 
+      LOW       0 
+    
+        i New version 1.29.0 available (installed version is 1.26.0) at https://github.com/docker/scout-cli
+        ...Storing image for indexing
+        v Image stored for indexing
+        ...Indexing
+        v Indexed 185 packages
+        x Detected 2 vulnerable packages with a total of 9 vulnerabilities
+    
+    What's next:
+        View base image update recommendations → docker scout recommendations local://origem-node22-base:local
+    
+    
+    
+    2 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    docker (file:///C:/Users/Pedro/Desktop/Projeto%20integrador/backend/tests/docker/base-security.mjs:17:10)
+    TestContext.<anonymous> (file:///C:/Users/Pedro/Desktop/Projeto%20integrador/backend/tests/docker/base-security.mjs:27:3)
+    Test.runInAsyncScope (node:async_hooks:211:14)
+    Test.run (node:internal/test_runner/test:934:25)
+    Test.start (node:internal/test_runner/test:833:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 31673.8003

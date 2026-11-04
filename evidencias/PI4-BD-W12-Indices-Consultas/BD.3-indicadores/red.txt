@@ -1,0 +1,170 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/indicadores.route.integration.test.ts --testTimeout=60000 --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:46360) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/indicadores.route.integration.test.ts (9 tests | 9 failed) 2664ms
+   ❯ BD.3 GET /artesao/indicadores (9)
+     × soma apenas itens próprios confirmados sem fanout ou reprecificação 16ms
+     × isola o segundo artesão em pedidos compartilhados 4ms
+     × retorna zeros para artesão sem vendas 3ms
+     × retorna zeros para artesão sem produtos 2ms
+     × rejeita identidade externa pela query 4ms
+     × rejeita anônimo 2ms
+     × rejeita papel comprador mesmo com papel forjado no token 2ms
+     × rejeita papel admin mesmo com papel forjado no token 2ms
+     × documenta indicadores e segurança no OpenAPI 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > soma apenas itens próprios confirmados sem fanout ou reprecificação
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/integration/indicadores.route.integration.test.ts:81:29
+     79|     const inicio = Date.now();
+     80|     const response = await request(app).get("/artesao/indicadores").se…
+     81|     expect(response.status).toBe(200);
+       |                             ^
+     82|     expect(response.body).toEqual({
+     83|       quantidadeVendida: 10, receitaTotal: 51.83, numeroPedidos: 2,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > isola o segundo artesão em pedidos compartilhados
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/integration/indicadores.route.integration.test.ts:93:29
+     91|   it("isola o segundo artesão em pedidos compartilhados", async () => {
+     92|     const response = await request(app).get("/artesao/indicadores").se…
+     93|     expect(response.status).toBe(200);
+       |                             ^
+     94|     expect(response.body).toMatchObject({
+     95|       quantidadeVendida: 6, receitaTotal: 115.45, numeroPedidos: 2,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > retorna zeros para artesão sem vendas
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > retorna zeros para artesão sem produtos
+AssertionError: expected 404 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 404
+
+ ❯ tests/integration/indicadores.route.integration.test.ts:102:29
+    100|   it.each(["sem vendas", "sem produtos"])("retorna zeros para artesão …
+    101|     const response = await request(app).get("/artesao/indicadores").se…
+    102|     expect(response.status).toBe(200);
+       |                             ^
+    103|     expect(response.body).toEqual({ quantidadeVendida: 0, receitaTotal…
+    104|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > rejeita identidade externa pela query
+AssertionError: expected 404 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 404
+
+ ❯ tests/integration/indicadores.route.integration.test.ts:108:29
+    106|   it("rejeita identidade externa pela query", async () => {
+    107|     const response = await request(app).get("/artesao/indicadores").qu…
+    108|     expect(response.status).toBe(400);
+       |                             ^
+    109|     expect(response.body.error.code).toBe("VALIDACAO");
+    110|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > rejeita anônimo
+AssertionError: expected 404 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 404
+
+ ❯ tests/integration/indicadores.route.integration.test.ts:113:69
+    111|
+    112|   it("rejeita anônimo", async () => {
+    113|     expect((await request(app).get("/artesao/indicadores")).status).to…
+       |                                                                     ^
+    114|   });
+    115|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > rejeita papel comprador mesmo com papel forjado no token
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > rejeita papel admin mesmo com papel forjado no token
+AssertionError: expected 404 to be 403 // Object.is equality
+
+- Expected
++ Received
+
+- 403
++ 404
+
+ ❯ tests/integration/indicadores.route.integration.test.ts:118:29
+    116|   it.each(["comprador", "admin"])("rejeita papel %s mesmo com papel fo…
+    117|     const response = await request(app).get("/artesao/indicadores").se…
+    118|     expect(response.status).toBe(403);
+       |                             ^
+    119|   });
+    120|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  tests/integration/indicadores.route.integration.test.ts > BD.3 GET /artesao/indicadores > documenta indicadores e segurança no OpenAPI
+AssertionError: expected undefined to deeply equal [ { sessao: [] } ]
+
+- Expected:
+[
+  {
+    "sessao": [],
+  },
+]
+
++ Received:
+undefined
+
+ ❯ tests/integration/indicadores.route.integration.test.ts:124:32
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed (9)
+   Start at  19:38:02
+   Duration  3.37s (tests 81%, import 9%, transform 9%)
+

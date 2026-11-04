@@ -1,0 +1,214 @@
+WEB-04 | Coleta adicional real
+Coletado em: 13/10/2026, 22:57:41 | America/Sao_Paulo
+curl.exe, Express e PostgreSQL reais; dados sintéticos em schema isolado removido ao terminar.
+JWTs, senhas e cookies redigidos. Nenhuma conta real foi alterada.
+
+JWT antigo comprador apos mudar para artesao: HTTP 403
+Admin muda artesao para comprador: HTTP 200
+Admin altera proprio papel: HTTP 403
+Admin altera proprio papel com UUID maiusculo: HTTP 403
+Papel admin rejeitado: HTTP 400
+UUID invalido: HTTP 400
+Usuario alvo ausente: HTTP 404
+Papel do alvo antes e depois, consultado no PostgreSQL:
+{
+  "antes": {
+    "id": "61ae8453-361b-48ba-8664-95a0e3d45bb8",
+    "papel": "artesao"
+  },
+  "depois": {
+    "id": "61ae8453-361b-48ba-8664-95a0e3d45bb8",
+    "papel": "comprador"
+  },
+  "tokenEmitidoComo": "comprador",
+  "acessoComTokenAntigoAposMudanca": 403
+}
+
+=== JWT antigo comprador apos mudar para artesao ===
+POST http://127.0.0.1:49275/pedidos
+Cookie: [REDIGIDO]
+Request: {"itens":[{"produtoId":"8702db84-a960-4016-974c-ed3b5cf2b8e5","quantidade":1}]}
+HTTP/1.1 403 Forbidden
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 61
+ETag: W/"3d-oziqnbKke1mV+jZIdpKY57fGNDE"
+Date: Wed, 14 Oct 2026 01:57:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"ACESSO_NEGADO","message":"Acesso negado."}}
+
+=== Admin muda artesao para comprador ===
+PATCH http://127.0.0.1:49275/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel
+Cookie: [REDIGIDO]
+Request: {"papel":"comprador"}
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 166
+ETag: W/"a6-iNZA6ZL+pBi1C7kLRThE09E84bo"
+Date: Wed, 14 Oct 2026 01:57:45 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":"61ae8453-361b-48ba-8664-95a0e3d45bb8","nome":"Alvo sintetico WEB04","email":"web04-evid-46eb3b82-b112-4676-9372-2a2e9226e9c5@teste.origem","papel":"comprador"}
+
+=== Admin altera proprio papel ===
+PATCH http://127.0.0.1:49275/admin/usuarios/bcc32c67-0301-499d-933c-87f219857292/papel
+Cookie: [REDIGIDO]
+Request: {"papel":"comprador"}
+HTTP/1.1 403 Forbidden
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 86
+ETag: W/"56-zDO5D0030NacscHYQ5WcC57AGK0"
+Date: Wed, 14 Oct 2026 01:57:45 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"ACESSO_NEGADO","message":"Admin nao pode alterar o proprio papel."}}
+
+=== Admin altera proprio papel com UUID maiusculo ===
+PATCH http://127.0.0.1:49275/admin/usuarios/BCC32C67-0301-499D-933C-87F219857292/papel
+Cookie: [REDIGIDO]
+Request: {"papel":"comprador"}
+HTTP/1.1 403 Forbidden
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 86
+ETag: W/"56-zDO5D0030NacscHYQ5WcC57AGK0"
+Date: Wed, 14 Oct 2026 01:57:45 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"ACESSO_NEGADO","message":"Admin nao pode alterar o proprio papel."}}
+
+=== Papel admin rejeitado ===
+PATCH http://127.0.0.1:49275/admin/usuarios/61ae8453-361b-48ba-8664-95a0e3d45bb8/papel
+Cookie: [REDIGIDO]
+Request: {"papel":"admin"}
+HTTP/1.1 400 Bad Request
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 71
+ETag: W/"47-w65plBj2LXHcdM0H9VUUMBs4vYA"
+Date: Wed, 14 Oct 2026 01:57:45 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"VALIDACAO","message":"Alteracao de papel invalida."}}
+
+=== UUID invalido ===
+PATCH http://127.0.0.1:49275/admin/usuarios/nao-e-uuid/papel
+Cookie: [REDIGIDO]
+Request: {"papel":"artesao"}
+HTTP/1.1 400 Bad Request
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 71
+ETag: W/"47-w65plBj2LXHcdM0H9VUUMBs4vYA"
+Date: Wed, 14 Oct 2026 01:57:45 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"VALIDACAO","message":"Alteracao de papel invalida."}}
+
+=== Usuario alvo ausente ===
+PATCH http://127.0.0.1:49275/admin/usuarios/8bb1e304-7e6c-4bc4-a31d-64616e0b2bf0/papel
+Cookie: [REDIGIDO]
+Request: {"papel":"artesao"}
+HTTP/1.1 404 Not Found
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Cache-Control: no-store
+Content-Type: application/json; charset=utf-8
+Content-Length: 79
+ETag: W/"4f-clAfyMlES0sIN7BNiSZtm0gbgHc"
+Date: Wed, 14 Oct 2026 01:57:45 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"error":{"code":"USUARIO_NAO_ENCONTRADO","message":"Usuario nao encontrado."}}

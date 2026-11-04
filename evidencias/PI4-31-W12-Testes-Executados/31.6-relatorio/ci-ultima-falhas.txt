@@ -1,0 +1,344 @@
+backend	UNKNOWN STEP	﻿2026-10-25T22:18:29.4234600Z Current runner version: '2.338.0'
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4256880Z ##[group]Runner Image Provisioner
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4257692Z Hosted Compute Agent
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4258264Z Version: 20261021.618
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4258855Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4259450Z Build Date: 2026-10-21T00:45:21Z
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4260109Z Worker ID: {3e1b3747-2604-4bd9-961c-c6ad98e113d7}
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4260770Z Region: westus3
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4261286Z Cloud: Azure
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4262011Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4263237Z ##[group]Operating System
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4263813Z Ubuntu
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4264268Z 24.04.5
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4264789Z LTS
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4265249Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4265838Z ##[group]Runner Image
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4266454Z Image: ubuntu-24.04
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4266938Z Version: 20261012.334.1
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4268073Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4269414Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4270300Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4271278Z ##[group]GITHUB_TOKEN Permissions
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4272966Z Contents: read
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4273638Z Metadata: read
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4274126Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4276131Z Secret source: Actions
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4277041Z Cache mode: write
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4277713Z Prepare workflow directory
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4710782Z Prepare all required actions
+backend	UNKNOWN STEP	2026-10-25T22:18:29.4750665Z Getting action download info
+backend	UNKNOWN STEP	2026-10-25T22:18:29.7721816Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+backend	UNKNOWN STEP	2026-10-25T22:18:29.8783522Z Download action repository 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+backend	UNKNOWN STEP	2026-10-25T22:18:30.7992548Z Complete job name: backend
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8663768Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8664746Z with:
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8665163Z   persist-credentials: false
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8665665Z   repository: devpedrois/Projeto-Integrador
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8669139Z   token: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8669548Z   ssh-strict: true
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8669963Z   ssh-user: git
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8670353Z   clean: true
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8670769Z   sparse-checkout-cone-mode: true
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8671241Z   fetch-depth: 1
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8671629Z   fetch-tags: false
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8672197Z   show-progress: true
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8672628Z   lfs: false
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8673024Z   submodules: false
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8673477Z   set-safe-directory: true
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8673964Z   allow-unsafe-pr-checkout: false
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8674600Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8674983Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8676117Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8677210Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8677604Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8678036Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8678549Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:30.8678980Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:30.9512208Z Syncing repository: devpedrois/Projeto-Integrador
+backend	UNKNOWN STEP	2026-10-25T22:18:30.9514950Z ##[group]Getting Git version info
+backend	UNKNOWN STEP	2026-10-25T22:18:30.9515717Z Working directory is '/home/runner/work/Projeto-Integrador/Projeto-Integrador'
+backend	UNKNOWN STEP	2026-10-25T22:18:30.9516748Z [command]/usr/bin/git version
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1148945Z git version 2.55.0
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1165632Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1174949Z Temporarily overriding HOME='/home/runner/work/_temp/6b170f58-7c76-4a13-82d8-c855357c6685' before making global git config changes
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1179832Z Adding repository directory to the temporary git global config as a safe directory
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1181580Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Projeto-Integrador/Projeto-Integrador
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1227690Z Deleting the contents of '/home/runner/work/Projeto-Integrador/Projeto-Integrador'
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1230388Z ##[group]Determining repository object format
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1231586Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1232500Z ##[group]Initializing the repository
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1235675Z [command]/usr/bin/git init /home/runner/work/Projeto-Integrador/Projeto-Integrador
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1441410Z hint: Using 'master' as the name for the initial branch. This default branch name
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1443047Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1444056Z hint: to use in all of your new repositories, which will suppress this warning,
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1444713Z hint: call:
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1445092Z hint:
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1445599Z hint: 	git config --global init.defaultBranch <name>
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1446159Z hint:
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1446737Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1447591Z hint: 'development'. The just-created branch can be renamed via this command:
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1448252Z hint:
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1448641Z hint: 	git branch -m <name>
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1449074Z hint:
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1449628Z hint: Disable this message with "git config set advice.defaultBranchName false"
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1450819Z Initialized empty Git repository in /home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1452799Z [command]/usr/bin/git remote add origin https://github.com/devpedrois/Projeto-Integrador
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1499221Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1499934Z ##[group]Disabling automatic garbage collection
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1501534Z [command]/usr/bin/git config --local gc.auto 0
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1532513Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1533620Z ##[group]Setting up auth
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1534120Z Removing SSH command configuration
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1537331Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1568665Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1865820Z Removing HTTP extra header
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1871314Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+backend	UNKNOWN STEP	2026-10-25T22:18:31.1903100Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2089837Z Removing includeIf entries pointing to credentials config files
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2093720Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2125616Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2320117Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2359384Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path /home/runner/work/_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2389665Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2421401Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2450853Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2478585Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2479271Z ##[group]Fetching the repository
+backend	UNKNOWN STEP	2026-10-25T22:18:31.2484352Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8e78cdc4e5f601c1de2aad9eb78d99985fae564e:refs/remotes/origin/main
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8929489Z From https://github.com/devpedrois/Projeto-Integrador
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8930886Z  * [new ref]         8e78cdc4e5f601c1de2aad9eb78d99985fae564e -> origin/main
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8937404Z [command]/usr/bin/git branch --list --remote origin/main
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8963362Z   origin/main
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8969272Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8992447Z 8e78cdc4e5f601c1de2aad9eb78d99985fae564e
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8995328Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8995936Z ##[group]Determining the checkout info
+backend	UNKNOWN STEP	2026-10-25T22:18:32.8999507Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9000127Z [command]/usr/bin/git sparse-checkout disable
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9049160Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9078480Z ##[group]Checking out the ref
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9081542Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9388297Z Switched to a new branch 'main'
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9392747Z branch 'main' set up to track 'origin/main'.
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9398330Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9441017Z [command]/usr/bin/git log -1 --format=%H
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9466548Z 8e78cdc4e5f601c1de2aad9eb78d99985fae564e
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9478052Z ##[group]Removing auth
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9478373Z Removing SSH command configuration
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9478782Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9509111Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9700097Z Removing HTTP extra header
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9702989Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9733824Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9926185Z Removing includeIf entries pointing to credentials config files
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9929308Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9963832Z includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9964518Z includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9965195Z includeif.gitdir:/github/workspace/.git.path
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9965834Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9972463Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path
+backend	UNKNOWN STEP	2026-10-25T22:18:32.9996086Z /home/runner/work/_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0004062Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-e3aaccb1\-6b8e\-4730\-bd5a\-c6b3432c455b\.config
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0038145Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0063209Z /home/runner/work/_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0070381Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-e3aaccb1\-6b8e\-4730\-bd5a\-c6b3432c455b\.config
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0103766Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0126792Z /github/runner_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0133894Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-e3aaccb1\-6b8e\-4730\-bd5a\-c6b3432c455b\.config
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0165157Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0187352Z /github/runner_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0194031Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-e3aaccb1\-6b8e\-4730\-bd5a\-c6b3432c455b\.config
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0257207Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0427300Z Removing credentials config '/home/runner/work/_temp/git-credentials-e3aaccb1-6b8e-4730-bd5a-c6b3432c455b.config'
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0437975Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0654672Z ##[group]Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0655057Z with:
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0655276Z   node-version: 22
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0655497Z   cache: npm
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0655759Z   cache-dependency-path: backend/package-lock.json
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0656071Z   check-latest: false
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0658039Z   token: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0658281Z   package-manager-cache: true
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0658541Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0658757Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0659469Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0660122Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0660358Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0660605Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0660893Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:33.0661123Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:33.2905188Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+backend	UNKNOWN STEP	2026-10-25T22:18:33.3645707Z ##[group]Environment details
+backend	UNKNOWN STEP	2026-10-25T22:18:34.2043055Z node: v22.23.3
+backend	UNKNOWN STEP	2026-10-25T22:18:34.2043308Z npm: 10.9.9
+backend	UNKNOWN STEP	2026-10-25T22:18:34.2043477Z yarn: 1.22.22
+backend	UNKNOWN STEP	2026-10-25T22:18:34.2044115Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:34.2061449Z [command]/opt/hostedtoolcache/node/22.23.3/x64/bin/npm config get cache
+backend	UNKNOWN STEP	2026-10-25T22:18:34.5669852Z /home/runner/.npm
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7785307Z npm cache is not found
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7906768Z ##[group]Run node --input-type=module <<'NODE'
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7907136Z ^[[36;1mnode --input-type=module <<'NODE'^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7907452Z ^[[36;1mfor (const name of ["DATABASE_URL", "DIRECT_URL"]) {^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7907723Z ^[[36;1m  try {^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7907954Z ^[[36;1m    const url = new URL(process.env[name]);^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7908304Z ^[[36;1m    if (!["postgres:", "postgresql:"].includes(url.protocol)) throw new Error();^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7908733Z ^[[36;1m    for (const password of [url.password, decodeURIComponent(url.password)]) {^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7909118Z ^[[36;1m      if (password) console.log(`::add-mask::${password}`);^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7909381Z ^[[36;1m    }^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7909557Z ^[[36;1m  } catch {^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7909818Z ^[[36;1m    console.error(`Variavel de teste ausente ou invalida: ${name}`);^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7910115Z ^[[36;1m    process.exit(1);^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7910342Z ^[[36;1m  }^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7910510Z ^[[36;1m}^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.7910668Z ^[[36;1mNODE^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8126230Z shell: /usr/bin/bash -e {0}
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8126476Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8126666Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8127453Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8128187Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8128357Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8128556Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8128802Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8128981Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8506060Z ##[group]Run jwt_secret="$(openssl rand -hex 32)"
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8506385Z ^[[36;1mjwt_secret="$(openssl rand -hex 32)"^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8506650Z ^[[36;1mecho "::add-mask::$jwt_secret"^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8506929Z ^[[36;1mprintf 'JWT_SECRET=%s\n' "$jwt_secret" >> "$GITHUB_ENV"^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8566506Z shell: /usr/bin/bash -e {0}
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8566718Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8566882Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8567593Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8568143Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8568330Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8568531Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8568774Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8568958Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8706737Z ##[group]Run npm ci
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8706955Z ^[[36;1mnpm ci^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8762735Z shell: /usr/bin/bash -e {0}
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8762952Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8763131Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8763852Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8764427Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8764611Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8764810Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8765057Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8765360Z   JWT_SECRET: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:34.8765535Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:44.2691617Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:44.2698111Z added 437 packages, and audited 438 packages in 9s
+backend	UNKNOWN STEP	2026-10-25T22:18:44.2698371Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:44.2698527Z 97 packages are looking for funding
+backend	UNKNOWN STEP	2026-10-25T22:18:44.2698887Z   run `npm fund` for details
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3809359Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3810334Z 12 vulnerabilities (3 moderate, 8 high, 1 critical)
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3810692Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3811131Z To address issues that do not require attention, run:
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3811571Z   npm audit fix
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3811887Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3812044Z To address all issues, run:
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3812374Z   npm audit fix --force
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3812564Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:44.3812722Z Run `npm audit` for details.
+backend	UNKNOWN STEP	2026-10-25T22:18:45.6954514Z ##[group]Run npx prisma generate
+backend	UNKNOWN STEP	2026-10-25T22:18:45.6954917Z ^[[36;1mnpx prisma generate^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7012284Z shell: /usr/bin/bash -e {0}
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7012508Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7012687Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7013622Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7014208Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7014391Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7014601Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7014838Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7015148Z   JWT_SECRET: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:45.7015330Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:46.7287890Z Loaded Prisma config from prisma.config.ts.
+backend	UNKNOWN STEP	2026-10-25T22:18:46.7288441Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:46.8011802Z Prisma schema loaded from prisma/schema.prisma.
+backend	UNKNOWN STEP	2026-10-25T22:18:46.9718249Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:46.9719546Z ✔ Generated Prisma Client (7.10.0) to ./src/generated/prisma in 112ms
+backend	UNKNOWN STEP	2026-10-25T22:18:46.9719982Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0063354Z ##[group]Run npx prisma migrate deploy
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0063678Z ^[[36;1mnpx prisma migrate deploy^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0124119Z shell: /usr/bin/bash -e {0}
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0124348Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0124534Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0125330Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0125889Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0126094Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0126306Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0126547Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0126854Z   JWT_SECRET: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:47.0127040Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:47.7973949Z Loaded Prisma config from prisma.config.ts.
+backend	UNKNOWN STEP	2026-10-25T22:18:47.7974613Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:47.8818761Z Prisma schema loaded from prisma/schema.prisma.
+backend	UNKNOWN STEP	2026-10-25T22:18:47.8847736Z Datasource "db": PostgreSQL database "neondb", schema "public" at "ep-crimson-boat-ac1c3kew.sa-east-1.aws.neon.tech"
+backend	UNKNOWN STEP	2026-10-25T22:18:50.3748083Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:50.3748974Z 10 migrations found in prisma/migrations
+backend	UNKNOWN STEP	2026-10-25T22:18:50.3749254Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9193371Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9204732Z ┌─────────────────────────────────────────────────────────┐
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9205425Z │  Update available 7.10.0 -> 8.0.0-rc.27                 │
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9205957Z │                                                         │
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9206492Z │  This is a major update - please follow the guide at    │
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9207085Z │  https://pris.ly/d/major-version-upgrade                │
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9207648Z │                                                         │
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9208196Z │  Run the following to update                            │
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9208794Z │    npm i --save-dev prisma@latest                       │
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9209435Z │    npm i @prisma/client@latest                          │
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9210038Z └─────────────────────────────────────────────────────────┘
+backend	UNKNOWN STEP	2026-10-25T22:18:52.9210836Z No pending migrations to apply.
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1756522Z ##[group]Run npm run lint
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1756910Z ^[[36;1mnpm run lint^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1812996Z shell: /usr/bin/bash -e {0}
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1813227Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1813406Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1814117Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1814662Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1814844Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1815049Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1815292Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1815591Z   JWT_SECRET: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:53.1815770Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:53.3709427Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:53.3709973Z > origem-backend@1.0.0 lint
+backend	UNKNOWN STEP	2026-10-25T22:18:53.3710265Z > eslint .
+backend	UNKNOWN STEP	2026-10-25T22:18:53.3710379Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0678384Z ##[group]Run npm run typecheck
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0678663Z ^[[36;1mnpm run typecheck^[[0m
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0734630Z shell: /usr/bin/bash -e {0}
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0734851Z env:
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0735032Z   NODE_ENV: test
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0735714Z   DATABASE_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0736263Z   DIRECT_URL: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0736446Z   HOST: 127.0.0.1
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0736652Z   FRONTEND_ORIGIN: http://localhost:3000
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0736888Z   COOKIE_SECURE: false
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0737185Z   JWT_SECRET: ***
+backend	UNKNOWN STEP	2026-10-25T22:18:56.0737362Z ##[endgroup]
+backend	UNKNOWN STEP	2026-10-25T22:18:56.1546380Z 
+backend	UNKNOWN STEP	2026-10-25T22:18:56.1546971Z > origem-backend@1.0.0 typecheck
+backend	UNKNOWN STEP	2026-10-25T22:18:56.1547278Z > tsc --noEmit
+backend	UNKNOWN STEP	2026-10-25T22:18:56.1547392Z 
+backend	UNKNOWN STEP	2026-10-25T22:19:00.6973036Z ##[error]scripts/web6-evidencias.ts(14,8): error TS2307: Cannot find module '../../frontend/node_modules/playwright-core/index.js' or its corresponding type declarations.
+backend	UNKNOWN STEP	2026-10-25T22:19:00.6982138Z ##[error]scripts/web6-evidencias.ts(142,63): error TS7006: Parameter 'route' implicitly has an 'any' type.
+backend	UNKNOWN STEP	2026-10-25T22:19:00.6983859Z ##[error]scripts/web6-evidencias.ts(227,6): error TS7006: Parameter 'r' implicitly has an 'any' type.
+backend	UNKNOWN STEP	2026-10-25T22:19:00.7378363Z ##[error]Process completed with exit code 2.
+backend	UNKNOWN STEP	2026-10-25T22:19:00.7489826Z Post job cleanup.
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8149160Z [command]/usr/bin/git version
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8193563Z git version 2.55.0
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8220598Z Temporarily overriding HOME='/home/runner/work/_temp/2d2c4803-2262-4398-b93c-10a94930b1da' before making global git config changes
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8221909Z Adding repository directory to the temporary git global config as a safe directory
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8224885Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Projeto-Integrador/Projeto-Integrador
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8262936Z Removing SSH command configuration
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8263795Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8304554Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8533706Z Removing HTTP extra header
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8539596Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8573850Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8783404Z Removing includeIf entries pointing to credentials config files
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8790072Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+backend	UNKNOWN STEP	2026-10-25T22:19:00.8825843Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+backend	UNKNOWN STEP	2026-10-25T22:19:00.9133406Z Cleaning up orphan processes

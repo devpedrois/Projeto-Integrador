@@ -1,0 +1,121 @@
+{
+  "aprovado": true,
+  "indicesInalterados": true,
+  "contagensInalteradas": true,
+  "auditoria": [
+    {
+      "cenario": "sem-filtro",
+      "aquecimentos": 5,
+      "medicoes": 30,
+      "p50Ms": 41.6001,
+      "p95Ms": 45.3705,
+      "maxMs": 46.1617,
+      "sqlMs": 1.53,
+      "scans": [
+        {
+          "tabela": "Produto",
+          "linhas": 1000,
+          "removidas": 0,
+          "tempoMs": 0.221
+        },
+        {
+          "tabela": "Usuario",
+          "linhas": 50,
+          "removidas": 300,
+          "tempoMs": 0.041
+        }
+      ]
+    },
+    {
+      "cenario": "termo",
+      "aquecimentos": 5,
+      "medicoes": 30,
+      "p50Ms": 41.3837,
+      "p95Ms": 44.601,
+      "maxMs": 44.9508,
+      "sqlMs": 1.205,
+      "scans": [
+        {
+          "tabela": "Produto",
+          "linhas": 33,
+          "removidas": 967,
+          "tempoMs": 0.648
+        },
+        {
+          "tabela": "Usuario",
+          "linhas": 50,
+          "removidas": 300,
+          "tempoMs": 0.04
+        }
+      ]
+    },
+    {
+      "cenario": "categoria",
+      "aquecimentos": 5,
+      "medicoes": 30,
+      "p50Ms": 40.7305,
+      "p95Ms": 49.1024,
+      "maxMs": 49.8937,
+      "sqlMs": 0.857,
+      "scans": [
+        {
+          "tabela": "Usuario",
+          "linhas": 50,
+          "removidas": 300,
+          "tempoMs": 0.042
+        }
+      ]
+    },
+    {
+      "cenario": "tecnica",
+      "aquecimentos": 5,
+      "medicoes": 30,
+      "p50Ms": 40.7233,
+      "p95Ms": 41.8832,
+      "maxMs": 42.3268,
+      "sqlMs": 0.959,
+      "scans": [
+        {
+          "tabela": "Usuario",
+          "linhas": 50,
+          "removidas": 300,
+          "tempoMs": 0.04
+        }
+      ]
+    },
+    {
+      "cenario": "regiao",
+      "aquecimentos": 5,
+      "medicoes": 30,
+      "p50Ms": 40.7243,
+      "p95Ms": 42.661,
+      "maxMs": 46.2356,
+      "sqlMs": 0.922,
+      "scans": [
+        {
+          "tabela": "Usuario",
+          "linhas": 50,
+          "removidas": 300,
+          "tempoMs": 0.048
+        }
+      ]
+    },
+    {
+      "cenario": "combinado",
+      "aquecimentos": 5,
+      "medicoes": 30,
+      "p50Ms": 40.5657,
+      "p95Ms": 42.3771,
+      "maxMs": 42.8713,
+      "sqlMs": 0.727,
+      "scans": [
+        {
+          "tabela": "Usuario",
+          "linhas": 50,
+          "removidas": 300,
+          "tempoMs": 0.047
+        }
+      ]
+    }
+  ]
+}

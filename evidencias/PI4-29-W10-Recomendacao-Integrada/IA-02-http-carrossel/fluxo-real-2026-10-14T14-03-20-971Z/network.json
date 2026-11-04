@@ -1,0 +1,177 @@
+[
+  {
+    "metodo": "GET",
+    "caminho": "/api/auth/me",
+    "status": 401
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/categorias",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/regioes",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/produtos",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/recomendacoes?produtoId=ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/produtos/ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/categorias",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/regioes",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/avaliacoes?produtoId=ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/recomendacoes?produtoId=ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/recomendacoes?produtoId=ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/auth/me",
+    "status": 401
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/produtos/17cfecaf-03ce-4e96-9993-72d64b8240e6",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/categorias",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/regioes",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/avaliacoes?produtoId=17cfecaf-03ce-4e96-9993-72d64b8240e6",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/recomendacoes?produtoId=17cfecaf-03ce-4e96-9993-72d64b8240e6",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/recomendacoes?produtoId=17cfecaf-03ce-4e96-9993-72d64b8240e6",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/auth/me",
+    "status": 401
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/categorias",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/regioes",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/produtos",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/recomendacoes?produtoId=ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 503
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/auth/me",
+    "status": 401
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/produtos/ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/categorias",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/tecnicas",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/regioes",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/avaliacoes?produtoId=ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 200
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/recomendacoes?produtoId=ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 503
+  },
+  {
+    "metodo": "GET",
+    "caminho": "/api/recomendacoes?produtoId=ed6d7020-d538-4260-b053-e49536b5c4d2",
+    "status": 503
+  }
+]

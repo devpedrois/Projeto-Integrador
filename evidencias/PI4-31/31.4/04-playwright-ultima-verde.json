@@ -1,0 +1,35 @@
+{
+  "origem": "evidencias\\PI4-31-W12-Testes-Executados\\31.3-e2e\\rodada-3\\a7a3261839664b3080cefa119bf039b9\\resultado.json",
+  "baseRegistrada": "3d77bb3 + alterações locais da 31.3",
+  "commitQueIncorporou": "5090add",
+  "stats": {
+    "startTime": "2026-10-25T21:38:43.435Z",
+    "duration": 40507.392,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "testes": [
+    {
+      "nome": "(a) cadastro ate Meus pedidos com numero confirmado",
+      "projeto": "360px",
+      "status": "passed"
+    },
+    {
+      "nome": "(b) artesao envia e comprador acompanha Enviado",
+      "projeto": "360px",
+      "status": "passed"
+    },
+    {
+      "nome": "(a) cadastro ate Meus pedidos com numero confirmado",
+      "projeto": "1280px",
+      "status": "passed"
+    },
+    {
+      "nome": "(b) artesao envia e comprador acompanha Enviado",
+      "projeto": "1280px",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "path": "evidencias/correcoes-integracao-producao/render-blob-token-oculto.jpg",
+    "sha256": "3cfa08d2feb3d7a5fe5dc77e4523b557aa65bac5a04f722a772fb8d4b07f772a",
+    "labelOnly": ["storage-credential"],
+    "reason": "Inspecao visual: somente o rotulo da variavel aparece. Todos os valores estao integralmente ocultos por pontos no painel. A imagem original foi preservada. Qualquer alteracao do arquivo invalida esta revisao."
+  }
+]

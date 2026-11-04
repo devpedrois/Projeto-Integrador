@@ -1,0 +1,44 @@
+{
+  "viewport": 768,
+  "pagina": 768,
+  "trilho": 720,
+  "conteudo": 742,
+  "display": "grid",
+  "autoColumns": "minmax(0px, 260px)",
+  "templateColumns": "76px 76px 76px 76px 76px 76px 76px 76px",
+  "autoFlow": "column",
+  "cards": [
+    {
+      "width": 76,
+      "height": 391.390625
+    },
+    {
+      "width": 76,
+      "height": 391.390625
+    },
+    {
+      "width": 76,
+      "height": 391.390625
+    },
+    {
+      "width": 76,
+      "height": 391.390625
+    },
+    {
+      "width": 76,
+      "height": 391.390625
+    },
+    {
+      "width": 76,
+      "height": 391.390625
+    },
+    {
+      "width": 76,
+      "height": 391.390625
+    },
+    {
+      "width": 76,
+      "height": 391.390625
+    }
+  ]
+}

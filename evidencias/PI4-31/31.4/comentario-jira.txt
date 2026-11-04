@@ -1,0 +1,25 @@
+31.4: matriz de aceitação da U2
+Responsável: Luiza. Revisor indicado: Pedro.
+
+Matriz com 37 cenários, cobrindo dezesseis histórias.
+Inclui todos os 27 Must e dez Should implementados.
+Totais: 35 aprovados, um parcial e um não implementado.
+Conferidas 60 referências de testes em 32 arquivos.
+
+Lacunas preservadas:
+US01.C1: redirecionamento direto após cadastro não implementado.
+US08.C3: medição visual da busca permanece parcial.
+
+As provas incluem resultados reais do CI e Playwright.
+CI integralmente verde: run 40232946842, commit 376c5f9.
+Frontend verde mais recente consultado: run 40239567812, commit 8e78cdc.
+Nesse segundo run, backend falhou no typecheck; testes foram pulados.
+Playwright: última rodada preservada com quatro aprovações, sem flaky.
+Execução E2E sobre base 3d77bb3 com alterações locais da 31.3.
+Essas alterações foram incorporadas posteriormente em 5090add.
+Resultados históricos consultados em 26/10/2026.
+Não houve nova execução nesta tarefa documental.
+
+Anexar PI4-31.4-evidencias-jira.zip.
+O pacote inclui matriz, inventário, grep, resultados e integridade.
+Nenhuma alteração de código, commit, push ou deploy.

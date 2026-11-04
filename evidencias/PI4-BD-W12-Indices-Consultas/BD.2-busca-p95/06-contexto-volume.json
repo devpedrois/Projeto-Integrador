@@ -1,0 +1,14 @@
+{
+  "variavel": "DATABASE_URL_VOLUME",
+  "capturadoEm": "2026-10-22T22:06:26.641Z",
+  "somenteLeitura": true,
+  "counts": {
+    "produtos": 1000,
+    "usuarios": 350,
+    "perfis": 50,
+    "pedidos": 1500,
+    "itenspedido": 1550,
+    "fotos": 0,
+    "avaliacoes": 0
+  }
+}

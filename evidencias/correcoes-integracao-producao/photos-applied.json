@@ -1,0 +1,68 @@
+{
+  "fotosCorrigidas": 10,
+  "apenasURLsAlteradas": true,
+  "tabelasConferidas": 15,
+  "nenhumSeedExecutado": true,
+  "alteracoes": [
+    {
+      "id": "e0000000-0000-4000-8000-000000000001",
+      "produtoId": "b0000000-0000-4000-8000-000000000001",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000001.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/ceramica-barro.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000002",
+      "produtoId": "b0000000-0000-4000-8000-000000000001",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000002.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/ceramica-barro.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000003",
+      "produtoId": "b0000000-0000-4000-8000-000000000002",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000003.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/ceramica-barro.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000004",
+      "produtoId": "b0000000-0000-4000-8000-000000000003",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000004.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/renda-bordado.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000005",
+      "produtoId": "b0000000-0000-4000-8000-000000000004",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000005.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/renda-bordado.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000006",
+      "produtoId": "b0000000-0000-4000-8000-000000000005",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000006.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/madeira-entalhada.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000007",
+      "produtoId": "b0000000-0000-4000-8000-000000000006",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000007.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/textil-costura.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000008",
+      "produtoId": "b0000000-0000-4000-8000-000000000007",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000008.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/bijuteria-acessorios.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000009",
+      "produtoId": "b0000000-0000-4000-8000-000000000008",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000009.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/arte-reciclada.svg"
+    },
+    {
+      "id": "e0000000-0000-4000-8000-000000000010",
+      "produtoId": "b0000000-0000-4000-8000-000000000009",
+      "urlAnterior": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000010.jpg",
+      "urlNova": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/arte-reciclada.svg"
+    }
+  ]
+}

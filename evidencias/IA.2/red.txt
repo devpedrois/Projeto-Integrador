@@ -1,0 +1,596 @@
+
+> origem-frontend@1.0.0 test
+> vitest run tests/components/produto/detalhe-produto.test.tsx tests/components/faixa-recomendacoes.test.tsx tests/hooks/use-recomendacoes.test.tsx
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/components/faixa-recomendacoes.test.tsx (6 tests) 117ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (7 tests) 284ms
+ ❯ tests/components/produto/detalhe-produto.test.tsx (23 tests | 6 failed) 1454ms
+   × DetalheProduto > mostra erro de recomendacao sem ocultar o detalhe 20ms
+     → Unable to find an accessible element with the role "button" and name `/tentar novamente/i`
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Peças relacionadas":
+  [36m<h2[39m
+    [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+  [36m/>[39m
+
+  --------------------------------------------------alert:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"flex items-start gap-2 rounded-md border border-erro-500/30 bg-erro-50 px-4 py-3 text-body-sm text-erro-700"[39m
+    [33mrole[39m=[32m"alert"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<section[39m
+  [33maria-label[39m=[32m"Peças relacionadas"[39m
+  [33mclass[39m=[32m"mt-16 flex min-w-0 flex-col gap-4"[39m
+[36m>[39m
+  [36m<h2[39m
+    [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+  [36m>[39m
+    [0mPeças relacionadas[0m
+  [36m</h2>[39m
+  [36m<p[39m
+    [33mclass[39m=[32m"flex items-start gap-2 rounded-md border border-erro-500/30 bg-erro-50 px-4 py-3 text-body-sm text-erro-700"[39m
+    [33mrole[39m=[32m"alert"[39m
+  [36m>[39m
+    [36m<svg[39m
+      [33maria-hidden[39m=[32m"true"[39m
+      [33mclass[39m=[32m"mt-0.5 flex-none"[39m
+      [33mfill[39m=[32m"none"[39m
+      [33mfocusable[39m=[32m"false"[39m
+      [33mheight[39m=[32m"18"[39m
+      [33mstroke[39m=[32m"currentColor"[39m
+      [33mstroke-linecap[39m=[32m"round"[39m
+      [33mstroke-linejoin[39m=[32m"round"[39m
+      [33mstroke-width[39m=[32m"2"[39m
+      [33mviewBox[39m=[32m"0 0 24 24"[39m
+      [33mwidth[39m=[32m"18"[39m
+    [36m>[39m
+      [36m<circle[39m
+        [33mcx[39m=[32m"12"[39m
+        [33mcy[39m=[32m"12"[39m
+        [33mr[39m=[32m"10"[39m
+      [36m/>[39m
+      [36m<path[39m
+        [33md[39m=[32m"M12 8v4M12 16h.01"[39m
+      [36m/>[39m
+    [36m</svg>[39m
+    [0mNão foi possível carregar as recomendações agora.[0m
+  [36m</p>[39m
+[36m</section>[39m
+   × DetalheProduto > limita as pecas relacionadas aos primeiros oito itens da API 25ms
+     → expected [ <li …(1)>…(3)</li>, …(11) ] to have a length of 8 but got 12
+   × DetalheProduto > exclui o produto atual na posicao 0 antes de limitar os relacionados 24ms
+     → expected [ <li …(1)>…(3)</li>, …(10) ] to have a length of 8 but got 11
+   × DetalheProduto > exclui o produto atual na posicao 4 antes de limitar os relacionados 26ms
+     → expected [ <li …(1)>…(3)</li>, …(10) ] to have a length of 8 but got 11
+   × DetalheProduto > exclui o produto atual na posicao 10 antes de limitar os relacionados 23ms
+     → expected [ <li …(1)>…(3)</li>, …(10) ] to have a length of 8 but got 11
+   × DetalheProduto > mostra vazio com 'API apenas com o produto atual' 1016ms
+     → Unable to find an element with the text: /nenhuma recomendação disponível/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<section[39m
+  [33maria-label[39m=[32m"Peças relacionadas"[39m
+  [33mclass[39m=[32m"mt-16 flex min-w-0 flex-col gap-4"[39m
+[36m>[39m
+  [36m<h2[39m
+    [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+  [36m>[39m
+    [0mPeças relacionadas[0m
+  [36m</h2>[39m
+  [36m<ul[39m
+    [33maria-label[39m=[32m"Peças relacionadas"[39m
+    [33mclass[39m=[32m"grid w-full min-w-0 auto-cols-[260px] grid-flow-col snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pt-1 pb-3 [&>li]:snap-start"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m>[39m
+    [36m<li[39m
+      [33mclass[39m=[32m"group flex min-w-0 flex-col gap-3 rounded-card border border-border-subtle bg-surface-card p-3 shadow-card transition-shadow duration-[var(--dur-base)] ease-out hover:shadow-card-hover"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33maria-hidden[39m=[32m"true"[39m
+        [33mclass[39m=[32m"block aspect-[4/5] overflow-hidden rounded-media bg-linho-100"[39m
+        [33mhref[39m=[32m"/produto/produto-1"[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m""[39m
+          [33mclass[39m=[32m"size-full object-cover transition-transform duration-[var(--dur-slow)] ease-out group-hover:scale-[1.035] motion-reduce:transition-none motion-reduce:group-hover:scale-100"[39m
+          [33msrc[39m=[32m"/produtos/renda-bordado.svg"[39m
+        [36m/>[39m
+      [36m</a>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-1 flex-col gap-1 px-0.5"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"block text-base leading-[1.3] font-semibold text-pretty text-fg-strong no-underline hover:text-fg-strong hover:underline"[39m
+          [33mhref[39m=[32m"/produto/produto-1"[39m
+        [36m>[39m
+          [0mToalha de Renda[0m
+        [36m</a>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"text-body-sm text-fg-muted"[39m
+        [36m>[39m
+          [0mpor[0m
+          [0m [0m
+          [36m<a[39m
+            [33mclass[39m=[32m"text-fg-body underline decoration-border-strong hover:text-fg-link-hover"[39m
+            [33mhref[39m=[32m"/artesao/artesao-1"[39m
+          [36m>[39m
+            [0mMaria das Rendas[0m
+          [36m</a>[39m
+        [36m</span>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"mt-1.5 block text-price font-bold tracking-tight text-fg-strong tabular-nums"[39m
+        [36m>[39m
+          [0mR$ 59,90[0m
+        [36m</span>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex min-h-[var(--control-h-sm)] w-full items-center justify-center gap-1.5 rounded-control border border-border-strong bg-surface-card px-2 py-1.5 text-center text-[13px] leading-tight font-semibold text-balance text-fg-strong sm:gap-2 sm:px-3.5 sm:text-sm transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover active:translate-y-px"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33maria-hidden[39m=[32m"true"[39m
+          [33mclass[39m=[32m"flex-none"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mfocusable[39m=[32m"false"[39m
+          [33mheight[39m=[32m"16"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"16"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M3 6h18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M16 10a4 4 0 0 1-8 0"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+        [0mAdicionar ao carrinho[0m
+      [36m</button>[39m
+    [36m</li>[39m
+  [36m</ul>[39m
+[36m</section>[39m
+
+Ignored nodes: comments, script, style
+[36m<section[39m
+  [33maria-label[39m=[32m"Peças relacionadas"[39m
+  [33mclass[39m=[32m"mt-16 flex min-w-0 flex-col gap-4"[39m
+[36m>[39m
+  [36m<h2[39m
+    [33mclass[39m=[32m"m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"[39m
+  [36m>[39m
+    [0mPeças relacionadas[0m
+  [36m</h2>[39m
+  [36m<ul[39m
+    [33maria-label[39m=[32m"Peças relacionadas"[39m
+    [33mclass[39m=[32m"grid w-full min-w-0 auto-cols-[260px] grid-flow-col snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pt-1 pb-3 [&>li]:snap-start"[39m
+    [33mtabindex[39m=[32m"0"[39m
+  [36m>[39m
+    [36m<li[39m
+      [33mclass[39m=[32m"group flex min-w-0 flex-col gap-3 rounded-card border border-border-subtle bg-surface-card p-3 shadow-card transition-shadow duration-[var(--dur-base)] ease-out hover:shadow-card-hover"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33maria-hidden[39m=[32m"true"[39m
+        [33mclass[39m=[32m"block aspect-[4/5] overflow-hidden rounded-media bg-linho-100"[39m
+        [33mhref[39m=[32m"/produto/produto-1"[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m""[39m
+          [33mclass[39m=[32m"size-full object-cover transition-transform duration-[var(--dur-slow)] ease-out group-hover:scale-[1.035] motion-reduce:transition-none motion-reduce:group-hover:scale-100"[39m
+          [33msrc[39m=[32m"/produtos/renda-bordado.svg"[39m
+        [36m/>[39m
+      [36m</a>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-1 flex-col gap-1 px-0.5"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"block text-base leading-[1.3] font-semibold text-pretty text-fg-strong no-underline hover:text-fg-strong hover:underline"[39m
+          [33mhref[39m=[32m"/produto/produto-1"[39m
+        [36m>[39m
+          [0mToalha de Renda[0m
+        [36m</a>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"text-body-sm text-fg-muted"[39m
+        [36m>[39m
+          [0mpor[0m
+          [0m [0m
+          [36m<a[39m
+            [33mclass[39m=[32m"text-fg-body underline decoration-border-strong hover:text-fg-link-hover"[39m
+            [33mhref[39m=[32m"/artesao/artesao-1"[39m
+          [36m>[39m
+            [0mMaria das Rendas[0m
+          [36m</a>[39m
+        [36m</span>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"mt-1.5 block text-price font-bold tracking-tight text-fg-strong tabular-nums"[39m
+        [36m>[39m
+          [0mR$ 59,90[0m
+        [36m</span>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex min-h-[var(--control-h-sm)] w-full items-center justify-center gap-1.5 rounded-control border border-border-strong bg-surface-card px-2 py-1.5 text-center text-[13px] leading-tight font-semibold text-balance text-fg-strong sm:gap-2 sm:px-3.5 sm:text-sm transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover active:translate-y-px"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [36m<svg[39m
+          [33maria-hidden[39m=[32m"true"[39m
+          [33mclass[39m=[32m"flex-none"[39m
+          [33mfill[39m=[32m"none"[39m
+          [33mfocusable[39m=[32m"false"[39m
+          [33mheight[39m=[32m"16"[39m
+          [33mstroke[39m=[32m"currentColor"[39m
+          [33mstroke-linecap[39m=[32m"round"[39m
+          [33mstroke-linejoin[39m=[32m"round"[39m
+          [33mstroke-width[39m=[32m"2"[39m
+          [33mviewBox[39m=[32m"0 0 24 24"[39m
+          [33mwidth[39m=[32m"16"[39m
+        [36m>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M3 6h18"[39m
+          [36m/>[39m
+          [36m<path[39m
+            [33md[39m=[32m"M16 10a4 4 0 0 1-8 0"[39m
+          [36m/>[39m
+        [36m</svg>[39m
+        [0mAdicionar ao carrinho[0m
+      [36m</button>[39m
+    [36m</li>[39m
+  [36m</ul>[39m
+[36m</section>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/components/produto/detalhe-produto.test.tsx > DetalheProduto > mostra erro de recomendacao sem ocultar o detalhe
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/tentar novamente/i`
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Peças relacionadas":
+  <h2
+    class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+  />
+
+  --------------------------------------------------alert:
+
+  Name "":
+  <p
+    class="flex items-start gap-2 rounded-md border border-erro-500/30 bg-erro-50 px-4 py-3 text-body-sm text-erro-700"
+    role="alert"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<section
+  aria-label="Peças relacionadas"
+  class="mt-16 flex min-w-0 flex-col gap-4"
+>
+  <h2
+    class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+  >
+    Peças relacionadas
+  </h2>
+  <p
+    class="flex items-start gap-2 rounded-md border border-erro-500/30 bg-erro-50 px-4 py-3 text-body-sm text-erro-700"
+    role="alert"
+  >
+    <svg
+      aria-hidden="true"
+      class="mt-0.5 flex-none"
+      fill="none"
+      focusable="false"
+      height="18"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="18"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+      />
+      <path
+        d="M12 8v4M12 16h.01"
+      />
+    </svg>
+    Não foi possível carregar as recomendações agora.
+  </p>
+</section>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ tests/components/produto/detalhe-produto.test.tsx:276:22
+    274| 
+    275|     await userEvent.setup().click(
+    276|       within(regiao).getByRole("button", { name: /tentar novamente/i }…
+       |                      ^
+    277|     );
+    278|     expect(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/components/produto/detalhe-produto.test.tsx > DetalheProduto > limita as pecas relacionadas aos primeiros oito itens da API
+AssertionError: expected [ <li …(1)>…(3)</li>, …(11) ] to have a length of 8 but got 12
+
+- Expected
++ Received
+
+- 8
++ 12
+
+ ❯ tests/components/produto/detalhe-produto.test.tsx:300:52
+    298|     });
+    299|     const lista = await within(regiao).findByRole("list");
+    300|     expect(within(lista).getAllByRole("listitem")).toHaveLength(8);
+       |                                                    ^
+    301|     expect(
+    302|       within(lista).getAllByRole("link", { name: /^Peça / }).map((link…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/components/produto/detalhe-produto.test.tsx > DetalheProduto > exclui o produto atual na posicao 0 antes de limitar os relacionados
+ FAIL  tests/components/produto/detalhe-produto.test.tsx > DetalheProduto > exclui o produto atual na posicao 4 antes de limitar os relacionados
+AssertionError: expected [ <li …(1)>…(3)</li>, …(10) ] to have a length of 8 but got 11
+
+- Expected
++ Received
+
+- 8
++ 11
+
+ ❯ tests/components/produto/detalhe-produto.test.tsx:327:54
+    325|       });
+    326|       const lista = await within(regiao).findByRole("list");
+    327|       expect(within(lista).getAllByRole("listitem")).toHaveLength(8);
+       |                                                      ^
+    328|       expect(
+    329|         within(regiao).queryByRole("link", { name: "Toalha de Renda" }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/components/produto/detalhe-produto.test.tsx > DetalheProduto > exclui o produto atual na posicao 10 antes de limitar os relacionados
+AssertionError: expected [ <li …(1)>…(3)</li>, …(10) ] to have a length of 8 but got 11
+
+- Expected
++ Received
+
+- 8
++ 11
+
+ ❯ tests/components/produto/detalhe-produto.test.tsx:327:54
+    325|       });
+    326|       const lista = await within(regiao).findByRole("list");
+    327|       expect(within(lista).getAllByRole("listitem")).toHaveLength(8);
+       |                                                      ^
+    328|       expect(
+    329|         within(regiao).queryByRole("link", { name: "Toalha de Renda" }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/components/produto/detalhe-produto.test.tsx > DetalheProduto > mostra vazio com 'API apenas com o produto atual'
+TestingLibraryElementError: Unable to find an element with the text: /nenhuma recomendação disponível/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<section
+  aria-label="Peças relacionadas"
+  class="mt-16 flex min-w-0 flex-col gap-4"
+>
+  <h2
+    class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+  >
+    Peças relacionadas
+  </h2>
+  <ul
+    aria-label="Peças relacionadas"
+    class="grid w-full min-w-0 auto-cols-[260px] grid-flow-col snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pt-1 pb-3 [&>li]:snap-start"
+    tabindex="0"
+  >
+    <li
+      class="group flex min-w-0 flex-col gap-3 rounded-card border border-border-subtle bg-surface-card p-3 shadow-card transition-shadow duration-[var(--dur-base)] ease-out hover:shadow-card-hover"
+    >
+      <a
+        aria-hidden="true"
+        class="block aspect-[4/5] overflow-hidden rounded-media bg-linho-100"
+        href="/produto/produto-1"
+        tabindex="-1"
+      >
+        <img
+          alt=""
+          class="size-full object-cover transition-transform duration-[var(--dur-slow)] ease-out group-hover:scale-[1.035] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+          src="/produtos/renda-bordado.svg"
+        />
+      </a>
+      <div
+        class="flex flex-1 flex-col gap-1 px-0.5"
+      >
+        <a
+          class="block text-base leading-[1.3] font-semibold text-pretty text-fg-strong no-underline hover:text-fg-strong hover:underline"
+          href="/produto/produto-1"
+        >
+          Toalha de Renda
+        </a>
+        <span
+          class="text-body-sm text-fg-muted"
+        >
+          por
+           
+          <a
+            class="text-fg-body underline decoration-border-strong hover:text-fg-link-hover"
+            href="/artesao/artesao-1"
+          >
+            Maria das Rendas
+          </a>
+        </span>
+        <span
+          class="mt-1.5 block text-price font-bold tracking-tight text-fg-strong tabular-nums"
+        >
+          R$ 59,90
+        </span>
+      </div>
+      <button
+        class="inline-flex min-h-[var(--control-h-sm)] w-full items-center justify-center gap-1.5 rounded-control border border-border-strong bg-surface-card px-2 py-1.5 text-center text-[13px] leading-tight font-semibold text-balance text-fg-strong sm:gap-2 sm:px-3.5 sm:text-sm transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover active:translate-y-px"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="flex-none"
+          fill="none"
+          focusable="false"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="16"
+        >
+          <path
+            d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
+          />
+          <path
+            d="M3 6h18"
+          />
+          <path
+            d="M16 10a4 4 0 0 1-8 0"
+          />
+        </svg>
+        Adicionar ao carrinho
+      </button>
+    </li>
+  </ul>
+</section>
+
+Ignored nodes: comments, script, style
+<section
+  aria-label="Peças relacionadas"
+  class="mt-16 flex min-w-0 flex-col gap-4"
+>
+  <h2
+    class="m-0 font-display text-[24px] leading-[1.2] font-semibold tracking-display text-fg-strong sm:text-[30px]"
+  >
+    Peças relacionadas
+  </h2>
+  <ul
+    aria-label="Peças relacionadas"
+    class="grid w-full min-w-0 auto-cols-[260px] grid-flow-col snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pt-1 pb-3 [&>li]:snap-start"
+    tabindex="0"
+  >
+    <li
+      class="group flex min-w-0 flex-col gap-3 rounded-card border border-border-subtle bg-surface-card p-3 shadow-card transition-shadow duration-[var(--dur-base)] ease-out hover:shadow-card-hover"
+    >
+      <a
+        aria-hidden="true"
+        class="block aspect-[4/5] overflow-hidden rounded-media bg-linho-100"
+        href="/produto/produto-1"
+        tabindex="-1"
+      >
+        <img
+          alt=""
+          class="size-full object-cover transition-transform duration-[var(--dur-slow)] ease-out group-hover:scale-[1.035] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+          src="/produtos/renda-bordado.svg"
+        />
+      </a>
+      <div
+        class="flex flex-1 flex-col gap-1 px-0.5"
+      >
+        <a
+          class="block text-base leading-[1.3] font-semibold text-pretty text-fg-strong no-underline hover:text-fg-strong hover:underline"
+          href="/produto/produto-1"
+        >
+          Toalha de Renda
+        </a>
+        <span
+          class="text-body-sm text-fg-muted"
+        >
+          por
+           
+          <a
+            class="text-fg-body underline decoration-border-strong hover:text-fg-link-hover"
+            href="/artesao/artesao-1"
+          >
+            Maria das Rendas
+          </a>
+        </span>
+        <span
+          class="mt-1.5 block text-price font-bold tracking-tight text-fg-strong tabular-nums"
+        >
+          R$ 59,90
+        </span>
+      </div>
+      <button
+        class="inline-flex min-h-[var(--control-h-sm)] w-full items-center justify-center gap-1.5 rounded-control border border-border-strong bg-surface-card px-2 py-1.5 text-center text-[13px] leading-tight font-semibold text-balance text-fg-strong sm:gap-2 sm:px-3.5 sm:text-sm transition-colors duration-[var(--dur-fast)] ease-out hover:bg-action-secondary-hover active:translate-y-px"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="flex-none"
+          fill="none"
+          focusable="false"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="16"
+        >
+          <path
+            d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
+          />
+          <path
+            d="M3 6h18"
+          />
+          <path
+            d="M16 10a4 4 0 0 1-8 0"
+          />
+        </svg>
+        Adicionar ao carrinho
+      </button>
+    </li>
+  </ul>
+</section>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/components/produto/detalhe-produto.test.tsx:370:28
+    368|     });
+    369|     expect(
+    370|       await within(regiao).findByText(/nenhuma recomendação disponível…
+       |                            ^
+    371|     ).toBeInTheDocument();
+    372|     expect(within(regiao).queryByRole("list")).not.toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  6 failed | 30 passed (36)
+   Start at  16:14:09
+   Duration  3.58s (transform 157ms, setup 555ms, collect 724ms, tests 1.86s, environment 3.34s, prepare 315ms)
+

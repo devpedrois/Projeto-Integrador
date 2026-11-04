@@ -1,0 +1,37 @@
+{
+  "email": "qa-fix-20261102-61a725be@origem.test",
+  "usuarioId": "80e0efe7-aed1-4742-a81f-9cf4b33aa113",
+  "events": [
+    {
+      "metodo": "GET",
+      "rota": "/health",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/register",
+      "status": 201
+    },
+    {
+      "metodo": "POST",
+      "rota": "/artesao/perfil/foto",
+      "status": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/usuarios/80e0efe7-aed1-4742-a81f-9cf4b33aa113/perfil-artesao",
+      "status": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/logout",
+      "status": 204
+    }
+  ],
+  "statusUpload": 200,
+  "codigoErro": null,
+  "fotoUrl": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/perfis/80e0efe7-aed1-4742-a81f-9cf4b33aa113/d2be3651-358a-415f-9ff7-f8e5219a32a1.png",
+  "imagemPublica": 200,
+  "perfilPersistido": true,
+  "logout": 204
+}

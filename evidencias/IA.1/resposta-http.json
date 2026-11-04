@@ -1,0 +1,163 @@
+{
+  "estrategia": "fallback-geral",
+  "itens": [
+    {
+      "id": "b0000000-0000-4000-8000-000000000001",
+      "nome": "Vaso de Barro Trancoso",
+      "descricao": "Vaso torneado a mao com barro da regiao do Pilar.",
+      "preco": 89.9,
+      "categoriaId": "c0000000-0000-4000-8000-000000000001",
+      "tecnicaId": "tecnica-torno-ceramico",
+      "regiaoId": "regiao-pilar-recife",
+      "artesaoId": "a0000000-0000-4000-8000-000000000002",
+      "fotos": [
+        {
+          "url": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000001.jpg",
+          "ordem": 0
+        },
+        {
+          "url": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000002.jpg",
+          "ordem": 1
+        }
+      ],
+      "quantidadeEstoque": 12,
+      "quantidadeVendida": 5,
+      "notaMedia": 4,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-09-15T16:08:08.471Z"
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000007",
+      "nome": "Brinco de Semente Regional",
+      "descricao": "Brinco artesanal com sementes nativas de Pernambuco.",
+      "preco": 39.9,
+      "categoriaId": "c0000000-0000-4000-8000-000000000005",
+      "tecnicaId": "tecnica-bijuteria-sementes",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "a0000000-0000-4000-8000-000000000003",
+      "fotos": [
+        {
+          "url": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000008.jpg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 15,
+      "quantidadeVendida": 4,
+      "notaMedia": 4,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-09-15T16:08:10.068Z"
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000006",
+      "nome": "Camisa Autoral Origem",
+      "descricao": "Camisa de algodao com estampa autoral pernambucana.",
+      "preco": 129.9,
+      "categoriaId": "c0000000-0000-4000-8000-000000000004",
+      "tecnicaId": "tecnica-costura-autoral",
+      "regiaoId": "regiao-pilar-recife",
+      "artesaoId": "a0000000-0000-4000-8000-000000000002",
+      "fotos": [
+        {
+          "url": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000007.jpg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 10,
+      "quantidadeVendida": 0,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-09-15T16:08:09.803Z"
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000005",
+      "nome": "Fruteira Entalhada",
+      "descricao": "Fruteira em madeira de reflorestamento, entalhe manual.",
+      "preco": 219.9,
+      "categoriaId": "c0000000-0000-4000-8000-000000000003",
+      "tecnicaId": "tecnica-entalhe-madeira",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "a0000000-0000-4000-8000-000000000003",
+      "fotos": [
+        {
+          "url": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000006.jpg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 6,
+      "quantidadeVendida": 0,
+      "notaMedia": 5,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-09-15T16:08:09.537Z"
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000003",
+      "nome": "Toalha de Renda File",
+      "descricao": "Toalha de mesa em renda file artesanal.",
+      "preco": 149.9,
+      "categoriaId": "c0000000-0000-4000-8000-000000000002",
+      "tecnicaId": "tecnica-renda-irlandesa",
+      "regiaoId": "regiao-alto-moura-caruaru",
+      "artesaoId": "a0000000-0000-4000-8000-000000000003",
+      "fotos": [
+        {
+          "url": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000004.jpg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 8,
+      "quantidadeVendida": 1,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-09-15T16:08:09.004Z"
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000002",
+      "nome": "Jarra de Barro Fosca",
+      "descricao": "Jarra de acabamento fosco, sem vendas ate o momento.",
+      "preco": 64.5,
+      "categoriaId": "c0000000-0000-4000-8000-000000000001",
+      "tecnicaId": "tecnica-modelagem-argila",
+      "regiaoId": "regiao-pilar-recife",
+      "artesaoId": "a0000000-0000-4000-8000-000000000002",
+      "fotos": [
+        {
+          "url": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000003.jpg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 5,
+      "quantidadeVendida": 0,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-09-15T16:08:08.737Z"
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000008",
+      "nome": "Luminaria PET Reciclada",
+      "descricao": "Luminaria feita com garrafas PET recicladas, sem vendas ate o momento.",
+      "preco": 74.9,
+      "categoriaId": "c0000000-0000-4000-8000-000000000006",
+      "tecnicaId": "tecnica-tecelagem-manual",
+      "regiaoId": "regiao-pilar-recife",
+      "artesaoId": "a0000000-0000-4000-8000-000000000002",
+      "fotos": [
+        {
+          "url": "https://cdn.origem.test/seed/e0000000-0000-4000-8000-000000000009.jpg",
+          "ordem": 0
+        }
+      ],
+      "quantidadeEstoque": 7,
+      "quantidadeVendida": 0,
+      "notaMedia": 0,
+      "ativo": true,
+      "desativadoPorAdmin": false,
+      "criadoEm": "2026-09-15T16:08:10.333Z"
+    }
+  ]
+}

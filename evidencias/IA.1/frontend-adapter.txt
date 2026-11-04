@@ -1,0 +1,16 @@
+
+> origem-frontend@1.0.0 test
+> vitest run tests/services/http/recomendacoes.adapter.test.ts tests/services/container-http.test.ts
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/services/container-http.test.ts (5 tests) 573ms
+   ✓ HTTP nao possui pendencias depois de WEB-12 320ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts (24 tests) 1569ms
+
+ Test Files  2 passed (2)
+      Tests  29 passed (29)
+   Start at  19:19:31
+   Duration  3.39s (transform 279ms, setup 397ms, collect 140ms, tests 2.14s, environment 2.15s, prepare 364ms)
+

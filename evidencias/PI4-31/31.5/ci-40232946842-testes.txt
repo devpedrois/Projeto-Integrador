@@ -1,0 +1,20 @@
+frontend	UNKNOWN STEP	2026-10-25T20:54:49.9609165Z  ^[[32m✓^[[39m tests/components/produto/detalhe-produto.test.tsx ^[[2m(^[[22m^[[2m23 tests^[[22m^[[2m)^[[22m^[[33m 887^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-25T20:54:56.6948582Z  ^[[32m✓^[[39m tests/services/http/recomendacoes.adapter.test.ts ^[[2m(^[[22m^[[2m24 tests^[[22m^[[2m)^[[22m^[[33m 475^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-25T20:54:57.2226482Z  ^[[32m✓^[[39m tests/services/fake-recommendation.adapter.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[90m 6^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-25T20:55:02.2058141Z  ^[[32m✓^[[39m tests/services/container-http.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[90m 149^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-25T20:55:06.5142074Z  ^[[32m✓^[[39m tests/hooks/use-recomendacoes.test.tsx ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[90m 253^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-25T20:55:07.9866020Z  ^[[32m✓^[[39m tests/components/faixa-recomendacoes.test.tsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[90m 114^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-25T20:55:16.7145351Z  ^[[32m✓^[[39m tests/services/recomendacao-contrato.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[90m 1^[[2mms^[[22m^[[39m
+frontend	UNKNOWN STEP	2026-10-25T20:55:19.6836909Z ^[[2m Test Files ^[[22m ^[[1m^[[32m100 passed^[[39m^[[22m^[[90m (100)^[[39m
+backend	UNKNOWN STEP	2026-10-25T20:58:31.5652458Z  ^[[32m✓^[[39m tests/integration/worker-process.integration.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[33m 49639^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T20:59:26.8700359Z  ^[[32m✓^[[39m tests/integration/recomendacoes-contrato.integration.test.ts ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[33m 54246^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:00:33.1819132Z  ^[[32m✓^[[39m tests/integration/fila-notificacao.integration.test.ts ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[33m 36860^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:01:29.2479568Z  ^[[32m✓^[[39m tests/integration/recomendacao.strategy.integration.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[33m 15289^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:04:31.8992186Z  ^[[32m✓^[[39m tests/integration/recomendacao-fallback.strategy.integration.test.ts ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 11313^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:06:57.5855209Z  ^[[32m✓^[[39m tests/integration/indicadores.route.integration.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[33m 10168^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:07:32.6545558Z  ^[[32m✓^[[39m tests/integration/recomendacao-reforco-regional.strategy.integration.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 8755^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:08:30.0502182Z  ^[[32m✓^[[39m tests/integration/notificacao-auto-publish.integration.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[33m 13433^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:10:24.0281012Z  ^[[32m✓^[[39m tests/integration/server-queue-bootstrap.integration.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[33m 11816^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:11:23.9710365Z  ^[[32m✓^[[39m tests/unit/server.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[33m 8336^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:12:48.2593688Z  ^[[32m✓^[[39m tests/unit/worker.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[33m 1324^[[2mms^[[22m^[[39m
+backend	UNKNOWN STEP	2026-10-25T21:12:58.1854019Z ^[[2m Test Files ^[[22m ^[[1m^[[32m65 passed^[[39m^[[22m^[[90m (65)^[[39m

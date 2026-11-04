@@ -1,0 +1,29 @@
+Resumo baseado nas execucoes observadas nesta subtarefa.
+
+Backend RED WEB14: 7 falhas esperadas por ausencia da funcionalidade.
+Backend GREEN WEB14: 7 testes aprovados.
+Fila, auto-publish e bootstrap: 10 testes aprovados.
+Frontend completo: 838 testes aprovados, 89 arquivos.
+Frontend primeira execucao: 3 falhas em mock antigo do container.
+Mock atualizado com novo getter sem alterar protecao.
+Backend primeira execucao completa: 499 aprovados, 2 timeouts.
+Timeouts de 5000ms em testes anteriores WEB06 e WEB12.
+Reexecucao completa com --testTimeout=15000 registrada em log separado.
+Resultado final backend: 501 aprovados, 49 arquivos, exit code 0.
+Duração backend final: 277,77 segundos.
+
+npm run lint: backend e frontend aprovados.
+npm run typecheck: backend e frontend aprovados.
+Prettier --check --end-of-line crlf: 20 arquivos aprovados.
+git -c core.whitespace=cr-at-eol diff --check: aprovado.
+
+Smoke real: 14394ms ate badge.
+Confirmacao HTTP 201, consulta 200, leitura 204.
+Uma notificacao persistida, intencao processada, uma tentativa.
+Mobile 390x844 sem overflow horizontal.
+Dados sinteticos isolados, servidores e schemas encerrados.
+
+Avisos preexistentes: configuracao SSL do pg e queries concorrentes.
+Frontend: aviso act em use-artesaos-ativos.test.tsx.
+Revisao local equivalente de seguranca sem bloqueios.
+Sem commit ou push.

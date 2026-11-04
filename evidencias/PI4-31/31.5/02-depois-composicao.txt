@@ -1,0 +1,15 @@
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/services/fake-recommendation.adapter.test.ts (9 tests) 4ms
+ ✓ tests/components/faixa-recomendacoes.test.tsx (6 tests) 116ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (7 tests) 324ms
+ ✓ tests/components/produto/detalhe-produto.test.tsx (23 tests) 546ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts (24 tests) 1707ms
+   ✓ HttpRecommendationAdapter no container > produz o mesmo resultado completo da fake para a fixture contratual 322ms
+
+ Test Files  5 passed (5)
+      Tests  69 passed (69)
+   Start at  12:49:16
+   Duration  3.75s (transform 367ms, setup 1.09s, collect 874ms, tests 2.70s, environment 6.51s, prepare 965ms)
+

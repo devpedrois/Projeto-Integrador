@@ -1,0 +1,42 @@
+
+> origem-frontend@1.0.0 dev
+> next dev --hostname 127.0.0.1
+
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:3000
+   - Network:      http://127.0.0.1:3000
+
+ ✓ Starting...
+   Using tsconfig file: tsconfig.build.json
+ ✓ Ready in 1845ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1123ms (814 modules)
+ GET / 200 in 1531ms
+ GET / 200 in 47ms
+Failed to proxy http://127.0.0.1:3001/auth/me Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: -4078,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '127.0.0.1',
+  port: 3001
+}
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: -4078,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '127.0.0.1',
+  port: 3001
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 524ms (1167 modules)
+ GET / 200 in 446ms
+ GET / 200 in 17ms
+ GET / 200 in 169ms
+ GET / 200 in 40ms
+ GET / 200 in 38ms
+ GET / 200 in 40ms
+ GET / 200 in 46ms
+ GET / 200 in 39ms
+[?25h

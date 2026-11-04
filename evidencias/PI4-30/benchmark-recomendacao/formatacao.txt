@@ -1,0 +1,6 @@
+scripts/bench-recomendacao-lote.ts 64ms
+scripts/lib/bench-recomendacao-lote.ts 40ms
+tests/unit/bench-recomendacao-lote.test.ts 13ms
+tests/unit/bench-recomendacao-cli.test.ts 3ms
+tests/integration/bench-recomendacao-lote.integration.test.ts 9ms
+package.json 15ms

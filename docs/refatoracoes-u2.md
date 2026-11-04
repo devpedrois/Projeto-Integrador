@@ -152,7 +152,7 @@ Esses casos posteriores não são atribuídos à refatoração original.
 A reexecução local atual aprovou os mesmos cinco arquivos.
 Resultado: **69 testes aprovados**, após **19 aprovados** no snapshot anterior.
 As quantidades diferem porque a cobertura foi ampliada posteriormente.
-Logs: [antes](../evidencias/PI4-31/31.5/01-antes-composicao-validado.log) e [depois](../evidencias/PI4-31/31.5/02-depois-composicao.log).
+Logs: [antes](../evidencias/PI4-31/31.5/01-antes-composicao-validado.txt) e [depois](../evidencias/PI4-31/31.5/02-depois-composicao.txt).
 
 ### Dívida e limites
 

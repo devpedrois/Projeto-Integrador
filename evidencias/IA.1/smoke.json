@@ -1,0 +1,10 @@
+{
+  "data": "2026-10-22T22:24:28.227Z",
+  "fonte": "http",
+  "banco": "PostgreSQL real, schema temporário e rollback",
+  "status": 200,
+  "estrategia": "fallback-geral",
+  "itens": 7,
+  "paridadeInterfaceResposta": true,
+  "painel": "Instrumentação visual Playwright; não representa DevTools nativo"
+}

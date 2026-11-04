@@ -1,0 +1,24 @@
+   ▲ Next.js 15.5.25
+   - Local:        http://127.0.0.1:39416
+   - Network:      http://127.0.0.1:39416
+
+ ✓ Starting...
+ ✓ Ready in 1592ms
+ ○ Compiling / ...
+ ✓ Compiled / in 712ms (782 modules)
+ GET / 200 in 1034ms
+ GET /?termo=Vaso 200 in 16ms
+ GET /?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666 200 in 16ms
+ GET /?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnica=tecnica-modelagem-argila 200 in 14ms
+ GET /?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnica=tecnica-modelagem-argila 200 in 31ms
+ GET /?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnica=tecnica-modelagem-argila 200 in 40ms
+ ○ Compiling /produto/[id] ...
+ ✓ Compiled /produto/[id] in 652ms (807 modules)
+ GET /?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnica=tecnica-modelagem-argila 200 in 105ms
+ GET /?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnica=tecnica-modelagem-argila 200 in 17ms
+ GET /produto/3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c 200 in 1213ms
+ GET /?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnica=tecnica-modelagem-argila 200 in 32ms
+ GET /produto/3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c 200 in 47ms
+ GET /?termo=Vaso&categoria=ae79c327-0a04-44d7-b9d2-e7a1ed181666&tecnica=tecnica-modelagem-argila 200 in 57ms
+ GET /produto/3bbd6b88-01e5-42ba-bcad-ad6748b8cb4c 200 in 29ms
+ GET /?termo=produto-inexistente 200 in 24ms
