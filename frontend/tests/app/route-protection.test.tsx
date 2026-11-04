@@ -16,6 +16,7 @@ let storeMock: SessionStore | null = null;
 vi.mock("@/services/fake/container", () => ({
   obterSessionStore: () => storeMock,
   obterNotificacoesService: () => null,
+  obterIndicadoresAdminService: () => null,
   obterIndicadoresArtesaoService: () => ({
     obter: vi.fn().mockResolvedValue({
       quantidadeVendida: 0,

@@ -27,6 +27,7 @@ import {
 } from "../validators/gestao-produtos.validator.js";
 import { notificacaoParamsSchema } from "../validators/notificacao.validator.js";
 import { indicadoresQuerySchema } from "../validators/indicadores.validator.js";
+import { indicadoresAdminQuerySchema } from "../validators/indicadores-admin.validator.js";
 import {
   criarAvaliacaoSchema,
   elegibilidadeAvaliacaoQuerySchema,
@@ -457,6 +458,26 @@ const indicadores = registrar(
     atualizadoEm: instante,
   }),
   indicadoresExample,
+);
+const indicadoresAdminExample = {
+  artesaosAtivos: 3,
+  produtosAtivos: 3,
+  pedidosConfirmados: 4,
+  receitaTotal: "100000000.29",
+  atualizadoEm: data,
+};
+const indicadoresAdmin = registrar(
+  "IndicadoresAdmin",
+  z
+    .object({
+      artesaosAtivos: inteiro,
+      produtosAtivos: inteiro,
+      pedidosConfirmados: inteiro,
+      receitaTotal: z.string().regex(/^(0|[1-9]\d*)\.\d{2}$/),
+      atualizadoEm: instante,
+    })
+    .strict(),
+  indicadoresAdminExample,
 );
 const recomendacao = registrar(
   "Recomendacao",
@@ -1153,6 +1174,27 @@ endpoint({
   errors: [400, 401, 403, 404],
   errorExamples: { 404: ["NAO_ENCONTRADO", "Notificacao nao encontrada."] },
   description: "Notificação alheia e inexistente recebem o mesmo 404.",
+});
+endpoint({
+  method: "get",
+  path: "/admin/indicadores",
+  operationId: "obterIndicadoresAdmin",
+  summary: "Consultar indicadores gerais da plataforma",
+  tag: "Administração",
+  papel: "admin",
+  request: { query: indicadoresAdminQuerySchema },
+  response: {
+    ...json(indicadoresAdmin, indicadoresAdminExample),
+    headers: {
+      "Cache-Control": {
+        schema: { type: "string", const: "no-store" },
+        description: "Indicadores privados, sem armazenamento em cache.",
+      },
+    },
+  },
+  errors: [400, 401, 403],
+  description:
+    "Somente admin, herdando a proteção /admin com papel revalidado no banco. Query estrita vazia: qualquer parâmetro recebe 400. Conta usuários ativos com papel artesao; produtos visíveis no catálogo, com estoque e artesão ativo; pedidos confirmados e soma Pedido.total desses pedidos. Totais legados nulos não acrescentam receita. Sem registros elegíveis retorna zeros. Receita Decimal serializada como string com duas casas. atualizadoEm é o instante após a consulta, em ISO UTC. Cache-Control: no-store.",
 });
 endpoint({
   method: "get",

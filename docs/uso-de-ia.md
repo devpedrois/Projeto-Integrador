@@ -1606,3 +1606,12 @@ Ajustou healthchecks e compatibilidade dos testes com PostgreSQL 16.
 Revisou a imagem-base após alertas Docker no VS Code.
 Executou revisão equivalente de segurança, conforme autorização nesta conversa.
 Evidências: [PI4-35.3](../evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/README.md).
+
+### 32.1: indicadores gerais no painel administrativo
+
+O Codex integrou as consultas existentes ao endpoint administrativo protegido.
+Implementou contrato HTTP, validação e card com quatro estados.
+Preservou receita decimal e formatação monetária brasileira sem perda.
+Validou testes, builds, dez recargas reais e três larguras.
+Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
+Evidências: [PI4-32.1](../evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/README.md).

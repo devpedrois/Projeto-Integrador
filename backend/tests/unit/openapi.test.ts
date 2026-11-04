@@ -47,6 +47,32 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("32.1 documenta indicadores privados com receita decimal e query vazia", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    const operation = response.body.paths["/admin/indicadores"]?.get;
+    expect(operation).toBeDefined();
+    expect(operation.security).toEqual([{ sessao: [] }]);
+    expect(operation.parameters ?? []).toEqual([]);
+    for (const status of ["200", "400", "401", "403"])
+      expect(operation.responses).toHaveProperty(status);
+    const schema = response.body.components.schemas.IndicadoresAdmin;
+    expect(schema.additionalProperties).toBe(false);
+    expect(schema.required).toHaveLength(5);
+    expect(schema.properties.receitaTotal).toMatchObject({
+      type: "string",
+      pattern: "^(0|[1-9]\\d*)\\.\\d{2}$",
+    });
+    expect(
+      operation.responses["200"].content["application/json"].example,
+    ).toEqual({
+      artesaosAtivos: 3,
+      produtosAtivos: 3,
+      pedidosConfirmados: 4,
+      receitaTotal: "100000000.29",
+      atualizadoEm: expect.any(String),
+    });
+    expect(operation.description).toContain("no-store");
+  });
   it("cadastro documenta Set-Cookie no 201 com as mesmas flags do login", async () => {
     const response = await request(app).get("/docs/openapi.json");
     const paths = response.body.paths;

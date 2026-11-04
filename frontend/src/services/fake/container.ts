@@ -44,6 +44,8 @@ import { HttpPedidosArtesaoService } from "@/services/http/pedidos-artesao.servi
 import type { IndicadoresArtesaoService } from "@/services/contracts/indicadores-artesao.contract";
 import { HttpIndicadoresArtesaoService } from "@/services/http/indicadores-artesao.service";
 import { FakeIndicadoresArtesaoService } from "@/services/fake/indicadores-artesao.service";
+import type { IndicadoresAdminService } from "@/services/contracts/indicadores-admin.contract";
+import { HttpIndicadoresAdminService } from "@/services/http/indicadores-admin.service";
 
 export const PENDENTES_HTTP: readonly string[] = [];
 
@@ -63,6 +65,12 @@ const pedidosArtesaoHttp: PedidosArtesaoService =
   new HttpPedidosArtesaoService();
 const indicadoresHttp: IndicadoresArtesaoService =
   new HttpIndicadoresArtesaoService();
+const indicadoresAdminHttp: IndicadoresAdminService =
+  new HttpIndicadoresAdminService();
+
+export function obterIndicadoresAdminService(): IndicadoresAdminService | null {
+  return modoHttp() ? indicadoresAdminHttp : null;
+}
 
 export function obterPedidosArtesaoService(): PedidosArtesaoService | null {
   return modoHttp() ? pedidosArtesaoHttp : null;

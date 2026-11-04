@@ -293,6 +293,57 @@ Também retorna zeros quando o artesão não possui produtos.
 Não retorna 404 nesses casos.
 Respostas privadas usam `Cache-Control: no-store`, sem cache compartilhado.
 
+## 32.1: indicadores gerais do administrador
+
+`GET /admin/indicadores` herda a proteção global de `/admin`.
+Exige sessão ativa e papel `admin`, revalidado no PostgreSQL.
+Anônimo recebe 401; comprador e artesão recebem 403.
+A query deve ser vazia, com validação estrita.
+Qualquer parâmetro recebe 400 `VALIDACAO`.
+Todas essas respostas usam `Cache-Control: no-store`.
+
+Resposta 200:
+
+```json
+{
+  "artesaosAtivos": 3,
+  "produtosAtivos": 3,
+  "pedidosConfirmados": 4,
+  "receitaTotal": "100000000.29",
+  "atualizadoEm": "2026-11-04T12:00:00.000Z"
+}
+```
+
+Reutiliza `PrismaIndicadoresPlataformaRepository`, entregue na subtarefa 33.3.
+`artesaosAtivos` conta usuários ativos com papel `artesao`.
+`produtosAtivos` conta produtos visíveis pelo catálogo público.
+Exige produto ativo, sem moderação, estoque positivo e artesão ativo.
+`pedidosConfirmados` conta pedidos com status `confirmado`.
+`receitaTotal` soma `Pedido.total` somente dos pedidos confirmados.
+Totais legados nulos não acrescentam receita.
+Fotos, avaliações e itens não multiplicam os agregados.
+As quatro consultas compartilham o snapshot do mesmo SELECT.
+Sem registros elegíveis retorna zeros e receita `"0.00"`.
+A receita permanece Decimal até `toFixed(2)` no service.
+O JSON usa string decimal, preservando exatamente duas casas.
+`atualizadoEm` usa o instante após a consulta, em ISO UTC.
+
+`HttpIndicadoresAdminService.obter()` consome o endpoint pelo proxy `/api`.
+O cliente envia cookie e usa `cache: no-store`.
+Valida contadores, receita decimal e data antes da exibição.
+O container oferece esse service somente no modo HTTP.
+No modo fake retorna `null`, seguindo services exclusivos de HTTP.
+Não existe adapter fake novo nem fallback de dados locais.
+
+O card de `/admin` mostra quatro valores e a atualização.
+Valores monetários usam BRL e formatação `pt-BR`.
+A formatação preserva centavos, usando BigInt na parte inteira.
+A data aparece no fuso `America/Recife`.
+Vazio significa quatro agregados zerados, após resposta válida.
+Cadastros sem vendas continuam no estado de sucesso.
+Carregamento não antecipa números; erro oferece “Tentar novamente”.
+Trocar a conta descarta respostas pendentes e dados anteriores.
+
 ## Web.5: consumo dos indicadores no painel
 
 `IndicadoresArtesaoService.obter()` retorna o DTO de `GET /artesao/indicadores`.

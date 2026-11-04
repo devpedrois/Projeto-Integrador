@@ -56,6 +56,10 @@ import { IndicadoresController } from "./controllers/indicadores.controller.js";
 import { PrismaIndicadoresRepository } from "./repositories/indicadores.repository.js";
 import { IndicadoresService } from "./services/indicadores.service.js";
 import { createIndicadoresRouter } from "./routes/indicadores.routes.js";
+import { IndicadoresAdminController } from "./controllers/indicadores-admin.controller.js";
+import { PrismaIndicadoresPlataformaRepository } from "./repositories/indicadores-plataforma.repository.js";
+import { IndicadoresAdminService } from "./services/indicadores-admin.service.js";
+import { createIndicadoresAdminRouter } from "./routes/indicadores-admin.routes.js";
 import { AvaliacaoController } from "./controllers/avaliacao.controller.js";
 import { AvaliacaoService } from "./services/avaliacao.service.js";
 import { PrismaAvaliacaoRepository } from "./repositories/avaliacao.repository.js";
@@ -137,6 +141,15 @@ export function createApp(
   app.use(cookieParser());
   app.use(createDocsRouter());
   app.use("/admin", autenticarUsuario, exigirPapel("admin"));
+  app.use(
+    createIndicadoresAdminRouter(
+      new IndicadoresAdminController(
+        new IndicadoresAdminService(
+          new PrismaIndicadoresPlataformaRepository(prisma),
+        ),
+      ),
+    ),
+  );
   app.use(
     createGestaoProdutosRouter(
       new GestaoProdutosController(
