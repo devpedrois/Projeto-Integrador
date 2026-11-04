@@ -30,5 +30,12 @@ export const catalogoQuerySchema = z
   .strict();
 
 export const produtoParamsSchema = z.object({ id: z.uuid() }).strict();
-export const avaliacoesQuerySchema = z.object({ produtoId: z.uuid() }).strict();
+export const avaliacoesQuerySchema = z
+  .object({
+    produtoId: z.uuid(),
+    limit: inteiroQuery(1, 50, 10),
+    offset: inteiroQuery(0, Number.MAX_SAFE_INTEGER, 0),
+  })
+  .strict();
+export type AvaliacoesQuery = z.infer<typeof avaliacoesQuerySchema>;
 export type CatalogoQuery = z.infer<typeof catalogoQuerySchema>;

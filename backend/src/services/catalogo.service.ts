@@ -1,6 +1,9 @@
 import { AppError } from "../errors/app-error.js";
 import type { CatalogoRepository } from "../repositories/catalogo.repository.js";
-import type { CatalogoQuery } from "../validators/catalogo.validator.js";
+import type {
+  CatalogoQuery,
+  AvaliacoesQuery,
+} from "../validators/catalogo.validator.js";
 
 export class CatalogoService {
   constructor(private readonly repository: CatalogoRepository) {}
@@ -34,8 +37,8 @@ export class CatalogoService {
     return this.repository.artesaos();
   }
 
-  async avaliacoes(produtoId: string) {
-    await this.obter(produtoId);
-    return this.repository.avaliacoes(produtoId);
+  async avaliacoes(query: AvaliacoesQuery) {
+    await this.obter(query.produtoId);
+    return this.repository.avaliacoes(query);
   }
 }

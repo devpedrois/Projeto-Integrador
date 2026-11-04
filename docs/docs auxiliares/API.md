@@ -155,6 +155,62 @@ Pedidos pendentes e cancelados não oferecem o formulário.
 A Web.4 complementa esta criação com compra verificada transacional.
 As duas subtarefas devem ser publicadas juntas.
 
+## 32.2: avaliações públicas paginadas
+
+`GET /avaliacoes?produtoId=UUID&limit=10&offset=0` é público.
+O validator Zod aceita somente esses três parâmetros.
+`produtoId` é obrigatório e deve ser UUID válido.
+`limit` é inteiro entre 1–50; o padrão é 10.
+`offset` é inteiro não negativo; o padrão é zero.
+Aceita somente inteiros decimais representáveis com segurança em JavaScript.
+Parâmetros desconhecidos, repetidos ou inválidos recebem 400 `VALIDACAO`.
+Produtos invisíveis e inexistentes continuam recebendo 404.
+
+Resposta 200 de uma página com `limit=1`:
+
+```json
+{
+  "itens": [
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "produtoId": "00000000-0000-4000-8000-000000000001",
+      "nota": 5,
+      "comentario": "Peça bem acabada.",
+      "criadoEm": "2026-10-22T12:00:00.000Z"
+    }
+  ],
+  "resumo": { "media": 4.4, "total": 35 }
+}
+```
+
+`itens` contém somente a página, ordenada por `criadoEm DESC, id ASC`.
+`resumo.media` e `resumo.total` consideram todas as avaliações do produto.
+A média continua arredondada para uma casa decimal na leitura.
+Agregado e página compartilham uma transação `RepeatableRead`.
+Uma página fora do total retorna `itens: []`, preservando o resumo.
+Sem avaliações retorna média e total zerados.
+
+A resposta pública não expõe `compradorId`, nome ou email.
+A interface mostra nota, comentário e data, sem autor identificado.
+O retorno privado do POST continua incluindo a própria identidade.
+Não existe cache compartilhado nessa leitura: `Cache-Control: no-store`.
+O POST mantém a invalidação de catálogo e recomendações.
+
+`AvaliacoesService.listarPagina(produtoId, { limit, offset })` atende à interface.
+O DTO público é `AvaliacaoPublica`, sem identidade do comprador.
+O adapter HTTP valida página e resumo global separadamente.
+A Fake API pagina seus registros persistidos pelo mesmo contrato.
+O detalhe oferece “Anterior”, “Próxima” e “Página X de Y”.
+A média e a quantidade do produto independem da página exibida.
+Comentários têm estados carregando, sucesso, vazio e erro recuperável.
+O botão “Tentar novamente” repete a página que falhou.
+
+O seed demo acrescenta 35 avaliações à “Boneca de Barro Pintada”.
+Os 35 compradores são sintéticos e distintos.
+Cada avaliação tem uma compra confirmada anterior, com pagamento simulado.
+IDs determinísticos e upserts preservam a idempotência.
+Essa carga tem média 3,0 e páginas de 10/10/10/5.
+
 ## Web.1: pedidos recebidos pelo artesão
 
 ### Web.2: envio dos próprios itens
@@ -421,6 +477,8 @@ interface Avaliacao {
   criadoEm: string;
 }
 
+type AvaliacaoPublica = Omit<Avaliacao, "compradorId">;
+
 interface ResumoAvaliacoes {
   produtoId: string;
   media: number;
@@ -428,7 +486,11 @@ interface ResumoAvaliacoes {
 }
 
 interface AvaliacoesService {
-  listByProduto(produtoId: string): Promise<Avaliacao[]>;
+  listByProduto(produtoId: string): Promise<AvaliacaoPublica[]>;
+  listarPagina(produtoId: string, paginacao?: { limit?: number; offset?: number }): Promise<{
+    itens: AvaliacaoPublica[];
+    resumo: { media: number; total: number };
+  }>;
   resumo(produtoId: string): Promise<ResumoAvaliacoes>;
   create(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao>;
 }

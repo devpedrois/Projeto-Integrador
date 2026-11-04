@@ -388,7 +388,6 @@ describe("catalogo publico WEB-06", () => {
     expect(response.body.itens[0]).toEqual({
       id: expect.any(String),
       produtoId,
-      compradorId: expect.any(String),
       nota: expect.any(Number),
       criadoEm: expect.any(String),
     });

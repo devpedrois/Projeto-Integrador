@@ -1,6 +1,10 @@
 import { ServiceError } from "@/services/errors";
 import type { Produto } from "@/types/produto";
-import type { Avaliacao } from "@/types/avaliacao";
+import type {
+  Avaliacao,
+  AvaliacaoPublica,
+  PaginaAvaliacoes,
+} from "@/types/avaliacao";
 
 export function respostaInvalida(): never {
   throw new ServiceError("RESPOSTA_INVALIDA", "Resposta do serviço inválida.");
@@ -70,17 +74,22 @@ export function lerOpcoes(value: unknown): { id: string; nome: string }[] {
   });
 }
 
-export interface AvaliacoesResponse {
-  itens: Avaliacao[];
-  resumo: { media: number; total: number };
-}
+export type AvaliacoesResponse = PaginaAvaliacoes;
 
 export function lerAvaliacao(item: unknown, produtoId: string): Avaliacao {
+  const publica = lerAvaliacaoPublica(item, produtoId);
+  if (!objeto(item) || !identidade(item.compradorId)) return respostaInvalida();
+  return { ...publica, compradorId: item.compradorId };
+}
+
+export function lerAvaliacaoPublica(
+  item: unknown,
+  produtoId: string,
+): AvaliacaoPublica {
   if (
     !objeto(item) ||
     !identidade(item.id) ||
     item.produtoId !== produtoId ||
-    !identidade(item.compradorId) ||
     !quantidade(item.nota) ||
     item.nota < 1 ||
     item.nota > 5 ||
@@ -92,7 +101,6 @@ export function lerAvaliacao(item: unknown, produtoId: string): Avaliacao {
   return {
     id: item.id,
     produtoId,
-    compradorId: item.compradorId,
     nota: item.nota,
     ...(item.comentario === undefined
       ? {}
@@ -104,6 +112,7 @@ export function lerAvaliacao(item: unknown, produtoId: string): Avaliacao {
 export function lerAvaliacoes(
   value: unknown,
   produtoId: string,
+  paginacao = { limit: 10, offset: 0 },
 ): AvaliacoesResponse {
   if (
     !objeto(value) ||
@@ -114,9 +123,17 @@ export function lerAvaliacoes(
   )
     return respostaInvalida();
   const itens = value.itens.map((item: unknown) =>
-    lerAvaliacao(item, produtoId),
+    lerAvaliacaoPublica(item, produtoId),
   );
-  if (value.resumo.total !== itens.length) return respostaInvalida();
+  const quantidadeEsperada = Math.min(
+    paginacao.limit,
+    Math.max(0, value.resumo.total - paginacao.offset),
+  );
+  if (
+    itens.length !== quantidadeEsperada ||
+    new Set(itens.map((item) => item.id)).size !== itens.length
+  )
+    return respostaInvalida();
   return {
     itens,
     resumo: { media: value.resumo.media, total: value.resumo.total },

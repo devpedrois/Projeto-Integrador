@@ -5,8 +5,97 @@ import { parseEnvironment } from "../src/config/environment.js";
 import { createPrismaClient } from "../src/database/prisma/client.js";
 import { gerarHash } from "../src/utils/senha.js";
 import { TECNICAS_SEED, REGIOES_SEED } from "./seeds/referencias.js";
-import { DEMO } from "./seeds/demo.js";
+import { DEMO, DEMO_AVALIACOES_PAGINADAS } from "./seeds/demo.js";
 import { seedUuid } from "./seeds/id.js";
+
+async function seedAvaliacoesPaginadas(
+  tx: Prisma.TransactionClient,
+): Promise<void> {
+  const produto = DEMO.produtos.find(
+    (item) => item.id === DEMO_AVALIACOES_PAGINADAS.produtoId,
+  );
+  if (!produto) throw new Error("Produto de avaliacoes demo ausente");
+  const produtoId = seedUuid(produto.id);
+  const valor = produto.preco.toFixed(2);
+  const senhaHash = await gerarHash(DEMO_AVALIACOES_PAGINADAS.senha);
+  for (const avaliacao of DEMO_AVALIACOES_PAGINADAS.itens) {
+    const { sufixo } = avaliacao;
+    const compradorId = seedUuid(`demo-avaliacao-comprador-${sufixo}`);
+    const usuario = {
+      id: compradorId,
+      nome: `Pessoa ${sufixo} Sintética`,
+      email: `avaliacao.demo.${sufixo}@origem.test`,
+      senhaHash,
+      papel: "comprador" as const,
+      ativo: true,
+      criadoEm: new Date("2026-08-01T00:00:00.000Z"),
+    };
+    await tx.usuario.upsert({
+      where: { id: compradorId },
+      update: usuario,
+      create: usuario,
+    });
+    await tx.carrinho.upsert({
+      where: { usuarioId: compradorId },
+      update: {},
+      create: { usuarioId: compradorId },
+    });
+    const pedidoId = seedUuid(`demo-avaliacao-pedido-${sufixo}`);
+    const criadoEm = new Date("2026-09-05T12:00:00.000Z");
+    const pedido = {
+      id: pedidoId,
+      numero: `DEMO-AV-${sufixo}`,
+      compradorId,
+      status: "confirmado" as const,
+      total: valor,
+      criadoEm,
+    };
+    await tx.pedido.upsert({
+      where: { id: pedidoId },
+      update: pedido,
+      create: pedido,
+    });
+    const item = {
+      id: seedUuid(`demo-avaliacao-item-${sufixo}`),
+      pedidoId,
+      produtoId,
+      quantidade: 1,
+      precoUnitario: valor,
+      subtotal: valor,
+    };
+    await tx.itemPedido.upsert({
+      where: { id: item.id },
+      update: item,
+      create: item,
+    });
+    const pagamento = {
+      id: seedUuid(`demo-avaliacao-pagamento-${sufixo}`),
+      pedidoId,
+      valor,
+      metodo: "pix_simulado" as const,
+      status: "aprovado" as const,
+      dataPagamento: criadoEm,
+    };
+    await tx.pagamento.upsert({
+      where: { pedidoId },
+      update: pagamento,
+      create: pagamento,
+    });
+    const registro = {
+      id: seedUuid(`demo-avaliacao-${sufixo}`),
+      produtoId,
+      compradorId,
+      nota: avaliacao.nota,
+      comentario: avaliacao.comentario,
+      criadoEm: new Date(avaliacao.criadoEm),
+    };
+    await tx.avaliacao.upsert({
+      where: { compradorId_produtoId: { compradorId, produtoId } },
+      update: registro,
+      create: registro,
+    });
+  }
+}
 
 export async function runSeed(tx: Prisma.TransactionClient): Promise<void> {
   for (const tecnica of TECNICAS_SEED) {
@@ -171,6 +260,7 @@ export async function runSeed(tx: Prisma.TransactionClient): Promise<void> {
       create: pagamento,
     });
   }
+  await seedAvaliacoesPaginadas(tx);
 }
 
 async function main(): Promise<void> {

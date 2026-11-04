@@ -1,5 +1,10 @@
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
-import type { Avaliacao, ResumoAvaliacoes } from "@/types/avaliacao";
+import type {
+  AvaliacaoPublica,
+  ResumoAvaliacoes,
+  PaginacaoAvaliacoes,
+} from "@/types/avaliacao";
+import { normalizarPaginacaoAvaliacoes } from "@/domain/paginacao-avaliacoes";
 import { ServiceError } from "@/services/errors";
 import { ApiClient } from "./api-client";
 import {
@@ -36,12 +41,21 @@ export class HttpAvaliacoesService implements AvaliacoesService {
     return respostaInvalida();
   };
 
-  private async obter(produtoId: string): Promise<AvaliacoesResponse> {
+  private async obter(
+    produtoId: string,
+    paginacao?: PaginacaoAvaliacoes,
+  ): Promise<AvaliacoesResponse> {
+    const pagina = normalizarPaginacaoAvaliacoes(paginacao);
     const params = new URLSearchParams({ produtoId });
+    if (paginacao) {
+      params.set("limit", String(pagina.limit));
+      params.set("offset", String(pagina.offset));
+    }
     try {
       return lerAvaliacoes(
         await this.client.request<unknown>(`/avaliacoes?${params}`),
         produtoId,
+        pagina,
       );
     } catch (error: unknown) {
       if (
@@ -54,8 +68,12 @@ export class HttpAvaliacoesService implements AvaliacoesService {
     }
   }
 
-  async listByProduto(produtoId: string): Promise<Avaliacao[]> {
+  async listByProduto(produtoId: string): Promise<AvaliacaoPublica[]> {
     return (await this.obter(produtoId)).itens;
+  }
+
+  listarPagina(produtoId: string, paginacao: PaginacaoAvaliacoes = {}) {
+    return this.obter(produtoId, paginacao);
   }
 
   async resumo(produtoId: string): Promise<ResumoAvaliacoes> {

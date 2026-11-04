@@ -127,8 +127,8 @@ describe("Web.3 avaliacoes HTTP em PostgreSQL real", () => {
     );
     expect(leitura.status).toBe(200);
     expect(leitura.body.resumo).toEqual({ media: 3.5, total: 2 });
-    expect(leitura.body.itens).toEqual(
-      expect.arrayContaining([primeira.body, segunda.body]),
+    expect(leitura.body.itens.map((item: { id: string }) => item.id)).toEqual(
+      expect.arrayContaining([primeira.body.id, segunda.body.id]),
     );
     expect(await banco.prisma.avaliacao.count({ where: { produtoId } })).toBe(
       2,

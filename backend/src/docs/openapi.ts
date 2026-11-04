@@ -168,7 +168,6 @@ const avaliacoesExample = {
     {
       id,
       produtoId: id,
-      compradorId: id,
       nota: 5,
       comentario: "Peça bonita.",
       criadoEm: data,
@@ -183,7 +182,6 @@ const avaliacoes = registrar(
       z.object({
         id: uuid,
         produtoId: uuid,
-        compradorId: uuid,
         nota: z.number().int().min(1).max(5),
         comentario: z.string().optional(),
         criadoEm: instante,
@@ -789,6 +787,8 @@ endpoint({
   request: { query: avaliacoesQuerySchema },
   response: json(avaliacoes, avaliacoesExample),
   errors: [400, 404],
+  description:
+    "Query estrita: produtoId, limit inteiro de 1 a 50 (padrao 10), offset inteiro nao negativo seguro (padrao 0). Itens da pagina em criadoEm desc, id asc. resumo.media e resumo.total consideram todas as avaliacoes do produto no mesmo snapshot RepeatableRead. Media arredondada para uma casa decimal na leitura. Fora da pagina retorna itens vazios e preserva o resumo. Leitura anonima sem compradorId, nome ou email do autor. Cache-Control: no-store; sem cache compartilhado. POST continua invalidando catalogo e recomendacoes.",
 });
 endpoint({
   method: "post",

@@ -21,23 +21,48 @@ afterAll(async () => {
 });
 
 describe("BD-05 demo no PostgreSQL real", () => {
+  it("32.2 oferece 35 avaliacoes idempotentes com compras confirmadas", async () => {
+    const produtoId = seedUuid("produto-seed-03");
+    const avaliacoes = await banco.prisma.avaliacao.findMany({
+      where: { produtoId },
+    });
+    expect(avaliacoes).toHaveLength(35);
+    expect(new Set(avaliacoes.map((item) => item.compradorId)).size).toBe(35);
+    for (const avaliacao of avaliacoes) {
+      expect(avaliacao.comentario).toBeTruthy();
+      const pedido = await banco.prisma.pedido.findFirst({
+        where: {
+          compradorId: avaliacao.compradorId,
+          status: "confirmado",
+          itens: { some: { produtoId } },
+        },
+        include: { itens: true, pagamento: true },
+      });
+      expect(pedido).not.toBeNull();
+      expect(pedido?.criadoEm.getTime()).toBeLessThanOrEqual(
+        avaliacao.criadoEm.getTime(),
+      );
+      expect(pedido?.pagamento?.status).toBe("aprovado");
+    }
+    expect(await contagensSeed(banco.prisma)).toEqual(primeiraContagem);
+  });
   it("mantem contagens apos duas execucoes", async () => {
     expect(await contagensSeed(banco.prisma)).toEqual(primeiraContagem);
     expect(primeiraContagem).toEqual({
-      usuarios: 5,
+      usuarios: 40,
       artesaos: 2,
-      compradores: 2,
+      compradores: 37,
       perfis: 2,
-      carrinhos: 2,
+      carrinhos: 37,
       categorias: 6,
       tecnicas: 10,
       regioes: 3,
       produtos: 30,
       fotos: 30,
-      pedidos: 3,
-      itens: 3,
-      pagamentos: 3,
-      avaliacoes: 10,
+      pedidos: 38,
+      itens: 38,
+      pagamentos: 38,
+      avaliacoes: 45,
     });
   });
   it("autentica todas as contas documentadas", async () => {

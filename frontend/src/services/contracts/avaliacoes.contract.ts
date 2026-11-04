@@ -11,6 +11,9 @@ import type {
   NovaAvaliacaoInput,
   ResumoAvaliacoes,
   ElegibilidadeAvaliacao,
+  AvaliacaoPublica,
+  PaginaAvaliacoes,
+  PaginacaoAvaliacoes,
 } from "@/types/avaliacao";
 
 export interface AvaliacoesService {
@@ -18,7 +21,11 @@ export interface AvaliacoesService {
     produtoId: string,
     compradorId: string,
   ): Promise<ElegibilidadeAvaliacao>;
-  listByProduto(produtoId: string): Promise<Avaliacao[]>;
+  listByProduto(produtoId: string): Promise<AvaliacaoPublica[]>;
+  listarPagina(
+    produtoId: string,
+    paginacao?: PaginacaoAvaliacoes,
+  ): Promise<PaginaAvaliacoes>;
   resumo(produtoId: string): Promise<ResumoAvaliacoes>;
   criar(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao>;
   create(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao>;

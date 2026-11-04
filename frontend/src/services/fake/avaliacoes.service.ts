@@ -7,10 +7,13 @@ import type {
   NovaAvaliacaoInput,
   ResumoAvaliacoes,
   ElegibilidadeAvaliacao,
+  PaginaAvaliacoes,
+  PaginacaoAvaliacoes,
 } from "@/types/avaliacao";
 import type { AvaliacoesService } from "@/services/contracts/avaliacoes.contract";
 import { ServiceError } from "@/services/errors";
 import { calcularResumoAvaliacoes } from "@/domain/resumo-avaliacoes";
+import { normalizarPaginacaoAvaliacoes } from "@/domain/paginacao-avaliacoes";
 import {
   idsArtesaosInativos,
   produtoDisponivelParaVenda,
@@ -83,6 +86,27 @@ export class FakeAvaliacoesService implements AvaliacoesService {
     await aguardar(this.latenciaMs);
     const avaliacoes = await this.repositorio.listByProdutoId(produtoId);
     return calcularResumoAvaliacoes(produtoId, avaliacoes);
+  }
+
+  async listarPagina(
+    produtoId: string,
+    paginacao?: PaginacaoAvaliacoes,
+  ): Promise<PaginaAvaliacoes> {
+    const { limit, offset } = normalizarPaginacaoAvaliacoes(paginacao);
+    const avaliacoes = await this.listByProduto(produtoId);
+    const resumo = calcularResumoAvaliacoes(produtoId, avaliacoes);
+    return {
+      itens: avaliacoes
+        .slice(offset, offset + limit)
+        .map(({ id, produtoId, nota, comentario, criadoEm }) => ({
+          id,
+          produtoId,
+          nota,
+          ...(comentario === undefined ? {} : { comentario }),
+          criadoEm,
+        })),
+      resumo: { media: resumo.media, total: resumo.quantidade },
+    };
   }
 
   criar(input: NovaAvaliacaoInput, compradorId: string): Promise<Avaliacao> {

@@ -1624,3 +1624,12 @@ Registrou a substituição da T16.3 no backlog e matriz.
 Validou PostgreSQL real, testes relacionados, lint, typecheck e formatação.
 O código produtivo e o cálculo permaneceram intactos.
 Evidências: [PI4-32.3](../evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/README.md).
+
+### 32.2: avaliações públicas paginadas
+
+O Codex implementou paginação com resumo global e leitura consistente.
+Retirou a identidade do comprador da resposta pública.
+Acrescentou seed idempotente com 35 avaliações e compras coerentes.
+Validou testes, OpenAPI, builds e navegação real nos dois viewports.
+Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
+Evidências: [PI4-32.2](../evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/README.md).

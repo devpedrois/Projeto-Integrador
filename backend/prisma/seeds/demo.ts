@@ -799,3 +799,14 @@ export const DEMO = {
     },
   ],
 } as const;
+
+export const DEMO_AVALIACOES_PAGINADAS = {
+  produtoId: "produto-seed-03",
+  senha: "senha-sintetica-avaliacoes-demo",
+  itens: Array.from({ length: 35 }, (_, indice) => ({
+    sufixo: String(indice + 1).padStart(2, "0"),
+    nota: (indice % 5) + 1,
+    comentario: `Avaliação sintética ${indice + 1}: compra de demonstração.`,
+    criadoEm: new Date(Date.UTC(2026, 8, 6, 12, indice)).toISOString(),
+  })),
+} as const;

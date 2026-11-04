@@ -13,6 +13,18 @@ export interface NovaAvaliacaoInput {
   comentario?: string;
 }
 
+export type AvaliacaoPublica = Omit<Avaliacao, "compradorId">;
+
+export interface PaginacaoAvaliacoes {
+  limit?: number;
+  offset?: number;
+}
+
+export interface PaginaAvaliacoes {
+  itens: AvaliacaoPublica[];
+  resumo: { media: number; total: number };
+}
+
 export interface ResumoAvaliacoes {
   produtoId: string;
   media: number;

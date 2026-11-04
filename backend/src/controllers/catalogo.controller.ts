@@ -118,7 +118,7 @@ export class CatalogoController {
       return;
     }
     try {
-      response.json(await this.service.avaliacoes(query.data.produtoId));
+      response.json(await this.service.avaliacoes(query.data));
     } catch (error: unknown) {
       next(error);
     }

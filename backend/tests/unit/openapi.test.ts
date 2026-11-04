@@ -47,6 +47,30 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("32.2 documenta paginacao publica sem identificar comprador", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    const operation = response.body.paths["/avaliacoes"].get;
+    expect(operation.parameters).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "limit",
+          schema: expect.objectContaining({ default: "10" }),
+        }),
+        expect.objectContaining({
+          name: "offset",
+          schema: expect.objectContaining({ default: "0" }),
+        }),
+      ]),
+    );
+    expect(
+      response.body.components.schemas.Avaliacoes.properties.itens.items
+        .properties,
+    ).not.toHaveProperty("compradorId");
+    expect(
+      operation.responses["200"].content["application/json"].example.itens[0],
+    ).not.toHaveProperty("compradorId");
+    expect(operation.description).toContain("todas");
+  });
   it("32.1 documenta indicadores privados com receita decimal e query vazia", async () => {
     const response = await request(app).get("/docs/openapi.json");
     const operation = response.body.paths["/admin/indicadores"]?.get;

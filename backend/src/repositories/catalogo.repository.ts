@@ -1,5 +1,8 @@
-import type { PrismaClient } from "../generated/prisma/client.js";
-import type { CatalogoQuery } from "../validators/catalogo.validator.js";
+import { Prisma, type PrismaClient } from "../generated/prisma/client.js";
+import type {
+  CatalogoQuery,
+  AvaliacoesQuery,
+} from "../validators/catalogo.validator.js";
 import {
   mapearProdutoDTO,
   type ProdutoDTO,
@@ -52,11 +55,10 @@ export interface CatalogoRepository {
   artesaos(): Promise<
     { id: string; nome: string; papel: "artesao"; ativo: true }[]
   >;
-  avaliacoes(produtoId: string): Promise<{
+  avaliacoes(query: AvaliacoesQuery): Promise<{
     itens: {
       id: string;
       produtoId: string;
-      compradorId: string;
       nota: number;
       comentario?: string;
       criadoEm: string;
@@ -140,32 +142,44 @@ export class PrismaCatalogoRepository implements CatalogoRepository {
     }));
   }
 
-  async avaliacoes(produtoId: string) {
-    const avaliacoes = await this.prisma.avaliacao.findMany({
-      where: { produtoId },
-      orderBy: [{ criadoEm: "desc" }, { id: "asc" }],
-      select: {
-        id: true,
-        produtoId: true,
-        compradorId: true,
-        nota: true,
-        comentario: true,
-        criadoEm: true,
+  async avaliacoes({ produtoId, limit, offset }: AvaliacoesQuery) {
+    return this.prisma.$transaction(
+      async (tx) => {
+        const resumo = await tx.avaliacao.aggregate({
+          where: { produtoId },
+          _avg: { nota: true },
+          _count: { _all: true },
+        });
+        const total = resumo._count._all;
+        const avaliacoes =
+          offset >= total
+            ? []
+            : await tx.avaliacao.findMany({
+                where: { produtoId },
+                take: limit,
+                skip: offset,
+                orderBy: [{ criadoEm: "desc" }, { id: "asc" }],
+                select: {
+                  id: true,
+                  produtoId: true,
+                  nota: true,
+                  comentario: true,
+                  criadoEm: true,
+                },
+              });
+        return {
+          itens: avaliacoes.map(({ comentario, criadoEm, ...item }) => ({
+            ...item,
+            ...(comentario === null ? {} : { comentario }),
+            criadoEm: criadoEm.toISOString(),
+          })),
+          resumo: {
+            media: Math.round((resumo._avg.nota ?? 0) * 10) / 10,
+            total,
+          },
+        };
       },
-    });
-    const total = avaliacoes.length;
-    const media = total
-      ? Math.round(
-          (avaliacoes.reduce((soma, item) => soma + item.nota, 0) / total) * 10,
-        ) / 10
-      : 0;
-    return {
-      itens: avaliacoes.map(({ comentario, criadoEm, ...item }) => ({
-        ...item,
-        ...(comentario === null ? {} : { comentario }),
-        criadoEm: criadoEm.toISOString(),
-      })),
-      resumo: { media, total },
-    };
+      { isolationLevel: Prisma.TransactionIsolationLevel.RepeatableRead },
+    );
   }
 }

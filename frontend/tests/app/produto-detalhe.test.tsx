@@ -24,6 +24,9 @@ vi.mock("@/services/fake/container", () => ({
     elegibilidade: vi.fn(),
     criar: vi.fn(),
     listByProduto: vi.fn().mockResolvedValue([]),
+    listarPagina: vi
+      .fn()
+      .mockResolvedValue({ itens: [], resumo: { media: 0, total: 0 } }),
     resumo: vi
       .fn()
       .mockResolvedValue({ produtoId: "produto-1", media: 5, quantidade: 1 }),

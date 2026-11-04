@@ -6,6 +6,7 @@ import { useDetalheProduto } from "@/hooks/use-detalhe-produto";
 import { useNomeArtesao } from "@/hooks/use-nome-artesao";
 import { FaixaRecomendacoes } from "@/components/vitrine/FaixaRecomendacoes";
 import { ProdutoCard } from "@/components/vitrine/ProdutoCard";
+import { ComentariosProduto } from "@/components/produto/ComentariosProduto";
 import { Icone } from "@/components/vitrine/Icone";
 import {
   BLOCO,
@@ -333,6 +334,14 @@ export function DetalheProduto({
               </div>
             </div>
           </article>
+
+          {avaliacoesService ? (
+            <ComentariosProduto
+              key={produto.id}
+              service={avaliacoesService}
+              produtoId={produto.id}
+            />
+          ) : null}
 
           <FaixaRecomendacoes
             service={recomendacoesService}

@@ -150,7 +150,6 @@ describe("HTTP catalogo", () => {
     const avaliacao = {
       id: "av1",
       produtoId: produto.id,
-      compradorId: "u1",
       nota: 5,
       criadoEm: produto.criadoEm,
     };
