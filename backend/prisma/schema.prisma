@@ -76,6 +76,7 @@ model PerfilArtesao {
   usuario            Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([regiaoId])
+  @@index([tecnicaPrincipalId])
 }
 
 model Categoria {

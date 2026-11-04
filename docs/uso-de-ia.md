@@ -1570,3 +1570,12 @@ Registrou o RED esperado e a lista do modo estrito.
 Preservou o modo padrão, sem criar índices ou migrations.
 Validou lint, typecheck e descoberta pelas suítes existentes.
 Evidências: [PI4-33.1](../evidencias/PI4-33/33.1/20261104-134954/README.md).
+
+### 33.2: índice da técnica principal do artesão
+
+O Codex acrescentou o índice e gerou a migration Prisma.
+Revisou o SQL gerado, preservando somente a operação solicitada.
+Aplicou a migration no desenvolvimento e conferiu com psql.
+Atualizou o modelo físico e realizou revisão equivalente autorizada.
+Validou onze testes de integridade e 764 testes backend.
+Evidências: [PI4-33.2](../evidencias/PI4-33/33.2/20261104-validacao/README.md).

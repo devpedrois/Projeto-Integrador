@@ -8,6 +8,36 @@ Foram medidos três candidatos parciais em Pedido.
 Todos foram criados em transações terminadas com ROLLBACK.
 As migrations e o schema Prisma permanecem sem alterações.
 
+## PI4-33.2: índice da técnica principal do artesão
+
+Atualização: 04/11/2026.
+A conclusão anterior descreve exclusivamente a coleta histórica BD.4.
+
+| Índice | Motivo | Migration |
+| --- | --- | --- |
+| `PerfilArtesao_tecnicaPrincipalId_idx` em `PerfilArtesao(tecnicaPrincipalId)` | Regra da U2: toda FK com índice; suporte ao filtro por técnica no perfil do artesão. | `20261104165644_indice_perfil_tecnica_principal` |
+
+O índice B-tree simples cobre a FK de `tecnicaPrincipalId`.
+Também atende consultas de perfis pela técnica principal:
+
+```sql
+SELECT "usuarioId" FROM "PerfilArtesao"
+WHERE "tecnicaPrincipalId" = $1::text;
+```
+
+O catálogo atual filtra a técnica da peça em `Produto.tecnicaId`.
+O perfil público é consultado por `usuarioId`, usando sua PK.
+Essas consultas permanecem inalteradas; não há ganho temporal medido.
+O novo índice atende a regra estrutural da U2.
+
+A migration foi gerada com `prisma migrate dev --create-only`.
+A revisão removeu operações geradas fora do escopo antes da aplicação.
+O SQL aplicado contém somente a criação desse índice.
+A aplicação na branch de desenvolvimento utilizou `prisma migrate deploy`.
+O comando `\d "PerfilArtesao"` confirmou o índice existente.
+O teste 33.1 passou com `MODO_ESTRITO = false`.
+Evidências: [PI4-33.2](../evidencias/PI4-33/33.2/20261104-validacao/README.md).
+
 ## Ambiente e metodologia
 
 `DATABASE_URL_VOLUME` apontou para uma branch Neon separada.

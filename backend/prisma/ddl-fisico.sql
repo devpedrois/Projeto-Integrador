@@ -208,6 +208,9 @@ CREATE UNIQUE INDEX "Usuario_email_key" ON "Usuario"("email");
 CREATE INDEX "PerfilArtesao_regiaoId_idx" ON "PerfilArtesao"("regiaoId");
 
 -- CreateIndex
+CREATE INDEX "PerfilArtesao_tecnicaPrincipalId_idx" ON "PerfilArtesao"("tecnicaPrincipalId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Categoria_nome_key" ON "Categoria"("nome");
 
 -- CreateIndex

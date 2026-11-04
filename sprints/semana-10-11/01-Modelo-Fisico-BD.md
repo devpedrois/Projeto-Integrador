@@ -440,6 +440,7 @@ Nenhum deles é removido por este documento.
 | Índice                                    | Consulta atendida                                                                                                                                                     |
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `PerfilArtesao_regiaoId_idx`              | Q05: perfil filtrado por regiaoId, associado ao produto pelo artesão.                                                                                                 |
+| `PerfilArtesao_tecnicaPrincipalId_idx` | `SELECT "usuarioId" FROM "PerfilArtesao" WHERE "tecnicaPrincipalId" = $1::text;` Regra U2 de índice em toda FK e filtro por técnica no perfil do artesão. |
 | `Produto_artesaoId_idx`                   | Q05: join por artesaoId. Também `SELECT id FROM "Produto" WHERE "artesaoId" = $1::uuid;`.                                                                             |
 | `Produto_categoriaId_idx`                 | Q03: produtos filtrados por categoriaId. Preexistente em BD-04.                                                                                                       |
 | `Produto_tecnicaId_idx`                   | Q04: produtos filtrados por tecnicaId.                                                                                                                                |
@@ -454,6 +455,21 @@ Nenhum deles é removido por este documento.
 | `IntencaoNotificacao_status_idx`          | Q07: intenções pendentes ou em falha, lidas pelo poller.                                                                                                              |
 | `Notificacao_pedidoId_idx`                | `SELECT id FROM "Notificacao" WHERE "pedidoId" = $1::uuid;` Consulta por pedido e verificação da FK RESTRICT. O UNIQUE começa por usuarioId.                          |
 | `Notificacao_usuarioId_lida_criadoEm_idx` | Q08: notificações do usuário, filtradas por lida e ordenadas por criadoEm DESC.                                                                                       |
+
+#### Atualização PI4-33.2: cobertura da FK de técnica principal
+
+Migration: `20261104165644_indice_perfil_tecnica_principal`, aplicada em 04/11/2026.
+Acrescenta somente o B-tree `PerfilArtesao_tecnicaPrincipalId_idx`.
+O índice cobre a FK opcional para `Tecnica.id`.
+Atende à regra U2 e ao filtro pela técnica principal.
+Seu DDL integra também `backend/prisma/ddl-fisico.sql`.
+As migrations anteriores permanecem inalteradas.
+
+O catálogo atual filtra técnica em `Produto.tecnicaId`.
+O perfil público consulta o artesão por `usuarioId`.
+Nenhuma dessas consultas foi alterada nesta subtarefa.
+Não existe medição de ganho temporal para o novo índice.
+Evidências: [PI4-33.2](../../evidencias/PI4-33/33.2/20261104-validacao/README.md).
 
 ### 6.4 Consultas parametrizadas de BD-04
 
