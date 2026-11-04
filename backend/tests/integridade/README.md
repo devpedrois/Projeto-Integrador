@@ -33,3 +33,37 @@ O Neon utilizado retorna `23001` nas exclusões `RESTRICT`.
 Pedro autorizou esse ajuste após a execução inicial.
 As duas FKs continuam com `ON DELETE RESTRICT`.
 A classificação `restrict_violation` consta na [documentação PostgreSQL](https://www.postgresql.org/docs/18/errcodes-appendix.html).
+
+## PI4-33.1: índice em toda chave estrangeira
+
+`fk-com-indice.integridade.test.ts` consulta somente o catálogo PostgreSQL.
+Usa o schema retornado por `current_schema()` na conexão existente.
+O teste falha também quando esse schema não contém FKs.
+
+Compara `pg_constraint.conkey` com o prefixo ordenado de `pg_index.indkey`.
+Aceita índices comuns, PRIMARY KEY e UNIQUE da própria tabela.
+Considera somente índices válidos, prontos e sem predicado parcial.
+Colunas INCLUDE não contam como colunas-chave do índice.
+Cada coluna descoberta aparece como `tabela.coluna` na falha.
+
+`MODO_ESTRITO` permanece `false`, aceitando prefixos de índices compostos.
+Se o professor rejeitar prefixos, altere a constante para `true`.
+O modo estrito exige exatamente as colunas-chave da FK.
+
+O script `test:integridade` já inclui todos os arquivos deste diretório.
+O CI também os descobre pelo comando `npm test` existente.
+Nenhuma alteração dos scripts ou do workflow foi necessária.
+
+Na execução anterior à 33.2, somente `PerfilArtesao.tecnicaPrincipalId` falhou.
+Os outros dez testes de integridade passaram.
+O modo estrito acrescentou cinco FKs à lista:
+
+- `Avaliacao.compradorId`;
+- `ItemCarrinho.carrinhoId`;
+- `Notificacao.usuarioId`;
+- `Pedido.compradorId`;
+- `ProdutoFoto.produtoId`.
+
+O RED permanece esperado até a implementação da 33.2.
+Nenhum índice ou migration foi criado nesta subtarefa.
+Evidências locais: [PI4-33.1](../../../evidencias/PI4-33/33.1/20261104-134954/README.md).

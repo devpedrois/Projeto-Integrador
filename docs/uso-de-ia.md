@@ -1562,3 +1562,11 @@ Comparou IDs e ordem com as Strategies existentes.
 Configurou o papel restrito da API, conforme autorização recebida.
 Executou testes e revisão equivalente de segurança nesta conversa.
 Evidências: [PI4-35.1](../evidencias/PI4-35/35.1/README.md).
+
+### 33.1: cobertura de índices nas chaves estrangeiras
+
+O Codex criou o teste consultando catálogos PostgreSQL reais.
+Registrou o RED esperado e a lista do modo estrito.
+Preservou o modo padrão, sem criar índices ou migrations.
+Validou lint, typecheck e descoberta pelas suítes existentes.
+Evidências: [PI4-33.1](../evidencias/PI4-33/33.1/20261104-134954/README.md).
