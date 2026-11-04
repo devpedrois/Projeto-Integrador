@@ -1588,3 +1588,12 @@ Adaptou integrações, E2E e CI para o microsserviço real.
 Validou TDD, permissões restritas e os quatro fluxos responsivos.
 Realizou revisão equivalente de segurança nesta conversa, conforme solicitado.
 Evidências: [PI4-35.2](../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/README.md).
+
+### 33.3: consultas agregadas dos indicadores administrativos
+
+O Codex implementou agregações independentes, preservando a receita Decimal.
+Criou testes com PostgreSQL real, incluindo visibilidade e fanout.
+Conferiu os números contra SQL independente na branch de volume.
+Registrou quatro planos EXPLAIN e justificou preservar os índices.
+Realizou a revisão equivalente de segurança nesta conversa.
+Evidências: [PI4-33.3](../evidencias/PI4-33-W14-Indices-FK-Admin/33.3-consultas-admin/README.md).

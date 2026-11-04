@@ -216,3 +216,112 @@ Fonte: [PostgreSQL, índices parciais](https://www.postgresql.org/docs/current/i
 ANALYZE executa a consulta; os buffers descrevem acessos reais.
 Fonte: [PostgreSQL, EXPLAIN](https://www.postgresql.org/docs/current/sql-explain.html).
 Base histórica: [modelo físico, seção de índices](../sprints/semana-10-11/01-Modelo-Fisico-BD.md#6-indices-e-consultas).
+
+
+## PI4-33.3: consultas agregadas da plataforma
+
+Coleta: 04/11/2026, branch sintética de volume, schema `public`.
+O repository fornece os quatro números, sem expor rota nova.
+A rota e a tela pertencem à subtarefa 32.1.
+
+### Correção e prevenção de fanout
+
+`PrismaIndicadoresPlataformaRepository.obterDaPlataforma()` executa um SELECT.
+Seus quatro resultados vêm de subqueries escalares agregadas independentes.
+A contagem de produtos usa EXISTS para verificar o artesão.
+Ela replica os filtros efetivos do catálogo:
+
+- produto ativo, sem moderação e com estoque positivo;
+- proprietário com papel artesão e conta ativa;
+- perfil de artesão opcional, como na vitrine existente.
+
+Fotos, avaliações, itens e pagamentos não participam das agregações.
+A receita soma exclusivamente `Pedido.total` de pedidos confirmados.
+O resultado permanece `Prisma.Decimal`, sem conversão para float.
+Valores NULL não contribuem para SUM; o vazio retorna Decimal zero.
+Pedidos confirmados com total NULL continuam na contagem.
+
+O teste controlado inclui três artesãos ativos e um inativo.
+Também inclui produtos ocultos, sem estoque e proprietários de outros papéis.
+Itens, fotos e avaliações múltiplos exercitam o risco de fanout.
+Pedidos pendentes e cancelados não entram nos indicadores financeiros.
+A soma exata testada foi `100000000.29`, incluindo `0.10 + 0.20`.
+Esse total supera a capacidade de uma única coluna Decimal(10,2).
+A agregação numeric preserva essa soma sem reprecificar itens.
+O cenário vazio também foi conferido no PostgreSQL real.
+
+### Conferência independente na massa de volume
+
+O SQL independente está em
+[`conferencia-indicadores-plataforma.sql`](../backend/prisma/consultas/conferencia-indicadores-plataforma.sql).
+Ele agrupa usuários por papel e atividade, sem importar as subqueries.
+Conta o catálogo por FILTER com junção um-para-um pela PK.
+Agrupa pedidos por status para obter quantidade e receita.
+O repository e essa consulta usam o mesmo snapshot Repeatable Read.
+A transação é somente leitura e termina com ROLLBACK.
+
+| Indicador | Repository | SQL independente | Divergência |
+|---|---:|---:|---:|
+| artesaosAtivos | 50 | 50 | 0 |
+| produtosAtivos | 1000 | 1000 | 0 |
+| pedidosConfirmados | 1500 | 1500 | 0 |
+| receitaTotal | 807365.08 | 807365.08 | 0 |
+
+A massa contém 350 usuários, 1.000 produtos e 1.500 pedidos.
+Todos os pedidos estão confirmados e possuem total preenchido.
+Todos os produtos passam pela visibilidade do catálogo.
+Os casos negativos são cobertos na massa controlada de integração.
+A conferência usa o repository; o endpoint ainda não existe.
+Nenhuma contagem foi apresentada como evidência HTTP.
+
+### EXPLAIN (ANALYZE, BUFFERS) e decisão sobre índices
+
+Cada subquery teve aquecimento antes da coleta individual.
+O EXPLAIN utiliza exatamente o SQL exportado pelo repository.
+Nenhum plano foi forçado, índice criado ou estatística alterada.
+Os tempos representam uma execução aquecida no servidor PostgreSQL.
+Eles não medem latência HTTP, p95 ou tempo do painel.
+
+| Consulta | Plano observado | Execução ms | Buffers hit/read |
+|---|---|---:|---:|
+| Artesãos ativos | Aggregate → Seq Scan Usuario | 0.069 | 9 / 0 |
+| Produtos visíveis | Aggregate → Hash Join → Seq Scan Produto + Hash/Seq Scan Usuario | 0.407 | 38 / 0 |
+| Pedidos confirmados | Aggregate → Seq Scan Pedido | 0.258 | 18 / 0 |
+| Receita confirmada | Aggregate → Seq Scan Pedido | 0.293 | 18 / 0 |
+
+Não foi justificado nenhum índice novo nesta coleta.
+Produtos e pedidos tiveram seletividade de 100% na massa observada.
+Um índice parcial desses predicados incluiria todas as linhas atuais.
+SUM precisa ler os totais dos 1.500 pedidos confirmados.
+O custo observado foi pequeno: dezoito buffers e 0.293 ms.
+
+Artesãos ativos representam 50 dos 350 usuários, com nove buffers acessados.
+Um índice por papel/atividade poderia ser reavaliado noutra escala.
+A coleta de 0.069 ms não demonstra benefício que justifique manutenção adicional.
+Não foi executada comparação temporal com índices candidatos nesta subtarefa.
+Portanto, não se afirma que índices nunca ajudariam.
+
+O plano de produtos estimou 143 linhas e produziu 1.000.
+A junção mantém um usuário por produto, pela chave primária.
+A diferença de estimativa não representa multiplicação do resultado.
+Distribuições mistas e volumes maiores exigem nova avaliação.
+Nenhum índice ou migration foi acrescentado pela 33.3.
+
+### Reprodução da coleta
+
+Configure `DATABASE_URL_VOLUME` numa branch separada das conexões padrão.
+Execute dentro de `backend/`, com destino novo para os artefatos:
+
+```sh
+node --import tsx scripts/conferir-indicadores-plataforma.ts --output ../evidencias/PI4-33-W14-Indices-FK-Admin/33.3-consultas-admin/nova-coleta
+```
+
+O runner recusa produção e conexões coincidentes com padrão/deploy.
+O schema aceita apenas identificadores validados e escapados.
+Arquivos existentes são preservados, usando gravação exclusiva.
+Erros de CLI não imprimem conexões nem credenciais.
+
+Evidências locais:
+[conferência](../evidencias/PI4-33-W14-Indices-FK-Admin/33.3-consultas-admin/03-conferencia-volume.md),
+[planos completos](../evidencias/PI4-33-W14-Indices-FK-Admin/33.3-consultas-admin/04-explain.txt) e
+[dados brutos](../evidencias/PI4-33-W14-Indices-FK-Admin/33.3-consultas-admin/conferencia.json).
