@@ -1,0 +1,137 @@
+name: origem
+
+x-backend: &backend
+  image: origem-backend:local
+  build:
+    context: ./backend
+  init: true
+  stop_grace_period: 40s
+
+x-backend-environment: &backend-environment
+  NODE_ENV: production
+  DATABASE_URL: postgresql://origem_api_app:${API_DATABASE_PASSWORD:?Configure .env.compose}@postgres:5432/${POSTGRES_DB:?Configure .env.compose}
+  DIRECT_URL: postgresql://origem_api_app:${API_DATABASE_PASSWORD:?Configure .env.compose}@postgres:5432/${POSTGRES_DB:?Configure .env.compose}
+  JWT_SECRET: ${JWT_SECRET:?Configure .env.compose}
+  COOKIE_SECURE: ${COOKIE_SECURE:-false}
+  FRONTEND_ORIGIN: ${FRONTEND_ORIGIN:-http://localhost:3000}
+  RECOMENDACAO_URL: http://recomendacao:3002
+  RECOMENDACAO_SERVICE_TOKEN: ${RECOMENDACAO_SERVICE_TOKEN:?Configure .env.compose}
+  RECOMENDACAO_TIMEOUT_MS: ${RECOMENDACAO_TIMEOUT_MS:-800}
+  RUN_WORKER_IN_API: "false"
+  PG_BOSS_CREATE_SCHEMA: "false"
+  CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-60}
+  WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-1}
+  NOTIFICATION_PUBLISHER_INTERVAL_MS: ${NOTIFICATION_PUBLISHER_INTERVAL_MS:-3000}
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Configure .env.compose}
+      POSTGRES_USER: ${POSTGRES_USER:?Configure .env.compose}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure .env.compose}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres/01-pg-trgm.sql:/docker-entrypoint-initdb.d/01-pg-trgm.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  migrate:
+    image: origem-backend-migrate:local
+    build:
+      context: ./backend
+      target: migrate
+    init: true
+    command: ["sh", "-c", "npm run db:migrate && node dist/prisma/seed.js"]
+    restart: "no"
+    environment:
+      <<: *backend-environment
+      DATABASE_URL: postgresql://${POSTGRES_USER:?Configure .env.compose}:${POSTGRES_PASSWORD:?Configure .env.compose}@postgres:5432/${POSTGRES_DB:?Configure .env.compose}
+      DIRECT_URL: postgresql://${POSTGRES_USER:?Configure .env.compose}:${POSTGRES_PASSWORD:?Configure .env.compose}@postgres:5432/${POSTGRES_DB:?Configure .env.compose}
+    healthcheck:
+      disable: true
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  recomendacao-setup:
+    image: origem-recomendacao:local
+    build:
+      context: ./services/recomendacao
+    init: true
+    command:
+      [
+        "sh",
+        "-c",
+        "npm run bootstrap:permissoes && unset BOOTSTRAP_DATABASE_URL API_DATABASE_PASSWORD RECOMENDACAO_DATABASE_PASSWORD && npm run migrate",
+      ]
+    restart: "no"
+    environment:
+      BOOTSTRAP_DATABASE_URL: postgresql://${POSTGRES_USER:?Configure .env.compose}:${POSTGRES_PASSWORD:?Configure .env.compose}@postgres:5432/${POSTGRES_DB:?Configure .env.compose}
+      DATABASE_URL: postgresql://recomendacao_app:${RECOMENDACAO_DATABASE_PASSWORD:?Configure .env.compose}@postgres:5432/${POSTGRES_DB:?Configure .env.compose}
+      RECOMENDACAO_DATABASE_PASSWORD: ${RECOMENDACAO_DATABASE_PASSWORD:?Configure .env.compose}
+      API_DATABASE_PASSWORD: ${API_DATABASE_PASSWORD:?Configure .env.compose}
+      API_DATABASE_ROLE: origem_api_app
+      API_QUEUE_SCHEMA: pgboss
+      API_SCHEMA: public
+      RECOMENDACAO_SCHEMA: recomendacao
+    healthcheck:
+      disable: true
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  recomendacao:
+    image: origem-recomendacao:local
+    build:
+      context: ./services/recomendacao
+    init: true
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3002
+      DATABASE_URL: postgresql://recomendacao_app:${RECOMENDACAO_DATABASE_PASSWORD:?Configure .env.compose}@postgres:5432/${POSTGRES_DB:?Configure .env.compose}
+      API_SCHEMA: public
+      RECOMENDACAO_SCHEMA: recomendacao
+      RECOMENDACAO_SERVICE_TOKEN: ${RECOMENDACAO_SERVICE_TOKEN:?Configure .env.compose}
+    depends_on:
+      recomendacao-setup:
+        condition: service_completed_successfully
+
+  api:
+    <<: *backend
+    command: ["npm", "run", "start:api"]
+    ports:
+      - "127.0.0.1:3001:3001"
+    environment:
+      <<: *backend-environment
+      HOST: 0.0.0.0
+      PORT: 3001
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      recomendacao:
+        condition: service_healthy
+
+  worker:
+    <<: *backend
+    command: ["npm", "run", "start:worker"]
+    environment:
+      <<: *backend-environment
+    healthcheck:
+      test: ["CMD", "node", "docker/worker-healthcheck.mjs"]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 6
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      recomendacao-setup:
+        condition: service_completed_successfully
+
+volumes:
+  postgres-data:

@@ -190,6 +190,159 @@ npm run test:e2e
 
 Imagens ilustrativas geradas com IA (Gemini).
 
+## Executar com Docker
+
+Requisitos: Docker Engine e Compose v2 atualizado.
+No Windows, use Docker Desktop com containers Linux.
+Execute os comandos seguintes na raiz do repositório.
+
+Copie o exemplo apenas quando `.env.compose` não existir:
+
+```bash
+cp -n .env.compose.example .env.compose
+export COMPOSE_ENV_FILES=.env.compose
+```
+
+No PowerShell:
+
+```powershell
+if (!(Test-Path .env.compose)) { Copy-Item .env.compose.example .env.compose }
+$env:COMPOSE_ENV_FILES = ".env.compose"
+```
+
+Troque as senhas e tokens fictícios antes de iniciar.
+Use senhas alfanuméricas com pelo menos 32 caracteres.
+Este Compose usa essas senhas diretamente nas URLs locais.
+Nunca versione `.env.compose`.
+`COMPOSE_ENV_FILES` seleciona esse arquivo para interpolação do Compose.
+Alternativamente, informe `--env-file .env.compose` em cada comando.
+
+```bash
+docker compose up --build
+```
+
+Em outro terminal, selecione o mesmo arquivo de ambiente.
+Confira a preparação, os serviços e a saúde:
+
+```bash
+docker compose ps --all
+curl http://127.0.0.1:3001/health
+docker compose logs -f postgres
+docker compose logs -f migrate recomendacao-setup
+docker compose logs -f api
+docker compose logs -f worker
+docker compose logs -f recomendacao
+```
+
+`migrate` aplica migrations, views e o seed demo compilado.
+`recomendacao-setup` cria os papéis e aplica migrations privadas.
+Ambos encerram com código zero.
+Postgres, API, worker e recomendação devem aparecer saudáveis.
+O worker verifica processo e acesso à fila PostgreSQL.
+Ele não abre uma porta HTTP.
+Os demais serviços usam seus healthchecks próprios.
+
+A API publica intenções, com `RUN_WORKER_IN_API=false`.
+Somente o worker consome os jobs e registra `notificacao-processada`.
+O log inclui `pedidoId`, sem credenciais ou dados pessoais.
+Para demonstrar, pare o worker antes de criar um pedido:
+
+```bash
+docker compose stop worker
+# Crie o pedido pelo frontend ou Swagger em http://127.0.0.1:3001/docs.
+docker compose start worker
+docker compose logs -f worker
+```
+
+Apenas a API publica porta, limitada ao loopback local.
+Postgres e recomendação ficam na rede padrão do Compose.
+A API chama `http://recomendacao:3002` com token interno.
+API e worker usam `origem_api_app`, sem privilégios administrativos.
+O bootstrap cria o schema `pgboss` para esse papel.
+`PG_BOSS_CREATE_SCHEMA=false` evita exigir criação de schemas no runtime.
+A recomendação usa somente `recomendacao_app`.
+Conexões administrativas existem apenas nos serviços de preparação.
+As imagens recebem segredos somente durante a execução.
+
+As dependências são instaladas com `npm ci`.
+As bases usam Alpine 3.24 e o binário oficial Node 22.
+O npm 12.2.1 recebe undici 6.29.1 para corrigir alertas herdados.
+O target `migrate` mantém o Prisma CLI para migrations.
+API e worker recebem apenas dependências de produção.
+O seed executa JavaScript compilado, sem `tsx`.
+Na imagem da recomendação, os scripts npm executam JavaScript compilado.
+Instalações locais preservam os scripts TypeScript existentes.
+
+O volume nomeado preserva os dados entre execuções.
+O init instala `pg_trgm` somente ao criar o banco.
+Recriar `migrate` reaplica o seed e seus dados sintéticos.
+Isso inclui senhas demo e estoque dos produtos demo.
+Alterar senhas administrativas exige atualizar o banco existente.
+Para uma demonstração descartável, recrie o volume conscientemente.
+
+Para encerrar preservando dados:
+
+```bash
+docker compose down
+```
+
+Para remover também todos os dados locais desta demonstração:
+
+```bash
+docker compose down --volumes
+```
+
+### Frontend local com a API dos containers
+
+Requer Node.js e npm instalados no computador.
+O frontend permanece fora do Compose.
+Execute em outro terminal:
+
+```bash
+cd frontend
+npm ci
+cp -n .env.example .env.local
+npm run dev
+```
+
+No PowerShell, copie sem sobrescrever configurações existentes:
+
+```powershell
+if (!(Test-Path .env.local)) { Copy-Item .env.example .env.local }
+```
+
+Se `.env.local` existir, confira estes valores:
+
+```dotenv
+NEXT_PUBLIC_DATA_SOURCE=http
+BACKEND_URL=http://127.0.0.1:3001
+```
+
+Reinicie Next.js após alterar essas variáveis.
+Abra `http://localhost:3000` para usar a vitrine.
+As recomendações percorrem frontend, API e microsserviço real.
+`COOKIE_SECURE=false` permite o cookie no HTTP local.
+O Compose não altera o deploy Neon ou Render.
+
+### Verificação automatizada da demonstração
+
+Após instalar as dependências locais do backend:
+
+```bash
+node --test backend/tests/docker/compose.smoke.mjs
+node --test backend/tests/docker/base-security.mjs
+docker history --no-trunc origem-backend:local
+docker history --no-trunc origem-recomendacao:local
+```
+
+O teste usa o projeto isolado `origem-35-3-smoke`.
+Ele reserva a porta 3001 e usa valores fictícios.
+Verifica saúde, isolamento SQL, runtime e processamento pelo worker.
+Deixa os containers ativos para inspeção das evidências.
+Para encerrá-los, acrescente `-p origem-35-3-smoke` ao Compose.
+O teste da base exige Docker Scout e acesso ao registry.
+Ele rejeita vulnerabilidades altas ou críticas na imagem-base.
+
 ## Integração contínua
 
 O workflow `CI` executa em cada push e pull request.

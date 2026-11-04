@@ -68,6 +68,10 @@ const environmentSchema = z
       .default("true")
       .transform((value) => value === "true"),
     WORKER_CONCURRENCY: z.coerce.number().int().min(1).max(8).default(1),
+    PG_BOSS_CREATE_SCHEMA: z
+      .enum(["true", "false"])
+      .default("true")
+      .transform((value) => value === "true"),
     NOTIFICACAO_LATENCIA_MS: z
       .preprocess(
         (value) => (typeof value === "string" && !value.trim() ? NaN : value),

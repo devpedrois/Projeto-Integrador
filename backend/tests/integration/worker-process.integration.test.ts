@@ -95,6 +95,16 @@ async function startWorkerProcess(schema: string, queueSchema: string) {
     pid: child.pid,
     signal,
     isRunning: () => child.exitCode === null,
+    processedOrderIds: (): string[] =>
+      stdout
+        .trim()
+        .split("\n")
+        .filter(Boolean)
+        .map((line) => {
+          const entry = JSON.parse(line) as { event: string; pedidoId: string };
+          expect(entry.event).toBe("notificacao-processada");
+          return entry.pedidoId;
+        }),
     async stop(signal: "SIGINT" | "SIGTERM") {
       const timeout = setTimeout(() => child.kill(), 15_000);
       try {
@@ -104,9 +114,8 @@ async function startWorkerProcess(schema: string, queueSchema: string) {
           else child.kill(signal);
         }
         const code = await closed;
-        expect({ code, stdout, stderr }).toEqual({
+        expect({ code, stderr }).toEqual({
           code: 0,
-          stdout: "",
           stderr: "",
         });
       } finally {
@@ -289,8 +298,14 @@ describe("API and independent worker processes", () => {
               where: { pedidoId: { in: pedidoIds }, status: "processada" },
             })) === totalPedidos,
         );
-        for (const [index, worker] of workers.splice(0).entries())
+        const finishedWorkers = workers.splice(0);
+        for (const [index, worker] of finishedWorkers.entries())
           await worker.stop(index === 0 ? "SIGINT" : "SIGTERM");
+        expect(
+          finishedWorkers
+            .flatMap((worker) => worker.processedOrderIds())
+            .sort(),
+        ).toEqual([...pedidoIds].sort());
         const processed = await prisma.intencaoNotificacao.findMany({
           where: { pedidoId: { in: pedidoIds } },
         });

@@ -29,6 +29,13 @@ export function registerNotificarArtesaoWorker(
         notificacaoRepository,
         latenciaMs,
       );
+      process.stdout.write(
+        JSON.stringify({
+          event: "notificacao-processada",
+          pedidoId: job.data.pedidoId,
+          intencaoId: job.data.intencaoId,
+        }) + "\n",
+      );
     },
   );
 }

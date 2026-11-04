@@ -194,7 +194,7 @@ describe("BD-07: integridade do modelo fisico", () => {
     });
   });
 
-  it("restringe exclusao de produto com pedido com 23001", async () => {
+  it("restringe exclusao de produto com pedido", async () => {
     await conexao().query('DELETE FROM "Avaliacao" WHERE "id" = $1', [
       dados.avaliacaoId,
     ]);
@@ -203,7 +203,7 @@ describe("BD-07: integridade do modelo fisico", () => {
         dados.produtoId,
       ]),
     ).rejects.toMatchObject({
-      code: "23001",
+      code: expect.stringMatching(/^(23001|23503)$/),
       constraint: "ItemPedido_produtoId_fkey",
     });
   });
@@ -233,13 +233,13 @@ describe("BD-07: integridade do modelo fisico", () => {
     });
   });
 
-  it("restringe exclusao de Tecnica referenciada com 23001", async () => {
+  it("restringe exclusao de Tecnica referenciada", async () => {
     await expect(
       conexao().query('DELETE FROM "Tecnica" WHERE "id" = $1', [
         dados.tecnicaId,
       ]),
     ).rejects.toMatchObject({
-      code: "23001",
+      code: expect.stringMatching(/^(23001|23503)$/),
       constraint: "Produto_tecnicaId_fkey",
     });
   });

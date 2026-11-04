@@ -183,6 +183,7 @@ Nunca reutilize seu `JWT_SECRET` em produção.
 | `CACHE_TTL_SECONDS`                  | `60`                                             | Inteiro positivo, em segundos                                    |
 | `NOTIFICATION_PUBLISHER_INTERVAL_MS` | `3000`                                           | Publicação periódica; inteiro entre 1000 e 60000                 |
 | `RUN_WORKER_IN_API`                  | `true`                                           | Textos `true` ou `false`; habilita consumidor na API             |
+| `PG_BOSS_CREATE_SCHEMA`              | `true`                                           | Use `false` com schema da fila precriado, como no Compose         |
 | `WORKER_CONCURRENCY`                 | `1`                                              | Inteiro entre 1 e 8; reservado para 30.5                         |
 | `ALLOW_VOLUME_SEED`                  | Opt-in desativado no exemplo                     | `1` autoriza a carga de volume na branch de teste                |
 | `DATABASE_URL_DEPLOY`                | Opcional, fictícia no exemplo                    | Identifica o banco de deploy bloqueado para volume               |

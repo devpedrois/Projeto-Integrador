@@ -1597,3 +1597,12 @@ Conferiu os números contra SQL independente na branch de volume.
 Registrou quatro planos EXPLAIN e justificou preservar os índices.
 Realizou a revisão equivalente de segurança nesta conversa.
 Evidências: [PI4-33.3](../evidencias/PI4-33-W14-Indices-FK-Admin/33.3-consultas-admin/README.md).
+
+### 35.3: execução local com Docker Compose
+
+O Codex criou imagens e configurou a execução local.
+Validou permissões, recomendações e processamento pelo worker com PostgreSQL.
+Ajustou healthchecks e compatibilidade dos testes com PostgreSQL 16.
+Revisou a imagem-base após alertas Docker no VS Code.
+Executou revisão equivalente de segurança, conforme autorização nesta conversa.
+Evidências: [PI4-35.3](../evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/README.md).

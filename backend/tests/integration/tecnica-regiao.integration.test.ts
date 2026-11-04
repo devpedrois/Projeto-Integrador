@@ -74,7 +74,7 @@ describe("BD-03: referencias Tecnica e Regiao no PostgreSQL", () => {
     await criarProduto(client, { artesaoId, categoriaId });
     await expectPostgresError(
       client.query('DELETE FROM "Tecnica" WHERE "id" = $1', ["tecnica-modelagem-argila"]),
-      "23001",
+      ["23001", "23503"],
     );
   });
 
@@ -89,7 +89,7 @@ describe("BD-03: referencias Tecnica e Regiao no PostgreSQL", () => {
     );
     await expectPostgresError(
       client.query(`DELETE FROM "${tabela}" WHERE "id" = $1`, [id]),
-      "23001",
+      ["23001", "23503"],
     );
   });
 

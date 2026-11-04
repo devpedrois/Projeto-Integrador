@@ -1,0 +1,12 @@
+node_modules
+dist
+.env*
+**/.env*
+evidencias
+coverage
+.vitest
+tests
+scripts
+src/generated
+*.log
+.git

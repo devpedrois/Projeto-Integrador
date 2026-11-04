@@ -19,7 +19,10 @@ export async function startWorker(
   const prisma =
     infrastructure?.prisma ?? createPrismaClient(environment.DATABASE_URL);
   const boss =
-    infrastructure?.boss ?? createPgBossClient(environment.DATABASE_URL);
+    infrastructure?.boss ??
+    createPgBossClient(environment.DATABASE_URL, {
+      createSchema: environment.PG_BOSS_CREATE_SCHEMA,
+    });
   boss.on("error", () => {
     process.stderr.write("Notification queue error\n");
   });

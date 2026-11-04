@@ -24,7 +24,11 @@ export async function startServer(
   let boss: PgBoss | undefined;
   let pararPublicador: (() => Promise<void>) | undefined;
   try {
-    boss = infrastructure?.boss ?? createPgBossClient(environment.DATABASE_URL);
+    boss =
+      infrastructure?.boss ??
+      createPgBossClient(environment.DATABASE_URL, {
+        createSchema: environment.PG_BOSS_CREATE_SCHEMA,
+      });
     boss.on("error", () => {
       process.stderr.write("Notification queue error\n");
     });
