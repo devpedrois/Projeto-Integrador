@@ -1553,3 +1553,12 @@ Excluiu somente o script manual de evidências da compilação.
 Criou regressão com compilação real sem dependências do frontend.
 Validou build, typecheck e instalação limpa do backend.
 Evidências: [P1 build backend](../evidencias/P1-build-backend/README.md).
+
+### 35.1: microsserviço de recomendação e isolamento dos dados
+
+O Codex implementou o serviço interno com PostgreSQL real.
+Criou views de contrato, permissões e migrations privadas.
+Comparou IDs e ordem com as Strategies existentes.
+Configurou o papel restrito da API, conforme autorização recebida.
+Executou testes e revisão equivalente de segurança nesta conversa.
+Evidências: [PI4-35.1](../evidencias/PI4-35/35.1/README.md).

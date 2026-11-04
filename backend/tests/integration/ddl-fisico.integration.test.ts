@@ -30,7 +30,12 @@ async function catalog(namespace: string) {
     `SELECT table_name, column_name, udt_name, is_nullable,
             numeric_precision, numeric_scale, datetime_precision, column_default
      FROM information_schema.columns
-     WHERE table_schema = $1 ORDER BY table_name, column_name`,
+     WHERE table_schema = $1
+       AND table_name IN (
+         SELECT table_name FROM information_schema.tables
+         WHERE table_schema = $1 AND table_type = 'BASE TABLE'
+       )
+     ORDER BY table_name, column_name`,
     [namespace],
   );
   const constraints = await client.query(

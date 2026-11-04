@@ -12,6 +12,97 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  recomendacao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: services/recomendacao
+    env:
+      NODE_ENV: test
+      BOOTSTRAP_DATABASE_URL: ${{ secrets.DIRECT_URL_TEST }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL_TEST }}
+      API_SCHEMA: public
+      RECOMENDACAO_SCHEMA: rec_ci_${{ github.run_id }}_${{ github.run_attempt }}
+      RECOMENDACAO_DATABASE_ROLE: rec_ci_${{ github.run_id }}_${{ github.run_attempt }}
+      API_DATABASE_ROLE: api_ci_${{ github.run_id }}_${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            services/recomendacao/package-lock.json
+            backend/package-lock.json
+      - run: npm ci
+      - name: Preparar migrations e referencia do backend
+        working-directory: backend
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+        run: |
+          npm ci
+          npx prisma generate
+          npx prisma migrate deploy
+      - name: Gerar credenciais efemeras e conexao restrita
+        run: |
+          node --input-type=module <<'NODE'
+          import { randomBytes } from 'node:crypto';
+          import { appendFileSync } from 'node:fs';
+          const generated = Object.fromEntries([
+            'RECOMENDACAO_DATABASE_PASSWORD', 'API_DATABASE_PASSWORD',
+            'RECOMENDACAO_SERVICE_TOKEN',
+          ].map(name => [name, randomBytes(32).toString('hex')]));
+          const url = new URL(process.env.BOOTSTRAP_DATABASE_URL);
+          if (!['postgres:', 'postgresql:'].includes(url.protocol)) process.exit(1);
+          for (const value of [url.password, decodeURIComponent(url.password), ...Object.values(generated)]) {
+            if (value) console.log(`::add-mask::${value}`);
+          }
+          url.username = process.env.RECOMENDACAO_DATABASE_ROLE;
+          url.password = generated.RECOMENDACAO_DATABASE_PASSWORD;
+          generated.DATABASE_URL = url.toString();
+          console.log(`::add-mask::${generated.DATABASE_URL}`);
+          appendFileSync(process.env.GITHUB_ENV, Object.entries(generated).map(([key, value]) => `${key}=${value}\n`).join(''));
+          NODE
+      - run: npm run bootstrap:permissoes
+      - run: npm run migrate
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: Remover schema e papeis efemeros do job
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import { Pool, escapeIdentifier as ident } from 'pg';
+          const role = process.env.RECOMENDACAO_DATABASE_ROLE;
+          const api = process.env.API_DATABASE_ROLE;
+          const schema = process.env.RECOMENDACAO_SCHEMA;
+          if (![role, api, schema].every(name => /^(rec|api)_ci_[0-9]+_[0-9]+$/.test(name))) process.exit(1);
+          const pool = new Pool({ connectionString: process.env.BOOTSTRAP_DATABASE_URL });
+          const client = await pool.connect();
+          try {
+            await client.query('BEGIN');
+            const { rows: [identity] } = await client.query('SELECT current_user AS name');
+            const existing = await client.query('SELECT rolname FROM pg_roles WHERE rolname = ANY($1::text[])', [[role, api]]);
+            for (const { rolname } of existing.rows) {
+              await client.query(`GRANT ${ident(rolname)} TO ${ident(identity.name)} WITH SET TRUE, INHERIT TRUE`);
+            }
+            await client.query(`DROP SCHEMA IF EXISTS ${ident(schema)} CASCADE`);
+            for (const { rolname } of existing.rows) {
+              await client.query(`DROP OWNED BY ${ident(rolname)}`);
+              await client.query(`DROP ROLE ${ident(rolname)}`);
+            }
+            await client.query('COMMIT');
+          } catch {
+            await client.query('ROLLBACK');
+            console.error('Falha na limpeza dos objetos efemeros do job.');
+            process.exitCode = 1;
+          } finally { client.release(); await pool.end(); }
+          NODE
+
   frontend:
     runs-on: ubuntu-latest
     timeout-minutes: 15
