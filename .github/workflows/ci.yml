@@ -146,6 +146,7 @@ jobs:
       HOST: 127.0.0.1
       FRONTEND_ORIGIN: http://localhost:3000
       COOKIE_SECURE: "false"
+      RECOMENDACAO_URL: http://127.0.0.1:3002
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -154,7 +155,9 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-          cache-dependency-path: backend/package-lock.json
+          cache-dependency-path: |
+            backend/package-lock.json
+            services/recomendacao/package-lock.json
       - name: Validar conexoes de teste
         run: |
           node --input-type=module <<'NODE'
@@ -171,12 +174,18 @@ jobs:
             }
           }
           NODE
-      - name: Gerar JWT_SECRET efemero
+      - name: Gerar segredos efemeros JWT e recomendacao
         run: |
           jwt_secret="$(openssl rand -hex 32)"
           echo "::add-mask::$jwt_secret"
           printf 'JWT_SECRET=%s\n' "$jwt_secret" >> "$GITHUB_ENV"
+          service_token="$(openssl rand -hex 32)"
+          echo "::add-mask::$service_token"
+          printf 'RECOMENDACAO_SERVICE_TOKEN=%s\n' "$service_token" >> "$GITHUB_ENV"
       - run: npm ci
+      - name: Instalar microsservico para integracao HTTP real
+        working-directory: services/recomendacao
+        run: npm ci
       - run: npx prisma generate
       - run: npx prisma migrate deploy
       - run: npm run lint

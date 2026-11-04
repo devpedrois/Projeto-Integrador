@@ -12,7 +12,7 @@ import {
   vi,
 } from "vitest";
 import { createApp } from "../../src/app.js";
-import { criarBancoAuth } from "../helpers/auth-database.js";
+import { criarBancoRecomendacao as criarBancoAuth } from "../helpers/recomendacao-database.js";
 
 const secret = "segredo-sintetico-exclusivo-testes-web13";
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
@@ -83,7 +83,12 @@ beforeEach(async () => {
   logs.length = 0;
   app = createApp(
     banco.prisma,
-    { JWT_SECRET: secret, COOKIE_SECURE: false, CACHE_TTL_SECONDS: 60 },
+    {
+      JWT_SECRET: secret,
+      COOKIE_SECURE: false,
+      ...banco.environment,
+      CACHE_TTL_SECONDS: 60,
+    },
     {
       logCache: (registro) => {
         logs.push(registro);
@@ -296,7 +301,12 @@ describe("WEB-13 cache HTTP publico", () => {
     const agora = Date.now();
     app = createApp(
       banco.prisma,
-      { JWT_SECRET: secret, COOKIE_SECURE: false, CACHE_TTL_SECONDS: 1 },
+      {
+        JWT_SECRET: secret,
+        COOKIE_SECURE: false,
+        ...banco.environment,
+        CACHE_TTL_SECONDS: 1,
+      },
       { logCache: () => {} },
     );
     expect(

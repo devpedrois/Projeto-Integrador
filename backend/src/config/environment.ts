@@ -12,6 +12,31 @@ const environmentSchema = z
   .object({
     DATABASE_URL: postgresUrl,
     DIRECT_URL: postgresUrl,
+    RECOMENDACAO_URL: z
+      .string()
+      .url()
+      .refine((value) => {
+        const url = new URL(value);
+        return (
+          ["http:", "https:"].includes(url.protocol) &&
+          !url.username &&
+          !url.password &&
+          url.pathname === "/" &&
+          !url.search &&
+          !url.hash
+        );
+      })
+      .transform((value) => new URL(value).origin),
+    RECOMENDACAO_SERVICE_TOKEN: z
+      .string()
+      .min(32)
+      .refine((value) => value.trim().length >= 32),
+    RECOMENDACAO_TIMEOUT_MS: z.coerce
+      .number()
+      .int()
+      .min(100)
+      .max(5000)
+      .default(800),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),

@@ -6,14 +6,18 @@ import { z } from "zod";
 import { createApp } from "../../src/app.js";
 import type { PrismaClient } from "../../src/generated/prisma/client.js";
 import { MemoryCacheStore } from "../../src/utils/cache.js";
-import { CategoriaRecomendacaoStrategy } from "../../src/integrations/recommendation/categoria-recomendacao.strategy.js";
-import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
+import {
+  CategoriaRecomendacaoStrategy,
+  PgRecomendacaoRepository,
+} from "../helpers/recomendacao-tooling.js";
+import { iniciarRecomendacao } from "../helpers/recomendacao-runtime.js";
+import type { RecomendacaoHttpConfig } from "../../src/integrations/recommendation/http-recomendacao.client.js";
 import {
   resumirRecomendacoes,
   resumirTempos,
   type ItemMetrica,
   type RespostaMetrica,
-} from "../../src/integrations/recommendation/recomendacao-volume.metricas.js";
+} from "../helpers/recomendacao-tooling.js";
 
 const respostaSchema = z.object({
   estrategia: z.enum(["categoria", "historico-compra", "fallback-geral"]),
@@ -31,10 +35,11 @@ async function iniciarServidor(
   prisma: PrismaClient,
   cacheStore: MemoryCacheStore,
   secret: string,
+  environment: RecomendacaoHttpConfig,
 ) {
   const app = createApp(
     prisma,
-    { JWT_SECRET: secret, COOKIE_SECURE: false },
+    { JWT_SECRET: secret, COOKIE_SECURE: false, ...environment },
     { cacheStore, logCache: () => {} },
   );
   return new Promise<Server>((resolve, reject) => {
@@ -167,6 +172,7 @@ export async function medirBaseRecomendacao(
   baseNome: "demo" | "volume",
   origem: "seed-isolado" | "branch-configurada",
   repeticoes: number,
+  databaseUrl = process.env.DIRECT_URL,
 ) {
   const elegiveis = await prisma.produto.findMany({
     where: {
@@ -197,7 +203,22 @@ export async function medirBaseRecomendacao(
   };
   const secret = randomBytes(48).toString("base64url");
   const cache = new MemoryCacheStore();
-  const server = await iniciarServidor(prisma, cache, secret);
+  const [identity] = await prisma.$queryRaw<
+    { schema: string }[]
+  >`SELECT current_schema() AS schema`;
+  const schema = identity?.schema;
+  if (!schema || !databaseUrl)
+    throw new Error("Conexao administrativa ausente");
+  const micro = await iniciarRecomendacao({
+    databaseUrl,
+    apiSchema: schema,
+  });
+  const server = await iniciarServidor(
+    prisma,
+    cache,
+    secret,
+    micro.environment,
+  );
   try {
     const endereco = server.address();
     if (!endereco || typeof endereco === "string")
@@ -229,6 +250,7 @@ export async function medirBaseRecomendacao(
       server.close((error) => (error ? reject(error) : resolve()));
       server.closeAllConnections();
     });
+    await micro.parar();
   }
 }
 
@@ -237,71 +259,86 @@ export type ReforcoRegional = "on" | "off" | "ambos";
 export async function medirReforcoRegional(
   prisma: PrismaClient,
   reforcoRegional: ReforcoRegional,
+  databaseUrl = process.env.DIRECT_URL,
 ) {
-  const produtos = await prisma.produto.count();
-  const elegiveis = await prisma.produto.findMany({
-    where: {
-      ativo: true,
-      desativadoPorAdmin: false,
-      quantidadeEstoque: { gt: 0 },
-      artesao: { ativo: true, papel: "artesao" },
-    },
-    select: {
-      id: true,
-      categoriaId: true,
-      artesao: { select: { perfilArtesao: { select: { regiaoId: true } } } },
-    },
-    orderBy: { id: "asc" },
+  const [identity] = await prisma.$queryRaw<
+    { schema: string }[]
+  >`SELECT current_schema() AS schema`;
+  const schema = identity?.schema;
+  if (!schema || !databaseUrl)
+    throw new Error("Conexao administrativa ausente");
+  const micro = await iniciarRecomendacao({
+    databaseUrl,
+    apiSchema: schema,
   });
-  const catalogo = new Map(elegiveis.map((p) => [p.id, p]));
-  const modos: ("on" | "off")[] =
-    reforcoRegional === "ambos" ? ["on", "off"] : [reforcoRegional];
-  const resultados = [];
-  const proporcao = (numerador: number, denominador: number) => ({
-    numerador,
-    denominador,
-    percentual: denominador === 0 ? 0 : (numerador * 100) / denominador,
-  });
-  for (const modo of modos) {
-    const strategy = new CategoriaRecomendacaoStrategy(
-      new PrismaRecomendacaoRepository(prisma),
-      modo === "on",
-    );
-    const respostas: RespostaMetrica[] = [];
-    let acertos = 0;
-    let mesmaRegiao = 0;
-    for (const contexto of elegiveis) {
-      const selecao = await strategy.obter({ produtoId: contexto.id });
-      const ids = [...new Set(selecao.produtoIds)].filter(
-        (id) => id !== contexto.id,
-      );
-      const itens = ids.flatMap((id) => {
-        const candidato = catalogo.get(id);
-        if (!candidato) return [];
-        if (candidato.categoriaId === contexto.categoriaId) acertos++;
-        const regiao = contexto.artesao.perfilArtesao?.regiaoId;
-        if (regiao && candidato.artesao.perfilArtesao?.regiaoId === regiao)
-          mesmaRegiao++;
-        return [{ id, categoriaId: candidato.categoriaId }];
-      });
-      respostas.push({ estrategia: selecao.estrategia, itens });
-    }
-    const qualidade = resumirRecomendacoes(respostas, elegiveis);
-    resultados.push({
-      modo,
-      reforcoRegionalAtivo: modo === "on",
-      produtos,
-      produtosElegiveis: elegiveis.length,
-      contextos: elegiveis.length,
-      contextosSemRegiao: elegiveis.filter(
-        (p) => !p.artesao.perfilArtesao?.regiaoId,
-      ).length,
-      ...qualidade,
-      acertoCategoria: proporcao(acertos, qualidade.totalRecomendacoes),
-      mesmaRegiao: proporcao(mesmaRegiao, qualidade.totalRecomendacoes),
+  try {
+    const produtos = await prisma.produto.count();
+    const elegiveis = await prisma.produto.findMany({
+      where: {
+        ativo: true,
+        desativadoPorAdmin: false,
+        quantidadeEstoque: { gt: 0 },
+        artesao: { ativo: true, papel: "artesao" },
+      },
+      select: {
+        id: true,
+        categoriaId: true,
+        artesao: { select: { perfilArtesao: { select: { regiaoId: true } } } },
+      },
+      orderBy: { id: "asc" },
     });
+    const catalogo = new Map(elegiveis.map((p) => [p.id, p]));
+    const modos: ("on" | "off")[] =
+      reforcoRegional === "ambos" ? ["on", "off"] : [reforcoRegional];
+    const resultados = [];
+    const proporcao = (numerador: number, denominador: number) => ({
+      numerador,
+      denominador,
+      percentual: denominador === 0 ? 0 : (numerador * 100) / denominador,
+    });
+    for (const modo of modos) {
+      const strategy = new CategoriaRecomendacaoStrategy(
+        new PgRecomendacaoRepository(micro.rec, schema),
+        modo === "on",
+      );
+      const respostas: RespostaMetrica[] = [];
+      let acertos = 0;
+      let mesmaRegiao = 0;
+      for (const contexto of elegiveis) {
+        const selecao = await strategy.obter({ produtoId: contexto.id });
+        const ids = [...new Set(selecao.produtoIds)].filter(
+          (id) => id !== contexto.id,
+        );
+        const itens = ids.flatMap((id) => {
+          const candidato = catalogo.get(id);
+          if (!candidato) return [];
+          if (candidato.categoriaId === contexto.categoriaId) acertos++;
+          const regiao = contexto.artesao.perfilArtesao?.regiaoId;
+          if (regiao && candidato.artesao.perfilArtesao?.regiaoId === regiao)
+            mesmaRegiao++;
+          return [{ id, categoriaId: candidato.categoriaId }];
+        });
+        respostas.push({ estrategia: selecao.estrategia, itens });
+      }
+      const qualidade = resumirRecomendacoes(respostas, elegiveis);
+      resultados.push({
+        modo,
+        reforcoRegionalAtivo: modo === "on",
+        produtos,
+        produtosElegiveis: elegiveis.length,
+        contextos: elegiveis.length,
+        contextosSemRegiao: elegiveis.filter(
+          (p) => !p.artesao.perfilArtesao?.regiaoId,
+        ).length,
+        ...qualidade,
+        acertoCategoria: proporcao(acertos, qualidade.totalRecomendacoes),
+        mesmaRegiao: proporcao(mesmaRegiao, qualidade.totalRecomendacoes),
+      });
+    }
+    return resultados;
+  } finally {
+    await micro.parar();
   }
-  return resultados;
 }
 
 export type ResultadoRegional = Awaited<

@@ -214,12 +214,14 @@ async function medirConexao(
       nome,
       options.isolado ? "seed-isolado" : "branch-configurada",
       options.repeticoes,
+      connectionString,
     );
     if (nome === "volume") {
       console.log(`Comparando reforco regional: ${options.reforcoRegional}...`);
       resultado.comparacaoRegional = await medirReforcoRegional(
         prisma,
         options.reforcoRegional,
+        connectionString,
       );
     }
     const snapshot = (

@@ -5,8 +5,13 @@ Use Node 22.13 ou superior na linha 22 para ESLint 10.
 
 O serviço seleciona IDs ordenados, sem montar produtos públicos.
 A API continua autenticando compradores e projetando seus DTOs.
-A composição atual da API permanece usando suas Strategies locais.
-A integração HTTP será realizada na subtarefa 35.2.
+A API usa `HttpRecomendacaoClient` nas duas rotas públicas.
+O cliente valida a seleção, autentica por token e aplica timeout.
+`RECOMENDACAO_URL` aceita somente origem HTTP/HTTPS sem credenciais.
+`RECOMENDACAO_SERVICE_TOKEN` exige pelo menos 32 caracteres.
+`RECOMENDACAO_TIMEOUT_MS` aceita 100–5000 ms, com padrão 800.
+Não há retry. Falhas geram `RecomendacaoIndisponivelError` tipado.
+O tratamento atual retorna 503 controlado; o fallback pertence à 36.1.
 
 ## Dados e ranking
 
@@ -124,7 +129,8 @@ Cada execução cria schemas e papéis com nomes aleatórios.
 Aplica todas as migrations backend, bootstrap e migrations privadas.
 As verificações usam conexões reais dos dois papéis restritos.
 O ranking usa a massa da fixture já existente.
-Os testes também executam as Strategies originais para comparar ordem.
+As integrações da API comparam IDs e ordem por HTTP real.
+O ranking e o reforço regional permanecem cobertos neste serviço.
 O backend precisa das dependências e do Prisma Client gerado.
 Os objetos temporários são removidos ao finalizar.
 
@@ -138,3 +144,19 @@ O primeiro precisa continuar administrativo para migrations e bootstrap.
 O job gera senhas efêmeras e mascara seus valores.
 Nenhum secret novo é necessário.
 As credenciais locais não alteram configurações do Render ou Vercel.
+
+## Integração e E2E da API
+
+O helper `backend/scripts/helpers/recomendacao-runtime.ts` sobe este app
+num listener HTTP efêmero, após bootstrap e migrations privadas.
+Cada execução usa schemas e papéis exclusivos, equivalentes a
+`recomendacao_app`, sem acesso às tabelas da API.
+O E2E reutiliza o schema de catálogo criado pelo harness.
+Seu token é efêmero e nunca entra nos artefatos.
+O arquivo `recomendacao.log` registra método, caminho e status.
+O runner exige chamadas reais de recomendação com status 200.
+A limpeza remove o schema privado, os papéis e o schema E2E.
+
+Scripts legados de métricas e benchmark continuam ferramentas locais.
+Eles carregam a implementação deste serviço, sem duplicar Strategies.
+A operação de lote pertence à 35.6 e permanece fora desta entrega.

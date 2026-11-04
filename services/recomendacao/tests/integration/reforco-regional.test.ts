@@ -1,26 +1,28 @@
 import { randomUUID } from "node:crypto";
 import "dotenv/config";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { createPrismaClient } from "../../src/database/prisma/client.js";
-import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
-import { CategoriaRecomendacaoStrategy } from "../../src/integrations/recommendation/categoria-recomendacao.strategy.js";
-import { databasePool } from "../helpers/database.js";
-import {
-  criarCategoria,
-  criarUsuarioArtesaoComRegiao,
-  criarUsuarioComprador,
-} from "../helpers/dominio-fixtures.js";
-
-const databaseUrl = process.env.DATABASE_URL;
-
-if (databaseUrl === undefined || databaseUrl.length === 0) {
-  throw new Error("DATABASE_URL is required for integration tests");
-}
-
-const prisma = createPrismaClient(databaseUrl);
-const repository = new PrismaRecomendacaoRepository(prisma);
-const strategySemReforco = new CategoriaRecomendacaoStrategy(repository);
-const strategyComReforco = new CategoriaRecomendacaoStrategy(repository, true);
+import type { Pool } from "pg";
+import { criarBanco } from "../helpers/database.js";
+import { PgRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
+import { CategoriaRecomendacaoStrategy } from "../../src/strategies/categoria-recomendacao.strategy.js";
+const { criarCategoria, criarUsuarioArtesaoComRegiao, criarUsuarioComprador } =
+  (await import(
+    new URL(
+      "../../../../backend/tests/helpers/dominio-fixtures.ts",
+      import.meta.url,
+    ).href
+  )) as {
+    criarCategoria: (pool: Pool) => Promise<string>;
+    criarUsuarioArtesaoComRegiao: (
+      pool: Pool,
+      regiao: string,
+    ) => Promise<string>;
+    criarUsuarioComprador: (pool: Pool) => Promise<string>;
+  };
+let banco: Awaited<ReturnType<typeof criarBanco>>;
+let databasePool: Pool;
+let strategySemReforco: CategoriaRecomendacaoStrategy;
+let strategyComReforco: CategoriaRecomendacaoStrategy;
 
 const REGIAO_CONTEXTO = "regiao-pilar-recife";
 const REGIAO_OUTRA = "regiao-alto-moura-caruaru";
@@ -79,6 +81,14 @@ async function criarProduto(params: {
 }
 
 beforeAll(async () => {
+  banco = await criarBanco();
+  databasePool = banco.seed;
+  const repository = new PgRecomendacaoRepository(
+    banco.rec,
+    banco.options.apiSchema,
+  );
+  strategySemReforco = new CategoriaRecomendacaoStrategy(repository);
+  strategyComReforco = new CategoriaRecomendacaoStrategy(repository, true);
   artesaoContextoId = await criarUsuarioArtesaoComRegiao(
     databasePool,
     REGIAO_CONTEXTO,
@@ -166,8 +176,7 @@ afterAll(async () => {
   await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
     idsUsuarioCriados,
   ]);
-  await prisma.$disconnect();
-  await databasePool.end();
+  await banco.fechar();
 });
 
 describe("CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4)", () => {

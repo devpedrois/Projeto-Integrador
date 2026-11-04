@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   resumirTempos,
   resumirRecomendacoes,
-} from "../../src/integrations/recommendation/recomendacao-volume.metricas.js";
+} from "../../scripts/helpers/recomendacao-tooling.js";
 import {
   parseMetricsOptions,
   validarMetricsEnvironment,

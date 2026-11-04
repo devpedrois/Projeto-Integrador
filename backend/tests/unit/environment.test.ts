@@ -3,6 +3,9 @@ import { parseEnvironment } from "../../src/config/environment.js";
 
 describe("environment validation", () => {
   const databaseEnvironment = {
+    RECOMENDACAO_URL: "http://127.0.0.1:3002",
+    RECOMENDACAO_SERVICE_TOKEN:
+      "synthetic-service-token-with-at-least-32-characters",
     DATABASE_URL: "postgresql://user:secret@localhost:5432/origem",
     DIRECT_URL: "postgresql://user:secret@localhost:5432/origem",
   };
@@ -222,6 +225,7 @@ describe("environment validation", () => {
   it("reports invalid names together without values", () => {
     expect(() =>
       parseEnvironment({
+        ...databaseEnvironment,
         DATABASE_URL: "postgresql://user:secret@localhost:5432/origem",
         DIRECT_URL: "postgresql://user:secret@localhost:5432/origem",
         NODE_ENV: "production",
@@ -233,12 +237,13 @@ describe("environment validation", () => {
 
   it("rejects missing connection variables without exposing values", () => {
     expect(() => parseEnvironment({})).toThrow(
-      "Invalid environment variables: DATABASE_URL, DIRECT_URL",
+      "Invalid environment variables: DATABASE_URL, DIRECT_URL, RECOMENDACAO_SERVICE_TOKEN, RECOMENDACAO_URL",
     );
   });
 
   it("accepts PostgreSQL URLs and a valid port", () => {
     const environment = parseEnvironment({
+      ...databaseEnvironment,
       DATABASE_URL: "postgresql://user:secret@localhost:5432/origem",
       DIRECT_URL: "postgresql://user:secret@localhost:5432/origem",
       NODE_ENV: "test",
@@ -249,3 +254,66 @@ describe("environment validation", () => {
     expect(environment.NODE_ENV).toBe("test");
   });
 });
+
+const recommendationEnvironment = {
+  DATABASE_URL: "postgresql://user:secret@localhost:5432/origem",
+  DIRECT_URL: "postgresql://user:secret@localhost:5432/origem",
+  RECOMENDACAO_URL: "http://127.0.0.1:3002",
+  RECOMENDACAO_SERVICE_TOKEN:
+    "synthetic-service-token-with-at-least-32-characters",
+};
+it("configura timeout HTTP padrao de 800ms", () => {
+  expect(
+    parseEnvironment(recommendationEnvironment).RECOMENDACAO_TIMEOUT_MS,
+  ).toBe(800);
+});
+it.each(["100", "5000"])("aceita timeout %s", (value) => {
+  expect(
+    parseEnvironment({
+      ...recommendationEnvironment,
+      RECOMENDACAO_TIMEOUT_MS: value,
+    }).RECOMENDACAO_TIMEOUT_MS,
+  ).toBe(Number(value));
+});
+it.each(["99", "5001", "", "NaN", "100.5"])("recusa timeout %s", (value) => {
+  expect(() =>
+    parseEnvironment({
+      ...recommendationEnvironment,
+      RECOMENDACAO_TIMEOUT_MS: value,
+    }),
+  ).toThrow("Invalid environment variables: RECOMENDACAO_TIMEOUT_MS");
+});
+it.each([
+  "ftp://internal",
+  "http://user:secret@internal",
+  "http://internal/path",
+  "http://internal?token=secret",
+  "http://internal#fragment",
+])("recusa destino com credenciais ou caminho", (value) => {
+  expect(() =>
+    parseEnvironment({ ...recommendationEnvironment, RECOMENDACAO_URL: value }),
+  ).toThrow(/^Invalid environment variables: RECOMENDACAO_URL$/);
+});
+it.each([
+  "https://internal.example",
+  "http://127.0.0.1:3002",
+  "http://internal.example/",
+])("aceita origem HTTP: %s", (value) => {
+  expect(
+    parseEnvironment({
+      ...recommendationEnvironment,
+      RECOMENDACAO_URL: value,
+    }).RECOMENDACAO_URL,
+  ).toBe(new URL(value).origin);
+});
+it.each(["", "short", " ".repeat(32)])(
+  "recusa token ausente ou curto",
+  (value) => {
+    expect(() =>
+      parseEnvironment({
+        ...recommendationEnvironment,
+        RECOMENDACAO_SERVICE_TOKEN: value,
+      }),
+    ).toThrow(/^Invalid environment variables: RECOMENDACAO_SERVICE_TOKEN$/);
+  },
+);

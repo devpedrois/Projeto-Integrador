@@ -8,14 +8,12 @@ import { HealthController } from "./controllers/health.controller.js";
 import { PedidoController } from "./controllers/pedido.controller.js";
 import { RecomendacaoController } from "./controllers/recomendacao.controller.js";
 import { UsuarioController } from "./controllers/usuario.controller.js";
-import { CategoriaRecomendacaoStrategy } from "./integrations/recommendation/categoria-recomendacao.strategy.js";
-import { HistoricoCompraRecomendacaoStrategy } from "./integrations/recommendation/historico-compra-recomendacao.strategy.js";
+import { HttpRecomendacaoClient } from "./integrations/recommendation/http-recomendacao.client.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 import { autenticar } from "./middlewares/auth.middleware.js";
 import { PrismaHealthRepository } from "./repositories/health.repository.js";
 import { PrismaUsuarioRepository } from "./repositories/usuario.repository.js";
 import { PrismaPedidoRepository } from "./repositories/pedido.repository.js";
-import { PrismaRecomendacaoRepository } from "./repositories/recomendacao.repository.js";
 import { createHealthRouter } from "./routes/health.routes.js";
 import { createAuthRouter } from "./routes/auth.routes.js";
 import { createPedidoRouter } from "./routes/pedido.routes.js";
@@ -71,7 +69,15 @@ import { createFotoPerfilRouter } from "./routes/foto-perfil.routes.js";
 export function createApp(
   prisma: PrismaClient,
   environment: Pick<Environment, "JWT_SECRET" | "COOKIE_SECURE"> &
-    Partial<Pick<Environment, "CACHE_TTL_SECONDS">> = {
+    Partial<
+      Pick<
+        Environment,
+        | "CACHE_TTL_SECONDS"
+        | "RECOMENDACAO_URL"
+        | "RECOMENDACAO_SERVICE_TOKEN"
+        | "RECOMENDACAO_TIMEOUT_MS"
+      >
+    > = {
     JWT_SECRET: process.env.JWT_SECRET,
     COOKIE_SECURE: false,
   },
@@ -101,10 +107,17 @@ export function createApp(
   const pedidoService = new PedidoService(pedidoRepository, cache);
   const pedidoController = new PedidoController(pedidoService);
 
-  const recomendacaoRepository = new PrismaRecomendacaoRepository(prisma);
-  const recomendacaoStrategy = new CategoriaRecomendacaoStrategy(
-    recomendacaoRepository,
-  );
+  const recomendacaoStrategy = new HttpRecomendacaoClient({
+    RECOMENDACAO_URL:
+      environment.RECOMENDACAO_URL ??
+      process.env.RECOMENDACAO_URL ??
+      "http://127.0.0.1:3002",
+    RECOMENDACAO_SERVICE_TOKEN:
+      environment.RECOMENDACAO_SERVICE_TOKEN ??
+      process.env.RECOMENDACAO_SERVICE_TOKEN ??
+      "",
+    RECOMENDACAO_TIMEOUT_MS: environment.RECOMENDACAO_TIMEOUT_MS ?? 800,
+  });
   const catalogoRepository = new PrismaCatalogoRepository(prisma);
   const recomendacaoService = new RecomendacaoService(
     recomendacaoStrategy,
@@ -112,10 +125,7 @@ export function createApp(
   );
   const recomendacaoController = new RecomendacaoController(
     recomendacaoService,
-    new RecomendacaoService(
-      new HistoricoCompraRecomendacaoStrategy(recomendacaoRepository),
-      catalogoRepository,
-    ),
+    new RecomendacaoService(recomendacaoStrategy, catalogoRepository),
     cacheHttp,
   );
 

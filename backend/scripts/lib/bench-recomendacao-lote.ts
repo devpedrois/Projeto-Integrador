@@ -4,8 +4,10 @@ import { Pool } from "pg";
 import type { PoolClient } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../../src/generated/prisma/client.js";
-import { CategoriaRecomendacaoStrategy } from "../../src/integrations/recommendation/categoria-recomendacao.strategy.js";
-import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
+import {
+  CategoriaRecomendacaoStrategy,
+  PgRecomendacaoRepository,
+} from "../helpers/recomendacao-tooling.js";
 
 export class BenchLoteError extends Error {
   constructor(message: string) {
@@ -262,7 +264,7 @@ export async function medirConfiguracaoLote(options: ConfiguracaoLote) {
     if (produtos.length < (options.minimoProdutos ?? 1))
       throw new BenchLoteError("massa elegivel insuficiente.");
     const strategy = new CategoriaRecomendacaoStrategy(
-      new PrismaRecomendacaoRepository(prisma),
+      new PgRecomendacaoRepository(pool, schema),
     );
     const rodadas: RodadaLote[] = [];
     const diff: (ReturnType<typeof compararResultados>[number] & {

@@ -1579,3 +1579,12 @@ Aplicou a migration no desenvolvimento e conferiu com psql.
 Atualizou o modelo físico e realizou revisão equivalente autorizada.
 Validou onze testes de integridade e 764 testes backend.
 Evidências: [PI4-33.2](../evidencias/PI4-33/33.2/20261104-validacao/README.md).
+
+### 35.2: integração HTTP com o microsserviço de recomendação
+
+O Codex implementou o cliente HTTP com falhas tipadas.
+Removeu as Strategies, consultas e métricas duplicadas do runtime backend.
+Adaptou integrações, E2E e CI para o microsserviço real.
+Validou TDD, permissões restritas e os quatro fluxos responsivos.
+Realizou revisão equivalente de segurança nesta conversa, conforme solicitado.
+Evidências: [PI4-35.2](../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/README.md).

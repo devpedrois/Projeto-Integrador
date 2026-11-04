@@ -5,10 +5,9 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { z } from "zod";
 import fixture from "../../../fixtures/recomendacao-produto.fixture.json" with { type: "json" };
 import { createApp } from "../../src/app.js";
-import { CategoriaRecomendacaoStrategy } from "../../src/integrations/recommendation/categoria-recomendacao.strategy.js";
-import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
+import { HttpRecomendacaoClient } from "../../src/integrations/recommendation/http-recomendacao.client.js";
 import type { ProdutoDTO } from "../../src/utils/produto-dto.js";
-import { criarBancoAuth } from "../helpers/auth-database.js";
+import { criarBancoRecomendacao as criarBancoAuth } from "../helpers/recomendacao-database.js";
 
 const produtoSchema = z
   .object({
@@ -42,7 +41,7 @@ const TEMPO_PREPARACAO_MS = process.env.CI === "true" ? 120_000 : 30_000;
 
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
 let app: ReturnType<typeof createApp>;
-let strategy: CategoriaRecomendacaoStrategy;
+let strategy: HttpRecomendacaoClient;
 let contextoId: string;
 let isoladoId: string;
 let artesaoId: string;
@@ -59,7 +58,11 @@ function idReal(id: string): string {
 
 beforeAll(async () => {
   banco = await criarBancoAuth();
-  app = createApp(banco.prisma, { JWT_SECRET: secret, COOKIE_SECURE: false });
+  app = createApp(banco.prisma, {
+    JWT_SECRET: secret,
+    COOKIE_SECURE: false,
+    ...banco.environment,
+  });
   const admin = await banco.prisma.usuario.create({
     data: {
       nome: "Admin IA-01",
@@ -69,9 +72,7 @@ beforeAll(async () => {
     },
   });
   cookieAdmin = `origem_sessao=${jwt.sign({ nome: "Sintetico", papel: "admin" }, secret, { subject: admin.id, expiresIn: "1h" })}`;
-  strategy = new CategoriaRecomendacaoStrategy(
-    new PrismaRecomendacaoRepository(banco.prisma),
-  );
+  strategy = new HttpRecomendacaoClient(banco.environment);
   const artesao = await banco.prisma.usuario.create({
     data: {
       nome: "Artesao IA-01",

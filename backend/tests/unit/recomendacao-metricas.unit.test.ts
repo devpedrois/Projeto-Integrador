@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   calcularAcertoCategoria,
   calcularCobertura,
-} from "../../src/integrations/recommendation/recomendacao-metricas.js";
+} from "../../scripts/helpers/recomendacao-tooling.js";
 
 describe("calcularCobertura", () => {
   it("calcula o percentual quando ha produtos elegiveis", () => {

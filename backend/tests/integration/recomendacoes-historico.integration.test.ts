@@ -3,15 +3,14 @@ import jwt from "jsonwebtoken";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createApp } from "../../src/app.js";
-import { HistoricoCompraRecomendacaoStrategy } from "../../src/integrations/recommendation/historico-compra-recomendacao.strategy.js";
-import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
+import { HttpRecomendacaoClient } from "../../src/integrations/recommendation/http-recomendacao.client.js";
 import type {
   PapelUsuario,
   StatusPedido,
 } from "../../src/generated/prisma/enums.js";
 import type { Prisma } from "../../src/generated/prisma/client.js";
 import { MemoryCacheStore } from "../../src/utils/cache.js";
-import { criarBancoAuth } from "../helpers/auth-database.js";
+import { criarBancoRecomendacao as criarBancoAuth } from "../helpers/recomendacao-database.js";
 
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
 let app: ReturnType<typeof createApp>;
@@ -85,7 +84,7 @@ beforeAll(async () => {
   banco = await criarBancoAuth();
   app = createApp(
     banco.prisma,
-    { JWT_SECRET: secret, COOKIE_SECURE: false },
+    { JWT_SECRET: secret, COOKIE_SECURE: false, ...banco.environment },
     { cacheStore: cache, logCache: () => {} },
   );
   comprador = await usuario();
@@ -143,9 +142,7 @@ afterAll(async () => {
 
 describe("IA-03: historico real do comprador autenticado", () => {
   it("Strategy seleciona categorias confirmadas no PostgreSQL real", async () => {
-    const strategy = new HistoricoCompraRecomendacaoStrategy(
-      new PrismaRecomendacaoRepository(banco.prisma),
-    );
+    const strategy = new HttpRecomendacaoClient(banco.environment);
     expect(await strategy.obter({ usuarioId: comprador })).toEqual({
       estrategia: "historico-compra",
       produtoIds: [
@@ -159,9 +156,7 @@ describe("IA-03: historico real do comprador autenticado", () => {
   });
 
   it("Strategy sem historico identifica fallback geral", async () => {
-    const strategy = new HistoricoCompraRecomendacaoStrategy(
-      new PrismaRecomendacaoRepository(banco.prisma),
-    );
+    const strategy = new HttpRecomendacaoClient(banco.environment);
     const resultado = await strategy.obter({ usuarioId: semHistorico });
     expect(resultado.estrategia).toBe("fallback-geral");
     expect(resultado.produtoIds[0]).toBe(geral);

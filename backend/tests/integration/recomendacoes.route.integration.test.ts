@@ -3,22 +3,16 @@ import "dotenv/config";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createApp } from "../../src/app.js";
-import { createPrismaClient } from "../../src/database/prisma/client.js";
-import { databasePool } from "../helpers/database.js";
+import { criarBancoRecomendacao } from "../helpers/recomendacao-database.js";
 import {
   criarCategoria,
   criarProduto,
   criarUsuarioArtesao,
 } from "../helpers/dominio-fixtures.js";
 
-const databaseUrl = process.env.DATABASE_URL;
-
-if (databaseUrl === undefined || databaseUrl.length === 0) {
-  throw new Error("DATABASE_URL is required for integration tests");
-}
-
-const prisma = createPrismaClient(databaseUrl);
-const app = createApp(prisma);
+let banco: Awaited<ReturnType<typeof criarBancoRecomendacao>>;
+let databasePool: Awaited<ReturnType<typeof criarBancoRecomendacao>>["pool"];
+let app: ReturnType<typeof createApp>;
 
 let artesaoId: string;
 let categoriaId: string;
@@ -30,6 +24,9 @@ const idsCategoriaCriados: string[] = [];
 const idsUsuarioCriados: string[] = [];
 
 beforeAll(async () => {
+  banco = await criarBancoRecomendacao();
+  databasePool = banco.pool;
+  app = createApp(banco.prisma, { COOKIE_SECURE: false, ...banco.environment });
   artesaoId = await criarUsuarioArtesao(databasePool);
   idsUsuarioCriados.push(artesaoId);
   categoriaId = await criarCategoria(databasePool);
@@ -56,8 +53,7 @@ afterAll(async () => {
   await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
     idsUsuarioCriados,
   ]);
-  await prisma.$disconnect();
-  await databasePool.end();
+  await banco.fechar();
 });
 
 describe("GET /recomendacoes", () => {

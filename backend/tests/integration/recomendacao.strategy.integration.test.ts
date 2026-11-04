@@ -1,10 +1,8 @@
 import { randomUUID } from "node:crypto";
 import "dotenv/config";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { createPrismaClient } from "../../src/database/prisma/client.js";
-import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
-import { CategoriaRecomendacaoStrategy } from "../../src/integrations/recommendation/categoria-recomendacao.strategy.js";
-import { databasePool } from "../helpers/database.js";
+import { criarBancoRecomendacao } from "../helpers/recomendacao-database.js";
+import type { HttpRecomendacaoClient } from "../../src/integrations/recommendation/http-recomendacao.client.js";
 import {
   criarCategoria,
   criarUsuarioArtesao,
@@ -12,15 +10,9 @@ import {
 } from "../helpers/dominio-fixtures.js";
 import fixture from "../../../fixtures/recomendacao-produto.fixture.json" with { type: "json" };
 
-const databaseUrl = process.env.DATABASE_URL;
-
-if (databaseUrl === undefined || databaseUrl.length === 0) {
-  throw new Error("DATABASE_URL is required for integration tests");
-}
-
-const prisma = createPrismaClient(databaseUrl);
-const repository = new PrismaRecomendacaoRepository(prisma);
-const strategy = new CategoriaRecomendacaoStrategy(repository);
+let banco: Awaited<ReturnType<typeof criarBancoRecomendacao>>;
+let databasePool: Awaited<ReturnType<typeof criarBancoRecomendacao>>["pool"];
+let strategy: HttpRecomendacaoClient;
 
 interface FixtureProduto {
   id: string;
@@ -122,6 +114,9 @@ async function semearProdutoFixture(
 }
 
 beforeAll(async () => {
+  banco = await criarBancoRecomendacao();
+  databasePool = banco.pool;
+  strategy = banco.client;
   artesaoId = await criarUsuarioArtesao(databasePool);
   idsUsuarioCriados.push(artesaoId);
   compradores = await criarCompradores(6);
@@ -153,8 +148,7 @@ afterAll(async () => {
   await databasePool.query('DELETE FROM "Usuario" WHERE "id" = ANY($1)', [
     idsUsuarioCriados,
   ]);
-  await prisma.$disconnect();
-  await databasePool.end();
+  await banco.fechar();
 });
 
 describe("CategoriaRecomendacaoStrategy - paridade com a fixture contratual (T04.1)", () => {

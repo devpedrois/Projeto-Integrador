@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createApp } from "../../src/app.js";
-import { criarBancoAuth } from "../helpers/auth-database.js";
+import { criarBancoRecomendacao as criarBancoAuth } from "../helpers/recomendacao-database.js";
 
 const secret = "segredo-sintetico-web3-apenas-testes";
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
@@ -54,7 +54,11 @@ async function produto() {
 
 beforeAll(async () => {
   banco = await criarBancoAuth();
-  app = createApp(banco.prisma, { JWT_SECRET: secret, COOKIE_SECURE: false });
+  app = createApp(banco.prisma, {
+    JWT_SECRET: secret,
+    COOKIE_SECURE: false,
+    ...banco.environment,
+  });
   for (const papel of [
     "comprador",
     "comprador2",

@@ -8,6 +8,10 @@ import { z } from "zod";
 import { PrismaClient } from "../src/generated/prisma/client.js";
 import { createApp } from "../src/app.js";
 import { runSeed } from "../prisma/seed.js";
+import {
+  iniciarRecomendacao,
+  limparRecomendacao,
+} from "./helpers/recomendacao-runtime.js";
 
 function identity(value: string): string {
   const url = new URL(value);
@@ -72,6 +76,7 @@ async function cleanup(env: NodeJS.ProcessEnv) {
     throw new Error("Banco da limpeza diverge do teste");
   const pool = new Pool({ connectionString: config.databaseUrl, max: 1 });
   try {
+    await limparRecomendacao(pool, expected.id);
     await pool.query(`DROP SCHEMA IF EXISTS "${expected.schema}" CASCADE`);
     const result = await pool.query(
       "SELECT 1 FROM pg_namespace WHERE nspname = $1",
@@ -99,6 +104,7 @@ async function serve(env: NodeJS.ProcessEnv) {
     options: `-c search_path=${schema},public`,
   });
   const prisma = new PrismaClient({ adapter: new PrismaPg(pool, { schema }) });
+  let micro: Awaited<ReturnType<typeof iniciarRecomendacao>> | undefined;
   try {
     const client = await pool.connect();
     try {
@@ -135,16 +141,39 @@ async function serve(env: NodeJS.ProcessEnv) {
       client.release();
     }
     await prisma.$transaction((tx) => runSeed(tx), { timeout: 120000 });
+    micro = await iniciarRecomendacao({
+      databaseUrl: config.databaseUrl,
+      apiSchema: schema,
+      id,
+      token: z.string().min(32).parse(env.RECOMENDACAO_SERVICE_TOKEN),
+      logFile: z.string().min(1).parse(env.E2E_RECOMENDACAO_LOG),
+    });
     const server = createApp(prisma, {
       JWT_SECRET: randomUUID(),
       COOKIE_SECURE: false,
+      ...micro.environment,
     }).listen(config.port, "127.0.0.1");
     await new Promise<void>((resolve, reject) => {
       server.once("listening", resolve);
       server.once("error", reject);
     });
+    const close = () => {
+      server.closeAllConnections();
+      server.close(() => {
+        void (async () => {
+          await micro?.parar();
+          await prisma.$disconnect();
+          await pool.end();
+        })().catch(() => {
+          process.exitCode = 1;
+        });
+      });
+    };
+    process.once("SIGTERM", close);
+    process.once("SIGINT", close);
     console.log("API E2E real pronta com migrations e seed demo isolados.");
   } catch (error) {
+    await micro?.parar();
     await prisma.$disconnect();
     await pool.end();
     throw error;

@@ -56,6 +56,8 @@ export async function criarBancoAuth() {
   const prisma = new PrismaClient({ adapter: new PrismaPg(pool, { schema }) });
   return {
     prisma,
+    pool,
+    schema,
     async fechar() {
       await prisma.$disconnect();
       await pool.query(`DROP SCHEMA "${schema}" CASCADE`);

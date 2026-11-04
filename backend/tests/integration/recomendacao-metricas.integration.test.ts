@@ -1,12 +1,13 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { CategoriaRecomendacaoStrategy } from "../../src/integrations/recommendation/categoria-recomendacao.strategy.js";
-import { calcularMetricasBaseline } from "../../src/integrations/recommendation/recomendacao-metricas.js";
-import { PrismaRecomendacaoRepository } from "../../src/repositories/recomendacao.repository.js";
-import { criarBancoAuth } from "../helpers/auth-database.js";
+import type { HttpRecomendacaoClient } from "../../src/integrations/recommendation/http-recomendacao.client.js";
+import { calcularMetricasBaseline } from "../../scripts/helpers/recomendacao-tooling.js";
+import { criarBancoRecomendacao as criarBancoAuth } from "../helpers/recomendacao-database.js";
 
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
-let repository: PrismaRecomendacaoRepository;
-let strategy: CategoriaRecomendacaoStrategy;
+let repository: {
+  listarElegiveis: () => Promise<{ id: string; categoriaId: string }[]>;
+};
+let strategy: HttpRecomendacaoClient;
 
 const LIMITE_ITENS = 8;
 
@@ -66,8 +67,10 @@ beforeAll(async () => {
       tecnicaId: "tecnica-modelagem-argila",
     })),
   });
-  repository = new PrismaRecomendacaoRepository(banco.prisma);
-  strategy = new CategoriaRecomendacaoStrategy(repository);
+  const { PgRecomendacaoRepository } =
+    await import("../../scripts/helpers/recomendacao-tooling.js");
+  repository = new PgRecomendacaoRepository(banco.micro.rec, banco.schema);
+  strategy = banco.client;
 }, 30000);
 
 afterAll(async () => {
