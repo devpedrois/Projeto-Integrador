@@ -1615,3 +1615,12 @@ Preservou receita decimal e formatação monetária brasileira sem perda.
 Validou testes, builds, dez recargas reais e três larguras.
 Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
 Evidências: [PI4-32.1](../evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/README.md).
+
+### 32.3: conferência da média de avaliações
+
+O Codex acrescentou cinco conjuntos ao teste de integração.
+Escreveu os resultados manuais explicitamente, sem reutilizar o cálculo produtivo.
+Registrou a substituição da T16.3 no backlog e matriz.
+Validou PostgreSQL real, testes relacionados, lint, typecheck e formatação.
+O código produtivo e o cálculo permaneceram intactos.
+Evidências: [PI4-32.3](../evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/README.md).

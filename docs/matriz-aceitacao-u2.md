@@ -175,6 +175,20 @@ US19 é Won't e não define cenários nesta fase.
 O fluxo de envio da 31.3 complementa US13/US14.
 Ele não cria cenários adicionais inexistentes no backlog original.
 
+### US16: média conferida e substituição da T16.3
+
+Atualização 32.3 em 04/11/2026, conforme decisão D5.
+T16.3 substituída em 02/11/2026: média calculada na leitura;
+assíncrono da AV2 atendido pela notificação de pedido;
+ver [CONCURRENCY.md](docs%20auxiliares/CONCURRENCY.md#limites-documentados).
+O worker não recalcula nem persiste uma média denormalizada.
+
+O [teste de integração da 32.3](../backend/tests/integration/avaliacoes-media.32-3.integration.test.ts)
+confere `resumo.media` e `resumo.total` contra cinco cálculos manuais.
+Inclui avaliação única e arredondamento para uma casa decimal.
+Esta conferência complementa US16 na Sprint 6.
+Os totais históricos Must e Should acima permanecem inalterados.
+
 ## Rastreabilidade e revisão
 
 Fonte dos cenários: `sprints/semana-02-03/02-Historias-de-Usuario.md`, seção 2.
