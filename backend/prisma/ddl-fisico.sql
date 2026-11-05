@@ -128,7 +128,6 @@ CREATE TABLE "ItemCarrinho" (
 -- CreateTable
 CREATE TABLE "Pedido" (
     "id" UUID NOT NULL,
-    "compradorRef" TEXT,
     "compradorId" UUID NOT NULL,
     "numero" TEXT DEFAULT ('ORG-'::text || to_char(CURRENT_TIMESTAMP, 'YYYY'::text) || '-'::text || lpad((nextval('"Pedido_numero_seq"'::regclass))::text, 6, '0'::text)),
     "status" "StatusPedido" NOT NULL DEFAULT 'pendente',
@@ -355,8 +354,6 @@ ALTER TABLE "Pedido" ADD CONSTRAINT "Pedido_total_check" CHECK ("total" >= 0);
 ALTER TABLE "Pagamento" ADD CONSTRAINT "Pagamento_valor_check" CHECK ("valor" > 0);
 ALTER TABLE "Usuario" ADD CONSTRAINT "Usuario_senhaHash_check" CHECK (length("senhaHash") > 0);
 CREATE UNIQUE INDEX "Usuario_email_lower_key" ON "Usuario" (lower("email"));
-COMMENT ON COLUMN "Pedido"."compradorRef" IS
-  'Legado do backend minimo de FCCPD. Remover na Sprint 6; compradorId e a FK real.';
 
 -- 20261014010000_indices_consultas
 -- Os dois GIN pg_trgm já aparecem na seção gerada.

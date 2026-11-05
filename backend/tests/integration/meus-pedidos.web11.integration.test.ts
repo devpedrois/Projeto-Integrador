@@ -181,7 +181,7 @@ describe("WEB-11 meus pedidos em PostgreSQL real", () => {
         dataPagamento: pagamento.dataPagamento.toISOString(),
       });
       expect(response.text).not.toMatch(
-        /senhaHash|compradorRef|email|senha|cookie/i,
+        /senhaHash|email|senha|cookie/i,
       );
     },
   );

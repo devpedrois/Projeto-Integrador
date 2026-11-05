@@ -1,0 +1,20 @@
+
+> origem-backend@1.0.0 db:migrate
+> prisma migrate deploy
+
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma\schema.prisma.
+Datasource "db": PostgreSQL database "neondb", schema "public" at "ep-solitary-fire-ack2rila.sa-east-1.aws.neon.tech"
+
+13 migrations found in prisma/migrations
+
+Applying migration `20261105031508_remover_pedido_comprador_ref`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261105031508_remover_pedido_comprador_ref/
+    └─ migration.sql
+
+All migrations have been successfully applied.

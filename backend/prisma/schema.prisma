@@ -160,9 +160,6 @@ model ItemCarrinho {
 
 model Pedido {
   id                  String               @id @default(uuid()) @db.Uuid
-  // Legado do backend minimo de FCCPD, a remover na Sprint 6. compradorId e
-  // a FK real e obrigatoria (ver docs/docs auxiliares/DATA_MODEL.md).
-  compradorRef        String?
   compradorId         String               @db.Uuid
   numero              String?              @unique @default(dbgenerated("('ORG-'::text || to_char(CURRENT_TIMESTAMP, 'YYYY'::text) || '-'::text || lpad((nextval('\"Pedido_numero_seq\"'::regclass))::text, 6, '0'::text))"))
   status              StatusPedido         @default(pendente)

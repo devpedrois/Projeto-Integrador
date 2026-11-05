@@ -120,7 +120,6 @@ beforeAll(async () => {
         numero: fixture.numero,
         status: fixture.status,
         compradorId: conta("comprador").id,
-        compradorRef: "Legado privado",
         total: "9876.54",
         criadoEm: new Date(`${fixture.data}T12:00:00.000Z`),
         itens: {
@@ -204,7 +203,7 @@ describe("Web.1 pedidos do artesao em PostgreSQL real", () => {
         artesao === "artesaoA" ? [produtoB] : [produtoA, produtoC];
       for (const id of proibidos) expect(response.text).not.toContain(id);
       expect(response.text).not.toMatch(
-        /email|senha|compradorId|compradorRef|pagamento|9876\.54|999\.99/,
+        /email|senha|compradorId|pagamento|9876\.54|999\.99/,
       );
       for (const item of response.body.itens) {
         expect(Object.keys(item).sort()).toEqual([

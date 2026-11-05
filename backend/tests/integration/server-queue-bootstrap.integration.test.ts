@@ -86,7 +86,7 @@ describe("startServer bootstraps the notification queue", () => {
 
       try {
         await prisma.pedido.create({
-          data: { id: pedidoId, compradorRef: "comprador-sintetico-bootstrap", compradorId },
+          data: { id: pedidoId, compradorId },
         });
         const intencao = await prisma.intencaoNotificacao.create({
           data: { id: crypto.randomUUID(), pedidoId },

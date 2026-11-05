@@ -375,8 +375,7 @@ Mudanças de papel valem também para tokens já emitidos.
 O body aceita somente `{ itens }`.
 Campos extras também são rejeitados dentro dos itens.
 `compradorId` vem da sessão validada; nunca do body.
-`compradorRef` permanece nullable no banco como legado.
-Pedidos novos deixam esse campo nulo.
+O pedido mantém somente a FK real do comprador.
 Os locks, transação de estoque e outbox foram preservados.
 
 `PATCH /admin/usuarios/:id/papel` exige admin ativo.
@@ -396,7 +395,6 @@ A atualização desse script pertence ao commit 17.
 
 ## Limitações atuais
 
-`compradorRef` permanece como campo legado, fora do contrato HTTP.
 O checkout ainda utiliza os valores reduzidos da demonstração FCCPD.
 Totais, pagamento e carrinho serão integrados nas respectivas subtarefas.
 O modelo `Pagamento` já existe para dados simulados.

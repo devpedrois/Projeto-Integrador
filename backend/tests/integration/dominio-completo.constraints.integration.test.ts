@@ -31,8 +31,8 @@ describe("full domain schema constraints (PI4-19.5)", () => {
   it("rejects an order without a comprador (usuario)", async () => {
     await expectPostgresError(
       client.query(
-        'INSERT INTO "Pedido" ("id", "compradorRef", "compradorId") VALUES ($1, $2, $3)',
-        [randomUUID(), "comprador-sem-usuario", null],
+        'INSERT INTO "Pedido" ("id", "compradorId") VALUES ($1, $2)',
+        [randomUUID(), null],
       ),
       "23502",
     );

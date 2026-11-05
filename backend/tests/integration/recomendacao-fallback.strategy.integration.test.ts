@@ -75,8 +75,8 @@ async function criarProdutoComVendasENota(params: {
   if (params.vendas > 0) {
     const pedidoId = randomUUID();
     await databasePool.query(
-      'INSERT INTO "Pedido" ("id", "compradorRef", "compradorId") VALUES ($1, $2, $3)',
-      [pedidoId, `fallback-fixture-${id}`, compradores[0]],
+      'INSERT INTO "Pedido" ("id", "compradorId") VALUES ($1, $2)',
+      [pedidoId, compradores[0]],
     );
     idsPedidoCriados.push(pedidoId);
     await databasePool.query(

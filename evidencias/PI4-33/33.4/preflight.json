@@ -1,0 +1,23 @@
+{
+  "endpoint": "ep-solitary-fire-ack2rila",
+  "schema": "public",
+  "pedidos": {
+    "total": 3,
+    "referencias_preenchidas": 3,
+    "sem_comprador": 0
+  },
+  "fingerprints": {
+    "Pedido": {
+      "total": 3,
+      "sha256": "0aec77b9adba14c63f3d54f4f9dc4c6335ac0889463a919dd197a7c79c7148f1"
+    },
+    "ItemPedido": {
+      "total": 6,
+      "sha256": "02c185892c163ce261b62736374581ba977c7189734d4a68987f2667744b3672"
+    },
+    "Pagamento": {
+      "total": 3,
+      "sha256": "d8d8f113d463b358895455a7feac15083c903b1c752556e4bd88ee2e99ab9fa7"
+    }
+  }
+}

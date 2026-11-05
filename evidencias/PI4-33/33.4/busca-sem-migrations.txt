@@ -1,0 +1,1 @@
+Nenhuma ocorrencia nas fontes fora de migrations. Exit code rg: 1.

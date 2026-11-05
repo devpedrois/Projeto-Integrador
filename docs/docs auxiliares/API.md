@@ -656,8 +656,8 @@ Request autenticado WEB-04, somente para comprador:
 
 `compradorId` vem do sub validado e do usuário ativo no banco.
 O body é estrito: aceita somente itens, com produtoId e quantidade.
-Enviar compradorId, compradorRef ou qualquer chave extra retorna 400.
-`compradorRef` permanece nullable no banco; pedidos novos deixam-no nulo.
+Enviar compradorId ou qualquer chave extra retorna 400.
+O banco usa somente a FK obrigatória compradorId.
 Sessão ausente, inválida, expirada ou usuário inativo recebe 401.
 Artesão ou admin recebe 403 neste endpoint de comprador.
 
@@ -1005,7 +1005,7 @@ O nome do item vem do produto relacionado atual.
 Decimal converte para number; datas usam ISO 8601.
 Valores legados ausentes permanecem `null`, sem recomposição pelo catálogo.
 Pagamento ausente permanece `null`, sem comprovante inventado.
-Credenciais, email e compradorRef nunca integram essas respostas.
+Credenciais e email nunca integram essas respostas.
 
 Ambas as rotas retornam 401 sem sessão válida.
 Artesão e admin recebem 403; UUID inválido recebe 400.

@@ -63,12 +63,12 @@ export async function criarProduto(
 
 export async function criarPedido(
   client: Queryable,
-  options: { compradorId: string; compradorRef?: string },
+  options: { compradorId: string },
 ): Promise<string> {
   const id = randomUUID();
   await client.query(
-    'INSERT INTO "Pedido" ("id", "compradorRef", "compradorId") VALUES ($1, $2, $3)',
-    [id, options.compradorRef ?? `comprador-ref-${id}`, options.compradorId],
+    'INSERT INTO "Pedido" ("id", "compradorId") VALUES ($1, $2)',
+    [id, options.compradorId],
   );
   return id;
 }

@@ -133,7 +133,6 @@ describe("WEB-04: matriz de autorizacao", () => {
       expect(pedidos).toHaveLength(pedidoStatus === 201 ? 1 : 0);
       if (pedidoStatus === 201) {
         expect(pedidos[0]?.compradorId).toBe(ator("comprador").id);
-        expect(pedidos[0]?.compradorRef).toBeNull();
       }
     },
   );
@@ -253,7 +252,7 @@ describe("WEB-04: sessao protegida", () => {
 });
 
 describe("WEB-04: entradas e limites administrativos", () => {
-  it.each(["compradorId", "compradorRef", "outro"])(
+  it.each(["compradorId", "outro"])(
     "rejeita a chave extra %s no checkout",
     async (chave) => {
       const produtoId = await novoProduto();

@@ -3,6 +3,8 @@
 **Sprint:** Semanas 10–11 · **Subtarefa:** BD-01 · **Ticket:** PI4-28
 **Referência:** 14/10/2026 · **Banco:** PostgreSQL no Neon
 
+**Atualização:** 05/11/2026 · **Subtarefa:** PI4-33.4
+
 ## 1. Objetivo e abrangência
 
 Este documento consolida o modelo físico vigente da Origem.
@@ -264,12 +266,16 @@ Nenhuma coluna possui DEFAULT SQL.
 
 ### 5.10 `Pedido`
 
-CompradorId é a identidade real e obrigatória. CompradorRef permanece legado opcional de FCCPD, previsto para remoção na Sprint 6. Numero e total aceitam NULL por compatibilidade histórica. Novos pedidos do checkout recebem ambos. A sequence gera ORG-AAAA-NNNNNN e não reinicia a cada ano. Seu limite global é 999999, sem ciclo.
+CompradorId é a identidade real e obrigatória do comprador.
+A PI4-33.4 removeu a referência sintética legada do FCCPD.
+Numero e total aceitam NULL por compatibilidade histórica.
+Novos pedidos do checkout recebem ambos.
+A sequence gera ORG-AAAA-NNNNNN e não reinicia anualmente.
+Seu limite global é 999999, sem ciclo.
 
 | Coluna         | Tipo físico      | NULL | CHECK      | PK / UNIQUE | FK e ações                                    |
 | -------------- | ---------------- | ---- | ---------- | ----------- | --------------------------------------------- |
 | `id`           | `UUID`           | Não  | Ausente    | PK          | Ausente                                       |
-| `compradorRef` | `TEXT`           | Sim  | Ausente    | Ausente     | Ausente                                       |
 | `compradorId`  | `UUID`           | Não  | Ausente    | Ausente     | `Usuario.id`; DELETE RESTRICT; UPDATE CASCADE |
 | `numero`       | `TEXT`           | Sim  | Ausente    | numero      | Ausente                                       |
 | `status`       | `StatusPedido`   | Não  | Ausente    | Ausente     | Ausente                                       |
@@ -277,6 +283,9 @@ CompradorId é a identidade real e obrigatória. CompradorRef permanece legado o
 | `criadoEm`     | `TIMESTAMPTZ(3)` | Não  | Ausente    | Ausente     | Ausente                                       |
 
 Defaults SQL: `numero`: ORG-AAAA-NNNNNN, por Pedido_numero_seq; `status`: 'pendente'; `criadoEm`: CURRENT_TIMESTAMP.
+
+Migration da limpeza legada: `20261105031508_remover_pedido_comprador_ref`.
+Preserva a FK obrigatória e todos os índices existentes.
 
 ### 5.11 `ItemPedido`
 
@@ -638,7 +647,7 @@ Seus resultados estão em BD-01-documento/explain-atual/.
 | Exclusão lógica única de produto                    | ativo e desativadoPorAdmin independentes                                         | BD-02 separa ação do artesão e moderação administrativa.                                              |
 | Técnica e região em texto livre no perfil           | Tecnica e Regiao; Produto.tecnicaId obrigatório; referências opcionais no perfil | BD-03 migrou textos para FKs com RESTRICT. A técnica da peça difere da técnica principal.             |
 | Região associada ao catálogo                        | Região somente no perfil do artesão                                              | O produto obtém regiaoId por join. Evita duplicação regional por peça.                                |
-| Pedido sem compradorRef                             | compradorId obrigatório; compradorRef opcional legado                            | BD-02 preserva compatibilidade com FCCPD, com remoção prevista na Sprint 6.                           |
+| Identidade do comprador no pedido                    | compradorId obrigatório, FK para Usuario.id                                      | PI4-33.4 removeu a referência sintética legada do FCCPD.                                                |
 | Numero e total obrigatórios no pedido               | TEXT e DECIMAL nullable; numero com DEFAULT e UNIQUE                             | Compatibilidade histórica. WEB-09 gera números pela sequence e grava total no checkout.               |
 | PrecoUnitario e subtotal obrigatórios em ItemPedido | DECIMAL nullable com CHECK >= 0                                                  | Preserva itens legados. BD-02 rejeita negativos quando preenchidos.                                   |
 | Preço de item estritamente positivo                 | ItemCarrinho.precoUnitario e ItemPedido.precoUnitario >= 0                       | BD-02 implementou não-negatividade. Zero é aceito fisicamente nesses campos.                          |

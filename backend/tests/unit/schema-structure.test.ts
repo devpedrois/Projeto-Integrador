@@ -57,13 +57,11 @@ describe("complete domain schema structure", () => {
   it("preserves the reduced FCCPD fields already relied on by services and tests", () => {
     expect(modelBlock("Produto")).toMatch(/nome\s+String/);
     expect(modelBlock("Produto")).toMatch(/quantidadeEstoque\s+Int\b/);
-    expect(modelBlock("Pedido")).toMatch(/compradorRef\s+String\b/);
     expect(modelBlock("ItemPedido")).toMatch(/quantidade\s+Int\b/);
   });
 
-  it("keeps compradorRef as an optional legacy field alongside the required compradorId FK", () => {
+  it("requires the compradorId FK for every order", () => {
     const pedido = modelBlock("Pedido");
-    expect(pedido).toMatch(/compradorRef\s+String\?/);
     expect(pedido).toMatch(/compradorId\s+String\s+@db\.Uuid/);
     expect(pedido).toMatch(/comprador\s+Usuario\s+@relation/);
   });

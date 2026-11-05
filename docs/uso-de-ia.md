@@ -1668,3 +1668,12 @@ Aplicou a conexão restrita da API, mediante autorização explícita.
 Comprovou isolamento, autenticação, respostas públicas e carrossel preenchido.
 Atualizou os READMEs e realizou revisão equivalente de segurança.
 Evidências: [PI4-35.4](../evidencias/PI4-35/35.4-deploy-render/README.md).
+
+### 33.4: remoção da referência sintética de pedidos
+
+O Codex investigou a origem da coluna legada FCCPD.
+Criou teste prévio e atualizou fixtures e documentação.
+Gerou e aplicou a migration no Neon de desenvolvimento.
+Conferiu a preservação dos pedidos, itens e pagamentos existentes.
+Realizou revisão equivalente de segurança, conforme escolha do responsável.
+Evidências: [PI4-33.4](../evidencias/PI4-33/33.4/README.md).

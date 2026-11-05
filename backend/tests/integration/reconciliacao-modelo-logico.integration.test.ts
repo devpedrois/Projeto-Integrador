@@ -135,8 +135,8 @@ describe("monetary non-negativity (BD-02)", () => {
     const compradorId = await criarUsuarioComprador(client);
     await expectPostgresError(
       client.query(
-        'INSERT INTO "Pedido" ("id", "compradorRef", "compradorId", "total") VALUES ($1, $2, $3, $4)',
-        [randomUUID(), "comprador-ref-teste", compradorId, "-0.01"],
+        'INSERT INTO "Pedido" ("id", "compradorId", "total") VALUES ($1, $2, $3)',
+        [randomUUID(), compradorId, "-0.01"],
       ),
       CHECK_VIOLATION,
     );
@@ -181,8 +181,8 @@ describe("Usuario reconciled with the logical model (BD-02)", () => {
   });
 });
 
-describe("Pedido legacy compradorRef (BD-02)", () => {
-  it("accepts an order without the legacy compradorRef", async () => {
+describe("Pedido buyer identity (PI4-33.4)", () => {
+  it("accepts an order identified by its buyer FK", async () => {
     const compradorId = await criarUsuarioComprador(client);
     const pedidoId = randomUUID();
     await client.query('INSERT INTO "Pedido" ("id", "compradorId") VALUES ($1, $2)', [
@@ -190,10 +190,10 @@ describe("Pedido legacy compradorRef (BD-02)", () => {
       compradorId,
     ]);
 
-    const result = await client.query<{ compradorRef: string | null }>(
-      'SELECT "compradorRef" FROM "Pedido" WHERE "id" = $1',
+    const result = await client.query<{ compradorId: string }>(
+      'SELECT "compradorId" FROM "Pedido" WHERE "id" = $1',
       [pedidoId],
     );
-    expect(result.rows[0]?.compradorRef).toBeNull();
+    expect(result.rows[0]?.compradorId).toBe(compradorId);
   });
 });
