@@ -23,8 +23,16 @@ export class RecomendacaoController {
       const chave = chaveCache("recomendacoes:produto", {
         produtoId: contexto.produtoId,
       });
-      await this.cache.responder(response, "/recomendacoes", chave, () =>
-        this.service.obter(contexto),
+      await this.cache.responder(
+        response,
+        "/recomendacoes",
+        chave,
+        () => this.service.obter(contexto),
+        {
+          deveGuardar: (valor) =>
+            valor.estrategia !== "fallback-local" &&
+            valor.estrategia !== "misto",
+        },
       );
     } catch (error: unknown) {
       next(error);

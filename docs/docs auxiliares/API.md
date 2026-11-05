@@ -729,6 +729,18 @@ Retorne ate oito produtos. Rejeite `usuarioId` e chaves desconhecidas.
 Nao repita o produto de contexto.
 
 Na IA-01, a resposta e `{ estrategia: string, itens: Produto[] }`.
+Valores públicos: `categoria`, `historico-compra`, `fallback-geral`,
+`fallback-local` e `misto`.
+Com oito itens visíveis, preserva a estratégia do microsserviço.
+Seleção insuficiente recebe complemento local e estratégia `misto`.
+Falha HTTP, timeout ou resposta inválida retorna `fallback-local`.
+A API prioriza vendas confirmadas na categoria do contexto.
+Completa pelas vendas gerais, usando nota e UUID como desempates.
+Exclui contexto, duplicados, produtos indisponíveis e artesãos indisponíveis.
+O fallback pessoal também exclui compras confirmadas do comprador.
+Respostas degradadas nunca entram no cache e mantêm `X-Cache: MISS`.
+A rota pessoal continua sem cache compartilhado ou `X-Cache`.
+Recuperado o microsserviço, a próxima consulta volta ao módulo.
 Os itens usam o mesmo ProdutoDTO de `GET /produtos`.
 Incluem preco numerico, fotos ordenadas, tecnicaId, regiaoId, notaMedia,
 quantidadeVendida, ativo, desativadoPorAdmin e criadoEm em ISO 8601.

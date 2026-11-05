@@ -41,6 +41,20 @@ afterEach(() => {
 });
 
 describe("HttpRecommendationAdapter no container", () => {
+  it.each(fixture.estrategias)(
+    "preserva estrategia publica e produtos: %s",
+    async (estrategia) => {
+      vi.stubGlobal(
+        "fetch",
+        vi
+          .fn()
+          .mockResolvedValue(Response.json({ estrategia, itens: [produto] })),
+      );
+      expect(
+        await (await obterService()).obter({ produtoId: contextoId }),
+      ).toEqual({ estrategia, itens: [produto] });
+    },
+  );
   it("produz o mesmo resultado completo da fake para a fixture contratual", async () => {
     const ids = new Map(
       fixture.produtos
@@ -185,6 +199,7 @@ describe("HttpRecommendationAdapter no container", () => {
     {},
     { estrategia: "", itens: [] },
     { estrategia: 3, itens: [] },
+    { estrategia: "desconhecida", itens: [] },
     { estrategia: "categoria", itens: [{ ...produto, preco: "89.90" }] },
     { estrategia: "categoria", itens: [{ ...produto, fotos: ["url"] }] },
     { estrategia: "categoria", itens: [{ ...produto, notaMedia: 7 }] },

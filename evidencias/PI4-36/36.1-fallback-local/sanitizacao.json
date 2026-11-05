@@ -1,0 +1,140 @@
+{
+  "arquivos": [
+    {
+      "arquivo": "backend-direcionados.txt",
+      "ocorrencias": [],
+      "sha256": "b1a7d09c6c3cfa9be442e15f67d5fb9154f5b9069fc68ae6c187f92892061a01"
+    },
+    {
+      "arquivo": "backend-final.txt",
+      "ocorrencias": [],
+      "sha256": "6c57ce8a7ef9ad904e209856d6e86367ce7b87b06f1a315931d35c0d681dc86b"
+    },
+    {
+      "arquivo": "backend-inicial.txt",
+      "ocorrencias": [],
+      "sha256": "de4935e5e7bde3bc68de433c08e4d32990c33c4802fddf0a7aa7eca5baaafbe3"
+    },
+    {
+      "arquivo": "backend-intermediario.txt",
+      "ocorrencias": [],
+      "sha256": "1c1231546f29553a715a17318a50dfce90ca4833054466e8742dc825b72b23f7"
+    },
+    {
+      "arquivo": "backend-primeiro-verde.txt",
+      "ocorrencias": [],
+      "sha256": "cf3422e35490e8d6345c15122ce0c2e8aae24f0a82b148e759e41251d129af93"
+    },
+    {
+      "arquivo": "cache-isolado.txt",
+      "ocorrencias": [],
+      "sha256": "fdbbcaeebd6634ef635da9ae28e2e9738b30c9e10399a4979def9ecf328e975a"
+    },
+    {
+      "arquivo": "compatibilidade-contrato.txt",
+      "ocorrencias": [],
+      "sha256": "09b805db83adb2d820b1359bff10ca46dd1a79d2b546245954eac9594cf823a3"
+    },
+    {
+      "arquivo": "diagnostico-build.txt",
+      "ocorrencias": [],
+      "sha256": "d4ca9b35bc16426cdf8580b73148cb2afa69cd057977d88b66a8ec64e6c7415b"
+    },
+    {
+      "arquivo": "diagnostico-cache-contrato.txt",
+      "ocorrencias": [],
+      "sha256": "b1392097adac8c85dd007121552d76987eccb95701dcccfa4bc5d95aff4a3a24"
+    },
+    {
+      "arquivo": "diagnostico-conexao.txt",
+      "ocorrencias": [],
+      "sha256": "ae31b53d79015e33994f768ca84ae4f56f4bef740f5ae9d20325214d99a90b39"
+    },
+    {
+      "arquivo": "diagnostico-worker.txt",
+      "ocorrencias": [],
+      "sha256": "9b7a61eaa981f5d49f75ddb225f5fe204f2104d9423bafe54ba1bdaffee6f80d"
+    },
+    {
+      "arquivo": "formatacao.txt",
+      "ocorrencias": [],
+      "sha256": "f20510a9da4717c51c4cffee6d0dd88d6c9a723d0a83711d01216f5b48961283"
+    },
+    {
+      "arquivo": "frontend.txt",
+      "ocorrencias": [],
+      "sha256": "a3c8d151626b52679dff0deb2258ce3f317d7b228414de6d975f1d6d1aa7c140"
+    },
+    {
+      "arquivo": "limpeza-diagnosticos.json",
+      "ocorrencias": [],
+      "sha256": "a5c3b3118b672b6d7fdb62a8e76085488ca0df3432434e058d3baf6116da4812"
+    },
+    {
+      "arquivo": "limpeza.json",
+      "ocorrencias": [],
+      "sha256": "988805be205e9b6c63b182fee624a9e645265d91caef09b277b37f29e1dc82b8"
+    },
+    {
+      "arquivo": "microsservico.txt",
+      "ocorrencias": [],
+      "sha256": "8c02e2db02bb3de7266fec64b01a37d03e14160f23ce83dec7a6bcac5bccd883"
+    },
+    {
+      "arquivo": "qualidade-backend.txt",
+      "ocorrencias": [],
+      "sha256": "d8e57c561bca5a9e63366a03e69b429e88cdc32973f5dd586ce115af86a99f70"
+    },
+    {
+      "arquivo": "qualidade-frontend.txt",
+      "ocorrencias": [],
+      "sha256": "36b740bf83ec694b1d8cb474acec2a8ed4265edabaec7bed78a11715c8c15994"
+    },
+    {
+      "arquivo": "qualidade-microsservico.txt",
+      "ocorrencias": [],
+      "sha256": "b1f6dc070926b32f7fb93bb4f4371463f4596c25b621a5859c0ae73af9ecf64d"
+    },
+    {
+      "arquivo": "README.md",
+      "ocorrencias": [],
+      "sha256": "c8e17399e8aae1d14d747f57b12357c03dab5aec154d2a4e6e65883ca00b442f"
+    },
+    {
+      "arquivo": "tdd-backend.txt",
+      "ocorrencias": [],
+      "sha256": "f664d6cac2165424d8dba803f0dd340fd8be3595fb553a7010217f4ed7ea6b48"
+    },
+    {
+      "arquivo": "tdd-consumidor-legado.txt",
+      "ocorrencias": [],
+      "sha256": "69483428a30f5f4d762cbcffde24621546fed8d67e486c7771b5ef0d8244ab18"
+    },
+    {
+      "arquivo": "tdd-frontend.txt",
+      "ocorrencias": [],
+      "sha256": "618efc4068b48f25ebce009538bb248508b28544e087dfcde7b826184db2dd5f"
+    },
+    {
+      "arquivo": "tdd-integracao.txt",
+      "ocorrencias": [],
+      "sha256": "bb4698e0cdbd9428937ec29c32bd8f8abcb05bc1621d20e6f2bfd54c88089308"
+    },
+    {
+      "arquivo": "tela-final.txt",
+      "ocorrencias": [],
+      "sha256": "7a0f47c2881549cb6a2b8e11a7340d72b7688a62a89d14db7154fc7921dcf64e"
+    },
+    {
+      "arquivo": "tela-inicial.txt",
+      "ocorrencias": [],
+      "sha256": "cfd124060955009706ec0d5974b796a6a82a4962fa257cc373241008dfffe68a"
+    },
+    {
+      "arquivo": "tela-network.json",
+      "ocorrencias": [],
+      "sha256": "9611cf92d5c058ddd2882a422004eaedf463c3c60a6c94d691fd11c3bd4405db"
+    }
+  ],
+  "ocorrencias": 0
+}

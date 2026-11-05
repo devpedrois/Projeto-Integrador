@@ -61,11 +61,26 @@ beforeAll(async () => {
   categoriaId = (
     await banco.prisma.categoria.create({ data: { nome: "Categoria WEB13" } })
   ).id;
+  await banco.prisma.produto.createMany({
+    data: Array.from({ length: 8 }, (_, indice) => ({
+      nome: `Candidato cache ${indice}`,
+      descricao: "Produto sintetico de cache",
+      preco: 10,
+      quantidadeEstoque: 5,
+      artesaoId,
+      categoriaId,
+      tecnicaId: "tecnica-modelagem-argila",
+    })),
+  });
 }, 30000);
 beforeEach(async () => {
   await banco.prisma.usuario.update({
     where: { id: artesaoId },
     data: { papel: "artesao", ativo: true },
+  });
+  await banco.prisma.produto.updateMany({
+    where: { artesaoId },
+    data: { desativadoPorAdmin: false },
   });
   produtoId = (
     await banco.prisma.produto.create({
@@ -197,7 +212,17 @@ describe("WEB-13 cache HTTP publico", () => {
     async (operacao) => {
       for (const rota of leituras()) {
         expect((await request(app).get(rota)).headers["x-cache"]).toBe("MISS");
-        expect((await request(app).get(rota)).headers["x-cache"]).toBe("HIT");
+        const leitura = await request(app).get(rota);
+        expect(
+          leitura.headers["x-cache"],
+          JSON.stringify({
+            operacao,
+            rota,
+            estrategia: leitura.body.estrategia,
+            itens: leitura.body.itens?.length,
+            status: leitura.status,
+          }),
+        ).toBe("HIT");
       }
       let escrita: request.Response;
       if (operacao === "criar")

@@ -1,5 +1,12 @@
 {
   "versao": 1,
+  "estrategias": [
+    "categoria",
+    "historico-compra",
+    "fallback-geral",
+    "fallback-local",
+    "misto"
+  ],
   "descricao": "Fixture contratual de recomendacao por produto (RECOMMENDATION.md). Compartilhada como dado estatico entre o FakeRecommendationAdapter (frontend) e a Strategy real do backend, sem compartilhar codigo de runtime. Regioes iguais nesta fixture base: o reforco regional e comparado por uma fixture separada no commit 27.",
   "regioesIguais": true,
   "contexto": { "produtoId": "produto-fixture-contexto" },

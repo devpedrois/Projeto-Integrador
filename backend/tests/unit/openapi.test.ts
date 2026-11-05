@@ -47,6 +47,18 @@ function documentedOperations(document: Document): string[] {
 }
 
 describe("WEB-15 OpenAPI", () => {
+  it("documenta todas as estrategias publicas incluindo degradacao local", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    expect(
+      response.body.components.schemas.Recomendacao.properties.estrategia.enum,
+    ).toEqual([
+      "categoria",
+      "historico-compra",
+      "fallback-geral",
+      "fallback-local",
+      "misto",
+    ]);
+  });
   it("32.2 documenta paginacao publica sem identificar comprador", async () => {
     const response = await request(app).get("/docs/openapi.json");
     const operation = response.body.paths["/avaliacoes"].get;

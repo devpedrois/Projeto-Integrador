@@ -192,19 +192,19 @@ describe("IA-04: medicao por HTTP e PostgreSQL reais", () => {
     if (!categoria || !historico) throw new Error("Estrategias nao medidas");
     expect(categoria.estrategia).toBe("categoria");
     expect(categoria.contextos).toBe(3);
-    expect(categoria.coberturaCatalogo.numerador).toBe(2);
+    expect(categoria.coberturaCatalogo.numerador).toBe(3);
     expect(categoria.coberturaCatalogo.denominador).toBe(3);
-    expect(categoria.coberturaCatalogo.percentual).toBeCloseTo(200 / 3);
+    expect(categoria.coberturaCatalogo.percentual).toBe(100);
     expect(categoria.coberturaContextos.percentual).toBe(100);
-    expect(categoria.taxaFallback.percentual).toBeCloseTo(100 / 3);
-    expect(categoria.diversidadeCategorias.mediaPorResposta).toBe(1);
+    expect(categoria.taxaFallback.percentual).toBe(100);
+    expect(categoria.diversidadeCategorias.mediaPorResposta).toBeCloseTo(5 / 3);
     expect(categoria.frio.cache).toEqual({ hit: 0, miss: 6, bypass: 0 });
-    expect(categoria.quente.cache).toEqual({ hit: 6, miss: 0, bypass: 0 });
+    expect(categoria.quente.cache).toEqual({ hit: 0, miss: 6, bypass: 0 });
     expect(historico.estrategia).toBe("historico");
     expect(historico.contextos).toBe(2);
     expect(historico.coberturaCatalogo.percentual).toBe(100);
-    expect(historico.taxaFallback.percentual).toBe(50);
-    expect(historico.diversidadeCategorias.mediaPorResposta).toBe(1.5);
+    expect(historico.taxaFallback.percentual).toBe(100);
+    expect(historico.diversidadeCategorias.mediaPorResposta).toBe(2);
     expect(historico.frio.cache).toEqual({ hit: 0, miss: 0, bypass: 4 });
     expect(historico.quente.cache).toEqual({ hit: 0, miss: 0, bypass: 4 });
     for (const metrica of resultado.estrategias) {

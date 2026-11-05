@@ -84,9 +84,22 @@ beforeAll(async () => {
       regiaoId: "regiao-alto-moura-caruaru",
     },
   });
-  await banco.prisma.categoria.create({ data: { nome: "Web.3" } });
+  const categoria = await banco.prisma.categoria.create({
+    data: { nome: "Web.3" },
+  });
   produtoId = (await produto()).id;
   contextoId = (await produto()).id;
+  await banco.prisma.produto.createMany({
+    data: Array.from({ length: 8 }, (_, indice) => ({
+      nome: `Candidato de avaliacao ${indice}`,
+      descricao: "Produto sintetico para cache completo",
+      preco: 10,
+      quantidadeEstoque: 5,
+      artesaoId: usuario("artesao"),
+      categoriaId: categoria.id,
+      tecnicaId: "tecnica-modelagem-argila",
+    })),
+  });
 }, 40_000);
 
 afterAll(async () => {

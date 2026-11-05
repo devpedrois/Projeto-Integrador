@@ -46,6 +46,7 @@ const SQL_CATALOGO = `
 `;
 
 export interface CatalogoRepository {
+  listarMaisVendidosVisiveis(query: MaisVendidosQuery): Promise<ProdutoDTO[]>;
   carregarVisiveisPorIds(ids: string[]): Promise<ProdutoDTOOrigem[]>;
   listar(query: CatalogoQuery): Promise<ProdutoDTO[]>;
   obter(id: string): Promise<ProdutoDTO | null>;
@@ -65,6 +66,13 @@ export interface CatalogoRepository {
     }[];
     resumo: { media: number; total: number };
   }>;
+}
+
+export interface MaisVendidosQuery {
+  produtoId?: string;
+  usuarioId?: string;
+  excluirIds: string[];
+  limite: number;
 }
 
 export class PrismaCatalogoRepository implements CatalogoRepository {
@@ -106,6 +114,47 @@ export class PrismaCatalogoRepository implements CatalogoRepository {
   carregarVisiveisPorIds(ids: string[]): Promise<ProdutoDTOOrigem[]> {
     if (ids.length === 0) return Promise.resolve([]);
     return this.consultarOrigem({ limit: ids.length, offset: 0 }, null, ids);
+  }
+
+  async listarMaisVendidosVisiveis(
+    query: MaisVendidosQuery,
+  ): Promise<ProdutoDTO[]> {
+    const selecionados = await this.prisma.$queryRaw<
+      { id: string }[]
+    >(Prisma.sql`
+      SELECT p."id"
+      FROM "Produto" p
+      JOIN "Usuario" u ON u."id" = p."artesaoId" AND u."ativo" AND u."papel" = 'artesao'
+      LEFT JOIN LATERAL (
+        SELECT SUM(i."quantidade") AS vendas
+        FROM "ItemPedido" i JOIN "Pedido" pedido ON pedido."id" = i."pedidoId"
+        WHERE i."produtoId" = p."id" AND pedido."status" = 'confirmado'
+      ) v ON true
+      LEFT JOIN LATERAL (
+        SELECT AVG("nota") AS media FROM "Avaliacao" WHERE "produtoId" = p."id"
+      ) a ON true
+      WHERE p."ativo" AND NOT p."desativadoPorAdmin" AND p."quantidadeEstoque" > 0
+        AND (${query.produtoId ?? null}::uuid IS NULL OR p."id" <> ${query.produtoId ?? null}::uuid)
+        AND NOT (p."id" = ANY(${query.excluirIds}::uuid[]))
+        AND NOT EXISTS (
+          SELECT 1 FROM "ItemPedido" i JOIN "Pedido" pedido ON pedido."id" = i."pedidoId"
+          WHERE i."produtoId" = p."id" AND pedido."status" = 'confirmado'
+            AND pedido."compradorId" = ${query.usuarioId ?? null}::uuid
+        )
+      ORDER BY CASE WHEN p."categoriaId" = (
+        SELECT "categoriaId" FROM "Produto" WHERE "id" = ${query.produtoId ?? null}::uuid
+      ) THEN 0 ELSE 1 END,
+        COALESCE(v.vendas, 0) DESC, COALESCE(a.media, 0) DESC, p."id" ASC
+      LIMIT ${query.limite}
+    `);
+    const produtos = await this.carregarVisiveisPorIds(
+      selecionados.map(({ id }) => id),
+    );
+    const porId = new Map(produtos.map((produto) => [produto.id, produto]));
+    return selecionados.flatMap(({ id }) => {
+      const produto = porId.get(id);
+      return produto ? [mapearProdutoDTO(produto)] : [];
+    });
   }
 
   categorias() {

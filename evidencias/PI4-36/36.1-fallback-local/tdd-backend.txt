@@ -1,0 +1,164 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/cache.test.ts tests/unit/openapi.test.ts tests/integration/recomendacao-fallback-local.integration.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ❯ tests/unit/openapi.test.ts (18 tests | 1 failed) 136ms
+   ❯ WEB-15 OpenAPI (18)
+     × documenta todas as estrategias publicas incluindo degradacao local 18ms
+ ❯ tests/unit/cache.test.ts (18 tests | 1 failed) 13ms
+   ❯ cache publico (4)
+     × nao guarda valores recusados pela politica e permite recuperacao imediata 4ms
+(node:23124) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/recomendacao-fallback-local.integration.test.ts (6 tests | 6 failed) 6563ms
+   × retorna oito itens em cinco falhas e recupera na proxima chamada sem cache 26ms
+   × degrada com motivo seguro: lento 5ms
+   × degrada com motivo seguro: invalido 5ms
+   × degrada com motivo seguro: status 4ms
+   × completa selecao parcial preservando ordem, visibilidade e exclusoes sem cache 4ms
+   × para-mim completa por vendas gerais sem compartilhar cache 56ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/cache.test.ts > cache publico > nao guarda valores recusados pela politica e permite recuperacao imediata
+AssertionError: expected { valor: 'fallback-local', …(1) } to deeply equal { valor: 'misto', estado: 'MISS' }
+
+- Expected
++ Received
+
+  {
+-   "estado": "MISS",
+-   "valor": "misto",
++   "estado": "HIT",
++   "valor": "fallback-local",
+  }
+
+ ❯ tests/unit/cache.test.ts:78:79
+     76|     const opcoes = { deveGuardar: (valor: string) => valor === "catego…
+     77|     for (const valor of ["fallback-local", "misto", "categoria"]) {
+     78|       expect(await cache.obter("recomendacoes:p", async () => valor, o…
+       |                                                                               ^
+     79|     }
+     80|     expect(await cache.obter("recomendacoes:p", async () => "misto", o…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > documenta todas as estrategias publicas incluindo degradacao local
+AssertionError: expected undefined to deeply equal [ 'categoria', …(4) ]
+
+- Expected:
+[
+  "categoria",
+  "historico-compra",
+  "fallback-geral",
+  "fallback-local",
+  "misto",
+]
+
++ Received:
+undefined
+
+ ❯ tests/unit/openapi.test.ts:52:86
+     50|   it("documenta todas as estrategias publicas incluindo degradacao loc…
+     51|     const response = await request(app).get("/docs/openapi.json");
+     52|     expect(response.body.components.schemas.Recomendacao.properties.es…
+       |                                                                                      ^
+     53|       "categoria", "historico-compra", "fallback-geral", "fallback-loc…
+     54|     ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ tests/integration/recomendacao-fallback-local.integration.test.ts:97:31
+     95|     for (let i = 0; i < 5; i++) {
+     96|       const response = await request(api).get("/recomendacoes").query(…
+     97|       expect(response.status).toBe(200);
+       |                               ^
+     98|       expect(response.body.estrategia).toBe("fallback-local");
+     99|       expect(response.body.itens.map((p: { id: string }) => p.id)).toE…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: lento
+ FAIL  tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: invalido
+ FAIL  tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: status
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ tests/integration/recomendacao-fallback-local.integration.test.ts:138:29
+    136|     const inicio = performance.now();
+    137|     const response = await request(app()).get("/recomendacoes").query(…
+    138|     expect(response.status).toBe(200);
+       |                             ^
+    139|     expect(response.body.estrategia).toBe("fallback-local");
+    140|     expect(response.body.itens).toHaveLength(8);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  tests/integration/recomendacao-fallback-local.integration.test.ts > completa selecao parcial preservando ordem, visibilidade e exclusoes sem cache
+AssertionError: expected 503 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 503
+
+ ❯ tests/integration/recomendacao-fallback-local.integration.test.ts:153:29
+    151|   for (let i = 0; i < 2; i++) {
+    152|     const response = await request(api).get("/recomendacoes").query({ …
+    153|     expect(response.status).toBe(200);
+       |                             ^
+    154|     expect(response.body.estrategia).toBe("misto");
+    155|     expect(response.body.itens.map((p: { id: string }) => p.id)).toEqu…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  tests/integration/recomendacao-fallback-local.integration.test.ts > para-mim completa por vendas gerais sem compartilhar cache
+AssertionError: expected 401 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 401
+
+ ❯ tests/integration/recomendacao-fallback-local.integration.test.ts:174:29
+    172|     modo = falha ? "status" : "ok";
+    173|     const response = await request(app()).get("/recomendacoes/para-mim…
+    174|     expect(response.status).toBe(200);
+       |                             ^
+    175|     expect(response.body.estrategia).toBe(falha ? "fallback-local" : "…
+    176|     expect(response.body.itens.map((p: { id: string }) => p.id)).toEqu…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  8 failed | 34 passed (42)
+   Start at  22:46:54
+   Duration  8.30s (tests 84%, import 11%, transform 5%)
+

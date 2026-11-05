@@ -63,7 +63,7 @@ describe("GET /recomendacoes", () => {
     });
 
     expect(response.status).toBe(200);
-    expect(response.body.estrategia).toBe("categoria");
+    expect(response.body.estrategia).toBe("misto");
     expect(Array.isArray(response.body.itens)).toBe(true);
     expect(response.body.itens.length).toBeGreaterThan(0);
     expect(response.body.itens.length).toBeLessThanOrEqual(8);
@@ -108,7 +108,7 @@ describe("GET /recomendacoes", () => {
     const response = await request(app).get("/recomendacoes");
 
     expect(response.status).toBe(200);
-    expect(response.body.estrategia).toBe("fallback-geral");
+    expect(response.body.estrategia).toBe("misto");
   });
 
   it("rejects a request with both context parameters at once", async () => {
@@ -136,6 +136,6 @@ describe("GET /recomendacoes", () => {
     });
 
     expect(response.status).toBe(200);
-    expect(response.body.estrategia).toBe("fallback-geral");
+    expect(response.body.estrategia).toBe("misto");
   });
 });

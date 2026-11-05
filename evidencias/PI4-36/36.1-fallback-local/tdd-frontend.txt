@@ -1,0 +1,41 @@
+
+> origem-frontend@1.0.0 test
+> vitest run tests/services/http/recomendacoes.adapter.test.ts
+
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ❯ tests/services/http/recomendacoes.adapter.test.ts (30 tests | 1 failed) 2103ms
+   ✓ HttpRecommendationAdapter no container > preserva estrategia publica e produtos: categoria 360ms
+   × HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {"estrategia":"desconhecida","itens":[]} 66ms
+     → promise resolved "{ estrategia: 'desconhecida', …(1) }" instead of rejecting
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {"estrategia":"desconhecida","itens":[]}
+AssertionError: promise resolved "{ estrategia: 'desconhecida', …(1) }" instead of rejecting
+
+- Expected
++ Received
+
+- [Error: rejected promise]
++ Object {
++   "estrategia": "desconhecida",
++   "itens": Array [],
++ }
+
+ ❯ tests/services/http/recomendacoes.adapter.test.ts:202:5
+    200|     await expect(
+    201|       (await obterService()).obter({ produtoId: contextoId }),
+    202|     ).rejects.toMatchObject({ code: "RESPOSTA_INVALIDA" });
+       |     ^
+    203|   });
+    204| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 29 passed (30)
+   Start at  22:46:37
+   Duration  4.98s (transform 321ms, setup 281ms, collect 89ms, tests 2.10s, environment 1.91s, prepare 312ms)
+

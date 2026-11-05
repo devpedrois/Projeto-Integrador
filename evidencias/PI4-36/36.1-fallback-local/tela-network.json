@@ -1,0 +1,1856 @@
+{
+  "microsservico": "desligado",
+  "banco": "PostgreSQL real em schema isolado",
+  "resultados": [
+    {
+      "largura": 1280,
+      "tentativa": 1,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 1280,
+      "tentativa": 2,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 1280,
+      "tentativa": 3,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 1280,
+      "tentativa": 4,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 1280,
+      "tentativa": 5,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 360,
+      "tentativa": 1,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 360,
+      "tentativa": 2,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 360,
+      "tentativa": 3,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 360,
+      "tentativa": 4,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "largura": 360,
+      "tentativa": 5,
+      "status": 200,
+      "cache": "MISS",
+      "estrategia": "fallback-local",
+      "itens": [
+        {
+          "id": "92c0add2-a938-586c-8a8c-542b22cffb50",
+          "nome": "Vaso de Barro Trançado",
+          "descricao": "Vaso modelado à mão com argila da região, acabamento fosco natural.",
+          "preco": 39.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 3,
+          "quantidadeVendida": 1,
+          "notaMedia": 4.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-01T00:00:00.000Z"
+        },
+        {
+          "id": "bea28e1c-8186-5541-a254-16c3fdc795fc",
+          "nome": "Panela de Barro Vidrada",
+          "descricao": "Panela tradicional vidrada, ideal para receitas de fogo lento.",
+          "preco": 59.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 1,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "875d99e9-df11-565f-90ec-4b71cc9979e7",
+          "nome": "Prato Decorativo em Barro",
+          "descricao": "Prato decorativo com pintura mineral aplicada após a queima.",
+          "preco": 104.4,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-modelagem-argila",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 23,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "8c92b8ec-1ecf-5965-b13f-920d45c803b8",
+          "nome": "Jarra Cerâmica Esculpida",
+          "descricao": "Jarra utilitária com relevos entalhados à mão no torno.",
+          "preco": 84.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 18,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "d0b27522-de25-5454-bf78-68f5beaa88c2",
+          "nome": "Conjunto de Xícaras de Barro",
+          "descricao": "Conjunto de quatro xícaras torneadas e queimadas em forno a lenha.",
+          "preco": 123.9,
+          "categoriaId": "de5eee0a-2a66-5362-94d7-0fea750da385",
+          "tecnicaId": "tecnica-torno-ceramico",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/ceramica-barro.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 0,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "a30d8332-3396-5b8e-839e-7892752eb1ec",
+          "nome": "Toalha de Renda Irlandesa",
+          "descricao": "Toalha de mesa bordada em renda irlandesa, motivo floral.",
+          "preco": 39.9,
+          "categoriaId": "f3178837-255b-51ca-9aba-6e86f00eac48",
+          "tecnicaId": "tecnica-renda-irlandesa",
+          "regiaoId": "regiao-pilar-recife",
+          "artesaoId": "625c5b82-6a7f-5b57-8be8-9595face40b0",
+          "fotos": [
+            {
+              "url": "/produtos/renda-bordado.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 33,
+          "quantidadeVendida": 0,
+          "notaMedia": 5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-07T00:00:00.000Z"
+        },
+        {
+          "id": "75f3bf4e-8094-554d-8344-f4ce611e9a3c",
+          "nome": "Brinco Trançado em Fibra",
+          "descricao": "Brinco leve trançado em fibra natural de carnaúba.",
+          "preco": 59.4,
+          "categoriaId": "0c738311-eb70-5df6-948d-77e55053be3e",
+          "tecnicaId": "tecnica-trancado-fibra",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/bijuteria-acessorios.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 8,
+          "quantidadeVendida": 0,
+          "notaMedia": 4,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "1dfc1125-fdc5-59ea-8475-e6d80428cbf6",
+          "nome": "Colher de Pau Esculpida",
+          "descricao": "Colher utilitária esculpida em madeira de reflorestamento.",
+          "preco": 59.4,
+          "categoriaId": "05aeb67e-0f01-554d-b258-693828ea7ad3",
+          "tecnicaId": "tecnica-entalhe-madeira",
+          "regiaoId": "",
+          "artesaoId": "9b45586e-ccae-57dc-af34-b7b9d197a8e2",
+          "fotos": [
+            {
+              "url": "/produtos/madeira-entalhada.svg",
+              "ordem": 0
+            }
+          ],
+          "quantidadeEstoque": 28,
+          "quantidadeVendida": 0,
+          "notaMedia": 3.5,
+          "ativo": true,
+          "desativadoPorAdmin": false,
+          "criadoEm": "2026-08-14T00:00:00.000Z"
+        }
+      ]
+    }
+  ]
+}

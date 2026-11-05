@@ -6,6 +6,16 @@ export type RecomendacaoContexto =
   | { produtoId?: never; usuarioId?: never };
 
 export interface RecomendacaoResultado {
-  estrategia: string;
+  estrategia: RecomendacaoEstrategia;
   itens: Produto[];
 }
+
+export const RECOMENDACAO_ESTRATEGIAS = [
+  "categoria",
+  "historico-compra",
+  "fallback-geral",
+  "fallback-local",
+  "misto",
+] as const;
+
+export type RecomendacaoEstrategia = (typeof RECOMENDACAO_ESTRATEGIAS)[number];

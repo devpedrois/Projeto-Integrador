@@ -20,11 +20,19 @@ import {
 } from "../helpers/recomendacao-tooling.js";
 
 const respostaSchema = z.object({
-  estrategia: z.enum(["categoria", "historico-compra", "fallback-geral"]),
+  estrategia: z.enum([
+    "categoria",
+    "historico-compra",
+    "fallback-geral",
+    "fallback-local",
+    "misto",
+  ]),
   itens: z.array(z.object({ id: z.uuid(), categoriaId: z.uuid() })).max(8),
 });
 
 type CacheContagens = { hit: number; miss: number; bypass: number };
+const usaFallbackLocal = (estrategia: string) =>
+  estrategia === "fallback-local" || estrategia === "misto";
 type Fase = { tempos: number[]; cache: CacheContagens };
 const novaFase = (): Fase => ({
   tempos: [],
@@ -66,7 +74,13 @@ async function chamada(
   if (response.status !== 200 || !result.success)
     throw new Error("Resposta HTTP de recomendacao invalida");
   const cache = response.headers.get("x-cache");
-  if (cache !== (esperado === "BYPASS" ? null : esperado))
+  const estadoEsperado =
+    esperado === "BYPASS"
+      ? null
+      : usaFallbackLocal(result.data.estrategia)
+        ? "MISS"
+        : esperado;
+  if (cache !== estadoEsperado)
     throw new Error("Estado HTTP de cache inesperado");
   if (response.headers.get("cache-control") !== "no-store")
     throw new Error("Resposta HTTP permite cache externo");
@@ -76,7 +90,16 @@ async function chamada(
       throw new Error("Produto recomendado invalido ou repetido");
     vistos.add(item.id);
   }
-  return { resposta: result.data, tempo };
+  return {
+    resposta: result.data,
+    tempo,
+    cache:
+      cache === "HIT"
+        ? ("hit" as const)
+        : cache === "MISS"
+          ? ("miss" as const)
+          : ("bypass" as const),
+  };
 }
 
 function guardarFase(
@@ -135,8 +158,8 @@ async function medirEstrategia(
         primeira.resposta.itens.some((item) => item.id === contexto.id)
       )
         throw new Error("Produto de contexto recomendado");
-      guardarFase(frio, primeira.tempo, pessoal ? "bypass" : "miss");
-      guardarFase(quente, segunda.tempo, pessoal ? "bypass" : "hit");
+      guardarFase(frio, primeira.tempo, primeira.cache);
+      guardarFase(quente, segunda.tempo, segunda.cache);
       if (repeticao === 0) {
         respostas.push(primeira.resposta);
         acertos += primeira.resposta.itens.filter(
@@ -145,7 +168,14 @@ async function medirEstrategia(
       }
     }
   }
-  const qualidade = resumirRecomendacoes(respostas, elegiveis);
+  const qualidade = resumirRecomendacoes(
+    respostas.map((resposta) =>
+      usaFallbackLocal(resposta.estrategia)
+        ? { ...resposta, estrategia: "fallback-geral" }
+        : resposta,
+    ),
+    elegiveis,
+  );
   return {
     estrategia,
     contextos: contextos.length,

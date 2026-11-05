@@ -35,7 +35,7 @@ beforeAll(async () => {
     })
   ).id;
   const ids: string[] = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 10; i++) {
     ids.push(
       (
         await banco.prisma.produto.create({
@@ -87,7 +87,7 @@ it.each(["/recomendacoes", "/recomendacoes/para-mim"])(
       estrategia: string;
       produtoIds: string[];
     };
-    expect(selecao.produtoIds).toHaveLength(3);
+    expect(selecao.produtoIds).toHaveLength(8);
     const call = request(app).get(path);
     if (pessoal)
       call.set(
@@ -146,11 +146,10 @@ it("microsservico desligado gera falha tipada e rota controlada", async () => {
     ...banco.environment,
   });
   const response = await request(app).get("/recomendacoes");
-  expect(response.status).toBe(503);
-  expect(response.body).toEqual({
-    status: "error",
-    message: "Service unavailable",
-  });
+  expect(response.status).toBe(200);
+  expect(response.body.estrategia).toBe("fallback-local");
+  expect(response.body.itens).toHaveLength(8);
+  expect(response.headers["x-cache"]).toBe("MISS");
   expect(response.text).not.toContain(
     banco.environment.RECOMENDACAO_SERVICE_TOKEN,
   );

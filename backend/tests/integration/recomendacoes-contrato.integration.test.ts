@@ -32,7 +32,13 @@ const produtoSchema = z
   .strict();
 const resultadoSchema = z
   .object({
-    estrategia: z.string(),
+    estrategia: z.enum([
+      "categoria",
+      "historico-compra",
+      "fallback-geral",
+      "fallback-local",
+      "misto",
+    ]),
     itens: z.array(produtoSchema).max(fixture.limiteItens),
   })
   .strict();

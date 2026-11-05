@@ -1,0 +1,78 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:42344) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/recomendacao-volume.integration.test.ts (2 tests | 1 failed) 35052ms
+   ❯ IA-04: medicao por HTTP e PostgreSQL reais (2)
+     × mede ambas as estrategias, distingue MISS/HIT e bypass pessoal 10071ms
+(node:11400) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11400) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+ ❯ tests/integration/cache.web13.integration.test.ts (15 tests | 4 failed) 19245ms
+   ❯ WEB-13 cache HTTP publico (15)
+     × moderar-artesao invalida catalogo e recomendacoes apos commit 707ms
+     × pedido invalida catalogo e recomendacoes apos commit 697ms
+     × perfil invalida catalogo e recomendacoes apos commit 720ms
+     × papel invalida catalogo e recomendacoes apos commit 692ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/cache.web13.integration.test.ts > WEB-13 cache HTTP publico > moderar-artesao invalida catalogo e recomendacoes apos commit
+ FAIL  tests/integration/cache.web13.integration.test.ts > WEB-13 cache HTTP publico > pedido invalida catalogo e recomendacoes apos commit
+ FAIL  tests/integration/cache.web13.integration.test.ts > WEB-13 cache HTTP publico > perfil invalida catalogo e recomendacoes apos commit
+ FAIL  tests/integration/cache.web13.integration.test.ts > WEB-13 cache HTTP publico > papel invalida catalogo e recomendacoes apos commit
+AssertionError: expected 'MISS' to be 'HIT' // Object.is equality
+
+Expected: "HIT"
+Received: "MISS"
+
+ ❯ tests/integration/cache.web13.integration.test.ts:211:67
+    209|       for (const rota of leituras()) {
+    210|         expect((await request(app).get(rota)).headers["x-cache"]).toBe…
+    211|         expect((await request(app).get(rota)).headers["x-cache"]).toBe…
+       |                                                                   ^
+    212|       }
+    213|       let escrita: request.Response;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/integration/recomendacao-volume.integration.test.ts > IA-04: medicao por HTTP e PostgreSQL reais > mede ambas as estrategias, distingue MISS/HIT e bypass pessoal
+AssertionError: expected 1.6666666666666667 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1.6666666666666667
+
+ ❯ tests/integration/recomendacao-volume.integration.test.ts:200:62
+    198|     expect(categoria.coberturaContextos.percentual).toBe(100);
+    199|     expect(categoria.taxaFallback.percentual).toBe(100);
+    200|     expect(categoria.diversidadeCategorias.mediaPorResposta).toBe(2);
+       |                                                              ^
+    201|     expect(categoria.frio.cache).toEqual({ hit: 0, miss: 6, bypass: 0 …
+    202|     expect(categoria.quente.cache).toEqual({ hit: 0, miss: 6, bypass: …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  5 failed | 13 passed (18)
+   Start at  23:05:47
+   Duration  59.66s (tests 98%, import 2%, transform 1%)
+

@@ -3,8 +3,10 @@ import type { RecomendacoesService } from "@/services/contracts/recomendacoes.co
 import { ServiceError } from "@/services/errors";
 import type {
   RecomendacaoContexto,
+  RecomendacaoEstrategia,
   RecomendacaoResultado,
 } from "@/types/recomendacao";
+import { RECOMENDACAO_ESTRATEGIAS } from "@/types/recomendacao";
 import { ApiClient } from "./api-client";
 import {
   lerListaProdutos,
@@ -44,7 +46,9 @@ export class HttpRecommendationAdapter implements RecomendacoesService {
     if (
       !objeto(resposta) ||
       typeof resposta.estrategia !== "string" ||
-      !resposta.estrategia.trim()
+      !RECOMENDACAO_ESTRATEGIAS.some(
+        (estrategia) => estrategia === resposta.estrategia,
+      )
     )
       return respostaInvalida();
 
@@ -62,7 +66,7 @@ export class HttpRecommendationAdapter implements RecomendacoesService {
         return true;
       })
       .slice(0, LIMITE_ITENS);
-    return { estrategia: resposta.estrategia, itens };
+    return { estrategia: resposta.estrategia as RecomendacaoEstrategia, itens };
   }
 
   private contextoInvalido(): never {

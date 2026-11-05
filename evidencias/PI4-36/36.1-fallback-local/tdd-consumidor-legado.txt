@@ -1,0 +1,60 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:17804) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/recomendacao-volume.integration.test.ts > IA-04: medicao por HTTP e PostgreSQL reais > CLI seleciona schemas existentes sem modificar dados e salva tabela/JSON
+Medindo demo por HTTP real...
+
+ ❯ tests/integration/recomendacao-volume.integration.test.ts (2 tests | 2 failed) 15216ms
+   ❯ IA-04: medicao por HTTP e PostgreSQL reais (2)
+     × CLI seleciona schemas existentes sem modificar dados e salva tabela/JSON 7703ms
+     × mede ambas as estrategias, distingue MISS/HIT e bypass pessoal 5389ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/recomendacao-volume.integration.test.ts > IA-04: medicao por HTTP e PostgreSQL reais > CLI seleciona schemas existentes sem modificar dados e salva tabela/JSON
+Error: Resposta HTTP de recomendacao invalida
+ ❯ chamada scripts/lib/recomendacao-benchmark.ts:67:11
+     65|   const result = respostaSchema.safeParse(body);
+     66|   if (response.status !== 200 || !result.success)
+     67|     throw new Error("Resposta HTTP de recomendacao invalida");
+       |           ^
+     68|   const cache = response.headers.get("x-cache");
+     69|   if (cache !== (esperado === "BYPASS" ? null : esperado))
+ ❯ medirEstrategia scripts/lib/recomendacao-benchmark.ts:115:24
+ ❯ medirBaseRecomendacao scripts/lib/recomendacao-benchmark.ts:228:7
+ ❯ medirConexao scripts/metricas-recomendacao.ts:212:38
+ ❯ runMetrics scripts/metricas-recomendacao.ts:264:16
+ ❯ tests/integration/recomendacao-volume.integration.test.ts:149:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/integration/recomendacao-volume.integration.test.ts > IA-04: medicao por HTTP e PostgreSQL reais > mede ambas as estrategias, distingue MISS/HIT e bypass pessoal
+Error: Resposta HTTP de recomendacao invalida
+ ❯ chamada scripts/lib/recomendacao-benchmark.ts:67:11
+     65|   const result = respostaSchema.safeParse(body);
+     66|   if (response.status !== 200 || !result.success)
+     67|     throw new Error("Resposta HTTP de recomendacao invalida");
+       |           ^
+     68|   const cache = response.headers.get("x-cache");
+     69|   if (cache !== (esperado === "BYPASS" ? null : esperado))
+ ❯ medirEstrategia scripts/lib/recomendacao-benchmark.ts:115:24
+ ❯ medirBaseRecomendacao scripts/lib/recomendacao-benchmark.ts:228:7
+ ❯ tests/integration/recomendacao-volume.integration.test.ts:178:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  23:04:50
+   Duration  16.28s (tests 94%, import 3%, transform 3%)
+

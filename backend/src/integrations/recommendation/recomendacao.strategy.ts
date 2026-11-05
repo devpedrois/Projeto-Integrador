@@ -4,9 +4,16 @@ export interface RecomendacaoContexto {
 }
 
 export interface RecomendacaoSelecao {
-  estrategia: string;
+  estrategia: RecomendacaoEstrategia;
   produtoIds: string[];
 }
+
+export type RecomendacaoEstrategia =
+  | "categoria"
+  | "historico-compra"
+  | "fallback-geral"
+  | "fallback-local"
+  | "misto";
 
 export interface RecomendacaoStrategy {
   obter(contexto: RecomendacaoContexto): Promise<RecomendacaoSelecao>;

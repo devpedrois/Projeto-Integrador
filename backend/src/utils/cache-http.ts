@@ -1,6 +1,11 @@
 import { performance } from "node:perf_hooks";
 import type { Response } from "express";
-import { CachePublico, MemoryCacheStore, type EstadoCache } from "./cache.js";
+import {
+  CachePublico,
+  MemoryCacheStore,
+  type EstadoCache,
+  type OpcoesCache,
+} from "./cache.js";
 
 export interface RegistroCache {
   rota: string;
@@ -22,6 +27,7 @@ export class CacheHttp {
     rota: string,
     chave: string | undefined,
     carregar: () => Promise<T>,
+    opcoes: OpcoesCache<T> = {},
   ): Promise<void> {
     const inicio = performance.now();
     let estado: EstadoCache = "MISS";
@@ -34,7 +40,7 @@ export class CacheHttp {
         duracaoMs: Number((performance.now() - inicio).toFixed(3)),
       });
     });
-    const resultado = await this.cache.obter(chave, carregar);
+    const resultado = await this.cache.obter(chave, carregar, opcoes);
     estado = resultado.estado;
     response.set("X-Cache", estado);
     response.set(

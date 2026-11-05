@@ -436,7 +436,7 @@ const notificacao = registrar(
   notificacaoExample,
 );
 const recomendacaoExample = {
-  estrategia: "categoria",
+  estrategia: "categoria" as const,
   itens: [produtoExample],
 };
 const indicadoresExample = {
@@ -479,7 +479,20 @@ const indicadoresAdmin = registrar(
 );
 const recomendacao = registrar(
   "Recomendacao",
-  z.object({ estrategia: z.string(), itens: z.array(produto) }),
+  z.object({
+    estrategia: z
+      .enum([
+        "categoria",
+        "historico-compra",
+        "fallback-geral",
+        "fallback-local",
+        "misto",
+      ])
+      .describe(
+        "Estrategia do modulo; fallback-local quando indisponivel; misto quando a API completa a selecao. Respostas fallback-local e misto nao sao armazenadas no cache.",
+      ),
+    itens: z.array(produto).max(8),
+  }),
   recomendacaoExample,
 );
 const erro = registry.register(

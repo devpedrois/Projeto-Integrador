@@ -1651,3 +1651,11 @@ Ampliou o timeout das duas cargas idempotentes do seed.
 Documentou as variáveis obrigatórias e a publicação do microsserviço.
 Validou PostgreSQL real e realizou revisão equivalente de segurança.
 Evidências: [CI backend 41907229656](../evidencias/CI-backend-41907229656/README.md).
+
+### 36.1: fallback local da recomendação
+
+O Codex implementou degradação local e complementação de recomendações.
+Criou testes prévios com PostgreSQL real e falhas HTTP.
+Atualizou cache, OpenAPI, fixture e contrato tipado do frontend.
+Validou cinco recargas por largura e realizou revisão equivalente de segurança.
+Evidências: [PI4-36.1](../evidencias/PI4-36/36.1-fallback-local/README.md).

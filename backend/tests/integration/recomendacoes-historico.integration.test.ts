@@ -228,14 +228,14 @@ describe("IA-03: historico real do comprador autenticado", () => {
       const fallback = await request(app)
         .get("/recomendacoes/para-mim")
         .set("Cookie", cookie(comprador));
-      expect(fallback.body.estrategia).toBe("fallback-geral");
+      expect(fallback.body.estrategia).toBe("misto");
       expect(
         fallback.body.itens.map((item: { id: string }) => item.id),
       ).toEqual([geral, tecidoNovo]);
       const multi = await request(app)
         .get("/recomendacoes/para-mim")
         .set("Cookie", cookie(novo));
-      expect(multi.body.estrategia).toBe("historico-compra");
+      expect(multi.body.estrategia).toBe("misto");
       expect(multi.body.itens.map((item: { id: string }) => item.id)).toEqual([
         tecidoNovo,
       ]);

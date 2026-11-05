@@ -69,6 +69,9 @@ export function chaveCache(
 }
 
 export type EstadoCache = "HIT" | "MISS";
+export interface OpcoesCache<T> {
+  deveGuardar?: (valor: T) => boolean;
+}
 export class CachePublico {
   private revisao = 0;
   private mutacoes: Promise<void> = Promise.resolve();
@@ -89,6 +92,7 @@ export class CachePublico {
   async obter<T>(
     chave: string | undefined,
     carregar: () => Promise<T>,
+    opcoes: OpcoesCache<T> = {},
   ): Promise<{ valor: T; estado: EstadoCache }> {
     if (chave === undefined) return { valor: await carregar(), estado: "MISS" };
     await this.mutacoes;
@@ -97,6 +101,8 @@ export class CachePublico {
     if (existente !== undefined && revisao === this.revisao)
       return { valor: existente, estado: "HIT" };
     const valor = await carregar();
+    if (opcoes.deveGuardar && !opcoes.deveGuardar(valor))
+      return { valor, estado: "MISS" };
     await this.enfileirar(async () => {
       if (revisao === this.revisao)
         await this.store.set(chave, valor, this.ttlMs);

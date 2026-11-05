@@ -71,6 +71,18 @@ describe("MemoryCacheStore", () => {
   });
 });
 describe("cache publico", () => {
+  it("nao guarda valores recusados pela politica e permite recuperacao imediata", async () => {
+    const cache = new CachePublico(new MemoryCacheStore(), 1000);
+    const opcoes = { deveGuardar: (valor: string) => valor === "categoria" };
+    for (const valor of ["fallback-local", "misto", "categoria"]) {
+      expect(
+        await cache.obter("recomendacoes:p", async () => valor, opcoes),
+      ).toEqual({ valor, estado: "MISS" });
+    }
+    expect(
+      await cache.obter("recomendacoes:p", async () => "misto", opcoes),
+    ).toEqual({ valor: "categoria", estado: "HIT" });
+  });
   it("normaliza ordem, termo vazio, espacos e UUID maiusculo", () => {
     const id = "AB713938-496C-4E86-9FBC-75B3D67444AF";
     expect(
