@@ -1642,3 +1642,12 @@ Anonimizou ocorrências textuais e verificou imagens com OCR local.
 Reuniu padrões, resultados, tamanhos e vídeos na pasta 34.2.
 Validou a política Git e a varredura do staging.
 Evidências: [PI4-34.2](../evidencias/PI4-34/34.2-evidencias-versionadas/README.md).
+
+### Correção do CI backend e configuração de recomendação
+
+O Codex investigou os logs da execução 41907229656.
+Isolou o teste de escuta do consumidor de notificações.
+Ampliou o timeout das duas cargas idempotentes do seed.
+Documentou as variáveis obrigatórias e a publicação do microsserviço.
+Validou PostgreSQL real e realizou revisão equivalente de segurança.
+Evidências: [CI backend 41907229656](../evidencias/CI-backend-41907229656/README.md).

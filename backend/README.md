@@ -174,6 +174,9 @@ Nunca reutilize seu `JWT_SECRET` em produção.
 | ------------------------------------ | ------------------------------------------------ | ---------------------------------------------------------------- |
 | `DATABASE_URL`                       | Obrigatória, URL PostgreSQL                      | Conexões da aplicação e `pg-boss`                                |
 | `DIRECT_URL`                         | Obrigatória, URL PostgreSQL                      | Prisma CLI e migrations, conexão direta                          |
+| `RECOMENDACAO_URL`                   | Obrigatória, origem HTTP ou HTTPS                | URL do microsserviço, sem caminho, query ou credenciais          |
+| `RECOMENDACAO_SERVICE_TOKEN`         | Obrigatória, mínimo de 32 caracteres úteis       | Mesmo segredo exclusivo na API e no microsserviço                |
+| `RECOMENDACAO_TIMEOUT_MS`            | `800`                                            | Timeout HTTP; inteiro entre 100 e 5000, em milissegundos         |
 | `NODE_ENV`                           | `development`                                    | Aceita `development`, `test` ou `production`                     |
 | `HOST`                               | `127.0.0.1`                                      | Endereço de escuta; configure `0.0.0.0` no Render                |
 | `PORT`                               | `3001`                                           | Inteiro entre 1 e 65535; respeita o ambiente Render              |
@@ -183,7 +186,7 @@ Nunca reutilize seu `JWT_SECRET` em produção.
 | `CACHE_TTL_SECONDS`                  | `60`                                             | Inteiro positivo, em segundos                                    |
 | `NOTIFICATION_PUBLISHER_INTERVAL_MS` | `3000`                                           | Publicação periódica; inteiro entre 1000 e 60000                 |
 | `RUN_WORKER_IN_API`                  | `true`                                           | Textos `true` ou `false`; habilita consumidor na API             |
-| `PG_BOSS_CREATE_SCHEMA`              | `true`                                           | Use `false` com schema da fila precriado, como no Compose         |
+| `PG_BOSS_CREATE_SCHEMA`              | `true`                                           | Use `false` com schema da fila precriado, como no Compose        |
 | `WORKER_CONCURRENCY`                 | `1`                                              | Inteiro entre 1 e 8; reservado para 30.5                         |
 | `ALLOW_VOLUME_SEED`                  | Opt-in desativado no exemplo                     | `1` autoriza a carga de volume na branch de teste                |
 | `DATABASE_URL_DEPLOY`                | Opcional, fictícia no exemplo                    | Identifica o banco de deploy bloqueado para volume               |
@@ -209,6 +212,18 @@ Configure um Web Service com raiz `backend/`:
 - `JWT_SECRET` aleatório exclusivo, com pelo menos 32 caracteres.
 - `FRONTEND_ORIGIN` com a origem HTTPS do frontend publicado.
 - `COOKIE_SECURE=true` e `CACHE_TTL_SECONDS=60`.
+- `RECOMENDACAO_URL` com a origem HTTPS do microsserviço publicado.
+- `RECOMENDACAO_SERVICE_TOKEN` idêntico ao configurado no microsserviço.
+
+Publique primeiro o [microsserviço de recomendação](../services/recomendacao/README.md#deploy-no-render).
+Não use `localhost` nem a própria URL da API.
+Gere um token de serviço diferente do `JWT_SECRET`.
+Depois, salve as variáveis e reimplante a API.
+
+O erro `Invalid environment variables: RECOMENDACAO_SERVICE_TOKEN, RECOMENDACAO_URL`
+indica configuração ausente ou inválida na inicialização.
+Publicar o microsserviço não preenche essas variáveis automaticamente.
+Um build bem-sucedido não comprova a configuração de runtime.
 
 Mantenha Prisma CLI disponível também no comando de inicialização.
 `npm ci --include=dev` inclui a CLI e o compilador.

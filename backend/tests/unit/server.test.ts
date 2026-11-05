@@ -131,6 +131,7 @@ describe("server startup", () => {
       }
     `,
       realDatabaseUrl,
+      { RUN_WORKER_IN_API: "false" },
     );
 
     expect(result.code).toBe(0);

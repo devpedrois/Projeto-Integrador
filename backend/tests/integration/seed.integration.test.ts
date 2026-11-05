@@ -14,7 +14,7 @@ beforeAll(async () => {
   await runSeed(banco.prisma);
   primeiraContagem = await contagensSeed(banco.prisma);
   await runSeed(banco.prisma);
-}, 60000);
+}, 180_000);
 
 afterAll(async () => {
   await banco?.fechar();

@@ -113,6 +113,36 @@ Isso permite papéis exclusivos para testes e jobs concorrentes.
 `API_SCHEMA` e `RECOMENDACAO_SCHEMA` também são configuráveis no bootstrap.
 O SQL equivalente para `psql` está em `sql/bootstrap-permissoes.sql`.
 
+## Deploy no Render
+
+Prepare as permissões e migrations antes da publicação.
+Siga a seção anterior usando uma conexão administrativa autorizada.
+Use o papel `recomendacao_app` na conexão de runtime.
+Não copie a conexão administrativa da API para este serviço.
+
+Configure um segundo Web Service com raiz `services/recomendacao/`:
+
+- Build Command: `npm ci --include=dev && npm run build`.
+- Start Command: `npm run migrate && npm start`.
+- Health Check Path: `/health`.
+- `NODE_ENV=production` e `HOST=0.0.0.0`.
+- `DATABASE_URL` com a conexão PostgreSQL de `recomendacao_app`.
+- `API_SCHEMA=public` e `RECOMENDACAO_SCHEMA=recomendacao`.
+- `RECOMENDACAO_SERVICE_TOKEN` aleatório, com pelo menos 32 caracteres.
+
+Use o mesmo token exclusivamente na API e neste serviço.
+Mantenha o segredo somente nas variáveis de ambiente.
+Não use o `JWT_SECRET` como token de serviço.
+O Render fornece `PORT`; o servidor respeita esse valor.
+
+Confirme resposta 200 em `/health` do microsserviço publicado.
+Configure `RECOMENDACAO_URL` na API com essa origem HTTPS.
+O valor não deve incluir `/health` nem `/recomendacoes`.
+Configure também o mesmo `RECOMENDACAO_SERVICE_TOKEN` na API.
+Reimplante a API e valide `/health` e as recomendações.
+
+Publicar somente o microsserviço não configura a API automaticamente.
+
 ## Testes e build
 
 ```sh
