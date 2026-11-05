@@ -1,0 +1,10 @@
+{
+  "projeto": "Integrador origem",
+  "branch": "pi4-21-tf1-1",
+  "bootstrap": true,
+  "migrate": true,
+  "viewsOk": true,
+  "tabelasApiNegadas": true,
+  "schemaPrivadoNegadoApi": true,
+  "escritaPrivadaOk": true
+}

@@ -1,0 +1,29 @@
+{
+  "verificadoEm": "2026-11-05T03:02:02.293Z",
+  "commit": "a967b8126a463dbe7a5312c7206e544fef1402ee",
+  "microsservico": {
+    "health": 200,
+    "semToken": 401,
+    "comToken": 200,
+    "estrategia": "fallback-geral",
+    "itens": 7
+  },
+  "api": {
+    "status": 200,
+    "estrategia": "fallback-geral",
+    "itens": 7
+  },
+  "vitrine": {
+    "status": 200,
+    "estrategia": "fallback-geral",
+    "itens": 7,
+    "mesmosIdsDoModulo": true
+  },
+  "produto": {
+    "status": 200,
+    "estrategia": "categoria",
+    "itens": 1,
+    "semProdutoAtual": true,
+    "mesmosIdsDoModulo": true
+  }
+}

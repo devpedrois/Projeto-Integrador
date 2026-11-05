@@ -1659,3 +1659,12 @@ Criou testes prévios com PostgreSQL real e falhas HTTP.
 Atualizou cache, OpenAPI, fixture e contrato tipado do frontend.
 Validou cinco recargas por largura e realizou revisão equivalente de segurança.
 Evidências: [PI4-36.1](../evidencias/PI4-36/36.1-fallback-local/README.md).
+
+### 35.4: publicação do microsserviço no Render
+
+O Codex configurou o microsserviço Docker Free e a integração HTTP.
+Executou bootstrap e migrations na branch produtiva do Neon.
+Aplicou a conexão restrita da API, mediante autorização explícita.
+Comprovou isolamento, autenticação, respostas públicas e carrossel preenchido.
+Atualizou os READMEs e realizou revisão equivalente de segurança.
+Evidências: [PI4-35.4](../evidencias/PI4-35/35.4-deploy-render/README.md).

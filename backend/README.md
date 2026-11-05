@@ -208,17 +208,25 @@ Configure um Web Service com raiz `backend/`:
 - Start Command: `npm run start:prod`.
 - Health Check Path: `/health`.
 - `NODE_ENV=production` e `HOST=0.0.0.0`.
-- `DATABASE_URL` e `DIRECT_URL` reais no painel Render.
+- `DATABASE_URL` pooled do papel restrito `origem_api_app`.
+- `DIRECT_URL` administrativa direta, utilizada pelas migrations.
+  As duas conexões devem apontar para a mesma branch Neon.
 - `JWT_SECRET` aleatório exclusivo, com pelo menos 32 caracteres.
 - `FRONTEND_ORIGIN` com a origem HTTPS do frontend publicado.
 - `COOKIE_SECURE=true` e `CACHE_TTL_SECONDS=60`.
 - `RECOMENDACAO_URL` com a origem HTTPS do microsserviço publicado.
 - `RECOMENDACAO_SERVICE_TOKEN` idêntico ao configurado no microsserviço.
+- `RECOMENDACAO_TIMEOUT_MS=800` para limitar a chamada HTTP.
 
 Publique primeiro o [microsserviço de recomendação](../services/recomendacao/README.md#deploy-no-render).
 Não use `localhost` nem a própria URL da API.
 Gere um token de serviço diferente do `JWT_SECRET`.
 Depois, salve as variáveis e reimplante a API.
+Confirme que o microsserviço já está Live antes dessa etapa.
+A preparação segue migrations do backend, `bootstrap:permissoes` e migrations do microsserviço.
+Verifique que `origem_api_app` não acessa o schema privado `recomendacao`.
+Se o runtime ainda usar um papel administrativo, solicite autorização para trocar `DATABASE_URL`.
+A troca para o papel restrito foi autorizada na subtarefa 35.4.
 
 O erro `Invalid environment variables: RECOMENDACAO_SERVICE_TOKEN, RECOMENDACAO_URL`
 indica configuração ausente ou inválida na inicialização.
@@ -231,11 +239,8 @@ O start aplica migrations antes de iniciar o HTTP.
 Uma migration malsucedida impede a inicialização.
 Não execute seeds automaticamente durante o deploy.
 
-Gere o segredo fora do repositório, sem registrá-lo:
-
-```powershell
-node -e "process.stdout.write(require('node:crypto').randomBytes(32).toString('hex'))"
-```
+Gere segredos com `crypto.randomBytes(32)` em memória.
+Transfira-os diretamente ao painel, sem imprimir ou gravar valores.
 
 Para validar localmente o binário em modo produção:
 

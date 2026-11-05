@@ -115,33 +115,86 @@ O SQL equivalente para `psql` está em `sql/bootstrap-permissoes.sql`.
 
 ## Deploy no Render
 
-Prepare as permissões e migrations antes da publicação.
-Siga a seção anterior usando uma conexão administrativa autorizada.
-Use o papel `recomendacao_app` na conexão de runtime.
-Não copie a conexão administrativa da API para este serviço.
+Prepare o Neon antes de publicar o serviço.
+Use a mesma branch de produção utilizada pela API.
+A ordem executada foi:
 
-Configure um segundo Web Service com raiz `services/recomendacao/`:
+1. Confirmar as migrations do backend, aplicadas por `start:prod`.
+   As views `rec_produtos_elegiveis` e `rec_compras_confirmadas` devem existir.
+2. Executar `npm run bootstrap:permissoes` nesta pasta.
+   Use `BOOTSTRAP_DATABASE_URL` administrativa, direta, sem pooler.
+   Passe `RECOMENDACAO_DATABASE_PASSWORD` pelo ambiente da sessão.
+   Gere a senha com `crypto.randomBytes(32)`, sem imprimi-la.
+   Não grave credenciais em arquivos ou históricos de comandos.
+3. Executar `npm run migrate` nesta pasta.
+   Use `DATABASE_URL` do papel `recomendacao_app`.
+4. Verificar permissões usando conexões reais dos dois papéis.
+   O microsserviço lê as duas views, mas não tabelas da API.
+   A API não lê o schema privado `recomendacao`.
+   Uma escrita nesse schema deve funcionar como `recomendacao_app`.
+   Faça a escrita de verificação em transação com rollback.
 
-- Build Command: `npm ci --include=dev && npm run build`.
-- Start Command: `npm run migrate && npm start`.
-- Health Check Path: `/health`.
-- `NODE_ENV=production` e `HOST=0.0.0.0`.
-- `DATABASE_URL` com a conexão PostgreSQL de `recomendacao_app`.
-- `API_SCHEMA=public` e `RECOMENDACAO_SCHEMA=recomendacao`.
-- `RECOMENDACAO_SERVICE_TOKEN` aleatório, com pelo menos 32 caracteres.
+A conexão de runtime da API usa `origem_api_app`.
+Essa troca de `DATABASE_URL` recebeu autorização explícita.
+Um papel administrativo na API impediria o isolamento exigido.
+Não copie a conexão administrativa para o microsserviço.
+Preserve os bytes das migrations já aplicadas.
+No Windows, conversões CRLF podem alterar o checksum.
+Use o conteúdo LF versionado, sem editar o histórico do banco.
 
+Crie um Web Service no Render com estas configurações:
+
+| Campo | Configuração |
+| --- | --- |
+| Repositório e branch | Os mesmos da API, branch `main` |
+| Plano | Free |
+| Runtime | Docker |
+| Root Directory | `services/recomendacao` |
+| Dockerfile Path | `Dockerfile`, relativo à raiz configurada |
+| Docker Build Context | `.` |
+| Docker Command | Vazio, utiliza `npm start` do Dockerfile |
+| Health Check Path | `/health` |
+
+As migrations foram executadas antes do deploy Docker.
+Não dependa de Shell ou jobs avulsos no plano Free.
+Configure somente estas variáveis no microsserviço:
+
+| Variável | Origem ou valor |
+| --- | --- |
+| `DATABASE_URL` | Conexão pooled de `recomendacao_app` |
+| `API_SCHEMA` | `public` |
+| `RECOMENDACAO_SCHEMA` | `recomendacao` |
+| `HOST` | `0.0.0.0` |
+| `NODE_ENV` | `production` |
+| `RECOMENDACAO_SERVICE_TOKEN` | Segredo novo gerado com `crypto.randomBytes(32)` |
+
+Mantenha senha e token somente no ambiente e painel.
+Não imprima segredos nem reutilize o `JWT_SECRET`.
 Use o mesmo token exclusivamente na API e neste serviço.
-Mantenha o segredo somente nas variáveis de ambiente.
-Não use o `JWT_SECRET` como token de serviço.
 O Render fornece `PORT`; o servidor respeita esse valor.
+`/health` é público e verifica a conexão PostgreSQL.
+As rotas de recomendação exigem `X-Service-Token`.
 
-Confirme resposta 200 em `/health` do microsserviço publicado.
-Configure `RECOMENDACAO_URL` na API com essa origem HTTPS.
-O valor não deve incluir `/health` nem `/recomendacoes`.
-Configure também o mesmo `RECOMENDACAO_SERVICE_TOKEN` na API.
-Reimplante a API e valide `/health` e as recomendações.
+Aguarde o deploy ficar Live e `/health` responder 200.
+Depois, configure as três variáveis de integração na API:
 
-Publicar somente o microsserviço não configura a API automaticamente.
+- `RECOMENDACAO_URL`: origem HTTPS do serviço, sem barra final.
+- `RECOMENDACAO_SERVICE_TOKEN`: o mesmo segredo do microsserviço.
+- `RECOMENDACAO_TIMEOUT_MS=800`.
+
+Reimplante a API usando um commit remoto da `main`.
+Valide `/health` e a rota protegida sem token, respectivamente 200 e 401.
+Na vitrine publicada, `/api/recomendacoes` deve responder 200.
+Confirme `categoria` ou `fallback-geral` e o carrossel preenchido.
+Se houver `fallback-local`, investigue URL, token e cold start.
+
+O plano Free oferece 750 horas mensais por workspace.
+Essas horas são compartilhadas entre os serviços Free.
+Após inatividade, cada serviço pode levar aproximadamente um minuto para acordar.
+Acorde API e microsserviço antes das demonstrações.
+Depois, confirme recomendações vindas do módulo.
+Consulte [limites Free](https://render.com/docs/free) e
+[configuração de monorepos](https://render.com/docs/monorepo-support).
 
 ## Testes e build
 
