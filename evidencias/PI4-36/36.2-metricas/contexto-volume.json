@@ -1,0 +1,18 @@
+{
+  "produtos": 1000,
+  "artesaos": 50,
+  "compradoresativos": 300,
+  "pedidosconfirmados": 1500,
+  "produtosDepois": 1000,
+  "execucoesAntes": 15,
+  "execucoesDepois": 17,
+  "novasExecucoes": 2,
+  "operacao": {
+    "nome": "gerarRecomendacoesEmLote",
+    "modulo": "services/recomendacao/src/lote/index.ts",
+    "concorrencia": 8,
+    "poolMax": 10,
+    "snapshot": "REPEATABLE READ READ ONLY compartilhado por catalogo e modos on/off; escrita apenas privada"
+  },
+  "credenciais": "Geradas na memoria, sem valores persistidos. Bootstrap somente na branch de volume."
+}

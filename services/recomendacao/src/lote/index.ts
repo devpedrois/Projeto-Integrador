@@ -124,6 +124,7 @@ export async function prepararLote(
       postgres: metadata.versao,
       maxConexoesPostgres: Number(metadata.maxConexoes),
       fechar,
+      listarCatalogo: () => repository.listarCatalogo(),
       consultarExecucoes: (ids: string[]) => registros.consultar(ids),
       async gerarRecomendacoesEmLote(input: OpcoesLote) {
         const options = opcoesLote.parse(input);
@@ -149,17 +150,18 @@ export async function prepararLote(
             picoEsperaPool = Math.max(picoEsperaPool, pool.waitingCount);
           }, 10);
           const inicio = performance.now();
-          const resultados = await executarPool(
+          const selecoes = await executarPool(
             produtos,
             concorrencia,
             async (produto) => {
               ativas++;
               picoTarefas = Math.max(picoTarefas, ativas);
               try {
+                const selecao = await strategy.obter({ produtoId: produto.id });
                 return {
                   produtoId: produto.id,
-                  produtoIds: (await strategy.obter({ produtoId: produto.id }))
-                    .produtoIds,
+                  produtoIds: selecao.produtoIds,
+                  estrategia: selecao.estrategia,
                 };
               } finally {
                 ativas--;
@@ -167,6 +169,14 @@ export async function prepararLote(
             },
           );
           const duracaoMs = performance.now() - inicio;
+          const resultados = selecoes.map(({ produtoId, produtoIds }) => ({
+            produtoId,
+            produtoIds,
+          }));
+          const estrategias = selecoes.map(({ produtoId, estrategia }) => ({
+            produtoId,
+            estrategia,
+          }));
           clearInterval(amostrador);
           if (erroPool) throw new Error("Conexao do pool perdida");
           const hashResultado = createHash("sha256")
@@ -183,6 +193,7 @@ export async function prepararLote(
             concorrencia,
             reforcoRegional: options.reforcoRegional,
             resultados,
+            estrategias,
             duracaoMs,
             hashResultado,
             poolMax,

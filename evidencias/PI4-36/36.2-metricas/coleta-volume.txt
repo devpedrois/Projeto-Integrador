@@ -1,0 +1,21 @@
+(node:17388) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+36.2: branch de volume; 1000 produtos; papel recomendacao_app; C=8; modos on/off.
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+Lote persistido: execucaoId=21f84da8-b666-4296-b151-c9f3293ac706 produtos=1000 hash=d30144c48072048daa620a66210639a97cf7c9d9baa18ee4bbd250e57394dc7c
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+Lote persistido: execucaoId=6be5e3bd-8875-4593-b78c-674548d6b928 produtos=1000 hash=42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e
+| Reforco regional | Produtos | Elegiveis | Recomendacoes | Cobertura catalogo % | Cobertura v0 % | Fallback % | Acerto categoria % | Mesma regiao % |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| on | 1000 | 1000 | 8000 | 16.2 | 100 | 0 | 100 | 100 |
+| off | 1000 | 1000 | 8000 | 5.4 | 100 | 0 | 100 | 33.6875 |
+Comparacao regional: 0 diferencas; JSON e diff salvos.
+Saida: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-36\36.2-metricas\execucao-2026-11-07T20-14-08-695Z\resultado.json
+Diferencas: 0; novas execucoes privadas: 2; produtos preservados: 1000

@@ -1686,3 +1686,12 @@ Criou testes prévios e verificou PostgreSQL com papéis restritos.
 Migrou o benchmark B2, preservando comparação, hash e medições.
 Registrou execuções privadas e realizou revisão equivalente de segurança.
 Evidências: [PI4-35.6](../evidencias/PI4-35/35.6-lote/README.md).
+
+
+### 36.2: métricas após a extração da recomendação
+
+O Codex migrou a coleta regional para o microsserviço.
+Criou testes prévios com PostgreSQL real e papéis restritos.
+Executou os dois modos pelo lote C=8, preservando os indicadores.
+Conferiu o diff histórico e realizou revisão equivalente de segurança.
+Evidências: [PI4-36.2](../evidencias/PI4-36/36.2-metricas/README.md).

@@ -1,0 +1,233 @@
+{
+  "versao": 3,
+  "capturadoEm": "2026-11-07T20:14:46.366Z",
+  "timezone": "America/Sao_Paulo",
+  "operacao": {
+    "nome": "gerarRecomendacoesEmLote",
+    "modulo": "services/recomendacao/src/lote/index.ts",
+    "concorrencia": 8,
+    "poolMax": 10,
+    "snapshot": "REPEATABLE READ READ ONLY compartilhado por catalogo e modos on/off; escrita apenas privada"
+  },
+  "metodo": {
+    "selecao": "Uma execucao de lote por modo; nenhuma chamada propria de Strategy",
+    "projecao": "Somente contextos e candidatos visiveis; IDs unicos, sem proprio contexto",
+    "comparacao": "Totais, numeradores, denominadores e percentuais integrais contra a referencia regional de volume; nao compara latencia HTTP ou IDs historicos",
+    "mesmaRegiao": "Regioes ausentes nao contam como coincidencia"
+  },
+  "bases": [
+    {
+      "base": "volume",
+      "origem": "branch-configurada",
+      "comparacaoRegional": [
+        {
+          "modo": "on",
+          "reforcoRegionalAtivo": true,
+          "produtos": 1000,
+          "produtosElegiveis": 1000,
+          "contextos": 1000,
+          "contextosSemRegiao": 0,
+          "totalRecomendacoes": 8000,
+          "coberturaCatalogo": {
+            "numerador": 162,
+            "denominador": 1000,
+            "percentual": 16.2
+          },
+          "coberturaContextos": {
+            "numerador": 1000,
+            "denominador": 1000,
+            "percentual": 100
+          },
+          "taxaFallback": {
+            "numerador": 0,
+            "denominador": 1000,
+            "percentual": 0
+          },
+          "diversidadeCategorias": {
+            "mediaPorResposta": 1,
+            "distintas": 6,
+            "elegiveis": 6,
+            "percentual": 100
+          },
+          "acertoCategoria": {
+            "numerador": 8000,
+            "denominador": 8000,
+            "percentual": 100
+          },
+          "mesmaRegiao": {
+            "numerador": 8000,
+            "denominador": 8000,
+            "percentual": 100
+          }
+        },
+        {
+          "modo": "off",
+          "reforcoRegionalAtivo": false,
+          "produtos": 1000,
+          "produtosElegiveis": 1000,
+          "contextos": 1000,
+          "contextosSemRegiao": 0,
+          "totalRecomendacoes": 8000,
+          "coberturaCatalogo": {
+            "numerador": 54,
+            "denominador": 1000,
+            "percentual": 5.4
+          },
+          "coberturaContextos": {
+            "numerador": 1000,
+            "denominador": 1000,
+            "percentual": 100
+          },
+          "taxaFallback": {
+            "numerador": 0,
+            "denominador": 1000,
+            "percentual": 0
+          },
+          "diversidadeCategorias": {
+            "mediaPorResposta": 1,
+            "distintas": 6,
+            "elegiveis": 6,
+            "percentual": 100
+          },
+          "acertoCategoria": {
+            "numerador": 8000,
+            "denominador": 8000,
+            "percentual": 100
+          },
+          "mesmaRegiao": {
+            "numerador": 2695,
+            "denominador": 8000,
+            "percentual": 33.6875
+          }
+        }
+      ]
+    }
+  ],
+  "execucoes": [
+    {
+      "execucaoId": "21f84da8-b666-4296-b151-c9f3293ac706",
+      "concorrencia": 8,
+      "reforcoRegional": true,
+      "poolMax": 10,
+      "produtosProcessados": 1000,
+      "duracaoMs": 15581.0421,
+      "hashResultado": "d30144c48072048daa620a66210639a97cf7c9d9baa18ee4bbd250e57394dc7c"
+    },
+    {
+      "execucaoId": "6be5e3bd-8875-4593-b78c-674548d6b928",
+      "concorrencia": 8,
+      "reforcoRegional": false,
+      "poolMax": 10,
+      "produtosProcessados": 1000,
+      "duracaoMs": 15546.206799999996,
+      "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e"
+    }
+  ],
+  "registros": [
+    {
+      "id": "21f84da8-b666-4296-b151-c9f3293ac706",
+      "iniciadoEm": "2026-11-07T20:14:17.733Z",
+      "finalizadoEm": "2026-11-07T20:14:33.378Z",
+      "concorrencia": 8,
+      "reforcoRegional": true,
+      "produtosProcessados": 1000,
+      "duracaoMs": 15581.0421,
+      "hashResultado": "d30144c48072048daa620a66210639a97cf7c9d9baa18ee4bbd250e57394dc7c",
+      "papelConsulta": "recomendacao_app"
+    },
+    {
+      "id": "6be5e3bd-8875-4593-b78c-674548d6b928",
+      "iniciadoEm": "2026-11-07T20:14:33.440Z",
+      "finalizadoEm": "2026-11-07T20:14:49.047Z",
+      "concorrencia": 8,
+      "reforcoRegional": false,
+      "produtosProcessados": 1000,
+      "duracaoMs": 15546.206799999996,
+      "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "papelConsulta": "recomendacao_app"
+    }
+  ],
+  "referenciaCapturada": [
+    {
+      "modo": "on",
+      "reforcoRegionalAtivo": true,
+      "produtos": 1000,
+      "produtosElegiveis": 1000,
+      "contextos": 1000,
+      "contextosSemRegiao": 0,
+      "totalRecomendacoes": 8000,
+      "coberturaCatalogo": {
+        "numerador": 162,
+        "denominador": 1000,
+        "percentual": 16.2
+      },
+      "coberturaContextos": {
+        "numerador": 1000,
+        "denominador": 1000,
+        "percentual": 100
+      },
+      "taxaFallback": {
+        "numerador": 0,
+        "denominador": 1000,
+        "percentual": 0
+      },
+      "diversidadeCategorias": {
+        "mediaPorResposta": 1,
+        "distintas": 6,
+        "elegiveis": 6,
+        "percentual": 100
+      },
+      "acertoCategoria": {
+        "numerador": 8000,
+        "denominador": 8000,
+        "percentual": 100
+      },
+      "mesmaRegiao": {
+        "numerador": 8000,
+        "denominador": 8000,
+        "percentual": 100
+      }
+    },
+    {
+      "modo": "off",
+      "reforcoRegionalAtivo": false,
+      "produtos": 1000,
+      "produtosElegiveis": 1000,
+      "contextos": 1000,
+      "contextosSemRegiao": 0,
+      "totalRecomendacoes": 8000,
+      "coberturaCatalogo": {
+        "numerador": 54,
+        "denominador": 1000,
+        "percentual": 5.4
+      },
+      "coberturaContextos": {
+        "numerador": 1000,
+        "denominador": 1000,
+        "percentual": 100
+      },
+      "taxaFallback": {
+        "numerador": 0,
+        "denominador": 1000,
+        "percentual": 0
+      },
+      "diversidadeCategorias": {
+        "mediaPorResposta": 1,
+        "distintas": 6,
+        "elegiveis": 6,
+        "percentual": 100
+      },
+      "acertoCategoria": {
+        "numerador": 8000,
+        "denominador": 8000,
+        "percentual": 100
+      },
+      "mesmaRegiao": {
+        "numerador": 2695,
+        "denominador": 8000,
+        "percentual": 33.6875
+      }
+    }
+  ],
+  "diff": []
+}

@@ -1,14 +1,7 @@
 import { randomUUID } from "node:crypto";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { criarBancoAuth } from "../helpers/auth-database.js";
 import { medirBaseRecomendacao } from "../../scripts/lib/recomendacao-benchmark.js";
-import {
-  parseMetricsOptions,
-  runMetrics,
-} from "../../scripts/metricas-recomendacao.js";
 
 let banco: Awaited<ReturnType<typeof criarBancoAuth>>;
 
@@ -93,87 +86,6 @@ afterAll(async () => {
 });
 
 describe("IA-04: medicao por HTTP e PostgreSQL reais", () => {
-  it("CLI seleciona schemas existentes sem modificar dados e salva tabela/JSON", async () => {
-    const volume = await criarBancoAuth();
-    const directory = await mkdtemp(join(tmpdir(), "ia04-metricas-"));
-    try {
-      const artesao = await volume.prisma.usuario.create({
-        data: {
-          nome: "Artesao volume IA04",
-          email: `${randomUUID()}@teste.origem`,
-          senhaHash: "hash-sintetico",
-          papel: "artesao",
-        },
-      });
-      await volume.prisma.usuario.create({
-        data: {
-          nome: "Comprador volume IA04",
-          email: `${randomUUID()}@teste.origem`,
-          senhaHash: "hash-sintetico",
-          papel: "comprador",
-        },
-      });
-      const categoria = await volume.prisma.categoria.create({
-        data: { nome: "Volume IA04" },
-      });
-      await volume.prisma.produto.create({
-        data: {
-          nome: "Volume IA04",
-          descricao: "Sintetico",
-          preco: 10,
-          quantidadeEstoque: 5,
-          artesaoId: artesao.id,
-          categoriaId: categoria.id,
-          tecnicaId: "tecnica-modelagem-argila",
-        },
-      });
-      const [demoSchema] = await banco.prisma.$queryRaw<
-        { schema: string }[]
-      >`SELECT current_schema() AS schema`;
-      const [volumeSchema] = await volume.prisma.$queryRaw<
-        { schema: string }[]
-      >`SELECT current_schema() AS schema`;
-      if (!demoSchema || !volumeSchema || !process.env.DIRECT_URL)
-        throw new Error("Fixture sem conexao ou schema");
-      const output = join(directory, "resultado.json");
-      const options = parseMetricsOptions([
-        "--schema-demo",
-        demoSchema.schema,
-        "--schema-volume",
-        volumeSchema.schema,
-        "--output",
-        output,
-        "--reforco-regional",
-        "off",
-      ]);
-      const result = await runMetrics(options, {
-        DATABASE_URL: process.env.DIRECT_URL,
-        DATABASE_URL_VOLUME: process.env.DIRECT_URL,
-      });
-      expect(
-        result.bases.map((base) => [
-          base.base,
-          base.origem,
-          base.tamanho.produtos,
-        ]),
-      ).toEqual([
-        ["demo", "branch-configurada", 4],
-        ["volume", "branch-configurada", 1],
-      ]);
-      expect(JSON.parse(await readFile(output, "utf8"))).toEqual(result);
-      expect(
-        result.bases
-          .find((base) => base.base === "volume")
-          ?.comparacaoRegional?.map((r) => r.modo),
-      ).toEqual(["off"]);
-      expect(await banco.prisma.pedido.count()).toBe(1);
-      expect(await volume.prisma.produto.count()).toBe(1);
-    } finally {
-      await volume.fechar();
-      await rm(directory, { recursive: true, force: true });
-    }
-  }, 30_000);
-
   it("mede ambas as estrategias, distingue MISS/HIT e bypass pessoal", async () => {
     const resultado = await medirBaseRecomendacao(
       banco.prisma,

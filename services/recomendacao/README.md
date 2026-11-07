@@ -240,9 +240,8 @@ O arquivo `recomendacao.log` registra método, caminho e status.
 O runner exige chamadas reais de recomendação com status 200.
 A limpeza remove o schema privado, os papéis e o schema E2E.
 
-O script legado de métricas continua ferramenta local.
-Ele carrega a implementação deste serviço, sem duplicar Strategies.
-O benchmark do lote agora pertence exclusivamente a este serviço.
+O script de métricas e o benchmark pertencem a este serviço.
+Ambos utilizam a mesma operação de lote, sem duplicar Strategies.
 
 
 ## Lote de recomendações, 35.6
@@ -260,6 +259,8 @@ O destino precisa ser novo; arquivos existentes são preservados.
 A saída contém `resultados`, parâmetros, duração, ID e SHA-256.
 `resultados` contém `{ produtoId, produtoIds }`, ordenados por `produtoId`.
 O hash usa SHA-256 de `JSON.stringify(resultados)` em UTF-8.
+`estrategias` identifica a Strategy efetiva de cada contexto.
+Esse campo separado preserva o formato e hash de `resultados`.
 A seleção usa `CategoriaRecomendacaoStrategy` e `listarElegiveis` existentes.
 Contextos seguem `elegivel`, incluindo produtos ocultos por moderação.
 Esse filtro já pertence ao contrato da Strategy.
@@ -314,3 +315,40 @@ Os checkpoints `C-*.json` também preservam os registros privados.
 A migração preserva a referência de 25/10/2026.
 Mudanças ambientais ou contratuais precisam acompanhar a interpretação.
 O máximo PostgreSQL não comprova a cota do pooler.
+
+
+## Métricas regionais, 36.2
+
+```sh
+npm run metricas:recomendacao -- --reforco-regional ambos --output metricas/execucao-nova/resultado.json
+```
+
+Configure `DATABASE_URL_VOLUME` com o papel `recomendacao_app`.
+Prepare previamente as views, permissões e migration privada.
+A conexão de volume deve diferir das bases padrão e deploy.
+O comando recusa `NODE_ENV=production`.
+`API_SCHEMA` e `RECOMENDACAO_SCHEMA` mantêm os padrões existentes.
+`--reforco-regional` aceita `on`, `off` ou `ambos`.
+A concorrência é sempre 8; o pool possui 10 conexões.
+Uma sessão preparada compartilha catálogo e snapshot entre os modos.
+O catálogo usa somente `rec_produtos_elegiveis`.
+A seleção chama `lote.gerarRecomendacoesEmLote` uma vez por modo.
+Não existe outro caminho de seleção no script.
+
+A qualidade considera somente contextos e candidatos publicamente visíveis.
+Remove duplicados e o próprio contexto, preservando a projeção histórica.
+Fallback usa a estratégia real retornada pelo lote.
+Regiões ausentes não contam como coincidência regional.
+O lote pode processar contextos adicionais que a projeção exclui.
+Esses contextos permanecem identificados pelo contador privado do lote.
+
+O padrão compara com `backend/metricas/recomendacao-u2.json`.
+`--referencia` permite informar outro JSON compatível.
+A saída padrão é temporal, em `evidencias/PI4-36/36.2-metricas/`.
+O JSON contém métricas, referência, diff e registros privados conferidos.
+`diff.json` acompanha o resultado no mesmo diretório.
+Ambos os arquivos precisam ser novos.
+O diff compara totais, razões e percentuais, sem arredondamento.
+Uma divergência é preservada para análise, sem descartar resultados.
+Não compara latência HTTP nem reconstrói seleções históricas por ID.
+As coletas antigas permanecem preservadas como evidência histórica.

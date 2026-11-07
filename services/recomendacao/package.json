@@ -16,7 +16,8 @@
     "bootstrap:permissoes": "tsx scripts/bootstrap-permissoes.ts",
     "migrate": "tsx scripts/migrate.ts",
     "lote": "tsx src/lote/cli.ts",
-    "bench:lote": "tsx scripts/bench-lote.ts"
+    "bench:lote": "tsx scripts/bench-lote.ts",
+    "metricas:recomendacao": "tsx scripts/metricas.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",

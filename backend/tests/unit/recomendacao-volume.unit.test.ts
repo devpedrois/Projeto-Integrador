@@ -3,10 +3,6 @@ import {
   resumirTempos,
   resumirRecomendacoes,
 } from "../../scripts/helpers/recomendacao-tooling.js";
-import {
-  parseMetricsOptions,
-  validarMetricsEnvironment,
-} from "../../scripts/metricas-recomendacao.js";
 
 describe("IA-04: metricas independentes de ranking", () => {
   it("calcula cobertura do catalogo, cobertura v0, fallback e diversidade", () => {
@@ -71,81 +67,5 @@ describe("IA-04: metricas independentes de ranking", () => {
     });
     expect(amostras[0]).toBe(20);
     expect(resumirTempos([7])).toEqual({ amostras: 1, mediaMs: 7, p95Ms: 7 });
-  });
-});
-
-describe("IA-04: CLI e configuracao segura", () => {
-  it("IA.3 compara ambos os modos por padrao", () => {
-    expect(parseMetricsOptions([])).toHaveProperty("reforcoRegional", "ambos");
-  });
-
-  it.each(["on", "off", "ambos"])("IA.3 aceita reforco regional %s", (modo) => {
-    expect(parseMetricsOptions(["--reforco-regional", modo])).toHaveProperty(
-      "reforcoRegional",
-      modo,
-    );
-  });
-
-  it.each(["true", "ON", "", "on,off"])(
-    "IA.3 rejeita modo invalido %j",
-    (modo) => {
-      expect(() => parseMetricsOptions(["--reforco-regional", modo])).toThrow(
-        "Argumentos de metricas invalidos.",
-      );
-    },
-  );
-  it("seleciona branch de volume por nome da variavel", () => {
-    const options = parseMetricsOptions([
-      "--volume-env",
-      "DIRECT_URL_VOLUME",
-      "--schema-volume",
-      "volume",
-      "--repeticoes",
-      "2",
-    ]);
-    expect(options.volumeEnv).toBe("DIRECT_URL_VOLUME");
-    expect(options.schemaVolume).toBe("volume");
-    expect(options.repeticoes).toBe(2);
-    expect(options.isolado).toBe(false);
-  });
-
-  it.each(
-    [
-      ["--schema-volume", "public; DROP TABLE Usuario"],
-      ["--volume-env", "postgresql://nao-imprimir"],
-      ["--repeticoes", "0"],
-      ["--repeticoes", "1.5"],
-      ["--repeticoes", "11"],
-      ["--isolado", "--volume-env", "DIRECT_URL_VOLUME"],
-      ["--desconhecido", "segredo"],
-    ].map((args) => ({ args })),
-  )("recusa argumentos invalidos: %j", ({ args }) => {
-    expect(() => parseMetricsOptions(args)).toThrow();
-  });
-
-  it("variavel ausente informa apenas seu nome", () => {
-    const options = parseMetricsOptions([]);
-    expect(() =>
-      validarMetricsEnvironment(options, {
-        DATABASE_URL: "postgresql://user:senha@demo.test/origem",
-      }),
-    ).toThrow("DATABASE_URL_VOLUME");
-  });
-
-  it("schemas isolados recusam producao e a variante pooler do deploy", () => {
-    const options = parseMetricsOptions(["--isolado"]);
-    expect(() =>
-      validarMetricsEnvironment(options, {
-        NODE_ENV: "production",
-        DIRECT_URL: "postgresql://user:senha@teste.test/origem",
-      }),
-    ).toThrow();
-    expect(() =>
-      validarMetricsEnvironment(options, {
-        DIRECT_URL: "postgresql://user:senha@deploy.test/origem",
-        DATABASE_URL_DEPLOY:
-          "postgresql://user:senha@deploy-pooler.test/origem",
-      }),
-    ).toThrow();
   });
 });

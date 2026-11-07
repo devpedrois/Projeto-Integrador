@@ -11,6 +11,11 @@ export interface ProdutoElegivelRecomendacao {
   id: string;
   categoriaId: string;
 }
+export interface ProdutoCatalogoRecomendacao extends ProdutoElegivelRecomendacao {
+  regiao: string | null;
+  elegivel: boolean;
+  visivel: boolean;
+}
 export interface RecomendacaoRepository {
   buscarProduto(id: string): Promise<ProdutoContextoRecomendacao | null>;
   listarCandidatosPorCategoria(params: {
@@ -116,6 +121,14 @@ export class PgRecomendacaoRepository implements RecomendacaoRepository {
     return (
       await this.pool.query<ProdutoElegivelRecomendacao>(
         `SELECT id,"categoriaId" FROM ${this.produtos} WHERE elegivel`,
+      )
+    ).rows;
+  }
+
+  async listarCatalogo(): Promise<ProdutoCatalogoRecomendacao[]> {
+    return (
+      await this.pool.query<ProdutoCatalogoRecomendacao>(
+        `SELECT id,"categoriaId","regiaoId" AS regiao,elegivel,visivel FROM ${this.produtos} ORDER BY id`,
       )
     ).rows;
   }
