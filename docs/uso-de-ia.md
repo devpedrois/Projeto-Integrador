@@ -1677,3 +1677,12 @@ Gerou e aplicou a migration no Neon de desenvolvimento.
 Conferiu a preservação dos pedidos, itens e pagamentos existentes.
 Realizou revisão equivalente de segurança, conforme escolha do responsável.
 Evidências: [PI4-33.4](../evidencias/PI4-33/33.4/README.md).
+
+
+### 35.6: operação de recomendações em lote
+
+O Codex implementou o lote dentro do microsserviço de recomendação.
+Criou testes prévios e verificou PostgreSQL com papéis restritos.
+Migrou o benchmark B2, preservando comparação, hash e medições.
+Registrou execuções privadas e realizou revisão equivalente de segurança.
+Evidências: [PI4-35.6](../evidencias/PI4-35/35.6-lote/README.md).

@@ -1,0 +1,136 @@
+{
+  "rodadas": [
+    {
+      "execucaoId": "5da85d37-638b-485f-b38b-c2227814cc3b",
+      "concorrencia": 8,
+      "poolMax": 10,
+      "rodada": 1,
+      "aquecimento": true,
+      "produtos": 1000,
+      "duracaoMs": 13317.024800000014,
+      "throughput": 75.09184784277033,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 8,
+      "picoEsperaPool": 0
+    },
+    {
+      "execucaoId": "08117cae-c67b-46cd-bc6f-d24f23d60e6a",
+      "concorrencia": 8,
+      "poolMax": 10,
+      "rodada": 2,
+      "aquecimento": false,
+      "produtos": 1000,
+      "duracaoMs": 13249.393899999908,
+      "throughput": 75.47515060292734,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 8,
+      "picoEsperaPool": 0
+    },
+    {
+      "execucaoId": "d162e358-7dd7-4259-b79e-68210579a2a7",
+      "concorrencia": 8,
+      "poolMax": 10,
+      "rodada": 3,
+      "aquecimento": false,
+      "produtos": 1000,
+      "duracaoMs": 13261.204299999983,
+      "throughput": 75.40793259628775,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 8,
+      "picoEsperaPool": 0
+    },
+    {
+      "execucaoId": "ed4fd996-9e5e-49a6-8e3c-c07b358eedc8",
+      "concorrencia": 8,
+      "poolMax": 10,
+      "rodada": 4,
+      "aquecimento": false,
+      "produtos": 1000,
+      "duracaoMs": 13295.457800000091,
+      "throughput": 75.21365680240008,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 8,
+      "picoEsperaPool": 0
+    },
+    {
+      "execucaoId": "7264c2ea-f6d0-4143-a237-e0e5f42522c7",
+      "concorrencia": 8,
+      "poolMax": 10,
+      "rodada": 5,
+      "aquecimento": false,
+      "produtos": 1000,
+      "duracaoMs": 13285.604599999962,
+      "throughput": 75.26943862231177,
+      "identico": true,
+      "hash": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "picoTarefas": 8,
+      "picoEsperaPool": 0
+    }
+  ],
+  "diff": [],
+  "execucoes": [
+    {
+      "id": "5da85d37-638b-485f-b38b-c2227814cc3b",
+      "iniciadoEm": "2026-11-07T19:58:34.599Z",
+      "finalizadoEm": "2026-11-07T19:58:47.972Z",
+      "concorrencia": 8,
+      "reforcoRegional": false,
+      "produtosProcessados": 1000,
+      "duracaoMs": 13317.024800000014,
+      "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "papelConsulta": "recomendacao_app"
+    },
+    {
+      "id": "08117cae-c67b-46cd-bc6f-d24f23d60e6a",
+      "iniciadoEm": "2026-11-07T19:58:48.028Z",
+      "finalizadoEm": "2026-11-07T19:59:01.332Z",
+      "concorrencia": 8,
+      "reforcoRegional": false,
+      "produtosProcessados": 1000,
+      "duracaoMs": 13249.393899999908,
+      "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "papelConsulta": "recomendacao_app"
+    },
+    {
+      "id": "d162e358-7dd7-4259-b79e-68210579a2a7",
+      "iniciadoEm": "2026-11-07T19:59:01.386Z",
+      "finalizadoEm": "2026-11-07T19:59:14.703Z",
+      "concorrencia": 8,
+      "reforcoRegional": false,
+      "produtosProcessados": 1000,
+      "duracaoMs": 13261.204299999983,
+      "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "papelConsulta": "recomendacao_app"
+    },
+    {
+      "id": "ed4fd996-9e5e-49a6-8e3c-c07b358eedc8",
+      "iniciadoEm": "2026-11-07T19:59:14.760Z",
+      "finalizadoEm": "2026-11-07T19:59:28.117Z",
+      "concorrencia": 8,
+      "reforcoRegional": false,
+      "produtosProcessados": 1000,
+      "duracaoMs": 13295.457800000091,
+      "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "papelConsulta": "recomendacao_app"
+    },
+    {
+      "id": "7264c2ea-f6d0-4143-a237-e0e5f42522c7",
+      "iniciadoEm": "2026-11-07T19:59:28.177Z",
+      "finalizadoEm": "2026-11-07T19:59:41.522Z",
+      "concorrencia": 8,
+      "reforcoRegional": false,
+      "produtosProcessados": 1000,
+      "duracaoMs": 13285.604599999962,
+      "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+      "papelConsulta": "recomendacao_app"
+    }
+  ],
+  "poolMax": 10,
+  "conexoesPreparadas": 10,
+  "postgres": "PostgreSQL 18.6 (ac70818) on aarch64-unknown-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+  "maxConexoesPostgres": 901
+}

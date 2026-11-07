@@ -5,7 +5,7 @@ import {
   resumirLote,
   validarAmbienteLote,
   type RodadaLote,
-} from "../../scripts/lib/bench-recomendacao-lote.js";
+} from "../../scripts/lib/bench-lote.js";
 
 describe("30.6 benchmark de recomendacao em lote", () => {
   it("limita tarefas concorrentes sem perder a ordem original", async () => {
@@ -53,6 +53,7 @@ describe("30.6 benchmark de recomendacao em lote", () => {
   it("descarta somente o primeiro aquecimento de cinco rodadas por C", () => {
     const rodadas: RodadaLote[] = [1, 4, 8].flatMap((concorrencia) =>
       [1, 8000, 12000, 10000, 10000].map((tempo, indice) => ({
+        execucaoId: `sintetico-${concorrencia}-${indice}`,
         concorrencia,
         poolMax: concorrencia + 2,
         rodada: indice + 1,

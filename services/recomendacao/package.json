@@ -14,7 +14,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "bootstrap:permissoes": "tsx scripts/bootstrap-permissoes.ts",
-    "migrate": "tsx scripts/migrate.ts"
+    "migrate": "tsx scripts/migrate.ts",
+    "lote": "tsx src/lote/cli.ts",
+    "bench:lote": "tsx scripts/bench-lote.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",

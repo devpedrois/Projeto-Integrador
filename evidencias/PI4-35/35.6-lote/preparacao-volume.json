@@ -1,0 +1,24 @@
+{
+  "produtosAntes": 1000,
+  "elegiveis": 1000,
+  "execucoesAntes": 0,
+  "viewsCriadas": true,
+  "viewsSql": "backend/prisma/migrations/20261104160116_views_contrato_recomendacao/migration.sql",
+  "preparacao": "Views de contrato aplicadas diretamente na fixture de volume, sem alterar ledger Prisma. Bootstrap existente e migration privada 001.",
+  "papel": "recomendacao_app",
+  "isolamento": [
+    {
+      "tabela": "Produto",
+      "negado": true
+    },
+    {
+      "tabela": "Usuario",
+      "negado": true
+    },
+    {
+      "tabela": "Pedido",
+      "negado": true
+    }
+  ],
+  "credenciais": "Geradas exclusivamente na memoria do processo; valores nao persistidos"
+}

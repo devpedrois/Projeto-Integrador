@@ -2,26 +2,18 @@
 
 Responsável e revisor indicado: Pedro.
 
-## Reprodução
+## Reprodução atual
 
-Dentro de `backend/`, configure `DATABASE_URL_VOLUME` na branch Neon de volume.
-A conexão precisa diferir de `DATABASE_URL`, `DIRECT_URL` e `DATABASE_URL_DEPLOY`.
-O benchmark consulta somente a branch de volume, sem migrations ou seeds.
-O modo de produção é recusado. A carga mínima é mil contextos visíveis.
+O benchmark foi movido para `services/recomendacao/scripts/bench-lote.ts`.
+A operação compartilhada pertence a `services/recomendacao/src/lote/`.
+Execute `npm.cmd run bench:lote` dentro do microsserviço.
+Configure `DATABASE_URL_VOLUME` com `recomendacao_app` na branch de volume.
+Prepare views, permissões e migration privada antes da coleta.
+Use `-- --output <pasta-nova>` para selecionar outro destino.
+As evidências atuais ficam em `evidencias/PI4-35/35.6-lote/`.
 
-```powershell
-npm.cmd run bench:recomendacao
-```
-
-Saída padrão: subpasta temporal nesta pasta de evidências.
-Para destino explícito, use `-- --output <pasta-nova>`.
-Uma pasta já existente é recusada, preservando seus arquivos.
-
-Python com Matplotlib é necessário para o PNG.
-O ambiente utilizado possui Matplotlib 3.11.2.
-Os requisitos já existem em `backend/scripts/requirements-bench-fila.txt`.
-Use `BENCH_RECOMENDACAO_PYTHON` para selecionar outro executável Python.
-Não foi adicionada dependência npm.
+Os procedimentos abaixo documentam a coleta histórica de 25/10/2026.
+Os arquivos dessa coleta permanecem preservados.
 
 ## Procedimento
 

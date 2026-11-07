@@ -5,7 +5,7 @@ import { expect, it } from "vitest";
 import {
   executarBenchmarkLote,
   parseLoteOptions,
-} from "../../scripts/bench-recomendacao-lote.js";
+} from "../../scripts/bench-lote.js";
 
 it("recusa flags desconhecidas e valores ausentes", () => {
   expect(() => parseLoteOptions(["--isolado"])).toThrow();

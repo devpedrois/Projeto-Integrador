@@ -39,7 +39,7 @@ Reforço regional permanece uma opção interna da Strategy.
 O schema privado `recomendacao` pertence a `recomendacao_app`.
 Ele contém `schema_migrations` e `execucao_lote`.
 O runner verifica checksums e serializa migrations com advisory lock.
-A operação de lote ainda não está implementada.
+A operação de lote registra início, conclusão, contagem e hash.
 
 ## Rotas internas
 
@@ -240,6 +240,77 @@ O arquivo `recomendacao.log` registra método, caminho e status.
 O runner exige chamadas reais de recomendação com status 200.
 A limpeza remove o schema privado, os papéis e o schema E2E.
 
-Scripts legados de métricas e benchmark continuam ferramentas locais.
-Eles carregam a implementação deste serviço, sem duplicar Strategies.
-A operação de lote pertence à 35.6 e permanece fora desta entrega.
+O script legado de métricas continua ferramenta local.
+Ele carrega a implementação deste serviço, sem duplicar Strategies.
+O benchmark do lote agora pertence exclusivamente a este serviço.
+
+
+## Lote de recomendações, 35.6
+
+Configure `DATABASE_URL` com o papel `recomendacao_app`.
+O schema privado deve possuir a migration `001_execucao_lote.sql`.
+A CLI aceita concorrência inteira entre 1 e 8.
+O reforço regional fica desligado por padrão.
+
+```sh
+npm run lote -- --concorrencia 4 --reforco-regional --saida resultado-novo.json
+```
+
+O destino precisa ser novo; arquivos existentes são preservados.
+A saída contém `resultados`, parâmetros, duração, ID e SHA-256.
+`resultados` contém `{ produtoId, produtoIds }`, ordenados por `produtoId`.
+O hash usa SHA-256 de `JSON.stringify(resultados)` em UTF-8.
+A seleção usa `CategoriaRecomendacaoStrategy` e `listarElegiveis` existentes.
+Contextos seguem `elegivel`, incluindo produtos ocultos por moderação.
+Esse filtro já pertence ao contrato da Strategy.
+
+O módulo está em `src/lote/index.ts`; o pool, em `src/lote/pool.ts`.
+`gerarRecomendacoesEmLote({ concorrencia, reforcoRegional })` é a operação pública.
+Ela prepara a sessão, calcula, persiste e fecha as conexões.
+O segundo argumento opcional configura conexão e schemas.
+`prepararLote` permite reutilizar o snapshot durante medições repetidas.
+Feche essa sessão com `fechar()` após terminar.
+
+O pool abre exatamente C+2 conexões do mesmo papel.
+C conexões compartilham um snapshot `REPEATABLE READ READ ONLY`.
+Uma conexão mantém o snapshot; outra persiste o registro privado.
+Cada execução insere uma linha antes de calcular.
+Depois atualiza essa mesma linha com conclusão e hash.
+Falhas preservam a linha incompleta, sem conclusão ou hash.
+Não existe retry automático ou escrita no catálogo.
+Execuções simultâneas na mesma sessão são recusadas.
+A conexão exige o proprietário restrito do schema privado.
+
+### Benchmark B2 no microsserviço
+
+Configure `DATABASE_URL_VOLUME` com `recomendacao_app` na branch de volume.
+Essa branch deve diferir das bases padrão e deploy.
+Prepare previamente as views, permissões e migration privada.
+O benchmark recusa produção e exige mil produtos elegíveis.
+
+```sh
+npm run bench:lote
+npm run bench:lote -- --output pasta-nova
+```
+
+Python com Matplotlib é necessário para o gráfico.
+Os requisitos estão em `scripts/requirements-bench.txt`.
+`BENCH_RECOMENDACAO_PYTHON` permite escolher o executável Python.
+A saída padrão fica em `evidencias/PI4-35/35.6-lote/execucao-*`.
+
+O protocolo mantém C=1,4,8 e cinco rodadas por C.
+A primeira aquece; quatro medições formam cada mediana.
+Cada configuração utiliza seu próprio snapshot consistente.
+O tempo cobre apenas as chamadas da Strategy, até concluírem.
+Preparação, catálogo, persistência, hash e arquivos ficam fora.
+Throughput usa produtos por segundo; speedup compara medianas.
+Eficiência divide speedup por C; nenhuma medição é descartada.
+Toda rodada é comparada ao primeiro aquecimento sequencial.
+`diff.json` registra divergências; `rodadas.csv` preserva os tempos.
+`execucoes-lote.json` salva as quinze linhas efetivamente consultadas.
+`consulta-execucoes.sql` permite conferir os mesmos IDs no PostgreSQL.
+Os checkpoints `C-*.json` também preservam os registros privados.
+
+A migração preserva a referência de 25/10/2026.
+Mudanças ambientais ou contratuais precisam acompanhar a interpretação.
+O máximo PostgreSQL não comprova a cota do pooler.

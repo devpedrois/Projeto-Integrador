@@ -49,7 +49,7 @@ def gerar_grafico(json_path: Path, png_path: Path) -> None:
     )
     eixos[1].legend()
     fig.suptitle(
-        f"30.6: Strategy de categoria, {rodadas[0]['produtos']} produtos\n"
+        f"35.6: Strategy de categoria, {rodadas[0]['produtos']} produtos\n"
         "5 rodadas por C; 1 aquecimento descartado; mediana de 4 medicoes"
     )
     fig.savefig(png_path, dpi=160)
@@ -59,6 +59,6 @@ def gerar_grafico(json_path: Path, png_path: Path) -> None:
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         raise SystemExit(
-            "Uso: python scripts/grafico-recomendacao-lote.py resultado.json throughput.png"
+            "Uso: python scripts/grafico-lote.py resultado.json throughput.png"
         )
     gerar_grafico(Path(sys.argv[1]), Path(sys.argv[2]))

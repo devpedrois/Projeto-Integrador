@@ -4,6 +4,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { cpus, arch, platform } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { escapeIdentifier } from "pg";
+import { schemaName } from "../src/config/environment.js";
 import { parseArgs } from "node:util";
 import {
   BenchLoteError,
@@ -11,7 +13,7 @@ import {
   resumirLote,
   validarAmbienteLote,
   type ResultadoProduto,
-} from "./lib/bench-recomendacao-lote.js";
+} from "./lib/bench-lote.js";
 
 interface LoteOptions {
   output: string;
@@ -30,7 +32,7 @@ export function parseLoteOptions(args: string[]): LoteOptions {
         values.output ??
           fileURLToPath(
             new URL(
-              `../../evidencias/PI4-30/benchmark-recomendacao/execucao-${new Date().toISOString().replaceAll(/[:.]/g, "-")}`,
+              `../../../evidencias/PI4-35/35.6-lote/execucao-${new Date().toISOString().replaceAll(/[:.]/g, "-")}`,
               import.meta.url,
             ),
           ),
@@ -48,9 +50,7 @@ async function salvarJson(pasta: string, nome: string, valor: unknown) {
 }
 
 async function gerarGrafico(pasta: string, python: string) {
-  const script = fileURLToPath(
-    new URL("grafico-recomendacao-lote.py", import.meta.url),
-  );
+  const script = fileURLToPath(new URL("grafico-lote.py", import.meta.url));
   await new Promise<void>((resolvePromise, reject) => {
     const processo = spawn(
       python,
@@ -95,6 +95,8 @@ export async function executarBenchmarkLote(
         connectionString,
         concorrencia,
         referencia,
+        apiSchema: env.API_SCHEMA ?? "public",
+        recSchema: env.RECOMENDACAO_SCHEMA ?? "recomendacao",
         minimoProdutos: 1000,
         progresso: (message) => console.log(message),
       });
@@ -119,24 +121,25 @@ export async function executarBenchmarkLote(
     poolerNeon: new URL(connectionString).hostname.includes("-pooler."),
     postgres: configuracoes[0]?.postgres,
     maxConexoesPostgres: configuracoes[0]?.maxConexoesPostgres,
-    somenteLeitura: true,
+    escrita:
+      "Somente execucao_lote no schema privado; catalogo somente leitura",
   };
   const metodologia = {
     estrategia:
       "CategoriaRecomendacaoStrategy existente, reforco regional padrao desligado",
-    populacao: "Todos os produtos visiveis, em ordem de UUID; minimo de 1000",
+    populacao: "Todos os produtos elegiveis, em ordem de UUID; minimo de 1000",
     rodadasPorC: 5,
     aquecimentosPorC: 1,
     medicoesPorC: 4,
     totalRodadas: 15,
     concorrencias: [1, 4, 8],
-    pool: "C+2 conexoes preabertas. Uma exporta snapshot; C+1 atendem as tarefas. Sem pool adicional.",
+    pool: "C+2 conexoes preabertas. Uma exporta snapshot; uma registra execucoes; C atendem tarefas. Sem pool adicional.",
     snapshot:
       "REPEATABLE READ READ ONLY compartilhado pelas conexoes de cada C. Snapshot novo por C; cada resultado e comparado ao primeiro C=1.",
     estabilidade:
       "Branch de volume dedicada sem escritores concorrentes. Mudancas de ranking entre configuracoes aparecem no diff.",
     tempo:
-      "performance.now: todas as chamadas obter da Strategy ate ultima conclusao. Exclui conexoes, catalogo, hash, diff, artefatos e setup.",
+      "performance.now: todas as chamadas obter da Strategy ate ultima conclusao. Exclui conexoes, catalogo, persistencia privada, hash, diff, artefatos e setup.",
     aquecimento:
       "Primeira rodada por C registrada e verificada, descartada das medianas. Caches PostgreSQL e sistema nao sao esvaziados.",
     throughput: "Produtos elegiveis / duracao em segundos",
@@ -150,7 +153,7 @@ export async function executarBenchmarkLote(
       "max_connections do PostgreSQL nao equivale a cota do pooler Neon. Ganho sublinear nao identifica sozinho a causa.",
   };
   const relatorio = {
-    versao: 1,
+    versao: 2,
     capturadoEm: new Date().toISOString(),
     timezone: "America/Sao_Paulo",
     aprovado,
@@ -161,10 +164,22 @@ export async function executarBenchmarkLote(
   };
   await salvarJson(output, "resultado.json", relatorio);
   await salvarJson(output, "diff.json", diff);
+  await salvarJson(
+    output,
+    "execucoes-lote.json",
+    configuracoes.flatMap((c) => c.execucoes),
+  );
+  const tabelaPrivada = `${escapeIdentifier(schemaName.parse(env.RECOMENDACAO_SCHEMA ?? "recomendacao"))}.execucao_lote`;
+  const ids = rodadas.map((r) => `'${r.execucaoId}'::uuid`).join(",\n  ");
+  await writeFile(
+    resolve(output, "consulta-execucoes.sql"),
+    `SELECT *,current_user AS "papelConsulta" FROM ${tabelaPrivada} WHERE id IN (\n  ${ids}\n) ORDER BY "iniciadoEm",id;\n`,
+    { flag: "wx" },
+  );
   const sequencialMs = resumo[0]?.medianaMs ?? 0;
   const csv =
     [
-      "concorrencia,pool_max,rodada,aquecimento,produtos,duracao_ms,throughput_produtos_s,speedup,eficiencia,identico,pico_tarefas,pico_espera_pool,sha256",
+      "concorrencia,pool_max,rodada,aquecimento,produtos,duracao_ms,throughput_produtos_s,speedup,eficiencia,identico,pico_tarefas,pico_espera_pool,sha256,execucao_id",
       ...rodadas.map((r) =>
         [
           r.concorrencia,
@@ -180,6 +195,7 @@ export async function executarBenchmarkLote(
           r.picoTarefas,
           r.picoEsperaPool,
           r.hash,
+          r.execucaoId,
         ].join(","),
       ),
     ].join("\n") + "\n";
@@ -193,7 +209,7 @@ export async function executarBenchmarkLote(
     ),
   ].join("\n");
   const observacoes = [
-    "# 30.6: recomendacoes em lote",
+    "# 35.6: recomendacoes em lote",
     "",
     tabela,
     "",
@@ -210,8 +226,8 @@ export async function executarBenchmarkLote(
     "O exportador de snapshot usa uma das C+2 conexoes.",
     "Cada C utiliza snapshot proprio. Diff inclui mudancas entre snapshots.",
     "A Strategy permanece integralmente inalterada, inclusive sua elegibilidade interna.",
-    "Os contextos usam visibilidade publica completa do catalogo.",
-    "Sem HTTP, cache de aplicacao, seeds, migrations ou escrita na base.",
+    "Os contextos usam listarElegiveis: ativo e estoque positivo, conforme view contratual.",
+    "Sem HTTP, cache de aplicacao, seeds ou migrations durante a coleta. Escrita somente no schema privado.",
     "Ambiente e metodologia completos estao em resultado.json.",
     "",
   ].join("\n");

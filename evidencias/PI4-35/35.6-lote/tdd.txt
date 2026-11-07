@@ -1,0 +1,16 @@
+35.6: TDD
+
+Teste inicial criado antes da implementação:
+npm.cmd test -- tests/integration/lote.test.ts
+Resultado: falhou, Cannot find module ../../src/lote/index.js.
+
+Testes unitários anteriores migrados junto ao benchmark.
+Testes adicionais cobrem validação, CLI, hash, registro e snapshots.
+Primeira execução PostgreSQL encontrou parâmetro ambíguo na fixture.
+A fixture passou nome separadamente, sem alterar o comportamento produtivo.
+Nova execução PostgreSQL: dez testes passaram, incluindo quinze rodadas.
+A suíte completa está em testes-microsservico.txt.
+
+O sandbox bloqueou inicialmente o DNS do Neon.
+A execução autorizada fora do sandbox acessou PostgreSQL real.
+Nenhum banco, repository ou Strategy foi simulado.

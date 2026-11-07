@@ -1,0 +1,167 @@
+[
+  {
+    "id": "96fd4759-cd6a-468b-b4ab-6a69bf4c50ed",
+    "iniciadoEm": "2026-11-07T19:45:58.162Z",
+    "finalizadoEm": "2026-11-07T19:48:01.721Z",
+    "concorrencia": 1,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 123486.1119,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "6c324442-bafe-4513-815a-1e17f505fb1b",
+    "iniciadoEm": "2026-11-07T19:48:01.786Z",
+    "finalizadoEm": "2026-11-07T19:50:05.176Z",
+    "concorrencia": 1,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 123319.70010000002,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "ce2c9865-306b-4522-b4ef-8317e9417100",
+    "iniciadoEm": "2026-11-07T19:50:05.240Z",
+    "finalizadoEm": "2026-11-07T19:52:08.258Z",
+    "concorrencia": 1,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 122946.67450000002,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "1cb71b66-50a3-43b1-bd77-cf28545a0ba6",
+    "iniciadoEm": "2026-11-07T19:52:08.322Z",
+    "finalizadoEm": "2026-11-07T19:54:11.570Z",
+    "concorrencia": 1,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 123177.01499999996,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "5ab41178-d9d1-442d-9bde-5617b7910a5c",
+    "iniciadoEm": "2026-11-07T19:54:11.635Z",
+    "finalizadoEm": "2026-11-07T19:56:15.448Z",
+    "concorrencia": 1,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 123741.46639999998,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "285c831c-9f3c-4f61-a80f-0e5dd5ac4c23",
+    "iniciadoEm": "2026-11-07T19:56:18.774Z",
+    "finalizadoEm": "2026-11-07T19:56:44.822Z",
+    "concorrencia": 4,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 25993.420299999998,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "4b4985e7-5ed5-46bd-ad9a-90f99d4b6a7d",
+    "iniciadoEm": "2026-11-07T19:56:44.876Z",
+    "finalizadoEm": "2026-11-07T19:57:10.901Z",
+    "concorrencia": 4,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 25970.094999999972,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "24a0a4ee-a2b7-407f-863f-fb4511143dcd",
+    "iniciadoEm": "2026-11-07T19:57:10.959Z",
+    "finalizadoEm": "2026-11-07T19:57:36.964Z",
+    "concorrencia": 4,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 25944.906200000085,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "6298fbba-4120-4c58-a6df-ac00362a3048",
+    "iniciadoEm": "2026-11-07T19:57:37.017Z",
+    "finalizadoEm": "2026-11-07T19:58:03.023Z",
+    "concorrencia": 4,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 25950.134299999918,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "4dae61a4-1935-4522-80a2-1bc3063b24bb",
+    "iniciadoEm": "2026-11-07T19:58:03.081Z",
+    "finalizadoEm": "2026-11-07T19:58:29.230Z",
+    "concorrencia": 4,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 26091.12910000002,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "5da85d37-638b-485f-b38b-c2227814cc3b",
+    "iniciadoEm": "2026-11-07T19:58:34.599Z",
+    "finalizadoEm": "2026-11-07T19:58:47.972Z",
+    "concorrencia": 8,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 13317.024800000014,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "08117cae-c67b-46cd-bc6f-d24f23d60e6a",
+    "iniciadoEm": "2026-11-07T19:58:48.028Z",
+    "finalizadoEm": "2026-11-07T19:59:01.332Z",
+    "concorrencia": 8,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 13249.393899999908,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "d162e358-7dd7-4259-b79e-68210579a2a7",
+    "iniciadoEm": "2026-11-07T19:59:01.386Z",
+    "finalizadoEm": "2026-11-07T19:59:14.703Z",
+    "concorrencia": 8,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 13261.204299999983,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "ed4fd996-9e5e-49a6-8e3c-c07b358eedc8",
+    "iniciadoEm": "2026-11-07T19:59:14.760Z",
+    "finalizadoEm": "2026-11-07T19:59:28.117Z",
+    "concorrencia": 8,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 13295.457800000091,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  },
+  {
+    "id": "7264c2ea-f6d0-4143-a237-e0e5f42522c7",
+    "iniciadoEm": "2026-11-07T19:59:28.177Z",
+    "finalizadoEm": "2026-11-07T19:59:41.522Z",
+    "concorrencia": 8,
+    "reforcoRegional": false,
+    "produtosProcessados": 1000,
+    "duracaoMs": 13285.604599999962,
+    "hashResultado": "42d18493870a926bf81994842caaf559d35f775fc83863874da45b9863e4fa3e",
+    "papelConsulta": "recomendacao_app"
+  }
+]
