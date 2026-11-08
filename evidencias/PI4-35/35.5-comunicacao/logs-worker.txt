@@ -1,0 +1,19 @@
+npm notice run origem-backend@1.0.0 start:worker
+npm notice run node dist/src/worker.js
+npm notice
+npm notice New patch version of npm available! 12.2.1 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm notice run origem-backend@1.0.0 start:worker
+npm notice run node dist/src/worker.js
+{"servico":"worker","job":"notificar-artesao","pedidoId":"5f621db7-d0d2-4cd7-a03d-4cd0db1b285e","tentativa":1,"resultado":"sucesso"}
+npm notice run origem-backend@1.0.0 start:worker
+npm notice run node dist/src/worker.js
+{"servico":"worker","job":"notificar-artesao","pedidoId":"652be35e-611f-4bdc-aa63-840dbfba8999","tentativa":1,"resultado":"sucesso"}
+npm notice run origem-backend@1.0.0 start:worker
+npm notice run node dist/src/worker.js
+{"servico":"worker","job":"notificar-artesao","pedidoId":"2406132d-f218-4b52-b640-e4cf21db766a","tentativa":1,"resultado":"sucesso"}
+npm notice run origem-backend@1.0.0 start:worker
+npm notice run node dist/src/worker.js
+{"servico":"worker","job":"notificar-artesao","pedidoId":"a9761b3e-d00f-4823-855c-477cf7567f5b","tentativa":1,"resultado":"sucesso"}

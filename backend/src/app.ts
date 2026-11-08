@@ -10,6 +10,7 @@ import { RecomendacaoController } from "./controllers/recomendacao.controller.js
 import { UsuarioController } from "./controllers/usuario.controller.js";
 import { HttpRecomendacaoClient } from "./integrations/recommendation/http-recomendacao.client.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
+import { requestLogging } from "./middlewares/request-logging.middleware.js";
 import { autenticar } from "./middlewares/auth.middleware.js";
 import { PrismaHealthRepository } from "./repositories/health.repository.js";
 import { PrismaUsuarioRepository } from "./repositories/usuario.repository.js";
@@ -136,6 +137,7 @@ export function createApp(
   const app = express();
 
   app.disable("x-powered-by");
+  app.use(requestLogging);
   app.use(helmet());
   app.use(express.json({ limit: "16kb" }));
   app.use(cookieParser());

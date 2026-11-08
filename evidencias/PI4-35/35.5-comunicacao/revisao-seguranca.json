@@ -1,0 +1,24 @@
+{
+  "resultado": "aprovado",
+  "dadosSensiveisEncontrados": false,
+  "casos": [
+    {
+      "caso": "rota com email e query",
+      "status": 400,
+      "requestId": "56d5528f-d28c-48ef-ae6a-888bc5fb9cd5",
+      "rota": "/produtos/:id"
+    },
+    {
+      "caso": "JSON invalido antes do controller",
+      "status": 400,
+      "requestId": "24c4b821-6c70-44f7-aaa6-04157aaa271f",
+      "rota": "[sem-rota]"
+    },
+    {
+      "caso": "UUIDs duplicados no header",
+      "status": 200,
+      "requestId": "970071ae-f000-48d2-a35c-e23e58418419",
+      "rota": "/produtos"
+    }
+  ]
+}

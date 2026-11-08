@@ -1117,3 +1117,31 @@ Badge conta somente notificações não lidas.
 Polling ocorre a cada 15s, sem consultas sobrepostas.
 A aba oculta suspende o intervalo; desmontagem remove-o.
 Voltar à aba dispara consulta imediata e reinicia polling.
+
+## 35.5: correlação HTTP e logs de comunicação
+
+A API devolve `X-Request-Id` em todas as respostas.
+Aceita UUID válido; valores ausentes ou inválidos geram UUID.
+O identificador permanece em `res.locals.requestId` durante a requisição.
+`AsyncLocalStorage` isola o contexto entre requisições concorrentes.
+`HttpRecomendacaoClient` propaga somente esse identificador e o token interno.
+O microsserviço valida, preserva e devolve o identificador recebido.
+Cookies e tokens do usuário nunca seguem ao microsserviço.
+
+Cada acesso concluído produz JSON em uma linha:
+`{ servico, requestId, metodo, rota, status, duracaoMs }`.
+Os serviços usam `api` e `recomendacao` nesse registro.
+`rota` contém o padrão registrado, sem parâmetros concretos.
+Sem rota registrada, utiliza o marcador fixo `[sem-rota]`.
+Query, corpo, cookies, tokens e e-mails ficam ausentes.
+As métricas existentes do cache permanecem registros separados.
+
+O worker registra cada tentativa de `notificar-artesao`:
+`{ servico: "worker", job, pedidoId, tentativa, resultado }`.
+`job` contém o nome da fila, `notificar-artesao`.
+`tentativa` corresponde a `retryCount + 1` daquele job.
+`resultado` admite `sucesso` ou `erro`, sem detalhes internos.
+Falhas continuam propagadas ao pg-boss para repetição.
+O contrato e a publicação da intenção permanecem iguais.
+
+Evidências: [35.5](../../evidencias/PI4-35/35.5-comunicacao/README.md).

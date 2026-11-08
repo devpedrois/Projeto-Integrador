@@ -1695,3 +1695,11 @@ Criou testes prévios com PostgreSQL real e papéis restritos.
 Executou os dois modos pelo lote C=8, preservando os indicadores.
 Conferiu o diff histórico e realizou revisão equivalente de segurança.
 Evidências: [PI4-36.2](../evidencias/PI4-36/36.2-metricas/README.md).
+
+### 35.5: logs correlacionados entre serviços
+
+O Codex implementou UUID por requisição e propagação HTTP.
+Criou testes prévios com PostgreSQL real e requisições concorrentes.
+Registrou vitrine e checkout reais pelo Docker Compose.
+Realizou revisão equivalente de segurança, conforme escolha do responsável.
+Evidências: [PI4-35.5](../evidencias/PI4-35/35.5-comunicacao/README.md).

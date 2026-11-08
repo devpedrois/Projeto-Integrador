@@ -1,0 +1,54 @@
+35.5: validação local em 07/11/2026
+Branch: codex/35-5-logs-correlacionados
+
+TDD antes da implementação:
+Backend: 9 falhas esperadas, 11 testes existentes aprovados.
+Microsserviço: 3 falhas esperadas por ausência de X-Request-Id.
+Falhas ambientais iniciais foram resolvidas antes desse ciclo.
+
+Testes focados após a implementação:
+Backend: 22 aprovados em 3 arquivos.
+Incluem HTTP real, concorrência, fila e processos independentes.
+Microsserviço: 3 aprovados para correlação e rejeição de token.
+
+Suíte completa do backend:
+814 testes aprovados em 79 arquivos, 719,69 segundos.
+Execução com testTimeout=30000 e hookTimeout=120000.
+DATABASE_URL recebeu DIRECT_URL somente no processo de testes.
+Isso permitiu criar schemas e filas temporários isolados.
+O arquivo .env permaneceu preservado.
+
+Suíte completa do microsserviço:
+116 testes aprovados em 12 arquivos, 156,14 segundos.
+PostgreSQL real, com schemas isolados e papéis restritos.
+
+Análise estática:
+Backend: lint e typecheck aprovados.
+Microsserviço: lint e typecheck aprovados.
+Prettier: todos os arquivos da subtarefa aprovados.
+Verificação preserva terminações de linha existentes, end-of-line auto.
+git diff --check aprovado com cr-at-eol.
+
+Docker Compose:
+Build das imagens e inicialização concluídos com código zero.
+API, PostgreSQL, recomendação e worker saudáveis.
+REST pela vitrine: requestId igual nos dois containers.
+Checkout pela interface: intenção publicada e job criado.
+Worker reiniciado: intenção processada e job concluído.
+Exatamente uma notificação criada para o pedido capturado.
+
+Revisão equivalente de segurança:
+Diff, pontos de log e propagação de headers conferidos.
+Logs brutos verificados contra e-mails e segredos locais.
+Cookies, JWTs, corpos e queries completas ficaram ausentes.
+Rota com e-mail: resposta 400, log do padrão /produtos/:id.
+JSON inválido: resposta 400 com requestId válido.
+UUIDs duplicados: substituídos por um UUID novo.
+Detalhes em revisao-seguranca.json e fluxos.json.
+
+Avisos existentes durante as suítes:
+pg-connection-string avisa sobre futura semântica SSL.
+pg avisa sobre chamadas simultâneas no mesmo client.
+Esses avisos não alteraram as conexões nem os logs implementados.
+
+Sem commit e sem push.

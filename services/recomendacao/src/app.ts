@@ -4,6 +4,7 @@ import type { Pool } from "pg";
 import type { Environment } from "./config/environment.js";
 import { RecomendacaoController } from "./controllers/recomendacao.controller.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
+import { requestLogging } from "./middlewares/request-logging.middleware.js";
 import { PgRecomendacaoRepository } from "./repositories/recomendacao.repository.js";
 import { createRecomendacaoRouter } from "./routes/recomendacao.routes.js";
 import { RecomendacaoService } from "./services/recomendacao.service.js";
@@ -21,6 +22,7 @@ export function createApp(
   );
   const app = express();
   app.disable("x-powered-by");
+  app.use(requestLogging);
   app.use(helmet());
   app.use(
     createRecomendacaoRouter(

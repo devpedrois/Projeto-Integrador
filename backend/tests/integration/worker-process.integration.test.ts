@@ -101,8 +101,19 @@ async function startWorkerProcess(schema: string, queueSchema: string) {
         .split("\n")
         .filter(Boolean)
         .map((line) => {
-          const entry = JSON.parse(line) as { event: string; pedidoId: string };
-          expect(entry.event).toBe("notificacao-processada");
+          const entry = JSON.parse(line) as {
+            servico: string;
+            job: string;
+            pedidoId: string;
+            tentativa: number;
+            resultado: string;
+          };
+          expect(entry).toMatchObject({
+            servico: "worker",
+            job: "notificar-artesao",
+            resultado: "sucesso",
+          });
+          expect(entry.tentativa).toBeGreaterThanOrEqual(1);
           return entry.pedidoId;
         }),
     async stop(signal: "SIGINT" | "SIGTERM") {

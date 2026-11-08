@@ -1,0 +1,99 @@
+{
+  "data": "2026-11-07T20:33:55.565Z",
+  "compose": "origem-35-5",
+  "servicos": [
+    {
+      "servico": "api",
+      "estado": "running",
+      "saude": "healthy"
+    },
+    {
+      "servico": "postgres",
+      "estado": "running",
+      "saude": "healthy"
+    },
+    {
+      "servico": "recomendacao",
+      "estado": "running",
+      "saude": "healthy"
+    },
+    {
+      "servico": "worker",
+      "estado": "running",
+      "saude": "healthy"
+    }
+  ],
+  "rest": {
+    "requestId": "b2bea06a-1350-43e2-9b3b-cc080f59b6a6",
+    "estrategia": "misto",
+    "itens": 8,
+    "api": {
+      "servico": "api",
+      "requestId": "b2bea06a-1350-43e2-9b3b-cc080f59b6a6",
+      "metodo": "GET",
+      "rota": "/recomendacoes",
+      "status": 200,
+      "duracaoMs": 13.208
+    },
+    "microsservico": {
+      "servico": "recomendacao",
+      "requestId": "b2bea06a-1350-43e2-9b3b-cc080f59b6a6",
+      "metodo": "GET",
+      "rota": "/recomendacoes",
+      "status": 200,
+      "duracaoMs": 4.166
+    }
+  },
+  "mensageria": {
+    "pedidoId": "a9761b3e-d00f-4823-855c-477cf7567f5b",
+    "api": {
+      "servico": "api",
+      "requestId": "6000c1e9-16f3-401c-bbb1-960d8942d282",
+      "metodo": "POST",
+      "rota": "/pedidos",
+      "status": 201,
+      "duracaoMs": 9.514
+    },
+    "antesDoWorker": {
+      "pedidoId": "a9761b3e-d00f-4823-855c-477cf7567f5b",
+      "pedidoStatus": "confirmado",
+      "intencaoId": "a7984290-e0ef-41fe-8edc-5cc523078723",
+      "intencaoStatus": "publicada",
+      "tentativas": 0,
+      "notificacoes": 0,
+      "jobs": [
+        {
+          "jobId": "1b3d544f-3ad0-48ee-bb46-93735070c091",
+          "fila": "notificar-artesao",
+          "estado": "created"
+        }
+      ]
+    },
+    "depoisDoWorker": {
+      "pedidoId": "a9761b3e-d00f-4823-855c-477cf7567f5b",
+      "pedidoStatus": "confirmado",
+      "intencaoId": "a7984290-e0ef-41fe-8edc-5cc523078723",
+      "intencaoStatus": "processada",
+      "tentativas": 1,
+      "notificacoes": 1,
+      "jobs": [
+        {
+          "jobId": "1b3d544f-3ad0-48ee-bb46-93735070c091",
+          "fila": "notificar-artesao",
+          "estado": "completed"
+        }
+      ]
+    },
+    "worker": {
+      "servico": "worker",
+      "job": "notificar-artesao",
+      "pedidoId": "a9761b3e-d00f-4823-855c-477cf7567f5b",
+      "tentativa": 1,
+      "resultado": "sucesso"
+    }
+  },
+  "headerInvalidoSubstituido": {
+    "recebido": "id-invalido",
+    "devolvido": "9a6be02a-553e-48e8-a84e-f755f8ca536a"
+  }
+}

@@ -1,7 +1,17 @@
 import { randomUUID } from "node:crypto";
 import "dotenv/config";
 import type { PgBoss } from "pg-boss";
-import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "../../src/generated/prisma/client.js";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 import { StatusIntencao } from "../../src/generated/prisma/enums.js";
 import { notificarArtesao } from "../../src/jobs/notificar-artesao.handler.js";
 import type { NotificarArtesaoJobData } from "../../src/jobs/notificar-artesao.handler.js";
@@ -138,6 +148,7 @@ beforeAll(async () => {
 });
 
 afterEach(async () => {
+  vi.restoreAllMocks();
   for (const extraBoss of extraBosses.splice(0)) {
     await extraBoss.stop({ graceful: false });
   }
@@ -184,6 +195,7 @@ describe("fila de notificacao ao artesao", () => {
   });
 
   it("publishes a pending intention and the worker processes it to processada", async () => {
+    const log = vi.spyOn(console, "info").mockImplementation(() => {});
     const { pedidoId, intencaoId } = await createPedidoComIntencao();
 
     const publicadas = await publicarIntencoesPendentes(boss, repository);
@@ -208,6 +220,63 @@ describe("fila de notificacao ao artesao", () => {
         where: { pedidoId, usuarioId: artesaoId },
       }),
     ).toBe(1);
+    await waitFor(async () => (log.mock.calls.length > 0 ? true : undefined));
+    expect(
+      log.mock.calls.map(([linha]) => JSON.parse(String(linha))),
+    ).toContainEqual({
+      servico: "worker",
+      job: "notificar-artesao",
+      pedidoId,
+      tentativa: 1,
+      resultado: "sucesso",
+    });
+  }, 15_000);
+
+  it("registra falhas e tentativas reais sem expor detalhes internos", async () => {
+    const log = vi.spyOn(console, "info").mockImplementation(() => {});
+    const pedidoId = randomUUID();
+    const falha = new PrismaClient({
+      adapter: new PrismaPg(
+        { connectionString: databaseUrl },
+        { schema: `ausente_${randomUUID().replaceAll("-", "")}` },
+      ),
+    });
+    try {
+      await boss.send(
+        NOTIFICAR_ARTESAO_QUEUE,
+        { pedidoId, intencaoId: randomUUID() },
+        {
+          retryLimit: 1,
+          retryDelay: 1,
+          retryBackoff: false,
+        },
+      );
+      await registerNotificarArtesaoWorker(
+        boss,
+        repository,
+        new PrismaNotificacaoRepository(falha),
+        FAST_POLLING,
+      );
+      const registros = () =>
+        log.mock.calls
+          .map(
+            ([linha]) => JSON.parse(String(linha)) as Record<string, unknown>,
+          )
+          .filter((registro) => registro.pedidoId === pedidoId);
+      await waitFor(async () => (registros().length >= 2 ? true : undefined));
+      expect(registros()).toEqual(
+        [1, 2].map((tentativa) => ({
+          servico: "worker",
+          job: "notificar-artesao",
+          pedidoId,
+          tentativa,
+          resultado: "erro",
+        })),
+      );
+    } finally {
+      await boss.offWork(NOTIFICAR_ARTESAO_QUEUE);
+      await falha.$disconnect();
+    }
   }, 15_000);
 
   it("retries after a simulated worker failure and still reaches processada, keeping the order confirmed", async () => {

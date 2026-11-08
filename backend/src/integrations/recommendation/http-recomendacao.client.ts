@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { Environment } from "../../config/environment.js";
 import { RecomendacaoIndisponivelError } from "../../errors/recomendacao-indisponivel.error.js";
+import { requestContext } from "../../utils/request-context.js";
 import type {
   RecomendacaoContexto,
   RecomendacaoSelecao,
@@ -38,8 +39,12 @@ export class HttpRecomendacaoClient implements RecomendacaoStrategy {
       this.config.RECOMENDACAO_TIMEOUT_MS ?? 800,
     );
     try {
+      const requestId = requestContext.getStore()?.requestId;
       const response = await fetch(url, {
-        headers: { "X-Service-Token": this.config.RECOMENDACAO_SERVICE_TOKEN },
+        headers: {
+          "X-Service-Token": this.config.RECOMENDACAO_SERVICE_TOKEN,
+          ...(requestId ? { "X-Request-Id": requestId } : {}),
+        },
         signal: controller.signal,
         redirect: "manual",
       });
