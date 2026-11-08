@@ -1,0 +1,85 @@
+(node:29516) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"servico":"api","requestId":"3ba75297-8a21-4808-854e-a40435b85964","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":64.007}
+{"rota":"/produtos","cache":"MISS","duracaoMs":59.351}
+{"servico":"api","requestId":"587b7aa5-8aa2-4f5a-ad79-486a1325314e","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":2.482}
+{"rota":"/produtos","cache":"HIT","duracaoMs":1.768}
+{"servico":"api","requestId":"a864096e-19b1-4462-8710-7648f42acb52","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":54.815}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":53.926}
+{"servico":"api","requestId":"204ad999-8c34-4416-9637-b1a0f48e8224","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":2.19}
+{"rota":"/produtos/:id","cache":"HIT","duracaoMs":1.328}
+{"servico":"recomendacao","requestId":"256fc059-3e31-47e2-8104-2327ac42951a","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":116.447}
+{"servico":"api","requestId":"256fc059-3e31-47e2-8104-2327ac42951a","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":181.151}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":180.396}
+{"servico":"api","requestId":"c44a1fed-4ae4-4b3a-a0e3-93546154afd4","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":1.656}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":1.439}
+{"servico":"recomendacao","requestId":"20ead856-867e-4062-870c-f48eba977782","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":55.083}
+{"servico":"api","requestId":"20ead856-867e-4062-870c-f48eba977782","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":111.521}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":111.342}
+{"servico":"api","requestId":"3229e768-15d9-439e-b9e6-e021836f9cd2","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":0.97}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.805}
+{"servico":"recomendacao","requestId":"32edfbc2-8cfb-47fc-8476-b294b1337d24","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":104.817}
+{"servico":"api","requestId":"32edfbc2-8cfb-47fc-8476-b294b1337d24","metodo":"GET","rota":"/recomendacoes/para-mim","status":200,"duracaoMs":228.729}
+{"servico":"recomendacao","requestId":"2409e786-fc79-4b86-9db8-c98cd4a22d13","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":104.172}
+{"servico":"api","requestId":"2409e786-fc79-4b86-9db8-c98cd4a22d13","metodo":"GET","rota":"/recomendacoes/para-mim","status":200,"duracaoMs":212.826}
+{"servico":"api","requestId":"66a9cd79-65e5-4eb6-bf42-5f1d28d1498e","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":106.932}
+{"servico":"api","requestId":"ef117009-f227-4c63-a328-2784aa374833","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":105.364}
+{"servico":"api","requestId":"11fc5d91-45e5-4ff2-b23d-797360f8207b","metodo":"GET","rota":"/admin/indicadores","status":200,"duracaoMs":105.319}
+{"servico":"api","requestId":"bb6c380b-7e2f-4e16-85d3-dfc7a4c89312","metodo":"GET","rota":"/admin/indicadores","status":200,"duracaoMs":104.702}
+{"servico":"api","requestId":"4a4e2650-8b09-4a84-93b5-7b7d41761e35","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":264.936}
+{"servico":"api","requestId":"efcc89e3-c353-4fd3-a50d-d2845685dc75","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":265.326}
+{"servico":"recomendacao","requestId":"dcbac64e-287b-4d51-be32-e1db3bd4feaa","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":103.824}
+{"servico":"api","requestId":"dcbac64e-287b-4d51-be32-e1db3bd4feaa","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":272.755}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":272.487}
+{"servico":"recomendacao","requestId":"8d46c950-8a16-460d-9b99-f097a675c9bd","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":109.364}
+{"servico":"api","requestId":"8d46c950-8a16-460d-9b99-f097a675c9bd","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":268.673}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":268.379}
+(node:29516) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+{"servico":"api","requestId":"908e4ef2-9394-4bf2-8d92-e65ea3a3f3da","metodo":"PATCH","rota":"/produtos/:id/estoque","status":200,"duracaoMs":902.248}
+{"servico":"api","requestId":"a6e03ae5-b930-44dc-81db-dd4bb1e7b96c","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":53.348}
+{"rota":"/produtos","cache":"MISS","duracaoMs":53.058}
+{"servico":"api","requestId":"abd922d0-d16b-4bfc-9b04-560a2476009f","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":0.71}
+{"rota":"/produtos","cache":"HIT","duracaoMs":0.506}
+{"servico":"api","requestId":"8b7cb7c3-7222-4756-878b-342e7c21e28b","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":52.622}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":52.422}
+{"servico":"api","requestId":"6fb1feea-125a-4d3d-ba67-70aa3612ba0f","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":0.755}
+{"rota":"/produtos/:id","cache":"HIT","duracaoMs":0.491}
+{"servico":"recomendacao","requestId":"50bc2a40-88b0-4c5c-9e7b-d44c71330d0d","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":103.139}
+{"servico":"api","requestId":"50bc2a40-88b0-4c5c-9e7b-d44c71330d0d","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":157.382}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":157.213}
+{"servico":"api","requestId":"bf911188-5196-47ce-9f18-600934bfb1b1","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":0.592}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.414}
+{"servico":"recomendacao","requestId":"f8e8bbb0-e432-4a92-95a3-fd71ae2a1431","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":52.145}
+{"servico":"api","requestId":"f8e8bbb0-e432-4a92-95a3-fd71ae2a1431","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":106.322}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":106.118}
+{"servico":"api","requestId":"ff2a85b8-b6a9-4f55-8f5b-96e00f93abe4","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":1.015}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.774}
+{"servico":"api","requestId":"78058ae3-8a45-427b-903f-5eae07d0b3e7","metodo":"DELETE","rota":"/carrinho/itens/:produtoId","status":404,"duracaoMs":422.269}
+{"servico":"api","requestId":"055e3bb3-0e72-438b-9151-bf9f8dd92ce3","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.612}
+{"servico":"api","requestId":"23e0f164-4008-42e5-a90e-aa316ad29814","metodo":"GET","rota":"[sem-rota]","status":403,"duracaoMs":53.198}
+{"servico":"api","requestId":"7091f0b9-b6b9-448e-b806-e7ec61984a4b","metodo":"GET","rota":"/admin/indicadores","status":400,"duracaoMs":53.115}
+{"servico":"recomendacao","requestId":"fba76264-68f4-431c-a4ee-edaea28fa119","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":104.796}
+{"servico":"api","requestId":"fba76264-68f4-431c-a4ee-edaea28fa119","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":161.236}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":160.812}
+{"servico":"api","requestId":"781c1765-a8b0-4d25-a310-72312ff579a3","metodo":"GET","rota":"/docs/openapi.json","status":200,"duracaoMs":1.478}
+{"servico":"api","requestId":"348281c0-2fa3-4ae1-b6b6-50e2599bfc06","metodo":"GET","rota":"/docs","status":200,"duracaoMs":0.881}
+{"servico":"api","requestId":"ed2b2498-6e53-49ba-976a-990d2bbf37bc","metodo":"GET","rota":"[sem-rota]","status":200,"duracaoMs":0.84}
+{"servico":"api","requestId":"a9c339fb-27f0-4261-adb3-350f0c4abe79","metodo":"GET","rota":"[sem-rota]","status":200,"duracaoMs":12.962}
+{"servico":"api","requestId":"b171728f-b9a4-4018-8606-f6dfcd8b9ae5","metodo":"GET","rota":"[sem-rota]","status":200,"duracaoMs":9.655}
+{"servico":"api","requestId":"e0d13ff9-0c1f-4f78-8deb-21472a0d2e8a","metodo":"GET","rota":"[sem-rota]","status":200,"duracaoMs":15.928}
+{"servico":"api","requestId":"cd7d916a-3144-4098-b268-906218d8aaa0","metodo":"GET","rota":"/docs/openapi.json","status":200,"duracaoMs":1.604}
+{"servico":"api","requestId":"7c004b44-3c82-4b87-837e-f2d2e53214a8","metodo":"GET","rota":"[sem-rota]","status":200,"duracaoMs":17.525}
+{"evento":"recomendacao-fallback-local","motivo":"rede"}
+{"servico":"api","requestId":"ca0b6045-1f4c-4f44-9cdf-339b86bf2b91","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":109.248}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":108.32}
+{"evento":"recomendacao-fallback-local","motivo":"rede"}
+{"servico":"api","requestId":"1839956c-47db-4eb5-b7c7-b5bf514570eb","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":106.965}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":106.38}
+EVIDENCIA_CACHE_SWAGGER=C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-32\32.6-cache-swagger\9d7a3a85-9452-4ec8-a087-ac2e4842cded\

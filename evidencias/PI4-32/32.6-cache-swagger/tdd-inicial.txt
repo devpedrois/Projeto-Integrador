@@ -1,0 +1,113 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/openapi.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+ ❯ tests/unit/openapi.test.ts (20 tests | 19 failed) 103ms
+   ❯ WEB-15 OpenAPI (20)
+     × documenta todas as estrategias publicas incluindo degradacao local 15ms
+     × 32.2 documenta paginacao publica sem identificar comprador 3ms
+     × 32.1 documenta indicadores privados com receita decimal e query vazia 4ms
+     × cadastro documenta Set-Cookie no 201 com as mesmas flags do login 2ms
+     × Web.6 documenta multipart autenticado com limites e erros 4ms
+     × Web.2 documenta envio protegido e status por item 3ms
+     × documenta elegibilidade privada e o bloqueio por compra nao verificada 4ms
+     × documenta criacao de avaliacao com corpo estrito e conflito 2ms
+     × documenta pedidos recebidos sem total financeiro ou dados privados 4ms
+     × documenta recomendacoes sem anunciar 404 para contexto inexistente 3ms
+     × 32.6 descreve os headers observaveis em cada leitura cacheada 3ms
+     × 32.6 documenta item ausente na remocao do carrinho 4ms
+     × preserva restrições e defaults válidos dos validators 3ms
+     × publica o documento com cookie de sessão e servidor relativo 6ms
+     × cobre cada método e path realmente registrado no Express 4ms
+     × detecta novas rotas e novos métodos ausentes no documento 3ms
+     × serve Swagger com assets locais e CSP permitindo scripts locais 1ms
+     × preserva o prefixo externo no Swagger e nas operacoes OpenAPI 1ms
+     × inclui exemplos, schemas, segurança e erros aplicáveis 2ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 19 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > documenta todas as estrategias publicas incluindo degradacao local
+Error: connect EACCES 127.0.0.1:53321
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.2 documenta paginacao publica sem identificar comprador
+Error: connect EACCES 127.0.0.1:53323
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.1 documenta indicadores privados com receita decimal e query vazia
+Error: connect EACCES 127.0.0.1:53325
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > cadastro documenta Set-Cookie no 201 com as mesmas flags do login
+Error: connect EACCES 127.0.0.1:53327
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > Web.6 documenta multipart autenticado com limites e erros
+Error: connect EACCES 127.0.0.1:53329
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > Web.2 documenta envio protegido e status por item
+Error: connect EACCES 127.0.0.1:53331
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > documenta elegibilidade privada e o bloqueio por compra nao verificada
+Error: connect EACCES 127.0.0.1:53333
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > documenta criacao de avaliacao com corpo estrito e conflito
+Error: connect EACCES 127.0.0.1:53335
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > documenta pedidos recebidos sem total financeiro ou dados privados
+Error: connect EACCES 127.0.0.1:53337
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > documenta recomendacoes sem anunciar 404 para contexto inexistente
+Error: connect EACCES 127.0.0.1:53339
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.6 descreve os headers observaveis em cada leitura cacheada
+Error: connect EACCES 127.0.0.1:53341
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.6 documenta item ausente na remocao do carrinho
+Error: connect EACCES 127.0.0.1:53343
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > preserva restrições e defaults válidos dos validators
+Error: connect EACCES 127.0.0.1:53345
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > publica o documento com cookie de sessão e servidor relativo
+Error: connect EACCES 127.0.0.1:53347
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > cobre cada método e path realmente registrado no Express
+Error: connect EACCES 127.0.0.1:53349
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > detecta novas rotas e novos métodos ausentes no documento
+Error: connect EACCES 127.0.0.1:53351
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > serve Swagger com assets locais e CSP permitindo scripts locais
+Error: connect EACCES 127.0.0.1:53353
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > preserva o prefixo externo no Swagger e nas operacoes OpenAPI
+Error: connect EACCES 127.0.0.1:53355
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/19]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > inclui exemplos, schemas, segurança e erros aplicáveis
+Error: connect EACCES 127.0.0.1:53357
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/19]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  19 failed | 1 passed (20)
+   Start at  00:06:18
+   Duration  2.61s (import 53%, transform 42%, tests 4%)
+

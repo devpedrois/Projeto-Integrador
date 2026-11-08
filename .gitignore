@@ -22,6 +22,7 @@ docs/*
 !docs/indices-u2.md
 !docs/metricas-recomendacao-u2.md
 !docs/modulo-recomendacao-u2.md
+!docs/cache-u2.md
 !docs/fake-api.md
 !docs/docs auxiliares/
 docs/docs auxiliares/*
@@ -37,7 +38,6 @@ sprints/semana-10-11/*
 !sprints/semana-10-11/01-Modelo-Fisico-BD.md
 AGENTS.md
 .claude/
-CLAUDE.md
 /evidencias/**
 !/evidencias/**/
 !/evidencias/**/*.md

@@ -437,7 +437,11 @@ const notificacao = registrar(
 );
 const recomendacaoExample = {
   estrategia: "categoria" as const,
-  itens: [produtoExample],
+  itens: Array.from({ length: 8 }, (_, indice) => ({
+    ...produtoExample,
+    id: `00000000-0000-4000-8000-${String(indice + 2).padStart(12, "0")}`,
+    nome: `Peca artesanal ${indice + 1}`,
+  })),
 };
 const indicadoresExample = {
   quantidadeVendida: 10,
@@ -554,6 +558,28 @@ function json(schema: z.ZodType, example: unknown): ResponseConfig {
     content: { "application/json": { schema, example } },
   };
 }
+function jsonCache(schema: z.ZodType, example: unknown): ResponseConfig {
+  return {
+    ...json(schema, example),
+    headers: {
+      "X-Cache": {
+        schema: { type: "string", enum: ["MISS", "HIT"] },
+        description: "Estado do cache de dados neste processo da API.",
+        example: "MISS",
+      },
+      "Server-Timing": {
+        schema: { type: "string" },
+        description: "Tempo da leitura ou carga do cache, em milissegundos.",
+        example: "cache;dur=1.234",
+      },
+      "Cache-Control": {
+        schema: { type: "string", const: "no-store" },
+        description: "O navegador nao armazena a resposta; o cache e interno.",
+        example: "no-store",
+      },
+    },
+  };
+}
 function body(
   schema: z.ZodType,
   example: unknown,
@@ -613,6 +639,7 @@ function endpoint(config: Endpoint) {
     tags: [config.tag],
     security: config.papel ? [{ sessao: [] }] : [],
     description: [
+      config.summary,
       config.papel ? `Acesso: ${config.papel}.` : "Acesso público.",
       config.description,
     ]
@@ -725,10 +752,10 @@ endpoint({
   summary: "Buscar produtos públicos disponíveis",
   tag: "Catálogo",
   request: { query: catalogoQuerySchema },
-  response: json(produtos, [produtoExample]),
+  response: jsonCache(produtos, [produtoExample]),
   errors: [400],
   description:
-    "Somente produtos ativos, sem moderação, com estoque e artesão ativo. Cache TTL: X-Cache HIT/MISS e Server-Timing. Filtros combináveis. limit de 1 a 100; offset de 0 a 10000.",
+    "Somente produtos ativos, sem moderação, com estoque e artesão ativo. Cache interno em memoria por filtros e paginacao normalizados. TTL configurado por CACHE_TTL_SECONDS, padrao 60 segundos. X-Cache MISS/HIT e Server-Timing; Cache-Control: no-store para o navegador. Escritas no catalogo, perfis, moderacao, papel, pedidos e avaliacoes invalidam produtos e recomendacoes neste processo. Filtros combináveis. limit de 1 a 100; offset de 0 a 10000.",
 });
 endpoint({
   method: "get",
@@ -737,10 +764,10 @@ endpoint({
   summary: "Consultar produto público",
   tag: "Catálogo",
   request: { params: produtoParamsSchema },
-  response: json(produto, produtoExample),
+  response: jsonCache(produto, produtoExample),
   errors: [400, 404],
   description:
-    "Produto oculto e inexistente recebem o mesmo 404. Cache TTL: X-Cache HIT/MISS e Server-Timing.",
+    "Produto oculto e inexistente recebem o mesmo 404, sem guardar erros. Cache interno por UUID normalizado. TTL configurado por CACHE_TTL_SECONDS, padrao 60 segundos. X-Cache MISS/HIT e Server-Timing; Cache-Control: no-store para o navegador. Mesma invalidacao do catalogo.",
 });
 endpoint({
   method: "get",
@@ -981,7 +1008,10 @@ endpoint({
   papel: "comprador",
   request: { params: carrinhoItemParamsSchema, query: carrinhoQuerySchema },
   response: json(carrinho, { itens: [], total: 0, atualizadoEm: data }),
-  errors: [400, 401, 403],
+  errors: [400, 401, 403, 404],
+  errorExamples: { 404: ["PRODUTO_NAO_ENCONTRADO", "Item nao encontrado."] },
+  description:
+    "Remove o item do proprio carrinho e retorna o carrinho atualizado. Item ausente recebe 404, inclusive em remocao repetida.",
 });
 endpoint({
   method: "post",
@@ -1291,10 +1321,10 @@ endpoint({
   summary: "Recomendar produtos por contexto público",
   tag: "Recomendações",
   request: { query: recomendacaoQuerySchema },
-  response: json(recomendacao, recomendacaoExample),
-  errors: [400, 404],
+  response: jsonCache(recomendacao, recomendacaoExample),
+  errors: [400],
   description:
-    "produtoId opcional. Sem contexto ou produto oculto usa fallback geral. Cache TTL: X-Cache HIT/MISS e Server-Timing.",
+    "produtoId UUID opcional; usuarioId externo e rejeitado. Sem contexto ou produto inexistente usa fallback geral do modulo, sem 404. A API revalida visibilidade dos produtos. Categoria, historico-compra e fallback-geral identificam selecoes do modulo; fallback-local atende falhas HTTP, timeout ou resposta invalida. Selecao valida menor que oito apos hidratacao recebe complemento e estrategia misto, mesmo sem candidatos adicionais. Cache interno por produtoId ou contexto vazio; TTL configurado por CACHE_TTL_SECONDS, padrao 60 segundos. fallback-local e misto permanecem MISS, sem armazenamento. X-Cache MISS/HIT e Server-Timing; Cache-Control: no-store para o navegador. Escritas do catalogo invalidam recomendacoes neste processo.",
 });
 endpoint({
   method: "get",
@@ -1310,7 +1340,7 @@ endpoint({
   }),
   errors: [400, 401, 403],
   description:
-    "Identidade vem da sessão, sem usuarioId externo. Sem cache compartilhado.",
+    "Identidade vem da sessão, sem usuarioId externo e query estrita vazia. Categorias de compras confirmadas, excluindo produtos ja comprados. Sem candidatos pessoais usa fallback-geral; falha do modulo usa fallback-local; selecao parcial usa misto. Cache-Control: no-store, sem CacheHttp, X-Cache ou Server-Timing de cache.",
 });
 
 registry.registerPath({
@@ -1318,6 +1348,8 @@ registry.registerPath({
   path: "/docs",
   operationId: "swagger",
   summary: "Abrir Swagger UI",
+  description:
+    "Interface publica com exemplos sinteticos. /docs redireciona para /docs/; assets locais preservam o prefixo do proxy.",
   tags: ["Documentação"],
   security: [],
   responses: {
@@ -1338,6 +1370,8 @@ registry.registerPath({
   path: "/docs/openapi.json",
   operationId: "openapi",
   summary: "Baixar especificação OpenAPI",
+  description:
+    "Documento publico gerado dos validators Zod e contratos implementados. O servidor relativo preserva o prefixo /api do proxy.",
   tags: ["Documentação"],
   security: [],
   responses: {

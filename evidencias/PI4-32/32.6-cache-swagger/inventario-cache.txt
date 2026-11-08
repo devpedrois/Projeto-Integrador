@@ -1,0 +1,41 @@
+backend/src\app.ts:46:  CachePublico,
+backend/src\app.ts:50:import { CacheHttp, type LogCache } from "./utils/cache-http.js";
+backend/src\app.ts:80:        | "CACHE_TTL_SECONDS"
+backend/src\app.ts:95:  const cache = new CachePublico(
+backend/src\app.ts:97:    (environment.CACHE_TTL_SECONDS ?? 60) * 1000,
+backend/src\app.ts:99:  const cacheHttp = new CacheHttp(cache, options.logCache);
+backend/src\config\environment.ts:65:    CACHE_TTL_SECONDS: z.coerce.number().int().positive().default(60),
+backend/src\docs\openapi.ts:754:    "Somente produtos ativos, sem moderação, com estoque e artesão ativo. Cache interno em memoria por filtros e paginacao normalizados. TTL configurado por CACHE_TTL_SECONDS, padrao 60 segundos. X-Cache MISS/HIT e Server-Timing; Cache-Control: no-store para o navegador. Escritas no catalogo, perfis, moderacao, papel, pedidos e avaliacoes invalidam produtos e recomendacoes neste processo. Filtros combináveis. limit de 1 a 100; offset de 0 a 10000.",
+backend/src\docs\openapi.ts:766:    "Produto oculto e inexistente recebem o mesmo 404, sem guardar erros. Cache interno por UUID normalizado. TTL configurado por CACHE_TTL_SECONDS, padrao 60 segundos. X-Cache MISS/HIT e Server-Timing; Cache-Control: no-store para o navegador. Mesma invalidacao do catalogo.",
+backend/src\docs\openapi.ts:1323:    "produtoId UUID opcional; usuarioId externo e rejeitado. Sem contexto ou produto inexistente usa fallback geral do modulo, sem 404. A API revalida visibilidade dos produtos. Categoria, historico-compra e fallback-geral identificam selecoes do modulo; fallback-local atende falhas HTTP, timeout ou resposta invalida. Selecao valida menor que oito apos hidratacao recebe complemento e estrategia misto, mesmo sem candidatos adicionais. Cache interno por produtoId ou contexto vazio; TTL configurado por CACHE_TTL_SECONDS, padrao 60 segundos. fallback-local e misto permanecem MISS, sem armazenamento. X-Cache MISS/HIT e Server-Timing; Cache-Control: no-store para o navegador. Escritas do catalogo invalidam recomendacoes neste processo.",
+backend/src\docs\openapi.ts:1339:    "Identidade vem da sessão, sem usuarioId externo e query estrita vazia. Categorias de compras confirmadas, excluindo produtos ja comprados. Sem candidatos pessoais usa fallback-geral; falha do modulo usa fallback-local; selecao parcial usa misto. Cache-Control: no-store, sem CacheHttp, X-Cache ou Server-Timing de cache.",
+backend/src\services\avaliacao.service.ts:3:import type { CachePublico } from "../utils/cache.js";
+backend/src\services\avaliacao.service.ts:8:    private readonly cache: CachePublico,
+backend/src\services\avaliacao.service.ts:17:    await this.cache.invalidarCatalogo();
+backend/src\controllers\catalogo.controller.ts:4:import { CacheHttp } from "../utils/cache-http.js";
+backend/src\controllers\catalogo.controller.ts:15:    private readonly cache = new CacheHttp(),
+backend/src\services\foto-perfil.service.ts:4:import type { CachePublico } from "../utils/cache.js";
+backend/src\services\foto-perfil.service.ts:10:    private readonly cache: CachePublico,
+backend/src\services\foto-perfil.service.ts:27:    await this.cache.invalidarCatalogo();
+backend/src\services\gestao-produtos.service.ts:2:import type { CachePublico } from "../utils/cache.js";
+backend/src\services\gestao-produtos.service.ts:13:    private readonly cache?: CachePublico,
+backend/src\services\gestao-produtos.service.ts:26:    await this.cache?.invalidarCatalogo();
+backend/src\services\gestao-produtos.service.ts:45:    await this.cache?.invalidarCatalogo();
+backend/src\services\gestao-produtos.service.ts:53:    await this.cache?.invalidarCatalogo();
+backend/src\services\gestao-produtos.service.ts:64:    await this.cache?.invalidarCatalogo();
+backend/src\utils\cache-http.ts:4:  CachePublico,
+backend/src\utils\cache-http.ts:19:export class CacheHttp {
+backend/src\utils\cache-http.ts:21:    private readonly cache = new CachePublico(new MemoryCacheStore(), 60000),
+backend/src\utils\cache.ts:75:export class CachePublico {
+backend/src\utils\cache.ts:113:  invalidarCatalogo(): Promise<void> {
+backend/src\services\pedido.service.ts:9:import type { CachePublico } from "../utils/cache.js";
+backend/src\services\pedido.service.ts:14:    private readonly cache?: CachePublico,
+backend/src\services\pedido.service.ts:48:    await this.cache?.invalidarCatalogo();
+backend/src\services\perfil-artesao.service.ts:2:import type { CachePublico } from "../utils/cache.js";
+backend/src\services\perfil-artesao.service.ts:10:    private readonly cache?: CachePublico,
+backend/src\services\perfil-artesao.service.ts:44:    await this.cache?.invalidarCatalogo();
+backend/src\services\usuario.service.ts:7:import type { CachePublico } from "../utils/cache.js";
+backend/src\services\usuario.service.ts:16:    private readonly cache?: CachePublico,
+backend/src\services\usuario.service.ts:39:    await this.cache?.invalidarCatalogo();
+backend/src\controllers\recomendacao.controller.ts:5:import { CacheHttp } from "../utils/cache-http.js";
+backend/src\controllers\recomendacao.controller.ts:12:    private readonly cache = new CacheHttp(),

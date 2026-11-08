@@ -31,6 +31,7 @@ function registeredOperations(stack: Layer[]): string[] {
 interface Operation {
   operationId: string;
   summary: string;
+  description: string;
   responses: Record<
     string,
     { content?: Record<string, { example?: unknown; schema?: unknown }> }
@@ -228,14 +229,14 @@ describe("WEB-15 OpenAPI", () => {
     ]);
   });
 
-  it("documenta exemplo de recomendações e respostas 400/404", async () => {
+  it("documenta recomendacoes sem anunciar 404 para contexto inexistente", async () => {
     const response = await request(app).get("/docs/openapi.json");
     expect(response.status).toBe(200);
     const operation = response.body.paths["/recomendacoes"].get;
     expect(
       operation.responses["200"].content["application/json"].example,
-    ).toMatchObject({ estrategia: "categoria", itens: [expect.any(Object)] });
-    for (const status of ["400", "404"]) {
+    ).toMatchObject({ estrategia: "categoria", itens: expect.any(Array) });
+    for (const status of ["400"]) {
       expect(
         operation.responses[status]?.content["application/json"],
       ).toMatchObject({
@@ -245,7 +246,52 @@ describe("WEB-15 OpenAPI", () => {
         },
       });
     }
+    expect(operation.responses).not.toHaveProperty("404");
     expect(operation.description).toContain("fallback geral");
+  });
+
+  it("32.6 exemplifica selecoes completas com oito produtos distintos", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    for (const path of ["/recomendacoes", "/recomendacoes/para-mim"]) {
+      const example =
+        response.body.paths[path].get.responses["200"].content[
+          "application/json"
+        ].example;
+      const ids = example.itens.map((item: { id: string }) => item.id);
+      expect(ids, path).toHaveLength(8);
+      expect(new Set(ids).size, path).toBe(8);
+    }
+  });
+
+  it("32.6 descreve os headers observaveis em cada leitura cacheada", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    for (const path of ["/produtos", "/produtos/{id}", "/recomendacoes"]) {
+      const operation = response.body.paths[path].get;
+      const headers = operation.responses["200"].headers;
+      expect(headers, path).toMatchObject({
+        "X-Cache": {
+          schema: { type: "string", enum: ["MISS", "HIT"] },
+        },
+        "Server-Timing": { schema: { type: "string" } },
+        "Cache-Control": { schema: { type: "string", const: "no-store" } },
+      });
+      expect(headers["Server-Timing"].example).toMatch(/^cache;dur=\d+\.\d+$/);
+      expect(operation.description).toContain("CACHE_TTL_SECONDS");
+    }
+  });
+
+  it("32.6 documenta item ausente na remocao do carrinho", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    const operation = response.body.paths["/carrinho/itens/{produtoId}"].delete;
+    expect(operation.responses).toHaveProperty("404");
+    expect(
+      operation.responses["404"].content["application/json"].example,
+    ).toEqual({
+      error: {
+        code: "PRODUTO_NAO_ENCONTRADO",
+        message: "Item nao encontrado.",
+      },
+    });
   });
 
   it("preserva restrições e defaults válidos dos validators", async () => {
@@ -406,6 +452,7 @@ describe("WEB-15 OpenAPI", () => {
     for (const operations of Object.values(document.paths)) {
       for (const operation of Object.values(operations)) {
         expect(operation.summary).toBeTruthy();
+        expect(operation.description).toBeTruthy();
         expect(operation.operationId).toBeTruthy();
         ids.push(operation.operationId);
         for (const content of Object.values(operation.responses)) {

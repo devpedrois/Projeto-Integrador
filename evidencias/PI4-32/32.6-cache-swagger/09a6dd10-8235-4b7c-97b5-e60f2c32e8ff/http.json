@@ -1,0 +1,529 @@
+{
+  "capturadoEm": "2026-11-08T03:09:08.294Z",
+  "ambiente": "API e microsservico locais; PostgreSQL real; schema isolado; dados sinteticos",
+  "cacheTtlSeconds": 60,
+  "chamadas": [
+    {
+      "cenario": "cache-publico",
+      "metodo": "GET",
+      "rota": "/produtos",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=58.349",
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": 11,
+      "erro": null,
+      "hashCorpo": "85c7056e3e5607cfeb9c1451e93744009e7b7dc4be7b68965ccf699cdf42d7a0"
+    },
+    {
+      "cenario": "cache-publico",
+      "metodo": "GET",
+      "rota": "/produtos",
+      "status": 200,
+      "headers": {
+        "x-cache": "HIT",
+        "server-timing": "cache;dur=0.193",
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": 11,
+      "erro": null,
+      "hashCorpo": "85c7056e3e5607cfeb9c1451e93744009e7b7dc4be7b68965ccf699cdf42d7a0"
+    },
+    {
+      "cenario": "cache-publico",
+      "metodo": "GET",
+      "rota": "/produtos/3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=52.194",
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "f50092f398705f559f03b20607b681a78f087afd273229aff8ff8034ba542892"
+    },
+    {
+      "cenario": "cache-publico",
+      "metodo": "GET",
+      "rota": "/produtos/3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 200,
+      "headers": {
+        "x-cache": "HIT",
+        "server-timing": "cache;dur=0.116",
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "f50092f398705f559f03b20607b681a78f087afd273229aff8ff8034ba542892"
+    },
+    {
+      "cenario": "cache-publico",
+      "metodo": "GET",
+      "rota": "/recomendacoes?produtoId=3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=165.294",
+        "cache-control": "no-store"
+      },
+      "estrategia": "categoria",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "7e33d0b91b871154bc41bc657f2e248a4ae64d721727f256677cd4422da38f9e"
+    },
+    {
+      "cenario": "cache-publico",
+      "metodo": "GET",
+      "rota": "/recomendacoes?produtoId=3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 200,
+      "headers": {
+        "x-cache": "HIT",
+        "server-timing": "cache;dur=0.171",
+        "cache-control": "no-store"
+      },
+      "estrategia": "categoria",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "7e33d0b91b871154bc41bc657f2e248a4ae64d721727f256677cd4422da38f9e"
+    },
+    {
+      "cenario": "cache-publico",
+      "metodo": "GET",
+      "rota": "/recomendacoes",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=106.530",
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-geral",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "0a9a6038053f90063233232e10077fab06da5e847201e71f59c5c30b720ca47f"
+    },
+    {
+      "cenario": "cache-publico",
+      "metodo": "GET",
+      "rota": "/recomendacoes",
+      "status": 200,
+      "headers": {
+        "x-cache": "HIT",
+        "server-timing": "cache;dur=0.131",
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-geral",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "0a9a6038053f90063233232e10077fab06da5e847201e71f59c5c30b720ca47f"
+    },
+    {
+      "cenario": "sem-cache",
+      "metodo": "GET",
+      "rota": "/recomendacoes/para-mim",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-geral",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "0a9a6038053f90063233232e10077fab06da5e847201e71f59c5c30b720ca47f"
+    },
+    {
+      "cenario": "sem-cache",
+      "metodo": "GET",
+      "rota": "/recomendacoes/para-mim",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-geral",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "0a9a6038053f90063233232e10077fab06da5e847201e71f59c5c30b720ca47f"
+    },
+    {
+      "cenario": "sem-cache",
+      "metodo": "GET",
+      "rota": "/artesao/indicadores",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "cc1d14549211f7b98c9ea17d424aef3e81b5ac8bda6e95fccc166441f1f570a0"
+    },
+    {
+      "cenario": "sem-cache",
+      "metodo": "GET",
+      "rota": "/artesao/indicadores",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "fc71f7dee9361b5bb8df160d0a82d0866e437587a2a697820506d25534a44dea"
+    },
+    {
+      "cenario": "sem-cache",
+      "metodo": "GET",
+      "rota": "/admin/indicadores",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "398341fddc9d9a4897bad893851a5f6efdb85f2457c42cf62038e2fdd7d6e1ed"
+    },
+    {
+      "cenario": "sem-cache",
+      "metodo": "GET",
+      "rota": "/admin/indicadores",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "397e449704a042ef46a12751f020073cce276be5207440c1b9b7f6a1a29b60bb"
+    },
+    {
+      "cenario": "sem-cache",
+      "metodo": "GET",
+      "rota": "/avaliacoes?produtoId=3205a4b4-3158-4c0f-b3cb-25abcae94d2e&limit=1&offset=0",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": 0,
+      "erro": null,
+      "hashCorpo": "191a4b022ec3bdf44d5f4805a537ee7da0193ed7dee0306d08abee0583457f70"
+    },
+    {
+      "cenario": "sem-cache",
+      "metodo": "GET",
+      "rota": "/avaliacoes?produtoId=3205a4b4-3158-4c0f-b3cb-25abcae94d2e&limit=1&offset=0",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": 0,
+      "erro": null,
+      "hashCorpo": "191a4b022ec3bdf44d5f4805a537ee7da0193ed7dee0306d08abee0583457f70"
+    },
+    {
+      "cenario": "selecao-parcial",
+      "metodo": "GET",
+      "rota": "/recomendacoes?produtoId=87836bb3-07ba-4452-ac27-5ad86d18aee9",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=259.769",
+        "cache-control": "no-store"
+      },
+      "estrategia": "misto",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "9f9879b98d199d039cf85271c3fe76d7847bb3568e92decf6c109e2f43196c81"
+    },
+    {
+      "cenario": "selecao-parcial",
+      "metodo": "GET",
+      "rota": "/recomendacoes?produtoId=87836bb3-07ba-4452-ac27-5ad86d18aee9",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=261.407",
+        "cache-control": "no-store"
+      },
+      "estrategia": "misto",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "9f9879b98d199d039cf85271c3fe76d7847bb3568e92decf6c109e2f43196c81"
+    },
+    {
+      "cenario": "invalida-estoque",
+      "metodo": "PATCH",
+      "rota": "/produtos/3205a4b4-3158-4c0f-b3cb-25abcae94d2e/estoque",
+      "status": 200,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "be0af0235e7ca194f0abd3fbf4657dfb406472ffbf1a9dfbb8e36d39838699bb"
+    },
+    {
+      "cenario": "apos-invalidacao",
+      "metodo": "GET",
+      "rota": "/produtos",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=51.927",
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": 11,
+      "erro": null,
+      "hashCorpo": "de48e1fceabe0a64fe11aa8561ef281e88f6f406eef938e8d729c0d66e8f1441"
+    },
+    {
+      "cenario": "apos-invalidacao",
+      "metodo": "GET",
+      "rota": "/produtos",
+      "status": 200,
+      "headers": {
+        "x-cache": "HIT",
+        "server-timing": "cache;dur=0.088",
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": 11,
+      "erro": null,
+      "hashCorpo": "de48e1fceabe0a64fe11aa8561ef281e88f6f406eef938e8d729c0d66e8f1441"
+    },
+    {
+      "cenario": "apos-invalidacao",
+      "metodo": "GET",
+      "rota": "/produtos/3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=52.227",
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "be0af0235e7ca194f0abd3fbf4657dfb406472ffbf1a9dfbb8e36d39838699bb"
+    },
+    {
+      "cenario": "apos-invalidacao",
+      "metodo": "GET",
+      "rota": "/produtos/3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 200,
+      "headers": {
+        "x-cache": "HIT",
+        "server-timing": "cache;dur=0.088",
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": null,
+      "hashCorpo": "be0af0235e7ca194f0abd3fbf4657dfb406472ffbf1a9dfbb8e36d39838699bb"
+    },
+    {
+      "cenario": "apos-invalidacao",
+      "metodo": "GET",
+      "rota": "/recomendacoes?produtoId=3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=156.052",
+        "cache-control": "no-store"
+      },
+      "estrategia": "categoria",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "7e33d0b91b871154bc41bc657f2e248a4ae64d721727f256677cd4422da38f9e"
+    },
+    {
+      "cenario": "apos-invalidacao",
+      "metodo": "GET",
+      "rota": "/recomendacoes?produtoId=3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 200,
+      "headers": {
+        "x-cache": "HIT",
+        "server-timing": "cache;dur=0.138",
+        "cache-control": "no-store"
+      },
+      "estrategia": "categoria",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "7e33d0b91b871154bc41bc657f2e248a4ae64d721727f256677cd4422da38f9e"
+    },
+    {
+      "cenario": "apos-invalidacao",
+      "metodo": "GET",
+      "rota": "/recomendacoes",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=105.428",
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-geral",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "b0b02303e7b3f2fd2f441ac05be98a7b213df7cb83024fd3670c8f7448e42a05"
+    },
+    {
+      "cenario": "apos-invalidacao",
+      "metodo": "GET",
+      "rota": "/recomendacoes",
+      "status": 200,
+      "headers": {
+        "x-cache": "HIT",
+        "server-timing": "cache;dur=0.071",
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-geral",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "b0b02303e7b3f2fd2f441ac05be98a7b213df7cb83024fd3670c8f7448e42a05"
+    },
+    {
+      "cenario": "item-ausente",
+      "metodo": "DELETE",
+      "rota": "/carrinho/itens/3205a4b4-3158-4c0f-b3cb-25abcae94d2e",
+      "status": 404,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": {
+        "code": "PRODUTO_NAO_ENCONTRADO",
+        "message": "Item nao encontrado."
+      },
+      "hashCorpo": "a0e46ba0ada4e60415528e874942a2d1a988aa242e6bda4880e96a9d28b76508"
+    },
+    {
+      "cenario": "erro-documentado",
+      "metodo": "GET",
+      "rota": "/admin/indicadores",
+      "status": 401,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": {
+        "code": "NAO_AUTENTICADO",
+        "message": "Sessao invalida ou ausente."
+      },
+      "hashCorpo": "6f16915a11506caecb1aa272ce29cb96ef7535ecc2b4a0929187bffe1599dbaf"
+    },
+    {
+      "cenario": "erro-documentado",
+      "metodo": "GET",
+      "rota": "/admin/indicadores",
+      "status": 403,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": {
+        "code": "ACESSO_NEGADO",
+        "message": "Acesso negado."
+      },
+      "hashCorpo": "dfffbc0f8ebc3f592e1268788cbc0db68224b34ed3e24432244ca6ad4b3e22bf"
+    },
+    {
+      "cenario": "erro-documentado",
+      "metodo": "GET",
+      "rota": "/admin/indicadores?extra=1",
+      "status": 400,
+      "headers": {
+        "x-cache": null,
+        "server-timing": null,
+        "cache-control": "no-store"
+      },
+      "estrategia": null,
+      "quantidade": null,
+      "erro": {
+        "code": "VALIDACAO",
+        "message": "Consulta de indicadores invalida."
+      },
+      "hashCorpo": "62714252922e7f903dbfc933673bd18f9e3c3ab437fa80736db6b6d75eea7e90"
+    },
+    {
+      "cenario": "contexto-inexistente",
+      "metodo": "GET",
+      "rota": "/recomendacoes?produtoId=8a5f24de-78ff-4fb9-8ad9-7a59e57c6edc",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=155.953",
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-geral",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "b0b02303e7b3f2fd2f441ac05be98a7b213df7cb83024fd3670c8f7448e42a05"
+    },
+    {
+      "cenario": "microsservico-desligado",
+      "metodo": "GET",
+      "rota": "/recomendacoes",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=105.985",
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-local",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "d5ea1cba9ec5b3d056be515d952155839e44b1117ea567f9072bf79eb1a8ee96"
+    },
+    {
+      "cenario": "microsservico-desligado",
+      "metodo": "GET",
+      "rota": "/recomendacoes",
+      "status": 200,
+      "headers": {
+        "x-cache": "MISS",
+        "server-timing": "cache;dur=103.958",
+        "cache-control": "no-store"
+      },
+      "estrategia": "fallback-local",
+      "quantidade": 8,
+      "erro": null,
+      "hashCorpo": "d5ea1cba9ec5b3d056be515d952155839e44b1117ea567f9072bf79eb1a8ee96"
+    }
+  ]
+}

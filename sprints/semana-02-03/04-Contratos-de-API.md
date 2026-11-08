@@ -1,8 +1,9 @@
 # Origem — Contratos de API
-**Sprint:** Semanas 2–3 · **Disciplinas de referência:** Desenvolvimento Web + Modelagem/BD (consumidor: futuramente Eng. de IA)
-**Status:** contrato vivo; implementação sincronizada pela WEB-15 em 15/10/2026.
 
-## Implementação vigente na Sprint 4
+**Sprint:** Semanas 2–3 · **Disciplinas de referência:** Desenvolvimento Web + Modelagem/BD (consumidor: futuramente Eng. de IA)
+**Status:** contrato vivo; implementação sincronizada pela 32.6 em 08/11/2026.
+
+## Implementação vigente na U2
 
 Swagger UI disponível em `GET /docs`, incluindo exemplos e erros.
 `GET /docs/openapi.json` entrega o documento gerado por `@asteasolutions/zod-to-openapi`.
@@ -12,36 +13,50 @@ Toda mudança de rota atualiza o OpenAPI no mesmo trabalho.
 O teste `backend/tests/unit/openapi.test.ts` compara métodos e paths reais.
 Rotas novas sem documentação fazem esse teste falhar.
 
-| Método | Rota | Contrato vigente e acesso |
-|---|---|---|
-| POST | `/auth/logout` | Público; idempotente; limpa cookie e retorna 204 |
-| GET | `/tecnicas` | Público; lista `{ id, nome }`, com ID textual |
-| GET | `/regioes` | Público; lista `{ id, nome }`, com ID textual |
-| GET | `/usuarios/:id/perfil-artesao` | Público; perfil do artesão ativo |
-| PATCH | `/usuarios/:id/perfil-artesao` | Próprio artesão; `historia`, `tecnicaId`, `regiaoId`, `fotoUrl` |
-| GET | `/carrinho` | Comprador; itens, total e `atualizadoEm` |
-| POST | `/carrinho/itens` | Comprador; `{ produtoId, quantidade }`; soma ao item existente |
-| PATCH | `/carrinho/itens/:produtoId` | Comprador; `{ quantidade }`; substitui quantidade |
-| DELETE | `/carrinho/itens/:produtoId` | Comprador; remoção idempotente; retorna carrinho atualizado |
-| GET | `/artesao/produtos` | Artesão; próprios produtos, inclusive ocultos ou sem estoque |
-| GET | `/artesao/notificacoes` | Artesão; próprias notificações, não lidas primeiro |
-| PATCH | `/artesao/notificacoes/:id/lida` | Artesão; própria notificação; 204 idempotente |
-| GET | `/admin/artesaos` | Admin; listagem para moderação |
-| GET | `/admin/produtos` | Admin; listagem para moderação |
-| GET | `/recomendacoes/para-mim` | Comprador; identidade vem da sessão; query vazia |
+| Método   | Rota                               | Contrato vigente e acesso                                                                                                                                                                                                                                                                                                         |
+| -------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST     | `/auth/logout`                     | Público; idempotente; limpa cookie e retorna 204                                                                                                                                                                                                                                                                                  |
+| GET      | `/tecnicas`                        | Público; lista `{ id, nome }`, com ID textual                                                                                                                                                                                                                                                                                     |
+| GET      | `/regioes`                         | Público; lista `{ id, nome }`, com ID textual                                                                                                                                                                                                                                                                                     |
+| GET      | `/usuarios/:id/perfil-artesao`     | Público; perfil do artesão ativo                                                                                                                                                                                                                                                                                                  |
+| PATCH    | `/usuarios/:id/perfil-artesao`     | Próprio artesão; `historia`, `tecnicaId`, `regiaoId`, `fotoUrl`                                                                                                                                                                                                                                                                   |
+| GET      | `/carrinho`                        | Comprador; itens, total e `atualizadoEm`                                                                                                                                                                                                                                                                                          |
+| POST     | `/carrinho/itens`                  | Comprador; `{ produtoId, quantidade }`; soma ao item existente                                                                                                                                                                                                                                                                    |
+| PATCH    | `/carrinho/itens/:produtoId`       | Comprador; `{ quantidade }`; substitui quantidade                                                                                                                                                                                                                                                                                 |
+| DELETE   | `/carrinho/itens/:produtoId`       | Comprador; retorna carrinho atualizado; item ausente ou remoção repetida recebe 404                                                                                                                                                                                                                                               |
+| GET      | `/artesao/produtos`                | Artesão; próprios produtos, inclusive ocultos ou sem estoque                                                                                                                                                                                                                                                                      |
+| GET      | `/artesao/notificacoes`            | Artesão; próprias notificações, não lidas primeiro                                                                                                                                                                                                                                                                                |
+| PATCH    | `/artesao/notificacoes/:id/lida`   | Artesão; própria notificação; 204 idempotente                                                                                                                                                                                                                                                                                     |
+| GET      | `/admin/artesaos`                  | Admin; listagem para moderação                                                                                                                                                                                                                                                                                                    |
+| GET      | `/admin/produtos`                  | Admin; listagem para moderação                                                                                                                                                                                                                                                                                                    |
+| GET      | `/admin/indicadores`               | Implementado na 32.1; query vazia; contagens, receita decimal em string e atualizadoEm; no-store. [Router](../../backend/src/routes/indicadores-admin.routes.ts), [controller](../../backend/src/controllers/indicadores-admin.controller.ts) e [repository](../../backend/src/repositories/indicadores-plataforma.repository.ts) |
+| GET/POST | `/avaliacoes`                      | GET público com produtoId, limit 1–50 padrão 10 e offset seguro ≥ 0 padrão 0; resumo global e itens sem identificar comprador. POST comprador com compra confirmada; 403 sem compra e 409 duplicada                                                                                                                               |
+| GET      | `/avaliacoes/elegibilidade`        | Comprador; produtoId obrigatório; podeAvaliar e motivo                                                                                                                                                                                                                                                                            |
+| GET      | `/artesao/pedidos`                 | Artesão; apenas seus itens confirmados, subtotal próprio e paginação limit/offset                                                                                                                                                                                                                                                 |
+| PATCH    | `/artesao/itens-pedido/:id/enviar` | Artesão dono; marca item confirmado como enviado; 404 alheio, 409 reenvio ou pedido não confirmado                                                                                                                                                                                                                                |
+| POST     | `/artesao/perfil/foto`             | Artesão; multipart foto JPG/PNG, até 2 MiB; storage somente no backend                                                                                                                                                                                                                                                            |
+| GET      | `/recomendacoes/para-mim`          | Comprador; identidade vem da sessão; query vazia                                                                                                                                                                                                                                                                                  |
 
 Autenticação vigente: JWT somente no cookie HttpOnly `origem_sessao`.
 O cookie usa `SameSite=Lax`, `Path=/` e duração de 24h.
 Em produção, também usa `Secure`. Faça login pelo mesmo domínio.
 Swagger envia o cookie automaticamente após `POST /auth/login`.
-Cadastro não inicia sessão e aceita somente comprador ou artesão.
+Cadastro inicia sessão no 201 e aceita somente comprador ou artesão.
+Fonte: [controller de autenticação](../../backend/src/controllers/auth.controller.ts).
 
 Consulta pública de produtos usa `termo`, `categoriaId`, `tecnicaId`,
 `regiaoId`, `artesaoId`, `limit` e `offset`.
 Retorna uma lista de `ProdutoDTO`, com fotos ordenadas e métricas.
-`GET /avaliacoes` recebe somente `produtoId` e retorna `{ itens, resumo }`.
+`GET /avaliacoes` recebe `produtoId`, `limit` e `offset`.
+Retorna `{ itens, resumo }`, com resumo global da mesma leitura consistente.
+Fontes: [validator](../../backend/src/validators/catalogo.validator.ts) e
+[repository](../../backend/src/repositories/catalogo.repository.ts).
 `GET /recomendacoes` aceita `produtoId` opcional, sem `usuarioId` externo.
 Ambas as recomendações retornam `{ estrategia, itens: ProdutoDTO[] }`.
+Valores de `estrategia`: `categoria`, `historico-compra`, `fallback-geral`,
+`fallback-local` e `misto`. As duas últimas não persistem no cache público.
+Fontes: [service](../../backend/src/services/recomendacao.service.ts) e
+[controller](../../backend/src/controllers/recomendacao.controller.ts).
 
 Checkout vigente recebe apenas `{ itens: [{ produtoId, quantidade }] }`.
 Identidade do comprador vem do cookie, nunca do payload.
@@ -56,10 +71,23 @@ Falhas inesperadas retornam 503 com `{ status, message }`.
 O OpenAPI descreve 400, 401, 403, 404 e 409 aplicáveis.
 Notificações alheias e inexistentes recebem o mesmo 404.
 
-As seções abaixo preservam o contrato histórico e propostas.
-Quando houver divergência, prevalece esta seção e o OpenAPI.
-Ainda não existem rotas de perfil genérico, indicadores, avaliação
-por POST, alteração de status ou pagamento isolado.
+O [Swagger](../../backend/src/docs/openapi.ts) descreve todas as rotas vigentes.
+A tabela de `CLAUDE.md` §8 é o inventário documental único.
+As seções abaixo preservam decisões e exemplos históricos.
+Quando houver divergência, prevalecem a implementação vigente e o OpenAPI.
+
+### Fora do escopo do semestre
+
+| Método    | Rota nunca implementada  | Situação e alternativa vigente                                                     |
+| --------- | ------------------------ | ---------------------------------------------------------------------------------- |
+| GET/PATCH | `/usuarios/:id`          | Fora do escopo do semestre. Perfil artesanal usa `/usuarios/:id/perfil-artesao`    |
+| PATCH     | `/pedidos/:id/status`    | Fora do escopo do semestre. Envio usa `/artesao/itens-pedido/:id/enviar`, por item |
+| GET       | `/pedidos/:id/pagamento` | Fora do escopo do semestre. Pagamento simulado integra `/pedidos/:id`              |
+
+Essas rotas não constam como disponíveis no Swagger.
+Fontes: [perfil](../../backend/src/routes/perfil-artesao.routes.ts),
+[pedidos](../../backend/src/routes/pedido.routes.ts) e
+[teste de paridade](../../backend/tests/unit/openapi.test.ts).
 
 ## Contrato histórico e propostas
 
@@ -78,11 +106,11 @@ exigem autenticação, exceto cadastro/login.
 
 ## Autenticação
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| POST | `/auth/register` | Cria usuário (`nome`, `email`, `senha`, `papel`) | público |
-| POST | `/auth/login` | Autentica (`email`, `senha`) | público |
-| GET | `/auth/me` | Retorna usuário logado | autenticado |
+| Método | Rota             | Descrição                                        | Papel       |
+| ------ | ---------------- | ------------------------------------------------ | ----------- |
+| POST   | `/auth/register` | Cria usuário (`nome`, `email`, `senha`, `papel`) | público     |
+| POST   | `/auth/login`    | Autentica (`email`, `senha`)                     | público     |
+| GET    | `/auth/me`       | Retorna usuário logado                           | autenticado |
 
 > **US01/US02:** `POST /auth/login` sempre responde `401` com mensagem
 > genérica em caso de credenciais inválidas — nunca revela se o e-mail
@@ -93,28 +121,28 @@ exigem autenticação, exceto cadastro/login.
 
 ## Usuários / Perfil do Artesão
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| GET | `/usuarios/:id` | Perfil público (dados básicos + `PerfilArtesao` se aplicável) | público |
-| PATCH | `/usuarios/:id` | Atualiza próprio perfil (`historia`, `tecnica_principal`, `regiao`, `foto_url`) | dono do recurso |
+| Método | Rota            | Descrição                                                                                             | Papel        |
+| ------ | --------------- | ----------------------------------------------------------------------------------------------------- | ------------ |
+| GET    | `/usuarios/:id` | **Fora do escopo do semestre.** Nunca implementado; leitura vigente em `/usuarios/:id/perfil-artesao` | indisponível |
+| PATCH  | `/usuarios/:id` | **Fora do escopo do semestre.** Nunca implementado; edição vigente em `/usuarios/:id/perfil-artesao`  | indisponível |
 
 ## Categorias
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| GET | `/categorias` | Lista as categorias cadastradas | público |
+| Método | Rota          | Descrição                       | Papel   |
+| ------ | ------------- | ------------------------------- | ------- |
+| GET    | `/categorias` | Lista as categorias cadastradas | público |
 
 ## Produtos
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| GET | `/produtos?busca=&categoriaId=&regiao=&artesaoId=` | Busca/filtra produtos ativos (US08) | público |
-| GET | `/produtos/:id` | Detalhe do produto (com fotos e artesão) | público |
-| POST | `/produtos` | Cria produto (US04) | artesão |
-| PATCH | `/produtos/:id` | Edita produto próprio (US05) | dono do recurso ou admin |
-| DELETE | `/produtos/:id` | Soft delete (`ativo=false`) — pedidos antigos mantêm a referência ao produto (US05) | dono do recurso ou admin |
-| PATCH | `/produtos/:id/estoque` | Atualiza quantidade em estoque; rejeita com `400` qualquer operação que resultaria em estoque negativo (US06) | dono do recurso |
-| GET | `/artesao/indicadores` | Retorna quantidade vendida e receita total dos produtos do artesão logado (US07) | artesão |
+| Método | Rota                                               | Descrição                                                                                                     | Papel                    |
+| ------ | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| GET    | `/produtos?busca=&categoriaId=&regiao=&artesaoId=` | Busca/filtra produtos ativos (US08)                                                                           | público                  |
+| GET    | `/produtos/:id`                                    | Detalhe do produto (com fotos e artesão)                                                                      | público                  |
+| POST   | `/produtos`                                        | Cria produto (US04)                                                                                           | artesão                  |
+| PATCH  | `/produtos/:id`                                    | Edita produto próprio (US05)                                                                                  | dono do recurso ou admin |
+| DELETE | `/produtos/:id`                                    | Soft delete (`ativo=false`) — pedidos antigos mantêm a referência ao produto (US05)                           | dono do recurso ou admin |
+| PATCH  | `/produtos/:id/estoque`                            | Atualiza quantidade em estoque; rejeita com `400` qualquer operação que resultaria em estoque negativo (US06) | dono do recurso          |
+| GET    | `/artesao/indicadores`                             | Retorna quantidade vendida e receita total dos produtos do artesão logado (US07)                              | artesão                  |
 
 > `/artesao/indicadores` foi adicionado em 2026-08-20 — faltava no
 > rascunho original e foi identificado ao cruzar telas × histórias × API
@@ -127,7 +155,7 @@ exigem autenticação, exceto cadastro/login.
 > `?artesaoId=<próprio id>` autenticado, para poder repor estoque ou editar.
 
 > **Concorrência — decisão definitiva (31/08/2026):** `PATCH
-> /produtos/:id/estoque` disputa o mesmo `SELECT ... FOR UPDATE` sobre a
+/produtos/:id/estoque` disputa o mesmo `SELECT ... FOR UPDATE` sobre a
 > linha de `produto` que `POST /pedidos` já usa (ver seção Pedidos abaixo).
 > Isso cobre o cenário de o artesão editar o estoque manualmente enquanto um
 > checkout está em andamento sobre o mesmo produto — a segunda transação a
@@ -136,16 +164,16 @@ exigem autenticação, exceto cadastro/login.
 
 ## Carrinho
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| GET | `/carrinho` | Retorna carrinho atual do usuário | comprador |
-| POST | `/carrinho/itens` | Adiciona item (`produtoId`, `quantidade`); rejeita com `409` se `quantidade` exceder o estoque disponível (US11) | comprador |
-| DELETE | `/carrinho/itens/:produtoId` | Remove item do carrinho | comprador |
+| Método | Rota                         | Descrição                                                                                                        | Papel     |
+| ------ | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------- |
+| GET    | `/carrinho`                  | Retorna carrinho atual do usuário                                                                                | comprador |
+| POST   | `/carrinho/itens`            | Adiciona item (`produtoId`, `quantidade`); rejeita com `409` se `quantidade` exceder o estoque disponível (US11) | comprador |
+| DELETE | `/carrinho/itens/:produtoId` | Remove item do carrinho                                                                                          | comprador |
 
 ## Pedidos — **endpoint crítico de concorrência (ver documento 05)**
 
 > **Concorrência — decisão definitiva (confirmada 27/08/2026):** `POST
-> /pedidos` roda dentro de uma transação com `SELECT ... FOR UPDATE` (lock
+/pedidos` roda dentro de uma transação com `SELECT ... FOR UPDATE` (lock
 > pessimista) sobre a linha de estoque de cada produto envolvido — não usa
 > `UPDATE ... WHERE estoque >= $2` condicional. Isso cobre diretamente o
 > cenário de concorrência da US12 ("dois compradores finalizando pedido do
@@ -156,18 +184,18 @@ exigem autenticação, exceto cadastro/login.
 > pessimista e não a alternativa otimista) em
 > `docs/05-Concorrencia-e-IA-Baseline.md`.
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| POST | `/pedidos` | Cria pedido a partir do carrinho (US12) — transação atômica: `SELECT ... FOR UPDATE` bloqueia a linha de estoque de cada produto do pedido antes de validar/debitar; se algum item não tiver estoque suficiente, a transação inteira é revertida (`ROLLBACK`) e nada é confirmado | comprador |
-| GET | `/pedidos` | Lista pedidos do usuário logado. Comprador vê os próprios pedidos completos; artesão vê apenas os **itens de pedido** referentes aos próprios produtos (nunca o pedido inteiro de outros artesãos, US14) (US13/US14) | autenticado |
-| GET | `/pedidos/:id` | Detalhe do pedido — mesma regra de escopo por papel de `GET /pedidos` | dono/participante |
-| PATCH | `/pedidos/:id/status` | Atualiza status (ex. artesão confirma envio) | artesão/admin |
+| Método | Rota                  | Descrição                                                                                                                                                                                                                                                                         | Papel             |
+| ------ | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| POST   | `/pedidos`            | Cria pedido a partir do carrinho (US12) — transação atômica: `SELECT ... FOR UPDATE` bloqueia a linha de estoque de cada produto do pedido antes de validar/debitar; se algum item não tiver estoque suficiente, a transação inteira é revertida (`ROLLBACK`) e nada é confirmado | comprador         |
+| GET    | `/pedidos`            | Lista pedidos do usuário logado. Comprador vê os próprios pedidos completos; artesão vê apenas os **itens de pedido** referentes aos próprios produtos (nunca o pedido inteiro de outros artesãos, US14) (US13/US14)                                                              | autenticado       |
+| GET    | `/pedidos/:id`        | Detalhe do pedido — mesma regra de escopo por papel de `GET /pedidos`                                                                                                                                                                                                             | dono/participante |
+| PATCH  | `/pedidos/:id/status` | **Fora do escopo do semestre.** Nunca implementado; envio vigente por item em `/artesao/itens-pedido/:id/enviar`                                                                                                                                                                  | indisponível      |
 
-## Pagamento (simulado) — *adicionado em 2026-08-20*
+## Pagamento (simulado) — _adicionado em 2026-08-20_
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| GET | `/pedidos/:id/pagamento` | Retorna o pagamento vinculado ao pedido (método, valor, status) | dono/participante do pedido |
+| Método | Rota                     | Descrição                                                                                | Papel        |
+| ------ | ------------------------ | ---------------------------------------------------------------------------------------- | ------------ |
+| GET    | `/pedidos/:id/pagamento` | **Fora do escopo do semestre.** Nunca implementado; pagamento integra `GET /pedidos/:id` | indisponível |
 
 > Não existe endpoint de "criar pagamento" separado: o registro de `Pagamento`
 > é gerado **dentro da mesma transação** de `POST /pedidos` (US20), já que
@@ -176,10 +204,10 @@ exigem autenticação, exceto cadastro/login.
 
 ## Avaliações
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| POST | `/avaliacoes` | Cria avaliação (`produtoId`, `nota`, `comentario`) — só se houver compra confirmada do produto (US15) | comprador |
-| GET | `/avaliacoes?produtoId=&page=&pageSize=` | Lista paginada das avaliações de um produto (US16) | público |
+| Método | Rota                                     | Descrição                                                                                             | Papel     |
+| ------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------- | --------- |
+| POST   | `/avaliacoes`                            | Cria avaliação (`produtoId`, `nota`, `comentario`) — só se houver compra confirmada do produto (US15) | comprador |
+| GET    | `/avaliacoes?produtoId=&page=&pageSize=` | Lista paginada das avaliações de um produto (US16)                                                    | público   |
 
 > **US16:** a nota média do produto (`notaMedia`) é recalculada a cada nova
 > avaliação e devolvida no detalhe do produto (`GET /produtos/:id`), não no
@@ -195,10 +223,10 @@ exigem autenticação, exceto cadastro/login.
 
 ## Recomendações (módulo de IA — consumido pela Web via API)
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| GET | `/recomendacoes?produtoId=` | Produtos relacionados ao produto visto (US10) | público |
-| GET | `/recomendacoes?usuarioId=` | Recomendações para o comprador logado (evolui na U2) | público/autenticado |
+| Método | Rota                        | Descrição                                                                                                | Papel        |
+| ------ | --------------------------- | -------------------------------------------------------------------------------------------------------- | ------------ |
+| GET    | `/recomendacoes?produtoId=` | Produtos relacionados ao produto visto (US10)                                                            | público      |
+| GET    | `/recomendacoes?usuarioId=` | **Contrato histórico substituído.** Query recusada; consumo pessoal vigente em `/recomendacoes/para-mim` | indisponível |
 
 > Este contrato é o que garante que o módulo de IA nunca fique "isolado em
 > notebook" — desde já ele é pensado como uma API que a Web consome, não como
@@ -206,15 +234,15 @@ exigem autenticação, exceto cadastro/login.
 
 ## Administração
 
-| Método | Rota | Descrição | Papel |
-|---|---|---|---|
-| GET | `/admin/indicadores` | Números agregados (US18) | admin |
-| PATCH | `/admin/produtos/:id/moderar` | Ativa/desativa produto — reversível, dados não são apagados (US17) | admin |
-| PATCH | `/admin/artesaos/:id/moderar` | Ativa/desativa artesão — reversível, dados não são apagados (US17) | admin |
-| PATCH | `/admin/usuarios/:id/papel` | Altera o papel de um usuário (comprador ↔ artesão) — única forma de mudar papel; usuário não pode alterar o próprio papel (US01) | admin |
+| Método | Rota                          | Descrição                                                                                                                                     | Papel |
+| ------ | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| GET    | `/admin/indicadores`          | **Implementado na 32.1.** Contagens e receita dos confirmados; [implementação](../../backend/src/controllers/indicadores-admin.controller.ts) | admin |
+| PATCH  | `/admin/produtos/:id/moderar` | Ativa/desativa produto — reversível, dados não são apagados (US17)                                                                            | admin |
+| PATCH  | `/admin/artesaos/:id/moderar` | Ativa/desativa artesão — reversível, dados não são apagados (US17)                                                                            | admin |
+| PATCH  | `/admin/usuarios/:id/papel`   | Altera o papel de um usuário (comprador ↔ artesão) — única forma de mudar papel; usuário não pode alterar o próprio papel (US01)              | admin |
 
 > **Concorrência — decisão definitiva (31/08/2026):** `PATCH
-> /admin/produtos/:id/moderar` e `PATCH /admin/artesaos/:id/moderar`
+/admin/produtos/:id/moderar` e `PATCH /admin/artesaos/:id/moderar`
 > também disputam o `SELECT ... FOR UPDATE` da linha do recurso moderado.
 > Se a moderação chegar primeiro, o checkout/edição em andamento espera o
 > lock e, ao adquiri-lo, revalida `ativo` dentro da própria transação —
@@ -223,16 +251,17 @@ exigem autenticação, exceto cadastro/login.
 > que a operação em andamento termina. Detalhamento em
 > `docs/05-Concorrencia-e-IA-Baseline.md` §1.3.
 
-## Formato padrão de resposta e erro *(adicionado em 2026-08-20)*
+## Formato padrão de resposta e erro _(adicionado em 2026-08-20)_
 
 **Sucesso** — retorna o recurso (ou lista) diretamente no corpo, sem envelope extra:
+
 ```json
 // GET /produtos/12 → 200 OK
 {
   "id": 12,
   "nome": "Boneco de barro — Vaqueiro",
   "descricao": "Peça em cerâmica, técnica de Alto do Moura...",
-  "preco": 89.90,
+  "preco": 89.9,
   "estoque": 4,
   "categoria": { "id": 1, "nome": "Cerâmica e Barro" },
   "artesao": { "id": 7, "nome": "Maria das Neves", "regiao": "Alto do Moura" },
@@ -243,6 +272,7 @@ exigem autenticação, exceto cadastro/login.
 **Erro** — sempre HTTP status code semântico (400 validação, 401 não
 autenticado, 403 sem permissão, 404 não encontrado, 409 conflito de negócio,
 500 erro interno) + corpo padronizado:
+
 ```json
 // POST /pedidos → 409 Conflict (estoque insuficiente no meio da transação)
 {
@@ -257,6 +287,7 @@ autenticado, 403 sem permissão, 404 não encontrado, 409 conflito de negócio,
 ## Exemplos de payload — endpoints críticos
 
 **`POST /pedidos`** (US12 + US20 — cria pedido e pagamento na mesma transação)
+
 ```json
 // Request
 { "itens": [{ "produtoId": 12, "quantidade": 1 }], "metodoPagamento": "pix_simulado" }
@@ -270,6 +301,7 @@ autenticado, 403 sem permissão, 404 não encontrado, 409 conflito de negócio,
 ```
 
 **`POST /avaliacoes`** (US15 — regra: só permite avaliar produto comprado)
+
 ```json
 // Request
 { "produtoId": 12, "nota": 5, "comentario": "Peça linda, chegou bem embalada." }
@@ -279,14 +311,15 @@ autenticado, 403 sem permissão, 404 não encontrado, 409 conflito de negócio,
 ```
 
 **`GET /recomendacoes?produtoId=12`** (US10 — baseline por categoria/popularidade, ver documento 05)
+
 ```json
 // Response 200 OK
 {
   "produtoId": 12,
   "estrategia": "mesma_categoria_mais_vendidos",
   "recomendados": [
-    { "id": 18, "nome": "Vaso de barro decorado", "preco": 65.00 },
-    { "id": 9,  "nome": "Boneca de barro — Feira", "preco": 72.00 }
+    { "id": 18, "nome": "Vaso de barro decorado", "preco": 65.0 },
+    { "id": 9, "nome": "Boneca de barro — Feira", "preco": 72.0 }
   ]
 }
 ```
@@ -308,11 +341,11 @@ autenticado, 403 sem permissão, 404 não encontrado, 409 conflito de negócio,
   `POST /pedidos` — ver nota na seção Pedidos acima e
   `docs/05-Concorrencia-e-IA-Baseline.md`.
 - Documentação formal implementada na WEB-15 em `backend/src/docs/openapi.ts`.
-  A especificação acompanha as rotas disponíveis na Sprint 4.
+  A especificação acompanha as rotas disponíveis na U2, revisada na 32.6.
 
 > **Revisão 31/08/2026:** contrato cruzado linha a linha com o backlog
 > definitivo de histórias de usuário (`Origem _ PI412 _ Modelagem Conceitual
-> _ Historias De Usuario.pdf`, revisado 26/08/2026) e com
+_ Historias De Usuario.pdf`, revisado 26/08/2026) e com
 > `02-Historias-de-Usuario.md`. Ajustes feitos: nota de erro genérico no
 > login e imutabilidade de `papel` pelo próprio usuário (US01/US02); edição
 > de produto liberada também para admin, além do dono (US05); estoque nunca
@@ -332,13 +365,12 @@ autenticado, 403 sem permissão, 404 não encontrado, 409 conflito de negócio,
 > `docs/05-Concorrencia-e-IA-Baseline.md` (§1.2–§1.4) e refletidos aqui como
 > notas nas rotas correspondentes: `PATCH /produtos/:id/estoque` (edição
 > manual de estoque disputando o mesmo lock do checkout), `PATCH
-> /admin/produtos/:id/moderar` e `PATCH /admin/artesaos/:id/moderar`
+/admin/produtos/:id/moderar` e `PATCH /admin/artesaos/:id/moderar`
 > (moderação do admin disputando o lock com checkout/edição em andamento) e
 > `POST /avaliacoes` (recálculo de `notaMedia` via agregação SQL, sem lost
 > update). Nenhuma rota nova foi criada — os quatro endpoints já existiam
 > neste contrato; só ficou explícito o comportamento de cada um sob
 > concorrência.
 
-> ⚠️ **Ponto de atenção:** este contrato ainda é rascunho — normal que mude
-> quando a implementação começar. O que importa é que ele existe e está
-> escrito antes de codar, não depois.
+> **Histórico:** os payloads e decisões antigas acima são rastreabilidade.
+> Não representam disponibilidade adicional ao inventário vigente da U2.

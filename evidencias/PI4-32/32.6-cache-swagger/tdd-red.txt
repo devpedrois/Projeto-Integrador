@@ -1,0 +1,139 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/openapi.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+stdout | tests/unit/openapi.test.ts > WEB-15 OpenAPI > documenta recomendacoes sem anunciar 404 para contexto inexistente
+{"servico":"api","requestId":"4aab7f4d-02f9-4ce0-b5e4-7a8e87c70ac4","metodo":"GET","rota":"/docs/openapi.json","status":200,"duracaoMs":1.407}
+
+stdout | tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.6 descreve os headers observaveis em cada leitura cacheada
+{"servico":"api","requestId":"83e12895-9db3-4201-b22f-9dbf68b16cbb","metodo":"GET","rota":"/docs/openapi.json","status":200,"duracaoMs":1.945}
+
+stdout | tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.6 documenta item ausente na remocao do carrinho
+{"servico":"api","requestId":"406bac67-a587-47d2-aae0-7b112a9ebb9e","metodo":"GET","rota":"/docs/openapi.json","status":200,"duracaoMs":1.192}
+
+stdout | tests/unit/openapi.test.ts > WEB-15 OpenAPI > inclui exemplos, schemas, segurança e erros aplicáveis
+{"servico":"api","requestId":"656e6e3b-8327-45b7-a55f-f9d256ef0042","metodo":"GET","rota":"/docs/openapi.json","status":200,"duracaoMs":1.34}
+
+ ❯ tests/unit/openapi.test.ts (20 tests | 4 failed) 283ms
+   ❯ WEB-15 OpenAPI (20)
+     × documenta recomendacoes sem anunciar 404 para contexto inexistente 16ms
+     × 32.6 descreve os headers observaveis em cada leitura cacheada 8ms
+     × 32.6 documenta item ausente na remocao do carrinho 9ms
+     × inclui exemplos, schemas, segurança e erros aplicáveis 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > documenta recomendacoes sem anunciar 404 para contexto inexistente
+AssertionError: expected { '200': { …(2) }, …(3) } to not have property "404"
+
+- Expected:
+undefined
+
++ Received:
+{
+  "content": {
+    "application/json": {
+      "example": {
+        "error": {
+          "code": "PRODUTO_NAO_ENCONTRADO",
+          "message": "Produto nao encontrado.",
+        },
+      },
+      "schema": {
+        "$ref": "#/components/schemas/Erro",
+      },
+    },
+  },
+  "description": "Produto nao encontrado.",
+}
+
+ ❯ tests/unit/openapi.test.ts:249:37
+    247|       });
+    248|     }
+    249|     expect(operation.responses).not.toHaveProperty("404");
+       |                                     ^
+    250|     expect(operation.description).toContain("fallback geral");
+    251|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.6 descreve os headers observaveis em cada leitura cacheada
+AssertionError: /produtos: expected undefined to match object { …(3) }
+
+- Expected:
+{
+  "Cache-Control": {
+    "schema": {
+      "const": "no-store",
+      "type": "string",
+    },
+  },
+  "Server-Timing": {
+    "schema": {
+      "type": "string",
+    },
+  },
+  "X-Cache": {
+    "schema": {
+      "enum": [
+        "MISS",
+        "HIT",
+      ],
+      "type": "string",
+    },
+  },
+}
+
++ Received:
+undefined
+
+ ❯ tests/unit/openapi.test.ts:258:29
+    256|       const operation = response.body.paths[path].get;
+    257|       const headers = operation.responses["200"].headers;
+    258|       expect(headers, path).toMatchObject({
+       |                             ^
+    259|         "X-Cache": {
+    260|           schema: { type: "string", enum: ["MISS", "HIT"] },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.6 documenta item ausente na remocao do carrinho
+TypeError: Cannot read properties of undefined (reading 'content')
+ ❯ tests/unit/openapi.test.ts:273:39
+    271|     const response = await request(app).get("/docs/openapi.json");
+    272|     const operation = response.body.paths["/carrinho/itens/{produtoId}…
+    273|     expect(operation.responses["404"].content["application/json"].exam…
+       |                                       ^
+    274|       error: {
+    275|         code: "PRODUTO_NAO_ENCONTRADO",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > inclui exemplos, schemas, segurança e erros aplicáveis
+AssertionError: expected undefined to be truthy
+
+- Expected:
+true
+
++ Received:
+undefined
+
+ ❯ tests/unit/openapi.test.ts:439:39
+    437|       for (const operation of Object.values(operations)) {
+    438|         expect(operation.summary).toBeTruthy();
+    439|         expect(operation.description).toBeTruthy();
+       |                                       ^
+    440|         expect(operation.operationId).toBeTruthy();
+    441|         ids.push(operation.operationId);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 16 passed (20)
+   Start at  00:06:35
+   Duration  2.09s (import 47%, transform 37%, tests 16%, worker 1%)
+

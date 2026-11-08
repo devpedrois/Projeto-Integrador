@@ -1727,3 +1727,11 @@ O Codex consolidou contratos, estratégias, arquitetura e limitações documenta
 Relacionou código, prints históricos e métricas do microsserviço.
 Atualizou o guia auxiliar e conferiu referências e números.
 Documento: [módulo de recomendação U2](modulo-recomendacao-u2.md).
+
+### 32.6: documentação de cache e Swagger final
+
+O Codex conferiu caches, rotas Express e contratos publicados.
+Criou testes prévios e corrigiu lacunas documentais do Swagger.
+Coletou headers, logs e print usando PostgreSQL e HTTP reais.
+Sincronizou os contratos históricos e realizou conferência documental de segurança.
+Evidências: [PI4-32.6](../evidencias/PI4-32/32.6-cache-swagger/README.md).

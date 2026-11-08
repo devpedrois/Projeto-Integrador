@@ -1,0 +1,41 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/unit/openapi.test.ts
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+stdout | tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.6 exemplifica selecoes completas com oito produtos distintos
+{"servico":"api","requestId":"98b53d7d-6c36-4e46-b44f-6a263d88e07d","metodo":"GET","rota":"/docs/openapi.json","status":200,"duracaoMs":1.139}
+
+ ❯ tests/unit/openapi.test.ts (21 tests | 1 failed) 315ms
+   ❯ WEB-15 OpenAPI (21)
+     × 32.6 exemplifica selecoes completas com oito produtos distintos 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.6 exemplifica selecoes completas com oito produtos distintos
+AssertionError: /recomendacoes: expected [ Array(1) ] to have a length of 8 but got 1
+
+- Expected
++ Received
+
+- 8
++ 1
+
+ ❯ tests/unit/openapi.test.ts:260:25
+    258|       ].example;
+    259|       const ids = example.itens.map((item: { id: string }) => item.id);
+    260|       expect(ids, path).toHaveLength(8);
+       |                         ^
+    261|       expect(new Set(ids).size, path).toBe(8);
+    262|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 20 passed (21)
+   Start at  00:16:40
+   Duration  2.18s (import 45%, transform 38%, tests 16%)
+
