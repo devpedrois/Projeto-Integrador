@@ -56,4 +56,11 @@ export class AuthService {
     }
     return usuario;
   }
+
+  public async identidade(id: string): Promise<UsuarioCriado> {
+    const usuario = await this.repository.buscarIdentidadeAtivaPorId(id);
+    if (usuario === null)
+      throw new AppError(401, "NAO_AUTENTICADO", "Sessao invalida ou ausente.");
+    return usuario;
+  }
 }

@@ -280,6 +280,17 @@ describe("WEB-15 OpenAPI", () => {
     }
   });
 
+  it("32.4 documenta cache privado sem armazenamento pelo navegador", async () => {
+    const response = await request(app).get("/docs/openapi.json");
+    const operation = response.body.paths["/artesao/indicadores"].get;
+    expect(operation.security).toEqual([{ sessao: [] }]);
+    expect(operation.responses["200"].headers).toMatchObject({
+      "X-Cache": { schema: { enum: ["MISS", "HIT"] } },
+      "Server-Timing": { schema: { type: "string" } },
+      "Cache-Control": { schema: { const: "no-store" } },
+    });
+  });
+
   it("32.6 documenta item ausente na remocao do carrinho", async () => {
     const response = await request(app).get("/docs/openapi.json");
     const operation = response.body.paths["/carrinho/itens/{produtoId}"].delete;

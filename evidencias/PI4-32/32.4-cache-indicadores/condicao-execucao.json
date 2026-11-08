@@ -1,0 +1,9 @@
+{
+  "dataLocal": "2026-11-08",
+  "timezone": "America/Sao_Paulo",
+  "commit21Integrado": "f2e3d58db31250d83e92a28af43f09bc174a8809",
+  "limiteIntegracao": "2026-11-11",
+  "congelamento": "2026-11-12",
+  "execucao": "iniciada antes do limite e do congelamento",
+  "subtarefa": "32.4"
+}

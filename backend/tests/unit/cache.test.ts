@@ -71,6 +71,34 @@ describe("MemoryCacheStore", () => {
   });
 });
 describe("cache publico", () => {
+  it("invalida indicadores dos donos e impede repovoamento anterior", async () => {
+    const store = new MemoryCacheStore();
+    const cache = new CachePublico(store, 300000);
+    await cache.obter("indicadores:artesao:b", async () => "outro");
+    let liberar: (valor: string) => void = () => {
+      throw new Error("Carga ausente");
+    };
+    let iniciar: () => void = () => {};
+    const iniciada = new Promise<void>((resolve) => {
+      iniciar = resolve;
+    });
+    const pendente = cache.obter("indicadores:artesao:a", () => {
+      iniciar();
+      return new Promise<string>((resolve) => {
+        liberar = resolve;
+      });
+    });
+    await iniciada;
+    await cache.invalidarIndicadores(["a", "a"]);
+    liberar("anterior");
+    await pendente;
+    expect(
+      await cache.obter("indicadores:artesao:a", async () => "atual"),
+    ).toEqual({ valor: "atual", estado: "MISS" });
+    expect(
+      await cache.obter("indicadores:artesao:b", async () => "incorreto"),
+    ).toEqual({ valor: "outro", estado: "HIT" });
+  });
   it("nao guarda valores recusados pela politica e permite recuperacao imediata", async () => {
     const cache = new CachePublico(new MemoryCacheStore(), 1000);
     const opcoes = { deveGuardar: (valor: string) => valor === "categoria" };

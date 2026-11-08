@@ -1,0 +1,29 @@
+{
+  "capturadoEm": "2026-11-08T04:33:17.830501+00:00",
+  "base": "f2e3d58db31250d83e92a28af43f09bc174a8809",
+  "sha256": {
+    "backend/scripts/cache-swagger.evidence.mjs": "0ab9e61846e4b0ee8990c604502e73df90103a610b47e795af2d858f5330dccc",
+    "backend/scripts/helpers/indicadores-cache-servidor.ts": "6b31124df4ccda839812c2ff1a8c58c4c28d7e2b559be28a50a7465d43eec2d7",
+    "backend/scripts/indicadores-cache-docker.ts": "b7c442043529cfb181af16855d935d92b37b8fc2237ac342e61ce9065e6d88e9",
+    "backend/src/app.ts": "24bfc3606132b45b793c4abe52e6c8a91bbd9c6a45c7ba8a7c1a91a6f70a66b3",
+    "backend/src/controllers/indicadores.controller.ts": "d056be68c3f46b6defc62ca983d2ccd6db7e26e46e93c96b7cc4bc1b05938ff3",
+    "backend/src/database/prisma/client.ts": "c2183c5c1e865776d4f7f8acf5033df623e0d0825654b2a5bd452fd4639848fe",
+    "backend/src/docs/openapi.ts": "f2f70ae94a99c8703623cf8cd9038493b04b325568606a1ab337abde742cbc70",
+    "backend/src/middlewares/auth.middleware.ts": "4ce12e12f0cbdbbfeb072547b5a865db636f365392a66e9e6aba6994e4365fea",
+    "backend/src/repositories/pedido.repository.ts": "246469f16f70c4b29b399ba96cb941b24cab239951f33d7bf6dafb7fd7b68109",
+    "backend/src/repositories/usuario.repository.ts": "f1e81f1ed07f221ef8d4dbbbc21e08772398881c30430b38338141626a31e3b0",
+    "backend/src/services/auth.service.ts": "7d025b5cfd329681db37f3a260d2ae2c9e3308f6fdda0fdf833b78b9f70edcc2",
+    "backend/src/services/pedido.service.ts": "198553a43e6557a4cd2476ff4983c2110a503a7298acb41023dbb92121cf5622",
+    "backend/src/utils/cache.ts": "25162caca44d54f8cc48832f26fb592f387ab28b07a2178ad448c4f57cf109bc",
+    "backend/src/utils/token.ts": "0ceaafac3e067a411c7dc589f30b835b00c8f7a40adcf9982901f60fa2c9a721",
+    "backend/tests/helpers/auth-database.ts": "563a2425f3069a2a222d478f03f68341017a260bb9c5b5043344d45169f38840",
+    "backend/tests/helpers/indicadores-cache-fixture.ts": "73e76344b6c4a5631692142200917a9f97bf36c2679f9f5214231255d2ed21e8",
+    "backend/tests/helpers/postgres-indicadores-local.ts": "0a45898f9e65c798b73be8af4a7a8f3f885a2b2eb0bfc46e6662871f5502e60f",
+    "backend/tests/helpers/servidor-indicadores-medicao.ts": "82c3c8be8379e528df84f0f5f157fbe8ee9b06bb802140135a0763e7dfe5dca2",
+    "backend/tests/integration/identidade-pool.integration.test.ts": "826d0a0098b1fa221c8aecf9d28e5e4032bf78cfeec0aac219e255ed3b71dd6a",
+    "backend/tests/integration/indicadores-cache-desempenho.integration.test.ts": "d2470f331fc991ffc1ada42a2641d7212115424411bcfa527b537f6208e43974",
+    "backend/tests/integration/indicadores-cache.integration.test.ts": "c820bb98228ef53603b65644726bbef247eaca941437b01aaa728260b242f9e1",
+    "backend/tests/unit/cache.test.ts": "3ea526af88f21cc2e6ceb6e2bb5405f1fa216aad79af8578fde7f500e1965af5",
+    "backend/tests/unit/openapi.test.ts": "2062bd80117f12138bc65532cd5c1e6108a4802a2132e3744416dd0c2052341a"
+  }
+}

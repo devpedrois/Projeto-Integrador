@@ -1,0 +1,15 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.0 [39m[90m/app[39m
+
+[90mstdout[2m | tests/integration/indicadores-cache-desempenho.integration.test.ts[2m > [22m[2mHTTP completo dos indicadores[2m > [22m[2mreduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+[22m[39mEVIDENCIA_HTTP_INDICADORES=/evidencias/PI4-32/32.4-cache-indicadores/7b2c5851-791a-4cc2-b413-9ac502442463/
+
+ [32m✓[39m tests/integration/indicadores-cache-desempenho.integration.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 2544[2mms[22m[39m
+   [32m✓[39m HTTP completo dos indicadores [2m(1)[22m
+     [33m[2m✓[22m[39m reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume[33m 332[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m   Start at [22m 04:27:24
+[2m   Duration [22m 3.01s[2m (tests 87%, transform 8%, import 4%)[22m
+

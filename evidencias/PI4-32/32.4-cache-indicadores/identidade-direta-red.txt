@@ -1,0 +1,39 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/indicadores-cache.integration.test.ts -t consulta identidade minima --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:53640) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/indicadores-cache.integration.test.ts (8 tests | 1 failed | 7 skipped) 2268ms
+   × consulta identidade minima no schema real e reflete revogacao imediatamente 780ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > consulta identidade minima no schema real e reflete revogacao imediatamente
+TypeError: repository.buscarIdentidadeAtivaPorId is not a function
+ ❯ tests/integration/indicadores-cache.integration.test.ts:205:27
+    203| it("consulta identidade minima no schema real e reflete revogacao imed…
+    204|   const repository = new PrismaUsuarioRepository(banco.prisma);
+    205|   expect(await repository.buscarIdentidadeAtivaPorId(fixture.a.id)).to…
+       |                           ^
+    206|     id: fixture.a.id, papel: "artesao",
+    207|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 skipped (8)
+   Start at  01:11:08
+   Duration  3.23s (tests 73%, import 15%, transform 13%)
+

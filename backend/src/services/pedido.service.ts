@@ -12,6 +12,7 @@ export class PedidoService {
   public constructor(
     private readonly repository: PedidoRepository,
     private readonly cache?: CachePublico,
+    private readonly cacheIndicadores?: CachePublico,
   ) {}
 
   public enviarItem(id: string, artesaoId: string) {
@@ -44,8 +45,12 @@ export class PedidoService {
     input: CriarPedidoInput,
     compradorId: string,
   ): Promise<PedidoCriado> {
-    const resultado = await this.repository.criar({ ...input, compradorId });
+    const { artesaoIds, ...resultado } = await this.repository.criar({
+      ...input,
+      compradorId,
+    });
     await this.cache?.invalidarCatalogo();
+    await this.cacheIndicadores?.invalidarIndicadores(artesaoIds);
     return resultado;
   }
 }

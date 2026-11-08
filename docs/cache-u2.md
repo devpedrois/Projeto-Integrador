@@ -1,6 +1,6 @@
 # Cache e documentação da API na U2
 
-Subtarefa 32.6. Conferência e coleta em 08/11/2026.
+Subtarefas 32.6 e 32.4. Coletas em 08/11/2026.
 Fontes: [OpenAPI implementado][openapi] e [evidências desta entrega][evidencias].
 
 ## 1. Pontos com cache e justificativa
@@ -10,13 +10,15 @@ O cache guarda dados no processo da API Express.
 `CacheHttp` expõe headers e registra cada resposta cacheada.
 Fontes: [composição][app], [armazenamento e política][cache] e [instrumentação][cache-http].
 
-| Rota                 | Por que aplicar aqui                                                                                                                                           | Chave e abrangência                                                                                                         |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `GET /produtos`      | Vitrine e filtros repetem leituras públicas. A consulta reúne fotos, vendas confirmadas e médias. Reutilizar filtros equivalentes evita repetir essa consulta. | `chaveCache("produtos:lista", queryValidada)`; inclui termo, categoria, técnica, região, artesão, limit e offset presentes. |
-| `GET /produtos/:id`  | O detalhe reúne classificação, fotos, estoque e métricas. Reabrir o produto reutiliza esses dados até invalidar ou expirar.                                    | `chaveCache("produtos:detalhe", { id })`; uma entrada por UUID normalizado.                                                 |
-| `GET /recomendacoes` | A faixa e o carrossel repetem leituras públicas. O caminho normal inclui HTTP interno e hidratação PostgreSQL. O HIT evita repetir ambos durante a validade.   | `chaveCache("recomendacoes:produto", { produtoId })`; contexto vazio possui entrada própria.                                |
+| Rota                       | Por que aplicar aqui                                                                                                                                           | Chave e abrangência                                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `GET /produtos`            | Vitrine e filtros repetem leituras públicas. A consulta reúne fotos, vendas confirmadas e médias. Reutilizar filtros equivalentes evita repetir essa consulta. | `chaveCache("produtos:lista", queryValidada)`; inclui termo, categoria, técnica, região, artesão, limit e offset presentes.            |
+| `GET /produtos/:id`        | O detalhe reúne classificação, fotos, estoque e métricas. Reabrir o produto reutiliza esses dados até invalidar ou expirar.                                    | `chaveCache("produtos:detalhe", { id })`; uma entrada por UUID normalizado.                                                            |
+| `GET /recomendacoes`       | A faixa e o carrossel repetem leituras públicas. O caminho normal inclui HTTP interno e hidratação PostgreSQL. O HIT evita repetir ambos durante a validade.   | `chaveCache("recomendacoes:produto", { produtoId })`; contexto vazio possui entrada própria.                                           |
+| `GET /artesao/indicadores` | O painel repete agregações de vendas por artesão. O cache privado evita recalcular a mesma amostra entre confirmações de pedidos.                              | `indicadores:artesao:<id da sessão>`; TTL próprio de cinco minutos. Veja a [seção 7](#7-cache-privado-dos-indicadores-do-artesão-324). |
 
-Fontes das rotas e chaves: [catálogo][controller-catalogo] e [recomendações][controller-rec].
+Fontes das rotas e chaves: [catálogo][controller-catalogo], [recomendações][controller-rec] e
+[indicadores](../backend/src/controllers/indicadores.controller.ts).
 Custos observáveis: [SQL do catálogo][repository-catalogo],
 [cliente do microsserviço](../backend/src/integrations/recommendation/http-recomendacao.client.ts) e
 [hidratação pública][service-rec].
@@ -43,7 +45,7 @@ recomendacoes:produto:[]
 
 ### TTL e limite de armazenamento
 
-Todos esses pontos recebem `CACHE_TTL_SECONDS` na composição.
+Os pontos públicos recebem `CACHE_TTL_SECONDS` na composição.
 O padrão é 60 segundos, convertido para milissegundos.
 A configuração aceita somente inteiros positivos.
 Fontes: [environment](../backend/src/config/environment.ts) e [app][app].
@@ -85,7 +87,6 @@ O [teste de integração existente][teste-cache] cobre outras escritas e expira�
 | Rota ou situação                                         | Motivo e comportamento                                                                                                                               | Fonte                                                                                                             |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `/recomendacoes/para-mim`                                | Seleção depende da identidade autenticada e das compras confirmadas. Evita compartilhar preferências entre compradores; `no-store`, sem `CacheHttp`. | [Controller pessoal][controller-rec]                                                                              |
-| `/artesao/indicadores`                                   | Vendas e receita pertencem ao artesão autenticado. A implementação consulta dados atuais; `no-store`, sem cache compartilhado.                       | [Controller artesanal](../backend/src/controllers/indicadores.controller.ts)                                      |
 | `/admin/indicadores`                                     | Contagens e receita refletem dados administrativos atuais. Query vazia, autorização administrativa e `no-store`.                                     | [Controller administrativo](../backend/src/controllers/indicadores-admin.controller.ts)                           |
 | Recomendações `fallback-local` e `misto`                 | São respostas de degradação ou complementação. Armazená-las atrasaria a recuperação do caminho normal. Continuam MISS nas chamadas seguintes.        | [Política do controller][controller-rec] e [service][service-rec]                                                 |
 | `/avaliacoes` e `/avaliacoes/elegibilidade`              | Paginação e resumo permanecem atuais; elegibilidade depende do comprador. As leituras não usam cache compartilhado.                                  | [Catálogo][controller-catalogo] e [controller de avaliação](../backend/src/controllers/avaliacao.controller.ts)   |
@@ -99,11 +100,10 @@ Uma seleção menor passa a `misto` e não persiste.
 Isso também vale quando faltam candidatos para completar.
 Fontes: [service][service-rec] e [controller][controller-rec].
 
-O cache opcional dos indicadores artesanais ainda não existe.
-Não há seção de implementação atribuída ao commit 22.
-O inventário desta entrega contém somente os pontos existentes.
-Fontes: [composição][app], [controller artesanal](../backend/src/controllers/indicadores.controller.ts) e
-[busca registrada](../evidencias/PI4-32/32.6-cache-swagger/inventario-cache.txt).
+O cache opcional dos indicadores artesanais entrou na 32.4.
+Sua política privada está detalhada na [seção 7](#7-cache-privado-dos-indicadores-do-artesão-324).
+O [inventário da 32.6](../evidencias/PI4-32/32.6-cache-swagger/inventario-cache.txt)
+permanece como evidência histórica anterior a essa implementação.
 
 ## 4. Evidência real de MISS e HIT
 
@@ -151,6 +151,8 @@ Fonte: [instrumentação real][cache-http].
 
 A coleta também confirmou os comportamentos abaixo.
 Fonte: [HTTP real][http], cenários indicados na tabela.
+Essas observações pertencem à 32.6, antes do cache artesanal.
+A 32.4 acrescenta sua coleta própria na seção 7.
 
 | Cenário                                          | Resultado das duas chamadas                                |
 | ------------------------------------------------ | ---------------------------------------------------------- |
@@ -217,6 +219,176 @@ Reiniciar o processo elimina o armazenamento padrão em memória.
 Não existe garantia de resposta durante falha do PostgreSQL.
 Fontes: [composição][app], [armazenamento][cache] e [service][service-rec].
 
+## 7. Cache privado dos indicadores do artesão, 32.4
+
+Implementação iniciada em 08/11/2026, antes do corte previsto.
+O commit 21 já estava integrado na `main` local.
+Fonte: [condição de execução](../evidencias/PI4-32/32.4-cache-indicadores/condicao-execucao.json).
+
+### Escopo, chave e privacidade
+
+O painel consulta indicadores ao montar seu componente.
+O hook também permite repetir a leitura explicitamente.
+Reabrir o painel pode reutilizar a mesma agregação.
+A consulta agrupa itens e pedidos confirmados do artesão.
+Fontes: [painel](../frontend/src/app/painel-artesao/page.tsx),
+[hook](../frontend/src/hooks/use-indicadores-artesao.ts),
+[service HTTP](../frontend/src/services/http/indicadores-artesao.service.ts) e
+[SQL agregado](../backend/src/repositories/indicadores.repository.ts).
+
+`GET /artesao/indicadores` usa o mesmo padrão de `CacheHttp`.
+Cada entrada corresponde exclusivamente ao artesão da sessão autenticada.
+A chave é `indicadores:artesao:<id da sessão>`, em minúsculas.
+Nenhum identificador externo é aceito pela query estrita.
+Fontes: [controller](../backend/src/controllers/indicadores.controller.ts),
+[construção da chave][cache] e [validator](../backend/src/validators/indicadores.validator.ts).
+
+O servidor mantém TTL absoluto de cinco minutos, 300.000 milissegundos.
+Esse TTL independe de `CACHE_TTL_SECONDS`, usado pelo catálogo.
+HITs preservam `atualizadoEm`, que identifica a amostra originalmente consultada.
+Fontes: [composição][app], [armazenamento][cache] e
+[service](../backend/src/services/indicadores.service.ts).
+
+O navegador continua recebendo `Cache-Control: no-store`.
+Os indicadores contêm receita privada do próprio artesão.
+Armazená-los no navegador permitiria reutilização após mudanças de sessão.
+O cache no servidor exige nova autenticação antes de cada leitura.
+Atividade e papel continuam sendo revalidados no PostgreSQL.
+Fontes: [router](../backend/src/routes/indicadores.routes.ts),
+[autenticação](../backend/src/middlewares/auth.middleware.ts) e [CacheHttp][cache-http].
+
+A otimização autorizada mantém uma consulta por requisição autenticada.
+Ela usa SQL parametrizado no mesmo pool do Prisma.
+O schema vem da fábrica, com validação por allowlist.
+São lidos somente os campos públicos do usuário ativo.
+Clientes externos à fábrica conservam a leitura pelo Prisma.
+Os outros caminhos autenticados mantêm sua implementação anterior.
+Fontes: [repository](../backend/src/repositories/usuario.repository.ts),
+[fábrica e ciclo do pool](../backend/src/database/prisma/client.ts),
+[service](../backend/src/services/auth.service.ts) e [composição][app].
+
+Essa rota também prepara a chave HMAC uma vez.
+Cada chamada ainda verifica assinatura, algoritmo, expiração e payload.
+Não existe armazenamento de decisões de autenticação ou autorização.
+Fontes: [leitura da sessão](../backend/src/utils/token.ts),
+[middleware](../backend/src/middlewares/auth.middleware.ts) e
+[testes de revogação e tokens](../backend/tests/integration/indicadores-cache.integration.test.ts).
+
+### Invalidação na confirmação do pedido
+
+O checkout identifica os donos ao consultar produtos bloqueados.
+Os IDs distintos acompanham internamente o resultado da confirmação.
+Somente depois do commit o service invalida essas entradas.
+Outros artesãos preservam suas entradas e respectivas amostras.
+IDs internos dos donos não integram a resposta pública.
+Fontes: [repository de pedidos](../backend/src/repositories/pedido.repository.ts),
+[service de pedidos](../backend/src/services/pedido.service.ts) e
+[controller de pedidos](../backend/src/controllers/pedido.controller.ts).
+
+A coleta dos donos reutiliza a consulta transacional existente.
+Não acrescenta consulta posterior ao pedido ou por item.
+`invalidarIndicadores` também impede repovoamento por cargas anteriores à invalidação.
+Checkout revertido não invalida os indicadores previamente armazenados.
+Fontes: [repository](../backend/src/repositories/pedido.repository.ts), [cache][cache] e
+[testes reais](../backend/tests/integration/indicadores-cache.integration.test.ts).
+
+### Medição e logs reais
+
+O aceite usa duração HTTP completa, incluindo autenticação.
+O cronômetro termina após receber e interpretar o JSON.
+`Server-Timing` permanece diagnóstico do trecho interno do cache.
+Fonte: [teste de desempenho](../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts).
+
+A coleta final usa Linux, Node v22.23.4 e PostgreSQL 16.15.
+Cliente e API executam em processos separados no Docker.
+O HTTP usa keep-alive em loopback, sem tráfego público.
+A massa mantém exatamente 1.500 pedidos e 1.550 itens.
+Contém 1.000 produtos; não foi ampliada para estresse.
+O artesão é o primeiro da massa determinística existente.
+Fontes: [coleta final][http-indicadores], [massa](../backend/prisma/seeds/volume.ts) e
+[executor Docker](../backend/scripts/indicadores-cache-docker.ts).
+
+Dez pares prévios aquecem ambos os caminhos, MISS e HIT.
+Depois são medidos dez pares, sem descarte ou repetição seletiva.
+Cada par invalida somente a entrada, fora do cronômetro.
+As chamadas retornam 200, MISS seguido de HIT e corpos iguais.
+O cálculo compara médias aritméticas: `100 × (1 − médiaHIT / médiaMISS)`.
+Fontes: [teste](../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts) e
+[JSON bruto, com precisão integral][http-indicadores].
+
+Valores abaixo arredondados somente para apresentação.
+Fonte de todos os números: [coleta final][http-indicadores].
+
+| Par   | MISS, HTTP ms | HIT, HTTP ms | Redução HTTP |
+| ----- | ------------: | -----------: | -----------: |
+| 1     |         3,300 |        1,624 |       50,80% |
+| 2     |         2,734 |        1,105 |       59,57% |
+| 3     |         3,655 |        1,159 |       68,27% |
+| 4     |         2,951 |        1,402 |       52,49% |
+| 5     |         3,145 |        1,117 |       64,50% |
+| 6     |         3,545 |        1,476 |       58,35% |
+| 7     |         3,219 |        1,219 |       62,12% |
+| 8     |         2,982 |        1,283 |       56,99% |
+| 9     |         2,812 |        1,262 |       55,12% |
+| 10    |         3,361 |        1,373 |       59,15% |
+| Média |         3,170 |        1,302 |       58,93% |
+
+Todos os pares dessa coleta superaram a redução de 50%.
+O teste automatizado verifica a redução média dos dez pares.
+Coletas diagnósticas anteriores e falhas permanecem nas [evidências 32.4][evidencias-indicadores].
+O ganho local não garante tempos equivalentes em produção.
+Fontes: [coleta final][http-indicadores] e [saída do aceite](../evidencias/PI4-32/32.4-cache-indicadores/medicao-http-apos-revisao.txt).
+
+No primeiro par, `Server-Timing` foi `cache;dur=2.071`, depois `cache;dur=0.060`.
+As respostas preservaram `Cache-Control: no-store`.
+O log real correspondente segue abaixo, sem identificadores privados.
+Fontes: campos `pares` e `logs` da [coleta][http-indicadores] e
+[asserções HTTP do teste](../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts).
+
+```json
+{"rota":"/artesao/indicadores","cache":"MISS","duracaoMs":2.319}
+{"rota":"/artesao/indicadores","cache":"HIT","duracaoMs":0.238}
+```
+
+### Reprodução
+
+Dentro de `backend/`, com PostgreSQL de testes configurado em `DIRECT_URL`:
+
+```powershell
+npm.cmd test -- tests/integration/indicadores-cache.integration.test.ts tests/integration/identidade-pool.integration.test.ts --testTimeout=60000 --hookTimeout=120000
+```
+
+O teste cria schema e dados sintéticos isolados.
+Usa o armazenamento real, autenticação real e checkout transacional.
+Ao concluir, remove somente o schema criado para testes.
+Fontes: [fixture](../backend/tests/helpers/indicadores-cache-fixture.ts) e
+[helper isolado](../backend/tests/helpers/auth-database.ts).
+
+Para reproduzir o desempenho, prepare as imagens locais:
+
+```powershell
+docker build --target migrate -t origem-backend-migrate:local .
+docker pull postgres:16
+node --import tsx scripts/indicadores-cache-docker.ts
+```
+
+O executor monta o código atual somente para leitura.
+Usa dependências Linux da imagem e PostgreSQL temporário próprio.
+Não utiliza `DIRECT_URL` ou dados externos para medir desempenho.
+Cria schema isolado e grava uma nova coleta JSON.
+Após concluir, encerra a API e o container temporário.
+O helper verifica a propriedade do container antes de encerrá-lo.
+O benchmark fica separado da execução comum dos testes.
+O executor define `EVIDENCIA_INDICADORES=1` para habilitá-lo.
+Fontes: [executor](../backend/scripts/indicadores-cache-docker.ts),
+[PostgreSQL temporário](../backend/tests/helpers/postgres-indicadores-local.ts),
+[servidor real](../backend/scripts/helpers/indicadores-cache-servidor.ts) e
+[teste de desempenho](../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts).
+
+Resultados, revisão e limites: [evidências 32.4](../evidencias/PI4-32/32.4-cache-indicadores/README.md).
+
+[http-indicadores]: ../evidencias/PI4-32/32.4-cache-indicadores/7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json
+[evidencias-indicadores]: ../evidencias/PI4-32/32.4-cache-indicadores/README.md
 [app]: ../backend/src/app.ts
 [cache]: ../backend/src/utils/cache.ts
 [cache-http]: ../backend/src/utils/cache-http.ts

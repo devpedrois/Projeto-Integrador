@@ -1,0 +1,14 @@
+{
+  "capturadoEm": "2026-11-08T04:33:17.618499+00:00",
+  "fonte": "7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json",
+  "paresValidados": 10,
+  "todosAcimaDe50PorCento": true,
+  "reducaoMediaHttpPercentual": 58.93152257276275,
+  "menorReducaoHttpPercentual": 50.798768510295744,
+  "massa": {
+    "produtos": 1000,
+    "pedidos": 1500,
+    "itens": 1550
+  },
+  "http200MissHitNoStoreCorposIguais": true
+}

@@ -1,0 +1,108 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/indicadores-cache-desempenho.integration.test.ts --testTimeout=60000 --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:35748) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"06df1291-faac-43a3-9bee-2d199680754e","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":119.354}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"ee36e492-abd1-45cf-ad05-cad2f0dcd2ea","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":53.098}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"6dd9f629-31c5-4267-83b4-511bd4c2f7e4","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":105.023}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"57940eb2-efcc-4b2f-99f5-b6222f1a7c13","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":52.292}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"e9024c23-97fd-4e7c-9397-c0a9df8dfc08","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":105.083}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"22bd18a1-5f9e-44d3-9c50-8b2c91021a5e","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":52.128}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"68e630be-d529-48ee-b42d-9dc8e8370e6e","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":104.65}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"b140bd8d-01e6-4043-a0b7-e86ca69ce60f","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":51.894}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"89fcaab7-6caa-4d87-ac9c-f77174aa4285","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":104.412}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"d81db154-aa35-43b8-96aa-c394990f85d8","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":52.444}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"46ed031e-21d4-4589-8f32-85d9ad58fd92","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":104.584}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"e866b78f-5797-45df-b873-1ca580ace9bd","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":52.388}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"efdfeba6-8fc0-4d41-8209-e1202f720265","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":104.437}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"005ea87b-dba3-4cfc-a67e-2b838dce9b7a","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":51.741}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"611cd429-5fd0-4a2a-9544-a08c1a503b30","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":104.758}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"72537e57-e3d6-4098-9296-4692a2c33bd9","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":51.408}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"58dfa457-86c0-41a6-b634-8660e4ccb774","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":105.038}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"ccde7602-6d82-4c9c-95e8-01125eaec469","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":52.715}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"33c3194c-bf6f-49ae-8194-f085cd045851","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":104.371}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"a5f9f1a3-4cc9-4e32-a626-c8efe4aa2192","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":51.701}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"4f0ce0d6-ae76-45e4-9e39-0e38afeb5406","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":104.396}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+{"servico":"api","requestId":"baced0a5-ab53-4332-b2d0-2fda71eda74e","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":51.175}
+
+stdout | tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+EVIDENCIA_HTTP_INDICADORES=/C:/Users/Pedro/Desktop/Projeto%20integrador/evidencias/PI4-32/32.4-cache-indicadores/da9ef43a-08c6-4180-bede-d2e041793d86/
+
+ ❯ tests/integration/indicadores-cache-desempenho.integration.test.ts (1 test | 1 failed) 5014ms
+   × reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume 1957ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+AssertionError: expected 53.53807000000006 to be less than or equal to 53.16295999999998
+ ❯ tests/integration/indicadores-cache-desempenho.integration.test.ts:118:22
+    116|   }
+    117|   expect(pares).toHaveLength(10);
+    118|   expect(mediaHitMs).toBeLessThanOrEqual(mediaMissMs * 0.5);
+       |                      ^
+    119| }, 60000);
+    120|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  00:51:57
+   Duration  6.21s (tests 83%, import 9%, transform 8%)
+

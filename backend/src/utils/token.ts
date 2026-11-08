@@ -1,4 +1,5 @@
 import type { CookieOptions, Request, Response } from "express";
+import { createSecretKey, type KeyObject } from "node:crypto";
 import jwt from "jsonwebtoken";
 import { z } from "zod";
 import { AppError } from "../errors/app-error.js";
@@ -58,6 +59,22 @@ export function lerSessao(
   request: Request,
   secret: string | undefined,
 ): z.infer<typeof sessaoSchema> {
+  return lerSessaoComChave(request, secret);
+}
+
+export function prepararLeitorSessao(secret: string | undefined) {
+  const chave =
+    secret !== undefined && secret.trim().length >= 32
+      ? createSecretKey(Buffer.from(secret))
+      : undefined;
+  return (request: Request) => lerSessaoComChave(request, secret, chave);
+}
+
+function lerSessaoComChave(
+  request: Request,
+  secret: string | undefined,
+  chave?: KeyObject,
+): z.infer<typeof sessaoSchema> {
   const cookies = request.cookies as Record<string, unknown>;
   const token = cookies[COOKIE_SESSAO];
   const semSessao = new AppError(
@@ -68,7 +85,7 @@ export function lerSessao(
   if (typeof token !== "string" || token.length === 0) throw semSessao;
   const key = segredoConfigurado(secret);
   try {
-    const payload: unknown = jwt.verify(token, key, {
+    const payload: unknown = jwt.verify(token, chave ?? key, {
       algorithms: ["HS256"],
       maxAge: DURACAO_SESSAO_SEGUNDOS,
     });

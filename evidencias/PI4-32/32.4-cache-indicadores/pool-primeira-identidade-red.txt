@@ -1,0 +1,46 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/identidade-pool.integration.test.ts --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:15744) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/identidade-pool.integration.test.ts (1 test | 1 failed) 1950ms
+   × encerra o pool proprio mesmo quando identidade e a primeira operacao 491ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/identidade-pool.integration.test.ts > encerra o pool proprio mesmo quando identidade e a primeira operacao
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/integration/identidade-pool.integration.test.ts:22:24
+     20|     expect(await new PrismaUsuarioRepository(prisma).buscarIdentidadeA…
+     21|     await prisma.$disconnect();
+     22|     expect(pool.ended).toBe(true);
+       |                        ^
+     23|   } finally {
+     24|     await prisma.$disconnect();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  01:18:37
+   Duration  2.22s (tests 92%, transform 4%, import 4%)
+

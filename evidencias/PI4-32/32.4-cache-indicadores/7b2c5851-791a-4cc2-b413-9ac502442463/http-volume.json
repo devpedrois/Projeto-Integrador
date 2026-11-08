@@ -1,0 +1,443 @@
+{
+  "capturadoEm": "2026-11-08T04:27:27.646Z",
+  "ambiente": "API em processo separado; HTTP keep-alive em loopback; PostgreSQL Docker local; schema sintetico isolado",
+  "runtime": {
+    "plataforma": "linux",
+    "node": "v22.23.4"
+  },
+  "imagem": "postgres:16",
+  "postgres": "PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "metodo": "HTTP completo ate interpretar JSON; autenticacao incluida; dez pares de aquecimento MISS/HIT; dez pares medidos sem descarte; comparacao das medias aritmeticas",
+  "contagens": {
+    "produtos": 1000,
+    "pedidos": 1500,
+    "itens": 1550
+  },
+  "pares": [
+    {
+      "par": 1,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.487Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.487Z"
+        }
+      },
+      "missHttpMs": 3.3003929999999855,
+      "hitHttpMs": 1.623833999999988,
+      "missServerTiming": "cache;dur=2.071",
+      "hitServerTiming": "cache;dur=0.060",
+      "reducaoHttpPercentual": 50.798768510295744
+    },
+    {
+      "par": 2,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.492Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.492Z"
+        }
+      },
+      "missHttpMs": 2.73419100000001,
+      "hitHttpMs": 1.105395000000044,
+      "missServerTiming": "cache;dur=1.651",
+      "hitServerTiming": "cache;dur=0.031",
+      "reducaoHttpPercentual": 59.57140521638612
+    },
+    {
+      "par": 3,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.497Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.497Z"
+        }
+      },
+      "missHttpMs": 3.6547230000001036,
+      "hitHttpMs": 1.1594789999999193,
+      "missServerTiming": "cache;dur=2.300",
+      "hitServerTiming": "cache;dur=0.029",
+      "reducaoHttpPercentual": 68.27450397745913
+    },
+    {
+      "par": 4,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.502Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.502Z"
+        }
+      },
+      "missHttpMs": 2.951017999999749,
+      "hitHttpMs": 1.402165999999852,
+      "missServerTiming": "cache;dur=1.786",
+      "hitServerTiming": "cache;dur=0.032",
+      "reducaoHttpPercentual": 52.48534573493042
+    },
+    {
+      "par": 5,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.507Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.507Z"
+        }
+      },
+      "missHttpMs": 3.1450199999999313,
+      "hitHttpMs": 1.1165350000001126,
+      "missServerTiming": "cache;dur=1.850",
+      "hitServerTiming": "cache;dur=0.030",
+      "reducaoHttpPercentual": 64.49831797571599
+    },
+    {
+      "par": 6,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.512Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.512Z"
+        }
+      },
+      "missHttpMs": 3.5445989999998346,
+      "hitHttpMs": 1.4761889999999767,
+      "missServerTiming": "cache;dur=2.145",
+      "hitServerTiming": "cache;dur=0.029",
+      "reducaoHttpPercentual": 58.35385046376062
+    },
+    {
+      "par": 7,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.517Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.517Z"
+        }
+      },
+      "missHttpMs": 3.2191079999997783,
+      "hitHttpMs": 1.2192790000003697,
+      "missServerTiming": "cache;dur=2.065",
+      "hitServerTiming": "cache;dur=0.032",
+      "reducaoHttpPercentual": 62.12370010572948
+    },
+    {
+      "par": 8,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.522Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.522Z"
+        }
+      },
+      "missHttpMs": 2.9824979999998504,
+      "hitHttpMs": 1.282698999999866,
+      "missServerTiming": "cache;dur=1.700",
+      "hitServerTiming": "cache;dur=0.026",
+      "reducaoHttpPercentual": 56.99246068228947
+    },
+    {
+      "par": 9,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.526Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.526Z"
+        }
+      },
+      "missHttpMs": 2.811557999999877,
+      "hitHttpMs": 1.2617769999997108,
+      "missServerTiming": "cache;dur=1.689",
+      "hitServerTiming": "cache;dur=0.143",
+      "reducaoHttpPercentual": 55.12178656816733
+    },
+    {
+      "par": 10,
+      "miss": {
+        "status": 200,
+        "cache": "MISS",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.531Z"
+        }
+      },
+      "hit": {
+        "status": 200,
+        "cache": "HIT",
+        "cacheControl": "no-store",
+        "corpo": {
+          "quantidadeVendida": 96,
+          "receitaTotal": 27954.01,
+          "numeroPedidos": 46,
+          "ultimaVenda": "2026-08-02T00:36:00.000Z",
+          "atualizadoEm": "2026-11-08T04:27:27.531Z"
+        }
+      },
+      "missHttpMs": 3.360697000000073,
+      "hitHttpMs": 1.3729170000001432,
+      "missServerTiming": "cache;dur=2.011",
+      "hitServerTiming": "cache;dur=0.032",
+      "reducaoHttpPercentual": 59.14784938957266
+    }
+  ],
+  "mediaMissMs": 3.1703804999999194,
+  "mediaHitMs": 1.3020269999999983,
+  "reducaoHttpPercentual": 58.93152257276275,
+  "logs": [
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.319
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.238
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 1.832
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.213
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.659
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.194
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.018
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.213
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.036
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.282
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.466
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.202
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.351
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.208
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 1.889
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.184
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 1.946
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.325
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.222
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.213
+    }
+  ]
+}

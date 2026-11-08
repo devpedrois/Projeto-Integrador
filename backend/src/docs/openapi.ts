@@ -1199,10 +1199,10 @@ endpoint({
   tag: "Indicadores",
   papel: "artesao",
   request: { query: indicadoresQuerySchema },
-  response: json(indicadores, indicadoresExample),
+  response: jsonCache(indicadores, indicadoresExample),
   errors: [400, 401, 403],
   description:
-    "Identidade vem da sessão. Soma quantidade e subtotal somente dos próprios itens em pedidos confirmados. Conta pedidos distintos. ultimaVenda usa criadoEm do pedido; atualizadoEm é o momento da consulta. Sem vendas retorna zeros e ultimaVenda null. Receita em number com precisão de duas casas. Sem cache compartilhado.",
+    "Identidade vem da sessao autenticada e papel artesao revalidado antes do cache. Query estrita vazia. Soma quantidade e subtotal somente dos proprios itens em pedidos confirmados; conta pedidos distintos. ultimaVenda usa criadoEm do pedido; atualizadoEm registra a geracao da amostra, preservada nos HITs. Sem vendas retorna zeros e ultimaVenda null. Receita em number com duas casas. Cache privado no servidor por indicadores:artesao:<id da sessao>, TTL absoluto de 300 segundos, independente de CACHE_TTL_SECONDS do catalogo. Checkout confirmado invalida somente os donos dos itens apos commit. X-Cache MISS/HIT e Server-Timing no padrao CacheHttp; navegador continua Cache-Control: no-store.",
 });
 endpoint({
   method: "patch",

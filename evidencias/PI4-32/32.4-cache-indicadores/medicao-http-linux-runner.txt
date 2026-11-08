@@ -1,0 +1,29 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.0 [39m[90m/app[39m
+
+[90mstdout[2m | tests/integration/indicadores-cache-desempenho.integration.test.ts[2m > [22m[2mreduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+[22m[39mEVIDENCIA_HTTP_INDICADORES=/evidencias/PI4-32/32.4-cache-indicadores/0475cb55-c80c-44ad-86f5-30c5dc4ed80d/
+
+ [31m❯[39m tests/integration/indicadores-cache-desempenho.integration.test.ts [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 3558[2mms[22m[39m
+[31m   [31m×[31m reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume[39m[33m 451[2mms[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m   Start at [22m 04:09:10
+[2m   Duration [22m 4.24s[2m (tests 87%, transform 8%, import 5%)[22m
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores-cache-desempenho.integration.test.ts > reduz em pelo menos cinquenta por cento a media HTTP de dez pares no volume
+AssertionError: expected 3.408286199999975 to be less than or equal to 3.0789935000000015
+ ❯ tests/integration/indicadores-cache-desempenho.integration.test.ts:116:22
+    114|   }
+    115|   expect(pares).toHaveLength(10);
+    116|   expect(mediaHitMs).toBeLessThanOrEqual(mediaMissMs * 0.5);
+       |                      ^
+    117| }, 60000);
+    118|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

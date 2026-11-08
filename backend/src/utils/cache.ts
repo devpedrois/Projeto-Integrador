@@ -68,6 +68,10 @@ export function chaveCache(
   return `${prefixo}:${JSON.stringify(entradas)}`;
 }
 
+export function chaveIndicadoresArtesao(artesaoId: string): string {
+  return `indicadores:artesao:${artesaoId.toLowerCase()}`;
+}
+
 export type EstadoCache = "HIT" | "MISS";
 export interface OpcoesCache<T> {
   deveGuardar?: (valor: T) => boolean;
@@ -115,6 +119,15 @@ export class CachePublico {
     return this.enfileirar(async () => {
       await this.store.invalidarPorPrefixo("produtos:");
       await this.store.invalidarPorPrefixo("recomendacoes:");
+    });
+  }
+
+  invalidarIndicadores(artesaoIds: readonly string[]): Promise<void> {
+    if (artesaoIds.length === 0) return Promise.resolve();
+    this.revisao += 1;
+    return this.enfileirar(async () => {
+      const chaves = new Set(artesaoIds.map(chaveIndicadoresArtesao));
+      for (const chave of chaves) await this.store.invalidarPorPrefixo(chave);
     });
   }
 }

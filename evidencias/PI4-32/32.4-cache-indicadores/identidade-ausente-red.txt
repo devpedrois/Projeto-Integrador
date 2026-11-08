@@ -1,0 +1,43 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/indicadores-cache.integration.test.ts -t a leitura de identidade --testTimeout=60000 --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:53536) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/indicadores-cache.integration.test.ts (8 tests | 1 failed | 7 skipped) 2305ms
+   × a leitura de identidade retorna somente id e papel de usuario ativo 793ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > a leitura de identidade retorna somente id e papel de usuario ativo
+AssertionError: expected 'undefined' to be 'function' // Object.is equality
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tests/integration/indicadores-cache.integration.test.ts:191:56
+    189| it("a leitura de identidade retorna somente id e papel de usuario ativ…
+    190|   const repository = new PrismaUsuarioRepository(banco.prisma);
+    191|   expect(typeof repository.buscarIdentidadeAtivaPorId).toBe("function"…
+       |                                                        ^
+    192|   expect(await repository.buscarIdentidadeAtivaPorId(fixture.a.id)).to…
+    193|     id: fixture.a.id, papel: "artesao",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 skipped (8)
+   Start at  00:58:33
+   Duration  3.53s (tests 69%, import 16%, transform 15%)
+

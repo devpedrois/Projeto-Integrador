@@ -1,0 +1,39 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/indicadores-cache.integration.test.ts -t a confirmacao entrega --testTimeout=60000 --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:30544) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/integration/indicadores-cache.integration.test.ts (7 tests | 1 failed | 6 skipped) 3075ms
+   × a confirmacao entrega os donos identificados na propria transacao 1531ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > a confirmacao entrega os donos identificados na propria transacao
+AssertionError: expected { …(7) } to have property "artesaoIds"
+ ❯ tests/integration/indicadores-cache.integration.test.ts:162:22
+    160|     ],
+    161|   });
+    162|   expect(confirmado).toHaveProperty("artesaoIds");
+       |                      ^
+    163|   expect(confirmado).toMatchObject({
+    164|     artesaoIds: expect.arrayContaining([fixture.a.id, fixture.b.id]),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 skipped (7)
+   Start at  00:47:05
+   Duration  4.93s (tests 65%, import 20%, transform 15%)
+

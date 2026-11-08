@@ -2,13 +2,12 @@ import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { Pool } from "pg";
-import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../../src/generated/prisma/client.js";
+import { createPrismaClientWithPool } from "../../src/database/prisma/client.js";
 
-export async function criarBancoAuth() {
+export async function criarBancoAuth(databaseUrl = process.env.DIRECT_URL) {
   const schema = `web03_${randomUUID().replaceAll("-", "")}`;
   const pool = new Pool({
-    connectionString: process.env.DIRECT_URL,
+    connectionString: databaseUrl,
     max: 2,
     options: `-c search_path=${schema},public`,
   });
@@ -53,7 +52,7 @@ export async function criarBancoAuth() {
     throw new Error("Falha ao preparar schema isolado WEB-03");
   }
   client.release();
-  const prisma = new PrismaClient({ adapter: new PrismaPg(pool, { schema }) });
+  const prisma = createPrismaClientWithPool(pool, schema);
   return {
     prisma,
     pool,

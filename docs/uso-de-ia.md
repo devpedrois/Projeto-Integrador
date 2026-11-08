@@ -1735,3 +1735,12 @@ Criou testes prévios e corrigiu lacunas documentais do Swagger.
 Coletou headers, logs e print usando PostgreSQL e HTTP reais.
 Sincronizou os contratos históricos e realizou conferência documental de segurança.
 Evidências: [PI4-32.6](../evidencias/PI4-32/32.6-cache-swagger/README.md).
+
+### 32.4: cache privado dos indicadores do artesão
+
+O Codex implementou cache por identidade autenticada, preservando `no-store`.
+Criou testes prévios para isolamento, expiração e invalidação transacional.
+Otimizou a autenticação da rota, mantendo revalidação no PostgreSQL.
+Mediu dez pares reais, separando CacheHttp e HTTP completo.
+Atualizou o documento de cache e o contrato OpenAPI.
+Evidências: [PI4-32.4](../evidencias/PI4-32/32.4-cache-indicadores/README.md).

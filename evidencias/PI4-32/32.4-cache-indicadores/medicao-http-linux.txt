@@ -1,0 +1,22 @@
+failed to load config from /app/vitest.config.ts
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+Error: EACCES: permission denied, open '/app/vitest.config.ts.timestamp-1794110917646-93d09198fbec1.mjs'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.writeFile (node:internal/fs/promises:1222:14)
+    at async loadConfigFromBundledFile (file:///app/node_modules/vite/dist/node/chunks/node.js:37497:3)
+    at async bundleAndLoadConfigFile (file:///app/node_modules/vite/dist/node/chunks/node.js:37345:21)
+    at async loadConfigFromFile (file:///app/node_modules/vite/dist/node/chunks/node.js:37305:42)
+    at async resolveConfig (file:///app/node_modules/vite/dist/node/chunks/node.js:36906:22)
+    at async resolveConfig$1 (file:///app/node_modules/vitest/dist/chunks/index.B89dZ0-N.js:14773:25)
+    at async createVitest (file:///app/node_modules/vitest/dist/chunks/cli-api.LUtK11-x.js:26:17)
+    at async prepareVitest (file:///app/node_modules/vitest/dist/chunks/cli-api.LUtK11-x.js:421:14)
+    at async startVitest (file:///app/node_modules/vitest/dist/chunks/cli-api.LUtK11-x.js:340:14) {
+  errno: -13,
+  code: 'EACCES',
+  syscall: 'open',
+  path: '/app/vitest.config.ts.timestamp-1794110917646-93d09198fbec1.mjs'
+}
+
+
+

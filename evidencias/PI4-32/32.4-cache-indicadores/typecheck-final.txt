@@ -1,0 +1,8 @@
+
+> origem-backend@1.0.0 typecheck
+> tsc --noEmit
+
+scripts/helpers/indicadores-cache-servidor.ts(46,3): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+scripts/helpers/indicadores-cache-servidor.ts(54,7): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+src/middlewares/auth.middleware.ts(34,7): error TS2739: Type 'IdentidadeUsuario' is missing the following properties from type 'UsuarioCriado': nome, email
+tests/helpers/servidor-indicadores-medicao.ts(21,7): error TS2353: Object literal may only specify known properties, and 'windowsHide' does not exist in type 'ForkOptions'.

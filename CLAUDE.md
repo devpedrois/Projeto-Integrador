@@ -637,7 +637,7 @@ Conferida contra os routers Express e `backend/src/docs/openapi.ts`.
 | `/artesao/pedidos` | GET | Artesão; pedidos confirmados com id, status e enviadoEm nos itens próprios; subtotal próprio; paginação limit/offset |
 | `/artesao/itens-pedido/:id/enviar` | PATCH | Próprio artesão; pedido confirmado; transição única com enviadoEm; alheio 404; reenvio ou não confirmado 409 |
 | `/artesao/produtos` | GET | Artesão; próprios produtos, inclusive ocultos |
-| `/artesao/indicadores` | GET | Artesão; quantidade, receita, pedidos distintos e última venda confirmada |
+| `/artesao/indicadores` | GET | Artesão; quantidade, receita, pedidos distintos e última venda confirmada; cache privado no servidor por ID da sessão, TTL de 5 min; checkout confirmado invalida os donos dos itens após commit; navegador no-store; X-Cache e Server-Timing |
 | `/produtos` | POST | Artesão; cria próprio produto |
 | `/produtos/:id` | PATCH/DELETE | Próprio artesão ou admin; edição e soft delete |
 | `/produtos/:id/estoque` | PATCH | Próprio artesão ou admin; estoque transacional |

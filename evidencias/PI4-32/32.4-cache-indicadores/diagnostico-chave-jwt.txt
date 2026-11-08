@@ -1,0 +1,2 @@
+{"tipo":"texto","repeticoes":1000,"mediaMs":0.3947586}
+{"tipo":"KeyObject","repeticoes":1000,"mediaMs":0.011653999999999996}

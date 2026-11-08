@@ -1,6 +1,7 @@
 import { Prisma, type PrismaClient } from "../generated/prisma/client.js";
 import type { PapelUsuario } from "../generated/prisma/enums.js";
 import { AppError } from "../errors/app-error.js";
+import { obterConexaoPrisma } from "../database/prisma/client.js";
 
 export interface NovoUsuario {
   nome: string;
@@ -37,6 +38,7 @@ export interface AuthUsuarioRepository extends UsuarioRepository {
   criarComEspecializacao(usuario: NovoCadastroUsuario): Promise<UsuarioCriado>;
   buscarPorEmail(email: string): Promise<UsuarioAutenticacao | null>;
   buscarAtivoPorId(id: string): Promise<UsuarioCriado | null>;
+  buscarIdentidadeAtivaPorId(id: string): Promise<UsuarioCriado | null>;
 }
 
 const usuarioPublicoSelect = {
@@ -109,6 +111,23 @@ export class PrismaUsuarioRepository implements AuthUsuarioRepository {
       where: { id, ativo: true },
       select: usuarioPublicoSelect,
     });
+  }
+
+  public async buscarIdentidadeAtivaPorId(
+    id: string,
+  ): Promise<UsuarioCriado | null> {
+    const conexao = obterConexaoPrisma(this.prisma);
+    if (!conexao)
+      return this.prisma.usuario.findFirst({
+        where: { id, ativo: true },
+        select: usuarioPublicoSelect,
+      });
+    await this.prisma.$connect();
+    const { rows } = await conexao.pool.query<UsuarioCriado>(
+      `SELECT "id", "nome", "email", "papel" FROM "${conexao.schema}"."Usuario" WHERE "id" = $1::uuid AND "ativo" = true`,
+      [id],
+    );
+    return rows[0] ?? null;
   }
 
   public async alterarPapel(

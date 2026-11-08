@@ -1,0 +1,203 @@
+{
+  "capturadoEm": "2026-11-08T04:11:52.273Z",
+  "ambiente": "API em processo separado; HTTP keep-alive em loopback; PostgreSQL Docker local; schema sintetico isolado",
+  "runtime": {
+    "plataforma": "linux",
+    "node": "v22.23.4"
+  },
+  "imagem": "postgres:16",
+  "postgres": "PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "metodo": "HTTP completo ate interpretar JSON; autenticacao incluida; dois aquecimentos; dez pares sem descarte",
+  "contagens": {
+    "produtos": 1000,
+    "pedidos": 1500,
+    "itens": 1550
+  },
+  "pares": [
+    {
+      "par": 1,
+      "missHttpMs": 7.4655109999998785,
+      "hitHttpMs": 1.8799679999997352,
+      "missServerTiming": "cache;dur=2.218",
+      "hitServerTiming": "cache;dur=0.038",
+      "reducaoHttpPercentual": 74.81795954758132
+    },
+    {
+      "par": 2,
+      "missHttpMs": 4.091834999999719,
+      "hitHttpMs": 1.5123379999999997,
+      "missServerTiming": "cache;dur=2.213",
+      "hitServerTiming": "cache;dur=0.035",
+      "reducaoHttpPercentual": 63.04010303445511
+    },
+    {
+      "par": 3,
+      "missHttpMs": 3.600836000000072,
+      "hitHttpMs": 1.5143060000000332,
+      "missServerTiming": "cache;dur=1.993",
+      "hitServerTiming": "cache;dur=0.035",
+      "reducaoHttpPercentual": 57.94571038503273
+    },
+    {
+      "par": 4,
+      "missHttpMs": 4.664848999999776,
+      "hitHttpMs": 1.6200400000002446,
+      "missServerTiming": "cache;dur=2.065",
+      "hitServerTiming": "cache;dur=0.082",
+      "reducaoHttpPercentual": 65.27133032601222
+    },
+    {
+      "par": 5,
+      "missHttpMs": 3.244173000000046,
+      "hitHttpMs": 1.3828829999997652,
+      "missServerTiming": "cache;dur=1.943",
+      "hitServerTiming": "cache;dur=0.038",
+      "reducaoHttpPercentual": 57.3733275013464
+    },
+    {
+      "par": 6,
+      "missHttpMs": 3.1107539999998153,
+      "hitHttpMs": 1.306898999999703,
+      "missServerTiming": "cache;dur=1.914",
+      "hitServerTiming": "cache;dur=0.037",
+      "reducaoHttpPercentual": 57.98770973211702
+    },
+    {
+      "par": 7,
+      "missHttpMs": 3.9522750000000997,
+      "hitHttpMs": 1.323135000000093,
+      "missServerTiming": "cache;dur=2.285",
+      "hitServerTiming": "cache;dur=0.032",
+      "reducaoHttpPercentual": 66.52219291420613
+    },
+    {
+      "par": 8,
+      "missHttpMs": 3.477374999999938,
+      "hitHttpMs": 1.5757440000002134,
+      "missServerTiming": "cache;dur=2.375",
+      "hitServerTiming": "cache;dur=0.048",
+      "reducaoHttpPercentual": 54.68581904453096
+    },
+    {
+      "par": 9,
+      "missHttpMs": 3.853486999999859,
+      "hitHttpMs": 1.5096430000003238,
+      "missServerTiming": "cache;dur=2.359",
+      "hitServerTiming": "cache;dur=0.036",
+      "reducaoHttpPercentual": 60.823975791266996
+    },
+    {
+      "par": 10,
+      "missHttpMs": 3.192497000000003,
+      "hitHttpMs": 1.2013879999999517,
+      "missServerTiming": "cache;dur=1.874",
+      "hitServerTiming": "cache;dur=0.031",
+      "reducaoHttpPercentual": 62.368390635920704
+    }
+  ],
+  "mediaMissMs": 4.065359199999921,
+  "mediaHitMs": 1.4826344000000062,
+  "reducaoHttpPercentual": 63.53005166185475,
+  "logs": [
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.517
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.294
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.492
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.272
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.244
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.234
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.566
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.298
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.21
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.237
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.256
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.266
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.781
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.197
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.578
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.231
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.688
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.228
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "MISS",
+      "duracaoMs": 2.092
+    },
+    {
+      "rota": "/artesao/indicadores",
+      "cache": "HIT",
+      "duracaoMs": 0.21
+    }
+  ]
+}

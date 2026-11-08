@@ -173,7 +173,6 @@ async function executar() {
   }
   for (const [rota, papel] of [
     ["/recomendacoes/para-mim", "comprador"],
-    ["/artesao/indicadores", "artesao"],
     ["/admin/indicadores", "admin"],
     [`/avaliacoes?produtoId=${ponto}&limit=1&offset=0`, null],
   ]) {
@@ -185,6 +184,9 @@ async function executar() {
       papel ? { headers: { Cookie: cookie(usuarios[papel]) } } : {},
     );
   }
+  await par(api, "cache-indicadores", "/artesao/indicadores", ["MISS", "HIT"], {
+    headers: { Cookie: cookie(usuarios.artesao) },
+  });
   const misto = await par(
     api,
     "selecao-parcial",

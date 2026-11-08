@@ -11,7 +11,10 @@ import { UsuarioController } from "./controllers/usuario.controller.js";
 import { HttpRecomendacaoClient } from "./integrations/recommendation/http-recomendacao.client.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 import { requestLogging } from "./middlewares/request-logging.middleware.js";
-import { autenticar } from "./middlewares/auth.middleware.js";
+import {
+  autenticar,
+  autenticarIdentidade,
+} from "./middlewares/auth.middleware.js";
 import { PrismaHealthRepository } from "./repositories/health.repository.js";
 import { PrismaUsuarioRepository } from "./repositories/usuario.repository.js";
 import { PrismaPedidoRepository } from "./repositories/pedido.repository.js";
@@ -92,11 +95,17 @@ export function createApp(
     fotoStorage?: FotoStorage;
   } = {},
 ): Express {
+  const cacheStore = options.cacheStore ?? new MemoryCacheStore();
   const cache = new CachePublico(
-    options.cacheStore ?? new MemoryCacheStore(),
+    cacheStore,
     (environment.CACHE_TTL_SECONDS ?? 60) * 1000,
   );
   const cacheHttp = new CacheHttp(cache, options.logCache);
+  const cacheIndicadores = new CachePublico(cacheStore, 5 * 60 * 1000);
+  const cacheHttpIndicadores = new CacheHttp(
+    cacheIndicadores,
+    options.logCache,
+  );
   const healthRepository = new PrismaHealthRepository(prisma);
   const healthService = new HealthService(healthRepository);
   const healthController = new HealthController(healthService);
@@ -109,7 +118,11 @@ export function createApp(
   );
 
   const pedidoRepository = new PrismaPedidoRepository(prisma);
-  const pedidoService = new PedidoService(pedidoRepository, cache);
+  const pedidoService = new PedidoService(
+    pedidoRepository,
+    cache,
+    cacheIndicadores,
+  );
   const pedidoController = new PedidoController(pedidoService);
 
   const recomendacaoStrategy = new HttpRecomendacaoClient({
@@ -186,8 +199,9 @@ export function createApp(
     createIndicadoresRouter(
       new IndicadoresController(
         new IndicadoresService(new PrismaIndicadoresRepository(prisma)),
+        cacheHttpIndicadores,
       ),
-      autenticarUsuario,
+      autenticarIdentidade(authService, environment.JWT_SECRET),
     ),
   );
   app.use(

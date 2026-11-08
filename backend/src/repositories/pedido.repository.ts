@@ -114,9 +114,13 @@ export interface NovoPedido extends CriarPedidoInput {
   compradorId: string;
 }
 
+export interface PedidoConfirmado extends PedidoCriado {
+  artesaoIds: string[];
+}
+
 export interface PedidoRepository {
   enviarItem(id: string, artesaoId: string): Promise<ItemEnviado>;
-  criar(input: NovoPedido): Promise<PedidoCriado>;
+  criar(input: NovoPedido): Promise<PedidoConfirmado>;
   listarRecebidos(
     artesaoId: string,
     paginacao: PaginacaoPedidosArtesao,
@@ -135,6 +139,7 @@ export interface ItemEnviado {
 }
 
 interface EstoqueRow {
+  artesaoId: string;
   nome: string;
   preco: string;
   quantidadeEstoque: number;
@@ -318,7 +323,7 @@ export class PrismaPedidoRepository implements PedidoRepository {
     };
   }
 
-  public async criar(input: NovoPedido): Promise<PedidoCriado> {
+  public async criar(input: NovoPedido): Promise<PedidoConfirmado> {
     return this.prisma.$transaction(async (tx) => {
       await tx.$queryRaw`SELECT "id" FROM "Usuario" WHERE "id" = ${input.compradorId}::uuid FOR NO KEY UPDATE`;
       const quantidadePorProduto = new Map<string, number>();
@@ -334,7 +339,7 @@ export class PrismaPedidoRepository implements PedidoRepository {
 
       for (const produtoId of produtoIdsOrdenados) {
         const rows = await tx.$queryRaw<EstoqueRow[]>`
-          SELECT p."nome", p."preco"::text, p."quantidadeEstoque", p."ativo", p."desativadoPorAdmin",
+          SELECT p."artesaoId", p."nome", p."preco"::text, p."quantidadeEstoque", p."ativo", p."desativadoPorAdmin",
             u."ativo" AS "artesaoAtivo", u."papel"::text AS "papelArtesao"
           FROM "Produto" p JOIN "Usuario" u ON u."id" = p."artesaoId"
           WHERE p."id" = ${produtoId}::uuid FOR UPDATE OF p
@@ -441,6 +446,9 @@ export class PrismaPedidoRepository implements PedidoRepository {
       if (!pedido.numero) throw new Error("Numero de pedido ausente");
       return {
         pedidoId,
+        artesaoIds: [
+          ...new Set([...produtos.values()].map((p) => p.artesaoId)),
+        ],
         compradorId: pedido.compradorId,
         numero: pedido.numero,
         total: total.toNumber(),

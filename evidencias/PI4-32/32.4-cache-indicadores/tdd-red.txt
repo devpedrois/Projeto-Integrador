@@ -1,0 +1,247 @@
+
+> origem-backend@1.0.0 test
+> vitest run tests/integration/indicadores-cache.integration.test.ts tests/unit/cache.test.ts tests/unit/openapi.test.ts --testTimeout=60000 --hookTimeout=120000
+
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+stdout | tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.4 documenta cache privado sem armazenamento pelo navegador
+{"servico":"api","requestId":"6e2b79b4-e538-473e-94e6-1a005b390f5f","metodo":"GET","rota":"/docs/openapi.json","status":200,"duracaoMs":0.924}
+
+ ❯ tests/unit/openapi.test.ts (22 tests | 1 failed) 187ms
+   ❯ WEB-15 OpenAPI (22)
+     × 32.4 documenta cache privado sem armazenamento pelo navegador 9ms
+(node:50888) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/indicadores-cache.integration.test.ts > isola dois artesaos pela identidade autenticada e mantem no-store
+{"servico":"api","requestId":"f056b727-8c75-47c4-ad5c-cd6fdd4b0ee0","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":112.084}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > mantem TTL absoluto de cinco minutos independente do cache publico
+{"servico":"api","requestId":"0656e1bf-f3fe-48cd-aa69-ee28d9040312","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":104.01}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > checkout confirmado invalida somente os donos dos itens apos commit
+{"servico":"api","requestId":"d984184b-9692-4415-89ea-e76a4b7b8d55","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":102.05}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > checkout confirmado invalida somente os donos dos itens apos commit
+{"servico":"api","requestId":"9c45228e-79c0-4a61-819e-c302dfca9709","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":101.688}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > checkout revertido preserva o cache e os indicadores anteriores
+{"servico":"api","requestId":"498fd175-54f2-4b03-9bd1-2108eaed5ca4","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":101.406}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > checkout revertido preserva o cache e os indicadores anteriores
+{"servico":"api","requestId":"fddec69d-6e84-4e54-9f45-02c805d32b95","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":265.317}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > checkout revertido preserva o cache e os indicadores anteriores
+{"servico":"api","requestId":"5ef67756-e5c1-447d-a577-06b518b6346e","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":102.554}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > autoriza antes do cache e rejeita identidade externa ou papel revogado
+{"servico":"api","requestId":"72cd80a2-3c5c-4c4f-a7cf-05cbb5abf6c1","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":103.49}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > autoriza antes do cache e rejeita identidade externa ou papel revogado
+{"servico":"api","requestId":"4a64ec21-8094-4ebf-b00e-778584766ce2","metodo":"GET","rota":"/artesao/indicadores","status":401,"duracaoMs":1.736}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > autoriza antes do cache e rejeita identidade externa ou papel revogado
+{"servico":"api","requestId":"8d7665ba-b315-4fd1-8145-d78cb4d5a852","metodo":"GET","rota":"/artesao/indicadores","status":403,"duracaoMs":53.295}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > autoriza antes do cache e rejeita identidade externa ou papel revogado
+{"servico":"api","requestId":"8d2673f4-d29d-4ed6-bb56-2b91fed2b5b1","metodo":"GET","rota":"/artesao/indicadores","status":400,"duracaoMs":52.472}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > autoriza antes do cache e rejeita identidade externa ou papel revogado
+{"servico":"api","requestId":"a5fde318-397d-4b2a-ac89-465dcfb86649","metodo":"GET","rota":"/artesao/indicadores","status":403,"duracaoMs":52.312}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > mede dez pares reais e reduz cada HIT em pelo menos cinquenta por cento
+{"servico":"api","requestId":"fd375116-62ac-4520-ad43-e9059d7d6d8e","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":103.48}
+
+stdout | tests/integration/indicadores-cache.integration.test.ts > mede dez pares reais e reduz cada HIT em pelo menos cinquenta por cento
+{"servico":"api","requestId":"588f2c48-0169-4633-896f-13c0d8345cd5","metodo":"GET","rota":"/artesao/indicadores","status":200,"duracaoMs":103.31}
+
+ ❯ tests/integration/indicadores-cache.integration.test.ts (6 tests | 6 failed) 8069ms
+   × isola dois artesaos pela identidade autenticada e mantem no-store 928ms
+   × mantem TTL absoluto de cinco minutos independente do cache publico 770ms
+   × checkout confirmado invalida somente os donos dos itens apos commit 864ms
+   × checkout revertido preserva o cache e os indicadores anteriores 1141ms
+   × autoriza antes do cache e rejeita identidade externa ou papel revogado 1001ms
+   × mede dez pares reais e reduz cada HIT em pelo menos cinquenta por cento 876ms
+ ❯ tests/unit/cache.test.ts (19 tests | 1 failed) 14ms
+   ❯ cache publico (5)
+     × invalida indicadores dos donos e impede repovoamento anterior 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > isola dois artesaos pela identidade autenticada e mantem no-store
+AssertionError: expected undefined to be 'MISS' // Object.is equality
+
+- Expected:
+"MISS"
+
++ Received:
+undefined
+
+ ❯ tests/integration/indicadores-cache.integration.test.ts:60:43
+     58|       expect(response.status).toBe(200);
+     59|       expect(response.body).toMatchObject(indicadores);
+     60|       expect(response.headers["x-cache"]).toBe(estado);
+       |                                           ^
+     61|       expect(response.headers["cache-control"]).toBe("no-store");
+     62|       expect(await store.get(chave(id))).toEqual(response.body);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > mantem TTL absoluto de cinco minutos independente do cache publico
+AssertionError: expected undefined to be 'MISS' // Object.is equality
+
+- Expected:
+"MISS"
+
++ Received:
+undefined
+
+ ❯ tests/integration/indicadores-cache.integration.test.ts:76:39
+     74|   const agora = Date.now();
+     75|   const primeira = await consultar(fixture.a.id);
+     76|   expect(primeira.headers["x-cache"]).toBe("MISS");
+       |                                       ^
+     77|   vi.setSystemTime(agora + 299999);
+     78|   const quente = await consultar(fixture.a.id);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > checkout confirmado invalida somente os donos dos itens apos commit
+AssertionError: expected undefined to be 'HIT' // Object.is equality
+
+- Expected:
+"HIT"
+
++ Received:
+undefined
+
+ ❯ tests/integration/indicadores-cache.integration.test.ts:89:62
+     87|   for (const artesao of [fixture.a, fixture.b, fixture.c]) {
+     88|     anteriores.set(artesao.id, (await consultar(artesao.id)).body);
+     89|     expect((await consultar(artesao.id)).headers["x-cache"]).toBe("HIT…
+       |                                                              ^
+     90|   }
+     91|   const response = await request(app).post("/pedidos")
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > checkout revertido preserva o cache e os indicadores anteriores
+AssertionError: expected undefined to be 'HIT' // Object.is equality
+
+- Expected:
+"HIT"
+
++ Received:
+undefined
+
+ ❯ tests/integration/indicadores-cache.integration.test.ts:120:40
+    118|   expect(response.status).toBe(409);
+    119|   const posterior = await consultar(fixture.a.id);
+    120|   expect(posterior.headers["x-cache"]).toBe("HIT");
+       |                                        ^
+    121|   expect(posterior.body).toEqual(inicial.body);
+    122| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > autoriza antes do cache e rejeita identidade externa ou papel revogado
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/integration/indicadores-cache.integration.test.ts:134:16
+    132|   expect(proibido.status).toBe(403);
+    133|   expect(proibido.headers["x-cache"]).toBeUndefined();
+    134|   expect(logs).toHaveLength(1);
+       |                ^
+    135| });
+    136|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  tests/integration/indicadores-cache.integration.test.ts > mede dez pares reais e reduz cada HIT em pelo menos cinquenta por cento
+AssertionError: expected undefined to be 'MISS' // Object.is equality
+
+- Expected:
+"MISS"
+
++ Received:
+undefined
+
+ ❯ tests/integration/indicadores-cache.integration.test.ts:149:37
+    147|     expect(miss.status).toBe(200);
+    148|     expect(hit.status).toBe(200);
+    149|     expect(miss.headers["x-cache"]).toBe("MISS");
+       |                                     ^
+    150|     expect(hit.headers["x-cache"]).toBe("HIT");
+    151|     expect(hit.body).toEqual(miss.body);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  tests/unit/cache.test.ts > cache publico > invalida indicadores dos donos e impede repovoamento anterior
+TypeError: cache.invalidarIndicadores is not a function
+ ❯ tests/unit/cache.test.ts:86:17
+     84|     });
+     85|     await iniciada;
+     86|     await cache.invalidarIndicadores(["a", "a"]);
+       |                 ^
+     87|     liberar("anterior");
+     88|     await pendente;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  tests/unit/openapi.test.ts > WEB-15 OpenAPI > 32.4 documenta cache privado sem armazenamento pelo navegador
+AssertionError: expected undefined to match object { …(3) }
+
+- Expected:
+{
+  "Cache-Control": {
+    "schema": {
+      "const": "no-store",
+    },
+  },
+  "Server-Timing": {
+    "schema": {
+      "type": "string",
+    },
+  },
+  "X-Cache": {
+    "schema": {
+      "enum": [
+        "MISS",
+        "HIT",
+      ],
+    },
+  },
+}
+
++ Received:
+undefined
+
+ ❯ tests/unit/openapi.test.ts:287:48
+    285|     const operation = response.body.paths["/artesao/indicadores"].get;
+    286|     expect(operation.security).toEqual([{ sessao: [] }]);
+    287|     expect(operation.responses["200"].headers).toMatchObject({
+       |                                                ^
+    288|       "X-Cache": { schema: { enum: ["MISS", "HIT"] } },
+    289|       "Server-Timing": { schema: { type: "string" } },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  8 failed | 39 passed (47)
+   Start at  00:43:20
+   Duration  10.54s (tests 84%, import 11%, transform 5%)
+

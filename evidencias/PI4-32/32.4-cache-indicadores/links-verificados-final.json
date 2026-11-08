@@ -1,0 +1,837 @@
+{
+  "capturadoEm": "2026-11-08T04:33:17.939156+00:00",
+  "total": 165,
+  "erros": [],
+  "links": [
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/indicadores.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/integrations/recommendation/http-recomendacao.client.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../frontend/src/hooks/use-consulta-publica.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/config/environment.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/gestao-produtos.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/gestao-produtos.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/gestao-produtos.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/usuario.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/perfil-artesao.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/foto-perfil.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/pedido.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/avaliacao.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/indicadores-admin.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/avaliacao.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/middlewares/auth.middleware.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/perfil-artesao.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/middlewares/error.middleware.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/inventario-cache.txt",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/9d7a3a85-9452-4ec8-a087-ac2e4842cded/swagger.png",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/9d7a3a85-9452-4ec8-a087-ac2e4842cded/openapi.json",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../sprints/semana-02-03/04-Contratos-de-API.md#fora-do-escopo-do-semestre",
+      "existe": true,
+      "ancoraExiste": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../CLAUDE.md#8-contratos-de-api-vivo--manter-atualizado",
+      "existe": true,
+      "ancoraExiste": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/helpers/recomendacao-database.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.4-cache-indicadores/condicao-execucao.json",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../frontend/src/app/painel-artesao/page.tsx",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../frontend/src/hooks/use-indicadores-artesao.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../frontend/src/services/http/indicadores-artesao.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/repositories/indicadores.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/indicadores.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/validators/indicadores.validator.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/indicadores.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/routes/indicadores.routes.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/middlewares/auth.middleware.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/repositories/usuario.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/database/prisma/client.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/auth.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/utils/token.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/middlewares/auth.middleware.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/integration/indicadores-cache.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/repositories/pedido.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/pedido.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/pedido.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/repositories/pedido.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/integration/indicadores-cache.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/prisma/seeds/volume.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/scripts/indicadores-cache-docker.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.4-cache-indicadores/medicao-http-apos-revisao.txt",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/helpers/indicadores-cache-fixture.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/helpers/auth-database.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/scripts/indicadores-cache-docker.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/helpers/postgres-indicadores-local.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/scripts/helpers/indicadores-cache-servidor.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.4-cache-indicadores/7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/app.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/utils/cache.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/utils/cache-http.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/catalogo.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/controllers/recomendacao.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/services/recomendacao.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/repositories/catalogo.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/validators/catalogo.validator.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/integration/cache.web13.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/tests/unit/openapi.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/src/docs/openapi.ts",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../backend/scripts/cache-swagger.evidence.mjs",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/README.md",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/09a6dd10-8235-4b7c-97b5-e60f2c32e8ff/http.json",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/coleta.txt",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/09a6dd10-8235-4b7c-97b5-e60f2c32e8ff/cache-http.txt",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/09a6dd10-8235-4b7c-97b5-e60f2c32e8ff/rotas.json",
+      "existe": true
+    },
+    {
+      "origem": "docs/cache-u2.md",
+      "destino": "../evidencias/PI4-32/32.6-cache-swagger/09a6dd10-8235-4b7c-97b5-e60f2c32e8ff/limpeza.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "condicao-execucao.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/src/app.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/src/controllers/indicadores.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/src/utils/cache.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/src/services/pedido.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/src/repositories/pedido.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/tests/integration/indicadores-cache.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/prisma/seeds/volume.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "medicao-http-apos-revisao.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "validacao-aceite-final.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../docs/cache-u2.md#medição-e-logs-reais",
+      "existe": true,
+      "ancoraExiste": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/scripts/helpers/indicadores-cache-servidor.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../docs/cache-u2.md#6-reprodução-e-limites",
+      "existe": true,
+      "ancoraExiste": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "b64a56cd-07e2-4180-8b2d-5ce131fae9a3/medicoes.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "da9ef43a-08c6-4180-bede-d2e041793d86/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "db3aa255-13f2-471c-8185-08be4e8a412c/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "45f329ea-1afe-450f-86b9-462f1e58ef1f/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "cf5eae91-e930-4dd2-a8c0-c3a83a87e37c/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "0475cb55-c80c-44ad-86f5-30c5dc4ed80d/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "9636abff-ab81-4b38-98eb-e270a64fe437/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "213a71ee-1b48-45b8-85c3-fc447d0cee36/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "6e09f788-91d2-4155-8c22-2398abf8da9a/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "31f3e1a4-bb42-4396-8513-14df153bd5d9/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "87a39f89-b5ab-4153-b34d-1331c747ee4c/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "diagnostico-chave-jwt.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../backend/src/utils/token.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "tdd-red.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "donos-transacao-red.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "identidade-direta-red.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "pool-primeira-identidade-red.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "revalidacao-funcional.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "lint-apos-revisao.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "typecheck-apos-revisao.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "build-apos-revisao.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "formatacao-final.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "testes-backend-final.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "reteste-final-conexao-testes.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "revisao-equivalente.md",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "diagnostico-permissoes-testes.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "worker-process-conexao-testes.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "fila-conexao-testes.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "worker-process-diagnostico.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "testes-backend-final.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "reteste-final-conexao-testes.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "medicao-http-apos-revisao.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "autenticacao-conexao-restrita.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "../../../docs/cache-u2.md#7-cache-privado-dos-indicadores-do-artesão-324",
+      "existe": true,
+      "ancoraExiste": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "ambiente-e-limpeza.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "fontes-validadas-final.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "fontes-validadas.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "links-verificados-final.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/README.md",
+      "destino": "verificacao-segredos-final.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/controllers/indicadores.controller.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/validators/indicadores.validator.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/routes/indicadores.routes.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/middlewares/role.middleware.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/repositories/usuario.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/database/prisma/client.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/services/auth.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/utils/token.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/middlewares/auth.middleware.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/utils/cache.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/utils/cache-http.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "7b2c5851-791a-4cc2-b413-9ac502442463/http-volume.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/repositories/pedido.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/services/pedido.service.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/utils/cache.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/tests/unit/cache.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "pool-primeira-identidade-red.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/src/repositories/usuario.repository.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/tests/integration/identidade-pool.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "pool-primeira-identidade-verde.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "autenticacao-conexao-restrita.json",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "reteste-final-conexao-testes.txt",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/tests/integration/indicadores-cache.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/tests/integration/identidade-pool.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../docs/cache-u2.md",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/tests/helpers/indicadores-cache-fixture.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/tests/integration/indicadores-cache.integration.test.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/prisma/seeds/volume.ts",
+      "existe": true
+    },
+    {
+      "origem": "evidencias/PI4-32/32.4-cache-indicadores/revisao-equivalente.md",
+      "destino": "../../../backend/tests/integration/indicadores-cache-desempenho.integration.test.ts",
+      "existe": true
+    }
+  ]
+}
