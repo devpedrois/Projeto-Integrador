@@ -21,11 +21,13 @@ docs/*
 !docs/uso-de-ia.md
 !docs/indices-u2.md
 !docs/metricas-recomendacao-u2.md
+!docs/modulo-recomendacao-u2.md
 !docs/fake-api.md
 !docs/docs auxiliares/
 docs/docs auxiliares/*
 !docs/docs auxiliares/LOGINS_TESTE.md
 !docs/docs auxiliares/TESTING_AND_EVIDENCE.md
+!docs/docs auxiliares/RECOMMENDATION.md
 sprints/*
 !sprints/semana-02-03/
 sprints/semana-02-03/*

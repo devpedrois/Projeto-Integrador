@@ -1720,3 +1720,10 @@ Criou testes prévios e mediu PostgreSQL com snapshot compartilhado.
 Preservou aquecimentos, CSV bruto e tabela para o relatório.
 Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
 Evidências: [PI4-35.8](../evidencias/PI4-35/35.8-custo-http/README.md).
+
+### 36.3: documento do módulo de recomendação da U2
+
+O Codex consolidou contratos, estratégias, arquitetura e limitações documentadas.
+Relacionou código, prints históricos e métricas do microsserviço.
+Atualizou o guia auxiliar e conferiu referências e números.
+Documento: [módulo de recomendação U2](modulo-recomendacao-u2.md).
