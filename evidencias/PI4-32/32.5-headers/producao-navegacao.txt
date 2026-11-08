@@ -1,0 +1,2 @@
+Headers públicos confirmados; zero violações CSP.
+Evidências públicas: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\PI4-32\32.5-headers\producao\4c84aec3-4a20-4aee-8047-f18d4a64b94f

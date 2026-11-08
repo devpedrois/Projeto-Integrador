@@ -1,0 +1,8 @@
+{
+  "mode": "next build + next start; API e PostgreSQL reais; schema isolado; upload em disco via mesma origem",
+  "flows": [],
+  "documents": [],
+  "violations": [],
+  "consoleMessages": [],
+  "success": false
+}

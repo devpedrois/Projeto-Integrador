@@ -1703,3 +1703,12 @@ Criou testes prévios com PostgreSQL real e requisições concorrentes.
 Registrou vitrine e checkout reais pelo Docker Compose.
 Realizou revisão equivalente de segurança, conforme escolha do responsável.
 Evidências: [PI4-35.5](../evidencias/PI4-35/35.5-comunicacao/README.md).
+
+### 32.5: cabeçalhos de segurança no frontend
+
+O Codex inspecionou proxy, imagens, fontes e recursos inline.
+Criou testes prévios e configurou headers globais no Next.
+Documentou exceções da CSP e descartou L2/L6 sem contexto.
+Validou PostgreSQL real e realizou revisão equivalente autorizada.
+Publicou na Vercel e verificou CSP e uploads reais.
+Evidências: [PI4-32.5](../evidencias/PI4-32/32.5-headers/README.md).

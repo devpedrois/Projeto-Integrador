@@ -10,6 +10,7 @@ backend/src/generated/prisma/
 .env.compose
 .superpowers/
 docs/*
+!docs/seguranca-pendencias-av2.md
 !docs/relatorio-desempenho-u2.md
 !docs/relatorio-desempenho-u2-recomendacao.png
 !docs/matriz-aceitacao-u2.md
@@ -66,3 +67,4 @@ CLAUDE.md
 design/
 frontend/test-results/
 frontend/playwright-report/
+.vercel

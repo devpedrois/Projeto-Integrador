@@ -1,0 +1,15 @@
+/*
+!frontend
+!frontend/**
+frontend/.env*
+frontend/**/.env*
+frontend/node_modules
+frontend/.next
+frontend/test-results
+frontend/playwright-report
+frontend/tests
+frontend/e2e
+frontend/.DS_Store
+frontend/.gitignore
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
