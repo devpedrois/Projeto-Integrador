@@ -1,0 +1,28 @@
+{
+  "testesEspecificos": { "passaram": 8, "falharam": 0 },
+  "suiteCompleta": {
+    "comando": "npm.cmd test -- --testTimeout=30000 --hookTimeout=30000",
+    "conexao": "DATABASE_URL recebe DIRECT_URL somente no processo de testes",
+    "arquivosAprovados": 79,
+    "arquivosFalhos": 1,
+    "testesAprovados": 821,
+    "testesFalhos": 1,
+    "duracaoSegundos": 1348.89,
+    "falha": {
+      "arquivo": "backend/tests/integration/db-explain.integration.test.ts",
+      "teste": "BD.4 compara candidatos reais sem persistir indices ou mudar resultados",
+      "motivo": "Timeout de 60000ms, limite explicito do teste existente",
+      "arquivoAlterado": false
+    }
+  },
+  "lint": "aprovado",
+  "typecheck": "aprovado",
+  "prettier": "aprovado",
+  "diffCheck": "aprovado",
+  "worktreeA": "HEAD historico e fontes versionados limpos",
+  "processosBenchmark": "encerrados",
+  "seguranca": "revisao equivalente autorizada; sem bloqueadores encontrados",
+  "credenciaisNasEvidencias": false,
+  "commit": false,
+  "push": false
+}

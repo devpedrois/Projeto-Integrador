@@ -1,0 +1,6 @@
+{
+  "estado": "incompleto",
+  "etapa": "contexto-inicial",
+  "tentativasRegistradas": 0,
+  "motivo": "Execucao interrompida; consulte CSV; nenhuma reposicao ou retry"
+}

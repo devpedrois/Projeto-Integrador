@@ -1712,3 +1712,11 @@ Documentou exceções da CSP e descartou L2/L6 sem contexto.
 Validou PostgreSQL real e realizou revisão equivalente autorizada.
 Publicou na Vercel e verificou CSP e uploads reais.
 Evidências: [PI4-32.5](../evidencias/PI4-32/32.5-headers/README.md).
+
+### 35.8: custo do salto HTTP
+
+O Codex implementou o benchmark comparando duas versões reais.
+Criou testes prévios e mediu PostgreSQL com snapshot compartilhado.
+Preservou aquecimentos, CSV bruto e tabela para o relatório.
+Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
+Evidências: [PI4-35.8](../evidencias/PI4-35/35.8-custo-http/README.md).

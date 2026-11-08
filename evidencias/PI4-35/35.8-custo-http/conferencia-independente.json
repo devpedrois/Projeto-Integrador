@@ -1,0 +1,24 @@
+{
+  "csvSha256": "425490f160f4e23667c91caa97d167986c7a2c2bd40cdfa0d8fd727045f8e6bf",
+  "registros": 70,
+  "configuracoes": {
+    "A": {
+      "aquecimentos": 5,
+      "amostras": 30,
+      "p50Ms": 171.9421000000002,
+      "p95Ms": 499.96329999999944,
+      "maxMs": 784.6929999999993
+    },
+    "B": {
+      "aquecimentos": 5,
+      "amostras": 30,
+      "p50Ms": 223.07790000000023,
+      "p95Ms": 787.686099999999,
+      "maxMs": 1012.3451999999997
+    }
+  },
+  "chamadasInternasB": 35,
+  "respostasIdenticas": true,
+  "medicoesDescartadas": 0,
+  "tentativaInicialSemRequests": true
+}

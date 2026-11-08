@@ -1,0 +1,101 @@
+{
+  "capturadoEm": "2026-11-08T01:23:09.326Z",
+  "commits": {
+    "A": "df92c704a3cd3bcb6800b103d4ddcafb596e2b09",
+    "B": "1fd856b2acdef56598ca8eb31e54811d1a67a09d"
+  },
+  "ambiente": {
+    "node": "v22.12.0",
+    "sistema": "win32 10.0.26300",
+    "cpu": "Intel(R) Core(TM) Ultra 7 265KF",
+    "processos": [
+      13160,
+      32380,
+      36684
+    ],
+    "banco": "DATABASE_URL_VOLUME",
+    "dados": [
+      {
+        "tabela": "Produto",
+        "total": 1000,
+        "hash": "d43c8d0d486062db5db58bb6a73a9a0e"
+      },
+      {
+        "tabela": "ProdutoFoto",
+        "total": 0,
+        "hash": null
+      },
+      {
+        "tabela": "Usuario",
+        "total": 350,
+        "hash": "6d6e4811a02cd4278f3503e6a4b98097"
+      },
+      {
+        "tabela": "PerfilArtesao",
+        "total": 50,
+        "hash": "e91327b3ca9ebf90f8701cb0b7434ca5"
+      },
+      {
+        "tabela": "ItemPedido",
+        "total": 1550,
+        "hash": "041273c64fcf8df31352f4bd77a91942"
+      },
+      {
+        "tabela": "Pedido",
+        "total": 1500,
+        "hash": "e4c85c5d1809970d5aef9f8219bdda3d"
+      },
+      {
+        "tabela": "Avaliacao",
+        "total": 0,
+        "hash": null
+      }
+    ],
+    "somenteLeitura": true,
+    "poolPorProcesso": 1,
+    "timeoutInternoMs": 800,
+    "conexoes": "Mesmo papel da fixture de volume, transacoes read-only; servico consulta somente views"
+  },
+  "metodologia": {
+    "aquecimentos": 5,
+    "medicoes": 30,
+    "produtos": [
+      "003965b5-50b8-5852-b5fa-6a4d8f56e06c",
+      "00eb8c97-b4e1-5485-9822-1ca751b2601d",
+      "0184fde1-c822-563d-8ed2-4c8ce050d5a5",
+      "01ae774f-ed92-5e4d-b03e-c78701e8e3e9",
+      "0260ac3c-7c92-5b29-8a24-bd6c3e8b295f",
+      "02c5d062-5310-5930-bc4f-92de3792606d",
+      "02f1c9bd-3453-5e5b-b583-6469577f64fd",
+      "03136b87-0e56-52eb-9a37-a7df01e31986",
+      "031b6466-bbe4-5842-a699-d67ea9b927c7",
+      "0321805f-8bb0-5e66-b379-13800b4eb889"
+    ],
+    "ciclos": 3,
+    "ordem": "A depois B; requisicoes sequenciais; processos separados na mesma maquina",
+    "cache": "CACHE_TTL_SECONDS=1; invalidacao de recomendacoes: por IPC antes de cada request; X-Cache=MISS obrigatorio; microsservico sem cache",
+    "tempo": "performance.now antes do fetch ate decodificar todo JSON; invalidacao e validacao fora da cronometragem",
+    "percentil": "nearest-rank: p50=15o, p95=29o, max=30o",
+    "descarte": "Somente 5 aquecimentos por configuracao, todos no CSV; falhas encerram sem retry ou reposicao",
+    "chamadasInternasB": 35,
+    "respostasIdenticas": true,
+    "bancoInalterado": true
+  },
+  "A": {
+    "amostras": 30,
+    "p50Ms": 171.9421000000002,
+    "p95Ms": 499.96329999999944,
+    "maxMs": 784.6929999999993
+  },
+  "B": {
+    "amostras": 30,
+    "p50Ms": 223.07790000000023,
+    "p95Ms": 787.686099999999,
+    "maxMs": 1012.3451999999997
+  },
+  "diferenca": {
+    "p50Ms": 51.13580000000002,
+    "p95Ms": 287.72279999999955,
+    "maxMs": 227.65220000000045
+  }
+}

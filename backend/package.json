@@ -24,6 +24,7 @@
     "db:seed:volume": "tsx prisma/seed-volume.ts",
     "db:explain": "tsx scripts/db-explain.ts",
     "bench:busca": "tsx scripts/busca-p95.ts",
+    "bench:custo-http": "tsx scripts/custo-salto-http.ts",
     "bench:fila": "tsx scripts/bench-fila.ts"
   },
   "keywords": [],
