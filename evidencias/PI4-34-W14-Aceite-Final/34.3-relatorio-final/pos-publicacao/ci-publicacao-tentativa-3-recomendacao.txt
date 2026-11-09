@@ -1,0 +1,732 @@
+2026-11-09T18:36:03.1534188Z Current runner version: '2.338.2'
+2026-11-09T18:36:03.1558677Z ##[group]Runner Image Provisioner
+2026-11-09T18:36:03.1559569Z Hosted Compute Agent
+2026-11-09T18:36:03.1560292Z Version: 20261028.624
+2026-11-09T18:36:03.1561054Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-09T18:36:03.1562160Z Build Date: 2026-10-28T21:51:42Z
+2026-11-09T18:36:03.1562998Z Worker ID: {312b4c48-7010-4ed8-8d87-7f823d4ebeee}
+2026-11-09T18:36:03.1563804Z Region: westus3
+2026-11-09T18:36:03.1564446Z Cloud: Azure
+2026-11-09T18:36:03.1565091Z ##[endgroup]
+2026-11-09T18:36:03.1566731Z ##[group]Operating System
+2026-11-09T18:36:03.1567540Z Ubuntu
+2026-11-09T18:36:03.1568106Z 26.04.1
+2026-11-09T18:36:03.1568793Z LTS
+2026-11-09T18:36:03.1569353Z ##[endgroup]
+2026-11-09T18:36:03.1569987Z ##[group]Runner Image
+2026-11-09T18:36:03.1570684Z Image: ubuntu-26.04
+2026-11-09T18:36:03.1571307Z Version: 20261101.186.1
+2026-11-09T18:36:03.1573126Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261101.186/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-09T18:36:03.1574859Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261101.186
+2026-11-09T18:36:03.1575954Z ##[endgroup]
+2026-11-09T18:36:03.1577215Z ##[group]GITHUB_TOKEN Permissions
+2026-11-09T18:36:03.1579152Z Contents: read
+2026-11-09T18:36:03.1579889Z Metadata: read
+2026-11-09T18:36:03.1580502Z ##[endgroup]
+2026-11-09T18:36:03.1583243Z Secret source: Actions
+2026-11-09T18:36:03.1584281Z Cache mode: write
+2026-11-09T18:36:03.1585163Z Prepare workflow directory
+2026-11-09T18:36:03.2223069Z Prepare all required actions
+2026-11-09T18:36:03.2272445Z Getting action download info
+2026-11-09T18:36:03.5305118Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-09T18:36:03.6503042Z Download action repository 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+2026-11-09T18:36:03.8071036Z Complete job name: recomendacao
+2026-11-09T18:36:03.8902551Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-11-09T18:36:03.8903714Z with:
+2026-11-09T18:36:03.8904201Z   persist-credentials: false
+2026-11-09T18:36:03.8904806Z   repository: devpedrois/Projeto-Integrador
+2026-11-09T18:36:03.8908861Z   token: ***
+2026-11-09T18:36:03.8909635Z   ssh-strict: true
+2026-11-09T18:36:03.8910369Z   ssh-user: git
+2026-11-09T18:36:03.8910848Z   clean: true
+2026-11-09T18:36:03.8911339Z   sparse-checkout-cone-mode: true
+2026-11-09T18:36:03.8912208Z   fetch-depth: 1
+2026-11-09T18:36:03.8912702Z   fetch-tags: false
+2026-11-09T18:36:03.8913203Z   show-progress: true
+2026-11-09T18:36:03.8913686Z   lfs: false
+2026-11-09T18:36:03.8914136Z   submodules: false
+2026-11-09T18:36:03.8914641Z   set-safe-directory: true
+2026-11-09T18:36:03.8915326Z   allow-unsafe-pr-checkout: false
+2026-11-09T18:36:03.8916260Z env:
+2026-11-09T18:36:03.8916715Z   NODE_ENV: test
+2026-11-09T18:36:03.8918069Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:36:03.8919406Z   DIRECT_URL: ***
+2026-11-09T18:36:03.8919883Z   API_SCHEMA: public
+2026-11-09T18:36:03.8920401Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:36:03.8921053Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:36:03.8922036Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:36:03.8922630Z ##[endgroup]
+2026-11-09T18:36:04.1988512Z Syncing repository: devpedrois/Projeto-Integrador
+2026-11-09T18:36:04.1992204Z ##[group]Getting Git version info
+2026-11-09T18:36:04.1993996Z Working directory is '/home/runner/work/Projeto-Integrador/Projeto-Integrador'
+2026-11-09T18:36:04.1996612Z [command]/usr/bin/git version
+2026-11-09T18:36:04.2023277Z git version 2.56.0
+2026-11-09T18:36:04.2056621Z ##[endgroup]
+2026-11-09T18:36:04.2080972Z Temporarily overriding HOME='/home/runner/work/_temp/4f227761-ab04-4153-87b1-e6b1836a7ba7' before making global git config changes
+2026-11-09T18:36:04.2084193Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-09T18:36:04.2094276Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Projeto-Integrador/Projeto-Integrador
+2026-11-09T18:36:04.2178851Z Deleting the contents of '/home/runner/work/Projeto-Integrador/Projeto-Integrador'
+2026-11-09T18:36:04.2182682Z ##[group]Determining repository object format
+2026-11-09T18:36:04.2185117Z ##[endgroup]
+2026-11-09T18:36:04.2186728Z ##[group]Initializing the repository
+2026-11-09T18:36:04.2191814Z [command]/usr/bin/git init /home/runner/work/Projeto-Integrador/Projeto-Integrador
+2026-11-09T18:36:04.2358305Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-09T18:36:04.2360687Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-09T18:36:04.2363423Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-09T18:36:04.2365015Z hint: call:
+2026-11-09T18:36:04.2366118Z hint:
+2026-11-09T18:36:04.2367268Z hint: 	git config --global init.defaultBranch <name>
+2026-11-09T18:36:04.2368653Z hint:
+2026-11-09T18:36:04.2370031Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-09T18:36:04.2372117Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-09T18:36:04.2373866Z hint:
+2026-11-09T18:36:04.2374957Z hint: 	git branch -m <name>
+2026-11-09T18:36:04.2376040Z hint:
+2026-11-09T18:36:04.2377553Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-09T18:36:04.2383936Z Initialized empty Git repository in /home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/
+2026-11-09T18:36:04.2398280Z [command]/usr/bin/git remote add origin https://github.com/devpedrois/Projeto-Integrador
+2026-11-09T18:36:04.2467097Z ##[endgroup]
+2026-11-09T18:36:04.2468949Z ##[group]Disabling automatic garbage collection
+2026-11-09T18:36:04.2472511Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-09T18:36:04.2517777Z ##[endgroup]
+2026-11-09T18:36:04.2519710Z ##[group]Setting up auth
+2026-11-09T18:36:04.2521761Z Removing SSH command configuration
+2026-11-09T18:36:04.2526695Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T18:36:04.2573853Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T18:36:04.3103568Z Removing HTTP extra header
+2026-11-09T18:36:04.3109174Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T18:36:04.3143937Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T18:36:04.3414393Z Removing includeIf entries pointing to credentials config files
+2026-11-09T18:36:04.3426168Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T18:36:04.3459230Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T18:36:04.3733227Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-09T18:36:04.3770444Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path /home/runner/work/_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config
+2026-11-09T18:36:04.3802747Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config
+2026-11-09T18:36:04.3840350Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config
+2026-11-09T18:36:04.3872142Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config
+2026-11-09T18:36:04.3901598Z ##[endgroup]
+2026-11-09T18:36:04.3902619Z ##[group]Fetching the repository
+2026-11-09T18:36:04.3907996Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +766d2fdf5c7ad1b775f2a034e1ce34b0ff1b0022:refs/remotes/origin/main
+2026-11-09T18:36:06.8702303Z From https://github.com/devpedrois/Projeto-Integrador
+2026-11-09T18:36:06.8705233Z  * [new ref]         766d2fdf5c7ad1b775f2a034e1ce34b0ff1b0022 -> origin/main
+2026-11-09T18:36:06.8710297Z [command]/usr/bin/git branch --list --remote origin/main
+2026-11-09T18:36:06.8738054Z   origin/main
+2026-11-09T18:36:06.8746641Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-11-09T18:36:06.8771169Z 766d2fdf5c7ad1b775f2a034e1ce34b0ff1b0022
+2026-11-09T18:36:06.8776780Z ##[endgroup]
+2026-11-09T18:36:06.8778149Z ##[group]Determining the checkout info
+2026-11-09T18:36:06.8779782Z ##[endgroup]
+2026-11-09T18:36:06.8781358Z [command]/usr/bin/git sparse-checkout disable
+2026-11-09T18:36:06.8837720Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-09T18:36:06.8870609Z ##[group]Checking out the ref
+2026-11-09T18:36:06.8873318Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-09T18:36:07.2516837Z Switched to a new branch 'main'
+2026-11-09T18:36:07.2522652Z branch 'main' set up to track 'origin/main'.
+2026-11-09T18:36:07.2545113Z ##[endgroup]
+2026-11-09T18:36:07.2614527Z [command]/usr/bin/git log -1 --format=%H
+2026-11-09T18:36:07.2643190Z 766d2fdf5c7ad1b775f2a034e1ce34b0ff1b0022
+2026-11-09T18:36:07.2653044Z ##[group]Removing auth
+2026-11-09T18:36:07.2653418Z Removing SSH command configuration
+2026-11-09T18:36:07.2657121Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T18:36:07.2690924Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T18:36:07.2973649Z Removing HTTP extra header
+2026-11-09T18:36:07.2974205Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T18:36:07.3007683Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T18:36:07.3277792Z Removing includeIf entries pointing to credentials config files
+2026-11-09T18:36:07.3283318Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T18:36:07.3310205Z includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path
+2026-11-09T18:36:07.3311917Z includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path
+2026-11-09T18:36:07.3313397Z includeif.gitdir:/github/workspace/.git.path
+2026-11-09T18:36:07.3314359Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-09T18:36:07.3392329Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path
+2026-11-09T18:36:07.3393991Z /home/runner/work/_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config
+2026-11-09T18:36:07.3396720Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-ca01047b\-6404\-47cc\-b3f7\-0bf735dd0202\.config
+2026-11-09T18:36:07.3399525Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path
+2026-11-09T18:36:07.3426573Z /home/runner/work/_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config
+2026-11-09T18:36:07.3436432Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-ca01047b\-6404\-47cc\-b3f7\-0bf735dd0202\.config
+2026-11-09T18:36:07.3475327Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-09T18:36:07.3499957Z /github/runner_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config
+2026-11-09T18:36:07.3508499Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-ca01047b\-6404\-47cc\-b3f7\-0bf735dd0202\.config
+2026-11-09T18:36:07.3541712Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-09T18:36:07.3565264Z /github/runner_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config
+2026-11-09T18:36:07.3573511Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-ca01047b\-6404\-47cc\-b3f7\-0bf735dd0202\.config
+2026-11-09T18:36:07.3607607Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T18:36:07.3878777Z Removing credentials config '/home/runner/work/_temp/git-credentials-ca01047b-6404-47cc-b3f7-0bf735dd0202.config'
+2026-11-09T18:36:07.3888932Z ##[endgroup]
+2026-11-09T18:36:07.4144755Z ##[group]Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+2026-11-09T18:36:07.4145193Z with:
+2026-11-09T18:36:07.4145411Z   node-version: 22
+2026-11-09T18:36:07.4145629Z   cache: npm
+2026-11-09T18:36:07.4146041Z   cache-dependency-path: services/recomendacao/package-lock.json
+backend/package-lock.json
+
+2026-11-09T18:36:07.4146514Z   check-latest: false
+2026-11-09T18:36:07.4149695Z   token: ***
+2026-11-09T18:36:07.4149939Z   package-manager-cache: true
+2026-11-09T18:36:07.4150211Z env:
+2026-11-09T18:36:07.4150395Z   NODE_ENV: test
+2026-11-09T18:36:07.4151138Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:36:07.4152057Z   DIRECT_URL: ***
+2026-11-09T18:36:07.4152278Z   API_SCHEMA: public
+2026-11-09T18:36:07.4152516Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:36:07.4152834Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:36:07.4153146Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:36:07.4153409Z ##[endgroup]
+2026-11-09T18:36:07.5443272Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-09T18:36:07.6498324Z ##[group]Environment details
+2026-11-09T18:36:08.0050551Z node: v22.23.4
+2026-11-09T18:36:08.0050916Z npm: 10.9.9
+2026-11-09T18:36:08.0051129Z yarn: 1.22.22
+2026-11-09T18:36:08.0052711Z ##[endgroup]
+2026-11-09T18:36:08.0078184Z [command]/opt/hostedtoolcache/node/22.23.4/x64/bin/npm config get cache
+2026-11-09T18:36:08.1250139Z /home/runner/.npm
+2026-11-09T18:36:08.3592645Z Cache hit for: node-cache-Linux-x64-npm-d464fece7417f4fd53800747aa03c9c7c713a750d09ed746af0e235f55dbe343
+2026-11-09T18:36:09.5925423Z Received 46137344 of 168849868 (27.3%), 44.0 MBs/sec
+2026-11-09T18:36:10.3794001Z Received 168849868 of 168849868 (100.0%), 90.1 MBs/sec
+2026-11-09T18:36:10.3794798Z Cache Size: ~161 MB (168849868 B)
+2026-11-09T18:36:10.3829227Z [command]/usr/bin/tar -xf /home/runner/work/_temp/50e179dd-1db2-433d-b80e-0b5da8f2461f/cache.tzst -P -C /home/runner/work/Projeto-Integrador/Projeto-Integrador --use-compress-program unzstd
+2026-11-09T18:36:10.8016441Z Cache restored successfully
+2026-11-09T18:36:10.8091262Z Cache restored from key: node-cache-Linux-x64-npm-d464fece7417f4fd53800747aa03c9c7c713a750d09ed746af0e235f55dbe343
+2026-11-09T18:36:10.8377705Z ##[group]Run npm ci
+2026-11-09T18:36:10.8378025Z npm ci
+2026-11-09T18:36:10.8439813Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:36:10.8440087Z env:
+2026-11-09T18:36:10.8440291Z   NODE_ENV: test
+2026-11-09T18:36:10.8441227Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:36:10.8442660Z   DIRECT_URL: ***
+2026-11-09T18:36:10.8442898Z   API_SCHEMA: public
+2026-11-09T18:36:10.8443144Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:36:10.8443474Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:36:10.8443792Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:36:10.8444060Z ##[endgroup]
+2026-11-09T18:36:47.5347275Z
+2026-11-09T18:36:47.5354810Z added 249 packages, and audited 250 packages in 37s
+2026-11-09T18:36:47.5355128Z
+2026-11-09T18:36:47.5355342Z 79 packages are looking for funding
+2026-11-09T18:36:47.5355661Z   run `npm fund` for details
+2026-11-09T18:36:47.6927217Z
+2026-11-09T18:36:47.6927751Z 10 moderate severity vulnerabilities
+2026-11-09T18:36:47.6928115Z
+2026-11-09T18:36:47.6928451Z To address issues that do not require attention, run:
+2026-11-09T18:36:47.6928903Z   npm audit fix
+2026-11-09T18:36:47.6929089Z
+2026-11-09T18:36:47.6929395Z To address all issues (including breaking changes), run:
+2026-11-09T18:36:47.6929841Z   npm audit fix --force
+2026-11-09T18:36:47.6930053Z
+2026-11-09T18:36:47.6930221Z Run `npm audit` for details.
+2026-11-09T18:36:47.7823800Z ##[group]Run npm ci
+2026-11-09T18:36:47.7824090Z npm ci
+2026-11-09T18:36:47.7824316Z npx prisma generate
+2026-11-09T18:36:47.7824582Z npx prisma migrate deploy
+2026-11-09T18:36:47.7878194Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:36:47.7878462Z env:
+2026-11-09T18:36:47.7878652Z   NODE_ENV: test
+2026-11-09T18:36:47.7879529Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:36:47.7880261Z   DIRECT_URL: ***
+2026-11-09T18:36:47.7880485Z   API_SCHEMA: public
+2026-11-09T18:36:47.7880733Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:36:47.7881060Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:36:47.7881536Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:36:47.7882337Z   DATABASE_URL: ***
+2026-11-09T18:36:47.7882558Z ##[endgroup]
+2026-11-09T18:37:01.0167734Z
+2026-11-09T18:37:01.0168892Z added 437 packages, and audited 438 packages in 13s
+2026-11-09T18:37:01.0169454Z
+2026-11-09T18:37:01.0169853Z 97 packages are looking for funding
+2026-11-09T18:37:01.0170383Z   run `npm fund` for details
+2026-11-09T18:37:01.3082766Z
+2026-11-09T18:37:01.3083706Z 23 vulnerabilities (14 moderate, 8 high, 1 critical)
+2026-11-09T18:37:01.3084141Z
+2026-11-09T18:37:01.3084527Z To address issues that do not require attention, run:
+2026-11-09T18:37:01.3085101Z   npm audit fix
+2026-11-09T18:37:01.3085325Z
+2026-11-09T18:37:01.3085696Z To address all issues (including breaking changes), run:
+2026-11-09T18:37:01.3086273Z   npm audit fix --force
+2026-11-09T18:37:01.3086520Z
+2026-11-09T18:37:01.3086744Z Run `npm audit` for details.
+2026-11-09T18:37:02.5200436Z Loaded Prisma config from prisma.config.ts.
+2026-11-09T18:37:02.5200926Z
+2026-11-09T18:37:02.6174450Z Prisma schema loaded from prisma/schema.prisma.
+2026-11-09T18:37:02.8366857Z
+2026-11-09T18:37:02.8368271Z ✔ Generated Prisma Client (7.10.0) to ./src/generated/prisma in 145ms
+2026-11-09T18:37:02.8368845Z
+2026-11-09T18:37:03.8609407Z Loaded Prisma config from prisma.config.ts.
+2026-11-09T18:37:03.8610195Z
+2026-11-09T18:37:03.9750474Z Prisma schema loaded from prisma/schema.prisma.
+2026-11-09T18:37:03.9780971Z Datasource "db": PostgreSQL database "neondb", schema "public" at "[host-omitido]"
+2026-11-09T18:37:05.8424081Z
+2026-11-09T18:37:05.8424858Z 13 migrations found in prisma/migrations
+2026-11-09T18:37:05.8425254Z
+2026-11-09T18:37:08.3974077Z
+2026-11-09T18:37:08.3991003Z ┌─────────────────────────────────────────────────────────┐
+2026-11-09T18:37:08.3992567Z │  Update available 7.10.0 -> 8.0.0-rc.33                 │
+2026-11-09T18:37:08.3993773Z │                                                         │
+2026-11-09T18:37:08.3994477Z No pending migrations to apply.
+2026-11-09T18:37:08.3995605Z │  This is a major update - please follow the guide at    │
+2026-11-09T18:37:08.3996509Z │  https://pris.ly/d/major-version-upgrade                │
+2026-11-09T18:37:08.3997451Z │                                                         │
+2026-11-09T18:37:08.3997948Z │  Run the following to update                            │
+2026-11-09T18:37:08.3998461Z │    npm i --save-dev prisma@latest                       │
+2026-11-09T18:37:08.3998935Z │    npm i @prisma/client@latest                          │
+2026-11-09T18:37:08.3999413Z └─────────────────────────────────────────────────────────┘
+2026-11-09T18:37:08.5971354Z ##[group]Run node --input-type=module <<'NODE'
+2026-11-09T18:37:08.5972078Z node --input-type=module <<'NODE'
+2026-11-09T18:37:08.5972431Z import { randomBytes } from 'node:crypto';
+2026-11-09T18:37:08.5972782Z import { appendFileSync } from 'node:fs';
+2026-11-09T18:37:08.5973115Z const generated = Object.fromEntries([
+2026-11-09T18:37:08.5973517Z   'RECOMENDACAO_DATABASE_PASSWORD', 'API_DATABASE_PASSWORD',
+2026-11-09T18:37:08.5973896Z   'RECOMENDACAO_SERVICE_TOKEN',
+2026-11-09T18:37:08.5974240Z ].map(name => [name, randomBytes(32).toString('hex')]));
+2026-11-09T18:37:08.5974678Z const url = new URL(process.env.BOOTSTRAP_DATABASE_URL);
+2026-11-09T18:37:08.5975176Z if (!['postgres:', 'postgresql:'].includes(url.protocol)) process.exit(1);
+2026-11-09T18:37:08.5975814Z for (const value of [url.password, decodeURIComponent(url.password), ...Object.values(generated)]) {
+2026-11-09T18:37:08.5976407Z   if (value) console.log(`::add-mask::${value}`);
+2026-11-09T18:37:08.5976720Z }
+2026-11-09T18:37:08.5977001Z url.username = process.env.RECOMENDACAO_DATABASE_ROLE;
+2026-11-09T18:37:08.5977436Z url.password = generated.RECOMENDACAO_DATABASE_PASSWORD;
+2026-11-09T18:37:08.5977826Z generated.DATABASE_URL = url.toString();
+2026-11-09T18:37:08.5978202Z console.log(`::add-mask::${generated.DATABASE_URL}`);
+2026-11-09T18:37:08.5978833Z appendFileSync(process.env.GITHUB_ENV, Object.entries(generated).map(([key, value]) => `${key}=${value}\n`).join(''));
+2026-11-09T18:37:08.5979388Z NODE
+2026-11-09T18:37:08.6030485Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:37:08.6030751Z env:
+2026-11-09T18:37:08.6030947Z   NODE_ENV: test
+2026-11-09T18:37:08.6032000Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:37:08.6032781Z   DIRECT_URL: ***
+2026-11-09T18:37:08.6033006Z   API_SCHEMA: public
+2026-11-09T18:37:08.6033265Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:37:08.6033586Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:37:08.6033905Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:37:08.6034187Z ##[endgroup]
+2026-11-09T18:37:08.6498472Z ##[group]Run npm run bootstrap:permissoes
+2026-11-09T18:37:08.6498858Z npm run bootstrap:permissoes
+2026-11-09T18:37:08.6547745Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:37:08.6548027Z env:
+2026-11-09T18:37:08.6548237Z   NODE_ENV: test
+2026-11-09T18:37:08.6549074Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:37:08.6549819Z   DIRECT_URL: ***
+2026-11-09T18:37:08.6550064Z   API_SCHEMA: public
+2026-11-09T18:37:08.6550316Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:37:08.6550651Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:37:08.6550978Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:37:08.6551796Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+2026-11-09T18:37:08.6552283Z   API_DATABASE_PASSWORD: ***
+2026-11-09T18:37:08.6552748Z   RECOMENDACAO_SERVICE_TOKEN: ***
+2026-11-09T18:37:08.6553730Z   DATABASE_URL: ***
+2026-11-09T18:37:08.6553966Z ##[endgroup]
+2026-11-09T18:37:08.7590209Z
+2026-11-09T18:37:08.7590752Z > origem-recomendacao@1.0.0 bootstrap:permissoes
+2026-11-09T18:37:08.7591240Z > tsx scripts/bootstrap-permissoes.ts
+2026-11-09T18:37:08.7591730Z
+2026-11-09T18:37:09.1468646Z (node:2809) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+2026-11-09T18:37:09.1469989Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+2026-11-09T18:37:09.1470896Z
+2026-11-09T18:37:09.1471050Z To prepare for this change:
+2026-11-09T18:37:09.1471864Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+2026-11-09T18:37:09.1472709Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+2026-11-09T18:37:09.1473076Z
+2026-11-09T18:37:09.1473596Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+2026-11-09T18:37:09.1474410Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-09T18:37:20.9797698Z Permissions configured.
+2026-11-09T18:37:21.1709333Z ##[group]Run npm run migrate
+2026-11-09T18:37:21.1709679Z npm run migrate
+2026-11-09T18:37:21.1758254Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:37:21.1758535Z env:
+2026-11-09T18:37:21.1758740Z   NODE_ENV: test
+2026-11-09T18:37:21.1759736Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:37:21.1760497Z   DIRECT_URL: ***
+2026-11-09T18:37:21.1760741Z   API_SCHEMA: public
+2026-11-09T18:37:21.1761005Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:37:21.1761338Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:37:21.1761912Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:37:21.1762448Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+2026-11-09T18:37:21.1762899Z   API_DATABASE_PASSWORD: ***
+2026-11-09T18:37:21.1763355Z   RECOMENDACAO_SERVICE_TOKEN: ***
+2026-11-09T18:37:21.1764338Z   DATABASE_URL: ***
+2026-11-09T18:37:21.1764569Z ##[endgroup]
+2026-11-09T18:37:21.2763008Z
+2026-11-09T18:37:21.2763727Z > origem-recomendacao@1.0.0 migrate
+2026-11-09T18:37:21.2764528Z > tsx scripts/migrate.ts
+2026-11-09T18:37:21.2764860Z
+2026-11-09T18:37:21.6523270Z (node:2856) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+2026-11-09T18:37:21.6524794Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+2026-11-09T18:37:21.6525559Z
+2026-11-09T18:37:21.6525717Z To prepare for this change:
+2026-11-09T18:37:21.6526334Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+2026-11-09T18:37:21.6527107Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+2026-11-09T18:37:21.6527479Z
+2026-11-09T18:37:21.6527973Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+2026-11-09T18:37:21.6528990Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-09T18:37:24.1766088Z Migrations applied.
+2026-11-09T18:37:24.3666279Z ##[group]Run npm run lint
+2026-11-09T18:37:24.3666618Z npm run lint
+2026-11-09T18:37:24.3716177Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:37:24.3716455Z env:
+2026-11-09T18:37:24.3716656Z   NODE_ENV: test
+2026-11-09T18:37:24.3717544Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:37:24.3718280Z   DIRECT_URL: ***
+2026-11-09T18:37:24.3718536Z   API_SCHEMA: public
+2026-11-09T18:37:24.3718795Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:37:24.3719133Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:37:24.3719471Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:37:24.3719989Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+2026-11-09T18:37:24.3720445Z   API_DATABASE_PASSWORD: ***
+2026-11-09T18:37:24.3720908Z   RECOMENDACAO_SERVICE_TOKEN: ***
+2026-11-09T18:37:24.3722225Z   DATABASE_URL: ***
+2026-11-09T18:37:24.3722480Z ##[endgroup]
+2026-11-09T18:37:24.4748002Z
+2026-11-09T18:37:24.4748299Z > origem-recomendacao@1.0.0 lint
+2026-11-09T18:37:24.4748697Z > eslint .
+2026-11-09T18:37:24.4748839Z
+2026-11-09T18:37:26.0172531Z ##[group]Run npm run typecheck
+2026-11-09T18:37:26.0172902Z npm run typecheck
+2026-11-09T18:37:26.0222944Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:37:26.0223215Z env:
+2026-11-09T18:37:26.0223426Z   NODE_ENV: test
+2026-11-09T18:37:26.0224270Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:37:26.0225203Z   DIRECT_URL: ***
+2026-11-09T18:37:26.0225445Z   API_SCHEMA: public
+2026-11-09T18:37:26.0225711Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:37:26.0226053Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:37:26.0226380Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:37:26.0226898Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+2026-11-09T18:37:26.0227354Z   API_DATABASE_PASSWORD: ***
+2026-11-09T18:37:26.0227816Z   RECOMENDACAO_SERVICE_TOKEN: ***
+2026-11-09T18:37:26.0228886Z   DATABASE_URL: ***
+2026-11-09T18:37:26.0229135Z ##[endgroup]
+2026-11-09T18:37:26.1240841Z
+2026-11-09T18:37:26.1241643Z > origem-recomendacao@1.0.0 typecheck
+2026-11-09T18:37:26.1242207Z > tsc --noEmit
+2026-11-09T18:37:26.1242371Z
+2026-11-09T18:37:28.1635090Z ##[group]Run npm test
+2026-11-09T18:37:28.1635387Z npm test
+2026-11-09T18:37:28.1683980Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:37:28.1684252Z env:
+2026-11-09T18:37:28.1684452Z   NODE_ENV: test
+2026-11-09T18:37:28.1685291Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:37:28.1686009Z   DIRECT_URL: ***
+2026-11-09T18:37:28.1686244Z   API_SCHEMA: public
+2026-11-09T18:37:28.1686503Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:37:28.1686838Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:37:28.1687173Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:37:28.1687698Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+2026-11-09T18:37:28.1688156Z   API_DATABASE_PASSWORD: ***
+2026-11-09T18:37:28.1688609Z   RECOMENDACAO_SERVICE_TOKEN: ***
+2026-11-09T18:37:28.1689569Z   DATABASE_URL: ***
+2026-11-09T18:37:28.1689798Z ##[endgroup]
+2026-11-09T18:37:28.2737917Z
+2026-11-09T18:37:28.2738563Z > origem-recomendacao@1.0.0 test
+2026-11-09T18:37:28.2739007Z > vitest run
+2026-11-09T18:37:28.2739157Z
+2026-11-09T18:37:28.5731976Z
+2026-11-09T18:37:28.5736088Z  RUN  v5.1.0 /home/runner/work/Projeto-Integrador/Projeto-Integrador/services/recomendacao
+2026-11-09T18:37:28.5737258Z
+2026-11-09T18:37:29.0383493Z (node:2953) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+2026-11-09T18:37:29.0385732Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+2026-11-09T18:37:29.0386796Z
+2026-11-09T18:37:29.0387271Z To prepare for this change:
+2026-11-09T18:37:29.0388037Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+2026-11-09T18:37:29.0388710Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+2026-11-09T18:37:29.0389056Z
+2026-11-09T18:37:29.0389477Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+2026-11-09T18:37:29.0390148Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-09T18:38:04.4024035Z stdout | tests/integration/recomendacao.test.ts > reproduz IDs e ordem da fixture interna
+2026-11-09T18:38:04.4026548Z {"servico":"recomendacao","requestId":"ce026014-5514-4825-af41-fc4b64d47853","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":1357.332}
+2026-11-09T18:38:04.4027631Z
+2026-11-09T18:39:23.5865283Z stdout | tests/integration/recomendacao.test.ts > nega token ausente ou errado
+2026-11-09T18:39:23.5869268Z {"servico":"recomendacao","requestId":"6e155a60-cc5c-4c77-bafa-94eea4c34f6b","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.743}
+2026-11-09T18:39:23.5870281Z
+2026-11-09T18:39:23.5903802Z stdout | tests/integration/recomendacao.test.ts > nega token ausente ou errado
+2026-11-09T18:39:23.5906264Z {"servico":"recomendacao","requestId":"a7959b2a-56df-4688-b4a0-e8372ceffc4e","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.736}
+2026-11-09T18:39:23.5907272Z
+2026-11-09T18:39:23.5926324Z stdout | tests/integration/recomendacao.test.ts > nega token ausente ou errado
+2026-11-09T18:39:23.5928806Z {"servico":"recomendacao","requestId":"1d5e63fc-4c22-4f4f-869c-3ffc266c2288","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.405}
+2026-11-09T18:39:23.5929788Z
+2026-11-09T18:39:23.5951720Z stdout | tests/integration/recomendacao.test.ts > nega token ausente ou errado
+2026-11-09T18:39:23.5954360Z {"servico":"recomendacao","requestId":"f26474b5-26da-4890-b11e-bd55979550d0","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.557}
+2026-11-09T18:39:23.5955784Z
+2026-11-09T18:39:23.5975583Z stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+2026-11-09T18:39:23.5978436Z {"servico":"recomendacao","requestId":"5d751847-0c05-4be6-ab11-83c442bd8d88","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.351}
+2026-11-09T18:39:23.5979774Z
+2026-11-09T18:39:23.5995885Z stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+2026-11-09T18:39:23.5998563Z {"servico":"recomendacao","requestId":"1e08c39b-c3ca-45ba-87fa-d6f880d68ec0","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.338}
+2026-11-09T18:39:23.5999920Z
+2026-11-09T18:39:23.6025250Z stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+2026-11-09T18:39:23.6028086Z {"servico":"recomendacao","requestId":"5a7f6a3a-dd2d-48a3-b0a6-22f9d177c92e","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.359}
+2026-11-09T18:39:23.6029445Z
+2026-11-09T18:39:23.6128533Z stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+2026-11-09T18:39:23.6131123Z {"servico":"recomendacao","requestId":"59dc50e7-33c0-4f32-a9fe-63e91c2c46f9","metodo":"GET","rota":"[sem-rota]","status":400,"duracaoMs":7.693}
+2026-11-09T18:39:23.6132710Z
+2026-11-09T18:39:23.6172038Z stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+2026-11-09T18:39:23.6174976Z {"servico":"recomendacao","requestId":"8b8bf30d-1178-48c8-99fa-67068ecd3520","metodo":"GET","rota":"[sem-rota]","status":413,"duracaoMs":1.273}
+2026-11-09T18:39:23.6176515Z
+2026-11-09T18:39:23.6196320Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?produtoId=invalido
+2026-11-09T18:39:23.6199475Z {"servico":"recomendacao","requestId":"c5f5d545-eab0-42c6-a345-114f352cd42a","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.602}
+2026-11-09T18:39:23.6201069Z
+2026-11-09T18:39:23.6218740Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=0
+2026-11-09T18:39:23.6221919Z {"servico":"recomendacao","requestId":"7cb6abab-af46-4732-a726-7afd077bc43e","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.704}
+2026-11-09T18:39:23.6223393Z
+2026-11-09T18:39:23.6254381Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=9
+2026-11-09T18:39:23.6256684Z {"servico":"recomendacao","requestId":"c1c1a8f1-ee0f-40ac-848b-6126c63eab12","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.447}
+2026-11-09T18:39:23.6257719Z
+2026-11-09T18:39:23.6263114Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=1.5
+2026-11-09T18:39:23.6265314Z {"servico":"recomendacao","requestId":"89fbf02b-b56f-4b48-a309-4e23b85d31f8","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.514}
+2026-11-09T18:39:23.6266345Z
+2026-11-09T18:39:23.6290413Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=
+2026-11-09T18:39:23.6292266Z {"servico":"recomendacao","requestId":"9d82e19b-e49d-49e2-ac87-0eddd9ef6083","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.425}
+2026-11-09T18:39:23.6292869Z
+2026-11-09T18:39:23.6303775Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?extra=1
+2026-11-09T18:39:23.6305136Z {"servico":"recomendacao","requestId":"9be6d4d0-f31e-4d98-a82f-a1f574a7d78b","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.465}
+2026-11-09T18:39:23.6305731Z
+2026-11-09T18:39:23.6320963Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes/historico
+2026-11-09T18:39:23.6323726Z {"servico":"recomendacao","requestId":"6e562d06-d8ff-43ab-aaf6-629950e71821","metodo":"GET","rota":"/recomendacoes/historico","status":400,"duracaoMs":0.879}
+2026-11-09T18:39:23.6325209Z
+2026-11-09T18:39:23.6344980Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes/historico?usuarioId=invalido
+2026-11-09T18:39:23.6347890Z {"servico":"recomendacao","requestId":"80c8e51e-d025-491e-b2e3-7c053c3c68fc","metodo":"GET","rota":"/recomendacoes/historico","status":400,"duracaoMs":0.461}
+2026-11-09T18:39:23.6349374Z
+2026-11-09T18:39:23.6363799Z stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=1&limite=2
+2026-11-09T18:39:23.6366574Z {"servico":"recomendacao","requestId":"00915b01-316d-4019-83c6-11916adc608d","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.443}
+2026-11-09T18:39:23.6368010Z
+2026-11-09T18:39:24.8269401Z stdout | tests/integration/recomendacao.test.ts > responde historico interno autenticado e respeita limite
+2026-11-09T18:39:24.8270788Z {"servico":"recomendacao","requestId":"c3e776c3-76ae-4970-8038-be5942cd547b","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":1188.653}
+2026-11-09T18:39:24.8271727Z
+2026-11-09T18:39:25.1684773Z stdout | tests/integration/recomendacao.test.ts > health consulta PostgreSQL sem token
+2026-11-09T18:39:25.1687068Z {"servico":"recomendacao","requestId":"7b9e278f-6c5a-4fff-81af-b287028128e3","metodo":"GET","rota":"/health","status":200,"duracaoMs":169.848}
+2026-11-09T18:39:25.1687847Z
+2026-11-09T18:39:25.1722563Z stdout | tests/integration/recomendacao.test.ts > banco indisponivel responde 503 sem detalhes
+2026-11-09T18:39:25.1724839Z {"servico":"recomendacao","requestId":"19dd9731-411f-4811-a020-e445e480c130","metodo":"GET","rota":"/health","status":503,"duracaoMs":1.202}
+2026-11-09T18:39:25.1725835Z
+2026-11-09T18:39:25.1744851Z stdout | tests/integration/recomendacao.test.ts > banco indisponivel responde 503 sem detalhes
+2026-11-09T18:39:25.1747186Z {"servico":"recomendacao","requestId":"b8998673-2400-441d-a169-01d371f88f90","metodo":"GET","rota":"/recomendacoes","status":503,"duracaoMs":0.726}
+2026-11-09T18:39:25.1748250Z
+2026-11-09T18:39:26.8893506Z  ✓ tests/integration/recomendacao.test.ts (36 tests) 117859ms
+2026-11-09T18:39:26.8895058Z    ✓ reproduz IDs e ordem da fixture interna 1372ms
+2026-11-09T18:39:26.8896445Z    ✓ mantem fallback para contexto ausente e desconhecido 844ms
+2026-11-09T18:39:26.8898036Z    ✓ mantem historico confirmado, exclusao de compras e fallback pessoal 1015ms
+2026-11-09T18:39:26.8899692Z    ✓ mantem fallback quando a categoria do contexto nao possui candidatos 843ms
+2026-11-09T18:39:26.8901580Z    ✓ preserva historico de produtos ocultos e os filtros distintos por Strategy 1182ms
+2026-11-09T18:39:26.8903674Z    ✓ preserva reforco regional com vendas invertidas entre regioes 1349ms
+2026-11-09T18:39:26.8904930Z    ✓ permite SELECT nas duas views 337ms
+2026-11-09T18:39:26.8906057Z    ✓ nega SELECT, INSERT e UPDATE em Produto 2540ms
+2026-11-09T18:39:26.8907197Z    ✓ nega SELECT, INSERT e UPDATE em Pedido 3541ms
+2026-11-09T18:39:26.8908360Z    ✓ nega SELECT, INSERT e UPDATE em Usuario 3524ms
+2026-11-09T18:39:26.8909379Z    ✓ permite INSERT privado e nega SELECT privado pela conexao da API 4864ms
+2026-11-09T18:39:26.8910561Z    ✓ recusa bootstrap com papel privilegiado ou identificador malicioso 3784ms
+2026-11-09T18:39:26.8911343Z    ✓ recusa migrations pela conexao da API 684ms
+2026-11-09T18:39:26.8912539Z    ✓ transfere somente a fila explicitamente autorizada sem perder dados 25670ms
+2026-11-09T18:39:26.8913425Z    ✓ bootstrap e migrations sao idempotentes e preservam dados 12969ms
+2026-11-09T18:39:26.8914277Z    ✓ detecta checksum divergente antes de reaplicar migration privada 1675ms
+2026-11-09T18:39:26.8915114Z    ✓ remove tambem privilegios antigos concedidos por coluna 12139ms
+2026-11-09T18:39:26.8915947Z    ✓ executa o bloco SQL manual com as mesmas restricoes do bootstrap 2020ms
+2026-11-09T18:39:26.8916774Z    ✓ responde historico interno autenticado e respeita limite 1360ms
+2026-11-09T18:39:27.1563018Z (node:3105) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+2026-11-09T18:39:27.1564679Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+2026-11-09T18:39:27.1565949Z
+2026-11-09T18:39:27.1566481Z To prepare for this change:
+2026-11-09T18:39:27.1567566Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+2026-11-09T18:39:27.1568792Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+2026-11-09T18:39:27.1569433Z
+2026-11-09T18:39:27.1570160Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+2026-11-09T18:39:27.1571580Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-09T18:42:47.8566193Z  ✓ tests/integration/lote.test.ts (14 tests) 200708ms
+2026-11-09T18:42:47.8567204Z    ✓ aplica o reforco regional na selecao efetiva do lote 21793ms
+2026-11-09T18:42:47.8568120Z    ✓ preserva resultado ordenado C=1 e C=4, regional=false 21768ms
+2026-11-09T18:42:47.8568980Z    ✓ preserva resultado ordenado C=1 e C=4, regional=true 20822ms
+2026-11-09T18:42:47.8569874Z    ✓ registra quinze execucoes do benchmark pelo papel restrito 66676ms
+2026-11-09T18:42:47.8570761Z    ✓ recusa sobreposicao de execucoes na mesma sessao 8184ms
+2026-11-09T18:42:47.8571892Z    ✓ mantem snapshot do catalogo durante a sessao preparada 12268ms
+2026-11-09T18:42:47.8572813Z    ✓ preserva uma linha incompleta quando a selecao falha 12743ms
+2026-11-09T18:42:47.8573715Z    ✓ CLI grava JSON e hash persistido usando PostgreSQL real 12634ms
+2026-11-09T18:42:48.0807814Z (node:3178) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+2026-11-09T18:42:48.0810440Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+2026-11-09T18:42:48.0811662Z
+2026-11-09T18:42:48.0812244Z To prepare for this change:
+2026-11-09T18:42:48.0813321Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+2026-11-09T18:42:48.0814409Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+2026-11-09T18:42:48.0814981Z
+2026-11-09T18:42:48.0815644Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+2026-11-09T18:42:48.0816606Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-09T18:43:17.3317614Z  ✓ tests/integration/reforco-regional.test.ts (4 tests) 29259ms
+2026-11-09T18:43:17.3319202Z    ✓ CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) (4)
+2026-11-09T18:43:17.3321296Z      ✓ sem reforco, preserva a ordenacao baseline por vendas, ignorando regiao 337ms
+2026-11-09T18:43:17.3323515Z      ✓ com reforco, prioriza candidatos da mesma regiao do contexto antes de olhar vendas 334ms
+2026-11-09T18:43:17.3325455Z      ✓ com reforco, desempate dentro de cada grupo regional continua deterministico por UUID 2018ms
+2026-11-09T18:43:17.3327140Z      ✓ com reforco, o limite de oito itens permanece respeitado 334ms
+2026-11-09T18:43:17.5789874Z (node:3199) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+2026-11-09T18:43:17.5792004Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+2026-11-09T18:43:17.5793024Z
+2026-11-09T18:43:17.5793246Z To prepare for this change:
+2026-11-09T18:43:17.5794029Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+2026-11-09T18:43:17.5795092Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+2026-11-09T18:43:17.5795651Z
+2026-11-09T18:43:17.5796346Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+2026-11-09T18:43:17.5797567Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-09T18:43:56.3868133Z stdout | tests/integration/metricas-lote.test.ts > preserva as metricas regionais usando dois lotes C=8 registrados
+2026-11-09T18:43:56.3869498Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+2026-11-09T18:43:56.3870037Z
+2026-11-09T18:43:57.5934259Z stdout | tests/integration/metricas-lote.test.ts > preserva as metricas regionais usando dois lotes C=8 registrados
+2026-11-09T18:43:57.5935985Z Lote persistido: execucaoId=55a2478e-0372-4182-9163-19a1e5fd2fc3 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+2026-11-09T18:43:57.5937202Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+2026-11-09T18:43:57.5937711Z
+2026-11-09T18:43:58.7719646Z stdout | tests/integration/metricas-lote.test.ts > preserva as metricas regionais usando dois lotes C=8 registrados
+2026-11-09T18:43:58.7722020Z Lote persistido: execucaoId=bf7732ed-a8fa-4915-bf4e-f0d1d128da1d produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+2026-11-09T18:43:58.7722699Z
+2026-11-09T18:44:16.7005223Z stdout | tests/integration/metricas-lote.test.ts > executa somente o modo on solicitado
+2026-11-09T18:44:16.7006354Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+2026-11-09T18:44:16.7007263Z
+2026-11-09T18:44:17.8937864Z stdout | tests/integration/metricas-lote.test.ts > executa somente o modo on solicitado
+2026-11-09T18:44:17.8939248Z Lote persistido: execucaoId=1ea93483-077c-4c4f-9e80-797962389c13 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+2026-11-09T18:44:17.8939923Z
+2026-11-09T18:44:34.4495705Z stdout | tests/integration/metricas-lote.test.ts > executa somente o modo off solicitado
+2026-11-09T18:44:34.4496952Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+2026-11-09T18:44:34.4497499Z
+2026-11-09T18:44:35.6483318Z stdout | tests/integration/metricas-lote.test.ts > executa somente o modo off solicitado
+2026-11-09T18:44:35.6486161Z Lote persistido: execucaoId=09aa01f6-998f-429b-8d80-89a92a10c132 produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+2026-11-09T18:44:35.6487133Z
+2026-11-09T18:44:52.1993765Z stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+2026-11-09T18:44:52.1994942Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+2026-11-09T18:44:52.1995424Z
+2026-11-09T18:44:53.3892702Z stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+2026-11-09T18:44:53.3894600Z Lote persistido: execucaoId=4b903404-e544-41b7-9038-4d2d94a2c74e produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+2026-11-09T18:44:53.3896224Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+2026-11-09T18:44:53.3896651Z
+2026-11-09T18:44:54.5645910Z stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+2026-11-09T18:44:54.5648491Z Lote persistido: execucaoId=82b5b9ba-2f0a-4e9b-b06e-c43d9566bcfc produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+2026-11-09T18:44:54.5649457Z
+2026-11-09T18:45:11.1893340Z stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+2026-11-09T18:45:11.1894680Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+2026-11-09T18:45:11.1895335Z
+2026-11-09T18:45:12.3990978Z stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+2026-11-09T18:45:12.3992701Z Lote persistido: execucaoId=1a848ded-8e51-4890-8cff-2a69a98ddd71 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+2026-11-09T18:45:12.3993823Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+2026-11-09T18:45:12.3994255Z
+2026-11-09T18:45:13.5940986Z stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+2026-11-09T18:45:13.5943665Z Lote persistido: execucaoId=13029f6d-609e-4ca5-96fc-4fdf937526bb produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+2026-11-09T18:45:13.5944337Z
+2026-11-09T18:45:13.7652790Z stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+2026-11-09T18:45:13.7655254Z | Reforco regional | Produtos | Elegiveis | Recomendacoes | Cobertura catalogo % | Cobertura v0 % | Fallback % | Acerto categoria % | Mesma regiao % |
+2026-11-09T18:45:13.7656781Z |---|---:|---:|---:|---:|---:|---:|---:|---:|
+2026-11-09T18:45:13.7658155Z | on | 15 | 14 | 112 | 85.71428571428571 | 100 | 14.285714285714286 | 85.71428571428571 | 58.92857142857143 |
+2026-11-09T18:45:13.7659508Z | off | 15 | 14 | 112 | 64.28571428571429 | 100 | 14.285714285714286 | 85.71428571428571 | 42.857142857142854 |
+2026-11-09T18:45:13.7660573Z Comparacao regional: 0 diferencas; JSON e diff salvos.
+2026-11-09T18:45:13.7661605Z
+2026-11-09T18:45:39.5351189Z stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+2026-11-09T18:45:39.5352953Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+2026-11-09T18:45:39.5353525Z
+2026-11-09T18:45:39.8707863Z stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+2026-11-09T18:45:39.8709613Z Lote persistido: execucaoId=2fae5e36-b662-40e3-9335-18cb6b8545fc produtos=0 hash=4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+2026-11-09T18:45:39.8713631Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+2026-11-09T18:45:39.8714269Z
+2026-11-09T18:45:40.2059254Z stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+2026-11-09T18:45:40.2061895Z Lote persistido: execucaoId=02da9d21-4cb0-4f85-8900-d125086fd3c4 produtos=0 hash=4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+2026-11-09T18:45:40.2062841Z
+2026-11-09T18:45:45.7202880Z  ❯ tests/integration/metricas-lote.test.ts (5 tests | 1 failed) 148152ms
+2026-11-09T18:45:45.7205146Z    ✓ preserva as metricas regionais usando dois lotes C=8 registrados 20349ms
+2026-11-09T18:45:45.7206829Z    ✓ executa somente o modo on solicitado 17781ms
+2026-11-09T18:45:45.7207966Z    ✓ executa somente o modo off solicitado 17754ms
+2026-11-09T18:45:45.7209386Z    × CLI gera JSON e diff vazio contra referencia fornecida 30003ms
+2026-11-09T18:45:45.7210219Z    ✓ retorna zeros na base vazia sem NaN ou Infinity 37232ms
+2026-11-09T18:45:45.9785681Z  ✓ tests/unit/bench-lote.test.ts (15 tests) 63ms
+2026-11-09T18:45:46.1946092Z  ✓ tests/unit/metricas-cli.test.ts (9 tests) 22ms
+2026-11-09T18:45:46.6963560Z  ✓ tests/unit/lote-cli.test.ts (10 tests) 295ms
+2026-11-09T18:45:47.0272270Z  ✓ tests/unit/request-logging.test.ts (3 tests) 38ms
+2026-11-09T18:45:47.2067535Z  ✓ tests/unit/environment.test.ts (8 tests) 12ms
+2026-11-09T18:45:47.3383193Z  ✓ tests/unit/recomendacao-metricas.test.ts (8 tests) 5ms
+2026-11-09T18:45:47.4600143Z  ✓ tests/unit/recomendacao-volume.test.ts (2 tests) 5ms
+2026-11-09T18:45:47.6684863Z  ✓ tests/unit/bench-cli.test.ts (2 tests) 8ms
+2026-11-09T18:45:47.6764311Z
+2026-11-09T18:45:47.6765000Z ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+2026-11-09T18:45:47.6765320Z
+2026-11-09T18:45:47.6770472Z  FAIL  tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+2026-11-09T18:45:47.6775623Z Error: Test timed out in 30000ms.
+2026-11-09T18:45:47.6776480Z If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+2026-11-09T18:45:47.6777606Z  ❯ tests/integration/metricas-lote.test.ts:132:1
+2026-11-09T18:45:47.6819924Z     130| );
+2026-11-09T18:45:47.6820299Z     131|
+2026-11-09T18:45:47.6820848Z     132| it("CLI gera JSON e diff vazio contra referencia fornecida", async () …
+2026-11-09T18:45:47.6821609Z        | ^
+2026-11-09T18:45:47.6822887Z     133|   const pasta = await mkdtemp(join(tmpdir(), "metricas-36-2-"));
+2026-11-09T18:45:47.6824392Z     134|   const medicao = await medirReforcoRegional(config, "ambos");
+2026-11-09T18:45:47.6824962Z
+2026-11-09T18:45:47.6825242Z ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+2026-11-09T18:45:47.6825481Z
+2026-11-09T18:45:47.6826893Z
+2026-11-09T18:45:47.6831330Z  Test Files  1 failed | 11 passed (12)
+2026-11-09T18:45:47.6834132Z       Tests  1 failed | 115 passed (116)
+2026-11-09T18:45:47.6834747Z    Start at  18:37:28
+2026-11-09T18:45:47.6837932Z    Duration  499.09s (tests 100%)
+2026-11-09T18:45:47.6849859Z
+2026-11-09T18:45:47.6863135Z
+2026-11-09T18:45:47.6884837Z ##[error]Error: Test timed out in 30000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/integration/metricas-lote.test.ts:132:1
+
+
+2026-11-09T18:45:47.7082942Z ##[error]Process completed with exit code 1.
+2026-11-09T18:45:47.7142538Z ##[group]Run node --input-type=module <<'NODE'
+2026-11-09T18:45:47.7142983Z node --input-type=module <<'NODE'
+2026-11-09T18:45:47.7143370Z import { Pool, escapeIdentifier as ident } from 'pg';
+2026-11-09T18:45:47.7143821Z const role = process.env.RECOMENDACAO_DATABASE_ROLE;
+2026-11-09T18:45:47.7144224Z const api = process.env.API_DATABASE_ROLE;
+2026-11-09T18:45:47.7144605Z const schema = process.env.RECOMENDACAO_SCHEMA;
+2026-11-09T18:45:47.7145140Z if (![role, api, schema].every(name => /^(rec|api)_ci_[0-9]+_[0-9]+$/.test(name))) process.exit(1);
+2026-11-09T18:45:47.7145783Z const pool = new Pool({ connectionString: process.env.BOOTSTRAP_DATABASE_URL });
+2026-11-09T18:45:47.7146277Z const client = await pool.connect();
+2026-11-09T18:45:47.7146582Z try {
+2026-11-09T18:45:47.7146865Z   await client.query('BEGIN');
+2026-11-09T18:45:47.7147340Z   const { rows: [identity] } = await client.query('SELECT current_user AS name');
+2026-11-09T18:45:47.7148047Z   const existing = await client.query('SELECT rolname FROM pg_roles WHERE rolname = ANY($1::text[])', [[role, api]]);
+2026-11-09T18:45:47.7148657Z   for (const { rolname } of existing.rows) {
+2026-11-09T18:45:47.7149211Z     await client.query(`GRANT ${ident(rolname)} TO ${ident(identity.name)} WITH SET TRUE, INHERIT TRUE`);
+2026-11-09T18:45:47.7149727Z   }
+2026-11-09T18:45:47.7150076Z   await client.query(`DROP SCHEMA IF EXISTS ${ident(schema)} CASCADE`);
+2026-11-09T18:45:47.7150534Z   for (const { rolname } of existing.rows) {
+2026-11-09T18:45:47.7150945Z     await client.query(`DROP OWNED BY ${ident(rolname)}`);
+2026-11-09T18:45:47.7151641Z     await client.query(`DROP ROLE ${ident(rolname)}`);
+2026-11-09T18:45:47.7152098Z   }
+2026-11-09T18:45:47.7152334Z   await client.query('COMMIT');
+2026-11-09T18:45:47.7152635Z } catch {
+2026-11-09T18:45:47.7152887Z   await client.query('ROLLBACK');
+2026-11-09T18:45:47.7153323Z   console.error('Falha na limpeza dos objetos efemeros do job.');
+2026-11-09T18:45:47.7153734Z   process.exitCode = 1;
+2026-11-09T18:45:47.7154062Z } finally { client.release(); await pool.end(); }
+2026-11-09T18:45:47.7154383Z NODE
+2026-11-09T18:45:47.7202622Z shell: /usr/bin/bash -e {0}
+2026-11-09T18:45:47.7202899Z env:
+2026-11-09T18:45:47.7203102Z   NODE_ENV: test
+2026-11-09T18:45:47.7203922Z   BOOTSTRAP_DATABASE_URL: ***
+2026-11-09T18:45:47.7204666Z   DIRECT_URL: ***
+2026-11-09T18:45:47.7204899Z   API_SCHEMA: public
+2026-11-09T18:45:47.7205360Z   RECOMENDACAO_SCHEMA: rec_ci_42674004576_3
+2026-11-09T18:45:47.7205698Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42674004576_3
+2026-11-09T18:45:47.7206029Z   API_DATABASE_ROLE: api_ci_42674004576_3
+2026-11-09T18:45:47.7206549Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+2026-11-09T18:45:47.7207014Z   API_DATABASE_PASSWORD: ***
+2026-11-09T18:45:47.7207482Z   RECOMENDACAO_SERVICE_TOKEN: ***
+2026-11-09T18:45:47.7208453Z   DATABASE_URL: ***
+2026-11-09T18:45:47.7208684Z ##[endgroup]
+2026-11-09T18:45:47.7859031Z (node:3326) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+2026-11-09T18:45:47.7860525Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+2026-11-09T18:45:47.7861238Z
+2026-11-09T18:45:47.7861599Z To prepare for this change:
+2026-11-09T18:45:47.7862335Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+2026-11-09T18:45:47.7863191Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+2026-11-09T18:45:47.7863628Z
+2026-11-09T18:45:47.7864118Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+2026-11-09T18:45:47.7865316Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-09T18:45:50.8179204Z Post job cleanup.
+2026-11-09T18:45:50.9042414Z [command]/usr/bin/git version
+2026-11-09T18:45:50.9090889Z git version 2.56.0
+2026-11-09T18:45:50.9133443Z Temporarily overriding HOME='/home/runner/work/_temp/ad163fa4-0b3b-40bd-bd2b-bf6fb78b682e' before making global git config changes
+2026-11-09T18:45:50.9134545Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-09T18:45:50.9138856Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Projeto-Integrador/Projeto-Integrador
+2026-11-09T18:45:50.9173399Z Removing SSH command configuration
+2026-11-09T18:45:50.9180364Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T18:45:50.9240646Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T18:45:50.9564115Z Removing HTTP extra header
+2026-11-09T18:45:50.9570942Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T18:45:50.9612610Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T18:45:50.9937414Z Removing includeIf entries pointing to credentials config files
+2026-11-09T18:45:50.9945556Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T18:45:50.9983103Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T18:45:51.0466590Z Cleaning up orphan processes

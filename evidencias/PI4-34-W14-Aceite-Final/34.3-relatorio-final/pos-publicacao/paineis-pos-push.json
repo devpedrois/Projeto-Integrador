@@ -1,0 +1,24 @@
+{
+  "observedAt": "2026-11-09T18:50:11.434Z",
+  "frontend": {
+    "branch": "main",
+    "commit": "766d2fdf5c7ad1b775f2a034e1ce34b0ff1b0022",
+    "state": "Ready",
+    "environment": "Production",
+    "url": "https://vercel.com/dev-pedrois/origem-marketplace/6jPMZxUr8fipdrMZuePCctMsV5r5",
+    "publicUrl": "https://origem-marketplace.vercel.app/",
+    "trigger": "Git push automatico"
+  },
+  "api": {
+    "branch": "main",
+    "commit": "c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+    "state": "Live",
+    "url": "https://dashboard.render.com/web/srv-db7cmslg1s2s73a19jd0"
+  },
+  "recomendacao": {
+    "branch": "main",
+    "commit": "c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+    "state": "Live",
+    "url": "https://dashboard.render.com/web/srv-dbluv1u1egvs73ap7cf0"
+  }
+}

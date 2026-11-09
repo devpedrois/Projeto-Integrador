@@ -1,0 +1,10 @@
+{
+  "attempt": 2,
+  "conclusion": "failure",
+  "createdAt": "2026-11-09T18:28:27Z",
+  "headSha": "766d2fdf5c7ad1b775f2a034e1ce34b0ff1b0022",
+  "jobs": [],
+  "status": "completed",
+  "updatedAt": "2026-11-09T18:29:18Z",
+  "url": "https://github.com/devpedrois/Projeto-Integrador/actions/runs/42674004576/attempts/2"
+}

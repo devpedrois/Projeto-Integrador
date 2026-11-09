@@ -1681,13 +1681,14 @@ Consolidou checkout, busca, lote paralelo e custo HTTP.
 Conferiu números, links, limites das conclusões e segurança documental.
 Evidências: [PI4-35.7](../evidencias/PI4-35/35.7-relatorio/README.md).
 
-### 34.3: execução congelada e preparação da versão final
+### 34.3: execução congelada e validação da versão final
 
 O Codex executou seis suítes no mesmo hash congelado.
 Conferiu cobertura, integridade, E2E e três rodadas concorrentes.
 Registrou o CI anterior e os commits dos três painéis.
-Consolidou o relatório e preparou a referência local de entrega.
-Evidências: [PI4-34.3](../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-resumo.md).
+Publicou `main` e a tag após autorização explícita.
+Registrou o timeout remoto, bloqueando Render e smoke.
+Evidências: [execução local](../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-resumo.md) e [publicação e bloqueio](../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/07-smoke-producao.md).
 
 ### 34.4: roteiro da apresentação, pendente de registro
 
