@@ -1,0 +1,520 @@
+ Image origem-recomendacao:local Building 
+ Image origem-backend:local Building 
+ Image origem-backend:local Building 
+ Image origem-backend-migrate:local Building 
+ Image origem-recomendacao:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.17kB 0.0s done
+#1 DONE 0.0s
+
+#2 [recomendacao internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.71kB 0.0s done
+#2 DONE 0.0s
+
+#3 [worker internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.70kB 0.0s done
+#3 DONE 0.0s
+
+#4 [api internal] load metadata for docker.io/library/alpine:3.24
+#4 ...
+
+#5 [auth] library/node:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#6 [auth] library/alpine:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#7 [recomendacao-setup internal] load metadata for docker.io/library/node:22-alpine
+#7 DONE 1.2s
+
+#4 [api internal] load metadata for docker.io/library/alpine:3.24
+#4 DONE 1.5s
+
+#8 [worker internal] load .dockerignore
+#8 transferring context: 152B done
+#8 DONE 0.0s
+
+#9 [recomendacao-setup internal] load .dockerignore
+#9 transferring context: 128B done
+#9 DONE 0.0s
+
+#10 [recomendacao internal] load build context
+#10 transferring context: 238.88kB 0.0s done
+#10 DONE 0.1s
+
+#11 [recomendacao base 1/4] FROM docker.io/library/alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
+#11 resolve docker.io/library/alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
+#11 resolve docker.io/library/alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf 0.1s done
+#11 DONE 0.1s
+
+#10 [recomendacao-setup internal] load build context
+#10 DONE 0.1s
+
+#12 [worker] FROM docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#12 resolve docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202 0.1s done
+#12 CACHED
+
+#13 [migrate internal] load build context
+#13 transferring context: 584.79kB 0.1s done
+#13 DONE 0.1s
+
+#14 [worker internal] load build context
+#14 transferring context: 585.56kB 0.1s done
+#14 DONE 0.2s
+
+#15 [worker base 2/4] COPY --from=node:22-alpine /usr/local/bin/node /usr/local/bin/node
+#15 DONE 0.3s
+
+#16 [migrate base 3/4] RUN apk add --no-cache libatomic libstdc++ openssl ca-certificates     && apk add --no-cache --virtual .npm-bootstrap npm     && npm install --global --prefix /usr/local npm@12.2.1 undici@6.29.1     && rm -rf /usr/local/lib/node_modules/npm/node_modules/undici     && ln -s ../../undici /usr/local/lib/node_modules/npm/node_modules/undici     && apk del .npm-bootstrap     && addgroup -g 1000 node     && adduser -D -u 1000 -G node node
+#16 1.099 (1/5) Installing ca-certificates (20261020-r0)
+#16 1.162 (2/5) Installing libatomic (15.2.0-r5)
+#16 1.211 (3/5) Installing libgcc (15.2.0-r5)
+#16 1.265 (4/5) Installing libstdc++ (15.2.0-r5)
+#16 1.437 (5/5) Installing openssl (3.5.9-r0)
+#16 1.508 Executing busybox-1.37.0-r31.trigger
+#16 1.511 Executing ca-certificates-20261020-r0.trigger
+#16 1.529 OK: 11.9 MiB in 21 packages
+#16 2.202 ( 1/13) Installing ada-libs (4.0.0-r0)
+#16 2.264 ( 2/13) Installing brotli-libs (1.2.1-r0)
+#16 2.339 ( 3/13) Installing c-ares (1.34.9-r0)
+#16 2.395 ( 4/13) Installing icu-data-en (78.1-r0)
+#16 2.539   Executing icu-data-en-78.1-r0.post-install
+#16 2.541 ( 5/13) Installing icu-libs (78.1-r0)
+#16 2.541   * If you need ICU with non-English locales and legacy charset support, install
+#16 2.541   * package icu-data-full.
+#16 2.720 ( 6/13) Installing nghttp2-libs (1.70.0-r0)
+#16 2.771 ( 7/13) Installing simdjson (4.2.4-r0)
+#16 2.826 ( 8/13) Installing simdutf (9.0.0-r0)
+#16 2.890 ( 9/13) Installing sqlite-libs (3.53.4-r0)
+#16 2.994 (10/13) Installing zstd-libs (1.5.7-r2)
+#16 3.071 (11/13) Installing nodejs (24.22.1-r1)
+#16 4.490 (12/13) Installing npm (11.12.1-r0)
+#16 4.712 (13/13) Installing .npm-bootstrap (20261109.171254)
+#16 4.712 Executing busybox-1.37.0-r31.trigger
+#16 4.715 OK: 81.6 MiB in 34 packages
+#16 8.723 
+#16 8.723 added 2 packages in 4s
+#16 8.723 
+#16 8.723 15 packages are looking for funding
+#16 8.723   run `npm fund` for details
+#16 9.512 ( 1/13) Purging .npm-bootstrap (20261109.171254)
+#16 9.512 ( 2/13) Purging npm (11.12.1-r0)
+#16 9.523 ( 3/13) Purging nodejs (24.22.1-r1)
+#16 9.525 ( 4/13) Purging ada-libs (4.0.0-r0)
+#16 9.525 ( 5/13) Purging brotli-libs (1.2.1-r0)
+#16 9.525 ( 6/13) Purging c-ares (1.34.9-r0)
+#16 9.525 ( 7/13) Purging icu-libs (78.1-r0)
+#16 9.525 ( 8/13) Purging nghttp2-libs (1.70.0-r0)
+#16 9.525 ( 9/13) Purging simdjson (4.2.4-r0)
+#16 9.525 (10/13) Purging simdutf (9.0.0-r0)
+#16 9.526 (11/13) Purging sqlite-libs (3.53.4-r0)
+#16 9.526 (12/13) Purging zstd-libs (1.5.7-r2)
+#16 9.526 (13/13) Purging icu-data-en (78.1-r0)
+#16 9.527 Executing busybox-1.37.0-r31.trigger
+#16 9.530 OK: 11.9 MiB in 21 packages
+#16 DONE 9.8s
+
+#17 [recomendacao-setup base 3/4] RUN apk add --no-cache libatomic libstdc++ ca-certificates     && apk add --no-cache --virtual .npm-bootstrap npm     && npm install --global --prefix /usr/local npm@12.2.1 undici@6.29.1     && rm -rf /usr/local/lib/node_modules/npm/node_modules/undici     && ln -s ../../undici /usr/local/lib/node_modules/npm/node_modules/undici     && apk del .npm-bootstrap     && addgroup -g 1000 node     && adduser -D -u 1000 -G node node
+#17 1.106 (1/4) Installing ca-certificates (20261020-r0)
+#17 1.169 (2/4) Installing libatomic (15.2.0-r5)
+#17 1.218 (3/4) Installing libgcc (15.2.0-r5)
+#17 1.272 (4/4) Installing libstdc++ (15.2.0-r5)
+#17 1.400 Executing busybox-1.37.0-r31.trigger
+#17 1.406 Executing ca-certificates-20261020-r0.trigger
+#17 1.426 OK: 11.1 MiB in 20 packages
+#17 2.123 ( 1/13) Installing ada-libs (4.0.0-r0)
+#17 2.181 ( 2/13) Installing brotli-libs (1.2.1-r0)
+#17 2.254 ( 3/13) Installing c-ares (1.34.9-r0)
+#17 2.309 ( 4/13) Installing icu-data-en (78.1-r0)
+#17 2.457   Executing icu-data-en-78.1-r0.post-install
+#17 2.459   * If you need ICU with non-English locales and legacy charset support, install
+#17 2.459   * package icu-data-full.
+#17 2.459 ( 5/13) Installing icu-libs (78.1-r0)
+#17 2.654 ( 6/13) Installing nghttp2-libs (1.70.0-r0)
+#17 2.706 ( 7/13) Installing simdjson (4.2.4-r0)
+#17 2.763 ( 8/13) Installing simdutf (9.0.0-r0)
+#17 2.829 ( 9/13) Installing sqlite-libs (3.53.4-r0)
+#17 2.935 (10/13) Installing zstd-libs (1.5.7-r2)
+#17 3.009 (11/13) Installing nodejs (24.22.1-r1)
+#17 4.419 (12/13) Installing npm (11.12.1-r0)
+#17 4.640 (13/13) Installing .npm-bootstrap (20261109.171254)
+#17 4.641 Executing busybox-1.37.0-r31.trigger
+#17 4.644 OK: 80.9 MiB in 33 packages
+#17 8.694 
+#17 8.694 added 2 packages in 4s
+#17 8.694 
+#17 8.694 15 packages are looking for funding
+#17 8.694   run `npm fund` for details
+#17 9.495 ( 1/13) Purging .npm-bootstrap (20261109.171254)
+#17 9.495 ( 2/13) Purging npm (11.12.1-r0)
+#17 9.506 ( 3/13) Purging nodejs (24.22.1-r1)
+#17 9.508 ( 4/13) Purging ada-libs (4.0.0-r0)
+#17 9.508 ( 5/13) Purging brotli-libs (1.2.1-r0)
+#17 9.508 ( 6/13) Purging c-ares (1.34.9-r0)
+#17 9.508 ( 7/13) Purging icu-libs (78.1-r0)
+#17 9.508 ( 8/13) Purging nghttp2-libs (1.70.0-r0)
+#17 9.508 ( 9/13) Purging simdjson (4.2.4-r0)
+#17 9.508 (10/13) Purging simdutf (9.0.0-r0)
+#17 9.508 (11/13) Purging sqlite-libs (3.53.4-r0)
+#17 9.508 (12/13) Purging zstd-libs (1.5.7-r2)
+#17 9.508 (13/13) Purging icu-data-en (78.1-r0)
+#17 9.509 Executing busybox-1.37.0-r31.trigger
+#17 9.512 OK: 11.1 MiB in 20 packages
+#17 DONE 9.8s
+
+#16 [worker base 3/4] RUN apk add --no-cache libatomic libstdc++ openssl ca-certificates     && apk add --no-cache --virtual .npm-bootstrap npm     && npm install --global --prefix /usr/local npm@12.2.1 undici@6.29.1     && rm -rf /usr/local/lib/node_modules/npm/node_modules/undici     && ln -s ../../undici /usr/local/lib/node_modules/npm/node_modules/undici     && apk del .npm-bootstrap     && addgroup -g 1000 node     && adduser -D -u 1000 -G node node
+#16 DONE 9.8s
+
+#18 [recomendacao-setup base 4/4] WORKDIR /app
+#18 DONE 0.1s
+
+#19 [api base 4/4] WORKDIR /app
+#19 DONE 0.1s
+
+#18 [recomendacao base 4/4] WORKDIR /app
+#18 DONE 0.1s
+
+#20 [migrate build 1/6] COPY package.json package-lock.json ./
+#20 DONE 0.1s
+
+#21 [recomendacao build 1/6] COPY package.json package-lock.json ./
+#21 DONE 0.1s
+
+#22 [worker build 2/6] RUN npm ci
+#22 ...
+
+#21 [recomendacao-setup build 1/6] COPY package.json package-lock.json ./
+#21 DONE 0.1s
+
+#23 [recomendacao-setup build 2/6] RUN npm ci
+#23 ...
+
+#24 [recomendacao production-dependencies 2/2] RUN npm pkg set 'scripts.bootstrap:permissoes=node dist/scripts/bootstrap-permissoes.js'     'scripts.migrate=node dist/scripts/migrate.js'     && npm ci --omit=dev && npm cache clean --force
+#24 2.339 
+#24 2.339 added 82 packages, and audited 83 packages in 2s
+#24 2.339 
+#24 2.339 33 packages are looking for funding
+#24 2.339   run `npm fund` for details
+#24 2.339 
+#24 2.339 found 0 vulnerabilities
+#24 2.455 npm warn using --force Recommended protections disabled.
+#24 DONE 3.1s
+
+#24 [recomendacao-setup production-dependencies 2/2] RUN npm pkg set 'scripts.bootstrap:permissoes=node dist/scripts/bootstrap-permissoes.js'     'scripts.migrate=node dist/scripts/migrate.js'     && npm ci --omit=dev && npm cache clean --force
+#24 DONE 3.1s
+
+#25 [worker production-dependencies 2/2] RUN npm ci --omit=dev --omit=optional && npm cache clean --force
+#25 ...
+
+#26 [recomendacao-setup runtime 1/4] COPY --from=production-dependencies --chown=node:node /app/node_modules ./node_modules
+#26 DONE 0.3s
+
+#26 [recomendacao runtime 1/4] COPY --from=production-dependencies --chown=node:node /app/node_modules ./node_modules
+#26 DONE 0.3s
+
+#27 [recomendacao runtime 2/4] COPY --from=production-dependencies --chown=node:node /app/package*.json ./
+#27 DONE 0.1s
+
+#25 [worker production-dependencies 2/2] RUN npm ci --omit=dev --omit=optional && npm cache clean --force
+#25 3.684 
+#25 3.684 added 142 packages, and audited 143 packages in 3s
+#25 3.684 
+#25 3.684 39 packages are looking for funding
+#25 3.684   run `npm fund` for details
+#25 3.690 
+#25 3.690 4 vulnerabilities (1 moderate, 2 high, 1 critical)
+#25 3.690 
+#25 3.690 To address all issues, run:
+#25 3.690   npm audit fix
+#25 3.690 
+#25 3.690 Run `npm audit` for details.
+#25 3.691 npm warn install-scripts 2 packages had install scripts blocked because they are not covered by allowScripts:
+#25 3.691 npm warn install-scripts   @scarf/scarf@1.4.0 (postinstall: node ./report.js)
+#25 3.691 npm warn install-scripts   bcrypt@6.0.0 (install: node-gyp-build)
+#25 3.691 npm warn install-scripts
+#25 3.691 npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+#25 3.692 npm notice
+#25 3.692 npm notice New patch version of npm available! 12.2.1 -> 12.2.2
+#25 3.692 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#25 3.692 npm notice To update run: npm install -g npm@12.2.2
+#25 3.692 npm notice
+#25 ...
+
+#27 [recomendacao-setup runtime 2/4] COPY --from=production-dependencies --chown=node:node /app/package*.json ./
+#27 DONE 0.1s
+
+#25 [worker production-dependencies 2/2] RUN npm ci --omit=dev --omit=optional && npm cache clean --force
+#25 3.801 npm warn using --force Recommended protections disabled.
+#25 DONE 4.0s
+
+#22 [worker build 2/6] RUN npm ci
+#22 ...
+
+#25 [worker production-dependencies 2/2] RUN npm ci --omit=dev --omit=optional && npm cache clean --force
+#25 DONE 4.0s
+
+#28 [api runtime 1/4] COPY --from=production-dependencies --chown=node:node /app/node_modules ./node_modules
+#28 DONE 0.4s
+
+#22 [worker build 2/6] RUN npm ci
+#22 ...
+
+#28 [worker runtime 1/4] COPY --from=production-dependencies --chown=node:node /app/node_modules ./node_modules
+#28 DONE 0.4s
+
+#29 [api runtime 2/4] COPY --from=production-dependencies --chown=node:node /app/package*.json ./
+#29 DONE 0.2s
+
+#22 [worker build 2/6] RUN npm ci
+#22 ...
+
+#29 [worker runtime 2/4] COPY --from=production-dependencies --chown=node:node /app/package*.json ./
+#29 DONE 0.2s
+
+#22 [worker build 2/6] RUN npm ci
+#22 ...
+
+#23 [recomendacao-setup build 2/6] RUN npm ci
+#23 26.92 
+#23 26.92 added 249 packages, and audited 250 packages in 27s
+#23 26.92 
+#23 26.92 79 packages are looking for funding
+#23 26.92   run `npm fund` for details
+#23 27.00 
+#23 27.00 10 moderate severity vulnerabilities
+#23 27.00 
+#23 27.00 To address all issues (including breaking changes), run:
+#23 27.00   npm audit fix --force
+#23 27.00 
+#23 27.00 Run `npm audit` for details.
+#23 27.00 npm warn install-scripts 1 package had install scripts blocked because they are not covered by allowScripts:
+#23 27.00 npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+#23 27.00 npm warn install-scripts
+#23 27.00 npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+#23 27.00 npm notice
+#23 27.00 npm notice New patch version of npm available! 12.2.1 -> 12.2.2
+#23 27.00 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#23 27.00 npm notice To update run: npm install -g npm@12.2.2
+#23 27.00 npm notice
+#23 DONE 27.2s
+
+#22 [worker build 2/6] RUN npm ci
+#22 ...
+
+#23 [recomendacao-setup build 2/6] RUN npm ci
+#23 DONE 27.2s
+
+#30 [recomendacao-setup build 3/6] COPY src ./src
+#30 DONE 0.1s
+
+#31 [recomendacao-setup build 4/6] COPY scripts ./scripts
+#31 DONE 0.0s
+
+#31 [recomendacao build 4/6] COPY scripts ./scripts
+#31 DONE 0.0s
+
+#32 [recomendacao-setup build 5/6] COPY tsconfig.json tsconfig.docker.json ./
+#32 DONE 0.1s
+
+#33 [recomendacao build 6/6] RUN npm run build -- --project tsconfig.docker.json
+#33 0.242 npm notice run origem-recomendacao@1.0.0 build
+#33 0.243 npm notice run tsc --project tsconfig.docker.json
+#33 DONE 1.3s
+
+#22 [worker build 2/6] RUN npm ci
+#22 ...
+
+#33 [recomendacao build 6/6] RUN npm run build -- --project tsconfig.docker.json
+#33 DONE 1.3s
+
+#34 [recomendacao runtime 3/4] COPY --from=build --chown=node:node /app/dist ./dist
+#34 DONE 0.1s
+
+#34 [recomendacao-setup runtime 3/4] COPY --from=build --chown=node:node /app/dist ./dist
+#34 DONE 0.1s
+
+#35 [recomendacao runtime 4/4] COPY --chown=node:node migrations ./dist/migrations
+#35 DONE 0.1s
+
+#36 [recomendacao-setup] exporting to image
+#36 exporting layers
+#36 exporting layers 2.8s done
+#36 exporting manifest sha256:f7c46df57ec039c399cc9cac0294c31ed835d34058dacb4ac04970958f041878 0.0s done
+#36 exporting config sha256:93d56d0ab1e2d81ae0f184ab9cc8adbb3b43d241427540ccee487994c5e05616 0.0s done
+#36 exporting attestation manifest sha256:4943be60805e030fe9336a7720a3f87b65d924154bc877943529a28df1008436
+#36 exporting attestation manifest sha256:4943be60805e030fe9336a7720a3f87b65d924154bc877943529a28df1008436 0.6s done
+#36 exporting manifest list sha256:63a16a1cc7dbf26117fbbe8a74d4b48dcd9d5c662bedec3576127822aea4bf12
+#36 exporting manifest list sha256:63a16a1cc7dbf26117fbbe8a74d4b48dcd9d5c662bedec3576127822aea4bf12 0.4s done
+#36 naming to docker.io/library/origem-recomendacao:local
+#36 naming to docker.io/library/origem-recomendacao:local 0.1s done
+#36 unpacking to docker.io/library/origem-recomendacao:local
+#36 ...
+
+#22 [worker build 2/6] RUN npm ci
+#22 33.70 
+#22 33.70 added 437 packages, and audited 438 packages in 33s
+#22 33.70 
+#22 33.70 97 packages are looking for funding
+#22 33.70   run `npm fund` for details
+#22 33.87 
+#22 33.87 23 vulnerabilities (14 moderate, 8 high, 1 critical)
+#22 33.87 
+#22 33.87 To address issues that do not require attention, run:
+#22 33.87   npm audit fix
+#22 33.87 
+#22 33.87 To address all issues (including breaking changes), run:
+#22 33.87   npm audit fix --force
+#22 33.87 
+#22 33.87 Run `npm audit` for details.
+#22 33.88 npm warn install-scripts 5 packages had install scripts blocked because they are not covered by allowScripts:
+#22 33.88 npm warn install-scripts   @prisma/engines@7.10.0 (postinstall: node scripts/postinstall.js)
+#22 33.88 npm warn install-scripts   @scarf/scarf@1.4.0 (postinstall: node ./report.js)
+#22 33.88 npm warn install-scripts   bcrypt@6.0.0 (install: node-gyp-build)
+#22 33.88 npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+#22 33.88 npm warn install-scripts   prisma@7.10.0 (preinstall: node scripts/preinstall-entry.js)
+#22 33.88 npm warn install-scripts
+#22 33.88 npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+#22 33.88 npm notice
+#22 33.88 npm notice New patch version of npm available! 12.2.1 -> 12.2.2
+#22 33.88 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#22 33.88 npm notice To update run: npm install -g npm@12.2.2
+#22 33.88 npm notice
+#22 DONE 35.9s
+
+#37 [recomendacao] exporting to image
+#37 exporting layers 2.8s done
+#37 exporting manifest sha256:47810143a81f6025e59197d5486b62eee36230b6ca0fddc66de1296d97a2dd2d 0.0s done
+#37 exporting config sha256:3e3e964cce14d29ea379e615525e642dd0025aa175515f340c4692af68238676 0.1s done
+#37 exporting attestation manifest sha256:d9d531d850c7ec03d8099c203376d2f0dbdbaea5f3c51c0404c7f12f45ea8acd 0.5s done
+#37 exporting manifest list sha256:8086ce0d4e2960a1a2d90ee2fc10afc2902aa97501fc8149243e534452b3f3d5 0.4s done
+#37 naming to docker.io/library/origem-recomendacao:local 0.1s done
+#37 ...
+
+#22 [migrate build 2/6] RUN npm ci
+#22 DONE 35.9s
+
+#38 [api build 3/6] COPY prisma ./prisma
+#38 DONE 1.7s
+
+#37 [recomendacao] exporting to image
+#37 unpacking to docker.io/library/origem-recomendacao:local 4.4s done
+#37 DONE 8.8s
+
+#38 [worker build 3/6] COPY prisma ./prisma
+#38 DONE 1.7s
+
+#36 [recomendacao-setup] exporting to image
+#36 unpacking to docker.io/library/origem-recomendacao:local 4.5s done
+#36 DONE 8.7s
+
+#39 [migrate build 4/6] COPY src ./src
+#39 DONE 0.1s
+
+#40 [worker build 5/6] COPY tsconfig.json tsconfig.docker.json ./
+#40 DONE 0.1s
+
+#40 [migrate build 5/6] COPY tsconfig.json tsconfig.docker.json ./
+#40 DONE 0.1s
+
+#41 [recomendacao-setup] resolving provenance for metadata file
+#41 DONE 0.0s
+
+#42 [recomendacao] resolving provenance for metadata file
+#42 DONE 0.0s
+
+#43 [migrate build 6/6] RUN npx prisma generate --config prisma/generate.config.ts     && npx tsc --project tsconfig.docker.json
+#43 0.412 npm notice run origem-backend@1.0.0 npx
+#43 0.412 npm notice run 'prisma' generate --config prisma/generate.config.ts
+#43 0.969 Loaded Prisma config from prisma/generate.config.ts.
+#43 0.969 
+#43 2.214 Prisma schema loaded from prisma/schema.prisma.
+#43 2.345 
+#43 2.345 ✔ Generated Prisma Client (7.10.0) to ./src/generated/prisma in 82ms
+#43 2.345 
+#43 2.560 npm notice run origem-backend@1.0.0 npx
+#43 2.560 npm notice run 'tsc' --project tsconfig.docker.json
+#43 DONE 5.0s
+
+#43 [api build 6/6] RUN npx prisma generate --config prisma/generate.config.ts     && npx tsc --project tsconfig.docker.json
+#43 DONE 5.0s
+
+#44 [migrate build 6/6] RUN npx prisma generate --config prisma/generate.config.ts     && npx tsc --project tsconfig.docker.json
+#44 CACHED
+
+#45 [migrate build 5/6] COPY tsconfig.json tsconfig.docker.json ./
+#45 CACHED
+
+#46 [migrate build 1/6] COPY package.json package-lock.json ./
+#46 CACHED
+
+#47 [migrate build 2/6] RUN npm ci
+#47 CACHED
+
+#48 [migrate build 3/6] COPY prisma ./prisma
+#48 CACHED
+
+#49 [migrate build 4/6] COPY src ./src
+#49 CACHED
+
+#50 [migrate migrate 1/1] COPY prisma.config.ts ./
+#50 DONE 0.1s
+
+#51 [api runtime 3/4] COPY --from=build --chown=node:node /app/dist ./dist
+#51 DONE 0.4s
+
+#52 [migrate] exporting to image
+#52 exporting layers
+#52 ...
+
+#51 [api runtime 3/4] COPY --from=build --chown=node:node /app/dist ./dist
+#51 DONE 0.4s
+
+#53 [api runtime 4/4] COPY --chown=node:node docker ./docker
+#53 DONE 0.1s
+
+#54 [api] exporting to image
+#54 exporting layers 2.5s done
+#54 exporting manifest sha256:b1febadd8fa67a6362d0500698f3c9e10d1d22839ba5631e3d83d99c5a65005e 0.0s done
+#54 exporting config sha256:6b58e2b17993554ef43e76c7d2fe6536e72c4cca9b28d54bbc1e745bf1a9db82 0.0s done
+#54 exporting attestation manifest sha256:ea4e29366829ce35b9cd0263777c15425fc1da668a21ef5370cd74ea0312b693
+#54 exporting attestation manifest sha256:ea4e29366829ce35b9cd0263777c15425fc1da668a21ef5370cd74ea0312b693 0.0s done
+#54 exporting manifest list sha256:77f47a9c3e8afb92d9c55db7df4dc528bc01ea161170b15b666152ce87caaf72 0.0s done
+#54 naming to docker.io/library/origem-backend:local done
+#54 unpacking to docker.io/library/origem-backend:local
+#54 unpacking to docker.io/library/origem-backend:local 0.8s done
+#54 DONE 3.5s
+
+#55 [worker] exporting to image
+#55 exporting layers 2.5s done
+#55 exporting manifest sha256:bcae71764a35b0b2d673cf9b69f9e80f78bec46d5ded8511da1ce157c503e621 0.0s done
+#55 exporting config sha256:bc6b86edfe25d0a6440ba38571339f0a932c7fbd7148d02b86b528092404fb51 0.0s done
+#55 exporting attestation manifest sha256:39c5ca1825e056234f0bf770f817587f2f28bcb1ba7d1610c212f98e7bd6d980 0.0s done
+#55 exporting manifest list sha256:e410b8244b2d628f2ec36ec4dbde3788033779354e66ec25d0b25f7aa3b70c3a 0.0s done
+#55 naming to docker.io/library/origem-backend:local done
+#55 unpacking to docker.io/library/origem-backend:local 0.8s done
+#55 DONE 3.5s
+
+#56 [worker] resolving provenance for metadata file
+#56 DONE 0.0s
+
+#57 [api] resolving provenance for metadata file
+#57 DONE 0.0s
+
+#52 [migrate] exporting to image
+#52 exporting layers 10.9s done
+#52 exporting manifest sha256:6d9680bec9fc49799b50c8836df41811519d20026a25360c4a2747555a359104 0.0s done
+#52 exporting config sha256:a8b63c5bd53c396a8f519bb2d43a77ea26e32d1a057d1b71b6151d80296171f4 0.0s done
+#52 exporting attestation manifest sha256:928729eeda10c6b637b449c77ebeb12cd0b1d59f90adeb061c5ea9a79a461fc7 0.0s done
+#52 exporting manifest list sha256:0991f055621e6458a9903a583166fef296537ce953d612d35389bf51aecfe5be 0.0s done
+#52 naming to docker.io/library/origem-backend-migrate:local done
+#52 unpacking to docker.io/library/origem-backend-migrate:local
+#52 unpacking to docker.io/library/origem-backend-migrate:local 2.3s done
+#52 DONE 13.4s
+
+#58 [migrate] resolving provenance for metadata file
+#58 DONE 0.0s
+ Image origem-recomendacao:local Built 
+ Image origem-backend:local Built 
+ Image origem-backend:local Built 
+ Image origem-backend-migrate:local Built 
+ Image origem-recomendacao:local Built 

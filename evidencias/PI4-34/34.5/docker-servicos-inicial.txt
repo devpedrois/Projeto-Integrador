@@ -1,0 +1,97 @@
+migrate-1             | npm notice run origem-backend@1.0.0 db:migrate
+recomendacao-setup-1  | npm notice run origem-recomendacao@1.0.0 bootstrap:permissoes
+recomendacao-1        | npm notice run origem-recomendacao@1.0.0 start
+worker-1              | npm notice run origem-backend@1.0.0 start:worker
+migrate-1             | npm notice run prisma migrate deploy
+migrate-1             | Loaded Prisma config from prisma.config.ts.
+recomendacao-1        | npm notice run node dist/src/server.js
+migrate-1             | 
+recomendacao-1        | {"servico":"recomendacao","requestId":"e363f067-9020-4255-94c9-9f5c0bb571cd","metodo":"GET","rota":"/health","status":200,"duracaoMs":14.442}
+api-1                 | npm notice run origem-backend@1.0.0 start:api
+recomendacao-1        | {"servico":"recomendacao","requestId":"aa3abfe4-ab44-4412-a46d-3406d8631e3a","metodo":"GET","rota":"/health","status":200,"duracaoMs":5.795}
+recomendacao-1        | {"servico":"recomendacao","requestId":"05c414b8-511f-41c2-93b0-da35f44b1b43","metodo":"GET","rota":"/health","status":200,"duracaoMs":5.121}
+recomendacao-setup-1  | npm notice run node dist/scripts/bootstrap-permissoes.js
+recomendacao-1        | {"servico":"recomendacao","requestId":"2b778c66-9cf6-40f7-ae6e-87d66f286f5e","metodo":"GET","rota":"/health","status":200,"duracaoMs":4.621}
+recomendacao-setup-1  | Permissions configured.
+migrate-1             | Prisma schema loaded from prisma/schema.prisma.
+api-1                 | npm notice run node dist/src/server.js
+migrate-1             | Datasource "db": PostgreSQL database "origem", schema "public" at "postgres:5432"
+migrate-1             | 
+api-1                 | {"servico":"api","requestId":"74188c59-a016-4d72-8360-d6a96f2a57bd","metodo":"GET","rota":"/health","status":200,"duracaoMs":9.669}
+recomendacao-setup-1  | npm notice run origem-recomendacao@1.0.0 migrate
+api-1                 | {"servico":"api","requestId":"bbc723bb-c7f1-456b-a66d-2672c2a63b97","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.562}
+worker-1              | npm notice run node dist/src/worker.js
+worker-1              | {"servico":"worker","job":"notificar-artesao","pedidoId":"a73d3304-fd06-4825-a1c3-e5708dcb4bcb","tentativa":1,"resultado":"sucesso"}
+migrate-1             | 13 migrations found in prisma/migrations
+migrate-1             | 
+migrate-1             | Applying migration `20260914000000_init_fccpd`
+migrate-1             | Applying migration `20260915023849_add_intencao_notificacao`
+migrate-1             | Applying migration `20260915154901_add_dominio_completo`
+migrate-1             | Applying migration `20260915163805_add_dominio_not_null`
+migrate-1             | Applying migration `20261013213237_reconciliar_modelo_logico`
+migrate-1             | Applying migration `20261013230000_tecnica_regiao_referencias`
+migrate-1             | Applying migration `20261013230100_add_notificacao`
+recomendacao-1        | {"servico":"recomendacao","requestId":"8cd1c4db-fce5-4828-92c6-b2c44f405200","metodo":"GET","rota":"/health","status":200,"duracaoMs":5}
+migrate-1             | Applying migration `20261014010000_indices_consultas`
+recomendacao-1        | {"servico":"recomendacao","requestId":"088b5853-528e-4639-8321-529a5c6cd67f","metodo":"GET","rota":"/health","status":200,"duracaoMs":4.773}
+migrate-1             | Applying migration `20261014160000_checkout_web09`
+migrate-1             | Applying migration `20261025160000_status_item_pedido`
+migrate-1             | Applying migration `20261104160116_views_contrato_recomendacao`
+migrate-1             | Applying migration `20261104165644_indice_perfil_tecnica_principal`
+recomendacao-setup-1  | npm notice run node dist/scripts/migrate.js
+recomendacao-1        | {"servico":"recomendacao","requestId":"55c504bb-4cd4-4681-9209-e95e61bc30e8","metodo":"GET","rota":"/health","status":200,"duracaoMs":4.814}
+recomendacao-setup-1  | Migrations applied.
+api-1                 | {"servico":"api","requestId":"1517238e-ed4b-443e-8752-d5cb02ccd1ea","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.397}
+migrate-1             | Applying migration `20261105031508_remover_pedido_comprador_ref`
+api-1                 | {"servico":"api","requestId":"fc3ab7ae-da56-411f-b964-20856bbdbad6","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.363}
+recomendacao-1        | {"servico":"recomendacao","requestId":"96970ddc-6ec3-4740-b879-b1204edf3280","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":4.912}
+recomendacao-1        | {"servico":"recomendacao","requestId":"6efa08b4-5cbe-4c5d-9fdb-0376f02e40cd","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.196}
+api-1                 | {"servico":"api","requestId":"54c62496-fe57-468c-b5ed-7cec2a1ba14f","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.125}
+api-1                 | {"servico":"api","requestId":"3e7a73f3-d4ce-493e-bf96-689904f11247","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.188}
+api-1                 | {"servico":"api","requestId":"6aff0017-ec53-4518-9367-47d2c471d4e4","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.677}
+migrate-1             | 
+migrate-1             | The following migration(s) have been applied:
+api-1                 | {"servico":"api","requestId":"c3020441-9010-43cb-9b6a-a8e496f6e21b","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.598}
+api-1                 | {"servico":"api","requestId":"f1973567-60b2-45c1-8239-9180c91cf211","metodo":"GET","rota":"/health","status":200,"duracaoMs":1.745}
+api-1                 | {"servico":"api","requestId":"f62b496d-5708-42f2-b125-fca59dea6c84","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":6.133}
+api-1                 | {"rota":"/produtos","cache":"MISS","duracaoMs":4.9}
+api-1                 | {"servico":"api","requestId":"96970ddc-6ec3-4740-b879-b1204edf3280","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":24.246}
+api-1                 | {"rota":"/recomendacoes","cache":"MISS","duracaoMs":23.378}
+migrate-1             | 
+api-1                 | {"servico":"api","requestId":"f9502846-b989-44b7-968d-c4b871b46f4e","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":45.645}
+api-1                 | {"servico":"api","requestId":"4e613502-51bb-4aca-a2ce-025fafbd48bd","metodo":"POST","rota":"/pedidos","status":201,"duracaoMs":27.387}
+migrate-1             | migrations/
+migrate-1             |   └─ 20260914000000_init_fccpd/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20260915023849_add_intencao_notificacao/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20260915154901_add_dominio_completo/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20260915163805_add_dominio_not_null/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261013213237_reconciliar_modelo_logico/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261013230000_tecnica_regiao_referencias/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261013230100_add_notificacao/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261014010000_indices_consultas/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261014160000_checkout_web09/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261025160000_status_item_pedido/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261104160116_views_contrato_recomendacao/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261104165644_indice_perfil_tecnica_principal/
+migrate-1             |     └─ migration.sql
+migrate-1             |   └─ 20261105031508_remover_pedido_comprador_ref/
+migrate-1             |     └─ migration.sql
+migrate-1             | 
+migrate-1             | All migrations have been successfully applied.
+migrate-1             | npm notice
+migrate-1             | npm notice New patch version of npm available! 12.2.1 -> 12.2.2
+migrate-1             | npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+migrate-1             | npm notice To update run: npm install -g npm@12.2.2
+migrate-1             | npm notice
+migrate-1             | Seed demo concluido

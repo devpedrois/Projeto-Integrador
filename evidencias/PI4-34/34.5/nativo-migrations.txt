@@ -1,0 +1,66 @@
+
+> origem-backend@1.0.0 db:migrate
+> prisma migrate deploy
+
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma\schema.prisma.
+Datasource "db": PostgreSQL database "readme_345_4cc49fc511", schema "public" at "[host-postgresql-omitido]"
+
+13 migrations found in prisma/migrations
+
+Applying migration `20260914000000_init_fccpd`
+Applying migration `20260915023849_add_intencao_notificacao`
+Applying migration `20260915154901_add_dominio_completo`
+Applying migration `20260915163805_add_dominio_not_null`
+Applying migration `20261013213237_reconciliar_modelo_logico`
+Applying migration `20261013230000_tecnica_regiao_referencias`
+Applying migration `20261013230100_add_notificacao`
+Applying migration `20261014010000_indices_consultas`
+Applying migration `20261014160000_checkout_web09`
+Applying migration `20261025160000_status_item_pedido`
+Applying migration `20261104160116_views_contrato_recomendacao`
+Applying migration `20261104165644_indice_perfil_tecnica_principal`
+Applying migration `20261105031508_remover_pedido_comprador_ref`
+
+┌─────────────────────────────────────────────────────────┐
+│  Update available 7.10.0 -> 8.0.0-rc.33                 │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20260914000000_init_fccpd/
+    └─ migration.sql
+  └─ 20260915023849_add_intencao_notificacao/
+    └─ migration.sql
+  └─ 20260915154901_add_dominio_completo/
+    └─ migration.sql
+  └─ 20260915163805_add_dominio_not_null/
+    └─ migration.sql
+  └─ 20261013213237_reconciliar_modelo_logico/
+    └─ migration.sql
+  └─ 20261013230000_tecnica_regiao_referencias/
+    └─ migration.sql
+  └─ 20261013230100_add_notificacao/
+    └─ migration.sql
+  └─ 20261014010000_indices_consultas/
+    └─ migration.sql
+  └─ 20261014160000_checkout_web09/
+    └─ migration.sql
+  └─ 20261025160000_status_item_pedido/
+    └─ migration.sql
+  └─ 20261104160116_views_contrato_recomendacao/
+    └─ migration.sql
+  └─ 20261104165644_indice_perfil_tecnica_principal/
+    └─ migration.sql
+  └─ 20261105031508_remover_pedido_comprador_ref/
+    └─ migration.sql
+
+All migrations have been successfully applied.

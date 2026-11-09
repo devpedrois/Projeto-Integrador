@@ -1,0 +1,15 @@
+{
+  "estado": "documentacao_desatualizada",
+  "fontes": [
+    {
+      "arquivo": "docs/arquitetura-distribuida.md",
+      "sha256": "b115bbaa6b91b3a36f01d7bd79044f267b8144c932df36c354b223783c818247",
+      "referenciasForaDoEscopo": 0
+    },
+    {
+      "arquivo": "docs/relatorio-desempenho-u2.md",
+      "sha256": "a0392d70f29b073511dcce142aa428204937c00da0cbb29331213147b6cfe312",
+      "referenciasForaDoEscopo": 28
+    }
+  ]
+}

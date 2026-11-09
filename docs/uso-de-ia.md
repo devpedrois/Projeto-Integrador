@@ -1556,91 +1556,52 @@ Evidências: [P1 build backend](../evidencias/P1-build-backend/README.md).
 
 ### 35.1: microsserviço de recomendação e isolamento dos dados
 
-O Codex implementou o serviço interno com PostgreSQL real.
-Criou views de contrato, permissões e migrations privadas.
-Comparou IDs e ordem com as Strategies existentes.
-Configurou o papel restrito da API, conforme autorização recebida.
-Executou testes e revisão equivalente de segurança nesta conversa.
+O Codex implementou o microsserviço, views e migrations privadas. Comparou IDs e ordem com as Strategies existentes. Validou PostgreSQL real e o isolamento autorizado dos papéis.
 Evidências: [PI4-35.1](../evidencias/PI4-35/35.1/README.md).
 
 ### 33.1: cobertura de índices nas chaves estrangeiras
 
-O Codex criou o teste consultando catálogos PostgreSQL reais.
-Registrou o RED esperado e a lista do modo estrito.
-Preservou o modo padrão, sem criar índices ou migrations.
-Validou lint, typecheck e descoberta pelas suítes existentes.
+O Codex criou a conferência dos índices de FKs. Registrou o RED consultando catálogos PostgreSQL reais. Validou descoberta dos testes, lint e typecheck.
 Evidências: [PI4-33.1](../evidencias/PI4-33/33.1/20261104-134954/README.md).
 
 ### 33.2: índice da técnica principal do artesão
 
-O Codex acrescentou o índice e gerou a migration Prisma.
-Revisou o SQL gerado, preservando somente a operação solicitada.
-Aplicou a migration no desenvolvimento e conferiu com psql.
-Atualizou o modelo físico e realizou revisão equivalente autorizada.
-Validou onze testes de integridade e 764 testes backend.
+O Codex acrescentou o índice da técnica principal. Aplicou a migration e conferiu o modelo físico. Validou integridade e backend com PostgreSQL real.
 Evidências: [PI4-33.2](../evidencias/PI4-33/33.2/20261104-validacao/README.md).
 
 ### 35.2: integração HTTP com o microsserviço de recomendação
 
-O Codex implementou o cliente HTTP com falhas tipadas.
-Removeu as Strategies, consultas e métricas duplicadas do runtime backend.
-Adaptou integrações, E2E e CI para o microsserviço real.
-Validou TDD, permissões restritas e os quatro fluxos responsivos.
-Realizou revisão equivalente de segurança nesta conversa, conforme solicitado.
+O Codex implementou o cliente HTTP e falhas tipadas. Removeu algoritmos duplicados e adaptou testes e CI. Validou contratos, permissões e quatro fluxos E2E reais.
 Evidências: [PI4-35.2](../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/README.md).
 
 ### 33.3: consultas agregadas dos indicadores administrativos
 
-O Codex implementou agregações independentes, preservando a receita Decimal.
-Criou testes com PostgreSQL real, incluindo visibilidade e fanout.
-Conferiu os números contra SQL independente na branch de volume.
-Registrou quatro planos EXPLAIN e justificou preservar os índices.
-Realizou a revisão equivalente de segurança nesta conversa.
+O Codex implementou agregações independentes para o painel administrativo. Conferiu números contra SQL e planos EXPLAIN reais. Criou testes prévios e realizou revisão equivalente de segurança.
 Evidências: [PI4-33.3](../evidencias/PI4-33-W14-Indices-FK-Admin/33.3-consultas-admin/README.md).
 
 ### 35.3: execução local com Docker Compose
 
-O Codex criou imagens e configurou a execução local.
-Validou permissões, recomendações e processamento pelo worker com PostgreSQL.
-Ajustou healthchecks e compatibilidade dos testes com PostgreSQL 16.
-Revisou a imagem-base após alertas Docker no VS Code.
-Executou revisão equivalente de segurança, conforme autorização nesta conversa.
+O Codex criou imagens e a composição Docker local. Validou PostgreSQL, recomendações e processamento pelo worker. Conferiu healthchecks, permissões e alertas da imagem-base.
 Evidências: [PI4-35.3](../evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/README.md).
 
 ### 32.1: indicadores gerais no painel administrativo
 
-O Codex integrou as consultas existentes ao endpoint administrativo protegido.
-Implementou contrato HTTP, validação e card com quatro estados.
-Preservou receita decimal e formatação monetária brasileira sem perda.
-Validou testes, builds, dez recargas reais e três larguras.
-Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
+O Codex integrou indicadores ao endpoint e painel administrativos. Validou contratos, privacidade e precisão dos valores monetários. Conferiu testes, dez recargas reais e três larguras.
 Evidências: [PI4-32.1](../evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/README.md).
 
 ### 32.3: conferência da média de avaliações
 
-O Codex acrescentou cinco conjuntos ao teste de integração.
-Escreveu os resultados manuais explicitamente, sem reutilizar o cálculo produtivo.
-Registrou a substituição da T16.3 no backlog e matriz.
-Validou PostgreSQL real, testes relacionados, lint, typecheck e formatação.
-O código produtivo e o cálculo permaneceram intactos.
+O Codex conferiu cinco médias contra cálculos manuais independentes. Registrou a substituição da tarefa assíncrona de médias. Validou PostgreSQL real, preservando o cálculo produtivo existente.
 Evidências: [PI4-32.3](../evidencias/PI4-32-W14-Painel-Admin/32.3-media-avaliacoes/20261104-validacao/README.md).
 
 ### 32.2: avaliações públicas paginadas
 
-O Codex implementou paginação com resumo global e leitura consistente.
-Retirou a identidade do comprador da resposta pública.
-Acrescentou seed idempotente com 35 avaliações e compras coerentes.
-Validou testes, OpenAPI, builds e navegação real nos dois viewports.
-Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
+O Codex implementou comentários paginados com resumo global consistente. Retirou a identidade do comprador da resposta pública. Validou seed, contratos e navegação real nas quatro páginas.
 Evidências: [PI4-32.2](../evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/README.md).
 
 ### 34.2: evidências acessíveis e sanitizadas
 
-O Codex restringiu o versionamento aos formatos de evidência permitidos.
-Converteu logs para texto e corrigiu links dos relatórios.
-Anonimizou ocorrências textuais e verificou imagens com OCR local.
-Reuniu padrões, resultados, tamanhos e vídeos na pasta 34.2.
-Validou a política Git e a varredura do staging.
+O Codex organizou evidências versionáveis e sanitizou seus conteúdos. Conferiu textos, imagens e a política de arquivos permitidos. Reuniu vídeos separados e corrigiu referências dos relatórios.
 Evidências: [PI4-34.2](../evidencias/PI4-34/34.2-evidencias-versionadas/README.md).
 
 ### Correção do CI backend e configuração de recomendação
@@ -1654,101 +1615,87 @@ Evidências: [CI backend 41907229656](../evidencias/CI-backend-41907229656/READM
 
 ### 36.1: fallback local da recomendação
 
-O Codex implementou degradação local e complementação de recomendações.
-Criou testes prévios com PostgreSQL real e falhas HTTP.
-Atualizou cache, OpenAPI, fixture e contrato tipado do frontend.
-Validou cinco recargas por largura e realizou revisão equivalente de segurança.
+O Codex implementou fallback local e complementação de recomendações. Criou testes prévios com PostgreSQL e falhas HTTP reais. Validou cache, contrato e cinco recargas por largura.
 Evidências: [PI4-36.1](../evidencias/PI4-36/36.1-fallback-local/README.md).
 
 ### 35.4: publicação do microsserviço no Render
 
-O Codex configurou o microsserviço Docker Free e a integração HTTP.
-Executou bootstrap e migrations na branch produtiva do Neon.
-Aplicou a conexão restrita da API, mediante autorização explícita.
-Comprovou isolamento, autenticação, respostas públicas e carrossel preenchido.
-Atualizou os READMEs e realizou revisão equivalente de segurança.
+O Codex configurou o microsserviço publicado no Render. Aplicou migrations e o isolamento dos papéis autorizados. Conferiu autenticação, recomendações públicas e carrossel preenchido.
 Evidências: [PI4-35.4](../evidencias/PI4-35/35.4-deploy-render/README.md).
 
 ### 33.4: remoção da referência sintética de pedidos
 
-O Codex investigou a origem da coluna legada FCCPD.
-Criou teste prévio e atualizou fixtures e documentação.
-Gerou e aplicou a migration no Neon de desenvolvimento.
-Conferiu a preservação dos pedidos, itens e pagamentos existentes.
-Realizou revisão equivalente de segurança, conforme escolha do responsável.
+O Codex removeu a referência sintética legada dos pedidos. Criou teste prévio e aplicou a migration autorizada. Conferiu a preservação dos pedidos, itens e pagamentos.
 Evidências: [PI4-33.4](../evidencias/PI4-33/33.4/README.md).
-
 
 ### 35.6: operação de recomendações em lote
 
-O Codex implementou o lote dentro do microsserviço de recomendação.
-Criou testes prévios e verificou PostgreSQL com papéis restritos.
-Migrou o benchmark B2, preservando comparação, hash e medições.
-Registrou execuções privadas e realizou revisão equivalente de segurança.
+O Codex implementou o lote dentro do microsserviço. Criou testes prévios com PostgreSQL e papéis restritos. Migrou o benchmark, preservando hash, medições e registros privados.
 Evidências: [PI4-35.6](../evidencias/PI4-35/35.6-lote/README.md).
-
 
 ### 36.2: métricas após a extração da recomendação
 
-O Codex migrou a coleta regional para o microsserviço.
-Criou testes prévios com PostgreSQL real e papéis restritos.
-Executou os dois modos pelo lote C=8, preservando os indicadores.
-Conferiu o diff histórico e realizou revisão equivalente de segurança.
+O Codex migrou as métricas regionais para o microsserviço. Executou ambos os modos pela operação real de lote. Conferiu indicadores, diff histórico e isolamento dos dados.
 Evidências: [PI4-36.2](../evidencias/PI4-36/36.2-metricas/README.md).
 
 ### 35.5: logs correlacionados entre serviços
 
-O Codex implementou UUID por requisição e propagação HTTP.
-Criou testes prévios com PostgreSQL real e requisições concorrentes.
-Registrou vitrine e checkout reais pelo Docker Compose.
-Realizou revisão equivalente de segurança, conforme escolha do responsável.
+O Codex propagou identificadores entre API e recomendação. Criou testes prévios com PostgreSQL e requisições concorrentes. Registrou vitrine, checkout e logs reais pelo Compose.
 Evidências: [PI4-35.5](../evidencias/PI4-35/35.5-comunicacao/README.md).
 
 ### 32.5: cabeçalhos de segurança no frontend
 
-O Codex inspecionou proxy, imagens, fontes e recursos inline.
-Criou testes prévios e configurou headers globais no Next.
-Documentou exceções da CSP e descartou L2/L6 sem contexto.
-Validou PostgreSQL real e realizou revisão equivalente autorizada.
-Publicou na Vercel e verificou CSP e uploads reais.
+O Codex configurou cabeçalhos de segurança no Next.js. Criou testes prévios e conferiu imagens, fontes e proxy. Validou CSP e uploads reais após a publicação autorizada.
 Evidências: [PI4-32.5](../evidencias/PI4-32/32.5-headers/README.md).
 
 ### 35.8: custo do salto HTTP
 
-O Codex implementou o benchmark comparando duas versões reais.
-Criou testes prévios e mediu PostgreSQL com snapshot compartilhado.
-Preservou aquecimentos, CSV bruto e tabela para o relatório.
-Realizou revisão equivalente de segurança, conforme autorização nesta conversa.
+O Codex implementou a comparação entre duas versões reais. Criou testes prévios e utilizou snapshot PostgreSQL compartilhado. Preservou aquecimentos, CSV bruto e interpretação do custo HTTP.
 Evidências: [PI4-35.8](../evidencias/PI4-35/35.8-custo-http/README.md).
 
 ### 36.3: documento do módulo de recomendação da U2
 
-O Codex consolidou contratos, estratégias, arquitetura e limitações documentadas.
-Relacionou código, prints históricos e métricas do microsserviço.
-Atualizou o guia auxiliar e conferiu referências e números.
+O Codex consolidou contratos, Strategies, arquitetura e limitações documentadas. Relacionou fontes, capturas históricas e métricas do microsserviço. Atualizou o guia auxiliar e conferiu referências e números.
 Documento: [módulo de recomendação U2](modulo-recomendacao-u2.md).
 
 ### 32.6: documentação de cache e Swagger final
 
-O Codex conferiu caches, rotas Express e contratos publicados.
-Criou testes prévios e corrigiu lacunas documentais do Swagger.
-Coletou headers, logs e print usando PostgreSQL e HTTP reais.
-Sincronizou os contratos históricos e realizou conferência documental de segurança.
+O Codex conferiu caches, rotas e contratos publicados. Criou testes prévios e corrigiu a documentação Swagger. Coletou headers, logs e print com PostgreSQL e HTTP reais.
 Evidências: [PI4-32.6](../evidencias/PI4-32/32.6-cache-swagger/README.md).
 
 ### 32.4: cache privado dos indicadores do artesão
 
-O Codex implementou cache por identidade autenticada, preservando `no-store`.
-Criou testes prévios para isolamento, expiração e invalidação transacional.
-Otimizou a autenticação da rota, mantendo revalidação no PostgreSQL.
-Mediu dez pares reais, separando CacheHttp e HTTP completo.
-Atualizou o documento de cache e o contrato OpenAPI.
+O Codex implementou cache por identidade, preservando revalidação PostgreSQL. Criou testes prévios de isolamento, expiração e invalidação transacional. Mediu dez pares reais e atualizou os contratos documentados.
 Evidências: [PI4-32.4](../evidencias/PI4-32/32.4-cache-indicadores/README.md).
 
 ### 34.1: matriz final de aceitação da U2
 
-O Codex consolidou cenários e conferiu testes no histórico.
-Recalculou totais e documentou a extração do microsserviço.
-Reexecutou testes existentes, preservando o código congelado.
-Registrou US08.C3 por confirmação, com evidência visual excluída.
+O Codex consolidou cenários e documentou a extração do microsserviço. Conferiu totais e reexecutou os testes existentes. Registrou o aceite declarado de US08.C3 e sua evidência excluída.
 Evidências: [PI4-34.1](../evidencias/PI4-34/34.1/README.md).
+
+### 35.7: relatório distribuído e avaliação de desempenho
+
+O Codex confrontou documentação, implementação e evidências preservadas.
+Reescreveu a arquitetura e gerou o diagrama Mermaid atualizado.
+Consolidou checkout, busca, lote paralelo e custo HTTP.
+Conferiu números, links, limites das conclusões e segurança documental.
+Evidências: [PI4-35.7](../evidencias/PI4-35/35.7-relatorio/README.md).
+
+### 34.3: versão final congelada, pendente de registro
+
+Não há registro desta execução na base documental conferida.
+A consolidação 34.5 não criou tag nem realizou deploy.
+A entrada permanece pendente das evidências da respectiva subtarefa.
+
+### 34.4: roteiro da apresentação, pendente de registro
+
+Não há roteiro final registrado nesta base documental.
+A consolidação 34.5 não definiu falas nem atribuições individuais.
+A entrada permanece pendente da execução da respectiva subtarefa.
+
+### 34.5: README e declaração de uso de IA finais
+
+O Codex consolidou arquitetura, execução e deploy no README.
+Conferiu os registros da sprint, preservando somente atribuições informadas.
+Testou as instruções numa cópia limpa, sem alterar código.
+Evidências: [PI4-34.5](../evidencias/PI4-34/34.5/README.md).

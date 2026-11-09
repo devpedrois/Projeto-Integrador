@@ -1,0 +1,8 @@
+{
+  "arquivos_verificados": 663,
+  "conteudo_copia_identico_ao_git": true,
+  "normalizacao": "CRLF/LF somente em arquivos de texto",
+  "diferencas_de_conteudo": [],
+  "quantidade_com_crlf_no_archive_windows": 558,
+  "nota": "git archive neste ambiente exportou textos com CRLF; nenhuma mudanca de conteudo executavel."
+}

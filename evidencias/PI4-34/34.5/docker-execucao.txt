@@ -1,0 +1,1 @@
+{"resultado":"falha","erro":"Worker sem confirmacao do pedido"}

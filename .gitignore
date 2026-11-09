@@ -11,6 +11,9 @@ backend/src/generated/prisma/
 .superpowers/
 docs/*
 !docs/seguranca-pendencias-av2.md
+!docs/arquitetura-distribuida.md
+!docs/arquitetura-distribuida.mmd
+!docs/arquitetura-distribuida.png
 !docs/relatorio-desempenho-u2.md
 !docs/relatorio-desempenho-u2-recomendacao.png
 !docs/matriz-aceitacao-u2.md

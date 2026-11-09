@@ -1,0 +1,55 @@
+---
+config:
+  layout: elk
+  theme: base
+  themeVariables:
+    fontFamily: Arial
+    fontSize: 19px
+    primaryColor: '#eef4f8'
+    primaryTextColor: '#173448'
+    primaryBorderColor: '#426b80'
+    lineColor: '#426b80'
+    clusterBkg: '#f8fafc'
+    clusterBorder: '#98b2c1'
+  flowchart:
+    curve: linear
+    nodeSpacing: 35
+    rankSpacing: 60
+---
+flowchart LR
+    U["Navegador"]
+    FE["Frontend Next.js · Vercel<br/>Proxy /api"]
+    U -->|HTTP + cookie| FE
+
+    subgraph DOCKER["Containers Docker no Compose · serviços publicáveis no Render"]
+        API["API Express · Render<br/>Domínio, sessão e publicador da outbox"]
+        REC["Microsserviço de recomendação · Render<br/>Seleção e operação de lote paralelo"]
+        W["Worker de notificações<br/>Processo separado no Compose"]
+        API -->|HTTP + X-Service-Token| REC
+    end
+    FE -->|HTTP + cookie · remove /api| API
+
+    subgraph PG["PostgreSQL · Neon em produção / container no Compose"]
+        DATA[("Dados da API · public<br/>Catálogo, pedidos, notificações e outbox")]
+        VIEWS["Views de contrato da API<br/>rec_produtos_elegiveis<br/>rec_compras_confirmadas"]
+        PRIVATE[("Schema privado · recomendacao<br/>execucao_lote")]
+        QUEUE[("Fila persistente · pgboss<br/>notificar-artesao")]
+        DATA -. contrato SQL de leitura .-> VIEWS
+    end
+
+    API <-->|SQL · Prisma / transações| DATA
+    API -->|SQL · publicar na fila pg-boss| QUEUE
+    QUEUE -->|SQL · consumir job / retry| W
+    W -->|SQL · notificação idempotente| DATA
+    REC -->|SQL · SELECT nas views de contrato| VIEWS
+    REC -->|SQL · schema privado / registro do lote| PRIVATE
+
+    BLOB["Vercel Blob<br/>Imagens públicas"]
+    API -->|HTTPS · SDK / upload e remoção| BLOB
+
+    classDef compute fill:#eef4f8,stroke:#426b80,color:#173448;
+    classDef private fill:#e8f2e9,stroke:#588461,color:#23472a;
+    classDef external fill:#fff4df,stroke:#aa8039,color:#59431c;
+    class API,REC,W compute;
+    class PRIVATE private;
+    class BLOB external;

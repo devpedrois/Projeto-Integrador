@@ -1,0 +1,1571 @@
+{
+  "subtarefa": "34.5",
+  "data": "2026-11-09",
+  "base": "7995bc207131410775129f4f13de17ec471b7807",
+  "resultado": "aprovado",
+  "links_locais": 210,
+  "links": [
+    {
+      "documento": "README.md",
+      "destino": "#preparar-uma-demonstração",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/fake-api.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/arquitetura-distribuida.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/arquitetura-distribuida.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/arquitetura-distribuida.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/arquitetura-distribuida.md#dados-por-serviço-e-contrato-sql",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/relatorio-desempenho-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/relatorio-desempenho-u2.md#b2-recomendações-em-lote",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "services/recomendacao/src/lote/pool.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "services/recomendacao/src/lote/index.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "services/recomendacao/scripts/metricas.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "backend/src/integrations/recommendation/http-recomendacao.client.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "backend/src/middlewares/request-logging.middleware.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "services/recomendacao/src/middlewares/request-logging.middleware.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "backend/src/queues/notificacao.publisher.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "backend/src/jobs/notificar-artesao.worker.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/fluxos.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/01-vitrine-rest.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/03-logs-rest.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/02-checkout-confirmado.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/04-logs-mensageria.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/logs-api.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/logs-recomendacao.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.5-comunicacao/logs-worker.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "services/recomendacao/README.md#instalação-permissões-e-migrations",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "backend/README.md#execução-local",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "services/recomendacao/README.md#instalação-permissões-e-migrations",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-34/34.5/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-34/34.5/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "backend/README.md#deploy-no-render",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "services/recomendacao/README.md#deploy-no-render",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-35/35.4-deploy-render/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "#como-rodar-localmente",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/arquitetura-distribuida.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/cache-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/modulo-recomendacao-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/concorrencia-checkout-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/relatorio-desempenho-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/indices-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/metricas-recomendacao-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/matriz-aceitacao-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/refatoracoes-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/00-resumo.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/fake-api.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/uso-de-ia.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "README.md",
+      "destino": "docs/uso-de-ia.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "relatorio-desempenho-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "arquitetura-distribuida.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "arquitetura-distribuida.mmd",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.4-deploy-render/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/fluxos.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../frontend/next.config.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../frontend/src/services/http/api-client.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/app.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/repositories/pedido.repository.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/queues/notificacao.publisher.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/fluxos.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/integrations/recommendation/http-recomendacao.client.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/services/recomendacao.service.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../services/recomendacao/src/app.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../services/recomendacao/src/lote/index.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-36/36.1-fallback-local/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/worker.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/jobs/notificar-artesao.worker.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/jobs/notificar-artesao.handler.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/fluxos.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "concorrencia-checkout-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.1/permissoes-runtime-local.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/01-compose-up.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/integrations/storage/vercel-foto-storage.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-32/32.5-headers/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/prisma/migrations/20261104160116_views_contrato_recomendacao/migration.sql",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../services/recomendacao/scripts/bootstrap-permissoes.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.1/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.1/permissoes-runtime-local.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.1/permissoes-runtime-local.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.1/permissoes-runtime-local.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/execucoes-lote.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.4-deploy-render/permissoes-producao.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/integrations/recommendation/http-recomendacao.client.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/utils/request-context.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/middlewares/request-logging.middleware.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../services/recomendacao/src/middlewares/request-logging.middleware.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/03-logs-rest.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/queues/notificacao.publisher.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/fluxos.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../backend/src/jobs/notificar-artesao.worker.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/04-logs-mensageria.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/arquitetura-distribuida.md",
+      "destino": "../evidencias/PI4-35/35.7-relatorio/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "arquitetura-distribuida.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "arquitetura-distribuida.md#diagrama-da-arquitetura-distribuída",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "arquitetura-distribuida.md#responsabilidade-e-justificativa-de-cada-serviço",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "#trecho-paralelo-e-comunicação-implementada",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "#metodologia-e-ambiente-por-medição",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "#b2-recomendações-em-lote",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "#interpretação-ligada-às-decisões",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../services/recomendacao/src/lote/pool.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../services/recomendacao/src/lote/index.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../services/recomendacao/scripts/metricas.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../services/recomendacao/src/app.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.1/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../backend/src/integrations/recommendation/http-recomendacao.client.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../docker-compose.yml",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35-W14-Microsservico-Docker/35.3-docker/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../services/recomendacao/src/lote/pool.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../services/recomendacao/src/lote/index.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../backend/src/middlewares/request-logging.middleware.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../backend/src/jobs/notificar-artesao.worker.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../backend/scripts/custo-salto-http.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/fluxos.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../backend/scripts/concorrencia-checkout.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/execucao-50-clientes.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../backend/scripts/busca-p95.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/04-benchmark-volume-final/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/07-auditoria-amostras.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../backend/scripts/custo-salto-http.ts",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/execucao-02/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30-W12-Arquitetura-Distribuida/30.1-concorrencia-checkout/rodadas-50-clientes.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "concorrencia-checkout-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/04-benchmark-volume-final/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/04-benchmark-volume-final/bruto.csv",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/00-resumo.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/rodadas.csv",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/rodadas.csv",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "relatorio-desempenho-u2-recomendacao.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/throughput.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/throughput.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30/benchmark-recomendacao/execucao-2026-10-25T20-35-37-389Z/diff.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/diff.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/conferencia-independente.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/execucao-02/bruto.csv",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/execucao-02/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/conferencia-independente.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/execucao-02/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/diagnostico-sql.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/execucao-02/tabela.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-30/benchmark-recomendacao/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/execucao-02/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/06-contexto-volume.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/execucao-02/resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "docs/relatorio-desempenho-u2.md",
+      "destino": "../evidencias/PI4-35/35.5-comunicacao/fluxos.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "../../../README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "../../../docs/uso-de-ia.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "validacao-documental.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "documentos-35.7.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "copia-limpa.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "codigo-congelado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "backend-npm-ci.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "frontend-npm-ci.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "services-recomendacao-npm-ci.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-execucao.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "banco-isolado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-prisma.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-migrations.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-seed.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-bootstrap.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-migration-privada.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-recomendacao.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-api.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-worker.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "nativo-frontend.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-resultado.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-execucao-final.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-build.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-up.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-up-revalidacao.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-servicos.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-frontend.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-vitrine.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-stop.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-resultado-inicial.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-servicos-inicial.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "docker-execucao.txt",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.5/README.md",
+      "destino": "validacao-inicial.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../../../docs/arquitetura-distribuida.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../../../docs/arquitetura-distribuida.mmd",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../../../docs/arquitetura-distribuida.png",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../../../docs/relatorio-desempenho-u2.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../../../README.md#fccpd--parte-2",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../35.1/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../../PI4-35-W14-Microsservico-Docker/35.2-cliente-http/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../../PI4-35-W14-Microsservico-Docker/35.3-docker/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../35.6-lote/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../35.5-comunicacao/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "../35.8-custo-http/README.md",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "antes.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    },
+    {
+      "documento": "evidencias/PI4-35/35.7-relatorio/README.md",
+      "destino": "validacao.json",
+      "existe_na_copia_limpa": true,
+      "ancora": true
+    }
+  ],
+  "variaveis_deploy_verificadas": [
+    "API_DATABASE_PASSWORD",
+    "API_DATABASE_ROLE",
+    "API_QUEUE_SCHEMA",
+    "API_SCHEMA",
+    "BACKEND_URL",
+    "BLOB_READ_WRITE_TOKEN",
+    "BOOTSTRAP_DATABASE_URL",
+    "CACHE_TTL_SECONDS",
+    "COOKIE_SECURE",
+    "DATABASE_URL",
+    "DIRECT_URL",
+    "FRONTEND_ORIGIN",
+    "HOST",
+    "JWT_SECRET",
+    "NEXT_PUBLIC_DATA_SOURCE",
+    "NODE_ENV",
+    "NOTIFICATION_PUBLISHER_INTERVAL_MS",
+    "PG_BOSS_CREATE_SCHEMA",
+    "PORT",
+    "RECOMENDACAO_DATABASE_PASSWORD",
+    "RECOMENDACAO_SCHEMA",
+    "RECOMENDACAO_SERVICE_TOKEN",
+    "RECOMENDACAO_TIMEOUT_MS",
+    "RECOMENDACAO_URL",
+    "RUN_WORKER_IN_API",
+    "WORKER_CONCURRENCY"
+  ],
+  "entradas_sprint": [
+    {
+      "subtarefa": "35.1",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "33.1",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "33.2",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "35.2",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "33.3",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "35.3",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "32.1",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "32.3",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "32.2",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "34.2",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "36.1",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "35.4",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "33.4",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "35.6",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "36.2",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "35.5",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "32.5",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "35.8",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "36.3",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "32.6",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "32.4",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "34.1",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "35.7",
+      "frases": 5,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "34.3",
+      "frases": 3,
+      "estado": "pendente",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "34.4",
+      "frases": 3,
+      "estado": "pendente",
+      "atribuicao_humana": false
+    },
+    {
+      "subtarefa": "34.5",
+      "frases": 4,
+      "estado": "registrada",
+      "atribuicao_humana": false
+    }
+  ],
+  "total_entradas": 26,
+  "pendencias_registradas": ["34.3", "34.4"],
+  "arquivos_copia_conferidos": 663,
+  "comparacao_fontes": "CRLF/LF somente em arquivos de texto",
+  "codigo_produtivo_modificado": false,
+  "copia_limpa": {
+    "base_exportada": "7995bc207131410775129f4f13de17ec471b7807",
+    "env_copiado": false,
+    "node_modules_copiado": false,
+    "documentacao_candidata_sobreposta": true
+  },
+  "sem_docker": {
+    "resultado": "aprovado",
+    "checks": {
+      "frontend": 200,
+      "proxyHealth": 200,
+      "catalogo": 200,
+      "produtosNaPagina": 24,
+      "recomendacoes": 200,
+      "itensRecomendados": 8,
+      "estrategia": "fallback-geral",
+      "servicoSemToken": 401,
+      "login": 200,
+      "pedido": 201,
+      "notificacoes": 1
+    }
+  },
+  "com_docker": {
+    "resultado": "aprovado",
+    "checks": {
+      "healthProxy": 200,
+      "catalogo": 200,
+      "produtosNaPagina": 24,
+      "recomendacoes": 200,
+      "itensRecomendados": 8,
+      "estrategia": "fallback-geral",
+      "login": 200,
+      "pedido": 201,
+      "novasNotificacoes": 1,
+      "workerConfirmouPedido": true,
+      "interfaceReal": true
+    },
+    "servicos": [
+      {
+        "servico": "api",
+        "estado": "running",
+        "health": "healthy",
+        "saida": 0
+      },
+      {
+        "servico": "migrate",
+        "estado": "exited",
+        "health": "",
+        "saida": 0
+      },
+      {
+        "servico": "postgres",
+        "estado": "running",
+        "health": "healthy",
+        "saida": 0
+      },
+      {
+        "servico": "recomendacao",
+        "estado": "running",
+        "health": "healthy",
+        "saida": 0
+      },
+      {
+        "servico": "recomendacao-setup",
+        "estado": "exited",
+        "health": "",
+        "saida": 0
+      },
+      {
+        "servico": "worker",
+        "estado": "running",
+        "health": "healthy",
+        "saida": 0
+      }
+    ]
+  },
+  "documentos_35_7": {
+    "importacao_autorizada": true,
+    "fontes_identicas_ao_snapshot": true,
+    "arquivos": [
+      {
+        "arquivo": "docs/arquitetura-distribuida.md",
+        "sha256": "e606e0015eacf46582e6f406263e1aac5fc4baeaabc584b3cf486d92138138c2",
+        "origem": "worktree 35.7, sem commit, importacao autorizada nesta conversa"
+      },
+      {
+        "arquivo": "docs/arquitetura-distribuida.mmd",
+        "sha256": "7a9d3801f136a11ca81be21cfa1c52c1cc0c76dba1e43189d6c0a6445b23f424",
+        "origem": "worktree 35.7, sem commit, importacao autorizada nesta conversa"
+      },
+      {
+        "arquivo": "docs/arquitetura-distribuida.png",
+        "sha256": "6d366dd15d8616a514c93029f2dc3ef4c181076952726ff07c87661019ec22eb",
+        "origem": "worktree 35.7, sem commit, importacao autorizada nesta conversa"
+      },
+      {
+        "arquivo": "docs/relatorio-desempenho-u2.md",
+        "sha256": "a72268f1e9cc159479a03ad4dda3879fa762dd05d6a8c66eedb89114e17ebbdb",
+        "origem": "worktree 35.7, sem commit, importacao autorizada nesta conversa"
+      }
+    ]
+  },
+  "revisao_documental": {
+    "sem_atribuicao_humana_nova": true,
+    "limite_testes": "reproducao tecnica, sem integrante humano novo",
+    "arquivos_varridos": 36,
+    "ocorrencias_segredos": [],
+    "CI_remoto_executado": false,
+    "novo_deploy": false
+  },
+  "erros": []
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "arquivo": "docs/arquitetura-distribuida.md",
+    "sha256": "e606e0015eacf46582e6f406263e1aac5fc4baeaabc584b3cf486d92138138c2",
+    "origem": "worktree 35.7, sem commit, importacao autorizada nesta conversa"
+  },
+  {
+    "arquivo": "docs/arquitetura-distribuida.mmd",
+    "sha256": "7a9d3801f136a11ca81be21cfa1c52c1cc0c76dba1e43189d6c0a6445b23f424",
+    "origem": "worktree 35.7, sem commit, importacao autorizada nesta conversa"
+  },
+  {
+    "arquivo": "docs/arquitetura-distribuida.png",
+    "sha256": "6d366dd15d8616a514c93029f2dc3ef4c181076952726ff07c87661019ec22eb",
+    "origem": "worktree 35.7, sem commit, importacao autorizada nesta conversa"
+  },
+  {
+    "arquivo": "docs/relatorio-desempenho-u2.md",
+    "sha256": "a72268f1e9cc159479a03ad4dda3879fa762dd05d6a8c66eedb89114e17ebbdb",
+    "origem": "worktree 35.7, sem commit, importacao autorizada nesta conversa"
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "tentativaAnterior": "copia em temporario do sandbox inacessivel aos processos autorizados; nao executada",
+  "tipo": "git archive HEAD; sem .env e sem node_modules",
+  "base": "7995bc207131410775129f4f13de17ec471b7807",
+  "copia": "C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-5-dbe8ec16eb72402e90b8509278d6fc34\\projeto"
+}

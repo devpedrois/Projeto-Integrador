@@ -1,0 +1,12 @@
+{
+  "base": "7995bc2",
+  "checks": {
+    "deploy_tres_servicos": false,
+    "microsservico_na_estrutura": false,
+    "instalacao_microsservico": false,
+    "bootstrap_local": false,
+    "fccpd_parte2": false
+  },
+  "resultado": "incompleto",
+  "nota": "Conferencia da raiz da arvore; services/ interno do backend nao conta como microsservico."
+}

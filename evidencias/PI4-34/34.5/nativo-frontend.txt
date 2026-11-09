@@ -1,0 +1,15 @@
+
+> origem-frontend@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.5.25
+   - Local:        http://localhost:3000
+   - Network:      http://[endereco-local-omitido]:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+   Using tsconfig file: tsconfig.build.json
+ ✓ Ready in 1956ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.1s (854 modules)
+ GET / 200 in 3478ms
