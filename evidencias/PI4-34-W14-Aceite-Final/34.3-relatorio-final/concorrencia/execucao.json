@@ -1,0 +1,38 @@
+{
+  "suite": "concorrencia",
+  "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "startedAt": "2026-11-09T17:51:46.201Z",
+  "finishedAt": "2026-11-09T17:52:01.472Z",
+  "durationMs": 15455.006700000027,
+  "exitCode": 0,
+  "command": {
+    "executavel": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "run",
+      "test:concorrencia",
+      "--",
+      "--saida",
+      "C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\concorrencia\\rodadas.json"
+    ],
+    "diretorio": "backend"
+  },
+  "gitAntes": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:51:46.201Z"
+  },
+  "gitDepois": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:52:01.656Z"
+  },
+  "freezeError": null,
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "unidade": "rodadas",
+  "compradores": 50
+}

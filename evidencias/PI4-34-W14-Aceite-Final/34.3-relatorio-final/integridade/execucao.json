@@ -1,0 +1,41 @@
+{
+  "suite": "integridade",
+  "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "startedAt": "2026-11-09T17:49:52.243Z",
+  "finishedAt": "2026-11-09T17:50:01.480Z",
+  "durationMs": 9427.744400000083,
+  "exitCode": 0,
+  "command": {
+    "executavel": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "run",
+      "test:integridade",
+      "--",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\integridade\\vitest.json"
+    ],
+    "diretorio": "backend"
+  },
+  "gitAntes": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:49:52.243Z"
+  },
+  "gitDepois": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:50:01.670Z"
+  },
+  "freezeError": null,
+  "passed": 12,
+  "failed": 0,
+  "skipped": 0,
+  "files": 4,
+  "success": true,
+  "declaredSuites": 5,
+  "failedSuites": 0
+}

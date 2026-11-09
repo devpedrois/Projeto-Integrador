@@ -1,0 +1,6 @@
+{"suite":"backend-coverage","exitCode":0,"passed":837,"failed":0,"skipped":1,"durationMs":691652.5164,"arvoreLimpa":true}
+{"suite":"microsservico-coverage","exitCode":0,"passed":116,"failed":0,"skipped":0,"durationMs":177187.3617,"arvoreLimpa":true}
+{"suite":"frontend-coverage","exitCode":0,"passed":1031,"failed":0,"skipped":0,"durationMs":38436.461699999985,"arvoreLimpa":true}
+{"suite":"integridade","exitCode":0,"passed":12,"failed":0,"skipped":0,"durationMs":9427.744400000083,"arvoreLimpa":true}
+{"suite":"e2e","exitCode":0,"durationMs":104137.33130000008,"arvoreLimpa":true}
+{"suite":"concorrencia","exitCode":0,"durationMs":15455.006700000027,"arvoreLimpa":true}

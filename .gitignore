@@ -16,6 +16,7 @@ docs/*
 !docs/arquitetura-distribuida.png
 !docs/relatorio-desempenho-u2.md
 !docs/relatorio-desempenho-u2-recomendacao.png
+!docs/Relatorio-Testes-Origem-Final.md
 !docs/matriz-aceitacao-u2.md
 !docs/refatoracoes-u2.md
 !docs/concorrencia-checkout-u2.md
@@ -69,6 +70,9 @@ AGENTS.md
 /evidencias/**/trace-*
 /evidencias/**/*.env*
 /evidencias/**/.audit-private/
+!/evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/backend-coverage/
+!/evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/microsservico-coverage/
+!/evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/frontend-coverage/
 design/
 frontend/test-results/
 frontend/playwright-report/

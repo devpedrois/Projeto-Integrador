@@ -1,0 +1,356 @@
+{
+  "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "timezone": "America/Sao_Paulo",
+  "suites": [
+    {
+      "suite": "backend-coverage",
+      "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+      "startedAt": "2026-11-09T17:34:44.393Z",
+      "finishedAt": "2026-11-09T17:46:15.859Z",
+      "durationMs": 691652.5164,
+      "exitCode": 0,
+      "command": {
+        "executavel": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\node_modules\\vitest\\vitest.mjs",
+          "run",
+          "--coverage",
+          "--testTimeout=60000",
+          "--hookTimeout=120000",
+          "--reporter=default",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\backend-coverage\\vitest.json",
+          "--coverage.reportsDirectory=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\backend-coverage\\cobertura",
+          "--coverage.reporter=text",
+          "--coverage.reporter=json-summary",
+          "--coverage.reporter=json",
+          "--coverage.reporter=html",
+          "--coverage.reportOnFailure"
+        ],
+        "diretorio": "backend"
+      },
+      "gitAntes": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:34:44.393Z"
+      },
+      "gitDepois": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:46:16.044Z"
+      },
+      "freezeError": null,
+      "passed": 837,
+      "failed": 0,
+      "skipped": 1,
+      "files": 83,
+      "success": true,
+      "coverage": {
+        "lines": {
+          "total": 3166,
+          "covered": 2439,
+          "skipped": 0,
+          "pct": 77.03
+        },
+        "statements": {
+          "total": 3307,
+          "covered": 2510,
+          "skipped": 0,
+          "pct": 75.89
+        },
+        "functions": {
+          "total": 707,
+          "covered": 572,
+          "skipped": 0,
+          "pct": 80.9
+        },
+        "branches": {
+          "total": 1464,
+          "covered": 1071,
+          "skipped": 0,
+          "pct": 73.15
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "declaredSuites": 162,
+      "failedSuites": 0
+    },
+    {
+      "suite": "microsservico-coverage",
+      "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+      "startedAt": "2026-11-09T17:46:16.232Z",
+      "finishedAt": "2026-11-09T17:49:13.222Z",
+      "durationMs": 177187.3617,
+      "exitCode": 0,
+      "command": {
+        "executavel": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\services\\recomendacao\\node_modules\\vitest\\vitest.mjs",
+          "run",
+          "--coverage",
+          "--reporter=default",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\microsservico-coverage\\vitest.json",
+          "--coverage.reportsDirectory=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\microsservico-coverage\\cobertura",
+          "--coverage.reporter=text",
+          "--coverage.reporter=json-summary",
+          "--coverage.reporter=json",
+          "--coverage.reporter=html",
+          "--coverage.reportOnFailure"
+        ],
+        "diretorio": "services/recomendacao"
+      },
+      "gitAntes": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:46:16.232Z"
+      },
+      "gitDepois": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:49:13.420Z"
+      },
+      "freezeError": null,
+      "passed": 116,
+      "failed": 0,
+      "skipped": 0,
+      "files": 12,
+      "success": true,
+      "coverage": {
+        "lines": {
+          "total": 721,
+          "covered": 605,
+          "skipped": 0,
+          "pct": 83.91
+        },
+        "statements": {
+          "total": 767,
+          "covered": 633,
+          "skipped": 0,
+          "pct": 82.52
+        },
+        "functions": {
+          "total": 153,
+          "covered": 124,
+          "skipped": 0,
+          "pct": 81.04
+        },
+        "branches": {
+          "total": 384,
+          "covered": 289,
+          "skipped": 0,
+          "pct": 75.26
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "declaredSuites": 16,
+      "failedSuites": 0
+    },
+    {
+      "suite": "frontend-coverage",
+      "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+      "startedAt": "2026-11-09T17:49:13.621Z",
+      "finishedAt": "2026-11-09T17:49:51.878Z",
+      "durationMs": 38436.461699999985,
+      "exitCode": 0,
+      "command": {
+        "executavel": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\vitest\\vitest.mjs",
+          "run",
+          "--coverage",
+          "--reporter=default",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\frontend-coverage\\vitest.json",
+          "--coverage.reportsDirectory=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\frontend-coverage\\cobertura",
+          "--coverage.reporter=text",
+          "--coverage.reporter=json-summary",
+          "--coverage.reporter=json",
+          "--coverage.reporter=html",
+          "--coverage.reportOnFailure"
+        ],
+        "diretorio": "frontend"
+      },
+      "gitAntes": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:49:13.621Z"
+      },
+      "gitDepois": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:49:52.057Z"
+      },
+      "freezeError": null,
+      "passed": 1031,
+      "failed": 0,
+      "skipped": 0,
+      "files": 110,
+      "success": true,
+      "coverage": {
+        "lines": {
+          "total": 12442,
+          "covered": 10092,
+          "skipped": 0,
+          "pct": 81.11
+        },
+        "statements": {
+          "total": 12442,
+          "covered": 10092,
+          "skipped": 0,
+          "pct": 81.11
+        },
+        "functions": {
+          "total": 689,
+          "covered": 601,
+          "skipped": 0,
+          "pct": 87.22
+        },
+        "branches": {
+          "total": 2893,
+          "covered": 2603,
+          "skipped": 0,
+          "pct": 89.97
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "declaredSuites": 235,
+      "failedSuites": 0
+    },
+    {
+      "suite": "integridade",
+      "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+      "startedAt": "2026-11-09T17:49:52.243Z",
+      "finishedAt": "2026-11-09T17:50:01.480Z",
+      "durationMs": 9427.744400000083,
+      "exitCode": 0,
+      "command": {
+        "executavel": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test:integridade",
+          "--",
+          "--reporter=default",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\integridade\\vitest.json"
+        ],
+        "diretorio": "backend"
+      },
+      "gitAntes": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:49:52.243Z"
+      },
+      "gitDepois": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:50:01.670Z"
+      },
+      "freezeError": null,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "files": 4,
+      "success": true,
+      "declaredSuites": 5,
+      "failedSuites": 0
+    },
+    {
+      "suite": "e2e",
+      "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+      "startedAt": "2026-11-09T17:50:01.871Z",
+      "finishedAt": "2026-11-09T17:51:45.828Z",
+      "durationMs": 104137.33130000008,
+      "exitCode": 0,
+      "command": {
+        "executavel": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test:e2e"
+        ],
+        "diretorio": "frontend"
+      },
+      "gitAntes": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:50:01.871Z"
+      },
+      "gitDepois": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:51:46.008Z"
+      },
+      "freezeError": null,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 1,
+      "flaky": 0,
+      "playwrightReport": "e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/resultado.json"
+    },
+    {
+      "suite": "concorrencia",
+      "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+      "startedAt": "2026-11-09T17:51:46.201Z",
+      "finishedAt": "2026-11-09T17:52:01.472Z",
+      "durationMs": 15455.006700000027,
+      "exitCode": 0,
+      "command": {
+        "executavel": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test:concorrencia",
+          "--",
+          "--saida",
+          "C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\concorrencia\\rodadas.json"
+        ],
+        "diretorio": "backend"
+      },
+      "gitAntes": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:51:46.201Z"
+      },
+      "gitDepois": {
+        "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+        "branch": "main",
+        "status": "",
+        "horario": "2026-11-09T17:52:01.656Z"
+      },
+      "freezeError": null,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "unidade": "rodadas",
+      "compradores": 50
+    }
+  ]
+}

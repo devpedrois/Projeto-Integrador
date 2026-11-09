@@ -1,0 +1,729 @@
+recomendacao	UNKNOWN STEP	﻿2026-11-08T04:46:18.0304555Z Current runner version: '2.338.2'
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0338027Z ##[group]Runner Image Provisioner
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0339177Z Hosted Compute Agent
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0339816Z Version: 20261028.624
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0340615Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0341457Z Build Date: 2026-10-28T21:51:42Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0342236Z Worker ID: {58d23505-d5af-41fa-b7f1-7086b3136c71}
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0343084Z Region: centralus
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0343680Z Cloud: Azure
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0344256Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0346352Z ##[group]Operating System
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0347178Z Ubuntu
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0347734Z 26.04.1
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0348360Z LTS
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0348927Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0349520Z ##[group]Runner Image
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0350507Z Image: ubuntu-26.04
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0351150Z Version: 20261101.186.1
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0352903Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261101.186/images/ubuntu/Ubuntu2604-Readme.md
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0354970Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261101.186
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0356478Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0357932Z ##[group]GITHUB_TOKEN Permissions
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0360739Z Contents: read
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0361556Z Metadata: read
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0362247Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0364938Z Secret source: Actions
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0366391Z Cache mode: write
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0367602Z Prepare workflow directory
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.0964603Z Prepare all required actions
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.1028233Z Getting action download info
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.3086119Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.4114145Z Download action repository 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.5421604Z Complete job name: recomendacao
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6206265Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6207234Z with:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6207683Z   persist-credentials: false
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6208281Z   repository: devpedrois/Projeto-Integrador
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6212090Z   token: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6212580Z   ssh-strict: true
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6213010Z   ssh-user: git
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6213460Z   clean: true
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6213929Z   sparse-checkout-cone-mode: true
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6214425Z   fetch-depth: 1
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6214852Z   fetch-tags: false
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6215290Z   show-progress: true
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6216194Z   lfs: false
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6216621Z   submodules: false
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6217106Z   set-safe-directory: true
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6217592Z   allow-unsafe-pr-checkout: false
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6218297Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6218743Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6219981Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6221256Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6221993Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6222483Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6223067Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6223698Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.6224211Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9202929Z Syncing repository: devpedrois/Projeto-Integrador
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9205089Z ##[group]Getting Git version info
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9206675Z Working directory is '/home/runner/work/Projeto-Integrador/Projeto-Integrador'
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9208055Z [command]/usr/bin/git version
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9213386Z git version 2.56.0
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9230162Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9238504Z Temporarily overriding HOME='/home/runner/work/_temp/7d779a5f-d35c-4ca5-af4a-3ff4364077db' before making global git config changes
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9240525Z Adding repository directory to the temporary git global config as a safe directory
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9242886Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Projeto-Integrador/Projeto-Integrador
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9303784Z Deleting the contents of '/home/runner/work/Projeto-Integrador/Projeto-Integrador'
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9306261Z ##[group]Determining repository object format
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9308307Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9309585Z ##[group]Initializing the repository
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9310956Z [command]/usr/bin/git init /home/runner/work/Projeto-Integrador/Projeto-Integrador
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9428666Z hint: Using 'master' as the name for the initial branch. This default branch name
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9431778Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9434039Z hint: to use in all of your new repositories, which will suppress this warning,
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9436211Z hint: call:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9437489Z hint:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9438951Z hint: 	git config --global init.defaultBranch <name>
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9440588Z hint:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9441973Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9444634Z hint: 'development'. The just-created branch can be renamed via this command:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9446758Z hint:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9447719Z hint: 	git branch -m <name>
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9448797Z hint:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9450319Z hint: Disable this message with "git config set advice.defaultBranchName false"
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9452736Z Initialized empty Git repository in /home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9457900Z [command]/usr/bin/git remote add origin https://github.com/devpedrois/Projeto-Integrador
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9503805Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9505112Z ##[group]Disabling automatic garbage collection
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9506440Z [command]/usr/bin/git config --local gc.auto 0
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9536466Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9537480Z ##[group]Setting up auth
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9538383Z Removing SSH command configuration
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9542301Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9569860Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9984497Z Removing HTTP extra header
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:18.9991850Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0026323Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0222394Z Removing includeIf entries pointing to credentials config files
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0228216Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0254754Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0461223Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0493396Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path /home/runner/work/_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0523477Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0560989Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0589205Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0614906Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0617267Z ##[group]Fetching the repository
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:19.0621869Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +c9d0eb20134af22bd11cf9e29f55f83c054bdfc7:refs/remotes/origin/main
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9212045Z From https://github.com/devpedrois/Projeto-Integrador
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9214166Z  * [new ref]         c9d0eb20134af22bd11cf9e29f55f83c054bdfc7 -> origin/main
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9222922Z [command]/usr/bin/git branch --list --remote origin/main
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9254347Z   origin/main
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9263178Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9287705Z c9d0eb20134af22bd11cf9e29f55f83c054bdfc7
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9293386Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9296181Z ##[group]Determining the checkout info
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9298650Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9300294Z [command]/usr/bin/git sparse-checkout disable
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9352134Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9384779Z ##[group]Checking out the ref
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:20.9388070Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2462910Z Switched to a new branch 'main'
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2467054Z branch 'main' set up to track 'origin/main'.
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2479282Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2521587Z [command]/usr/bin/git log -1 --format=%H
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2545339Z c9d0eb20134af22bd11cf9e29f55f83c054bdfc7
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2552533Z ##[group]Removing auth
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2553363Z Removing SSH command configuration
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2556181Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2582582Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2793208Z Removing HTTP extra header
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2795659Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.2820227Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3018566Z Removing includeIf entries pointing to credentials config files
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3023344Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3043787Z includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3044710Z includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3045264Z includeif.gitdir:/github/workspace/.git.path
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3045975Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3051512Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3072357Z /home/runner/work/_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3080868Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-757801dd\-6c63\-45c4\-921d\-3aee42b8ef2e\.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3109741Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3128970Z /home/runner/work/_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3136985Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Projeto-Integrador/Projeto-Integrador/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-757801dd\-6c63\-45c4\-921d\-3aee42b8ef2e\.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3164459Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3182694Z /github/runner_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3189093Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-757801dd\-6c63\-45c4\-921d\-3aee42b8ef2e\.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3214312Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3231731Z /github/runner_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3238035Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-757801dd\-6c63\-45c4\-921d\-3aee42b8ef2e\.config
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3264464Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3467354Z Removing credentials config '/home/runner/work/_temp/git-credentials-757801dd-6c63-45c4-921d-3aee42b8ef2e.config'
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3479464Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3702491Z ##[group]Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3702895Z with:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3703190Z   node-version: 22
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3703429Z   cache: npm
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3703812Z   cache-dependency-path: services/recomendacao/package-lock.json
+recomendacao	UNKNOWN STEP	backend/package-lock.json
+recomendacao	UNKNOWN STEP
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3704342Z   check-latest: false
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3706648Z   token: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3706958Z   package-manager-cache: true
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3707270Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3707501Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3708208Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3708851Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3709108Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3709387Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3709751Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3710103Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.3710394Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.4795710Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.5727883Z ##[group]Environment details
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.8821247Z node: v22.23.4
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.8821733Z npm: 10.9.9
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.8822068Z yarn: 1.22.22
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.8823154Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.8837922Z [command]/opt/hostedtoolcache/node/22.23.4/x64/bin/npm config get cache
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:21.9767903Z /home/runner/.npm
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:22.1547538Z Cache hit for: node-cache-Linux-x64-npm-d464fece7417f4fd53800747aa03c9c7c713a750d09ed746af0e235f55dbe343
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.3067449Z Received 104857600 of 168849868 (62.1%), 100.0 MBs/sec
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.6494832Z Received 168849868 of 168849868 (100.0%), 119.8 MBs/sec
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.6495655Z Cache Size: ~161 MB (168849868 B)
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.6523813Z [command]/usr/bin/tar -xf /home/runner/work/_temp/f8b5ad0c-af95-430c-ad4a-cbdfeb3a4537/cache.tzst -P -C /home/runner/work/Projeto-Integrador/Projeto-Integrador --use-compress-program unzstd
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9117312Z Cache restored successfully
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9178545Z Cache restored from key: node-cache-Linux-x64-npm-d464fece7417f4fd53800747aa03c9c7c713a750d09ed746af0e235f55dbe343
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9376484Z ##[group]Run npm ci
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9377024Z ^[[36;1mnpm ci^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9418042Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9418446Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9418730Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9419681Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9420471Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9420786Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9421040Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9421419Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9421727Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:23.9422064Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.1655011Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.1662060Z added 249 packages, and audited 250 packages in 28s
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.1662470Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.1662701Z 79 packages are looking for funding
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.1663053Z   run `npm fund` for details
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2910743Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2911346Z 10 moderate severity vulnerabilities
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2912083Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2912355Z To address issues that do not require attention, run:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2912738Z   npm audit fix
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2912912Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2913152Z To address all issues (including breaking changes), run:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2913543Z   npm audit fix --force
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2913685Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.2913862Z Run `npm audit` for details.
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3334480Z ##[group]Run npm ci
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3334882Z ^[[36;1mnpm ci^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3335132Z ^[[36;1mnpx prisma generate^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3335726Z ^[[36;1mnpx prisma migrate deploy^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3368593Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3369081Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3369301Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3370274Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3370902Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3371229Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3371499Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3371871Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3372277Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3373048Z   DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:46:52.3373328Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.4453218Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.4454277Z added 437 packages, and audited 438 packages in 10s
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.4454790Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.4455131Z 97 packages are looking for funding
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.4456217Z   run `npm fund` for details
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6654978Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6656550Z 23 vulnerabilities (14 moderate, 8 high, 1 critical)
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6656910Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6657319Z To address issues that do not require attention, run:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6657672Z   npm audit fix
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6657883Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6658118Z To address all issues (including breaking changes), run:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6658565Z   npm audit fix --force
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6658717Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:02.6658858Z Run `npm audit` for details.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:03.5658763Z Loaded Prisma config from prisma.config.ts.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:03.5659255Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:03.6521219Z Prisma schema loaded from prisma/schema.prisma.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:03.8262513Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:03.8263968Z ✔ Generated Prisma Client (7.10.0) to ./src/generated/prisma in 118ms
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:03.8264326Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:04.5610330Z Loaded Prisma config from prisma.config.ts.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:04.5610958Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:04.6524663Z Prisma schema loaded from prisma/schema.prisma.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:04.6525862Z Datasource "db": PostgreSQL database "neondb", schema "public" at "[host-postgresql-omitido]"
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:07.4179403Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:07.4180657Z 13 migrations found in prisma/migrations
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:07.4181137Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8783911Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8798984Z ┌─────────────────────────────────────────────────────────┐
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8799691Z No pending migrations to apply.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8800379Z │  Update available 7.10.0 -> 8.0.0-rc.33                 │
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8800816Z │                                                         │
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8801314Z │  This is a major update - please follow the guide at    │
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8801784Z │  https://pris.ly/d/major-version-upgrade                │
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8802645Z │                                                         │
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8803112Z │  Run the following to update                            │
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8803575Z │    npm i --save-dev prisma@latest                       │
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8804065Z │    npm i @prisma/client@latest                          │
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:09.8804570Z └─────────────────────────────────────────────────────────┘
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0609938Z ##[group]Run node --input-type=module <<'NODE'
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0610428Z ^[[36;1mnode --input-type=module <<'NODE'^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0610789Z ^[[36;1mimport { randomBytes } from 'node:crypto';^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0611128Z ^[[36;1mimport { appendFileSync } from 'node:fs';^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0611511Z ^[[36;1mconst generated = Object.fromEntries([^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0611876Z ^[[36;1m  'RECOMENDACAO_DATABASE_PASSWORD', 'API_DATABASE_PASSWORD',^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0612313Z ^[[36;1m  'RECOMENDACAO_SERVICE_TOKEN',^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0612660Z ^[[36;1m].map(name => [name, randomBytes(32).toString('hex')]));^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0613112Z ^[[36;1mconst url = new URL(process.env.BOOTSTRAP_DATABASE_URL);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0613576Z ^[[36;1mif (!['postgres:', 'postgresql:'].includes(url.protocol)) process.exit(1);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0614167Z ^[[36;1mfor (const value of [url.password, decodeURIComponent(url.password), ...Object.values(generated)]) {^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0614764Z ^[[36;1m  if (value) console.log(`::add-mask::${value}`);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0615126Z ^[[36;1m}^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0615632Z ^[[36;1murl.username = process.env.RECOMENDACAO_DATABASE_ROLE;^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0616153Z ^[[36;1murl.password = generated.RECOMENDACAO_DATABASE_PASSWORD;^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0616532Z ^[[36;1mgenerated.DATABASE_URL = url.toString();^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0616926Z ^[[36;1mconsole.log(`::add-mask::${generated.DATABASE_URL}`);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0617505Z ^[[36;1mappendFileSync(process.env.GITHUB_ENV, Object.entries(generated).map(([key, value]) => `${key}=${value}\n`).join(''));^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0618014Z ^[[36;1mNODE^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0651542Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0651865Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0652198Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0653084Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0653792Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0654029Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0654394Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0654721Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0655084Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.0655591Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1051896Z ##[group]Run npm run bootstrap:permissoes
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1052295Z ^[[36;1mnpm run bootstrap:permissoes^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1082287Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1082733Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1082990Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1083864Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1084578Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1084859Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1085150Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1085721Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1086072Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1086627Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1087071Z   API_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1087539Z   RECOMENDACAO_SERVICE_TOKEN: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1088435Z   DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1088692Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1881717Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1883254Z > origem-recomendacao@1.0.0 bootstrap:permissoes
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1884014Z > tsx scripts/bootstrap-permissoes.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.1884286Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4896113Z (node:2583) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4897372Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4898355Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4898574Z To prepare for this change:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4899127Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4899964Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4900414Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4900892Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:10.4901588Z (Use `node --trace-warnings ...` to show where the warning was created)
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.7445978Z Permissions configured.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9224581Z ##[group]Run npm run migrate
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9224943Z ^[[36;1mnpm run migrate^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9256190Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9256582Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9256871Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9258005Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9258697Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9259003Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9259313Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9259693Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9260083Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9260604Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9261071Z   API_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9261527Z   RECOMENDACAO_SERVICE_TOKEN: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9262391Z   DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:21.9262693Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.0037349Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.0038197Z > origem-recomendacao@1.0.0 migrate
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.0039023Z > tsx scripts/migrate.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.0039223Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2964070Z (node:2629) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2965131Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2965855Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2966056Z To prepare for this change:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2966573Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2967145Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2967454Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2967901Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:22.2968571Z (Use `node --trace-warnings ...` to show where the warning was created)
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.5372178Z Migrations applied.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7049444Z ##[group]Run npm run lint
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7050052Z ^[[36;1mnpm run lint^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7088966Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7089535Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7089863Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7091122Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7092055Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7092482Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7092878Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7093273Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7093676Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7094330Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7094816Z   API_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7095264Z   RECOMENDACAO_SERVICE_TOKEN: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7096571Z   DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7097392Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7878206Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7879129Z > origem-recomendacao@1.0.0 lint
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7879966Z > eslint .
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:24.7880157Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:25.9968530Z ##[group]Run npm run typecheck
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:25.9969044Z ^[[36;1mnpm run typecheck^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0004088Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0004489Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0004718Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0005859Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0006700Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0007001Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0007319Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0007718Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0008086Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0008589Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0009047Z   API_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0009520Z   RECOMENDACAO_SERVICE_TOKEN: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0010459Z   DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0010760Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0848094Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0848818Z > origem-recomendacao@1.0.0 typecheck
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0849593Z > tsc --noEmit
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:26.0849782Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6881659Z ##[group]Run npm test
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6882196Z ^[[36;1mnpm test^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6914171Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6914658Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6914940Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6916091Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6916901Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6917194Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6917507Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6917901Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6918274Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6918807Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6919267Z   API_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6919732Z   RECOMENDACAO_SERVICE_TOKEN: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6920642Z   DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.6920961Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.7754549Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.7755971Z > origem-recomendacao@1.0.0 test
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.7756940Z > vitest run
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:27.7757157Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.0197577Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.0201201Z ^[[1m^[[30m^[[46m RUN ^[[49m^[[39m^[[22m ^[[36mv5.1.0 ^[[39m^[[90m/home/runner/work/Projeto-Integrador/Projeto-Integrador/services/recomendacao^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.0202215Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3887884Z (node:2726) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3889311Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3889888Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3890115Z To prepare for this change:
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3890704Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3891355Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3891722Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3892203Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+recomendacao	UNKNOWN STEP	2026-11-08T04:47:28.3893024Z (Use `node --trace-warnings ...` to show where the warning was created)
+recomendacao	UNKNOWN STEP	2026-11-08T04:48:00.8918353Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mreproduz IDs e ordem da fixture interna
+recomendacao	UNKNOWN STEP	2026-11-08T04:48:00.8919735Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"a762c99f-3051-4195-83b8-09e74c9d1452","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":1236.174}
+recomendacao	UNKNOWN STEP	2026-11-08T04:48:00.8920287Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4618082Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mnega token ausente ou errado
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4619513Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"e0f8f9f6-5c99-4fd7-98df-05d5a7f4b266","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.805}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4620468Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4643459Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mnega token ausente ou errado
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4645666Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"cae00d66-742f-46de-9023-db5e8fcc685a","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.498}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4647897Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4668442Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mnega token ausente ou errado
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4669949Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"60bc9d54-7ef0-4cd3-912d-ff4aff8a442b","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.322}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4670446Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4688051Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mnega token ausente ou errado
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4689213Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"e40eaa6d-7b03-4634-9905-6bed32ae817e","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.384}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4689694Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4708724Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mautentica antes de interpretar JSON e protege historico e rotas desconhecidas
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4710178Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"179574f2-b78e-4777-ab70-51535ed409b1","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.274}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4710704Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4725159Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mautentica antes de interpretar JSON e protege historico e rotas desconhecidas
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4726773Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"f80b1040-c98c-43ae-b28f-6c3d0db922b0","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.259}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4727251Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4751434Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mautentica antes de interpretar JSON e protege historico e rotas desconhecidas
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4752772Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"d5a08af8-cc02-43a3-88ad-b40b26a3eb09","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.368}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4753229Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4836063Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mautentica antes de interpretar JSON e protege historico e rotas desconhecidas
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4837463Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"b0050d15-ebb8-496f-af03-4fce1f745fbf","metodo":"GET","rota":"[sem-rota]","status":400,"duracaoMs":6.308}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4837952Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4872079Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mautentica antes de interpretar JSON e protege historico e rotas desconhecidas
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4873770Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"5faf4cd6-f300-4c9c-883c-82a7ed7a2c09","metodo":"GET","rota":"[sem-rota]","status":413,"duracaoMs":1.027}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4874496Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4894939Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes?produtoId=invalido
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4896260Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"8e689b7c-aceb-4130-a584-b3b72a5db1fa","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.526}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4896750Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4913514Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes?limite=0
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4914698Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"d683e091-5bcf-4622-944a-646b7aed30b0","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.656}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4915308Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4935255Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes?limite=9
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4936734Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"639f5f9c-e8e1-475a-8700-2a1954f35267","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.422}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4937277Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4952120Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes?limite=1.5
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4953285Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"76f86caf-5f02-4709-81b8-a22432e34d21","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.439}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4953847Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4967689Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes?limite=
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4969153Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"d9e959a3-e4ac-4e99-a219-8294eca26b73","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.365}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4969715Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4982968Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes?extra=1
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4984120Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"242e8f08-dba8-491b-861e-94e49ebf7930","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.427}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.4984640Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5005002Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes/historico
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5006399Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"6f003972-385f-40aa-ab3f-f97dbed7f51e","metodo":"GET","rota":"/recomendacoes/historico","status":400,"duracaoMs":0.828}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5007016Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5022893Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes/historico?usuarioId=invalido
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5024108Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"5d73df93-3416-4ef5-b2eb-67787826bf65","metodo":"GET","rota":"/recomendacoes/historico","status":400,"duracaoMs":0.429}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5024657Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5038345Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mvalida query estrita: /recomendacoes?limite=1&limite=2
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5039495Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"62aab9b4-d886-4351-aad1-3d1939cea358","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.389}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:11.5040053Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.5435296Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mresponde historico interno autenticado e respeita limite
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.5436893Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"4192a142-0e03-4965-899b-ad7fc35f147f","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":1037.912}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.5437430Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8400217Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mhealth consulta PostgreSQL sem token
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8401614Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"f9b3dfe0-3b6d-4a28-b997-f3757cab46fc","metodo":"GET","rota":"/health","status":200,"duracaoMs":146.331}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8402210Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8443456Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mbanco indisponivel responde 503 sem detalhes
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8444657Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"2905e29c-78f2-4f59-85ae-5b9a00b8aadb","metodo":"GET","rota":"/health","status":503,"duracaoMs":1.287}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8445119Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8463985Z ^[[90mstdout^[[2m | tests/integration/recomendacao.test.ts^[[2m > ^[[22m^[[2mbanco indisponivel responde 503 sem detalhes
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8465231Z ^[[22m^[[39m{"servico":"recomendacao","requestId":"3ee4ee7c-a19f-4c50-bc11-fb71624a9ab6","metodo":"GET","rota":"/recomendacoes","status":503,"duracaoMs":0.787}
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:12.8465938Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3850835Z  ^[[32m✓^[[39m tests/integration/recomendacao.test.ts ^[[2m(^[[22m^[[2m36 tests^[[22m^[[2m)^[[22m^[[33m 106003^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3851903Z    ^[[33m^[[2m✓^[[22m^[[39m reproduz IDs e ordem da fixture interna^[[33m 1248^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3852906Z    ^[[33m^[[2m✓^[[22m^[[39m mantem fallback para contexto ausente e desconhecido^[[33m 763^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3853937Z    ^[[33m^[[2m✓^[[22m^[[39m mantem historico confirmado, exclusao de compras e fallback pessoal^[[33m 917^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3854964Z    ^[[33m^[[2m✓^[[22m^[[39m mantem fallback quando a categoria do contexto nao possui candidatos^[[33m 775^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3856095Z    ^[[33m^[[2m✓^[[22m^[[39m preserva historico de produtos ocultos e os filtros distintos por Strategy^[[33m 1093^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3857305Z    ^[[33m^[[2m✓^[[22m^[[39m preserva reforco regional com vendas invertidas entre regioes^[[33m 1245^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3857954Z    ^[[33m^[[2m✓^[[22m^[[39m permite SELECT nas duas views^[[33m 304^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3858535Z    ^[[33m^[[2m✓^[[22m^[[39m nega SELECT, INSERT e UPDATE em Produto^[[33m 2317^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3859183Z    ^[[33m^[[2m✓^[[22m^[[39m nega SELECT, INSERT e UPDATE em Pedido^[[33m 3239^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3859784Z    ^[[33m^[[2m✓^[[22m^[[39m nega SELECT, INSERT e UPDATE em Usuario^[[33m 3235^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3860464Z    ^[[33m^[[2m✓^[[22m^[[39m permite INSERT privado e nega SELECT privado pela conexao da API^[[33m 4557^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3861316Z    ^[[33m^[[2m✓^[[22m^[[39m recusa bootstrap com papel privilegiado ou identificador malicioso^[[33m 3386^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3862111Z    ^[[33m^[[2m✓^[[22m^[[39m recusa migrations pela conexao da API^[[33m 631^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3862987Z    ^[[33m^[[2m✓^[[22m^[[39m transfere somente a fila explicitamente autorizada sem perder dados^[[33m 22922^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3863967Z    ^[[33m^[[2m✓^[[22m^[[39m bootstrap e migrations sao idempotentes e preservam dados^[[33m 11681^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3864988Z    ^[[33m^[[2m✓^[[22m^[[39m detecta checksum divergente antes de reaplicar migration privada^[[33m 1587^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3866366Z    ^[[33m^[[2m✓^[[22m^[[39m remove tambem privilegios antigos concedidos por coluna^[[33m 9930^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3867388Z    ^[[33m^[[2m✓^[[22m^[[39m executa o bloco SQL manual com as mesmas restricoes do bootstrap^[[33m 1802^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.3868385Z    ^[[33m^[[2m✓^[[22m^[[39m responde historico interno autenticado e respeita limite^[[33m 1187^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5978727Z (node:2763) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5980132Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5980713Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5980883Z To prepare for this change:
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5981436Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5982126Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5982439Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5982844Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+recomendacao	UNKNOWN STEP	2026-11-08T04:49:14.5983544Z (Use `node --trace-warnings ...` to show where the warning was created)
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6527612Z  ^[[32m✓^[[39m tests/integration/lote.test.ts ^[[2m(^[[22m^[[2m14 tests^[[22m^[[2m)^[[22m^[[33m 185062^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6528932Z    ^[[33m^[[2m✓^[[22m^[[39m aplica o reforco regional na selecao efetiva do lote^[[33m 19940^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6530034Z    ^[[33m^[[2m✓^[[22m^[[39m preserva resultado ordenado C=1 e C=4, regional=false^[[33m 20188^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6531059Z    ^[[33m^[[2m✓^[[22m^[[39m preserva resultado ordenado C=1 e C=4, regional=true^[[33m 19280^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6532051Z    ^[[33m^[[2m✓^[[22m^[[39m registra quinze execucoes do benchmark pelo papel restrito^[[33m 61830^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6532779Z    ^[[33m^[[2m✓^[[22m^[[39m recusa sobreposicao de execucoes na mesma sessao^[[33m 7253^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6534308Z    ^[[33m^[[2m✓^[[22m^[[39m mantem snapshot do catalogo durante a sessao preparada^[[33m 11301^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6535554Z    ^[[33m^[[2m✓^[[22m^[[39m preserva uma linha incompleta quando a selecao falha^[[33m 11696^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.6536702Z    ^[[33m^[[2m✓^[[22m^[[39m CLI grava JSON e hash persistido usando PostgreSQL real^[[33m 11511^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8293816Z (node:2864) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8296586Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8297912Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8298531Z To prepare for this change:
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8299555Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8300980Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8301727Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8302339Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:19.8303278Z (Use `node --trace-warnings ...` to show where the warning was created)
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.5139239Z  ^[[32m✓^[[39m tests/integration/reforco-regional.test.ts ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 26691^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.5142005Z    ^[[32m✓^[[39m CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) ^[[2m(4)^[[22m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.5151152Z      ^[[33m^[[2m✓^[[22m^[[39m com reforco, desempate dentro de cada grupo regional continua deterministico por UUID^[[33m 1881^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7117139Z (node:2882) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7118508Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7119246Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7119648Z To prepare for this change:
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7120455Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7121281Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7121597Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7121936Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+recomendacao	UNKNOWN STEP	2026-11-08T04:52:46.7122604Z (Use `node --trace-warnings ...` to show where the warning was created)
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:21.9801407Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mpreserva as metricas regionais usando dois lotes C=8 registrados
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:21.9802423Z ^[[22m^[[39mOperacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:23.0606325Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:23.0607880Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mpreserva as metricas regionais usando dois lotes C=8 registrados
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:23.0609301Z ^[[22m^[[39mLote persistido: execucaoId=8e5b0d77-bf33-4b91-b959-51f6efdad06f produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:23.0610213Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:23.0610563Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:24.1374033Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mpreserva as metricas regionais usando dois lotes C=8 registrados
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:24.1375311Z ^[[22m^[[39mLote persistido: execucaoId=579329a7-6f56-4f76-8efe-d5186302c6e5 produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:24.1376283Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:40.4828959Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mexecuta somente o modo on solicitado
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:40.4829892Z ^[[22m^[[39mOperacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:40.4830252Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:41.5752119Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mexecuta somente o modo on solicitado
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:41.5754030Z ^[[22m^[[39mLote persistido: execucaoId=4e4d75b3-eecb-4de7-98b2-718c8e31cab9 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:41.5754588Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:56.8373812Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mexecuta somente o modo off solicitado
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:56.8375196Z ^[[22m^[[39mOperacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:56.8376072Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:57.9559481Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mexecuta somente o modo off solicitado
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:57.9560861Z ^[[22m^[[39mLote persistido: execucaoId=ebb15021-5244-4a13-9fd9-609813509f76 produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+recomendacao	UNKNOWN STEP	2026-11-08T04:53:57.9561378Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:13.0567298Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mCLI gera JSON e diff vazio contra referencia fornecida
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:13.0568837Z ^[[22m^[[39mOperacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:13.0569465Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:14.1682397Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mCLI gera JSON e diff vazio contra referencia fornecida
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:14.1683886Z ^[[22m^[[39mLote persistido: execucaoId=7c7555dc-550e-4a34-890e-ca046f8dad79 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:14.1684746Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:14.1685147Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:15.2782792Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mCLI gera JSON e diff vazio contra referencia fornecida
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:15.2784188Z ^[[22m^[[39mLote persistido: execucaoId=12b09840-6ffb-4635-a4f3-e094ddcb75f5 produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:15.2784721Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:30.5210166Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mretorna zeros na base vazia sem NaN ou Infinity
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:30.5211156Z ^[[22m^[[39mOperacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:30.5211580Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:31.6187149Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mretorna zeros na base vazia sem NaN ou Infinity
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:31.6188575Z ^[[22m^[[39mLote persistido: execucaoId=5530941c-c392-4306-9eab-56512d24b9bf produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:31.6189433Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:31.6189798Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.7059661Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mretorna zeros na base vazia sem NaN ou Infinity
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.7060839Z ^[[22m^[[39mLote persistido: execucaoId=80b63fb6-3af4-47da-a946-50eb24404793 produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.7061713Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.8571110Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mretorna zeros na base vazia sem NaN ou Infinity
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.8573150Z ^[[22m^[[39m| Reforco regional | Produtos | Elegiveis | Recomendacoes | Cobertura catalogo % | Cobertura v0 % | Fallback % | Acerto categoria % | Mesma regiao % |
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.8574162Z |---|---:|---:|---:|---:|---:|---:|---:|---:|
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.8575023Z | on | 15 | 14 | 112 | 85.71428571428571 | 100 | 14.285714285714286 | 85.71428571428571 | 58.92857142857143 |
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.8576245Z | off | 15 | 14 | 112 | 64.28571428571429 | 100 | 14.285714285714286 | 85.71428571428571 | 42.857142857142854 |
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.8577102Z Comparacao regional: 0 diferencas; JSON e diff salvos.
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:32.8577423Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.3427651Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mretorna zeros na base vazia sem NaN ou Infinity
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.3428961Z ^[[22m^[[39mOperacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.3429342Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.6459263Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mretorna zeros na base vazia sem NaN ou Infinity
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.6465513Z ^[[22m^[[39mLote persistido: execucaoId=80d345f5-3f1a-407a-bc20-d8faf67290e2 produtos=0 hash=4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.6466580Z Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.6466950Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.9474384Z ^[[90mstdout^[[2m | tests/integration/metricas-lote.test.ts^[[2m > ^[[22m^[[2mretorna zeros na base vazia sem NaN ou Infinity
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.9475829Z ^[[22m^[[39mLote persistido: execucaoId=2c7732c2-88cc-45c9-adf2-4ea6b4f01b56 produtos=0 hash=4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+recomendacao	UNKNOWN STEP	2026-11-08T04:54:58.9476399Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.0097594Z  ^[[31m❯^[[39m tests/integration/metricas-lote.test.ts ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m | ^[[22m^[[31m1 failed^[[39m^[[2m)^[[22m^[[33m 137306^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.0099074Z    ^[[33m^[[2m✓^[[22m^[[39m preserva as metricas regionais usando dois lotes C=8 registrados^[[33m 18461^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.0099828Z    ^[[33m^[[2m✓^[[22m^[[39m executa somente o modo on solicitado^[[33m 16248^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.0100539Z    ^[[33m^[[2m✓^[[22m^[[39m executa somente o modo off solicitado^[[33m 16391^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.0101255Z ^[[31m   ^[[31m×^[[31m CLI gera JSON e diff vazio contra referencia fornecida^[[39m^[[33m 30004^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.0101952Z    ^[[33m^[[2m✓^[[22m^[[39m retorna zeros na base vazia sem NaN ou Infinity^[[33m 33370^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.2186415Z  ^[[32m✓^[[39m tests/unit/bench-lote.test.ts ^[[2m(^[[22m^[[2m15 tests^[[22m^[[2m)^[[22m^[[32m 60^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.3922470Z  ^[[32m✓^[[39m tests/unit/metricas-cli.test.ts ^[[2m(^[[22m^[[2m9 tests^[[22m^[[2m)^[[22m^[[32m 19^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:04.7718559Z  ^[[32m✓^[[39m tests/unit/lote-cli.test.ts ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[32m 219^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.0274795Z  ^[[32m✓^[[39m tests/unit/request-logging.test.ts ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[32m 32^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.1647138Z  ^[[32m✓^[[39m tests/unit/environment.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 9^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.2711903Z  ^[[32m✓^[[39m tests/unit/recomendacao-metricas.test.ts ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 4^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.3713033Z  ^[[32m✓^[[39m tests/unit/recomendacao-volume.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[32m 3^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5390196Z  ^[[32m✓^[[39m tests/unit/bench-cli.test.ts ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[32m 6^[[2mms^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5429611Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5431137Z ^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Failed Tests 1 ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯⎯^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5431753Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5434615Z ^[[41m^[[1m FAIL ^[[22m^[[49m tests/integration/metricas-lote.test.ts^[[2m > ^[[22mCLI gera JSON e diff vazio contra referencia fornecida
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5438387Z ^[[31m^[[1mError^[[22m: Test timed out in 30000ms.
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5439472Z If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5440516Z ^[[36m ^[[2m❯^[[22m tests/integration/metricas-lote.test.ts:^[[2m132:1^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5472904Z     ^[[90m130|^[[39m )^[[33m;^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5473368Z     ^[[90m131|^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5473940Z     ^[[90m132|^[[39m it("CLI gera JSON e diff vazio contra referencia fornecida", async () …
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5474428Z     ^[[90m   |^[[39m ^[[31m^^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5475291Z     ^[[90m133|^[[39m   ^[[35mconst^[[39m pasta ^[[33m=^[[39m ^[[35mawait^[[39m ^[[34mmkdtemp^[[39m(^[[34mjoin^[[39m(^[[34mtmpdir^[[39m()^[[33m,^[[39m ^[[32m"metricas-36-2-"^[[39m))^[[33m;^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5476814Z     ^[[90m134|^[[39m   ^[[35mconst^[[39m medicao ^[[33m=^[[39m ^[[35mawait^[[39m ^[[34mmedirReforcoRegional^[[39m(config^[[33m,^[[39m ^[[32m"ambos"^[[39m)^[[33m;^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5477429Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5477717Z ^[[31m^[[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯^[[22m^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5478352Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5478395Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5482381Z ^[[2m Test Files ^[[22m ^[[1m^[[31m1 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m11 passed^[[39m^[[22m^[[90m (12)^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5484080Z ^[[2m      Tests ^[[22m ^[[1m^[[31m1 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m115 passed^[[39m^[[22m^[[90m (116)^[[39m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5484747Z ^[[2m   Start at ^[[22m 04:47:28
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5487267Z ^[[2m   Duration ^[[22m 457.52s^[[2m (tests 100%)^[[22m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5495255Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5506142Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5528364Z ##[error]Error: Test timed out in 30000ms.
+recomendacao	UNKNOWN STEP	If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+recomendacao	UNKNOWN STEP	 ❯ tests/integration/metricas-lote.test.ts:132:1
+recomendacao	UNKNOWN STEP
+recomendacao	UNKNOWN STEP
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5695541Z ##[error]Process completed with exit code 1.
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5758980Z ##[group]Run node --input-type=module <<'NODE'
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5759470Z ^[[36;1mnode --input-type=module <<'NODE'^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5759904Z ^[[36;1mimport { Pool, escapeIdentifier as ident } from 'pg';^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5760372Z ^[[36;1mconst role = process.env.RECOMENDACAO_DATABASE_ROLE;^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5760815Z ^[[36;1mconst api = process.env.API_DATABASE_ROLE;^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5761240Z ^[[36;1mconst schema = process.env.RECOMENDACAO_SCHEMA;^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5761763Z ^[[36;1mif (![role, api, schema].every(name => /^(rec|api)_ci_[0-9]+_[0-9]+$/.test(name))) process.exit(1);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5762345Z ^[[36;1mconst pool = new Pool({ connectionString: process.env.BOOTSTRAP_DATABASE_URL });^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5762839Z ^[[36;1mconst client = await pool.connect();^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5763209Z ^[[36;1mtry {^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5763508Z ^[[36;1m  await client.query('BEGIN');^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5764081Z ^[[36;1m  const { rows: [identity] } = await client.query('SELECT current_user AS name');^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5764701Z ^[[36;1m  const existing = await client.query('SELECT rolname FROM pg_roles WHERE rolname = ANY($1::text[])', [[role, api]]);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5765280Z ^[[36;1m  for (const { rolname } of existing.rows) {^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5766003Z ^[[36;1m    await client.query(`GRANT ${ident(rolname)} TO ${ident(identity.name)} WITH SET TRUE, INHERIT TRUE`);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5766515Z ^[[36;1m  }^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5766923Z ^[[36;1m  await client.query(`DROP SCHEMA IF EXISTS ${ident(schema)} CASCADE`);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5767384Z ^[[36;1m  for (const { rolname } of existing.rows) {^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5767811Z ^[[36;1m    await client.query(`DROP OWNED BY ${ident(rolname)}`);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5768283Z ^[[36;1m    await client.query(`DROP ROLE ${ident(rolname)}`);^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5768649Z ^[[36;1m  }^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5768962Z ^[[36;1m  await client.query('COMMIT');^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5769276Z ^[[36;1m} catch {^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5769603Z ^[[36;1m  await client.query('ROLLBACK');^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5770048Z ^[[36;1m  console.error('Falha na limpeza dos objetos efemeros do job.');^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5770488Z ^[[36;1m  process.exitCode = 1;^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5770865Z ^[[36;1m} finally { client.release(); await pool.end(); }^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5771265Z ^[[36;1mNODE^[[0m
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5802857Z shell: /usr/bin/bash -e {0}
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5803203Z env:
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5803537Z   NODE_ENV: test
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5804373Z   BOOTSTRAP_DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5805110Z   DIRECT_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5805617Z   API_SCHEMA: public
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5805969Z   RECOMENDACAO_SCHEMA: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5806353Z   RECOMENDACAO_DATABASE_ROLE: rec_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5806755Z   API_DATABASE_ROLE: api_ci_42447756271_2
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5807263Z   RECOMENDACAO_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5807778Z   API_DATABASE_PASSWORD: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5808247Z   RECOMENDACAO_SERVICE_TOKEN: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5809136Z   DATABASE_URL: ***
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.5809561Z ##[endgroup]
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6348467Z (node:2995) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6349534Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6350115Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6350326Z To prepare for this change:
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6350804Z - If you want the current behavior, explicitly use 'sslmode=verify-full'
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6351633Z - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6351990Z
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6352343Z See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:05.6353502Z (Use `node --trace-warnings ...` to show where the warning was created)
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.4704834Z Post job cleanup.
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5469334Z [command]/usr/bin/git version
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5515117Z git version 2.56.0
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5550583Z Temporarily overriding HOME='/home/runner/work/_temp/e66a1f34-3872-4cf8-aee9-5cc136a3f639' before making global git config changes
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5551511Z Adding repository directory to the temporary git global config as a safe directory
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5556133Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Projeto-Integrador/Projeto-Integrador
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5588405Z Removing SSH command configuration
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5594336Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5642176Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5865136Z Removing HTTP extra header
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5871132Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.5911482Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.6147536Z Removing includeIf entries pointing to credentials config files
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.6154947Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.6183156Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+recomendacao	UNKNOWN STEP	2026-11-08T04:55:08.6561124Z Cleaning up orphan processes

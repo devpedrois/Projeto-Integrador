@@ -1,0 +1,4896 @@
+{
+  "total": {
+    "lines": {
+      "total": 12442,
+      "covered": 10092,
+      "skipped": 0,
+      "pct": 81.11
+    },
+    "statements": {
+      "total": 12442,
+      "covered": 10092,
+      "skipped": 0,
+      "pct": 81.11
+    },
+    "functions": {
+      "total": 689,
+      "covered": 601,
+      "skipped": 0,
+      "pct": 87.22
+    },
+    "branches": {
+      "total": 2893,
+      "covered": 2603,
+      "skipped": 0,
+      "pct": 89.97
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\next.config.compiled.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 12,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 75
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 48,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 47.91
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\next.config.ts": {
+    "lines": {
+      "total": 69,
+      "covered": 69,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 69,
+      "covered": 69,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\playwright.config.ts": {
+    "lines": {
+      "total": 68,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 68,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\postcss.config.mjs": {
+    "lines": {
+      "total": 7,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 7,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\recomendacao-fallback.evidence.ts": {
+    "lines": {
+      "total": 190,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 190,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\run.mjs": {
+    "lines": {
+      "total": 93,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 93,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\sanitize-traces.d.mts": {
+    "lines": {
+      "total": 2,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 2,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\sanitize-traces.mjs": {
+    "lines": {
+      "total": 84,
+      "covered": 71,
+      "skipped": 0,
+      "pct": 84.52
+    },
+    "functions": {
+      "total": 5,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 80
+    },
+    "statements": {
+      "total": 84,
+      "covered": 71,
+      "skipped": 0,
+      "pct": 84.52
+    },
+    "branches": {
+      "total": 27,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 92.59
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\security-headers-production.evidence.mjs": {
+    "lines": {
+      "total": 295,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 295,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\middleware.ts": {
+    "lines": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\layout.tsx": {
+    "lines": {
+      "total": 37,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 37,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\not-found.tsx": {
+    "lines": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\page.tsx": {
+    "lines": {
+      "total": 167,
+      "covered": 148,
+      "skipped": 0,
+      "pct": 88.62
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 167,
+      "covered": 148,
+      "skipped": 0,
+      "pct": 88.62
+    },
+    "branches": {
+      "total": 50,
+      "covered": 45,
+      "skipped": 0,
+      "pct": 90
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\admin\\page.tsx": {
+    "lines": {
+      "total": 32,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 32,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\artesao\\[id]\\page.tsx": {
+    "lines": {
+      "total": 46,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 46,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\cadastro\\page.tsx": {
+    "lines": {
+      "total": 34,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 34,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\carrinho\\page.tsx": {
+    "lines": {
+      "total": 256,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 256,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\checkout\\page.tsx": {
+    "lines": {
+      "total": 196,
+      "covered": 194,
+      "skipped": 0,
+      "pct": 98.97
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 196,
+      "covered": 194,
+      "skipped": 0,
+      "pct": 98.97
+    },
+    "branches": {
+      "total": 40,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 95
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\login\\page.tsx": {
+    "lines": {
+      "total": 31,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 31,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\minha-conta\\page.tsx": {
+    "lines": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\painel-artesao\\page.tsx": {
+    "lines": {
+      "total": 56,
+      "covered": 56,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 56,
+      "covered": 56,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 19,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\painel-artesao\\pedidos\\page.tsx": {
+    "lines": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\painel-artesao\\perfil\\page.tsx": {
+    "lines": {
+      "total": 54,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 54,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\painel-artesao\\produtos\\page.tsx": {
+    "lines": {
+      "total": 41,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 41,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\app\\produto\\[id]\\page.tsx": {
+    "lines": {
+      "total": 80,
+      "covered": 76,
+      "skipped": 0,
+      "pct": 95
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 80,
+      "covered": 76,
+      "skipped": 0,
+      "pct": 95
+    },
+    "branches": {
+      "total": 20,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\admin\\IndicadoresAdminCard.tsx": {
+    "lines": {
+      "total": 73,
+      "covered": 73,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 73,
+      "covered": 73,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\admin\\PainelModeracao.tsx": {
+    "lines": {
+      "total": 500,
+      "covered": 493,
+      "skipped": 0,
+      "pct": 98.6
+    },
+    "functions": {
+      "total": 27,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 88.88
+    },
+    "statements": {
+      "total": 500,
+      "covered": 493,
+      "skipped": 0,
+      "pct": 98.6
+    },
+    "branches": {
+      "total": 145,
+      "covered": 139,
+      "skipped": 0,
+      "pct": 95.86
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\artesao\\PerfilArtesaoPublico.tsx": {
+    "lines": {
+      "total": 136,
+      "covered": 133,
+      "skipped": 0,
+      "pct": 97.79
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 136,
+      "covered": 133,
+      "skipped": 0,
+      "pct": 97.79
+    },
+    "branches": {
+      "total": 21,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\artesao\\RetratoArtesao.tsx": {
+    "lines": {
+      "total": 40,
+      "covered": 40,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 66.66
+    },
+    "statements": {
+      "total": 40,
+      "covered": 40,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\autenticacao\\LayoutAutenticacao.tsx": {
+    "lines": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\cadastro\\CadastroForm.tsx": {
+    "lines": {
+      "total": 172,
+      "covered": 167,
+      "skipped": 0,
+      "pct": 97.09
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 172,
+      "covered": 167,
+      "skipped": 0,
+      "pct": 97.09
+    },
+    "branches": {
+      "total": 34,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 88.23
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\carrinho\\AvisosCarrinho.tsx": {
+    "lines": {
+      "total": 35,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 82.85
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 35,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 82.85
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\carrinho\\MiniaturaProduto.tsx": {
+    "lines": {
+      "total": 31,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 93.54
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 31,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 93.54
+    },
+    "branches": {
+      "total": 7,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 57.14
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\feedback\\Alerta.tsx": {
+    "lines": {
+      "total": 31,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 31,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\feedback\\AlertaErro.tsx": {
+    "lines": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\formulario\\BotaoEnviar.tsx": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\formulario\\CampoAreaTexto.tsx": {
+    "lines": {
+      "total": 40,
+      "covered": 40,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 40,
+      "covered": 40,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 14,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 92.85
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\formulario\\CampoSelecao.tsx": {
+    "lines": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\formulario\\CampoTexto.tsx": {
+    "lines": {
+      "total": 52,
+      "covered": 52,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 52,
+      "covered": 52,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\formulario\\Giro.tsx": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\formulario\\estilos-botao.ts": {
+    "lines": {
+      "total": 19,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 19,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\formulario\\partes-campo.tsx": {
+    "lines": {
+      "total": 29,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 29,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 83.33
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\layout\\GateAcesso.tsx": {
+    "lines": {
+      "total": 292,
+      "covered": 288,
+      "skipped": 0,
+      "pct": 98.63
+    },
+    "functions": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 292,
+      "covered": 288,
+      "skipped": 0,
+      "pct": 98.63
+    },
+    "branches": {
+      "total": 70,
+      "covered": 60,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\layout\\RouteGuard.tsx": {
+    "lines": {
+      "total": 53,
+      "covered": 53,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 53,
+      "covered": 53,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\layout\\SessaoIndisponivel.tsx": {
+    "lines": {
+      "total": 15,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 86.66
+    },
+    "functions": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    },
+    "statements": {
+      "total": 15,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 86.66
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\login\\LoginForm.tsx": {
+    "lines": {
+      "total": 96,
+      "covered": 94,
+      "skipped": 0,
+      "pct": 97.91
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 96,
+      "covered": 94,
+      "skipped": 0,
+      "pct": 97.91
+    },
+    "branches": {
+      "total": 19,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 84.21
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\minha-conta\\FormularioAvaliacao.tsx": {
+    "lines": {
+      "total": 141,
+      "covered": 138,
+      "skipped": 0,
+      "pct": 97.87
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 141,
+      "covered": 138,
+      "skipped": 0,
+      "pct": 97.87
+    },
+    "branches": {
+      "total": 34,
+      "covered": 33,
+      "skipped": 0,
+      "pct": 97.05
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\minha-conta\\MeusPedidos.tsx": {
+    "lines": {
+      "total": 248,
+      "covered": 247,
+      "skipped": 0,
+      "pct": 99.59
+    },
+    "functions": {
+      "total": 8,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 87.5
+    },
+    "statements": {
+      "total": 248,
+      "covered": 247,
+      "skipped": 0,
+      "pct": 99.59
+    },
+    "branches": {
+      "total": 37,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 86.48
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\minha-conta\\ResumoConta.tsx": {
+    "lines": {
+      "total": 63,
+      "covered": 63,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 63,
+      "covered": 63,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 7,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\minha-conta\\StatusDoItem.tsx": {
+    "lines": {
+      "total": 23,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 23,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\painel-artesao\\IndicadoresArtesaoCard.tsx": {
+    "lines": {
+      "total": 65,
+      "covered": 65,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 65,
+      "covered": 65,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\painel-artesao\\MeusProdutosList.tsx": {
+    "lines": {
+      "total": 456,
+      "covered": 449,
+      "skipped": 0,
+      "pct": 98.46
+    },
+    "functions": {
+      "total": 27,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 77.77
+    },
+    "statements": {
+      "total": 456,
+      "covered": 449,
+      "skipped": 0,
+      "pct": 98.46
+    },
+    "branches": {
+      "total": 82,
+      "covered": 72,
+      "skipped": 0,
+      "pct": 87.8
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\painel-artesao\\NotificacoesArtesao.tsx": {
+    "lines": {
+      "total": 71,
+      "covered": 70,
+      "skipped": 0,
+      "pct": 98.59
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 71,
+      "covered": 70,
+      "skipped": 0,
+      "pct": 98.59
+    },
+    "branches": {
+      "total": 17,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 94.11
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\painel-artesao\\PedidosRecebidos.tsx": {
+    "lines": {
+      "total": 171,
+      "covered": 169,
+      "skipped": 0,
+      "pct": 98.83
+    },
+    "functions": {
+      "total": 6,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 83.33
+    },
+    "statements": {
+      "total": 171,
+      "covered": 169,
+      "skipped": 0,
+      "pct": 98.83
+    },
+    "branches": {
+      "total": 29,
+      "covered": 26,
+      "skipped": 0,
+      "pct": 89.65
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\painel-artesao\\PendenciaPerfilArtesao.tsx": {
+    "lines": {
+      "total": 60,
+      "covered": 60,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 60,
+      "covered": 60,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 19,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 89.47
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\painel-artesao\\PerfilArtesaoForm.tsx": {
+    "lines": {
+      "total": 331,
+      "covered": 326,
+      "skipped": 0,
+      "pct": 98.48
+    },
+    "functions": {
+      "total": 10,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 70
+    },
+    "statements": {
+      "total": 331,
+      "covered": 326,
+      "skipped": 0,
+      "pct": 98.48
+    },
+    "branches": {
+      "total": 75,
+      "covered": 63,
+      "skipped": 0,
+      "pct": 84
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\painel-artesao\\ProdutoForm.tsx": {
+    "lines": {
+      "total": 203,
+      "covered": 198,
+      "skipped": 0,
+      "pct": 97.53
+    },
+    "functions": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "statements": {
+      "total": 203,
+      "covered": 198,
+      "skipped": 0,
+      "pct": 97.53
+    },
+    "branches": {
+      "total": 37,
+      "covered": 34,
+      "skipped": 0,
+      "pct": 91.89
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\produto\\ComentariosProduto.tsx": {
+    "lines": {
+      "total": 79,
+      "covered": 79,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 79,
+      "covered": 79,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 90.9
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\produto\\DetalheProduto.tsx": {
+    "lines": {
+      "total": 277,
+      "covered": 275,
+      "skipped": 0,
+      "pct": 99.27
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 277,
+      "covered": 275,
+      "skipped": 0,
+      "pct": 99.27
+    },
+    "branches": {
+      "total": 67,
+      "covered": 63,
+      "skipped": 0,
+      "pct": 94.02
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\vitrine\\EsqueletoProdutos.tsx": {
+    "lines": {
+      "total": 48,
+      "covered": 48,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 48,
+      "covered": 48,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\vitrine\\FaixaRecomendacoes.tsx": {
+    "lines": {
+      "total": 93,
+      "covered": 92,
+      "skipped": 0,
+      "pct": 98.92
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 93,
+      "covered": 92,
+      "skipped": 0,
+      "pct": 98.92
+    },
+    "branches": {
+      "total": 22,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 95.45
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\vitrine\\FiltrosProdutos.tsx": {
+    "lines": {
+      "total": 204,
+      "covered": 195,
+      "skipped": 0,
+      "pct": 95.58
+    },
+    "functions": {
+      "total": 13,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 61.53
+    },
+    "statements": {
+      "total": 204,
+      "covered": 195,
+      "skipped": 0,
+      "pct": 95.58
+    },
+    "branches": {
+      "total": 36,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 86.11
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\vitrine\\HeroVaso.tsx": {
+    "lines": {
+      "total": 170,
+      "covered": 92,
+      "skipped": 0,
+      "pct": 54.11
+    },
+    "functions": {
+      "total": 7,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 14.28
+    },
+    "statements": {
+      "total": 170,
+      "covered": 92,
+      "skipped": 0,
+      "pct": 54.11
+    },
+    "branches": {
+      "total": 7,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 28.57
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\vitrine\\Icone.tsx": {
+    "lines": {
+      "total": 159,
+      "covered": 159,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 159,
+      "covered": 159,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\vitrine\\ProdutoCard.tsx": {
+    "lines": {
+      "total": 72,
+      "covered": 72,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 72,
+      "covered": 72,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\vitrine\\ResultadoBusca.tsx": {
+    "lines": {
+      "total": 61,
+      "covered": 60,
+      "skipped": 0,
+      "pct": 98.36
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 61,
+      "covered": 60,
+      "skipped": 0,
+      "pct": 98.36
+    },
+    "branches": {
+      "total": 12,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 91.66
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\components\\vitrine\\vaso-render.ts": {
+    "lines": {
+      "total": 348,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 2.58
+    },
+    "functions": {
+      "total": 7,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 348,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 2.58
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\domain\\indicadores-admin.ts": {
+    "lines": {
+      "total": 35,
+      "covered": 35,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 35,
+      "covered": 35,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 19,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\domain\\indicadores-artesao.ts": {
+    "lines": {
+      "total": 46,
+      "covered": 46,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 46,
+      "covered": 46,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\domain\\paginacao-avaliacoes.ts": {
+    "lines": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\domain\\paginacao-pedidos.ts": {
+    "lines": {
+      "total": 21,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 21,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 90.9
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\domain\\perfil-artesao-completo.ts": {
+    "lines": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\domain\\produto-visibilidade.ts": {
+    "lines": {
+      "total": 35,
+      "covered": 35,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 35,
+      "covered": 35,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\domain\\resumo-avaliacoes.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\repositories\\avaliacao.repository.ts": {
+    "lines": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\repositories\\pedido.repository.ts": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\repositories\\perfil-artesao.repository.ts": {
+    "lines": {
+      "total": 30,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 30,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\repositories\\produto.repository.ts": {
+    "lines": {
+      "total": 38,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 38,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\repositories\\usuario.repository.ts": {
+    "lines": {
+      "total": 56,
+      "covered": 56,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 56,
+      "covered": 56,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\seeds\\avaliacoes.seed.ts": {
+    "lines": {
+      "total": 79,
+      "covered": 79,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 79,
+      "covered": 79,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\seeds\\categorias.seed.ts": {
+    "lines": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\seeds\\perfis-artesao.seed.ts": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\seeds\\produtos.seed.ts": {
+    "lines": {
+      "total": 214,
+      "covered": 214,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 214,
+      "covered": 214,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\seeds\\regioes.seed.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\seeds\\tecnicas.seed.ts": {
+    "lines": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\seeds\\usuarios.seed.ts": {
+    "lines": {
+      "total": 42,
+      "covered": 42,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 42,
+      "covered": 42,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\storage\\carrinho.storage.ts": {
+    "lines": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\storage\\lista-persistida.ts": {
+    "lines": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\storage\\modo-acesso.storage.ts": {
+    "lines": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\fake-api\\storage\\sessao.storage.ts": {
+    "lines": {
+      "total": 39,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 39,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 24,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 95.83
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-artesaos-ativos.ts": {
+    "lines": {
+      "total": 21,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 21,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-avaliacao-produto.ts": {
+    "lines": {
+      "total": 62,
+      "covered": 62,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 62,
+      "covered": 62,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-busca-produtos.ts": {
+    "lines": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-carrinho.ts": {
+    "lines": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    },
+    "statements": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-categorias-produto.ts": {
+    "lines": {
+      "total": 30,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 96.66
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 30,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 96.66
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-comentarios-produto.ts": {
+    "lines": {
+      "total": 47,
+      "covered": 44,
+      "skipped": 0,
+      "pct": 93.61
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 47,
+      "covered": 44,
+      "skipped": 0,
+      "pct": 93.61
+    },
+    "branches": {
+      "total": 12,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 83.33
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-consulta-publica.ts": {
+    "lines": {
+      "total": 49,
+      "covered": 49,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 49,
+      "covered": 49,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 21,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-detalhe-produto.ts": {
+    "lines": {
+      "total": 59,
+      "covered": 59,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 59,
+      "covered": 59,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 22,
+      "covered": 20,
+      "skipped": 0,
+      "pct": 90.9
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-filtros-url.ts": {
+    "lines": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-indicadores-admin.ts": {
+    "lines": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-indicadores-artesao.ts": {
+    "lines": {
+      "total": 33,
+      "covered": 33,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 33,
+      "covered": 33,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-meus-pedidos.ts": {
+    "lines": {
+      "total": 80,
+      "covered": 79,
+      "skipped": 0,
+      "pct": 98.75
+    },
+    "functions": {
+      "total": 7,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 85.71
+    },
+    "statements": {
+      "total": 80,
+      "covered": 79,
+      "skipped": 0,
+      "pct": 98.75
+    },
+    "branches": {
+      "total": 26,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 92.3
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-meus-produtos.ts": {
+    "lines": {
+      "total": 41,
+      "covered": 41,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 41,
+      "covered": 41,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 13,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 84.61
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-moderacao.ts": {
+    "lines": {
+      "total": 34,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 91.17
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 34,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 91.17
+    },
+    "branches": {
+      "total": 14,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-nome-artesao.ts": {
+    "lines": {
+      "total": 37,
+      "covered": 35,
+      "skipped": 0,
+      "pct": 94.59
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 37,
+      "covered": 35,
+      "skipped": 0,
+      "pct": 94.59
+    },
+    "branches": {
+      "total": 15,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 93.33
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-notificacoes-artesao.ts": {
+    "lines": {
+      "total": 70,
+      "covered": 68,
+      "skipped": 0,
+      "pct": 97.14
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 70,
+      "covered": 68,
+      "skipped": 0,
+      "pct": 97.14
+    },
+    "branches": {
+      "total": 22,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 81.81
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-opcoes-filtro.ts": {
+    "lines": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 10,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 80
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-pedidos-recebidos.ts": {
+    "lines": {
+      "total": 98,
+      "covered": 97,
+      "skipped": 0,
+      "pct": 98.97
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 98,
+      "covered": 97,
+      "skipped": 0,
+      "pct": 98.97
+    },
+    "branches": {
+      "total": 23,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 73.91
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-perfil-publico-artesao.ts": {
+    "lines": {
+      "total": 90,
+      "covered": 90,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 90,
+      "covered": 90,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 32,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 93.75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-recomendacoes.ts": {
+    "lines": {
+      "total": 32,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 32,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 21,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\hooks\\use-sessao.ts": {
+    "lines": {
+      "total": 23,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 23,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\data-source.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\errors.ts": {
+    "lines": {
+      "total": 88,
+      "covered": 88,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 88,
+      "covered": 88,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\avaliacoes.contract.ts": {
+    "lines": {
+      "total": 32,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 32,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\carrinho.contract.ts": {
+    "lines": {
+      "total": 8,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 8,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\indicadores-admin.contract.ts": {
+    "lines": {
+      "total": 11,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 11,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\indicadores-artesao.contract.ts": {
+    "lines": {
+      "total": 11,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 11,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\moderacao.contract.ts": {
+    "lines": {
+      "total": 22,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 22,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\notificacoes.contract.ts": {
+    "lines": {
+      "total": 12,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 12,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\opcoes-filtro.contract.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 9,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\pedidos-artesao.contract.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 9,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\pedidos.contract.ts": {
+    "lines": {
+      "total": 28,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 28,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\perfil-artesao.contract.ts": {
+    "lines": {
+      "total": 16,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 16,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\produtos.contract.ts": {
+    "lines": {
+      "total": 21,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 21,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\recomendacoes.contract.ts": {
+    "lines": {
+      "total": 15,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 15,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\contracts\\usuarios.contract.ts": {
+    "lines": {
+      "total": 30,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 30,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\avaliacoes.service.ts": {
+    "lines": {
+      "total": 136,
+      "covered": 116,
+      "skipped": 0,
+      "pct": 85.29
+    },
+    "functions": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "statements": {
+      "total": 136,
+      "covered": 116,
+      "skipped": 0,
+      "pct": 85.29
+    },
+    "branches": {
+      "total": 44,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 81.81
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\container.ts": {
+    "lines": {
+      "total": 249,
+      "covered": 170,
+      "skipped": 0,
+      "pct": 68.27
+    },
+    "functions": {
+      "total": 21,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 85.71
+    },
+    "statements": {
+      "total": 249,
+      "covered": 170,
+      "skipped": 0,
+      "pct": 68.27
+    },
+    "branches": {
+      "total": 61,
+      "covered": 51,
+      "skipped": 0,
+      "pct": 83.6
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\indicadores-artesao.service.ts": {
+    "lines": {
+      "total": 58,
+      "covered": 55,
+      "skipped": 0,
+      "pct": 94.82
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 58,
+      "covered": 55,
+      "skipped": 0,
+      "pct": 94.82
+    },
+    "branches": {
+      "total": 27,
+      "covered": 26,
+      "skipped": 0,
+      "pct": 96.29
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\moderacao.service.ts": {
+    "lines": {
+      "total": 96,
+      "covered": 89,
+      "skipped": 0,
+      "pct": 92.7
+    },
+    "functions": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 96,
+      "covered": 89,
+      "skipped": 0,
+      "pct": 92.7
+    },
+    "branches": {
+      "total": 37,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 83.78
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\opcoes-filtro.service.ts": {
+    "lines": {
+      "total": 23,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 23,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\pedidos.service.ts": {
+    "lines": {
+      "total": 161,
+      "covered": 155,
+      "skipped": 0,
+      "pct": 96.27
+    },
+    "functions": {
+      "total": 9,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 88.88
+    },
+    "statements": {
+      "total": 161,
+      "covered": 155,
+      "skipped": 0,
+      "pct": 96.27
+    },
+    "branches": {
+      "total": 43,
+      "covered": 40,
+      "skipped": 0,
+      "pct": 93.02
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\perfil-artesao.service.ts": {
+    "lines": {
+      "total": 43,
+      "covered": 41,
+      "skipped": 0,
+      "pct": 95.34
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 43,
+      "covered": 41,
+      "skipped": 0,
+      "pct": 95.34
+    },
+    "branches": {
+      "total": 14,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 92.85
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\produtos.service.ts": {
+    "lines": {
+      "total": 153,
+      "covered": 143,
+      "skipped": 0,
+      "pct": 93.46
+    },
+    "functions": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 153,
+      "covered": 143,
+      "skipped": 0,
+      "pct": 93.46
+    },
+    "branches": {
+      "total": 57,
+      "covered": 54,
+      "skipped": 0,
+      "pct": 94.73
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\usuarios.service.ts": {
+    "lines": {
+      "total": 69,
+      "covered": 67,
+      "skipped": 0,
+      "pct": 97.1
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 69,
+      "covered": 67,
+      "skipped": 0,
+      "pct": 97.1
+    },
+    "branches": {
+      "total": 22,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 95.45
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\verificar-usuario-ativo.ts": {
+    "lines": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\fake\\recomendacoes\\fake-recommendation.adapter.ts": {
+    "lines": {
+      "total": 84,
+      "covered": 81,
+      "skipped": 0,
+      "pct": 96.42
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 84,
+      "covered": 81,
+      "skipped": 0,
+      "pct": 96.42
+    },
+    "branches": {
+      "total": 39,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 97.43
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\api-client.ts": {
+    "lines": {
+      "total": 89,
+      "covered": 82,
+      "skipped": 0,
+      "pct": 92.13
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 89,
+      "covered": 82,
+      "skipped": 0,
+      "pct": 92.13
+    },
+    "branches": {
+      "total": 41,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 92.68
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\avaliacoes.service.ts": {
+    "lines": {
+      "total": 81,
+      "covered": 81,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 81,
+      "covered": 81,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 35,
+      "covered": 34,
+      "skipped": 0,
+      "pct": 97.14
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\carrinho.service.ts": {
+    "lines": {
+      "total": 92,
+      "covered": 92,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 92,
+      "covered": 92,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 30,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 90
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\catalogo-response.ts": {
+    "lines": {
+      "total": 119,
+      "covered": 119,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 119,
+      "covered": 119,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 61,
+      "covered": 58,
+      "skipped": 0,
+      "pct": 95.08
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\indicadores-admin.service.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\indicadores-artesao.service.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\item-pedido-response.ts": {
+    "lines": {
+      "total": 51,
+      "covered": 51,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 51,
+      "covered": 51,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 29,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 96.55
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\moderacao.service.ts": {
+    "lines": {
+      "total": 69,
+      "covered": 69,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 69,
+      "covered": 69,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 14,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 78.57
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\notificacoes.service.ts": {
+    "lines": {
+      "total": 39,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 92.3
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 39,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 92.3
+    },
+    "branches": {
+      "total": 14,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\opcoes-filtro.service.ts": {
+    "lines": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\pedido-response.ts": {
+    "lines": {
+      "total": 108,
+      "covered": 108,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 108,
+      "covered": 108,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 45,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 86.66
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\pedidos-artesao.service.ts": {
+    "lines": {
+      "total": 79,
+      "covered": 79,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 79,
+      "covered": 79,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 31,
+      "covered": 26,
+      "skipped": 0,
+      "pct": 83.87
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\pedidos.service.ts": {
+    "lines": {
+      "total": 128,
+      "covered": 125,
+      "skipped": 0,
+      "pct": 97.65
+    },
+    "functions": {
+      "total": 8,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 87.5
+    },
+    "statements": {
+      "total": 128,
+      "covered": 125,
+      "skipped": 0,
+      "pct": 97.65
+    },
+    "branches": {
+      "total": 23,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 73.91
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\perfil-artesao.service.ts": {
+    "lines": {
+      "total": 91,
+      "covered": 91,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 91,
+      "covered": 91,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 30,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 93.33
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\produtos.service.ts": {
+    "lines": {
+      "total": 109,
+      "covered": 109,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 109,
+      "covered": 109,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 26,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 92.3
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\recomendacoes.adapter.ts": {
+    "lines": {
+      "total": 55,
+      "covered": 55,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 55,
+      "covered": 55,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 33,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 96.96
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\services\\http\\usuarios.service.ts": {
+    "lines": {
+      "total": 107,
+      "covered": 97,
+      "skipped": 0,
+      "pct": 90.65
+    },
+    "functions": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 107,
+      "covered": 97,
+      "skipped": 0,
+      "pct": 90.65
+    },
+    "branches": {
+      "total": 37,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 86.48
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\store\\carrinho.store.ts": {
+    "lines": {
+      "total": 354,
+      "covered": 316,
+      "skipped": 0,
+      "pct": 89.26
+    },
+    "functions": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 354,
+      "covered": 316,
+      "skipped": 0,
+      "pct": 89.26
+    },
+    "branches": {
+      "total": 115,
+      "covered": 102,
+      "skipped": 0,
+      "pct": 88.69
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\store\\sessao.store.ts": {
+    "lines": {
+      "total": 86,
+      "covered": 82,
+      "skipped": 0,
+      "pct": 95.34
+    },
+    "functions": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 86,
+      "covered": 82,
+      "skipped": 0,
+      "pct": 95.34
+    },
+    "branches": {
+      "total": 42,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 92.85
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\avaliacao.ts": {
+    "lines": {
+      "total": 36,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 36,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\cadastro.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 10,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\carrinho.ts": {
+    "lines": {
+      "total": 13,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 13,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\categoria.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 4,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\login.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 4,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\novo-produto.ts": {
+    "lines": {
+      "total": 12,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 12,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\pedido.ts": {
+    "lines": {
+      "total": 67,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 67,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\pedidos-artesao.ts": {
+    "lines": {
+      "total": 23,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 23,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\perfil-artesao.ts": {
+    "lines": {
+      "total": 16,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 16,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\produto-query.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 7,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\produto.ts": {
+    "lines": {
+      "total": 22,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 22,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\recomendacao.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\regiao.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 4,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\sessao.ts": {
+    "lines": {
+      "total": 8,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 8,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\tecnica.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 4,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 1,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\types\\usuario.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\utils\\formatar-moeda-decimal.ts": {
+    "lines": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\utils\\formatar-moeda.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\utils\\foto-url-segura.ts": {
+    "lines": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\utils\\normalizar-texto.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\utils\\preco-campo.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\utils\\produto-query-url.ts": {
+    "lines": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\utils\\rota-segura.ts": {
+    "lines": {
+      "total": 31,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 31,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\utils\\rotulo-papel.ts": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\validators\\avaliacao.validator.ts": {
+    "lines": {
+      "total": 51,
+      "covered": 48,
+      "skipped": 0,
+      "pct": 94.11
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 51,
+      "covered": 48,
+      "skipped": 0,
+      "pct": 94.11
+    },
+    "branches": {
+      "total": 14,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\validators\\cadastro.validator.ts": {
+    "lines": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\validators\\foto-perfil.validator.ts": {
+    "lines": {
+      "total": 34,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 88.23
+    },
+    "functions": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    },
+    "statements": {
+      "total": 34,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 88.23
+    },
+    "branches": {
+      "total": 14,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 92.85
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\validators\\login.validator.ts": {
+    "lines": {
+      "total": 14,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 85.71
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 85.71
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\validators\\pedido.validator.ts": {
+    "lines": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\validators\\perfil-artesao.validator.ts": {
+    "lines": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\src\\validators\\produto.validator.ts": {
+    "lines": {
+      "total": 39,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 39,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "hash_local": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "arvore_inicial_limpa": true,
+  "branch_local": "main",
+  "servicos_antes": {
+    "frontend": {
+      "branch": "main",
+      "hash": "c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+      "estado": "Ready"
+    },
+    "api": {
+      "branch": "main",
+      "hash": "c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+      "estado": "Live"
+    },
+    "microsservico": {
+      "branch": "main",
+      "hash": "c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+      "estado": "Live"
+    }
+  },
+  "ultimo_ci": {
+    "url": "https://github.com/devpedrois/Projeto-Integrador/actions/runs/42447756271",
+    "hash": "c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+    "resultado": "failure",
+    "jobs": {
+      "backend": "cancelled",
+      "recomendacao": "failure",
+      "frontend": "success"
+    }
+  },
+  "leitura_relatorio_anterior": {
+    "data": "27/10/2026",
+    "paginas": 9,
+    "secoes": [
+      "Resumo executivo",
+      "Plano e estrategia",
+      "Resultados por suite",
+      "Cobertura e fontes",
+      "Concorrencia e integridade",
+      "Pendencias e evidencias"
+    ]
+  }
+}

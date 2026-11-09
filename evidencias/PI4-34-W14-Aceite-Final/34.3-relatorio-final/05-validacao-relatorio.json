@@ -1,0 +1,755 @@
+{
+  "horario": "2026-11-09T18:04:54.702607+00:00",
+  "hashTestado": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "verificacoes": [
+    {
+      "verificacao": "backend-coverage: hash e resultado",
+      "aprovada": true
+    },
+    {
+      "verificacao": "backend-coverage: gitAntes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "backend-coverage: gitDepois",
+      "aprovada": true
+    },
+    {
+      "verificacao": "backend-coverage: metadados consistentes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "backend-coverage: contagens brutas",
+      "aprovada": true
+    },
+    {
+      "verificacao": "backend-coverage: cobertura lines",
+      "aprovada": true
+    },
+    {
+      "verificacao": "backend-coverage: percentual lines",
+      "aprovada": true
+    },
+    {
+      "verificacao": "backend-coverage: cobertura branches",
+      "aprovada": true
+    },
+    {
+      "verificacao": "backend-coverage: percentual branches",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: hash e resultado",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: gitAntes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: gitDepois",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: metadados consistentes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: contagens brutas",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: cobertura lines",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: percentual lines",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: cobertura branches",
+      "aprovada": true
+    },
+    {
+      "verificacao": "microsservico-coverage: percentual branches",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: hash e resultado",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: gitAntes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: gitDepois",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: metadados consistentes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: contagens brutas",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: cobertura lines",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: percentual lines",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: cobertura branches",
+      "aprovada": true
+    },
+    {
+      "verificacao": "frontend-coverage: percentual branches",
+      "aprovada": true
+    },
+    {
+      "verificacao": "integridade: hash e resultado",
+      "aprovada": true
+    },
+    {
+      "verificacao": "integridade: gitAntes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "integridade: gitDepois",
+      "aprovada": true
+    },
+    {
+      "verificacao": "integridade: metadados consistentes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "integridade: contagens brutas",
+      "aprovada": true
+    },
+    {
+      "verificacao": "e2e: hash e resultado",
+      "aprovada": true
+    },
+    {
+      "verificacao": "e2e: gitAntes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "e2e: gitDepois",
+      "aprovada": true
+    },
+    {
+      "verificacao": "e2e: metadados consistentes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "concorrencia: hash e resultado",
+      "aprovada": true
+    },
+    {
+      "verificacao": "concorrencia: gitAntes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "concorrencia: gitDepois",
+      "aprovada": true
+    },
+    {
+      "verificacao": "concorrencia: metadados consistentes",
+      "aprovada": true
+    },
+    {
+      "verificacao": "total 2003 casos aprovados",
+      "aprovada": true
+    },
+    {
+      "verificacao": "total dois casos pulados",
+      "aprovada": true
+    },
+    {
+      "verificacao": "tres rodadas de concorrencia",
+      "aprovada": true
+    },
+    {
+      "verificacao": "relatorio bruto Playwright unico",
+      "aprovada": true
+    },
+    {
+      "verificacao": "contagens brutas E2E",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: escopo documental",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link ../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-resumo.md",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link versionavel ../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-resumo.md",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link ../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-resumo.md",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link versionavel ../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-resumo.md",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link ../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/02-resultados.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link versionavel ../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/02-resultados.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link matriz-aceitacao-u2.md",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link versionavel matriz-aceitacao-u2.md",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link refatoracoes-u2.md",
+      "aprovada": true
+    },
+    {
+      "verificacao": "Relatorio-Testes-Origem-Final.md: link versionavel refatoracoes-u2.md",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: escopo documental",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link backend-coverage/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel backend-coverage/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link backend-coverage/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel backend-coverage/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link microsservico-coverage/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel microsservico-coverage/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link microsservico-coverage/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel microsservico-coverage/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link frontend-coverage/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel frontend-coverage/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link frontend-coverage/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel frontend-coverage/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link integridade/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel integridade/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link integridade/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel integridade/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link e2e/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel e2e/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link e2e/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel e2e/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link concorrencia/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel concorrencia/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link concorrencia/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel concorrencia/terminal.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link backend-coverage/coverage-summary.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel backend-coverage/coverage-summary.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link backend-coverage/vitest.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel backend-coverage/vitest.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link microsservico-coverage/coverage-summary.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel microsservico-coverage/coverage-summary.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link microsservico-coverage/vitest.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel microsservico-coverage/vitest.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link frontend-coverage/coverage-summary.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel frontend-coverage/coverage-summary.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link frontend-coverage/vitest.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel frontend-coverage/vitest.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link integridade/vitest.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel integridade/vitest.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link e2e/chamadas-microsservico.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel e2e/chamadas-microsservico.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link e2e/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel e2e/execucao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link concorrencia/rodadas.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel concorrencia/rodadas.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link ci-ultima.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel ci-ultima.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link ci-ultima-falhas.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel ci-ultima-falhas.txt",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link paineis-antes.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel paineis-antes.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link vercel-antes.png",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel vercel-antes.png",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link render-api-antes.png",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel render-api-antes.png",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link render-recomendacao-antes.png",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel render-recomendacao-antes.png",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link 01-congelamento.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel 01-congelamento.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link 00-precondicoes.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel 00-precondicoes.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link 02-resultados.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel 02-resultados.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link 06-sanitizacao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel 06-sanitizacao.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link 05-validacao-relatorio.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "00-resumo.md: link versionavel 05-validacao-relatorio.json",
+      "aprovada": true
+    },
+    {
+      "verificacao": "nenhum segredo nos padroes auditados",
+      "aprovada": true
+    },
+    {
+      "verificacao": "codigo executavel congelado",
+      "aprovada": true
+    }
+  ],
+  "arquivosVersionaveis": [
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-precondicoes.json",
+      "bytes": 1128,
+      "sha256": "af5be53e494eab2701db3cbc60a82660dab3ece61d199f93e2759d2085556a80"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-resumo.md",
+      "bytes": 6854,
+      "sha256": "71f3eda9ed1ea70c0b4e555104079a235374750741e7bf9723124017bca9db8c"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/01-congelamento.json",
+      "bytes": 678,
+      "sha256": "17e5dd78ad2d1cc6fff4cfe047630b992c013018df7bea3d66edb0b76e0e361c"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/02-resultados.json",
+      "bytes": 10807,
+      "sha256": "c6c66fde14912975c8f79310b8614352225ab8010c48dcfe008aa3b606cd115c"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/06-sanitizacao.json",
+      "bytes": 387,
+      "sha256": "e004e29461528b3fb7ed245673b998330356b3180a06052aa2b210b1aaaf16c7"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/ci-ultima-falhas.txt",
+      "bytes": 84421,
+      "sha256": "fc90575a7a09adf619211e5ada9cbd825b3b8ce98a078e23caa13e779f49c1f5"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/ci-ultima.json",
+      "bytes": 12568,
+      "sha256": "c6913989c99d1ab519459ba81ef78ba417844e2d75ee3ebc615126b0d32cd2cc"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/issue-ci-url.txt",
+      "bytes": 58,
+      "sha256": "a9cf0653cfb13603fc1d8d72336f39ed244a3381962db7f56b92d54ed6646ae2"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/paineis-antes.json",
+      "bytes": 872,
+      "sha256": "d68cafa445a0c7093d61c30f0d33cc9792c0ffe8b0ad35a7906f4c519cb57303"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/preparacao-coverage-microsservico.txt",
+      "bytes": 25,
+      "sha256": "df9a5f74f9c6f0091535a38eebca1116d6f116e043e5d52197da72f3a121bf8d"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/render-api-antes.png",
+      "bytes": 89230,
+      "sha256": "621168fe33505c301ed5c7d39841fc644c697353f2bcc77ef5f8a48c7b10c1c7"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/render-recomendacao-antes.png",
+      "bytes": 90611,
+      "sha256": "821efa7afe01e325c8ab80a666e0a0b2a6f3e1b846a8bed03260e903519b54e5"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/vercel-antes.png",
+      "bytes": 65240,
+      "sha256": "87f6f9bd1069b71e43c927b85b7ac4ec4eb5b2adaf3a5bacf0136ebac7b7a39b"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/wrapper.txt",
+      "bytes": 672,
+      "sha256": "4a0a9397748ef1d26c8e72e278a067518983a80ef03c87086c21967c6b550c49"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/backend-coverage/coverage-summary.json",
+      "bytes": 66134,
+      "sha256": "62c4204cbf411245db48a4805aa4a6bf035780532d080479116f4f892a9a30b0"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/backend-coverage/execucao.json",
+      "bytes": 2082,
+      "sha256": "a38e78910db685094beda96b31e38ce2f203fe211e162bdc4279a5fa696532dd"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/backend-coverage/terminal.txt",
+      "bytes": 442632,
+      "sha256": "b5227e2d3fbcc434a5b9705076098435d550f885ff35c42de1351e98dabf05ce"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/backend-coverage/vitest.json",
+      "bytes": 2275412,
+      "sha256": "7905251dd87985b3a3f5378cae8a1b15df393356d50b16f3593e689f2b9767f9"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/concorrencia/execucao.json",
+      "bytes": 1045,
+      "sha256": "273d2b016de9e03b98a2c2fb81c7eab2be0f5150b9b5aa5213f6faeb3026729e"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/concorrencia/rodadas.json",
+      "bytes": 565,
+      "sha256": "a68bc9a4f8b781368d7de871e4d82065c52e9cd774dfef7fbbde82918a0c8f56"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/concorrencia/terminal.txt",
+      "bytes": 37210,
+      "sha256": "cb2b24eabfe291c25c0260850f05655c3b5fb7b0927180188bd5518adeb134bf"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/chamadas-microsservico.json",
+      "bytes": 1911,
+      "sha256": "59cfdf0b33516987201941cfb2c8e75772fa1abf6cdd36b3fad257da27471a46"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/execucao.json",
+      "bytes": 934,
+      "sha256": "38ae7199c617780db12c65d6779086e8953680df6be7600ba2936998206ef24d"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/terminal.txt",
+      "bytes": 2977,
+      "sha256": "aa24deb2b56719db0876e8d76620db9c3825816fb736d632e1526f528d79960f"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/frontend-coverage/coverage-summary.json",
+      "bytes": 96309,
+      "sha256": "470e1a18ce10dfff55903a5ad70494088e1cb7b8361dd899aa0e6b6378c08260"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/frontend-coverage/execucao.json",
+      "bytes": 2042,
+      "sha256": "509d68003b90bec76b660267bfc838517013e69a86f217333a82c1eda1848a72"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/frontend-coverage/terminal.txt",
+      "bytes": 28683,
+      "sha256": "b16682e4d4552c08faa95a782d5bbaac2656302ce703d57c4eaab7931859653f"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/frontend-coverage/vitest.json",
+      "bytes": 434903,
+      "sha256": "be1e5737dd45d55d362b6681e7f4f5b5a720d35d57680aa5bd9f09001896a22e"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/integridade/execucao.json",
+      "bytes": 1122,
+      "sha256": "35ef2bd5f29f78e49729a69ff0722c776fee5a7f002ca32e51753748eeec758b"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/integridade/terminal.txt",
+      "bytes": 4168,
+      "sha256": "6668c2cfd53151ebb9d046b6c31866a500ee16828f7d2de48fc3a3014413e2f5"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/integridade/vitest.json",
+      "bytes": 6944,
+      "sha256": "3cc1ee8e6420a10afbdbb4913641a6e67d74ef420656aec2465b007e7de69f8b"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/microsservico-coverage/coverage-summary.json",
+      "bytes": 13593,
+      "sha256": "97f5d895c7d7f24aa809e59ee71b65856f468c4411a1522bab7be9d48d48a300"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/microsservico-coverage/execucao.json",
+      "bytes": 2064,
+      "sha256": "66eb4f4c5d04cde1321074dc0acf64562eb054a4408edac8721e23beb96fbb2e"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/microsservico-coverage/terminal.txt",
+      "bytes": 18041,
+      "sha256": "dd4529f20dd99480a2e73c6d9200f528b89b69db00cccd38ae2e2924fb3a4a42"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/microsservico-coverage/vitest.json",
+      "bytes": 495244,
+      "sha256": "0a0c91cf187e7fbc50837a215202170c34d32319766d6ec4874f9869910b04dd"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/cleanup.json",
+      "bytes": 76,
+      "sha256": "0e48ff32342938eec0857c26f60dade62058a8ad932b7f9445d80f31d14bae73"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/resultado.json",
+      "bytes": 17967,
+      "sha256": "355c7930bb0d1b059f620a1fcc33c1e55cec8e70155e0e2d6b0af2c7571c7641"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/runtime.json",
+      "bytes": 187,
+      "sha256": "19d57a32697db5e71ab9d2a87140bcc55c61a91575704c19bd406f99c4af615a"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/.last-run.json",
+      "bytes": 46,
+      "sha256": "fff6299efb51ba9ef550e500ecc967e972c83e86be387042c360caea7fdbae29"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-1280px.png",
+      "bytes": 104830,
+      "sha256": "40d8f4d36de1f3e4fd0c73edb462df58914d3b4c91b2818f4d914dc8696441c5"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-360px.png",
+      "bytes": 77897,
+      "sha256": "70c87d93305ffc70a96330415c7b8dbde31c174f464cee91623261e96977c2e5"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/admin-768px.png",
+      "bytes": 90619,
+      "sha256": "e61fedd2e8c9b69bb886e14a40db610f4fed3ec633349c73c38a3a29ff995483"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/indicadores-admin.json",
+      "bytes": 2176,
+      "sha256": "7b6ef8315d4f78c7e385945fea973cb57746a54131e113712f4f74e83d593c9f"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/medicoes.md",
+      "bytes": 334,
+      "sha256": "d773ee8a75327281e208904ff3de33a095c1040c552c0ff44e3d6127ab6040ac"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px/produto-pagina-1-1280px.png",
+      "bytes": 213283,
+      "sha256": "d1f0356f57e50ee9cc61d889204f6e44bb077cc95349d713a0608878140331ce"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-1280px/produto-pagina-4-1280px.png",
+      "bytes": 170349,
+      "sha256": "1e40ed02e857456ecf0a61e78352f1e76f8dce319dfb7958c2e73faf33321ee9"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px/produto-pagina-1-360px.png",
+      "bytes": 165297,
+      "sha256": "a6f2456b42ed05ca0fc7b9457d378616169a7cc1e58a9c16bd41614e086efc43"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/produto-avaliacoes-32-2-pr-d76b7-paginas-de-avaliacoes-reais-360px/produto-pagina-4-360px.png",
+      "bytes": 134354,
+      "sha256": "771922b4c52f229435211d43bcdcc769d939477554cefc7845dca102b4acec89"
+    },
+    {
+      "arquivo": "evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results/admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px/attachments/Indicadores-reais-e-tempos-b749708e8f1ba6323754425f01715772e58bdbb3.json",
+      "bytes": 2176,
+      "sha256": "7b6ef8315d4f78c7e385945fea973cb57746a54131e113712f4f74e83d593c9f"
+    }
+  ],
+  "achados": [],
+  "aprovado": true
+}

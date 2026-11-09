@@ -1,0 +1,558 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Pedro/AppData/Local/Temp/origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "360px",
+        "name": "360px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/Pedro/AppData/Local/Temp/origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9/e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "1280px",
+        "name": "1280px",
+        "testDir": "C:/Users/Pedro/Desktop/Projeto integrador/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\e2e\\playwright\\2f8bbf6898eb4ea084c7b6056ab1f76c\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "360px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 360,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "360px"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\e2e\\playwright\\2f8bbf6898eb4ea084c7b6056ab1f76c\\results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "1280px",
+        "testDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "snapshotDir": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "browserName": "chromium",
+          "baseURL": "http://127.0.0.1:3113",
+          "locale": "pt-BR",
+          "timezoneId": "America/Sao_Paulo",
+          "launchOptions": {
+            "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          },
+          "trace": "on-first-retry",
+          "video": "on-first-retry",
+          "screenshot": "only-on-failure",
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "1280px"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\e2e\\playwright\\2f8bbf6898eb4ea084c7b6056ab1f76c\\html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\e2e\\playwright\\2f8bbf6898eb4ea084c7b6056ab1f76c\\resultado.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "admin-indicadores.spec.ts",
+      "file": "admin-indicadores.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "32.1 indicadores reais: dez recargas e tres larguras",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mede dez recargas no mesmo viewport.",
+                  "location": {
+                    "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\admin-indicadores.spec.ts",
+                    "line": 8,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 366,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T17:50:44.059Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Mede dez recargas no mesmo viewport.",
+                      "location": {
+                        "file": "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\e2e\\admin-indicadores.spec.ts",
+                        "line": 8,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "43f71f1fe71fba6bde39-61914a2c89f0054af5bf",
+          "file": "admin-indicadores.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "32.1 indicadores reais: dez recargas e tres larguras",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9904,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T17:51:11.859Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Indicadores reais e tempos",
+                      "contentType": "application/json",
+                      "path": "C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\e2e\\playwright\\2f8bbf6898eb4ea084c7b6056ab1f76c\\results\\admin-indicadores-32-1-ind-02c40-ez-recargas-e-tres-larguras-1280px\\attachments\\Indicadores-reais-e-tempos-b749708e8f1ba6323754425f01715772e58bdbb3.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "43f71f1fe71fba6bde39-ab752dddc0c634f14865",
+          "file": "admin-indicadores.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fluxos.spec.ts",
+      "file": "fluxos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9975,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 2576
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 2603
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 2506
+                    }
+                  ],
+                  "startTime": "2026-11-09T17:50:44.769Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-3dd579238a1600c1af4e",
+          "file": "fluxos.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12181,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 1924
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 1543
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 1442
+                    },
+                    {
+                      "title": "Cadastro inicia sessao de artesao sem login separado",
+                      "duration": 2227
+                    }
+                  ],
+                  "startTime": "2026-11-09T17:50:54.753Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-5fd1245ca8efa7d599b5",
+          "file": "fluxos.spec.ts",
+          "line": 173,
+          "column": 1
+        },
+        {
+          "title": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6339,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 1767
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 1473
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 1043
+                    }
+                  ],
+                  "startTime": "2026-11-09T17:51:21.988Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-322fd6ac0efb1fcba6e7",
+          "file": "fluxos.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "(b) artesao envia e comprador acompanha Enviado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10602,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Cadastro inicia sessao de comprador sem login separado",
+                      "duration": 1752
+                    },
+                    {
+                      "title": "Busca com filtro e detalhe do produto",
+                      "duration": 1481
+                    },
+                    {
+                      "title": "Carrinho e checkout pela API real",
+                      "duration": 1451
+                    },
+                    {
+                      "title": "Cadastro inicia sessao de artesao sem login separado",
+                      "duration": 1514
+                    }
+                  ],
+                  "startTime": "2026-11-09T17:51:28.334Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "77ea0229fbaad0de7de8-eb3f7ae786b46b8a8e36",
+          "file": "fluxos.spec.ts",
+          "line": 173,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "produto-avaliacoes.spec.ts",
+      "file": "produto-avaliacoes.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "32.2 produto demo mostra quatro paginas de avaliacoes reais",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "360px",
+              "projectName": "360px",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4279,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T17:51:06.973Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "84da38f025b923bf2756-da1eac688bed7c56380c",
+          "file": "produto-avaliacoes.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "32.2 produto demo mostra quatro paginas de avaliacoes reais",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "1280px",
+              "projectName": "1280px",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4006,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T17:51:38.971Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "84da38f025b923bf2756-a952e6725222435e729f",
+          "file": "produto-avaliacoes.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-09T17:50:02.968Z",
+    "duration": 100832.125,
+    "expected": 7,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

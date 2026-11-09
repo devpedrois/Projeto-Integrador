@@ -1,0 +1,217 @@
+{
+  "numTotalTestSuites": 5,
+  "numPassedTestSuites": 5,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 12,
+  "numPassedTests": 12,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1794246592762,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "exige índice para toda FK no schema dos testes",
+          "status": "passed",
+          "title": "exige índice para toda FK no schema dos testes",
+          "duration": 378.05559999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1794246600498,
+      "endTime": 1794246600876.0557,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integridade/fk-com-indice.integridade.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico rejeita estoque negativo com 23514",
+          "status": "passed",
+          "title": "rejeita estoque negativo com 23514",
+          "duration": 1184.2255,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico rejeita preco 0.00 com 23514",
+          "status": "passed",
+          "title": "rejeita preco 0.00 com 23514",
+          "duration": 663.845,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico rejeita preco -0.01 com 23514",
+          "status": "passed",
+          "title": "rejeita preco -0.01 com 23514",
+          "duration": 662.2075,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico rejeita nota 6 com 23514",
+          "status": "passed",
+          "title": "rejeita nota 6 com 23514",
+          "duration": 664.2064,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico rejeita email duplicado com caixa diferente com 23505",
+          "status": "passed",
+          "title": "rejeita email duplicado com caixa diferente com 23505",
+          "duration": 662.9245999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico restringe exclusao de produto com pedido",
+          "status": "passed",
+          "title": "restringe exclusao de produto com pedido",
+          "duration": 711.0750999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico rejeita dois pagamentos para o mesmo pedido com 23505",
+          "status": "passed",
+          "title": "rejeita dois pagamentos para o mesmo pedido com 23505",
+          "duration": 662.9521000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico rejeita notificacao duplicada com 23505",
+          "status": "passed",
+          "title": "rejeita notificacao duplicada com 23505",
+          "duration": 663.6763999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": [
+            "BD-07: integridade do modelo fisico"
+          ],
+          "fullName": "BD-07: integridade do modelo fisico restringe exclusao de Tecnica referenciada",
+          "status": "passed",
+          "title": "restringe exclusao de Tecnica referenciada",
+          "duration": 665.3226000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1794246592990,
+      "endTime": 1794246599530.3225,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integridade/modelo-fisico.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "persiste pedido somente com a identidade real do comprador",
+          "status": "passed",
+          "title": "persiste pedido somente com a identidade real do comprador",
+          "duration": 576.8933999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1794246599735,
+      "endTime": 1794246600311.8933,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integridade/pedido-comprador.integridade.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "preserva exatamente as colunas das views do contrato de recomendacao",
+          "status": "passed",
+          "title": "preserva exatamente as colunas das views do contrato de recomendacao",
+          "duration": 378.47470000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1794246601063,
+      "endTime": 1794246601441.4746,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/Pedro/Desktop/Projeto integrador/backend/tests/integridade/recomendacao-views.test.ts"
+    }
+  ]
+}

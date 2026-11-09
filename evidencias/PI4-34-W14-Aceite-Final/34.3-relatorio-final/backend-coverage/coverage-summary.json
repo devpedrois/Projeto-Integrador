@@ -1,0 +1,3388 @@
+{
+  "total": {
+    "lines": {
+      "total": 3166,
+      "covered": 2439,
+      "skipped": 0,
+      "pct": 77.03
+    },
+    "statements": {
+      "total": 3307,
+      "covered": 2510,
+      "skipped": 0,
+      "pct": 75.89
+    },
+    "functions": {
+      "total": 707,
+      "covered": 572,
+      "skipped": 0,
+      "pct": 80.9
+    },
+    "branches": {
+      "total": 1464,
+      "covered": 1071,
+      "skipped": 0,
+      "pct": 73.15
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\prisma\\seed-volume.ts": {
+    "lines": {
+      "total": 33,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 72.72
+    },
+    "functions": {
+      "total": 14,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 78.57
+    },
+    "statements": {
+      "total": 34,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 70.58
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\prisma\\seed.ts": {
+    "lines": {
+      "total": 73,
+      "covered": 63,
+      "skipped": 0,
+      "pct": 86.3
+    },
+    "functions": {
+      "total": 6,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 50
+    },
+    "statements": {
+      "total": 76,
+      "covered": 64,
+      "skipped": 0,
+      "pct": 84.21
+    },
+    "branches": {
+      "total": 21,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\prisma\\seeds\\demo.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\prisma\\seeds\\id.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\prisma\\seeds\\referencias.ts": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\prisma\\seeds\\volume.ts": {
+    "lines": {
+      "total": 39,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 44,
+      "covered": 43,
+      "skipped": 0,
+      "pct": 97.72
+    },
+    "branches": {
+      "total": 22,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 95.45
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\bench-fila.ts": {
+    "lines": {
+      "total": 180,
+      "covered": 65,
+      "skipped": 0,
+      "pct": 36.11
+    },
+    "functions": {
+      "total": 27,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 33.33
+    },
+    "statements": {
+      "total": 195,
+      "covered": 70,
+      "skipped": 0,
+      "pct": 35.89
+    },
+    "branches": {
+      "total": 81,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 29.62
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\busca-p95.ts": {
+    "lines": {
+      "total": 162,
+      "covered": 144,
+      "skipped": 0,
+      "pct": 88.88
+    },
+    "functions": {
+      "total": 29,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 86.2
+    },
+    "statements": {
+      "total": 174,
+      "covered": 151,
+      "skipped": 0,
+      "pct": 86.78
+    },
+    "branches": {
+      "total": 106,
+      "covered": 86,
+      "skipped": 0,
+      "pct": 81.13
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\concorrencia-checkout.ts": {
+    "lines": {
+      "total": 152,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 19.73
+    },
+    "functions": {
+      "total": 21,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 9.52
+    },
+    "statements": {
+      "total": 159,
+      "covered": 33,
+      "skipped": 0,
+      "pct": 20.75
+    },
+    "branches": {
+      "total": 112,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 32.14
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\conferir-indicadores-plataforma.ts": {
+    "lines": {
+      "total": 60,
+      "covered": 53,
+      "skipped": 0,
+      "pct": 88.33
+    },
+    "functions": {
+      "total": 12,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 75
+    },
+    "statements": {
+      "total": 63,
+      "covered": 55,
+      "skipped": 0,
+      "pct": 87.3
+    },
+    "branches": {
+      "total": 30,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 70
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\custo-salto-http.ts": {
+    "lines": {
+      "total": 189,
+      "covered": 49,
+      "skipped": 0,
+      "pct": 25.92
+    },
+    "functions": {
+      "total": 36,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 11.11
+    },
+    "statements": {
+      "total": 200,
+      "covered": 51,
+      "skipped": 0,
+      "pct": 25.5
+    },
+    "branches": {
+      "total": 74,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 32.43
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\db-explain.ts": {
+    "lines": {
+      "total": 156,
+      "covered": 147,
+      "skipped": 0,
+      "pct": 94.23
+    },
+    "functions": {
+      "total": 27,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 88.88
+    },
+    "statements": {
+      "total": 164,
+      "covered": 150,
+      "skipped": 0,
+      "pct": 91.46
+    },
+    "branches": {
+      "total": 124,
+      "covered": 109,
+      "skipped": 0,
+      "pct": 87.9
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\e2e-server.ts": {
+    "lines": {
+      "total": 80,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 20
+    },
+    "functions": {
+      "total": 15,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 20
+    },
+    "statements": {
+      "total": 81,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 19.75
+    },
+    "branches": {
+      "total": 27,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 70.37
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\helpers\\concorrencia-database.ts": {
+    "lines": {
+      "total": 25,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 3,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 25,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\helpers\\recomendacao-runtime.ts": {
+    "lines": {
+      "total": 82,
+      "covered": 67,
+      "skipped": 0,
+      "pct": 81.7
+    },
+    "functions": {
+      "total": 10,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 70
+    },
+    "statements": {
+      "total": 86,
+      "covered": 69,
+      "skipped": 0,
+      "pct": 80.23
+    },
+    "branches": {
+      "total": 28,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 64.28
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\helpers\\recomendacao-tooling.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\lib\\bench-fila-processos.ts": {
+    "lines": {
+      "total": 36,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 75
+    },
+    "functions": {
+      "total": 11,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 63.63
+    },
+    "statements": {
+      "total": 39,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 71.79
+    },
+    "branches": {
+      "total": 17,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 76.47
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\lib\\bench-fila.ts": {
+    "lines": {
+      "total": 80,
+      "covered": 75,
+      "skipped": 0,
+      "pct": 93.75
+    },
+    "functions": {
+      "total": 30,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 89,
+      "covered": 82,
+      "skipped": 0,
+      "pct": 92.13
+    },
+    "branches": {
+      "total": 57,
+      "covered": 49,
+      "skipped": 0,
+      "pct": 85.96
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\scripts\\lib\\recomendacao-benchmark.ts": {
+    "lines": {
+      "total": 79,
+      "covered": 71,
+      "skipped": 0,
+      "pct": 89.87
+    },
+    "functions": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 84,
+      "covered": 76,
+      "skipped": 0,
+      "pct": 90.47
+    },
+    "branches": {
+      "total": 57,
+      "covered": 44,
+      "skipped": 0,
+      "pct": 77.19
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\app.ts": {
+    "lines": {
+      "total": 44,
+      "covered": 44,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 44,
+      "covered": 44,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 16,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 87.5
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\server.ts": {
+    "lines": {
+      "total": 28,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 64.28
+    },
+    "functions": {
+      "total": 6,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 50
+    },
+    "statements": {
+      "total": 29,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 62.06
+    },
+    "branches": {
+      "total": 13,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 76.92
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\config\\environment.ts": {
+    "lines": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 30,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 96.66
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\auth.controller.ts": {
+    "lines": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\avaliacao.controller.ts": {
+    "lines": {
+      "total": 17,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 88.23
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 88.23
+    },
+    "branches": {
+      "total": 8,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\carrinho.controller.ts": {
+    "lines": {
+      "total": 33,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 93.93
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 33,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 93.93
+    },
+    "branches": {
+      "total": 17,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 88.23
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\catalogo.controller.ts": {
+    "lines": {
+      "total": 44,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 88.63
+    },
+    "functions": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 44,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 88.63
+    },
+    "branches": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\foto-perfil.controller.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 77.77
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 77.77
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\gestao-produtos.controller.ts": {
+    "lines": {
+      "total": 33,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 96.96
+    },
+    "functions": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 35,
+      "covered": 33,
+      "skipped": 0,
+      "pct": 94.28
+    },
+    "branches": {
+      "total": 12,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 83.33
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\health.controller.ts": {
+    "lines": {
+      "total": 5,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 80
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 80
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\indicadores-admin.controller.ts": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\indicadores.controller.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\notificacao.controller.ts": {
+    "lines": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 92.85
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\pedido.controller.ts": {
+    "lines": {
+      "total": 39,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 82.05
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 39,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 82.05
+    },
+    "branches": {
+      "total": 10,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 50
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\perfil-artesao.controller.ts": {
+    "lines": {
+      "total": 21,
+      "covered": 20,
+      "skipped": 0,
+      "pct": 95.23
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 21,
+      "covered": 20,
+      "skipped": 0,
+      "pct": 95.23
+    },
+    "branches": {
+      "total": 8,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 87.5
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\recomendacao.controller.ts": {
+    "lines": {
+      "total": 19,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 84.21
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 19,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 84.21
+    },
+    "branches": {
+      "total": 5,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 80
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\controllers\\usuario.controller.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "branches": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\database\\prisma\\client.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 88.88
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 88.88
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\docs\\openapi.ts": {
+    "lines": {
+      "total": 119,
+      "covered": 119,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 119,
+      "covered": 119,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\domain\\perfil-artesao-completo.ts": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\errors\\app-error.ts": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\errors\\recomendacao-indisponivel.error.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\generated\\prisma\\client.ts": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\generated\\prisma\\enums.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\generated\\prisma\\internal\\class.ts": {
+    "lines": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\generated\\prisma\\internal\\prismaNamespace.ts": {
+    "lines": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\integrations\\recommendation\\http-recomendacao.client.ts": {
+    "lines": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    },
+    "statements": {
+      "total": 30,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 96.66
+    },
+    "branches": {
+      "total": 20,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 95
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\integrations\\storage\\vercel-foto-storage.ts": {
+    "lines": {
+      "total": 8,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 12.5
+    },
+    "functions": {
+      "total": 3,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 33.33
+    },
+    "statements": {
+      "total": 8,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 12.5
+    },
+    "branches": {
+      "total": 5,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 20
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\jobs\\notificar-artesao.handler.ts": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\jobs\\notificar-artesao.worker.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\middlewares\\auth.middleware.ts": {
+    "lines": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\middlewares\\error.middleware.ts": {
+    "lines": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\middlewares\\foto-perfil.middleware.ts": {
+    "lines": {
+      "total": 25,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 92
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 25,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 92
+    },
+    "branches": {
+      "total": 26,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 96.15
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\middlewares\\request-logging.middleware.ts": {
+    "lines": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\middlewares\\role.middleware.ts": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\queues\\bootstrap.ts": {
+    "lines": {
+      "total": 15,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 93.33
+    },
+    "functions": {
+      "total": 7,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 85.71
+    },
+    "statements": {
+      "total": 16,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 87.5
+    },
+    "branches": {
+      "total": 7,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 57.14
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\queues\\notificacao.publisher.ts": {
+    "lines": {
+      "total": 14,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 85.71
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 85.71
+    },
+    "branches": {
+      "total": 6,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 50
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\queues\\pg-boss.client.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\avaliacao.repository.ts": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 20,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 95
+    },
+    "branches": {
+      "total": 16,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 87.5
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\carrinho.repository.ts": {
+    "lines": {
+      "total": 29,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 30,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 12,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 91.66
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\catalogo.repository.ts": {
+    "lines": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 30,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 32,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 96.87
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\gestao-produtos.repository.ts": {
+    "lines": {
+      "total": 57,
+      "covered": 48,
+      "skipped": 0,
+      "pct": 84.21
+    },
+    "functions": {
+      "total": 17,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 94.11
+    },
+    "statements": {
+      "total": 62,
+      "covered": 50,
+      "skipped": 0,
+      "pct": 80.64
+    },
+    "branches": {
+      "total": 42,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 73.8
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\health.repository.ts": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\indicadores-plataforma.repository.ts": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 85.71
+    },
+    "branches": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\indicadores.repository.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 80
+    },
+    "branches": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\intencao-notificacao.repository.ts": {
+    "lines": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\notificacao.repository.ts": {
+    "lines": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\pedido.repository.ts": {
+    "lines": {
+      "total": 70,
+      "covered": 70,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 73,
+      "covered": 71,
+      "skipped": 0,
+      "pct": 97.26
+    },
+    "branches": {
+      "total": 47,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 80.85
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\perfil-artesao.repository.ts": {
+    "lines": {
+      "total": 17,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 94.11
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 94.11
+    },
+    "branches": {
+      "total": 20,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 95
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\repositories\\usuario.repository.ts": {
+    "lines": {
+      "total": 31,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 90.32
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 31,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 90.32
+    },
+    "branches": {
+      "total": 18,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 83.33
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\auth.routes.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\avaliacao.routes.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\carrinho.routes.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\catalogo.routes.ts": {
+    "lines": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\docs.routes.ts": {
+    "lines": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\foto-perfil.routes.ts": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\gestao-produtos.routes.ts": {
+    "lines": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\health.routes.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\indicadores-admin.routes.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\indicadores.routes.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\notificacao.routes.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\pedido.routes.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\perfil-artesao.routes.ts": {
+    "lines": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\recomendacao.routes.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\routes\\usuario.routes.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\auth.service.ts": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\avaliacao.service.ts": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\carrinho.service.ts": {
+    "lines": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 90
+    },
+    "branches": {
+      "total": 8,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 87.5
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\catalogo.service.ts": {
+    "lines": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\foto-perfil.service.ts": {
+    "lines": {
+      "total": 19,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 19,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\gestao-produtos.service.ts": {
+    "lines": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\health.service.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\indicadores-admin.service.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\indicadores.service.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\notificacao.service.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\pedido.service.ts": {
+    "lines": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\perfil-artesao.service.ts": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 22,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\recomendacao-fallback-local.ts": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 83.33
+    },
+    "branches": {
+      "total": 3,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 66.66
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\recomendacao.service.ts": {
+    "lines": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 21,
+      "covered": 20,
+      "skipped": 0,
+      "pct": 95.23
+    },
+    "branches": {
+      "total": 7,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\services\\usuario.service.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\utils\\cache-http.ts": {
+    "lines": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\utils\\cache.ts": {
+    "lines": {
+      "total": 62,
+      "covered": 61,
+      "skipped": 0,
+      "pct": 98.38
+    },
+    "functions": {
+      "total": 18,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 94.44
+    },
+    "statements": {
+      "total": 69,
+      "covered": 67,
+      "skipped": 0,
+      "pct": 97.1
+    },
+    "branches": {
+      "total": 48,
+      "covered": 44,
+      "skipped": 0,
+      "pct": 91.66
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\utils\\produto-dto.ts": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\utils\\request-context.ts": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\utils\\senha.ts": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\utils\\token.ts": {
+    "lines": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 27,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\auth.validator.ts": {
+    "lines": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\avaliacao.validator.ts": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\carrinho.validator.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\catalogo.validator.ts": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\gestao-produtos.validator.ts": {
+    "lines": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\indicadores-admin.validator.ts": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\indicadores.validator.ts": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\notificacao.validator.ts": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\pedido.validator.ts": {
+    "lines": {
+      "total": 38,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 38,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\perfil-artesao.validator.ts": {
+    "lines": {
+      "total": 16,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 93.75
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 94.11
+    },
+    "branches": {
+      "total": 12,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 91.66
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\recomendacao.validator.ts": {
+    "lines": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\src\\validators\\usuario.validator.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\auth-database.ts": {
+    "lines": {
+      "total": 23,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 82.6
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 23,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 82.6
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\database.ts": {
+    "lines": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\dominio-fixtures.ts": {
+    "lines": {
+      "total": 18,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 83.33
+    },
+    "functions": {
+      "total": 6,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 83.33
+    },
+    "statements": {
+      "total": 18,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 83.33
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\foto-storage.ts": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\frontend-seeds.ts": {
+    "lines": {
+      "total": 14,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 92.85
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 15,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 93.33
+    },
+    "branches": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\indicadores-admin-fixture.ts": {
+    "lines": {
+      "total": 25,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 96
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 26,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 92.3
+    },
+    "branches": {
+      "total": 12,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 83.33
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\indicadores-cache-fixture.ts": {
+    "lines": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 92.85
+    },
+    "branches": {
+      "total": 5,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 80
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\postgres-error.ts": {
+    "lines": {
+      "total": 6,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 83.33
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 83.33
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\postgres-indicadores-local.ts": {
+    "lines": {
+      "total": 39,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 5.12
+    },
+    "functions": {
+      "total": 3,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 44,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 4.54
+    },
+    "branches": {
+      "total": 15,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\recomendacao-database.ts": {
+    "lines": {
+      "total": 9,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 77.77
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 77.77
+    },
+    "branches": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\seed-database.ts": {
+    "lines": {
+      "total": 23,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 82.6
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 23,
+      "covered": 19,
+      "skipped": 0,
+      "pct": 82.6
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\tests\\helpers\\servidor-indicadores-medicao.ts": {
+    "lines": {
+      "total": 51,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "functions": {
+      "total": 15,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "statements": {
+      "total": 53,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    },
+    "branches": {
+      "total": 22,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 0
+    }
+  }
+}

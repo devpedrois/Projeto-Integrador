@@ -1,0 +1,248 @@
+
+ RUN  v5.1.0 C:/Users/Pedro/Desktop/Projeto integrador/services/recomendacao
+      Coverage enabled with v8
+
+(node:29584) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ tests/integration/lote.test.ts (14 tests) 67608ms
+   ✓ aplica o reforco regional na selecao efetiva do lote 7689ms
+   ✓ preserva resultado ordenado C=1 e C=4, regional=false 6682ms
+   ✓ preserva resultado ordenado C=1 e C=4, regional=true 6847ms
+   ✓ registra quinze execucoes do benchmark pelo papel restrito 21979ms
+   ✓ recusa sobreposicao de execucoes na mesma sessao 2915ms
+   ✓ mantem snapshot do catalogo durante a sessao preparada 4298ms
+   ✓ preserva uma linha incompleta quando a selecao falha 4502ms
+   ✓ CLI grava JSON e hash persistido usando PostgreSQL real 4396ms
+(node:15424) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/metricas-lote.test.ts > preserva as metricas regionais usando dois lotes C=8 registrados
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > preserva as metricas regionais usando dois lotes C=8 registrados
+Lote persistido: execucaoId=9c440dc1-7060-4708-a6e1-3273c5c1e3d9 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > preserva as metricas regionais usando dois lotes C=8 registrados
+Lote persistido: execucaoId=0545af35-e8db-4463-964d-ca45eb376b03 produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+
+stdout | tests/integration/metricas-lote.test.ts > executa somente o modo on solicitado
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > executa somente o modo on solicitado
+Lote persistido: execucaoId=92b87752-5720-4f52-a780-4e57046a39c0 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+
+stdout | tests/integration/metricas-lote.test.ts > executa somente o modo off solicitado
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > executa somente o modo off solicitado
+Lote persistido: execucaoId=bfeca8e0-6570-4793-8c11-dc3fce8fb19f produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+
+stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+Lote persistido: execucaoId=1210ce33-6094-4acc-828a-8cbaf3586d18 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+Lote persistido: execucaoId=6e106459-3a8e-4139-a027-a88ba4da220d produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+
+stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+Lote persistido: execucaoId=46813a8e-62f0-44e6-af31-21935a857620 produtos=15 hash=3ca13b43a87ec831cee17f0217ec4d3efd78cf091ae2392a737b1071a27a32c7
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+Lote persistido: execucaoId=f5edec84-5215-444e-9573-472a925f2924 produtos=15 hash=7957475fa66198d2bdfba150d618741de6ded543886ab8184750821cc47d9190
+
+stdout | tests/integration/metricas-lote.test.ts > CLI gera JSON e diff vazio contra referencia fornecida
+| Reforco regional | Produtos | Elegiveis | Recomendacoes | Cobertura catalogo % | Cobertura v0 % | Fallback % | Acerto categoria % | Mesma regiao % |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| on | 15 | 14 | 112 | 85.71428571428571 | 100 | 14.285714285714286 | 85.71428571428571 | 58.92857142857143 |
+| off | 15 | 14 | 112 | 64.28571428571429 | 100 | 14.285714285714286 | 85.71428571428571 | 42.857142857142854 |
+Comparacao regional: 0 diferencas; JSON e diff salvos.
+
+stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=on modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+Lote persistido: execucaoId=2df1076b-3b95-4232-9d5a-1910ccadac7f produtos=0 hash=4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+Operacao gerarRecomendacoesEmLote: C=8 pool=10 reforcoRegional=off modulo=src/lote/index.ts
+
+stdout | tests/integration/metricas-lote.test.ts > retorna zeros na base vazia sem NaN ou Infinity
+Lote persistido: execucaoId=5b81359d-4d09-4cda-bd01-79e94b668679 produtos=0 hash=4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+
+ ✓ tests/integration/metricas-lote.test.ts (5 tests) 54083ms
+   ✓ preserva as metricas regionais usando dois lotes C=8 registrados 6793ms
+   ✓ executa somente o modo on solicitado 6199ms
+   ✓ executa somente o modo off solicitado 6142ms
+   ✓ CLI gera JSON e diff vazio contra referencia fornecida 13348ms
+   ✓ retorna zeros na base vazia sem NaN ou Infinity 12910ms
+(node:19748) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/recomendacao.test.ts > reproduz IDs e ordem da fixture interna
+{"servico":"recomendacao","requestId":"d10d91af-1c5a-4ff9-bc7e-ac5230e69d5d","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":118.983}
+
+stdout | tests/integration/recomendacao.test.ts > nega token ausente ou errado
+{"servico":"recomendacao","requestId":"687c254d-4ab0-4e41-a6b8-c1fe811c5a6d","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.83}
+
+stdout | tests/integration/recomendacao.test.ts > nega token ausente ou errado
+{"servico":"recomendacao","requestId":"aaed3768-f49c-4619-a6fe-9e49243615e3","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.281}
+
+stdout | tests/integration/recomendacao.test.ts > nega token ausente ou errado
+{"servico":"recomendacao","requestId":"82642d19-7247-4a96-ac33-f305d3d971d4","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.331}
+
+stdout | tests/integration/recomendacao.test.ts > nega token ausente ou errado
+{"servico":"recomendacao","requestId":"102f5c5f-5ed2-4155-9768-3b291a72da52","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.277}
+
+stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+{"servico":"recomendacao","requestId":"07d01aa9-213b-49e0-affc-be85b32f19f2","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.396}
+
+stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+{"servico":"recomendacao","requestId":"a1b0a937-f7ef-4b9e-90a7-760c042aaf41","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.586}
+
+stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+{"servico":"recomendacao","requestId":"bd7bfd0c-724c-4490-a94c-f93a5e429a26","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.508}
+
+stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+{"servico":"recomendacao","requestId":"3c82612d-e6e1-41c0-ae72-4cb4c456569b","metodo":"GET","rota":"[sem-rota]","status":400,"duracaoMs":35.09}
+
+stdout | tests/integration/recomendacao.test.ts > autentica antes de interpretar JSON e protege historico e rotas desconhecidas
+{"servico":"recomendacao","requestId":"d02acd35-609e-4098-b55b-ccbe2f394ce5","metodo":"GET","rota":"[sem-rota]","status":413,"duracaoMs":1.021}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?produtoId=invalido
+{"servico":"recomendacao","requestId":"df4a582a-b728-4c1f-b18e-e2c27189b5f8","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.453}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=0
+{"servico":"recomendacao","requestId":"01ffb084-f5e1-4a2e-8d91-e3d17c852cb1","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.758}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=9
+{"servico":"recomendacao","requestId":"2cc23995-e7d3-4a86-9463-f68a7195533c","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.368}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=1.5
+{"servico":"recomendacao","requestId":"151d12cb-5db7-4b58-980d-3a49a1ccbb59","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.33}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=
+{"servico":"recomendacao","requestId":"049f7467-8030-44a6-9e3a-8210d80606c1","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.261}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?extra=1
+{"servico":"recomendacao","requestId":"5fd9f616-8f44-436b-965f-3ca30ddfdb92","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.396}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes/historico
+{"servico":"recomendacao","requestId":"1303c182-d564-436c-9354-16c926564c34","metodo":"GET","rota":"/recomendacoes/historico","status":400,"duracaoMs":0.791}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes/historico?usuarioId=invalido
+{"servico":"recomendacao","requestId":"55e393fb-a1fa-44af-94b9-8d2726dc73d5","metodo":"GET","rota":"/recomendacoes/historico","status":400,"duracaoMs":0.457}
+
+stdout | tests/integration/recomendacao.test.ts > valida query estrita: /recomendacoes?limite=1&limite=2
+{"servico":"recomendacao","requestId":"43360f68-4522-4367-aaa9-bd00c57c4745","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.304}
+
+stdout | tests/integration/recomendacao.test.ts > responde historico interno autenticado e respeita limite
+{"servico":"recomendacao","requestId":"96681b0d-ae9d-472b-a5bf-1482327807bd","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":423.801}
+
+stdout | tests/integration/recomendacao.test.ts > health consulta PostgreSQL sem token
+{"servico":"recomendacao","requestId":"262d8383-0376-4e57-bf21-3b1fc3cbff2d","metodo":"GET","rota":"/health","status":200,"duracaoMs":58.944}
+
+stdout | tests/integration/recomendacao.test.ts > banco indisponivel responde 503 sem detalhes
+{"servico":"recomendacao","requestId":"59d1e0a3-432b-4e67-b8aa-b831ca9f2cbe","metodo":"GET","rota":"/health","status":503,"duracaoMs":1.189}
+
+stdout | tests/integration/recomendacao.test.ts > banco indisponivel responde 503 sem detalhes
+{"servico":"recomendacao","requestId":"ee1095bb-f113-49d7-8dd6-bfc266412d3e","metodo":"GET","rota":"/recomendacoes","status":503,"duracaoMs":1.415}
+
+ ✓ tests/integration/recomendacao.test.ts (36 tests) 39140ms
+   ✓ mantem historico confirmado, exclusao de compras e fallback pessoal 338ms
+   ✓ preserva historico de produtos ocultos e os filtros distintos por Strategy 406ms
+   ✓ preserva reforco regional com vendas invertidas entre regioes 462ms
+   ✓ nega SELECT, INSERT e UPDATE em Produto 911ms
+   ✓ nega SELECT, INSERT e UPDATE em Pedido 1196ms
+   ✓ nega SELECT, INSERT e UPDATE em Usuario 1197ms
+   ✓ permite INSERT privado e nega SELECT privado pela conexao da API 1685ms
+   ✓ recusa bootstrap com papel privilegiado ou identificador malicioso 1311ms
+   ✓ transfere somente a fila explicitamente autorizada sem perder dados 7822ms
+   ✓ bootstrap e migrations sao idempotentes e preservam dados 4294ms
+   ✓ detecta checksum divergente antes de reaplicar migration privada 550ms
+   ✓ remove tambem privilegios antigos concedidos por coluna 3696ms
+   ✓ executa o bloco SQL manual com as mesmas restricoes do bootstrap 678ms
+   ✓ responde historico interno autenticado e respeita limite 486ms
+(node:25328) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ tests/integration/reforco-regional.test.ts (4 tests) 10508ms
+   ✓ CategoriaRecomendacaoStrategy - reforco regional (PI4-20.4) (4)
+     ✓ com reforco, desempate dentro de cada grupo regional continua deterministico por UUID 719ms
+ ✓ tests/unit/lote-cli.test.ts (10 tests) 322ms
+   ✓ CLI preserva arquivo existente e omite detalhes internos 314ms
+ ✓ tests/unit/bench-lote.test.ts (15 tests) 65ms
+ ✓ tests/unit/request-logging.test.ts (3 tests) 34ms
+ ✓ tests/unit/metricas-cli.test.ts (9 tests) 18ms
+ ✓ tests/unit/environment.test.ts (8 tests) 9ms
+ ✓ tests/unit/bench-cli.test.ts (2 tests) 8ms
+ ✓ tests/unit/recomendacao-metricas.test.ts (8 tests) 3ms
+ ✓ tests/unit/recomendacao-volume.test.ts (2 tests) 4ms
+
+ Test Files  12 passed (12)
+      Tests  116 passed (116)
+   Start at  14:46:16
+   Duration  176.21s (tests 99%, import 1%)
+
+JSON report written to C:/Users/Pedro/AppData/Local/Temp/origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9/microsservico-coverage/vitest.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   82.52 |    75.26 |   81.04 |   83.91 |
+ scripts           |   66.23 |    58.67 |   31.25 |    67.4 |
+  bench-lote.ts    |   32.85 |    21.62 |   11.11 |   33.33 | ...35-241,249-257
+  ...permissoes.ts |   81.91 |    71.92 |      60 |    82.6 | ...55-286,294-298
+  metricas.ts      |    87.5 |    86.66 |      60 |    87.5 | 147-153
+  migrate.ts       |   71.05 |       75 |      50 |   72.97 | 58-70,78-80
+ scripts/lib       |   93.86 |     87.5 |   97.91 |   95.94 |
+  bench-lote.ts    |   92.68 |    89.06 |   95.65 |   95.83 | 125,174,218
+  metricas.ts      |   95.06 |    85.71 |     100 |   96.05 | 48,105,174
+ src/lote          |   81.81 |    68.25 |   77.77 |   85.34 |
+  cli.ts           |   35.71 |     87.5 |   33.33 |   35.71 | 29-35,43-47
+  index.ts         |   85.85 |    57.14 |   84.61 |   90.69 | ...19,133,210-211
+  pool.ts          |   94.73 |     92.3 |     100 |     100 | 16
+ src/strategies    |   77.02 |    77.14 |   88.23 |   77.46 |
+  ...o.strategy.ts |     100 |    66.66 |     100 |     100 | 14,27
+  ...o-metricas.ts |   27.27 |       50 |      50 |   27.27 | 47-73
+  ...e.metricas.ts |   96.29 |       80 |     100 |     100 | 35,77
+ tests/helpers     |      92 |    66.66 |     100 |   93.87 |
+  database.ts      |      92 |    66.66 |     100 |   93.87 | 20,53-54
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 82.52% ( 633/767 )
+Branches     : 75.26% ( 289/384 )
+Functions    : 81.04% ( 124/153 )
+Lines        : 83.91% ( 605/721 )
+================================================================================

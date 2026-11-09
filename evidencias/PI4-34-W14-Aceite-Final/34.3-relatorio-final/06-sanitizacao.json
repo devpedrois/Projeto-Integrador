@@ -1,0 +1,10 @@
+{
+  "data": "2026-11-09",
+  "arquivos_verificados": 483,
+  "arquivos_com_redacao": [
+    "ci-ultima-falhas.txt",
+    "backend-coverage/cobertura/tests/helpers/postgres-indicadores-local.ts.html",
+    "backend-coverage/cobertura/scripts/lib/recomendacao-benchmark.ts.html"
+  ],
+  "politica": "Conexoes PostgreSQL, JWTs, cookies e segredos omitidos; contagens e resultados preservados."
+}

@@ -1,0 +1,35 @@
+{
+  "suite": "e2e",
+  "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "startedAt": "2026-11-09T17:50:01.871Z",
+  "finishedAt": "2026-11-09T17:51:45.828Z",
+  "durationMs": 104137.33130000008,
+  "exitCode": 0,
+  "command": {
+    "executavel": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "run",
+      "test:e2e"
+    ],
+    "diretorio": "frontend"
+  },
+  "gitAntes": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:50:01.871Z"
+  },
+  "gitDepois": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:51:46.008Z"
+  },
+  "freezeError": null,
+  "passed": 7,
+  "failed": 0,
+  "skipped": 1,
+  "flaky": 0,
+  "playwrightReport": "e2e/playwright/2f8bbf6898eb4ea084c7b6056ab1f76c/resultado.json"
+}

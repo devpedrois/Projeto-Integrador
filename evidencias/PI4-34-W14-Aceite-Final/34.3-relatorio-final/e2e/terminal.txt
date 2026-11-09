@@ -1,0 +1,43 @@
+
+> origem-frontend@1.0.0 test:e2e
+> node e2e/run.mjs
+
+[WebServer] (node:23072) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+[WebServer] In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+[WebServer]
+[WebServer] To prepare for this change:
+[WebServer] - If you want the current behavior, explicitly use 'sslmode=verify-full'
+[WebServer] - If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+[WebServer]
+[WebServer] See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:23072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (node:43856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+  -  1 [360px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras
+  ok 2 [360px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (10.0s)
+  ok 3 [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (12.2s)
+  ok 4 [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (4.3s)
+  ok 5 [1280px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras (9.9s)
+  ok 6 [1280px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (6.3s)
+  ok 7 [1280px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (10.6s)
+  ok 8 [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (4.0s)
+
+  1 skipped
+  7 passed (1.7m)
+(node:14428) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Schema E2E removido e ausencia confirmada.
+Chamadas ao microsservico E2E: 22
+Traces ZIP sanitizados: 0
+Relatorio E2E: C:\Users\Pedro\AppData\Local\Temp\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\e2e\playwright\2f8bbf6898eb4ea084c7b6056ab1f76c\html\index.html

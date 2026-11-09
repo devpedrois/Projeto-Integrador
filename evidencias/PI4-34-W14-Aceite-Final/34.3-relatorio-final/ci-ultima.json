@@ -1,0 +1,384 @@
+{
+  "conclusion": "failure",
+  "headSha": "c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+  "jobs": [
+    {
+      "completedAt": "2026-11-08T05:16:33Z",
+      "conclusion": "cancelled",
+      "databaseId": 128631333127,
+      "name": "backend",
+      "startedAt": "2026-11-08T04:46:17Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-08T04:46:18Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-08T04:46:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:46:21Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "startedAt": "2026-11-08T04:46:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:46:25Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 3,
+          "startedAt": "2026-11-08T04:46:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:46:25Z",
+          "conclusion": "success",
+          "name": "Validar conexoes de teste",
+          "number": 4,
+          "startedAt": "2026-11-08T04:46:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:46:25Z",
+          "conclusion": "success",
+          "name": "Gerar segredos efemeros JWT e recomendacao",
+          "number": 5,
+          "startedAt": "2026-11-08T04:46:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:00Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 6,
+          "startedAt": "2026-11-08T04:46:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:02Z",
+          "conclusion": "success",
+          "name": "Instalar microsservico para integracao HTTP real",
+          "number": 7,
+          "startedAt": "2026-11-08T04:47:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:03Z",
+          "conclusion": "success",
+          "name": "Run npx prisma generate",
+          "number": 8,
+          "startedAt": "2026-11-08T04:47:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:11Z",
+          "conclusion": "success",
+          "name": "Run npx prisma migrate deploy",
+          "number": 9,
+          "startedAt": "2026-11-08T04:47:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:14Z",
+          "conclusion": "success",
+          "name": "Run npm run lint",
+          "number": 10,
+          "startedAt": "2026-11-08T04:47:11Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:19Z",
+          "conclusion": "success",
+          "name": "Run npm run typecheck",
+          "number": 11,
+          "startedAt": "2026-11-08T04:47:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T05:16:29Z",
+          "conclusion": "cancelled",
+          "name": "Testar sem cargas e benchmarks",
+          "number": 12,
+          "startedAt": "2026-11-08T04:47:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T05:16:29Z",
+          "conclusion": "skipped",
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 23,
+          "startedAt": "2026-11-08T05:16:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T05:16:30Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 24,
+          "startedAt": "2026-11-08T05:16:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T05:16:30Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 25,
+          "startedAt": "2026-11-08T05:16:30Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/devpedrois/Projeto-Integrador/actions/runs/42447756271/job/128631333127"
+    },
+    {
+      "completedAt": "2026-11-08T04:55:10Z",
+      "conclusion": "failure",
+      "databaseId": 128631333382,
+      "name": "recomendacao",
+      "startedAt": "2026-11-08T04:46:17Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-08T04:46:18Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-08T04:46:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:46:21Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "startedAt": "2026-11-08T04:46:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:46:23Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 3,
+          "startedAt": "2026-11-08T04:46:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:46:52Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 4,
+          "startedAt": "2026-11-08T04:46:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:10Z",
+          "conclusion": "success",
+          "name": "Preparar migrations e referencia do backend",
+          "number": 5,
+          "startedAt": "2026-11-08T04:46:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:10Z",
+          "conclusion": "success",
+          "name": "Gerar credenciais efemeras e conexao restrita",
+          "number": 6,
+          "startedAt": "2026-11-08T04:47:10Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:21Z",
+          "conclusion": "success",
+          "name": "Run npm run bootstrap:permissoes",
+          "number": 7,
+          "startedAt": "2026-11-08T04:47:10Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:24Z",
+          "conclusion": "success",
+          "name": "Run npm run migrate",
+          "number": 8,
+          "startedAt": "2026-11-08T04:47:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:25Z",
+          "conclusion": "success",
+          "name": "Run npm run lint",
+          "number": 9,
+          "startedAt": "2026-11-08T04:47:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:47:27Z",
+          "conclusion": "success",
+          "name": "Run npm run typecheck",
+          "number": 10,
+          "startedAt": "2026-11-08T04:47:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:55:05Z",
+          "conclusion": "failure",
+          "name": "Run npm test",
+          "number": 11,
+          "startedAt": "2026-11-08T04:47:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:55:05Z",
+          "conclusion": "skipped",
+          "name": "Run npm run build",
+          "number": 12,
+          "startedAt": "2026-11-08T04:55:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:55:08Z",
+          "conclusion": "success",
+          "name": "Remover schema e papeis efemeros do job",
+          "number": 13,
+          "startedAt": "2026-11-08T04:55:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:55:08Z",
+          "conclusion": "skipped",
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 25,
+          "startedAt": "2026-11-08T04:55:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:55:08Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 26,
+          "startedAt": "2026-11-08T04:55:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:55:08Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 27,
+          "startedAt": "2026-11-08T04:55:08Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/devpedrois/Projeto-Integrador/actions/runs/42447756271/job/128631333382"
+    },
+    {
+      "completedAt": "2026-11-08T04:42:55Z",
+      "conclusion": "success",
+      "databaseId": 128631334126,
+      "name": "frontend",
+      "startedAt": "2026-11-08T04:40:30Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-08T04:40:32Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-08T04:40:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:40:35Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "startedAt": "2026-11-08T04:40:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:40:38Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 3,
+          "startedAt": "2026-11-08T04:40:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:41:17Z",
+          "conclusion": "success",
+          "name": "Run npm ci",
+          "number": 4,
+          "startedAt": "2026-11-08T04:40:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:41:31Z",
+          "conclusion": "success",
+          "name": "Preparar tipos dos contratos do backend",
+          "number": 5,
+          "startedAt": "2026-11-08T04:41:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:41:34Z",
+          "conclusion": "success",
+          "name": "Run npm run lint",
+          "number": 6,
+          "startedAt": "2026-11-08T04:41:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:41:42Z",
+          "conclusion": "success",
+          "name": "Run npm run typecheck",
+          "number": 7,
+          "startedAt": "2026-11-08T04:41:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:42:30Z",
+          "conclusion": "success",
+          "name": "Run npm test",
+          "number": 8,
+          "startedAt": "2026-11-08T04:41:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:42:54Z",
+          "conclusion": "success",
+          "name": "Run npm run build",
+          "number": 9,
+          "startedAt": "2026-11-08T04:42:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:42:54Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 17,
+          "startedAt": "2026-11-08T04:42:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:42:54Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 18,
+          "startedAt": "2026-11-08T04:42:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-08T04:42:54Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-11-08T04:42:54Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/devpedrois/Projeto-Integrador/actions/runs/42447756271/job/128631334126"
+    }
+  ],
+  "url": "https://github.com/devpedrois/Projeto-Integrador/actions/runs/42447756271"
+}

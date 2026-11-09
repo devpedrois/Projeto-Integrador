@@ -1,0 +1,22 @@
+{
+  "consultadoEm": "2026-11-09T17:32:58.164Z",
+  "frontend": {
+    "painel": "https://vercel.com/dev-pedrois/origem-marketplace/2Ey4mMEmjzYnoPnUULnfuCgp8C23",
+    "branch": "main",
+    "commitLink": "https://github.com/devpedrois/Projeto-Integrador/commit/c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+    "estado": "Ready",
+    "ambiente": "Production"
+  },
+  "api": {
+    "painel": "https://dashboard.render.com/web/srv-db7cmslg1s2s73a19jd0",
+    "branch": "main",
+    "commitLink": "https://github.com/devpedrois/Projeto-Integrador/commit/c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+    "estado": "Live"
+  },
+  "microsservico": {
+    "painel": "https://dashboard.render.com/web/srv-dbluv1u1egvs73ap7cf0",
+    "branch": "main",
+    "commitLink": "https://github.com/devpedrois/Projeto-Integrador/commit/c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+    "estado": "Live"
+  }
+}

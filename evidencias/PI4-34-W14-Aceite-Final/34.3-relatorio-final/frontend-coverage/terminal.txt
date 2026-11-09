@@ -1,0 +1,433 @@
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+      Coverage enabled with v8
+
+ ✓ tests/services/usuarios.service.test.ts (16 tests) 54ms
+ ✓ tests/services/produtos.service.test.ts (43 tests) 74ms
+ ✓ tests/services/moderacao.service.test.ts (22 tests) 36ms
+ ✓ tests/store/carrinho-http.store.test.ts (10 tests) 98ms
+ ✓ tests/services/pedidos.service.test.ts (16 tests) 8ms
+ ✓ tests/services/avaliacoes.service.test.ts (23 tests) 55ms
+ ✓ tests/components/artesao/perfil-artesao-publico.test.tsx (8 tests) 273ms
+ ✓ tests/hooks/use-perfil-publico-artesao.test.tsx (9 tests) 608ms
+ ✓ tests/components/meus-pedidos.test.tsx (9 tests) 1012ms
+   ✓ mostra lista, detalhe, itens e pagamento 337ms
+ ✓ tests/components/gate-acesso.test.tsx (18 tests) 1304ms
+ ✓ tests/components/produto/detalhe-produto.test.tsx (23 tests) 1789ms
+ ✓ tests/services/fake-recommendation.adapter.test.ts (9 tests) 7ms
+ ✓ tests/components/admin/painel-moderacao.test.tsx (12 tests) 2495ms
+   ✓ PainelModeracao > busca por nome ou e-mail ignorando acentos e limpa os filtros 772ms
+   ✓ PainelModeracao > mostra erro quando a acao falha e permite tentar de novo 359ms
+ ✓ tests/services/http/catalogo.service.test.ts (14 tests) 18ms
+ ✓ tests/components/avaliacao-pedido.web3.test.tsx (11 tests) 2662ms
+   ✓ Web.3 avaliacao no detalhe do pedido > erro de envio preserva campos e permite tentar novamente 602ms
+ ✓ tests/hooks/atualizacao-vitrine.test.tsx (7 tests) 128ms
+ ✓ tests/fake-api/repositories/produto.repository.test.ts (15 tests) 8ms
+ ✓ tests/app/vitrine.test.tsx (21 tests) 3347ms
+   ✓ Vitrine (Home) > substitui o catalogo aberto quando os produtos mudam no servidor 724ms
+   ✓ Vitrine (Home) > busca ativa esconde o catalogo completo, mostrando somente o resultado da busca 346ms
+   ✓ Vitrine (Home) > busca mostra erro recuperavel quando o service falha 336ms
+ ✓ tests/store/carrinho.store.test.ts (17 tests) 7ms
+ ✓ tests/app/route-protection.test.tsx (12 tests) 817ms
+   ✓ protecao de rotas > /painel-artesao nega visitante e preserva destino de retorno 323ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts (30 tests) 4270ms
+   ✓ HttpRecommendationAdapter no container > preserva estrategia publica e produtos: categoria 768ms
+ ✓ tests/components/produto-card.test.tsx (19 tests) 855ms
+ ✓ tests/components/meus-produtos-list.test.tsx (14 tests) 3581ms
+   ✓ MeusProdutosList > editar produto chama service.update com o artesaoId da sessao e atualiza a lista 1058ms
+   ✓ MeusProdutosList > painel de edicao mostra o preco com virgula e salva o numero correto 724ms
+   ✓ MeusProdutosList > fechar o painel de edicao descarta as alteracoes sem chamar o service 397ms
+   ✓ MeusProdutosList > mostra erro no painel quando a edicao falha e mantem o painel aberto 530ms
+ ✓ tests/components/pedidos-recebidos.web2.test.tsx (13 tests) 1379ms
+   ✓ mantem confirmacao apos erro de envio e permite repetir 371ms
+ ✓ tests/components/perfil-artesao-form.test.tsx (12 tests) 5420ms
+   ✓ PerfilArtesaoForm > Web.6 mostra previa local e salva URL retornada sem reenviar URL antiga 346ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso 1235ms
+   ✓ PerfilArtesaoForm > cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo 1283ms
+   ✓ PerfilArtesaoForm > previa do perfil publico mostra nome, tecnica e a historia digitada 605ms
+   ✓ PerfilArtesaoForm > mostra erro recuperavel quando salvar falha e mantem o botao habilitado 1248ms
+ ✓ tests/app/produto-detalhe.test.tsx (4 tests) 700ms
+   ✓ Pagina de detalhes do produto > consulta o produto pelo id da rota 408ms
+ ✓ tests/components/filtros-produtos.test.tsx (12 tests) 738ms
+ ✓ tests/domain/produto-visibilidade.test.ts (20 tests) 5ms
+ ✓ tests/fake-api/repositories/usuario.repository.test.ts (14 tests) 8ms
+ ✓ tests/services/perfil-artesao.service.test.ts (8 tests) 5ms
+ ✓ tests/fake-api/repositories/perfil-artesao.repository.test.ts (12 tests) 7ms
+ ✓ tests/hooks/use-detalhe-produto.test.tsx (6 tests) 422ms
+ ✓ tests/services/http/perfil-artesao.service.test.ts (10 tests) 121ms
+ ✓ tests/services/container-http.test.ts (5 tests) 603ms
+ ✓ tests/services/http/api-client.test.ts (15 tests) 47ms
+ ✓ tests/services/http/catalogo-escrita.web12.test.ts (5 tests) 15ms
+ ✓ tests/services/http/pedidos-historico.service.test.ts (17 tests) 20ms
+ ✓ tests/app/admin-indicadores.test.tsx (9 tests) 762ms
+   ✓ mostra carregamento sem antecipar valores 307ms
+ ✓ tests/components/produto/avaliacoes-paginadas.test.tsx (4 tests) 1169ms
+   ✓ navega por quatro paginas e volta mantendo media e total 743ms
+ ✓ tests/components/cadastro-form.test.tsx (13 tests) 8448ms
+   ✓ CadastroForm > cadastro valido de artesao hidrata sessao e redireciona para painel-artesao 994ms
+   ✓ CadastroForm > cadastro valido de comprador hidrata sessao e redireciona para vitrine 827ms
+   ✓ CadastroForm > senha curta bloqueia envio e mostra erro no campo 921ms
+   ✓ CadastroForm > mostra loading e desabilita o botao durante o envio 890ms
+   ✓ CadastroForm > email ja cadastrado associa a mensagem ao campo email 927ms
+   ✓ CadastroForm > mostra erro recuperavel quando o service falha 760ms
+   ✓ CadastroForm com adapters reais > fake cadastra 'comprador', persiste sessao e navega para '/' 955ms
+   ✓ CadastroForm com adapters reais > fake cadastra 'artesao', persiste sessao e navega para '/painel-artesao' 979ms
+   ✓ CadastroForm com adapters reais > HTTP hidrata sessao pelo cadastro sem chamar login nem usar storage local 927ms
+ ✓ tests/fake-api/storage/sessao.storage.test.ts (20 tests) 6ms
+ ✓ tests/components/login-form.test.tsx (7 tests) 2645ms
+   ✓ LoginForm > login valido chama o service, cria a sessao e redireciona 765ms
+   ✓ LoginForm > credenciais invalidas mostram mensagem generica sem apontar o campo 636ms
+   ✓ LoginForm > mostra loading e desabilita o botao durante o envio 582ms
+   ✓ LoginForm > email em formato invalido bloqueia envio e mostra erro no campo 476ms
+ ✓ tests/components/checkout-http.test.tsx (3 tests) 1093ms
+   ✓ confirma por HTTP, mostra numero real e limpa estado sem DELETE posterior 621ms
+ ✓ tests/validators/produto.validator.test.ts (27 tests) 11ms
+ ✓ tests/hooks/use-busca-produtos.test.tsx (6 tests) 394ms
+ ✓ tests/services/http/usuarios.service.test.ts (11 tests) 50ms
+ ✓ tests/components/route-guard.test.tsx (8 tests) 180ms
+ ✓ tests/store/sessao.store.test.ts (12 tests) 10ms
+ ✓ tests/components/notificacoes-artesao.test.tsx (5 tests) 291ms
+ ✓ tests/services/pedidos-historico.fake.test.ts (5 tests) 6ms
+ ✓ tests/services/indicadores-artesao.fake.web5.test.ts (4 tests) 8ms
+ ✓ tests/components/indicadores-artesao.web5.test.tsx (5 tests) 343ms
+ ✓ tests/hooks/use-meus-produtos.test.tsx (6 tests) 363ms
+ ✓ tests/hooks/use-recomendacoes.test.tsx (7 tests) 281ms
+ ✓ tests/components/sessao-http.test.tsx (4 tests) 1024ms
+   ✓ login respeita retorno local preservado pelo middleware 671ms
+ ✓ tests/fake-api/repositories/avaliacao.repository.test.ts (9 tests) 6ms
+ ✓ tests/utils/produto-query-url.test.ts (10 tests) 8ms
+ ✓ tests/services/http/avaliacoes.web3.test.ts (14 tests) 15ms
+ ✓ tests/app/minha-conta.test.tsx (5 tests) 527ms
+   ✓ Minha conta > mostra nome, e-mail e papel do usuario da sessao 309ms
+ ✓ tests/components/resultado-busca.test.tsx (8 tests) 437ms
+ ✓ tests/validators/perfil-artesao.validator.test.ts (18 tests) 5ms
+ ✓ tests/hooks/use-filtros-url.test.tsx (8 tests) 62ms
+ ✓ tests/utils/rota-segura.test.ts (18 tests) 3ms
+ ✓ tests/components/faixa-recomendacoes.test.tsx (6 tests) 292ms
+ ✓ tests/fake-api/repositories/pedido.repository.test.ts (8 tests) 8ms
+ ✓ tests/config/security-headers.test.ts (3 tests) 6ms
+ ✓ tests/store/sessao-http.store.test.ts (5 tests) 7ms
+ ✓ tests/hooks/perfil-artesao-http.test.tsx (3 tests) 368ms
+ ✓ tests/services/verificar-usuario-ativo.test.ts (5 tests) 4ms
+ ✓ tests/fake-api/usuario.repository.test.ts (4 tests) 7ms
+ ✓ tests/services/http/carrinho.service.test.ts (5 tests) 15ms
+ ✓ tests/components/pendencia-perfil-artesao.test.tsx (4 tests) 228ms
+ ✓ tests/services/http/indicadores-artesao.web5.test.ts (19 tests) 20ms
+ ✓ tests/services/http/avaliacoes-paginadas.test.ts (8 tests) 15ms
+ ✓ tests/fake-api/seeds/avaliacoes.seed.test.ts (7 tests) 4ms
+stderr | tests/hooks/use-artesaos-ativos.test.tsx > useArtesaosAtivos > comeca carregando quando o service ainda nao resolveu
+An update to TestComponent inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ tests/hooks/use-artesaos-ativos.test.tsx (4 tests) 191ms
+ ✓ tests/services/http/elegibilidade-avaliacao.web4.test.ts (11 tests) 18ms
+ ✓ tests/services/http/indicadores-admin.test.ts (19 tests) 14ms
+ ✓ tests/config/next-config.test.ts (14 tests) 13ms
+ ✓ tests/config/middleware.test.ts (9 tests) 58ms
+ ✓ tests/hooks/use-opcoes-filtro.test.tsx (4 tests) 180ms
+ ✓ tests/app/pedidos-recebidos.web2.test.tsx (1 test) 125ms
+ ✓ tests/validators/cadastro.validator.test.ts (8 tests) 5ms
+ ✓ tests/services/container-indicadores.web5.test.ts (2 tests) 576ms
+   ✓ seleciona fake explicitamente, exige artesao e nao faz fetch 431ms
+ ✓ tests/domain/perfil-artesao-completo.test.ts (6 tests) 5ms
+ ✓ tests/fake-api/seeds/produtos.seed.test.ts (7 tests) 9ms
+ ✓ tests/app/painel-indicadores.web5.test.tsx (1 test) 210ms
+ ✓ tests/validators/avaliacao.validator.test.ts (7 tests) 4ms
+ ✓ tests/utils/foto-url-segura.test.ts (8 tests) 5ms
+ ✓ tests/fake-api/storage/carrinho.storage.test.ts (8 tests) 6ms
+ ✓ tests/services/opcoes-filtro.service.test.ts (4 tests) 37ms
+ ✓ tests/fake-api/storage/modo-acesso.storage.test.ts (3 tests) 2ms
+ ✓ tests/hooks/use-sessao.test.tsx (2 tests) 19ms
+ ✓ tests/validators/foto-perfil.validator.test.ts (5 tests) 7ms
+ ✓ tests/services/container-indicadores-admin.test.ts (2 tests) 156ms
+ ✓ tests/utils/normalizar-texto.test.ts (5 tests) 2ms
+ ✓ tests/config/e2e-traces.test.ts (1 test) 16ms
+ ✓ tests/domain/resumo-avaliacoes.test.ts (3 tests) 3ms
+ ✓ tests/utils/preco-campo.test.ts (11 tests) 4ms
+ ✓ tests/services/recomendacao-contrato.test.ts (1 test) 2ms
+ ✓ tests/types/usuario.test.ts (1 test) 3ms
+ ✓ tests/fake-api/seeds/categorias.seed.test.ts (3 tests) 3ms
+ ✓ tests/components/autenticacao/layout-autenticacao.test.tsx (1 test) 86ms
+ ✓ tests/utils/formatar-moeda.test.ts (4 tests) 3ms
+ ✓ tests/utils/rotulo-papel.test.ts (3 tests) 2ms
+ ✓ tests/app/not-found.test.tsx (1 test) 60ms
+ ✓ tests/services/container-avaliacoes.test.ts (1 test) 306ms
+   ✓ obterAvaliacoesService > expõe o recurso de avaliacoes pela camada organizada 305ms
+stdout | tests/config/docs-proxy.test.ts
+   Using tsconfig file: tsconfig.build.json
+
+ ✓ tests/components/produto-form.test.tsx (13 tests) 25375ms
+   ✓ carrega categoria HTTP com UUID e cadastra pelo formulario 1699ms
+   ✓ ProdutoForm > campos ausentes bloqueiam criacao e mostram erros por campo 455ms
+   ✓ ProdutoForm > preco 0 bloqueia criacao 2636ms
+   ✓ ProdutoForm > preco -1 bloqueia criacao 2793ms
+   ✓ ProdutoForm > preco -0.5 bloqueia criacao 2697ms
+   ✓ ProdutoForm > preco -100 bloqueia criacao 2615ms
+   ✓ ProdutoForm > preco -0.01 bloqueia criacao 2477ms
+   ✓ ProdutoForm > produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao 2376ms
+   ✓ ProdutoForm > aceita preco com virgula e envia o numero correto 2352ms
+   ✓ ProdutoForm > mostra loading e desabilita o botao durante o envio 2127ms
+   ✓ ProdutoForm > nao envia duas vezes ao clicar repetidamente antes da resposta 1540ms
+   ✓ ProdutoForm > mostra erro recuperavel quando o service falha e permite tentar novamente 1582ms
+stdout | tests/config/docs-proxy.test.ts > encaminha a barra final do Swagger sem redirecionamento circular
+ ○ Compiling /middleware ...
+
+stdout | tests/config/docs-proxy.test.ts > encaminha a barra final do Swagger sem redirecionamento circular
+ ✓ Compiled /middleware in 641ms (118 modules)
+
+ ✓ tests/config/docs-proxy.test.ts (2 tests) 5629ms
+   ✓ encaminha a barra final do Swagger sem redirecionamento circular 818ms
+ ✓ tests/config/build-typescript.test.ts (2 tests) 9376ms
+   ✓ TypeScript do build de produção > verifica a aplicação sem importar testes ou código do backend 3511ms
+   ✓ TypeScript do build de produção > preserva a checagem dos testes e contratos entre as camadas 5864ms
+
+ Test Files  110 passed (110)
+      Tests  1031 passed (1031)
+   Start at  14:49:14
+   Duration  36.39s (transform 6.73s, setup 46.69s, collect 31.50s, tests 94.62s, environment 281.11s, prepare 23.31s)
+
+JSON report written to C:/Users/Pedro/AppData/Local/Temp/origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9/frontend-coverage/vitest.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   81.11 |    89.97 |   87.22 |   81.11 |
+ frontend          |   48.27 |    59.09 |   68.75 |   48.27 |
+  ...g.compiled.js |     100 |    47.91 |      75 |     100 | 1
+  next.config.ts   |     100 |      100 |     100 |     100 |
+  ...ght.config.ts |       0 |        0 |       0 |       0 | 1-68
+  ...ss.config.mjs |       0 |        0 |       0 |       0 | 1-7
+ frontend/e2e      |   10.69 |    80.64 |   44.44 |   10.69 |
+  ...k.evidence.ts |       0 |        0 |       0 |       0 | 1-190
+  run.mjs          |       0 |        0 |       0 |       0 | 1-93
+  ...-traces.d.mts |       0 |        0 |       0 |       0 | 1-2
+  ...ze-traces.mjs |   84.52 |    92.59 |      80 |   84.52 | 10-11,74-84
+  ....evidence.mjs |       0 |        0 |       0 |       0 | 1-295
+ frontend/src      |     100 |      100 |     100 |     100 |
+  middleware.ts    |     100 |      100 |     100 |     100 |
+ frontend/src/app  |   74.54 |    88.46 |   85.71 |   74.54 |
+  layout.tsx       |       0 |        0 |       0 |       0 | 1-37
+  not-found.tsx    |     100 |      100 |     100 |     100 |
+  page.tsx         |   88.62 |       90 |     100 |   88.62 | ...33,136-147,216
+ .../src/app/admin |     100 |      100 |     100 |     100 |
+  page.tsx         |     100 |      100 |     100 |     100 |
+ ...p/artesao/[id] |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-46
+ ...c/app/cadastro |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-34
+ ...c/app/carrinho |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-256
+ ...c/app/checkout |   98.97 |       95 |     100 |   98.97 |
+  page.tsx         |   98.97 |       95 |     100 |   98.97 | 122-123
+ .../src/app/login |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-31
+ ...pp/minha-conta |     100 |      100 |     100 |     100 |
+  page.tsx         |     100 |      100 |     100 |     100 |
+ ...painel-artesao |     100 |      100 |     100 |     100 |
+  page.tsx         |     100 |      100 |     100 |     100 |
+ ...rtesao/pedidos |     100 |      100 |     100 |     100 |
+  page.tsx         |     100 |      100 |     100 |     100 |
+ ...artesao/perfil |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-54
+ ...tesao/produtos |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-41
+ ...p/produto/[id] |      95 |       75 |     100 |      95 |
+  page.tsx         |      95 |       75 |     100 |      95 | 81-83,93
+ ...mponents/admin |   98.77 |    96.07 |   89.28 |   98.77 |
+  ...AdminCard.tsx |     100 |      100 |     100 |     100 |
+  ...Moderacao.tsx |    98.6 |    95.86 |   88.88 |    98.6 | 142,376-381
+ ...onents/artesao |   98.29 |    88.88 |      75 |   98.29 |
+  ...aoPublico.tsx |   97.79 |    85.71 |     100 |   97.79 | 118,124,167
+  ...toArtesao.tsx |     100 |      100 |   66.66 |     100 |
+ ...s/autenticacao |     100 |      100 |     100 |     100 |
+  ...enticacao.tsx |     100 |      100 |     100 |     100 |
+ ...nents/cadastro |   97.09 |    88.23 |     100 |   97.09 |
+  CadastroForm.tsx |   97.09 |    88.23 |     100 |   97.09 | 212-217
+ ...nents/carrinho |   87.87 |    72.72 |     100 |   87.87 |
+  ...sCarrinho.tsx |   82.85 |      100 |     100 |   82.85 | 17-23
+  ...raProduto.tsx |   93.54 |    57.14 |     100 |   93.54 | 25,41
+ ...nents/feedback |     100 |      100 |     100 |     100 |
+  Alerta.tsx       |     100 |      100 |     100 |     100 |
+  AlertaErro.tsx   |     100 |      100 |     100 |     100 |
+ ...nts/formulario |     100 |    96.55 |     100 |     100 |
+  BotaoEnviar.tsx  |     100 |      100 |     100 |     100 |
+  ...AreaTexto.tsx |     100 |    92.85 |     100 |     100 | 29
+  CampoSelecao.tsx |     100 |      100 |     100 |     100 |
+  CampoTexto.tsx   |     100 |      100 |     100 |     100 |
+  Giro.tsx         |     100 |      100 |     100 |     100 |
+  estilos-botao.ts |     100 |      100 |     100 |     100 |
+  partes-campo.tsx |     100 |    83.33 |     100 |     100 | 27
+ ...ponents/layout |   98.33 |    89.47 |   94.73 |   98.33 |
+  GateAcesso.tsx   |   98.63 |    85.71 |     100 |   98.63 | 188,230-232,375
+  RouteGuard.tsx   |     100 |      100 |     100 |     100 |
+  ...isponivel.tsx |   86.66 |      100 |      50 |   86.66 | 15-16
+ ...mponents/login |   97.91 |    84.21 |     100 |   97.91 |
+  LoginForm.tsx    |   97.91 |    84.21 |     100 |   97.91 | 89-90
+ ...ts/minha-conta |   99.15 |    91.76 |   93.33 |   99.15 |
+  ...Avaliacao.tsx |   97.87 |    97.05 |     100 |   97.87 | 163-165
+  MeusPedidos.tsx  |   99.59 |    86.48 |    87.5 |   99.59 | 100
+  ResumoConta.tsx  |     100 |    85.71 |     100 |     100 | 26
+  StatusDoItem.tsx |     100 |      100 |     100 |     100 |
+ ...painel-artesao |   98.52 |    88.34 |    80.7 |   98.52 |
+  ...tesaoCard.tsx |     100 |      100 |     100 |     100 |
+  ...dutosList.tsx |   98.46 |     87.8 |   77.77 |   98.46 | 255,497-502,506
+  ...esArtesao.tsx |   98.59 |    94.11 |     100 |   98.59 | 82
+  ...Recebidos.tsx |   98.83 |    89.65 |   83.33 |   98.83 | 92,100
+  ...ilArtesao.tsx |     100 |    89.47 |     100 |     100 | 43,52
+  ...tesaoForm.tsx |   98.48 |       84 |      70 |   98.48 | 314-316,324-326
+  ProdutoForm.tsx  |   97.53 |    91.89 |      90 |   97.53 | 139-144
+ ...onents/produto |   99.43 |    93.58 |     100 |   99.43 |
+  ...osProduto.tsx |     100 |     90.9 |     100 |     100 | 66
+  ...heProduto.tsx |   99.27 |    94.02 |     100 |   99.27 | 242,344
+ ...onents/vitrine |   62.94 |    87.62 |   48.57 |   62.94 |
+  ...oProdutos.tsx |     100 |      100 |     100 |     100 |
+  ...mendacoes.tsx |   98.92 |    95.45 |     100 |   98.92 | 121
+  ...sProdutos.tsx |   95.58 |    86.11 |   61.53 |   95.58 | ...25-126,129,205
+  HeroVaso.tsx     |   54.11 |    28.57 |   14.28 |   54.11 | ...34-138,181,202
+  Icone.tsx        |     100 |      100 |     100 |     100 |
+  ProdutoCard.tsx  |     100 |      100 |     100 |     100 |
+  ...tadoBusca.tsx |   98.36 |    91.66 |     100 |   98.36 | 87
+  vaso-render.ts   |    2.58 |      100 |       0 |    2.58 | ...0,42-56,59-364
+ ...end/src/domain |     100 |    98.91 |     100 |     100 |
+  ...ores-admin.ts |     100 |      100 |     100 |     100 |
+  ...es-artesao.ts |     100 |      100 |     100 |     100 |
+  ...avaliacoes.ts |     100 |      100 |     100 |     100 |
+  ...ao-pedidos.ts |     100 |     90.9 |     100 |     100 | 13
+  ...o-completo.ts |     100 |      100 |     100 |     100 |
+  ...sibilidade.ts |     100 |      100 |     100 |     100 |
+  ...avaliacoes.ts |     100 |      100 |     100 |     100 |
+ ...i/repositories |     100 |      100 |     100 |     100 |
+  ...repository.ts |     100 |      100 |     100 |     100 |
+  ...repository.ts |     100 |      100 |     100 |     100 |
+  ...repository.ts |     100 |      100 |     100 |     100 |
+  ...repository.ts |     100 |      100 |     100 |     100 |
+  ...repository.ts |     100 |      100 |     100 |     100 |
+ ...fake-api/seeds |     100 |      100 |     100 |     100 |
+  ...acoes.seed.ts |     100 |      100 |     100 |     100 |
+  ...orias.seed.ts |     100 |      100 |     100 |     100 |
+  ...tesao.seed.ts |     100 |      100 |     100 |     100 |
+  produtos.seed.ts |     100 |      100 |     100 |     100 |
+  regioes.seed.ts  |     100 |      100 |     100 |     100 |
+  tecnicas.seed.ts |     100 |      100 |     100 |     100 |
+  usuarios.seed.ts |     100 |      100 |     100 |     100 |
+ ...ke-api/storage |     100 |    98.24 |     100 |     100 |
+  ...ho.storage.ts |     100 |      100 |     100 |     100 |
+  ...persistida.ts |     100 |      100 |     100 |     100 |
+  ...so.storage.ts |     100 |      100 |     100 |     100 |
+  ...ao.storage.ts |     100 |    95.83 |     100 |     100 | 16
+ ...tend/src/hooks |    98.6 |     92.3 |   96.22 |    98.6 |
+  ...aos-ativos.ts |     100 |      100 |     100 |     100 |
+  ...ao-produto.ts |     100 |      100 |     100 |     100 |
+  ...a-produtos.ts |     100 |      100 |     100 |     100 |
+  use-carrinho.ts  |     100 |      100 |      75 |     100 |
+  ...as-produto.ts |   96.66 |      100 |     100 |   96.66 | 26
+  ...os-produto.ts |   93.61 |    83.33 |     100 |   93.61 | 30-32
+  ...ta-publica.ts |     100 |      100 |     100 |     100 |
+  ...he-produto.ts |     100 |     90.9 |     100 |     100 | 66,83
+  ...iltros-url.ts |     100 |      100 |     100 |     100 |
+  ...ores-admin.ts |     100 |      100 |     100 |     100 |
+  ...es-artesao.ts |     100 |      100 |     100 |     100 |
+  ...us-pedidos.ts |   98.75 |     92.3 |   85.71 |   98.75 | 70
+  ...s-produtos.ts |     100 |    84.61 |     100 |     100 | 42,50
+  use-moderacao.ts |   91.17 |    85.71 |     100 |   91.17 | 30-32
+  ...me-artesao.ts |   94.59 |    93.33 |     100 |   94.59 | 36-37
+  ...es-artesao.ts |   97.14 |    81.81 |     100 |   97.14 | 68,72
+  ...oes-filtro.ts |     100 |       80 |     100 |     100 | 37,41
+  ...-recebidos.ts |   98.97 |    73.91 |     100 |   98.97 | 52
+  ...co-artesao.ts |     100 |    93.75 |     100 |     100 | 78,116
+  ...omendacoes.ts |     100 |      100 |     100 |     100 |
+  use-sessao.ts    |     100 |      100 |     100 |     100 |
+ ...d/src/services |     100 |      100 |     100 |     100 |
+  data-source.ts   |     100 |      100 |     100 |     100 |
+  errors.ts        |     100 |      100 |     100 |     100 |
+ ...ices/contracts |       0 |        0 |       0 |       0 |
+  ...s.contract.ts |       0 |        0 |       0 |       0 | 1-32
+  ...o.contract.ts |       0 |        0 |       0 |       0 | 1-8
+  ...n.contract.ts |       0 |        0 |       0 |       0 | 1-11
+  ...o.contract.ts |       0 |        0 |       0 |       0 | 1-11
+  ...o.contract.ts |       0 |        0 |       0 |       0 | 1-22
+  ...s.contract.ts |       0 |        0 |       0 |       0 | 1-12
+  ...o.contract.ts |       0 |        0 |       0 |       0 | 1-9
+  ...o.contract.ts |       0 |        0 |       0 |       0 | 1-9
+  ...s.contract.ts |       0 |        0 |       0 |       0 | 1-28
+  ...o.contract.ts |       0 |        0 |       0 |       0 | 1-16
+  ...s.contract.ts |       0 |        0 |       0 |       0 | 1-21
+  ...s.contract.ts |       0 |        0 |       0 |       0 | 1-15
+  ...s.contract.ts |       0 |        0 |       0 |       0 | 1-30
+ .../services/fake |   87.13 |     89.4 |   94.11 |   87.13 |
+  ...es.service.ts |   85.29 |    81.81 |      90 |   85.29 | 92-110,143
+  container.ts     |   68.27 |     83.6 |   85.71 |   68.27 | ...06,315-317,337
+  ...ao.service.ts |   94.82 |    96.29 |     100 |   94.82 | 39-41
+  ...ao.service.ts |    92.7 |    83.78 |     100 |    92.7 | ...,86-87,101,115
+  ...ro.service.ts |     100 |       90 |     100 |     100 | 22
+  ...os.service.ts |   96.27 |    93.02 |   88.88 |   96.27 | 29-30,66,87-89
+  ...ao.service.ts |   95.34 |    92.85 |     100 |   95.34 | 16-17
+  ...os.service.ts |   93.46 |    94.73 |     100 |   93.46 | 114-118,134-138
+  ...os.service.ts |    97.1 |    95.45 |     100 |    97.1 | 67-68
+  ...ario-ativo.ts |     100 |      100 |     100 |     100 |
+ .../recomendacoes |   96.42 |    97.43 |     100 |   96.42 |
+  ...on.adapter.ts |   96.42 |    97.43 |     100 |   96.42 | 20-22
+ .../services/http |   98.15 |    90.63 |   99.19 |   98.15 |
+  api-client.ts    |   92.13 |    92.68 |     100 |   92.13 | 21-22,42-46
+  ...es.service.ts |     100 |    97.14 |     100 |     100 | 33
+  ...ho.service.ts |     100 |       90 |     100 |     100 | 11,58,96
+  ...o-response.ts |     100 |    95.08 |     100 |     100 | 56,64,69
+  ...in.service.ts |     100 |      100 |     100 |     100 |
+  ...ao.service.ts |     100 |      100 |     100 |     100 |
+  ...o-response.ts |     100 |    96.55 |     100 |     100 | 10
+  ...ao.service.ts |     100 |    78.57 |     100 |     100 | 22,33,41
+  ...es.service.ts |    92.3 |    85.71 |     100 |    92.3 | 39-41
+  ...ro.service.ts |     100 |      100 |     100 |     100 |
+  ...o-response.ts |     100 |    86.66 |     100 |     100 | ...12,123,129-131
+  ...ao.service.ts |     100 |    83.87 |     100 |     100 | 24,56-61,66,77
+  ...os.service.ts |   97.65 |    73.91 |    87.5 |   97.65 | 13-15
+  ...ao.service.ts |     100 |    93.33 |     100 |     100 | 11,99
+  ...os.service.ts |     100 |     92.3 |     100 |     100 | 65,106
+  ...es.adapter.ts |     100 |    96.96 |     100 |     100 | 24
+  ...os.service.ts |   90.65 |    86.48 |     100 |   90.65 | ...98-100,116-118
+ ...tend/src/store |   90.45 |     89.8 |     100 |   90.45 |
+  ...inho.store.ts |   89.26 |    88.69 |     100 |   89.26 | ...28,260,368-375
+  sessao.store.ts  |   95.34 |    92.85 |     100 |   95.34 | 51-54
+ ...tend/src/types |    4.56 |     6.66 |    6.66 |    4.56 |
+  avaliacao.ts     |       0 |        0 |       0 |       0 | 1-36
+  cadastro.ts      |       0 |        0 |       0 |       0 | 1-10
+  carrinho.ts      |       0 |        0 |       0 |       0 | 1-13
+  categoria.ts     |       0 |        0 |       0 |       0 | 1-4
+  login.ts         |       0 |        0 |       0 |       0 | 1-4
+  novo-produto.ts  |       0 |        0 |       0 |       0 | 1-12
+  pedido.ts        |       0 |        0 |       0 |       0 | 1-67
+  ...os-artesao.ts |       0 |        0 |       0 |       0 | 1-23
+  ...il-artesao.ts |       0 |        0 |       0 |       0 | 1-16
+  produto-query.ts |       0 |        0 |       0 |       0 | 1-7
+  produto.ts       |       0 |        0 |       0 |       0 | 1-22
+  recomendacao.ts  |     100 |      100 |     100 |     100 |
+  regiao.ts        |       0 |        0 |       0 |       0 | 1-4
+  sessao.ts        |       0 |        0 |       0 |       0 | 1-8
+  tecnica.ts       |       0 |        0 |       0 |       0 | 1-4
+  usuario.ts       |     100 |      100 |     100 |     100 |
+ ...tend/src/utils |     100 |      100 |     100 |     100 |
+  ...da-decimal.ts |     100 |      100 |     100 |     100 |
+  ...atar-moeda.ts |     100 |      100 |     100 |     100 |
+  ...url-segura.ts |     100 |      100 |     100 |     100 |
+  ...izar-texto.ts |     100 |      100 |     100 |     100 |
+  preco-campo.ts   |     100 |      100 |     100 |     100 |
+  ...-query-url.ts |     100 |      100 |     100 |     100 |
+  rota-segura.ts   |     100 |      100 |     100 |     100 |
+  rotulo-papel.ts  |     100 |      100 |     100 |     100 |
+ ...src/validators |   95.54 |    94.28 |   94.11 |   95.54 |
+  ....validator.ts |   94.11 |    85.71 |     100 |   94.11 | 26-27,39
+  ....validator.ts |     100 |      100 |     100 |     100 |
+  ....validator.ts |   88.23 |    92.85 |      75 |   88.23 | 7,12-14
+  ....validator.ts |   85.71 |       75 |     100 |   85.71 | 17-18
+  ....validator.ts |     100 |      100 |     100 |     100 |
+  ....validator.ts |     100 |      100 |     100 |     100 |
+  ....validator.ts |     100 |      100 |     100 |     100 |
+-------------------|---------|----------|---------|---------|-------------------

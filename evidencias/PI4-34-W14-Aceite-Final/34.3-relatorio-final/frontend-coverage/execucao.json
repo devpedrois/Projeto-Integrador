@@ -1,0 +1,78 @@
+{
+  "suite": "frontend-coverage",
+  "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "startedAt": "2026-11-09T17:49:13.621Z",
+  "finishedAt": "2026-11-09T17:49:51.878Z",
+  "durationMs": 38436.461699999985,
+  "exitCode": 0,
+  "command": {
+    "executavel": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\frontend\\node_modules\\vitest\\vitest.mjs",
+      "run",
+      "--coverage",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\frontend-coverage\\vitest.json",
+      "--coverage.reportsDirectory=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\frontend-coverage\\cobertura",
+      "--coverage.reporter=text",
+      "--coverage.reporter=json-summary",
+      "--coverage.reporter=json",
+      "--coverage.reporter=html",
+      "--coverage.reportOnFailure"
+    ],
+    "diretorio": "frontend"
+  },
+  "gitAntes": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:49:13.621Z"
+  },
+  "gitDepois": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:49:52.057Z"
+  },
+  "freezeError": null,
+  "passed": 1031,
+  "failed": 0,
+  "skipped": 0,
+  "files": 110,
+  "success": true,
+  "coverage": {
+    "lines": {
+      "total": 12442,
+      "covered": 10092,
+      "skipped": 0,
+      "pct": 81.11
+    },
+    "statements": {
+      "total": 12442,
+      "covered": 10092,
+      "skipped": 0,
+      "pct": 81.11
+    },
+    "functions": {
+      "total": 689,
+      "covered": 601,
+      "skipped": 0,
+      "pct": 87.22
+    },
+    "branches": {
+      "total": 2893,
+      "covered": 2603,
+      "skipped": 0,
+      "pct": 89.97
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "declaredSuites": 235,
+  "failedSuites": 0
+}

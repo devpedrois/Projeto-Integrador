@@ -1,0 +1,78 @@
+{
+  "suite": "microsservico-coverage",
+  "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "startedAt": "2026-11-09T17:46:16.232Z",
+  "finishedAt": "2026-11-09T17:49:13.222Z",
+  "durationMs": 177187.3617,
+  "exitCode": 0,
+  "command": {
+    "executavel": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\services\\recomendacao\\node_modules\\vitest\\vitest.mjs",
+      "run",
+      "--coverage",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\microsservico-coverage\\vitest.json",
+      "--coverage.reportsDirectory=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\microsservico-coverage\\cobertura",
+      "--coverage.reporter=text",
+      "--coverage.reporter=json-summary",
+      "--coverage.reporter=json",
+      "--coverage.reporter=html",
+      "--coverage.reportOnFailure"
+    ],
+    "diretorio": "services/recomendacao"
+  },
+  "gitAntes": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:46:16.232Z"
+  },
+  "gitDepois": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:49:13.420Z"
+  },
+  "freezeError": null,
+  "passed": 116,
+  "failed": 0,
+  "skipped": 0,
+  "files": 12,
+  "success": true,
+  "coverage": {
+    "lines": {
+      "total": 721,
+      "covered": 605,
+      "skipped": 0,
+      "pct": 83.91
+    },
+    "statements": {
+      "total": 767,
+      "covered": 633,
+      "skipped": 0,
+      "pct": 82.52
+    },
+    "functions": {
+      "total": 153,
+      "covered": 124,
+      "skipped": 0,
+      "pct": 81.04
+    },
+    "branches": {
+      "total": 384,
+      "covered": 289,
+      "skipped": 0,
+      "pct": 75.26
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "declaredSuites": 16,
+  "failedSuites": 0
+}

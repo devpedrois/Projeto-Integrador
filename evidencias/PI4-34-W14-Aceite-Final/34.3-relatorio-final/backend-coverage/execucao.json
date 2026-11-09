@@ -1,0 +1,80 @@
+{
+  "suite": "backend-coverage",
+  "commit": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "startedAt": "2026-11-09T17:34:44.393Z",
+  "finishedAt": "2026-11-09T17:46:15.859Z",
+  "durationMs": 691652.5164,
+  "exitCode": 0,
+  "command": {
+    "executavel": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:\\Users\\Pedro\\Desktop\\Projeto integrador\\backend\\node_modules\\vitest\\vitest.mjs",
+      "run",
+      "--coverage",
+      "--testTimeout=60000",
+      "--hookTimeout=120000",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\backend-coverage\\vitest.json",
+      "--coverage.reportsDirectory=C:\\Users\\Pedro\\AppData\\Local\\Temp\\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\\backend-coverage\\cobertura",
+      "--coverage.reporter=text",
+      "--coverage.reporter=json-summary",
+      "--coverage.reporter=json",
+      "--coverage.reporter=html",
+      "--coverage.reportOnFailure"
+    ],
+    "diretorio": "backend"
+  },
+  "gitAntes": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:34:44.393Z"
+  },
+  "gitDepois": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:46:16.044Z"
+  },
+  "freezeError": null,
+  "passed": 837,
+  "failed": 0,
+  "skipped": 1,
+  "files": 83,
+  "success": true,
+  "coverage": {
+    "lines": {
+      "total": 3166,
+      "covered": 2439,
+      "skipped": 0,
+      "pct": 77.03
+    },
+    "statements": {
+      "total": 3307,
+      "covered": 2510,
+      "skipped": 0,
+      "pct": 75.89
+    },
+    "functions": {
+      "total": 707,
+      "covered": 572,
+      "skipped": 0,
+      "pct": 80.9
+    },
+    "branches": {
+      "total": 1464,
+      "covered": 1071,
+      "skipped": 0,
+      "pct": 73.15
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "declaredSuites": 162,
+  "failedSuites": 0
+}

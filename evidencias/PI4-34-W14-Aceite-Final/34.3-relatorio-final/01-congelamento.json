@@ -1,0 +1,27 @@
+{
+  "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+  "inicial": {
+    "hash": "63eca03b3fd3cdda265b68cf958951cb9f7325b6",
+    "branch": "main",
+    "status": "",
+    "horario": "2026-11-09T17:34:44.229Z"
+  },
+  "node": "v22.12.0",
+  "timezone": "America/Sao_Paulo",
+  "versoes": {
+    "backend": {
+      "vitest": "5.0.0",
+      "provider": "5.0.0"
+    },
+    "services/recomendacao": {
+      "vitest": "5.1.0",
+      "provider": "5.1.0"
+    },
+    "frontend": {
+      "vitest": "2.1.9",
+      "provider": "2.1.9"
+    }
+  },
+  "ambiente": "DATABASE_URL recebe DIRECT_URL somente no processo dos testes; arquivos .env e paineis preservados",
+  "evidenciasForaDoGit": true
+}

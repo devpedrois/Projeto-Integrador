@@ -1681,11 +1681,13 @@ Consolidou checkout, busca, lote paralelo e custo HTTP.
 Conferiu números, links, limites das conclusões e segurança documental.
 Evidências: [PI4-35.7](../evidencias/PI4-35/35.7-relatorio/README.md).
 
-### 34.3: versão final congelada, pendente de registro
+### 34.3: execução congelada e preparação da versão final
 
-Não há registro desta execução na base documental conferida.
-A consolidação 34.5 não criou tag nem realizou deploy.
-A entrada permanece pendente das evidências da respectiva subtarefa.
+O Codex executou seis suítes no mesmo hash congelado.
+Conferiu cobertura, integridade, E2E e três rodadas concorrentes.
+Registrou o CI anterior e os commits dos três painéis.
+Consolidou o relatório e preparou a referência local de entrega.
+Evidências: [PI4-34.3](../evidencias/PI4-34-W14-Aceite-Final/34.3-relatorio-final/00-resumo.md).
 
 ### 34.4: roteiro da apresentação, pendente de registro
 

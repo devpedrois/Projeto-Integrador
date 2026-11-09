@@ -1,0 +1,286 @@
+
+> origem-backend@1.0.0 test:concorrencia
+> tsx scripts/concorrencia-checkout.ts --saida C:\Users\Pedro\AppData\Local\Temp\origem-34-3-c6f5af6b8f2a4174bb6a7d02fb40d7f9\concorrencia\rodadas.json
+
+(node:17924) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Schema temporario: web10_2cc0d34295a84aabad13bb62d41fd2c1
+{"servico":"api","requestId":"ac1a2551-a110-47cc-99cb-ac19a007ea3e","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":792.295}
+{"servico":"api","requestId":"e88efa68-d113-430d-a379-d88810da265d","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":974.591}
+{"servico":"api","requestId":"67710d17-e076-41ad-881a-491b845c2737","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1089.1}
+{"servico":"api","requestId":"7490c69f-7889-411d-9746-a7742d256622","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1073.156}
+{"servico":"api","requestId":"c1b0c11b-87c7-490d-ac4b-fcacd9d71a03","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1073.205}
+{"servico":"api","requestId":"3d60a08f-2437-4422-a409-34d409281188","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1081.836}
+{"servico":"api","requestId":"dc9e6cd1-d53e-46e2-9ab7-2adaa323b72f","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1078.538}
+{"servico":"api","requestId":"7e6889dc-4cbe-41af-94c2-47635e83e245","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1083.974}
+{"servico":"api","requestId":"f5a74db6-8580-4df4-8452-6d0c76f06f37","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1087.575}
+{"servico":"api","requestId":"16fd6bbd-e924-46b3-90af-3520682df287","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1087.48}
+{"servico":"api","requestId":"5f836032-eb14-46b3-b1c2-0912cc6d8a63","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1086.502}
+{"servico":"api","requestId":"d2cdd7d9-aba2-4436-beee-5baa9623eaf1","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1169.16}
+{"servico":"api","requestId":"d48f147b-d16d-420c-85c7-e585f93ce67e","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1259.262}
+{"servico":"api","requestId":"6f70c1b4-eebc-440b-aca1-3387fbeed9cf","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1259.716}
+{"servico":"api","requestId":"da7d8003-9638-400d-894a-c0edd1397ef0","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1261.456}
+{"servico":"api","requestId":"237f403c-ea62-464e-ae04-7cb631e67358","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1266.914}
+{"servico":"api","requestId":"4319adc8-dee9-46cf-afa3-22c08cfaa5a4","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1267.234}
+{"servico":"api","requestId":"f619f195-062c-49fc-9d65-8e9dd9776306","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1269.663}
+{"servico":"api","requestId":"2d40a106-b1ad-4772-9627-b8c100b25568","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1272.21}
+{"servico":"api","requestId":"4ad65075-7872-4489-aee3-38f38ef2ec49","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1272.533}
+{"servico":"api","requestId":"336886b3-ef9e-4528-ba2f-e54f4143c5fb","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1273.751}
+{"servico":"api","requestId":"c8297a45-37b6-4ddb-b651-9e633f3ce6ba","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1356.917}
+{"servico":"api","requestId":"486d07b4-de36-4573-8878-c52f7dbb5345","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1447.922}
+{"servico":"api","requestId":"04a48aa9-2b48-4373-b137-fb3168b89d09","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1449.094}
+{"servico":"api","requestId":"726d6763-5fc4-47c9-8afa-aea01ba3adc4","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1449.564}
+{"servico":"api","requestId":"11318c33-86c3-464a-b16f-3e071606df54","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1453.625}
+{"servico":"api","requestId":"975b1580-d95a-41ab-81db-c5e2532e8d4f","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1455.18}
+{"servico":"api","requestId":"610d0670-42b7-410b-88da-9985d80670ab","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1457.576}
+{"servico":"api","requestId":"be9f5926-3c55-46e1-b2c7-9511f72e9341","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1459.731}
+{"servico":"api","requestId":"cde9113c-2d74-4c83-8b42-7a2369e67cd8","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1460.443}
+{"servico":"api","requestId":"ab46c52e-f4aa-49cb-aaf0-a06b7f3b2cfc","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1461.326}
+{"servico":"api","requestId":"e5b162be-e7be-40a3-a817-4a1c623d2464","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1546.173}
+{"servico":"api","requestId":"08cf66ae-fd35-48ea-88d0-b3741469fa49","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1638.097}
+{"servico":"api","requestId":"824521fb-bbc3-454f-89f6-01ab1683fc58","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1639.105}
+{"servico":"api","requestId":"3caebe47-16ff-43fc-8526-6d5f2a714f9c","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1640.317}
+{"servico":"api","requestId":"88752be8-d3d5-4edd-8e65-5d314df09b7b","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1645.046}
+{"servico":"api","requestId":"3b838cb2-5ae2-4f26-9f77-db9dcd5bf40f","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1645.867}
+{"servico":"api","requestId":"a5776fd5-9102-471b-b5e4-5168577f5121","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1648.068}
+{"servico":"api","requestId":"ffb664a2-0be5-41bc-8db3-293dce8ef81c","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1650.021}
+{"servico":"api","requestId":"4e52a806-47ce-49c1-9ab1-fab816dce83d","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1650.931}
+{"servico":"api","requestId":"f9323e1a-fb90-46bf-a6ce-029e1a753ddb","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1652.133}
+{"servico":"api","requestId":"77c2ad26-8814-49f0-8836-c0f5e30d4ad7","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1736.325}
+{"servico":"api","requestId":"a207d405-c51e-4bc8-960c-5f59814a7298","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":953.946}
+{"servico":"api","requestId":"93caeb40-7dae-48f8-9dde-6cda46ad6563","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":819.706}
+{"servico":"api","requestId":"e9c8eb7d-4c64-4bca-b0bb-a53602a767d7","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":759.472}
+{"servico":"api","requestId":"5a18ef08-17a7-40c9-bd2f-e470addd1ed1","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1827.977}
+{"servico":"api","requestId":"7d378b57-23b3-4faf-843a-9f2873222cc4","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1828.339}
+{"servico":"api","requestId":"b034fe30-7e89-4bb4-9143-5a84e1dde800","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1829.367}
+{"servico":"api","requestId":"430655b9-f5ec-4511-a7a2-50ad489e544b","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1834.333}
+{"servico":"api","requestId":"ef8cb224-9c93-4143-a4e1-f96fb46f6de8","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1835.688}
+{"servico":"api","requestId":"edbdb639-852f-43a6-a270-a9ccb30f2577","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":766.147}
+{"servico":"api","requestId":"68f3f321-6c99-4ab2-81fa-32eb383564ee","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1837.749}
+{"servico":"api","requestId":"8a64bac2-3f8b-48af-a5ec-b59e70f6dc19","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1839.958}
+{"servico":"api","requestId":"e9fa7cb0-274c-49b9-800f-20264dfdbe6f","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":1840.596}
+{"servico":"api","requestId":"05707eb9-42ad-487e-8fe4-10b0b2039cbd","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":801.741}
+{"servico":"api","requestId":"5a1cea57-e85f-45b9-b469-61a9f1684e01","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":804.809}
+{"servico":"api","requestId":"c2c1ec6e-073f-4478-944c-2c75f5661bce","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":833.729}
+{"servico":"api","requestId":"74f3db02-bef1-4ea6-9c5b-68ce5773eaf6","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":838.671}
+{"servico":"api","requestId":"d4a20372-b05a-4655-beeb-c7ddc73e4a62","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":831.197}
+{"servico":"api","requestId":"15dce8d4-0b0f-49a6-8170-9b575666fe80","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":835.943}
+{"servico":"api","requestId":"0000b2c0-2335-4260-84d6-3e57dae62d9d","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":870.643}
+{"servico":"api","requestId":"63d30360-0eab-4749-a851-8bb9308e8aef","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":799.48}
+{"servico":"api","requestId":"0a24f85b-b019-40fb-8db2-721339908066","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":705.232}
+{"servico":"api","requestId":"7582a985-a5ae-4b67-be97-ff01f2f08471","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":710.47}
+{"servico":"api","requestId":"e570ca3e-c23a-40aa-b641-ba9acb2a340b","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":743.412}
+{"servico":"api","requestId":"07382216-a47a-42d7-9c91-915dcd320425","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":739.47}
+{"servico":"api","requestId":"3c903616-3edf-4add-bff2-559bb9c3f9d8","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":739.109}
+{"servico":"api","requestId":"6db2f418-3e61-433e-96f3-d4a306756c22","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":741.485}
+{"servico":"api","requestId":"b62c1aad-47ee-4e57-a607-a39f3e1d4811","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":771.648}
+{"servico":"api","requestId":"911f8c2f-cc34-444e-a0c3-0bcedd87b8db","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":773.121}
+{"servico":"api","requestId":"a60b348d-ec08-4fbc-b51e-763059e4e7dc","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":774.812}
+{"servico":"api","requestId":"03b51dd8-2aa9-4861-8dc3-f81df4440aa1","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":699.343}
+{"servico":"api","requestId":"e51fa520-421e-44eb-b85b-531027542f53","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":637.867}
+{"servico":"api","requestId":"2f228c03-7d9a-4fec-a9c3-8c9842a34d92","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":638.669}
+{"servico":"api","requestId":"59034987-4255-45d2-970d-75b3f4eda148","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":639.836}
+{"servico":"api","requestId":"5e66750b-8799-4c9c-8c3f-f31334076fd4","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":643.348}
+{"servico":"api","requestId":"58cee936-dd53-4085-b149-c35213f55168","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":674.92}
+{"servico":"api","requestId":"0e005669-6197-40a7-b0b1-32978ff42b0c","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":672.133}
+{"servico":"api","requestId":"53187044-0adc-4b9c-a1f8-ce666f099016","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":672.393}
+{"servico":"api","requestId":"0ec91b96-8377-4d06-95df-cdfcb2baccbc","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":677.586}
+{"servico":"api","requestId":"86419368-c9ae-4504-9b27-cb8f410fe1fa","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":710.213}
+{"servico":"api","requestId":"de989a19-b4ab-4cba-8e07-09a182bbc9a8","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":630.389}
+{"servico":"api","requestId":"4fb86342-7b40-4092-b13d-b6448085a1da","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":536.34}
+{"servico":"api","requestId":"5616829f-1979-4b77-9f58-a9c29b32dfd3","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":537.05}
+{"servico":"api","requestId":"8572bcec-db01-4da8-8908-dad32b788f13","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":570.309}
+{"servico":"api","requestId":"aeeb70f5-cff7-48d0-b0e5-c045f982eb87","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":565.374}
+{"servico":"api","requestId":"575b0910-6189-4c4d-9314-c58c0c237335","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":565.492}
+{"servico":"api","requestId":"a08d2b49-387e-427c-83a3-938dfde292d7","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":568.674}
+{"servico":"api","requestId":"68a35e72-2851-4ec3-8904-833408652073","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":602.056}
+{"servico":"api","requestId":"94ade989-258f-48e3-b522-6f0d4adaae66","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":605.563}
+{"servico":"api","requestId":"1471603b-1c04-4580-9b60-aaf1fb71ed21","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":606.194}
+{"servico":"api","requestId":"5cc0d702-4bcd-417e-8c88-2433a6a8195c","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":530.923}
+{"servico":"api","requestId":"75c49d3a-3b11-461b-beb2-5a56c314fb6f","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":470.806}
+{"servico":"api","requestId":"a3a0be39-8a0e-4e93-9264-c70816613450","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":473.759}
+{"servico":"api","requestId":"92e1f324-10c7-42c0-ae7f-67a4efa78efe","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":474.137}
+{"servico":"api","requestId":"3d6d2052-caef-4013-8f58-d83eb2774923","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":472.535}
+{"servico":"api","requestId":"359e001b-0cbe-49ff-bac2-32a30c3fa9b2","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":503.761}
+{"servico":"api","requestId":"5879519c-4209-4913-8380-6e72b59668ee","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":505.929}
+{"servico":"api","requestId":"89effd73-b668-4b3a-a604-a51e8af55912","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":507.411}
+{"servico":"api","requestId":"b508b305-671a-42b6-a3bc-d20e307d65fe","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":510.615}
+Compradores sinteticos autenticados: 50
+{"servico":"api","requestId":"ad265769-b9d1-43bb-90e8-324d8b8044de","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":240.158}
+{"servico":"api","requestId":"505b4119-6f2e-4220-98e9-dfc8b5857b13","metodo":"POST","rota":"/pedidos","status":201,"duracaoMs":795.287}
+{"servico":"api","requestId":"a52ea719-8921-44a7-b9c2-d0ffbea91054","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":837.333}
+{"servico":"api","requestId":"038b01fc-ad75-48e4-bb3a-c63ba1b3a961","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":886.837}
+{"servico":"api","requestId":"2759f9a0-ab9f-4dfe-9425-5d81c44c8afa","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":932.25}
+{"servico":"api","requestId":"ce4d7308-29d7-400f-abf3-c686e1834744","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":973.341}
+{"servico":"api","requestId":"7225aa85-2d02-4665-973c-a42a17e52360","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1026.487}
+{"servico":"api","requestId":"01d037d0-6e51-48f5-8b58-b72127dfe636","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1066.753}
+{"servico":"api","requestId":"85d4f932-fced-4323-904f-2b07ecb80abc","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1121.216}
+{"servico":"api","requestId":"25168b32-54d9-4ddf-b219-791d05225428","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1167.313}
+{"servico":"api","requestId":"d0b92938-6317-4588-8efe-86dcc7e73608","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1207.142}
+{"servico":"api","requestId":"97bb8531-b5a8-404c-8f5d-e2660e7bc5ef","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1260.986}
+{"servico":"api","requestId":"d4e73106-4e92-4a3a-8845-1a16df425c30","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1308.607}
+{"servico":"api","requestId":"b945d224-c52a-4f8c-8912-fdb258244ef5","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1354.991}
+{"servico":"api","requestId":"d2d2bb50-ce6a-457c-bc15-c16a64c1fbc3","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1393.825}
+{"servico":"api","requestId":"449c866f-321c-4ff7-87c0-9be196767391","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1447.705}
+{"servico":"api","requestId":"04fd1cb2-06b9-47f6-9450-8ad3561b513c","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1493.965}
+{"servico":"api","requestId":"9954019e-e93d-41fa-9c0f-2e918e9f8cdf","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1534.771}
+{"servico":"api","requestId":"d1d09fa8-317e-4fb9-a282-cdfa1afad5f0","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1587.978}
+{"servico":"api","requestId":"4955f74a-8aaf-4aab-93ee-252793a00069","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1633.155}
+{"servico":"api","requestId":"102ca5ae-d4fb-47c9-aac1-b8b578fe4ca5","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1681.37}
+{"servico":"api","requestId":"26b53f69-737d-4f1f-baee-4f343ad75fd5","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1726.635}
+{"servico":"api","requestId":"a9286b77-4f70-4545-86cd-a8cfc7b133d6","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1773.404}
+{"servico":"api","requestId":"eb4a8d6c-4fc7-4b03-a72b-c4e05846a9c5","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1820.209}
+{"servico":"api","requestId":"a5c09eda-6c0c-4e6f-8a61-01787005a17d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1866.345}
+{"servico":"api","requestId":"d822d292-a837-4e6b-8d12-d13a3aede542","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1909.179}
+{"servico":"api","requestId":"f443ed83-bfef-4525-8388-9f3877b62b7a","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1961.135}
+{"servico":"api","requestId":"4a9df876-87a4-4cae-9a8c-b3cbc7d8fb8d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2008.089}
+{"servico":"api","requestId":"e46f8c02-301a-4149-ab57-8299682acabb","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2055.186}
+{"servico":"api","requestId":"da635cf4-e09f-4ee8-b08f-d615cc830231","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2102.301}
+{"servico":"api","requestId":"a14ac2a5-d540-491f-9cf7-a2222eb45255","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2149.542}
+{"servico":"api","requestId":"0351cab7-367d-4c8e-a34b-8823fe8ed078","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2196.815}
+{"servico":"api","requestId":"b7ca0bb4-81f6-4b9b-a2c1-daa2d80b4833","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2247.392}
+{"servico":"api","requestId":"698b3619-a0f3-4384-85ae-e23c6e6fb87d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2300.687}
+{"servico":"api","requestId":"b136556e-a3a7-4d69-a4c0-7c127c511400","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2341.427}
+{"servico":"api","requestId":"81ae6886-3d3f-498d-91a1-dcb0c54a491a","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2394.504}
+{"servico":"api","requestId":"0fecdec9-8ac2-4888-980a-2403c1433ec3","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2441.061}
+{"servico":"api","requestId":"c17e7e4c-ed39-4b9c-b1f0-72313bdeeeaa","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2488.176}
+{"servico":"api","requestId":"06742510-eed2-4382-aa7a-47dcef73038d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2535.381}
+{"servico":"api","requestId":"6ba215eb-d040-4d38-b168-039200dfdcf4","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2575.979}
+{"servico":"api","requestId":"ecf7b5a4-330f-4f0f-8c6b-5fba00acfda4","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2630.39}
+{"servico":"api","requestId":"4e5c9f96-8a3b-452a-9589-c819fa568c82","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2669.002}
+{"servico":"api","requestId":"ee9e2395-2ac7-4457-96d7-432d7dbd3dd1","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2724.253}
+{"servico":"api","requestId":"2e38af58-c3b3-428a-8896-40687ab2fdff","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2769.037}
+{"servico":"api","requestId":"76989a77-df47-4e01-a9b3-4bcbc71e5f2d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2815.628}
+{"servico":"api","requestId":"7c33ca40-88cb-424f-89a1-a25970b5d24c","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2861.745}
+{"servico":"api","requestId":"82df41ce-444e-4a75-9b73-bd86d127c135","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2908.631}
+{"servico":"api","requestId":"afc57023-c5db-42f5-911b-03b30fbb0b44","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2954.794}
+{"servico":"api","requestId":"27ccf4bd-7724-4ca8-af0d-a223c072c3ce","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2999.334}
+{"servico":"api","requestId":"2b2e591f-355f-4d30-8830-ebcb730ad5bd","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":3053.508}
+{"servico":"api","requestId":"5fe2ac0a-5387-48b8-a31c-923f8b86361f","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":3099.685}
+Rodada 1: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1,"respostasInesperadas":0}
+{"servico":"api","requestId":"777e6e80-da24-4b8a-a2fc-db2af377cb3d","metodo":"POST","rota":"/pedidos","status":201,"duracaoMs":767.89}
+{"servico":"api","requestId":"1d52316e-a9ae-41db-ba8d-6cd4ef6d139d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":816.925}
+{"servico":"api","requestId":"446ec00f-0fcd-4938-b872-8fd106c1be7a","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":869.136}
+{"servico":"api","requestId":"85ec0efe-d8eb-4aef-8471-ba7eb3fb7f21","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":915.746}
+{"servico":"api","requestId":"be99129c-67f8-486e-b1cf-3d8a45528d33","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":968.038}
+{"servico":"api","requestId":"4f425696-cb3d-43cc-9c8c-0995849baef9","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1010.792}
+{"servico":"api","requestId":"4704d7ed-b92c-4f1e-a336-769bdcfdb0db","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1066.345}
+{"servico":"api","requestId":"89a5de84-4f96-447f-9222-df589bacb741","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1115.106}
+{"servico":"api","requestId":"e4f8291e-5291-4650-ae1d-e4176957b43e","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1155.512}
+{"servico":"api","requestId":"140f427b-ff72-48c8-9221-49545409d7f5","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1208.444}
+{"servico":"api","requestId":"a566f2af-9451-4d1b-8841-29e455896554","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1255.094}
+{"servico":"api","requestId":"f0fdaeb9-1408-4c26-bc94-5ead38376caf","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1302.264}
+{"servico":"api","requestId":"fb3c86a5-165c-41fa-aa6f-9b8e42bb44a2","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1349.388}
+{"servico":"api","requestId":"7f24e5cf-9957-425a-9607-d3fda08bdbfa","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1396.076}
+{"servico":"api","requestId":"c41e2e0c-c6dc-470d-98da-a9ef9065b243","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1443.009}
+{"servico":"api","requestId":"3f5332b2-40f8-493c-97e5-a5cf1c8e6c33","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1488.311}
+{"servico":"api","requestId":"5f45e035-72a1-4aaa-8bce-1c8553f4cb55","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1535.439}
+{"servico":"api","requestId":"fe414270-9f92-4d2a-8fbe-25bb126697dc","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1577.585}
+{"servico":"api","requestId":"e57e4dec-8146-4c63-bc1e-d2078f0caea3","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1630.067}
+{"servico":"api","requestId":"aa2637d3-6e19-471a-ab3a-fd20b092e975","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1676.346}
+{"servico":"api","requestId":"0b270def-831f-4d8a-bd79-a2f6028bc32b","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1725.382}
+{"servico":"api","requestId":"3f007788-a031-4e29-b829-d3704204af00","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1772.109}
+{"servico":"api","requestId":"7dd4ec6e-ed93-493f-968c-61dffdc2f9ed","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1818.879}
+{"servico":"api","requestId":"11cf6f2f-444e-4073-b778-0bfba72af46f","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1864.939}
+{"servico":"api","requestId":"200e5e0c-781a-48fa-93ef-a15cf8b489d9","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1910.514}
+{"servico":"api","requestId":"5ef4a551-dac3-4bf0-9120-a9d4955203c8","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1957.454}
+{"servico":"api","requestId":"9fdbfa24-1593-470e-a4ec-37d3a57f937a","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2004.494}
+{"servico":"api","requestId":"11328888-b424-45ed-82c8-b43ca5405b50","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2049.044}
+{"servico":"api","requestId":"12959a64-7537-4620-a367-c685e98d37d5","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2094.981}
+{"servico":"api","requestId":"f68f6ca7-1f32-44dc-bf18-07ba417ba27f","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2137.447}
+{"servico":"api","requestId":"d4ab712e-1413-49db-9038-65e7c02a0789","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2189.457}
+{"servico":"api","requestId":"cc94a397-c288-47b3-89e5-51f0922f2f8b","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2236.579}
+{"servico":"api","requestId":"2b658972-3434-4ee4-89c3-6feed64ef44d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2283.746}
+{"servico":"api","requestId":"780c278d-1bd1-48e2-93a4-366fa59ca0f0","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2330.608}
+{"servico":"api","requestId":"cb884a23-e6fa-467b-a2c3-e1079cf0b22e","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2377.757}
+{"servico":"api","requestId":"c45d6976-bef2-4f36-ba27-66e534d096e4","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2420.286}
+{"servico":"api","requestId":"0ce79f52-18a3-4755-a89f-9d60fc0e8d9d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2473.273}
+{"servico":"api","requestId":"66380cd3-f5e9-4613-a8b2-4a71cc6f6c6b","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2519.772}
+{"servico":"api","requestId":"2bc38a07-c43b-43cb-917a-dce2972d3a5d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2566.051}
+{"servico":"api","requestId":"4c8c2fb8-cbfb-4105-819d-9e136d849e25","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2612.97}
+{"servico":"api","requestId":"3a31bdfb-a10f-487f-a986-e42cf9a7ae10","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2660.655}
+{"servico":"api","requestId":"42560615-7d7b-4aed-a5a3-2ff1c1d2bb05","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2707.159}
+{"servico":"api","requestId":"726a6b4b-424f-4223-aae9-e67cc0e8eb25","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2752.353}
+{"servico":"api","requestId":"75efb6dc-bf52-4561-81b3-839f7d5bfd60","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2795.932}
+{"servico":"api","requestId":"81ae5483-b01b-4b67-bc5e-6e19281bbf1a","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2849.439}
+{"servico":"api","requestId":"e7989f40-aba9-45f1-a3ed-290d56272c0b","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2898.877}
+{"servico":"api","requestId":"bcc919b3-12a3-4a3a-a986-7bdafaf3e36b","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2944.576}
+{"servico":"api","requestId":"49857d73-d4c5-40be-8cfb-dff645f16f3b","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2991.919}
+{"servico":"api","requestId":"e247f92a-f24e-4dce-a9db-e022737564d0","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":3042.562}
+{"servico":"api","requestId":"42d4a89a-3926-4daa-8d6e-1bd6fbaf827b","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":3087.723}
+Rodada 2: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1,"respostasInesperadas":0}
+{"servico":"api","requestId":"81fae774-765a-4e85-9a55-3aa7efa7eb80","metodo":"POST","rota":"/pedidos","status":201,"duracaoMs":771.212}
+{"servico":"api","requestId":"82b9a30d-40bf-4af0-befc-ef05b460edf4","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":816.617}
+{"servico":"api","requestId":"528ba7a1-6a48-49ac-98f8-b4b4a861f093","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":864.129}
+{"servico":"api","requestId":"2d56f322-c1bc-442a-ab0d-99530ffe2d3d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":909.575}
+{"servico":"api","requestId":"a8aa3b9b-ec18-4c6f-bf29-676e776b1679","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":955.252}
+{"servico":"api","requestId":"41c10b47-2246-4fc5-bf6a-5ff72ce31840","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1004.166}
+{"servico":"api","requestId":"eef628c4-0ad5-4ac1-afd7-63cd05248c4f","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1045.267}
+{"servico":"api","requestId":"02a130a6-efc3-47aa-b5b5-404a6e69e7ec","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1095.459}
+{"servico":"api","requestId":"840dc872-2f72-4de2-8d20-51736c940401","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1144.888}
+{"servico":"api","requestId":"b577458b-89c3-4a19-80a3-a9212fa6ebaa","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1195.412}
+{"servico":"api","requestId":"b958f8df-2cd7-4f8c-8e8d-dfed236e6aa2","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1237.178}
+{"servico":"api","requestId":"ea499b59-9317-4ed5-bfab-442fd38292e7","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1284.593}
+{"servico":"api","requestId":"73c2d69c-2b28-4379-8aeb-76a9e7c2fd5d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1331.566}
+{"servico":"api","requestId":"c82b12ea-85b8-424c-9e66-cab5b519600b","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1376.92}
+{"servico":"api","requestId":"a02dfef2-6def-46cd-a0e2-f56bcebcbdd8","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1423.782}
+{"servico":"api","requestId":"c4a26057-8e0e-43ff-a49d-7c36c2a658b1","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1470.786}
+{"servico":"api","requestId":"6e0821c5-a238-4ff8-a998-262b223210fa","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1517.808}
+{"servico":"api","requestId":"c838d1f1-f660-4da8-b0f1-b1acf2f94568","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1564.693}
+{"servico":"api","requestId":"3f2d17ce-bfda-4967-b66d-9db90a3e8878","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1611.332}
+{"servico":"api","requestId":"b6e3b30f-00b8-4e80-97ec-49a54fc13ff4","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1659.622}
+{"servico":"api","requestId":"027d6031-50a2-4e95-a513-664c1f4a02cf","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1706.056}
+{"servico":"api","requestId":"fb314553-0c4b-49e4-b50d-a593cc46f0d9","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1752.678}
+{"servico":"api","requestId":"54351b29-0d28-4c49-9b6e-26293b4234d6","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1799.293}
+{"servico":"api","requestId":"e86abe0f-3ce4-4eea-9cb3-6ff8ad7574a0","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1847.772}
+{"servico":"api","requestId":"966a0e84-bc5c-4fbd-9a00-3e31184f8d1c","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1894.119}
+{"servico":"api","requestId":"88890d80-1633-4a55-b60a-511a1e99badc","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1936.563}
+{"servico":"api","requestId":"b4fce57d-51c3-40c9-89c3-2a02987c6caf","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":1988.736}
+{"servico":"api","requestId":"47b9bb86-69f2-4688-8224-d61a4f36e558","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2033.639}
+{"servico":"api","requestId":"541e14dc-c910-407a-9474-6ec55b910ddb","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2086.583}
+{"servico":"api","requestId":"e743c8ec-e570-4d91-926d-64386fcdf982","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2133.383}
+{"servico":"api","requestId":"2e0c0648-31dc-4bc7-8019-2693be446dbc","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2180.125}
+{"servico":"api","requestId":"0ee8f7ee-700b-4f89-a804-251f70d4b8b3","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2227.129}
+{"servico":"api","requestId":"69a84dde-53f0-46ce-ad7c-08744167b024","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2274.178}
+{"servico":"api","requestId":"4db0169f-139a-4078-9c7d-ba4bba4bed97","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2320.35}
+{"servico":"api","requestId":"04efa099-9284-4e1f-9290-f2fb919c3849","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2361.599}
+{"servico":"api","requestId":"908d6cde-05ed-4568-8e08-a8b58bcbf83d","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2414.534}
+{"servico":"api","requestId":"bc94f8a4-4b87-4dbf-b722-7b7445936495","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2462.002}
+{"servico":"api","requestId":"ead02cfe-0b3a-4c8f-8bac-ce594b702cac","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2510.99}
+{"servico":"api","requestId":"195727a2-6d2e-4f47-9c36-161f8c148681","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2559.271}
+{"servico":"api","requestId":"e5683dc8-115d-4262-8c1c-78d269657f64","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2600.16}
+{"servico":"api","requestId":"3acfa095-c7ec-46ce-b218-061255954204","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2652.403}
+{"servico":"api","requestId":"07574867-3703-4535-ade8-71f21824efe9","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2698.761}
+{"servico":"api","requestId":"4474a26e-532d-439b-b9af-314223af8eb4","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2745.184}
+{"servico":"api","requestId":"cb267f2b-d3ff-4b8c-98d5-845ba164f033","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2786.137}
+{"servico":"api","requestId":"5b77ecb5-9c0b-41e1-91c5-840c03c315f2","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2839.856}
+{"servico":"api","requestId":"43848251-8eb9-4b0d-89c4-771a8d1b6561","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2886.101}
+{"servico":"api","requestId":"7cda3fd4-2295-49ad-991f-cb243e1d2fb1","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2933.424}
+{"servico":"api","requestId":"fe3d69d8-86d1-4efb-b84c-33438321993f","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":2979.421}
+{"servico":"api","requestId":"73dbcde4-024b-4a44-86d0-e55279dd0265","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":3026.532}
+{"servico":"api","requestId":"722124f1-0a9d-44f1-8633-974ddd8a8ceb","metodo":"POST","rota":"/pedidos","status":409,"duracaoMs":3073.525}
+Rodada 3: {"sucessos":1,"conflitos409":49,"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1,"respostasInesperadas":0}
+Consulta SQL de conferencia:
+SET search_path TO "web10_2cc0d34295a84aabad13bb62d41fd2c1";
+SELECT p."quantidadeEstoque" AS "estoqueFinal",
+          (SELECT COUNT(DISTINCT i."pedidoId")::integer FROM "ItemPedido" i WHERE i."produtoId" = p."id") AS "pedidosProduto",
+          (SELECT COUNT(DISTINCT pg."id")::integer
+           FROM "Pagamento" pg JOIN "ItemPedido" i ON i."pedidoId" = pg."pedidoId"
+           WHERE i."produtoId" = p."id") AS "pagamentosCriados"
+        FROM "Produto" p WHERE p."id" = $1::uuid;
+Parametros rodada 1: ["2280bef1-c5e3-4e13-be21-98eea1afcf56"]
+Conferencia rodada 1: {"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1}
+Parametros rodada 2: ["5a3f9c49-1e4c-412c-b7ce-b9246412913a"]
+Conferencia rodada 2: {"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1}
+Parametros rodada 3: ["bfd15cb9-3a46-4e4b-b3c0-0b69a553d2ec"]
+Conferencia rodada 3: {"estoqueFinal":0,"pedidosProduto":1,"pagamentosCriados":1}
+Conferencia realizada antes da remocao do schema temporario.
+Resumo: {"compradores":50,"cadastros":50,"logins":50,"schemaRemovido":true}
+Concorrencia validada: 3/3 rodadas. Dados sinteticos removidos.
