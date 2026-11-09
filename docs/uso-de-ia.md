@@ -1441,7 +1441,7 @@ Gerou verificações de unicidade, exportações, gráfico programado e auditori
 Executou PostgreSQL real; a coleta foi interrompida pelo responsável.
 Não houve gráfico final nem comparação completa entre workers.
 Pedro realizou revisão humana, codificação e refatoração do código gerado.
-Evidência: [protocolo e estado real B1](../evidencias/PI4-30/benchmark-fila/README.md).
+Evidência: [protocolo e estado real do benchmark da fila](../evidencias/PI4-30/benchmark-fila/README.md).
 
 ### 30.6: benchmark de recomendação em lote
 
@@ -1524,7 +1524,7 @@ Documento: [matriz de aceitação](matriz-aceitacao-u2.md).
 ### 30.7: relatório de desempenho e declaração da sprint
 
 O Codex gerou relatório, gráficos documentais e esta declaração ampliada.
-Consolidou exclusivamente evidências salvas, preservando a interrupção do B1.
+Consolidou exclusivamente evidências salvas, preservando a interrupção do benchmark da fila.
 Gerou conferência automática de tabelas, fontes, links e entradas.
 A participação humana foi confirmada diretamente pelo responsável neste chat.
 Documentos: [desempenho U2](relatorio-desempenho-u2.md) e esta declaração.
@@ -1702,3 +1702,9 @@ O Codex consolidou arquitetura, execução e deploy no README.
 Conferiu os registros da sprint, preservando somente atribuições informadas.
 Testou as instruções numa cópia limpa, sem alterar código.
 Evidências: [PI4-34.5](../evidencias/PI4-34/34.5/README.md).
+
+Atualização documental em 09/11/2026: o Codex conferiu as entregas registradas.
+Atualizou o cronograma e o status por disciplina em `CLAUDE.md`.
+Alinhou os documentos da sprint à referência de paralelismo vigente.
+Preservou as pendências de CI, deploy, smoke e apresentação.
+Configurou `CLAUDE.md` como arquivo local, excluído do versionamento.
