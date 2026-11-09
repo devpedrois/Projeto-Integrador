@@ -1,0 +1,1293 @@
+{
+  "subtarefa": "34.1",
+  "data": "2026-11-09",
+  "base": "c9d0eb20134af22bd11cf9e29f55f83c054bdfc7",
+  "resultado": "aprovado",
+  "cenarios": 39,
+  "historias": 18,
+  "por_prioridade": {
+    "Must": 27,
+    "Should": 10,
+    "Could": 2
+  },
+  "por_historia": {
+    "US01": 4,
+    "US02": 3,
+    "US03": 2,
+    "US04": 3,
+    "US05": 3,
+    "US06": 2,
+    "US08": 3,
+    "US09": 1,
+    "US10": 2,
+    "US11": 3,
+    "US12": 3,
+    "US13": 1,
+    "US14": 1,
+    "US20": 2,
+    "US15": 2,
+    "US17": 2,
+    "US16": 1,
+    "US18": 1
+  },
+  "aceites_aprovados": 39,
+  "comprovacao_integral_preservada": 38,
+  "aceite_declarado_sem_evidencia_visual": ["US08.C3"],
+  "referencias_testes_rg": 84,
+  "testes": [
+    {
+      "cenario": "US01.C1",
+      "arquivo": "backend/tests/integration/auth.routes.integration.test.ts",
+      "nome": "normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C1",
+      "arquivo": "backend/tests/integration/auth.routes.integration.test.ts",
+      "nome": "cria perfil de artesao incompleto e inicia sessao de artesao",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C1",
+      "arquivo": "frontend/tests/components/cadastro-form.test.tsx",
+      "nome": "cadastro valido de comprador hidrata sessao e redireciona para vitrine",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C1",
+      "arquivo": "frontend/tests/components/cadastro-form.test.tsx",
+      "nome": "cadastro valido de artesao hidrata sessao e redireciona para painel-artesao",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C1",
+      "arquivo": "frontend/e2e/fluxos.spec.ts",
+      "nome": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C1",
+      "arquivo": "frontend/e2e/fluxos.spec.ts",
+      "nome": "(b) artesao envia e comprador acompanha Enviado",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C2",
+      "arquivo": "backend/tests/integration/auth.routes.integration.test.ts",
+      "nome": "retorna 409 para email em uso com caixa e espacos distintos",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C2",
+      "arquivo": "frontend/tests/components/cadastro-form.test.tsx",
+      "nome": "email ja cadastrado associa a mensagem ao campo email",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C3",
+      "arquivo": "frontend/tests/components/cadastro-form.test.tsx",
+      "nome": "senha curta bloqueia envio e mostra erro no campo",
+      "rg": true
+    },
+    {
+      "cenario": "US01.C4",
+      "arquivo": "backend/tests/integration/authorization.routes.integration.test.ts",
+      "nome": "PATCH /admin/usuarios/:id/papel como $papel retorna $adminStatus",
+      "rg": true
+    },
+    {
+      "cenario": "US02.C1",
+      "arquivo": "frontend/tests/components/login-form.test.tsx",
+      "nome": "login valido chama o service, cria a sessao e redireciona",
+      "rg": true
+    },
+    {
+      "cenario": "US02.C1",
+      "arquivo": "backend/tests/integration/auth.routes.integration.test.ts",
+      "nome": "retorna somente usuario publico e encerra sessao no logout",
+      "rg": true
+    },
+    {
+      "cenario": "US02.C2",
+      "arquivo": "backend/tests/integration/auth.routes.integration.test.ts",
+      "nome": "retorna status e corpo byte a byte iguais nos tres logins invalidos",
+      "rg": true
+    },
+    {
+      "cenario": "US02.C2",
+      "arquivo": "frontend/tests/components/login-form.test.tsx",
+      "nome": "credenciais invalidas mostram mensagem generica sem apontar o campo",
+      "rg": true
+    },
+    {
+      "cenario": "US02.C3",
+      "arquivo": "backend/tests/integration/auth.routes.integration.test.ts",
+      "nome": "retorna somente usuario publico e encerra sessao no logout",
+      "rg": true
+    },
+    {
+      "cenario": "US02.C3",
+      "arquivo": "frontend/tests/app/minha-conta.test.tsx",
+      "nome": "sair encerra a sessao e volta para a vitrine",
+      "rg": true
+    },
+    {
+      "cenario": "US03.C1",
+      "arquivo": "backend/tests/integration/perfil-artesao.routes.integration.test.ts",
+      "nome": "salva o proprio perfil normalizando UUID e recalculando completo",
+      "rg": true
+    },
+    {
+      "cenario": "US03.C1",
+      "arquivo": "frontend/tests/components/perfil-artesao-form.test.tsx",
+      "nome": "cenario US03 - perfil completo: preenche historia, tecnica e regiao e confirma sucesso",
+      "rg": true
+    },
+    {
+      "cenario": "US03.C2",
+      "arquivo": "backend/tests/integration/perfil-artesao.routes.integration.test.ts",
+      "nome": "limpa referencias e recalcula pendencias sem aceitar completo do cliente",
+      "rg": true
+    },
+    {
+      "cenario": "US03.C2",
+      "arquivo": "frontend/tests/components/perfil-artesao-form.test.tsx",
+      "nome": "cenario US03 - perfil incompleto: deixar tecnica em branco bloqueia envio e mostra erro no campo",
+      "rg": true
+    },
+    {
+      "cenario": "US04.C1",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "cria pelo token, valida referencias e rejeita identidade externa",
+      "rg": true
+    },
+    {
+      "cenario": "US04.C1",
+      "arquivo": "frontend/tests/components/produto-form.test.tsx",
+      "nome": "produto valido chama o service vinculado ao artesao da sessao e mostra confirmacao",
+      "rg": true
+    },
+    {
+      "cenario": "US04.C2",
+      "arquivo": "frontend/tests/components/produto-form.test.tsx",
+      "nome": "campos ausentes bloqueiam criacao e mostram erros por campo",
+      "rg": true
+    },
+    {
+      "cenario": "US04.C3",
+      "arquivo": "backend/tests/integration/catalogo.routes.integration.test.ts",
+      "nome": "reflete moderacao e estoque imediatamente nas leituras",
+      "rg": true
+    },
+    {
+      "cenario": "US04.C3",
+      "arquivo": "frontend/tests/services/produtos.service.test.ts",
+      "nome": "oculta da vitrine produto com estoque zerado",
+      "rg": true
+    },
+    {
+      "cenario": "US05.C1",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "matriz de propriedade %s",
+      "rg": true
+    },
+    {
+      "cenario": "US05.C1",
+      "arquivo": "frontend/tests/components/meus-produtos-list.test.tsx",
+      "nome": "editar produto chama service.update com o artesaoId da sessao e atualiza a lista",
+      "rg": true
+    },
+    {
+      "cenario": "US05.C1",
+      "arquivo": "frontend/tests/services/produtos.service.test.ts",
+      "nome": "atualiza os campos e preserva o artesaoId original",
+      "rg": true
+    },
+    {
+      "cenario": "US05.C2",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "matriz de propriedade %s",
+      "rg": true
+    },
+    {
+      "cenario": "US05.C3",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "soft delete preserva itens de pedidos anteriores",
+      "rg": true
+    },
+    {
+      "cenario": "US06.C1",
+      "arquivo": "backend/tests/integration/catalogo.routes.integration.test.ts",
+      "nome": "reflete moderacao e estoque imediatamente nas leituras",
+      "rg": true
+    },
+    {
+      "cenario": "US06.C1",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "matriz de propriedade %s",
+      "rg": true
+    },
+    {
+      "cenario": "US06.C2",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "rejeita estoque invalido %j",
+      "rg": true
+    },
+    {
+      "cenario": "US06.C2",
+      "arquivo": "backend/tests/integration/checkout.web09.integration.test.ts",
+      "nome": "preserva concorrencia entre compradores, rodada %i",
+      "rg": true
+    },
+    {
+      "cenario": "US08.C1",
+      "arquivo": "backend/tests/integration/catalogo.routes.integration.test.ts",
+      "nome": "combina termo e todos os filtros sem vazar produtos ocultos",
+      "rg": true
+    },
+    {
+      "cenario": "US08.C2",
+      "arquivo": "frontend/tests/components/resultado-busca.test.tsx",
+      "nome": "mostra estado vazio acessivel e distinto de erro quando a busca nao encontra produtos",
+      "rg": true
+    },
+    {
+      "cenario": "US08.C3",
+      "arquivo": "backend/tests/integration/busca-p95.integration.test.ts",
+      "nome": "mede seis cenarios sem cache e salva CSV e planos reais",
+      "rg": true
+    },
+    {
+      "cenario": "US09.C1",
+      "arquivo": "backend/tests/integration/perfil-artesao.routes.integration.test.ts",
+      "nome": "publica somente campos publicos e reaproveita produtos por artesao",
+      "rg": true
+    },
+    {
+      "cenario": "US09.C1",
+      "arquivo": "frontend/tests/components/artesao/perfil-artesao-publico.test.tsx",
+      "nome": "exibe historia, tecnica, regiao e grade de produtos ativos",
+      "rg": true
+    },
+    {
+      "cenario": "US10.C1",
+      "arquivo": "frontend/tests/services/http/recomendacoes.adapter.test.ts",
+      "nome": "preserva ranking e fallback sem executar ranking local",
+      "rg": true
+    },
+    {
+      "cenario": "US10.C1",
+      "arquivo": "frontend/tests/components/produto/detalhe-produto.test.tsx",
+      "nome": "usa o produtoId da pagina como contexto das recomendacoes",
+      "rg": true
+    },
+    {
+      "cenario": "US10.C1",
+      "arquivo": "frontend/tests/components/produto/detalhe-produto.test.tsx",
+      "nome": "mostra Pecas relacionadas com link e acao do ProdutoCard",
+      "rg": true
+    },
+    {
+      "cenario": "US10.C2",
+      "arquivo": "backend/tests/integration/recomendacao-fallback.strategy.integration.test.ts",
+      "nome": "aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria",
+      "rg": true
+    },
+    {
+      "cenario": "US10.C2",
+      "arquivo": "backend/tests/integration/recomendacao-fallback-local.integration.test.ts",
+      "nome": "retorna oito itens em cinco falhas e recupera na proxima chamada sem cache",
+      "rg": true
+    },
+    {
+      "cenario": "US10.C2",
+      "arquivo": "backend/tests/integration/recomendacao-fallback-local.integration.test.ts",
+      "nome": "degrada com motivo seguro: %s",
+      "rg": true
+    },
+    {
+      "cenario": "US10.C2",
+      "arquivo": "backend/tests/integration/recomendacao-fallback-local.integration.test.ts",
+      "nome": "completa selecao parcial preservando ordem, visibilidade e exclusoes sem cache",
+      "rg": true
+    },
+    {
+      "cenario": "US10.C2",
+      "arquivo": "frontend/tests/services/http/recomendacoes.adapter.test.ts",
+      "nome": "preserva ranking e fallback sem executar ranking local",
+      "rg": true
+    },
+    {
+      "cenario": "US11.C1",
+      "arquivo": "backend/tests/integration/carrinho.routes.integration.test.ts",
+      "nome": "POST soma, grava preco do banco e persiste entre sessoes",
+      "rg": true
+    },
+    {
+      "cenario": "US11.C2",
+      "arquivo": "backend/tests/integration/carrinho.routes.integration.test.ts",
+      "nome": "409 inclui produto e nome sem alterar quantidade ou preco",
+      "rg": true
+    },
+    {
+      "cenario": "US11.C2",
+      "arquivo": "frontend/tests/store/carrinho-http.store.test.ts",
+      "nome": "usa estoque atual do servidor e exibe nome no 409",
+      "rg": true
+    },
+    {
+      "cenario": "US11.C2",
+      "arquivo": "frontend/tests/components/produto-card.test.tsx",
+      "nome": "mostra erro de carrinho vinculado ao botao por aria-describedby",
+      "rg": true
+    },
+    {
+      "cenario": "US11.C3",
+      "arquivo": "backend/tests/integration/carrinho.routes.integration.test.ts",
+      "nome": "DELETE remove somente da sessao atual e permite limpar ocultos",
+      "rg": true
+    },
+    {
+      "cenario": "US11.C3",
+      "arquivo": "frontend/tests/store/carrinho.store.test.ts",
+      "nome": "recalcula o total apos cada mudanca",
+      "rg": true
+    },
+    {
+      "cenario": "US12.C1",
+      "arquivo": "frontend/e2e/fluxos.spec.ts",
+      "nome": "(a) cadastro autenticado ate Meus pedidos sem login separado",
+      "rg": true
+    },
+    {
+      "cenario": "US12.C1",
+      "arquivo": "frontend/tests/components/checkout-http.test.tsx",
+      "nome": "confirma por HTTP, mostra numero real e limpa estado sem DELETE posterior",
+      "rg": true
+    },
+    {
+      "cenario": "US12.C2",
+      "arquivo": "backend/tests/integration/pagamento.us20.integration.test.ts",
+      "nome": "US20 - cenário 1: estoque insuficiente retorna 409 sem pedido ou pagamento",
+      "rg": true
+    },
+    {
+      "cenario": "US12.C2",
+      "arquivo": "frontend/tests/components/checkout-http.test.tsx",
+      "nome": "409 identifica o item e preserva carrinho para tentar novamente",
+      "rg": true
+    },
+    {
+      "cenario": "US12.C3",
+      "arquivo": "backend/tests/integration/checkout.web09.integration.test.ts",
+      "nome": "preserva concorrencia entre compradores, rodada %i",
+      "rg": true
+    },
+    {
+      "cenario": "US13.C1",
+      "arquivo": "backend/tests/integration/meus-pedidos.web11.integration.test.ts",
+      "nome": "lista somente os pedidos do token, em data decrescente e com pagamento",
+      "rg": true
+    },
+    {
+      "cenario": "US13.C1",
+      "arquivo": "frontend/tests/components/meus-pedidos.test.tsx",
+      "nome": "diferencia pedido pendente e cancelado e pagamento recusado",
+      "rg": true
+    },
+    {
+      "cenario": "US14.C1",
+      "arquivo": "backend/tests/integration/pedidos-artesao.web1.integration.test.ts",
+      "nome": "isola o payload inteiro e soma somente os proprios itens",
+      "rg": true
+    },
+    {
+      "cenario": "US14.C1",
+      "arquivo": "frontend/e2e/fluxos.spec.ts",
+      "nome": "(b) artesao envia e comprador acompanha Enviado",
+      "rg": true
+    },
+    {
+      "cenario": "US20.C1",
+      "arquivo": "backend/tests/integration/pagamento.us20.integration.test.ts",
+      "nome": "US20 - cenários 1 e 2: registra pagamento único e exibe o status no detalhe",
+      "rg": true
+    },
+    {
+      "cenario": "US20.C2",
+      "arquivo": "backend/tests/integration/pagamento.us20.integration.test.ts",
+      "nome": "US20 - cenários 1 e 2: registra pagamento único e exibe o status no detalhe",
+      "rg": true
+    },
+    {
+      "cenario": "US20.C2",
+      "arquivo": "frontend/tests/components/meus-pedidos.test.tsx",
+      "nome": "mostra lista, detalhe, itens e pagamento",
+      "rg": true
+    },
+    {
+      "cenario": "US15.C1",
+      "arquivo": "backend/tests/integration/avaliacoes.web4.integration.test.ts",
+      "nome": "permite somente ao comprador com pedido confirmado e depois informa ja avaliado",
+      "rg": true
+    },
+    {
+      "cenario": "US15.C1",
+      "arquivo": "frontend/tests/components/avaliacao-pedido.web3.test.tsx",
+      "nome": "mostra um formulario por item e impede envio sem nota",
+      "rg": true
+    },
+    {
+      "cenario": "US15.C2",
+      "arquivo": "backend/tests/integration/avaliacoes.web4.integration.test.ts",
+      "nome": "nao comprou recebe 403 estavel, sem gravacao ou invalidacao de cache",
+      "rg": true
+    },
+    {
+      "cenario": "US15.C2",
+      "arquivo": "frontend/tests/components/avaliacao-pedido.web3.test.tsx",
+      "nome": "Web.4 nao mostra botao nem formulario quando a API informa que nao comprou",
+      "rg": true
+    },
+    {
+      "cenario": "US17.C1",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "modera artesao reversivelmente e invalida login e sessao",
+      "rg": true
+    },
+    {
+      "cenario": "US17.C1",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "moderacao preserva soft delete e dono nao reativa produto moderado",
+      "rg": true
+    },
+    {
+      "cenario": "US17.C1",
+      "arquivo": "frontend/tests/components/admin/painel-moderacao.test.tsx",
+      "nome": "desativa artesao apos confirmar e mostra sucesso",
+      "rg": true
+    },
+    {
+      "cenario": "US17.C2",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "modera artesao reversivelmente e invalida login e sessao",
+      "rg": true
+    },
+    {
+      "cenario": "US17.C2",
+      "arquivo": "backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "nome": "moderacao preserva soft delete e dono nao reativa produto moderado",
+      "rg": true
+    },
+    {
+      "cenario": "US17.C2",
+      "arquivo": "frontend/tests/components/admin/painel-moderacao.test.tsx",
+      "nome": "reativa produto apos confirmar",
+      "rg": true
+    },
+    {
+      "cenario": "US16.C1",
+      "arquivo": "backend/tests/integration/avaliacoes.web3.integration.test.ts",
+      "nome": "grava identidade do token, normaliza comentario e recalcula media na leitura",
+      "rg": true
+    },
+    {
+      "cenario": "US16.C1",
+      "arquivo": "backend/tests/integration/avaliacoes-media.32-3.integration.test.ts",
+      "nome": "confere $calculoManual",
+      "rg": true
+    },
+    {
+      "cenario": "US16.C1",
+      "arquivo": "backend/tests/integration/avaliacoes-paginadas.32-2.integration.test.ts",
+      "nome": "entrega 10/10/10/5 com resumo global e ordem estavel",
+      "rg": true
+    },
+    {
+      "cenario": "US16.C1",
+      "arquivo": "backend/tests/integration/avaliacoes-paginadas.32-2.integration.test.ts",
+      "nome": "aceita limite 50 e pagina vazia preserva resumo global",
+      "rg": true
+    },
+    {
+      "cenario": "US16.C1",
+      "arquivo": "frontend/tests/components/produto/avaliacoes-paginadas.test.tsx",
+      "nome": "navega por quatro paginas e volta mantendo media e total",
+      "rg": true
+    },
+    {
+      "cenario": "US16.C1",
+      "arquivo": "frontend/e2e/produto-avaliacoes.spec.ts",
+      "nome": "32.2 produto demo mostra quatro paginas de avaliacoes reais",
+      "rg": true
+    },
+    {
+      "cenario": "US18.C1",
+      "arquivo": "backend/tests/integration/indicadores-admin.route.integration.test.ts",
+      "nome": "retorna os valores de 33.3 com Decimal de duas casas e ISO",
+      "rg": true
+    },
+    {
+      "cenario": "US18.C1",
+      "arquivo": "frontend/tests/app/admin-indicadores.test.tsx",
+      "nome": "mostra quatro indicadores e data atualizada com formatacao pt-BR",
+      "rg": true
+    },
+    {
+      "cenario": "US18.C1",
+      "arquivo": "frontend/e2e/admin-indicadores.spec.ts",
+      "nome": "32.1 indicadores reais: dez recargas e tres larguras",
+      "rg": true
+    }
+  ],
+  "links_locais": 139,
+  "links": [
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-3/a7a3261839664b3080cefa119bf039b9/resultado.json",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/rodada-3/a7a3261839664b3080cefa119bf039b9/html/index.html",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/US01.C1/README.md",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-34/34.1/README.md",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright-final.txt",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-32-W14-Painel-Admin/32.1-indicadores-admin/20261104-validacao/README.md#desempenho-e-responsividade",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-32-W14-Painel-Admin/32.2-avaliacoes-paginadas/20261104-validacao/playwright.txt",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-36/36.1-fallback-local/README.md#evidência-visual-e-http",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/auth.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/cadastro-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/e2e/fluxos.spec.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/auth.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/cadastro-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/cadastro-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/authorization.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/login-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/auth.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/auth.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/login-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/auth.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/app/minha-conta.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/perfil-artesao.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/perfil-artesao-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/perfil-artesao.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/perfil-artesao-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/produto-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/produto-form.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/services/produtos.service.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/meus-produtos-list.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/services/produtos.service.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/checkout.web09.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/resultado-busca.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/busca-p95.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/perfil-artesao.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/artesao/perfil-artesao-publico.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/services/http/recomendacoes.adapter.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/produto/detalhe-produto.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/produto/detalhe-produto.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/recomendacao-fallback.strategy.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/recomendacao-fallback-local.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/services/http/recomendacoes.adapter.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-36/36.1-fallback-local/README.md#evidência-visual-e-http",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/carrinho.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/carrinho.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/store/carrinho-http.store.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/produto-card.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/carrinho.routes.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/store/carrinho.store.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/e2e/fluxos.spec.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/checkout-http.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/pagamento.us20.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/checkout-http.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/checkout.web09.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/meus-pedidos.web11.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/meus-pedidos.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/pedidos-artesao.web1.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/e2e/fluxos.spec.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/pagamento.us20.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/pagamento.us20.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/meus-pedidos.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/avaliacoes.web4.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/avaliacao-pedido.web3.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/avaliacoes.web4.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/avaliacao-pedido.web3.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/admin/painel-moderacao.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/catalogo-moderacao.web12.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/admin/painel-moderacao.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/avaliacoes.web3.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/avaliacoes-media.32-3.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/avaliacoes-paginadas.32-2.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/components/produto/avaliacoes-paginadas.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/e2e/produto-avaliacoes.spec.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/indicadores-admin.route.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/tests/app/admin-indicadores.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../frontend/e2e/admin-indicadores.spec.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-BD-W12-Indices-Consultas/BD.2-busca-p95/04-benchmark-volume-final/resultado.json",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "docs%20auxiliares/CONCURRENCY.md#limites-documentados",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../backend/tests/integration/avaliacoes-media.32-3.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-34/34.1/README.md",
+      "existe": true
+    },
+    {
+      "documento": "docs/matriz-aceitacao-u2.md",
+      "destino": "../evidencias/PI4-31/31.4/README.md",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-31/31.5/README.md",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/src/queues/bootstrap.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/src/server.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/src/worker.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/tests/unit/server.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/tests/integration/server-queue-bootstrap.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/tests/unit/worker.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/tests/integration/worker-process.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/src/services/fake/container.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/src/components/vitrine/FaixaRecomendacoes.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/src/components/produto/DetalheProduto.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/src/hooks/use-recomendacoes.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/tests/services/fake-recommendation.adapter.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/tests/hooks/use-recomendacoes.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/tests/components/faixa-recomendacoes.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/tests/services/http/recomendacoes.adapter.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../frontend/tests/components/produto/detalhe-produto.test.tsx",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-31/31.5/01-antes-composicao-validado.txt",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-31/31.5/02-depois-composicao.txt",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/src/integrations/recommendation/http-recomendacao.client.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../services/recomendacao/src/repositories/recomendacao.repository.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-35/35.1/testes-backend.json",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/06-backend-tests.txt",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/tests/integration/recomendacoes-contrato.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../services/recomendacao/tests/integration/recomendacao.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../backend/tests/integration/http-recomendacao.integration.test.ts",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-35/35.1/testes-microsservico-final.json",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/09-validacoes-observadas.json",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../fixtures/recomendacao-selecao.fixture.json",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-34/34.1/README.md",
+      "existe": true
+    },
+    {
+      "documento": "docs/refatoracoes-u2.md",
+      "destino": "../evidencias/PI4-35/35.8-custo-http/README.md",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "../../../docs/matriz-aceitacao-u2.md",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "../../../docs/refatoracoes-u2.md#3-extração-da-recomendação-para-microsserviço",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-validacao.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-validacao.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-validacao.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-validacao.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-validacao.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-validacao.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-complementar.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-complementar.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend-complementar.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "frontend.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "frontend.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "frontend.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "frontend.txt",
+      "existe": true
+    },
+    {
+      "documento": "evidencias/PI4-34/34.1/README.md",
+      "destino": "backend.txt",
+      "existe": true
+    }
+  ],
+  "commits_verificados": [
+    "5771ac33c95fe0231bd3ee0c9a4459586029bc83",
+    "8e17cab51648374cade5501d78de8d8efa7cd029",
+    "f5fc6d1697689eaf108db289ceaff756b08da2ad",
+    "747b528cb80c08dc1a99c7803e54681c8bb6f70f",
+    "619a815a428b883f8724f537168d664608241598",
+    "b4b718d1fe07cc5579d51177a51b7ec3944b89a6"
+  ],
+  "codigo_congelado_sem_alteracoes": true,
+  "validacao_inicial": {
+    "cenarios": 37,
+    "ausentes": ["US16.C1", "US18.C1"],
+    "titulo_obsoleto": "US12.C1"
+  },
+  "reexecucoes": {
+    "backend": {
+      "aprovados": 119,
+      "arquivos": 9,
+      "rodadas": [
+        {
+          "log": "backend-validacao.txt",
+          "aprovados": 85,
+          "contrato_nao_executado_por_timeout": 11
+        },
+        {
+          "log": "backend-complementar.txt",
+          "aprovados": 34,
+          "reteste_contrato_aprovado": 11
+        }
+      ]
+    },
+    "frontend": {
+      "log": "frontend.txt",
+      "aprovados": 56,
+      "arquivos": 4
+    },
+    "ci_remoto": false,
+    "playwright_novo": false
+  },
+  "seguranca_documental": {
+    "arquivos_verificados": [
+      "diff-documental",
+      "backend-complementar.txt",
+      "backend-validacao.txt",
+      "backend.txt",
+      "frontend.txt",
+      "README.md"
+    ],
+    "ocorrencias": [],
+    "revisao": "local, sem delegacao; nenhuma feature implementada"
+  },
+  "erros": []
+}

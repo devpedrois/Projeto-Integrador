@@ -4,12 +4,13 @@ Subtarefa 31.5 · 26/10/2026.
 Responsável: Luiza. Revisor indicado: Pedro.
 Base documental: `d489b0b`.
 
-Foram selecionadas duas mudanças estruturais verificáveis no Git.
-Ambas ocorreram em commits que também acrescentaram funcionalidades.
+Consolidação 34.1: 09/11/2026, base congelada `c9d0eb2`.
+Foram selecionadas três mudanças estruturais verificáveis no Git.
+Elas ocorreram em commits que também acrescentaram funcionalidades.
 Os efeitos funcionais estão identificados separadamente abaixo.
 Esta entrega não realiza novas refatorações.
 
-## Evidência e situação do CI
+## Evidência histórica de CI da 31.5
 
 Os hashes completos abaixo existem no histórico local.
 Os arquivos de teste também existem na base consultada.
@@ -23,7 +24,7 @@ As execuções remotas foram consultadas em 26/10/2026.
 
 O run recente não comprova regressão dos testes backend.
 Ele também não comprova que estejam verdes nessa revisão.
-O aceite de CI atual permanece pendente.
+O aceite de CI estava pendente naquela consulta histórica.
 O verde backend documentado pertence expressamente a `376c5f9`.
 
 A falha recente está em `backend/scripts/web6-evidencias.ts`.
@@ -86,7 +87,7 @@ O modo integrado permanece disponível e precisa de decisão operacional.
 O teste usa encaminhamento IPC dos sinais no Windows.
 Em Unix, usa sinais nativos contra os processos filhos.
 A fila mantém retries e efeito idempotente, sem execução única garantida.
-O CI recente ainda impede nova validação remota backend.
+Naquela consulta, o CI impedia nova validação remota backend.
 
 ## 2. Composição da recomendação e reaproveitamento da faixa
 
@@ -163,6 +164,101 @@ Eles comprovam contrato e seleção, sem comprovar deploy ou transporte externo.
 Os resultados fake e HTTP não são universalmente idênticos.
 A paridade demonstrada está limitada à fixture contratual compartilhada.
 
+## 3. Extração da recomendação para microsserviço
+
+Commit 01, subtarefa 35.1:
+[5771ac33c95fe0231bd3ee0c9a4459586029bc83](https://github.com/devpedrois/Projeto-Integrador/commit/5771ac33c95fe0231bd3ee0c9a4459586029bc83).
+Commit 04, subtarefa 35.2:
+[8e17cab51648374cade5501d78de8d8efa7cd029](https://github.com/devpedrois/Projeto-Integrador/commit/8e17cab51648374cade5501d78de8d8efa7cd029).
+Ambos foram implementados em 04/11/2026.
+
+### Problema concreto e princípios aplicados
+
+O módulo de recomendação executava acoplado à API.
+Compartilhava processo, inicialização e publicação com o servidor HTTP.
+Não havia isolamento de falha nem deploy independente.
+Alterar ou publicar o ranking exigia publicar a API.
+
+A extração aplica SRP aos processos e dados privados.
+O microsserviço assume seleção, ranking e suas próprias migrations.
+A API conserva autenticação pública e hidratação de produtos.
+O contrato interno devolve estratégia e IDs ordenados.
+A Strategy permanece intercambiável pela mesma interface de seleção.
+O cliente HTTP implementa esse contrato na composição da API.
+
+O processo separado permite deploy independente e contém falhas.
+O timeout limita a espera pelo serviço indisponível.
+Na 35.2, falhas ainda geravam resposta pública 503 controlada.
+A continuidade visual chegou depois, pelo fallback da 36.1.
+Esse fallback não é atribuído aos commits 01/04.
+
+### Diff resumido
+
+| Antes                                                              | Depois nos commits 01 e 04                                                                                                                                |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `app.ts` compunha Strategies e repository Prisma no processo HTTP. | 01 cria `services/recomendacao/`; 04 compõe [HttpRecomendacaoClient](../backend/src/integrations/recommendation/http-recomendacao.client.ts) na API.      |
+| A recomendação consultava diretamente tabelas da API.              | 01 cria views de contrato; [PgRecomendacaoRepository](../services/recomendacao/src/repositories/recomendacao.repository.ts) consulta somente essas views. |
+| Não existiam processo, schema privado ou migration próprios.       | 01 acrescenta servidor, configuração, token interno, bootstrap de permissões, migration privada e job de CI.                                              |
+| Ranking por categoria e histórico permanecia no backend.           | 01 reproduz as Strategies no microsserviço; 04 remove algoritmos, repository e métricas duplicados do backend.                                            |
+| O service recebia diretamente a seleção calculada localmente.      | 04 recebe seleção HTTP validada; catálogo hidrata os IDs, preservando o DTO público.                                                                      |
+| Métricas e benchmark importavam algoritmos locais.                 | 04 usa um helper para carregar a implementação única. A mudança posterior do lote pertence à 35.6.                                                        |
+| Não existia uma fronteira de rede entre API e ranking.             | 04 acrescenta token de serviço, timeout padrão de 800 ms e erros tipados, sem retry.                                                                      |
+
+O commit 01 manteve temporariamente a implementação original ativa.
+Isso permitiu comparar ambos os algoritmos antes da troca.
+O commit 04 completou a troca e removeu duplicações.
+Processo HTTP interno, permissões e operação independente ampliaram capacidades.
+
+### Testes verdes antes e depois
+
+O ponto anterior é a API ainda executando in-process.
+Seu código produtivo permaneceu intacto no commit 01.
+O [JSON backend da 35.1](../evidencias/PI4-35/35.1/testes-backend.json)
+registra 763/763 aprovados, incluindo os testes abaixo.
+O ponto posterior é a integração HTTP do commit 04.
+O [log backend da 35.2](../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/06-backend-tests.txt)
+registra 786/786 aprovados nos 72 arquivos selecionados.
+Essas execuções são locais, sem representar CI remoto.
+
+| Arquivo:nome exato                                                                                                                                                                                   | Antes da troca HTTP                                                      | Depois da troca HTTP                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| [backend/tests/integration/recomendacoes-contrato.integration.test.ts](../backend/tests/integration/recomendacoes-contrato.integration.test.ts): `preserva exatamente o ranking esperado da fixture` | Aprovado no JSON 35.1, Strategy original.                                | Aprovado na suíte 35.2, seleção HTTP.                       |
+| Mesmo arquivo: `Strategy retorna somente IDs ordenados e nome da estrategia`                                                                                                                         | Aprovado no JSON 35.1.                                                   | Aprovado na suíte 35.2, com a mesma expectativa.            |
+| [services/recomendacao/tests/integration/recomendacao.test.ts](../services/recomendacao/tests/integration/recomendacao.test.ts): comparação com o original                                           | Em 01: `reproduz IDs e ordem da fixture interna e do backend`, aprovado. | Em 04: `reproduz IDs e ordem da fixture interna`, aprovado. |
+| [backend/tests/integration/http-recomendacao.integration.test.ts](../backend/tests/integration/http-recomendacao.integration.test.ts): `preserva IDs e ordem calculados pelo microsservico: %s`      | Teste inexistente antes de 04.                                           | Dois casos aprovados: rota pública e pessoal.               |
+
+A [suíte do microsserviço em 01](../evidencias/PI4-35/35.1/testes-microsservico-final.json)
+registra 54/54 aprovações, incluindo a comparação direta.
+A [validação posterior da 35.2](../evidencias/PI4-35-W14-Microsservico-Docker/35.2-cliente-http/09-validacoes-observadas.json)
+registra 58/58 no microsserviço e quatro E2E aprovados.
+
+O título histórico foi conferido no fonte do commit 01.
+Em 04, a referência ao algoritmo removido foi retirada.
+A expectativa preserva a [fixture de seleção](../fixtures/recomendacao-selecao.fixture.json).
+São oito IDs, comparados como array completo por `toEqual`.
+Essa igualdade verifica os mesmos IDs na mesma ordem.
+O teste de contrato também compara o array esperado.
+O teste HTTP compara a API com a seleção interna.
+Ele cobre `/recomendacoes` e `/recomendacoes/para-mim`.
+As comparações verificam conteúdo e ordenação integralmente.
+
+A [reexecução da 34.1](../evidencias/PI4-34/34.1/README.md)
+registra separadamente a validação da base congelada `c9d0eb2`.
+Ela não foi atribuída retroativamente aos commits originais.
+As integrações usam PostgreSQL real, sem mocks de repositories.
+
+### Dívida e limites
+
+Separar processos introduz rede, serialização e nova dependência operacional.
+O servidor PostgreSQL continua compartilhado pelos serviços.
+O isolamento usa papéis, views contratuais e schema privado.
+Não equivale a bancos físicos ou disponibilidade PostgreSQL independentes.
+Os resultados comprovam paridade nas fixtures e contextos exercitados.
+Não demonstram disponibilidade universal nem menor latência individual.
+O [benchmark posterior da 35.8](../evidencias/PI4-35/35.8-custo-http/README.md)
+registrou aumento de latência na configuração distribuída medida.
+Esse resultado posterior não integra a prova original de extração.
+
 ## Candidato inspecionado e excluído: agregação no repository
 
 Commit 06: [8daa70b32c6661dd2d28264b025518b601d863ef](https://github.com/devpedrois/Projeto-Integrador/commit/8daa70b32c6661dd2d28264b025518b601d863ef).
@@ -172,11 +268,20 @@ Não existe uma implementação anterior dessa consulta sendo extraída.
 Por isso, não foi contabilizada como terceira refatoração.
 Também não se atribui ganho medido de desempenho à extração inexistente.
 
-## Limites desta entrega
+## Limites históricos da entrega 31.5
 
 Foram alterados somente documentos e sua inclusão no Git.
 Nenhuma implementação, configuração de CI ou dependência foi modificada.
 Não houve nova execução de testes backend ou acesso ao PostgreSQL.
 As provas backend são os resultados remotos identificados acima.
 Não houve commit, push, deploy ou aprovação humana presumida.
-O aceite de CI atual depende de resolver a falha registrada.
+Naquela consulta, o aceite dependia de resolver a falha registrada.
+
+## Limites da consolidação 34.1
+
+Foram atualizados somente documentos e evidências textuais.
+Os testes existentes foram reexecutados sem alterar código.
+Resultados atuais e históricos possuem referências distintas.
+US08.C3 permanece identificada como aceite declarado pelo responsável.
+Sua evidência visual excluída não foi reconstruída ou inventada.
+Não houve commit, push, deploy ou nova refatoração.

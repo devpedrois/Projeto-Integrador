@@ -1744,3 +1744,11 @@ Otimizou a autenticação da rota, mantendo revalidação no PostgreSQL.
 Mediu dez pares reais, separando CacheHttp e HTTP completo.
 Atualizou o documento de cache e o contrato OpenAPI.
 Evidências: [PI4-32.4](../evidencias/PI4-32/32.4-cache-indicadores/README.md).
+
+### 34.1: matriz final de aceitação da U2
+
+O Codex consolidou cenários e conferiu testes no histórico.
+Recalculou totais e documentou a extração do microsserviço.
+Reexecutou testes existentes, preservando o código congelado.
+Registrou US08.C3 por confirmação, com evidência visual excluída.
+Evidências: [PI4-34.1](../evidencias/PI4-34/34.1/README.md).

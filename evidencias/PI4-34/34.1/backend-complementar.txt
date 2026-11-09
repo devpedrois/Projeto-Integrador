@@ -1,0 +1,372 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:10836) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"recomendacao","requestId":"dcdf8945-6db4-4bc1-8410-536ddee63756","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":115.266}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"dcdf8945-6db4-4bc1-8410-536ddee63756","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":183.859}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":181.695}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"64356e06-52dc-4363-a33b-e89623f82eec","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":50.66}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.995}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"bed822e3-e209-44d4-b30f-c92a1d785208","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.553}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.258}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"4124c58f-d998-4ca6-9f04-403cbc9fcfcc","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.952}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.819}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"52687a48-c2ea-42e5-9ee7-4f164d0a38f0","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.617}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.461}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"48663bca-3f46-47bf-bb78-8cbdc41cf1f6","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.51}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.335}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"c20983df-90b0-4fda-a03e-74a8308b3da8","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.367}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.16}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"a747f0f4-d96b-4f62-8633-e8d0c6297696","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.684}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.547}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+{"servico":"api","requestId":"21cb48ce-09de-485b-acfd-cbe39cc07b3a","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.62}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.435}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo 627ms
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > preserva exatamente o ranking esperado da fixture
+{"servico":"api","requestId":"561dd256-87da-4b54-aa61-adc17fa35558","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":0.672}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.472}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > preserva exatamente o ranking esperado da fixture 5ms
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > Strategy retorna somente IDs ordenados e nome da estrategia
+{"servico":"recomendacao","requestId":"988b9296-4905-437f-85dc-f3e2d7367862","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":97.202}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em categoria
+{"servico":"api","requestId":"a28ead9a-1d1a-4509-b069-69eeeee590ff","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":0.851}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.657}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > Strategy retorna somente IDs ordenados e nome da estrategia 100ms
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em categoria 5ms
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em fallback-geral
+{"servico":"recomendacao","requestId":"3344a161-8f4e-4ce8-9ef0-2004cb19d80f","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":145.768}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em fallback-geral
+{"servico":"api","requestId":"3344a161-8f4e-4ce8-9ef0-2004cb19d80f","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":200.266}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":200.142}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em fallback-geral 204ms
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > fallback tambem retorna produtos completos
+{"servico":"recomendacao","requestId":"3873e5f5-719d-4a56-b526-571a2099b1d8","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":97.982}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > fallback tambem retorna produtos completos
+{"servico":"api","requestId":"3873e5f5-719d-4a56-b526-571a2099b1d8","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":152.317}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":152.138}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > fallback tambem retorna produtos completos
+{"servico":"recomendacao","requestId":"bee04acf-f1f5-41d1-abee-78701bcaffe3","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":48.811}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > fallback tambem retorna produtos completos
+{"servico":"api","requestId":"bee04acf-f1f5-41d1-abee-78701bcaffe3","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":99.918}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":99.745}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > fallback tambem retorna produtos completos 261ms
+(node:10836) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}}
+{"servico":"api","requestId":"ba6c311a-61bd-41f4-b77b-d8877e619555","metodo":"PATCH","rota":"/admin/produtos/:id/moderar","status":200,"duracaoMs":616.615}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}}
+{"servico":"recomendacao","requestId":"6c4e175f-3fca-4b33-8a42-67ac6223dd37","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":108.096}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}}
+{"servico":"api","requestId":"6c4e175f-3fca-4b33-8a42-67ac6223dd37","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":262.528}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":262.386}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}}
+{"servico":"api","requestId":"7d85a141-8a99-4734-b762-0b61820ad717","metodo":"PATCH","rota":"/admin/produtos/:id/moderar","status":200,"duracaoMs":586.87}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}}
+{"servico":"api","requestId":"abd0f902-a596-43d6-af29-5cecae86df8f","metodo":"PATCH","rota":"/produtos/:id","status":200,"duracaoMs":840.491}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}} 2322ms
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}}
+{"servico":"api","requestId":"18b21884-f179-4b98-a33d-a79435630d44","metodo":"PATCH","rota":"/produtos/:id","status":200,"duracaoMs":829.909}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}}
+{"servico":"recomendacao","requestId":"85537e01-ad5f-4b9b-b3c0-e9e50a7e362f","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":96.347}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}}
+{"servico":"api","requestId":"85537e01-ad5f-4b9b-b3c0-e9e50a7e362f","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":151.457}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":151.367}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}}
+{"servico":"api","requestId":"496c640b-6cef-4888-a590-24c7f640ebe6","metodo":"PATCH","rota":"/admin/produtos/:id/moderar","status":200,"duracaoMs":588.837}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}}
+{"servico":"api","requestId":"96b68c7f-001e-47ea-a942-5f7e40c067b7","metodo":"PATCH","rota":"/produtos/:id","status":200,"duracaoMs":836.307}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}} 2428ms
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}}
+{"servico":"api","requestId":"e9977dda-b056-4405-8e8f-d162e8859042","metodo":"PATCH","rota":"/produtos/:id/estoque","status":200,"duracaoMs":846.418}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}}
+{"servico":"recomendacao","requestId":"fa81dedc-ad30-476e-b8de-2c66a738f3bd","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":99.529}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}}
+{"servico":"api","requestId":"fa81dedc-ad30-476e-b8de-2c66a738f3bd","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":154.027}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":153.901}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}}
+{"servico":"api","requestId":"b514590e-2e20-4b24-86ac-d75cf0ee95fa","metodo":"PATCH","rota":"/admin/produtos/:id/moderar","status":200,"duracaoMs":592.873}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}}
+{"servico":"api","requestId":"813238be-329b-405c-96b0-a14ccfc35111","metodo":"PATCH","rota":"/produtos/:id","status":200,"duracaoMs":829.017}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}} 2446ms
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+{"servico":"api","requestId":"cf0ee24d-9a0e-4106-b83f-e5e811c3e8e5","metodo":"PATCH","rota":"/admin/artesaos/:id/moderar","status":200,"duracaoMs":298.663}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+{"servico":"recomendacao","requestId":"75c30443-f960-4f37-9736-0cdc3d223b1a","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":97.443}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+{"servico":"api","requestId":"75c30443-f960-4f37-9736-0cdc3d223b1a","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":201.257}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":201.117}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+{"servico":"api","requestId":"6cb8c45f-38ff-4a06-b19b-f18518b6485e","metodo":"PATCH","rota":"/admin/usuarios/:id/papel","status":200,"duracaoMs":149.847}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+{"servico":"api","requestId":"20684362-4c58-4cdb-a00d-a155c899828a","metodo":"PATCH","rota":"/admin/artesaos/:id/moderar","status":200,"duracaoMs":296.429}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false} 964ms
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+{"servico":"api","requestId":"0258302a-6583-4129-8a8a-031dbc8830cd","metodo":"PATCH","rota":"/admin/usuarios/:id/papel","status":200,"duracaoMs":155.56}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+{"servico":"recomendacao","requestId":"7e07dda6-5361-4d97-8fab-a56d629424c2","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":101.347}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+{"servico":"api","requestId":"7e07dda6-5361-4d97-8fab-a56d629424c2","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":203.6}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":203.398}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+{"servico":"api","requestId":"cafef7bd-f979-4c91-a3ad-947b161f939e","metodo":"PATCH","rota":"/admin/usuarios/:id/papel","status":200,"duracaoMs":150.04}
+
+stdout | tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+{"servico":"api","requestId":"91930771-38d8-4210-908a-bb4ac51b85e6","metodo":"PATCH","rota":"/admin/artesaos/:id/moderar","status":200,"duracaoMs":298.394}
+
+ ✓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"} 823ms
+(node:26608) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > grava identidade do token, normaliza comentario e recalcula media na leitura
+{"servico":"api","requestId":"bbc7cad9-7ff7-4b53-8064-ee8163e22526","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":256.914}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > grava identidade do token, normaliza comentario e recalcula media na leitura
+{"servico":"api","requestId":"b6530836-d0e6-4697-84b9-3a3b887ce587","metodo":"POST","rota":"/avaliacoes","status":201,"duracaoMs":281.049}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > grava identidade do token, normaliza comentario e recalcula media na leitura
+{"servico":"api","requestId":"4f355741-4fdd-42da-afce-c6111a5bfbe5","metodo":"POST","rota":"/avaliacoes","status":201,"duracaoMs":242.222}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > grava identidade do token, normaliza comentario e recalcula media na leitura
+{"servico":"api","requestId":"ec9b568d-2550-4b62-84fb-8d39fa83fef6","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":301.56}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > grava identidade do token, normaliza comentario e recalcula media na leitura 1162ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > retorna 409 na segunda avaliacao e preserva a primeira
+{"servico":"api","requestId":"b27f8f9a-cbde-4a46-baf8-20d115b7d811","metodo":"POST","rota":"/avaliacoes","status":409,"duracaoMs":246.965}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > retorna 409 na segunda avaliacao e preserva a primeira 303ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > unicidade resiste a duas tentativas concorrentes
+{"servico":"api","requestId":"3bf72f80-a24a-4be9-be0a-38b02e4801b9","metodo":"POST","rota":"/avaliacoes","status":201,"duracaoMs":250.281}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > unicidade resiste a duas tentativas concorrentes
+{"servico":"api","requestId":"98ba471a-a47b-4a3a-87b2-153271b0623f","metodo":"POST","rota":"/avaliacoes","status":409,"duracaoMs":576.628}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > unicidade resiste a duas tentativas concorrentes 1226ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":0} sem gravar
+{"servico":"api","requestId":"1dd4bb3a-e792-450b-942f-6bd4922046cc","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":50.563}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":0} sem gravar 167ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":6} sem gravar
+{"servico":"api","requestId":"94a8d1da-0443-4c0f-a7fb-0890960f6b7b","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":49.769}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":3.5} sem gravar
+{"servico":"api","requestId":"18231580-f8a4-4453-a4d1-b75c254a7d12","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":50.163}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":6} sem gravar 153ms
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":3.5} sem gravar 151ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":"5"} sem gravar
+{"servico":"api","requestId":"d6490bac-6f6c-4bd3-aeaf-00e3b1e0b1f1","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":50.652}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":null} sem gravar
+{"servico":"api","requestId":"b6f4bba4-40b6-4528-96de-6c6007c3ca11","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":51.798}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":"5"} sem gravar 159ms
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"nota":null} sem gravar 155ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"comentario":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"} sem gravar
+{"servico":"api","requestId":"a4a974a4-2293-45d1-9c59-3f476892b3d5","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":49.657}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"comentario":null} sem gravar
+{"servico":"api","requestId":"f3d0506d-422a-42d1-a524-b0ea42db6963","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":49.915}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"comentario":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"} sem gravar 152ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"produtoId":"invalido"} sem gravar
+{"servico":"api","requestId":"a9c79ebb-ab44-4eca-b6ae-f46672ee4545","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":49.84}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"comentario":null} sem gravar 150ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"compradorId":"outra-conta"} sem gravar
+{"servico":"api","requestId":"bcc1ef8a-169e-41a5-a0b1-314984dffe4a","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":50.777}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"produtoId":"invalido"} sem gravar 149ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"extra":true} sem gravar
+{"servico":"api","requestId":"b299a629-b58a-4280-88b2-038f75a0a133","metodo":"POST","rota":"/avaliacoes","status":400,"duracaoMs":49.421}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"compradorId":"outra-conta"} sem gravar 153ms
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > rejeita corpo invalido {"extra":true} sem gravar 151ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > limita comentario depois do trim e omite comentario vazio
+{"servico":"api","requestId":"ea4dcc3c-f428-45d5-a816-2e50471f57b7","metodo":"POST","rota":"/avaliacoes","status":201,"duracaoMs":253.848}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > limita comentario depois do trim e omite comentario vazio
+{"servico":"api","requestId":"d070ef45-078a-4f27-a1ad-dd9d4ec1cf17","metodo":"POST","rota":"/avaliacoes","status":201,"duracaoMs":247.631}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > limita comentario depois do trim e omite comentario vazio 1098ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > exige comprador autenticado
+{"servico":"api","requestId":"d1690ffa-d491-40c6-9cc1-b5d97c950155","metodo":"POST","rota":"/avaliacoes","status":401,"duracaoMs":0.494}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > exige comprador autenticado
+{"servico":"api","requestId":"6985c183-dd35-4de9-a8bf-3c2105a6c74e","metodo":"POST","rota":"/avaliacoes","status":403,"duracaoMs":48.939}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > exige comprador autenticado
+{"servico":"api","requestId":"f42e8b56-e89d-47e1-bed4-ada8896cca5e","metodo":"POST","rota":"/avaliacoes","status":403,"duracaoMs":49.158}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > exige comprador autenticado 108ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > produto sem compra confirmada retorna 403 seguro
+{"servico":"api","requestId":"e5255399-6465-4219-b21a-a176ca38f989","metodo":"POST","rota":"/avaliacoes","status":403,"duracaoMs":198.375}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > produto sem compra confirmada retorna 403 seguro 206ms
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"3e6ce405-9f9d-40a9-bfa1-79c52f69a9cb","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":53.515}
+{"rota":"/produtos","cache":"MISS","duracaoMs":51.945}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"bf0ae4af-24f8-49af-b6a9-62ee566817fd","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":0.531}
+{"rota":"/produtos","cache":"HIT","duracaoMs":0.354}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"b9693991-3a5d-45fe-a888-74c5744a8544","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.749}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.323}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"92d2ca4c-bd80-42a0-a7bf-d35ae01442b8","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":0.463}
+{"rota":"/produtos/:id","cache":"HIT","duracaoMs":0.316}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"recomendacao","requestId":"a5c5c9d1-d4ae-4f01-b7ad-d35b2bd90cbc","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":106.067}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"a5c5c9d1-d4ae-4f01-b7ad-d35b2bd90cbc","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":170.661}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":170.03}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"15e52451-b991-4ee6-897e-4ed4e6966932","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":0.559}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.371}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"e7ba0c76-67a2-4002-a056-e9050f86b9b9","metodo":"POST","rota":"/avaliacoes","status":201,"duracaoMs":247.18}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"7d380944-1ea2-47a4-b943-908cc8686106","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":54.055}
+{"rota":"/produtos","cache":"MISS","duracaoMs":53.703}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"4eb617ae-69a1-4dd2-9dac-e7b77011eb9c","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":49.499}
+{"rota":"/produtos/:id","cache":"MISS","duracaoMs":49.318}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"recomendacao","requestId":"f031c55d-ae45-4c87-9e50-0126e6163486","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":103.817}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"f031c55d-ae45-4c87-9e50-0126e6163486","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":161.57}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":161.568}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"f9bfeb28-feab-43d0-ae62-8507eb2dfd3b","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":293.857}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"48e3f0c9-431e-4d20-bde4-015d781957f4","metodo":"POST","rota":"/avaliacoes","status":409,"duracaoMs":253.512}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"93dc8b80-fa03-49d4-a88e-c67864f89d1d","metodo":"GET","rota":"/produtos","status":200,"duracaoMs":1.096}
+{"rota":"/produtos","cache":"HIT","duracaoMs":0.785}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"2ed8835f-1956-490e-b800-ba25c48e9031","metodo":"GET","rota":"/produtos/:id","status":200,"duracaoMs":0.433}
+{"rota":"/produtos/:id","cache":"HIT","duracaoMs":0.278}
+
+stdout | tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes
+{"servico":"api","requestId":"3da7a0f1-cbb7-475a-bc57-3585adf2bb07","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":0.397}
+{"rota":"/recomendacoes","cache":"HIT","duracaoMs":0.271}
+
+ ✓ tests/integration/avaliacoes.web3.integration.test.ts > Web.3 avaliacoes HTTP em PostgreSQL real > escrita HTTP invalida caches e atualiza nota no catalogo e recomendacoes 1986ms
+(node:8216) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > ordena o universo geral por vendas, nota media e UUID, limitado a oito
+{"servico":"recomendacao","requestId":"b4c71798-8c03-4a74-91b4-35ee65592418","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":164.667}
+
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > ordena o universo geral por vendas, nota media e UUID, limitado a oito 183ms
+stdout | tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > nunca repete IDs e nunca supera oito itens
+{"servico":"recomendacao","requestId":"b78a857c-3553-4024-a53d-6b0ebee716a3","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":151.599}
+
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > nunca repete IDs e nunca supera oito itens 156ms
+stdout | tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > nunca inclui produto inativo ou sem estoque
+{"servico":"recomendacao","requestId":"3dcaf477-fe4a-4a49-8547-bd52f7d2be19","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":144.687}
+
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > nunca inclui produto inativo ou sem estoque 148ms
+stdout | tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria
+{"servico":"recomendacao","requestId":"7ed18f38-3352-4789-88df-94df1575af9f","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":144.959}
+
+stdout | tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback quando o produto de contexto nao existe
+{"servico":"recomendacao","requestId":"5e6ecc49-2e98-48c5-bd35-2cbbf27c4e8a","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":97.004}
+
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback quando o produto de contexto nao possui candidatos elegiveis na propria categoria 147ms
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback quando o produto de contexto nao existe 100ms
+stdout | tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback sintetico para contexto usuarioId na U1, sem consultar historico pessoal
+{"servico":"recomendacao","requestId":"b83d5eb1-4cae-4729-af97-e0315efaa76a","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":99.15}
+
+ ✓ tests/integration/recomendacao-fallback.strategy.integration.test.ts > CategoriaRecomendacaoStrategy - fallback geral > aciona o fallback sintetico para contexto usuarioId na U1, sem consultar historico pessoal 103ms
+
+ Test Files  3 passed (3)
+      Tests  34 passed (34)
+   Start at  13:55:47
+   Duration  54.76s (tests 97%, import 2%, transform 1%)
+

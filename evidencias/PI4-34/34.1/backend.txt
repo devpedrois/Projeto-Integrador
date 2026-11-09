@@ -1,0 +1,136 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:23572) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > preserva exatamente o ranking esperado da fixture
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > Strategy retorna somente IDs ordenados e nome da estrategia
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em categoria
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em fallback-geral
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > fallback tambem retorna produtos completos
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}}
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}}
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}}
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/auth.routes.integration.test.ts [ tests/integration/auth.routes.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/auth.routes.integration.test.ts:6:1
+      4| import request from "supertest";
+      5| import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
+      6| import { createApp } from "../../src/app.js";
+       | ^
+      7| import { gerarHash, compararSenha } from "../../src/utils/senha.js";
+      8| import { criarBancoAuth } from "../helpers/auth-database.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4058, code: 'ENOENT', syscall: 'open', path: 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/integration/avaliacoes-media.32-3.integration.test.ts [ tests/integration/avaliacoes-media.32-3.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/avaliacoes-media.32-3.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { criarBancoAuth } from "../helpers/auth-database.js";
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4058, code: 'ENOENT', syscall: 'open', path: 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/integration/avaliacoes-paginadas.32-2.integration.test.ts [ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts:4:1
+      2| import request from "supertest";
+      3| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      4| import { createApp } from "../../src/app.js";
+       | ^
+      5| import { criarBancoAuth } from "../helpers/auth-database.js";
+      6|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4058, code: 'ENOENT', syscall: 'open', path: 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tests/integration/http-recomendacao.integration.test.ts [ tests/integration/http-recomendacao.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/http-recomendacao.integration.test.ts:6:1
+      4| import { escapeIdentifier } from "pg";
+      5| import { afterAll, beforeAll, expect, it, vi } from "vitest";
+      6| import { createApp } from "../../src/app.js";
+       | ^
+      7| import { HttpRecomendacaoClient } from "../../src/integrations/recomme…
+      8| import { RecomendacaoIndisponivelError } from "../../src/errors/recome…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4058, code: 'ENOENT', syscall: 'open', path: 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tests/integration/indicadores-admin.route.integration.test.ts [ tests/integration/indicadores-admin.route.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/indicadores-admin.route.integration.test.ts:5:1
+      3| import request from "supertest";
+      4| import { afterAll, beforeAll, describe, expect, it } from "vitest";
+      5| import { createApp } from "../../src/app.js";
+       | ^
+      6| import { criarBancoAuth } from "../helpers/auth-database.js";
+      7| import { criarMassaIndicadoresAdmin } from "../helpers/indicadores-adm…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4058, code: 'ENOENT', syscall: 'open', path: 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  tests/integration/recomendacao-fallback-local.integration.test.ts [ tests/integration/recomendacao-fallback-local.integration.test.ts ]
+Error: ENOENT: no such file or directory, open 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a'
+ ❯ tests/integration/recomendacao-fallback-local.integration.test.ts:7:1
+      5| import request from "supertest";
+      6| import { afterAll, beforeAll, expect, it, vi } from "vitest";
+      7| import { createApp } from "../../src/app.js";
+       | ^
+      8| import { iniciarRecomendacao } from "../../scripts/helpers/recomendaca…
+      9| import { criarBancoAuth } from "../helpers/auth-database.js";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -4058, code: 'ENOENT', syscall: 'open', path: 'C:\Users\Pedro\AppData\Local\Packages\sandbox.{c604e7a4-4b33-4632-8932-99de0feaf8ff}\AC\Temp\NbPyojWcJclDTpu5mm5MG\ssr\b92b478edf5982e41dbda9406801656029bd3a7a' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  tests/integration/recomendacoes-contrato.integration.test.ts [ tests/integration/recomendacoes-contrato.integration.test.ts ]
+Error: getaddrinfo ENOTFOUND [host-postgresql-omitido]
+ ❯ node_modules/pg-pool/index.js:45:11
+ ❯ criarBancoAuth tests/helpers/auth-database.ts:14:18
+     12|     options: `-c search_path=${schema},public`,
+     13|   });
+     14|   const client = await pool.connect();
+       |                  ^
+     15|   try {
+     16|     await client.query("BEGIN");
+ ❯ criarBancoRecomendacao tests/helpers/recomendacao-database.ts:6:17
+ ❯ tests/integration/recomendacoes-contrato.integration.test.ts:66:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -3008, code: 'ENOTFOUND', syscall: 'getaddrinfo', hostname: '[host-postgresql-omitido]' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  7 failed (7)
+      Tests  11 skipped (11)
+   Start at  13:53:30
+   Duration  5.80s (import 75%, transform 23%, worker 1%)
+
+    Isolate  7 workers spawned · ~141ms startup each (spawn + environment, per file)
+             at least ~848ms faster with isolate: false — reuses workers across files instead of one per file
+

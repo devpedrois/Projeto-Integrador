@@ -1,0 +1,528 @@
+
+ RUN  v5.0.0 C:/Users/Pedro/Desktop/Projeto integrador/backend
+
+(node:27332) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > retorna o ProdutoDTO completo e identico ao catalogo
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > preserva exatamente o ranking esperado da fixture
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > Strategy retorna somente IDs ordenados e nome da estrategia
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em categoria
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > nao recomenda o proprio produto em fallback-geral
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > fallback tambem retorna produtos completos
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"moderacao","input":{"ativo":false}}
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"produto","input":{"ativo":false}}
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos invisiveis sem reordenar restantes: {"tipo":"estoque","input":{"quantidadeEstoque":0}}
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"ativo":false}
+ ↓ tests/integration/recomendacoes-contrato.integration.test.ts > IA-01 contrato publico de recomendacoes > omite produtos de artesao indisponivel: {"papel":"comprador"}
+(node:23488) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador
+{"servico":"api","requestId":"fb6a9f57-394e-436a-bc8e-4cbcdfd26729","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":280.988}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador
+{"servico":"api","requestId":"9a50ab13-878f-4d3c-a276-c30624d61a57","metodo":"GET","rota":"/auth/me","status":200,"duracaoMs":58.929}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > normaliza email, persiste bcrypt custo 10, cria carrinho e inicia sessao de comprador 797ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > cria perfil de artesao incompleto e inicia sessao de artesao
+{"servico":"api","requestId":"3d27d2a7-1c5d-45bb-b46b-3740588af7a0","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":254.174}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > cria perfil de artesao incompleto e inicia sessao de artesao
+{"servico":"api","requestId":"a3345788-fd7a-46e8-af93-ca8a60e3fa34","metodo":"GET","rota":"/auth/me","status":200,"duracaoMs":50.714}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > cria perfil de artesao incompleto e inicia sessao de artesao 439ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=false
+{"servico":"api","requestId":"d1c115c8-710b-4d52-948a-b919477d33c9","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":247.097}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=false
+{"servico":"api","requestId":"e7089f7c-afdd-4cf3-8869-25af982de594","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":104.269}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=false 416ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=true
+{"servico":"api","requestId":"4c91e782-dc10-4319-9832-a8264a96ff8c","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":242.272}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=true
+{"servico":"api","requestId":"4c5fe22e-ec67-4d48-b0cb-7f7791d16a4c","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":93.32}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > cadastro emite JWT persistido e cookie equivalente ao login com COOKIE_SECURE=true 396ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > preserva conta e carrinho quando a emissao da sessao falha apos commit
+{"servico":"api","requestId":"a9886585-8b44-4b52-b9ed-bb64c6af83d4","metodo":"POST","rota":"/auth/register","status":503,"duracaoMs":236.558}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > preserva conta e carrinho quando a emissao da sessao falha apos commit 341ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"papel":"admin"}
+{"servico":"api","requestId":"f32cec13-a30c-42e8-95a9-69c516743b04","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":1.077}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"papel":"outro"}
+{"servico":"api","requestId":"21d77dbb-f654-4dd4-abe6-4c0df7e74ec2","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":0.873}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"papel":"admin"} 59ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"papel":"outro"} 52ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"nome":"ab"}
+{"servico":"api","requestId":"d8e12ca3-3348-4ff7-976c-3d0fe4e020e3","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":1.445}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"email":"email-invalido"}
+{"servico":"api","requestId":"ba7e6d28-5def-43cc-afe6-be8a1d85f7e5","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":0.951}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"nome":"ab"} 55ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"email":"email-invalido"} 56ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"senha":"curta"}
+{"servico":"api","requestId":"acf449ec-d537-4d07-9fdc-2b4aaefd08ac","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":0.821}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"senha":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+{"servico":"api","requestId":"3f0d8d67-8623-454a-acf6-7e1e896ae412","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":1.74}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"senha":"curta"} 53ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"senha":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"} 55ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"senha":"ééééééééééééééééééééééééééééééééééééé"}
+{"servico":"api","requestId":"4bfd1a65-1412-4c05-bff0-0f28958a651c","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":0.633}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"ativo":true}
+{"servico":"api","requestId":"13e6b750-2631-4636-a11b-874f58b9f5e8","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":1.076}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"senha":"ééééééééééééééééééééééééééééééééééééé"} 53ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"ativo":true} 160ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"senhaHash":"hash-injetado"}
+{"servico":"api","requestId":"d803f382-1071-448c-970a-97184fc9c811","metodo":"POST","rota":"/auth/register","status":400,"duracaoMs":0.485}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > retorna 409 para email em uso com caixa e espacos distintos
+{"servico":"api","requestId":"d7e2194d-c0e5-4750-a07f-18b5c2570ea3","metodo":"POST","rota":"/auth/register","status":409,"duracaoMs":500.372}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > rejeita entrada invalida ou campos extras: {"senhaHash":"hash-injetado"} 52ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > retorna 409 para email em uso com caixa e espacos distintos 506ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > mantem unicidade em cadastros simultaneos
+{"servico":"api","requestId":"3db349e0-12f9-4b36-9d91-3c680c5545c0","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":237.592}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > mantem unicidade em cadastros simultaneos
+{"servico":"api","requestId":"59d8b6d0-0a64-430b-893d-43bc0bb3109d","metodo":"POST","rota":"/auth/register","status":409,"duracaoMs":287.98}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > mantem unicidade em cadastros simultaneos 343ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > reverte Usuario se o segundo insert falhar para comprador
+{"servico":"api","requestId":"80fd1352-6e8e-4bbc-9cc2-f2c6f32ecaf3","metodo":"POST","rota":"/auth/register","status":503,"duracaoMs":246.389}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > reverte Usuario se o segundo insert falhar para comprador
+{"servico":"api","requestId":"0b17a2ad-c574-4f7c-80a1-788addd8a04c","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":239.716}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > reverte Usuario se o segundo insert falhar para comprador 540ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > reverte Usuario se o segundo insert falhar para artesao
+{"servico":"api","requestId":"1af1304c-4216-4bf7-aa8c-dbb2374ab891","metodo":"POST","rota":"/auth/register","status":503,"duracaoMs":246.007}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/register > reverte Usuario se o segundo insert falhar para artesao
+{"servico":"api","requestId":"1db6afe5-d5ad-45d0-af89-3e0da685c0f4","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":246.816}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/register > reverte Usuario se o segundo insert falhar para artesao 554ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > emite JWT de 24h e cookie seguro conforme COOKIE_SECURE=false
+{"servico":"api","requestId":"7474e94f-123c-4180-88c5-d74546d5f6e1","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":100.717}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > emite JWT de 24h e cookie seguro conforme COOKIE_SECURE=true
+{"servico":"api","requestId":"8dd39e21-d1e1-4e92-b412-22551edf63c2","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":92.264}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > emite JWT de 24h e cookie seguro conforme COOKIE_SECURE=false 108ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > emite JWT de 24h e cookie seguro conforme COOKIE_SECURE=true 97ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > retorna status e corpo byte a byte iguais nos tres logins invalidos
+{"servico":"api","requestId":"cd482e5c-e710-4965-b003-c1d89ad89638","metodo":"POST","rota":"/auth/login","status":401,"duracaoMs":93.817}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > retorna status e corpo byte a byte iguais nos tres logins invalidos
+{"servico":"api","requestId":"47bc198d-e610-4687-858c-dfcc7ee039b7","metodo":"POST","rota":"/auth/login","status":401,"duracaoMs":95.68}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > retorna status e corpo byte a byte iguais nos tres logins invalidos
+{"servico":"api","requestId":"d0271bd6-35bf-4521-82f0-8c76a43602bf","metodo":"POST","rota":"/auth/login","status":401,"duracaoMs":138.773}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > retorna status e corpo byte a byte iguais nos tres logins invalidos 145ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > executa bcrypt real contra o mesmo hash fixo para email inexistente
+{"servico":"api","requestId":"0b41bcd7-0997-4e8d-bc72-e2b83f0c759b","metodo":"POST","rota":"/auth/login","status":401,"duracaoMs":99.032}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > executa bcrypt real contra o mesmo hash fixo para email inexistente
+{"servico":"api","requestId":"de3c54dd-3f2f-426c-865c-0899cd09e509","metodo":"POST","rota":"/auth/login","status":401,"duracaoMs":94.981}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > valida o login na borda: {"email":"invalido"}
+{"servico":"api","requestId":"f64baa33-24d9-4671-92d9-ebbaef67d1d3","metodo":"POST","rota":"/auth/login","status":400,"duracaoMs":0.506}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > executa bcrypt real contra o mesmo hash fixo para email inexistente 200ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > valida o login na borda: {"email":"invalido"} 3ms
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > valida o login na borda: {"senha":""}
+{"servico":"api","requestId":"6010380c-2373-4dab-8603-16a730cd9740","metodo":"POST","rota":"/auth/login","status":400,"duracaoMs":0.409}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > valida o login na borda: {"senha":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+{"servico":"api","requestId":"05065b55-cf93-4f57-a42f-3dbd0b0c7b1d","metodo":"POST","rota":"/auth/login","status":400,"duracaoMs":0.414}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > valida o login na borda: {"papel":"admin"}
+{"servico":"api","requestId":"647dd3e5-88db-49f0-ac44-72a89ac804c2","metodo":"POST","rota":"/auth/login","status":400,"duracaoMs":0.395}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > retorna 400 para JSON malformado em /auth/register
+{"servico":"api","requestId":"5a1423de-cf76-4996-a558-a51f40699e0f","metodo":"POST","rota":"[sem-rota]","status":400,"duracaoMs":0.763}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > retorna 400 para JSON malformado em /auth/login
+{"servico":"api","requestId":"e2c27ddb-6275-4260-8ea3-cfe21a4b2c47","metodo":"POST","rota":"[sem-rota]","status":400,"duracaoMs":0.455}
+
+stdout | tests/integration/auth.routes.integration.test.ts > POST /auth/login > recusa emitir sessao sem JWT_SECRET configurado
+{"servico":"api","requestId":"276ffe61-ea40-409c-81da-59f24d472d92","metodo":"POST","rota":"/auth/login","status":503,"duracaoMs":93.574}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > valida o login na borda: {"senha":""} 2ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > valida o login na borda: {"senha":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"} 2ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > valida o login na borda: {"papel":"admin"} 2ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > retorna 400 para JSON malformado em /auth/register 3ms
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > retorna 400 para JSON malformado em /auth/login 2ms
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > retorna somente usuario publico e encerra sessao no logout
+{"servico":"api","requestId":"bf761c67-b429-47ba-9cd3-ccb81cf81b7d","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":0.498}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > retorna somente usuario publico e encerra sessao no logout
+{"servico":"api","requestId":"7fc837ef-6ad6-44d8-b5fd-3cc632f682fc","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":97.685}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > POST /auth/login > recusa emitir sessao sem JWT_SECRET configurado 97ms
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > retorna somente usuario publico e encerra sessao no logout
+{"servico":"api","requestId":"e506c991-ed7b-45fd-a78d-64f0dacc6827","metodo":"GET","rota":"/auth/me","status":200,"duracaoMs":49.63}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > retorna somente usuario publico e encerra sessao no logout
+{"servico":"api","requestId":"1d39a07f-b711-42c0-8459-53f59673ffef","metodo":"POST","rota":"/auth/logout","status":204,"duracaoMs":0.523}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > retorna somente usuario publico e encerra sessao no logout
+{"servico":"api","requestId":"18a29d76-4465-446d-93f4-9e48f238ae5e","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":0.359}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > retorna somente usuario publico e encerra sessao no logout
+{"servico":"api","requestId":"0c87a343-d663-45df-9ae3-3ec933d42b08","metodo":"POST","rota":"/auth/logout","status":204,"duracaoMs":0.245}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 0
+{"servico":"api","requestId":"f8316468-7532-4ce3-aac3-b952879e2207","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":0.422}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 1
+{"servico":"api","requestId":"cd366adc-3e1b-4c27-b36b-46af23dfcedd","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":0.36}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 2
+{"servico":"api","requestId":"02af6f4b-f793-4f46-ac3f-87854c9b29fa","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":1.017}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 3
+{"servico":"api","requestId":"7404293c-b7a2-40e6-9529-13e9fa9c6074","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":1.206}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 4
+{"servico":"api","requestId":"9755bf33-446b-45a0-9f58-9471569ba656","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":0.87}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 5
+{"servico":"api","requestId":"334938e1-e780-4938-99f0-ffb1a9a9016b","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":0.815}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 6
+{"servico":"api","requestId":"30237f4f-0c2f-40fa-a715-63730398cd51","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":51.361}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > retorna somente usuario publico e encerra sessao no logout 165ms
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 0 3ms
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 1 2ms
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 2 3ms
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 3 3ms
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 4 3ms
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 5 2ms
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > rejeita sessao invalida, expirada ou de usuario ausente: 6 55ms
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > reconsulta o usuario e recusa sessao de usuario desativado
+{"servico":"api","requestId":"aed39473-4df7-4ae7-8ace-5ff7faef0f5d","metodo":"POST","rota":"/auth/register","status":201,"duracaoMs":245.569}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > reconsulta o usuario e recusa sessao de usuario desativado
+{"servico":"api","requestId":"4aef2d44-516a-4e7c-ae36-4d96769ca602","metodo":"POST","rota":"/auth/login","status":200,"duracaoMs":92.049}
+
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > reconsulta o usuario e recusa sessao de usuario desativado
+{"servico":"api","requestId":"60316a57-1741-4cdb-852f-0c52d7ea4176","metodo":"GET","rota":"/auth/me","status":401,"duracaoMs":51.053}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > reconsulta o usuario e recusa sessao de usuario desativado 454ms
+stdout | tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > remove definitivamente o probe temporario
+{"servico":"api","requestId":"8966717c-2443-435d-b0bd-4622b16af797","metodo":"GET","rota":"[sem-rota]","status":404,"duracaoMs":1.719}
+
+ ✓ tests/integration/auth.routes.integration.test.ts > GET /auth/me e POST /auth/logout > remove definitivamente o probe temporario 6ms
+(node:17716) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere 5 / 1 = 5
+{"servico":"api","requestId":"84454955-a4ad-480f-812a-aa383bc249be","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":323.056}
+
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere 5 / 1 = 5 336ms
+stdout | tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (1 + 2) / 2 = 1.5
+{"servico":"api","requestId":"e8d202e4-1ffe-42ea-96ee-cb26727515d3","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":291.432}
+
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (1 + 2) / 2 = 1.5 296ms
+stdout | tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (4 + 4 + 5) / 3 = 4.333... -> 4.3
+{"servico":"api","requestId":"0e0b2a9f-da55-4152-9726-8f14cfc3009b","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":290.209}
+
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (4 + 4 + 5) / 3 = 4.333... -> 4.3 294ms
+stdout | tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (1 + 2 + 3 + 4 + 5 + 5) / 6 = 3.333... …
+{"servico":"api","requestId":"a951bcc6-9a8c-49e3-a5ca-dbfe9a443568","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":302.115}
+
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (1 + 2 + 3 + 4 + 5 + 5) / 6 = 3.333... … 309ms
+stdout | tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (4 + 5 + 5) / 3 = 4.666... -> 4.7
+{"servico":"api","requestId":"0b6812a0-8d9a-45dc-94c4-9f4317326164","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":287.945}
+
+ ✓ tests/integration/avaliacoes-media.32-3.integration.test.ts > 32.3 media de avaliacoes na leitura com PostgreSQL real > confere (4 + 5 + 5) / 3 = 4.666... -> 4.7 293ms
+(node:28236) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > entrega 10/10/10/5 com resumo global e ordem estavel
+{"servico":"api","requestId":"28ef4f68-5c38-40d8-9536-ce3db8e70708","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":304.478}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > entrega 10/10/10/5 com resumo global e ordem estavel
+{"servico":"api","requestId":"afcd6edf-ce1f-4f18-823b-5e36f128059a","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":287.953}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > entrega 10/10/10/5 com resumo global e ordem estavel
+{"servico":"api","requestId":"6cf6d669-3f03-4bc8-a7fb-90e05ef0babf","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":298.919}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > entrega 10/10/10/5 com resumo global e ordem estavel
+{"servico":"api","requestId":"e956e8a6-40c2-4a0f-907b-1a9b17226cca","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":307.662}
+
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > entrega 10/10/10/5 com resumo global e ordem estavel 1223ms
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > usa pagina de dez por padrao
+{"servico":"api","requestId":"02d7b754-9648-48fa-88bf-c1a43226530a","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":293.568}
+
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > usa pagina de dez por padrao 299ms
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > aceita limite 50 e pagina vazia preserva resumo global
+{"servico":"api","requestId":"a4db829a-bf6f-4bf0-a972-8d40835c45b4","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":293.678}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > aceita limite 50 e pagina vazia preserva resumo global
+{"servico":"api","requestId":"bffc4791-a180-4202-8929-16b49a595a5b","metodo":"GET","rota":"/avaliacoes","status":200,"duracaoMs":247.372}
+
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > aceita limite 50 e pagina vazia preserva resumo global 551ms
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=0
+{"servico":"api","requestId":"77f6abc8-2022-43ec-8d76-dd38db2e0493","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.774}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=51
+{"servico":"api","requestId":"e1ec835c-f807-4007-b647-f221254e2306","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.745}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=1.5
+{"servico":"api","requestId":"0899c2d1-5107-4b41-ac10-994e764308fe","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.449}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=
+{"servico":"api","requestId":"a8f812fc-a480-4aa2-a30f-a08f1822c78d","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.423}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=1&limit=2
+{"servico":"api","requestId":"621d15bb-3864-44d2-8455-11719bb45f9f","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.451}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida offset=-1
+{"servico":"api","requestId":"2d8fd110-848a-4a21-92d5-f98f853a801a","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.389}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida offset=0.5
+{"servico":"api","requestId":"abbcc8d8-87d8-45e4-afaa-9434d7dfa7bc","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.396}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida offset=Infinity
+{"servico":"api","requestId":"0a7c4930-07d0-4ed0-be77-66e557535aa8","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.324}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida offset=9007199254740992
+{"servico":"api","requestId":"3adf5a57-4241-4e0e-9fd1-94eeb794c2d4","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.438}
+
+stdout | tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida extra=1
+{"servico":"api","requestId":"f3e75a01-50ba-4976-b31a-0c0f48b667d6","metodo":"GET","rota":"/avaliacoes","status":400,"duracaoMs":0.516}
+
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=0 5ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=51 4ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=1.5 3ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit= 2ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida limit=1&limit=2 2ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida offset=-1 2ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida offset=0.5 2ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida offset=Infinity 2ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida offset=9007199254740992 2ms
+ ✓ tests/integration/avaliacoes-paginadas.32-2.integration.test.ts > 32.2 avaliacoes publicas paginadas > rejeita query invalida extra=1 2ms
+(node:47260) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/http-recomendacao.integration.test.ts > preserva IDs e ordem calculados pelo microsservico: /recomendacoes
+{"servico":"recomendacao","requestId":"4a796fcb-b1ef-4daf-a701-33778bf5bb47","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":107.786}
+
+stdout | tests/integration/http-recomendacao.integration.test.ts > preserva IDs e ordem calculados pelo microsservico: /recomendacoes
+{"servico":"recomendacao","requestId":"56d98173-9c54-4daa-ae7f-797a6fbbe027","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":97.95}
+
+stdout | tests/integration/http-recomendacao.integration.test.ts > preserva IDs e ordem calculados pelo microsservico: /recomendacoes
+{"servico":"api","requestId":"56d98173-9c54-4daa-ae7f-797a6fbbe027","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":224.704}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":222.934}
+
+ ✓ tests/integration/http-recomendacao.integration.test.ts > preserva IDs e ordem calculados pelo microsservico: /recomendacoes 360ms
+stdout | tests/integration/http-recomendacao.integration.test.ts > preserva IDs e ordem calculados pelo microsservico: /recomendacoes/para-mim
+{"servico":"recomendacao","requestId":"c7398971-7417-462f-a945-ec0584dd7b5c","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":54.483}
+
+stdout | tests/integration/http-recomendacao.integration.test.ts > preserva IDs e ordem calculados pelo microsservico: /recomendacoes/para-mim
+{"servico":"recomendacao","requestId":"a89c4c96-9f84-4f6f-abde-d53e6f0a478f","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":49.263}
+
+stdout | tests/integration/http-recomendacao.integration.test.ts > preserva IDs e ordem calculados pelo microsservico: /recomendacoes/para-mim
+{"servico":"api","requestId":"a89c4c96-9f84-4f6f-abde-d53e6f0a478f","metodo":"GET","rota":"/recomendacoes/para-mim","status":200,"duracaoMs":155.222}
+
+ ✓ tests/integration/http-recomendacao.integration.test.ts > preserva IDs e ordem calculados pelo microsservico: /recomendacoes/para-mim 219ms
+ ✓ tests/integration/http-recomendacao.integration.test.ts > correlaciona logs HTTP com header recebido undefined sem dados sensiveis 161ms
+ ✓ tests/integration/http-recomendacao.integration.test.ts > correlaciona logs HTTP com header recebido id-invalido sem dados sensiveis 164ms
+ ✓ tests/integration/http-recomendacao.integration.test.ts > correlaciona logs HTTP com header recebido 6d366559-a813-48bb-9724-74cb6281593a sem dados sensiveis 158ms
+ ✓ tests/integration/http-recomendacao.integration.test.ts > isola requestIds em chamadas concorrentes autenticadas 1400ms
+stdout | tests/integration/http-recomendacao.integration.test.ts > recusa token errado com falha tipada de status
+{"servico":"recomendacao","requestId":"26629075-6751-4161-a9c0-38fce4dd69d8","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.321}
+
+ ✓ tests/integration/http-recomendacao.integration.test.ts > registra erros sem expor entrada em /ausente/email-privado@teste.test?token=confidencial 9ms
+ ✓ tests/integration/http-recomendacao.integration.test.ts > registra erros sem expor entrada em /recomendacoes?produtoId=invalido&email=privado@teste.test 5ms
+ ✓ tests/integration/http-recomendacao.integration.test.ts > registra erros sem expor entrada em /recomendacoes/para-mim 5ms
+ ✓ tests/integration/http-recomendacao.integration.test.ts > recusa token errado com falha tipada de status 3ms
+ ✓ tests/integration/http-recomendacao.integration.test.ts > usa papel restrito e migrations no schema privado 96ms
+stderr | tests/integration/http-recomendacao.integration.test.ts > microsservico desligado gera falha tipada e rota controlada
+{"evento":"recomendacao-fallback-local","motivo":"rede"}
+
+stdout | tests/integration/http-recomendacao.integration.test.ts > microsservico desligado gera falha tipada e rota controlada
+{"servico":"api","requestId":"1b41deb0-75e3-4c89-9241-f5d5f2a6e0f1","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":101.462}
+{"rota":"/recomendacoes","cache":"MISS","duracaoMs":101.405}
+
+ ✓ tests/integration/http-recomendacao.integration.test.ts > microsservico desligado gera falha tipada e rota controlada 875ms
+(node:3208) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > herda 401 anonimo da protecao /admin
+{"servico":"api","requestId":"d14003ba-128d-403d-9c21-ac6046d992a9","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":2.939}
+
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita comprador mesmo com papel admin forjado no token
+{"servico":"api","requestId":"2d5e78a7-6df6-4e7f-a3b4-8bf3cbe30bbb","metodo":"GET","rota":"[sem-rota]","status":403,"duracaoMs":55.527}
+
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > herda 401 anonimo da protecao /admin 14ms
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita comprador mesmo com papel admin forjado no token 63ms
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita artesao mesmo com papel admin forjado no token
+{"servico":"api","requestId":"6ee12c65-b050-44f4-bd12-ab3583f0b580","metodo":"GET","rota":"[sem-rota]","status":403,"duracaoMs":166.185}
+
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita artesao mesmo com papel admin forjado no token 171ms
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > retorna os valores de 33.3 com Decimal de duas casas e ISO
+{"servico":"api","requestId":"c6134de8-8dd9-4db0-90b1-d003555ceb28","metodo":"GET","rota":"/admin/indicadores","status":200,"duracaoMs":106.38}
+
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita query nao vazia ?usuarioId=externo
+{"servico":"api","requestId":"b9eeafea-ab10-4404-bf50-4d446248b015","metodo":"GET","rota":"/admin/indicadores","status":400,"duracaoMs":55.695}
+
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > retorna os valores de 33.3 com Decimal de duas casas e ISO 114ms
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita query nao vazia ?usuarioId=externo 62ms
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita query nao vazia ?limit=10
+{"servico":"api","requestId":"2a134afa-6f0e-41f9-ae05-5ea4464763ed","metodo":"GET","rota":"/admin/indicadores","status":400,"duracaoMs":49.664}
+
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita query nao vazia ?x=1&x=2
+{"servico":"api","requestId":"a8133a9f-f816-4945-9567-f044b912ea09","metodo":"GET","rota":"/admin/indicadores","status":400,"duracaoMs":49.866}
+
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita query nao vazia ?limit=10 55ms
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita query nao vazia ?x=1&x=2 54ms
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita query nao vazia ?filtro[ativo]=true
+{"servico":"api","requestId":"caaa7d98-e8a6-44d1-a6df-feee84a90d6a","metodo":"GET","rota":"/admin/indicadores","status":400,"duracaoMs":51.891}
+
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > retorna zeros sem registros elegiveis
+{"servico":"api","requestId":"da62de7f-be59-4824-95a8-71639936f941","metodo":"GET","rota":"/admin/indicadores","status":200,"duracaoMs":99.584}
+
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > rejeita query nao vazia ?filtro[ativo]=true 58ms
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > retorna zeros sem registros elegiveis 106ms
+stdout | tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > revalida admin desativado no banco
+{"servico":"api","requestId":"dfc00347-bc27-4c8f-a5fe-98669c2fc875","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":49.682}
+
+ ✓ tests/integration/indicadores-admin.route.integration.test.ts > 32.1 GET /admin/indicadores > revalida admin desativado no banco 156ms
+(node:35940) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+{"servico":"api","requestId":"d5a23a6d-f383-4793-a380-fa82c1fde8fa","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":117.096}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+{"servico":"api","requestId":"bafe5f0c-8283-4368-9438-304ba2da788b","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":116.025}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+{"servico":"api","requestId":"2a20a465-f5f4-466e-ad1e-18759bd3d86e","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":99.507}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+{"servico":"api","requestId":"97d15eb6-54fd-4a7d-898a-310e847ee2cf","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":105.447}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+{"servico":"api","requestId":"44cc441c-391a-4293-8312-5cd2ee01db00","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":103.325}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+{"servico":"recomendacao","requestId":"69cb71aa-51ea-42c6-be54-80e9486a95ff","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":107.622}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+{"servico":"api","requestId":"66502454-9198-4bd0-b4d7-21be5e4993bf","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":169.77}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache
+{"servico":"api","requestId":"75514e42-1884-4d18-b353-62987c11cecb","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":0.733}
+
+ ✓ tests/integration/recomendacao-fallback-local.integration.test.ts > retorna oito itens em cinco falhas e recupera na proxima chamada sem cache 6096ms
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: lento
+{"servico":"api","requestId":"a31f6607-14f5-454f-be58-2af33ff6cdf3","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":221.642}
+
+ ✓ tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: lento 233ms
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: invalido
+{"servico":"api","requestId":"90509d06-333b-4be6-90f3-c23e274bae56","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":108.637}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: status
+{"servico":"api","requestId":"2e221312-efb4-427f-9385-a8eef2527338","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":105.034}
+
+ ✓ tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: invalido 118ms
+ ✓ tests/integration/recomendacao-fallback-local.integration.test.ts > degrada com motivo seguro: status 112ms
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > completa selecao parcial preservando ordem, visibilidade e exclusoes sem cache
+{"servico":"api","requestId":"f2bda001-de4d-48ce-bfbd-c7d975ce13ea","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":148.091}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > completa selecao parcial preservando ordem, visibilidade e exclusoes sem cache
+{"servico":"api","requestId":"a2c91c8e-a0ae-4044-ac1e-d90c835a5d41","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":147.687}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > completa selecao parcial preservando ordem, visibilidade e exclusoes sem cache
+{"servico":"api","requestId":"a4e4e85d-2d55-4ebc-896c-ad3081649fae","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":51.243}
+
+ ✓ tests/integration/recomendacao-fallback-local.integration.test.ts > completa selecao parcial preservando ordem, visibilidade e exclusoes sem cache 358ms
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > para-mim completa por vendas gerais sem compartilhar cache
+{"servico":"api","requestId":"cee4a85d-7154-4f5c-ad10-6b6d912a9504","metodo":"GET","rota":"/recomendacoes/para-mim","status":200,"duracaoMs":202.236}
+
+stderr | tests/integration/recomendacao-fallback-local.integration.test.ts > para-mim completa por vendas gerais sem compartilhar cache
+{"evento":"recomendacao-fallback-local","motivo":"status"}
+
+stdout | tests/integration/recomendacao-fallback-local.integration.test.ts > para-mim completa por vendas gerais sem compartilhar cache
+{"servico":"api","requestId":"91fda26c-b7d3-496d-88ca-85c221344972","metodo":"GET","rota":"/recomendacoes/para-mim","status":200,"duracaoMs":154.893}
+
+ ✓ tests/integration/recomendacao-fallback-local.integration.test.ts > para-mim completa por vendas gerais sem compartilhar cache 425ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/recomendacoes-contrato.integration.test.ts [ tests/integration/recomendacoes-contrato.integration.test.ts ]
+Error: Hook timed out in 30000ms.
+If this is a long-running hook, pass a timeout value as the last argument or configure it globally with "hookTimeout".
+ ❯ tests/integration/recomendacoes-contrato.integration.test.ts:65:1
+     63| }
+     64|
+     65| beforeAll(async () => {
+       | ^
+     66|   banco = await criarBancoAuth();
+     67|   app = createApp(banco.prisma, {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 6 passed (7)
+      Tests  85 passed | 11 skipped (96)
+   Start at  13:53:55
+   Duration  81.78s (tests 94%, import 5%, transform 1%)
+

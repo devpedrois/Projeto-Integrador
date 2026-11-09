@@ -1,0 +1,65 @@
+
+ RUN  v2.1.9 C:/Users/Pedro/Desktop/Projeto integrador/frontend
+
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > preserva estrategia publica e produtos: categoria 455ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > preserva estrategia publica e produtos: historico-compra
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > preserva estrategia publica e produtos: fallback-geral
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > preserva estrategia publica e produtos: fallback-local
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > exibe aviso de protótipo associado ao campo de senha
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > possui labels associadas a cada campo
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > o seletor de papel oferece somente comprador e artesao, com comprador marcado
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > preserva estrategia publica e produtos: misto
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > produz o mesmo resultado completo da fake para a fixture contratual
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > consulta /api/recomendacoes com contexto real: {"produtoId":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"}
+ ✓ tests/app/admin-indicadores.test.tsx > mostra carregamento sem antecipar valores
+ ✓ tests/app/admin-indicadores.test.tsx > mostra quatro indicadores e data atualizada com formatacao pt-BR
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > consulta /api/recomendacoes com contexto real: {"usuarioId":"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb"}
+ ✓ tests/app/admin-indicadores.test.tsx > mostra vazio com quatro zeros e data
+ ✓ tests/app/admin-indicadores.test.tsx > considera cadastro sem pedidos como sucesso
+ ✓ tests/components/produto/avaliacoes-paginadas.test.tsx > navega por quatro paginas e volta mantendo media e total 326ms
+ ✓ tests/app/admin-indicadores.test.tsx > permite tentar novamente depois do erro
+ ✓ tests/app/admin-indicadores.test.tsx > preserva centavos de receitas maiores que Number.MAX_SAFE_INTEGER
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > consulta /api/recomendacoes com contexto real: {}
+ ✓ tests/app/admin-indicadores.test.tsx > descarta resposta pendente ao trocar de conta
+ ✓ tests/app/admin-indicadores.test.tsx > oculta indicadores de comprador
+ ✓ tests/app/admin-indicadores.test.tsx > oculta indicadores de artesao
+ ✓ tests/components/produto/avaliacoes-paginadas.test.tsx > mostra carregando ao trocar pagina e preserva resumo
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > cadastro valido de artesao hidrata sessao e redireciona para painel-artesao 685ms
+ ✓ tests/components/produto/avaliacoes-paginadas.test.tsx > recupera falha da segunda pagina com tentar novamente
+ ✓ tests/components/produto/avaliacoes-paginadas.test.tsx > mostra vazio depois de leitura sem avaliacoes
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > sai de PENDENTES_HTTP sem consultar localStorage
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > preserva ranking e fallback sem executar ranking local
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > exclui o contexto, duplicados e invisiveis antes do limite oito
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: null
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: %j
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {}
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > cadastro valido de comprador hidrata sessao e redireciona para vitrine 633ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {"estrategia":"","itens":[]}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {"estrategia":3,"itens":[]}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {"estrategia":"desconhecida","itens":[]}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {"estrategia":"categoria","itens":[{"id":"cccccccc-cccc-4ccc-8ccc-cccccccccccc","nome":"Vaso recomendado","descricao":"Sintetico","preco":"89.90","categoriaId":"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb","tecnicaId":"tecnica-modelagem-argila","regiaoId":"regiao-pilar-recife","artesaoId":"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb","fotos":[{"url":"/produtos/fixture.svg","ordem":0}],"quantidadeEstoque":4,"quantidadeVendida":10,"notaMedia":4.5,"ativo":true,"criadoEm":"2026-10-14T00:00:00.000Z"}]}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {"estrategia":"categoria","itens":[{"id":"cccccccc-cccc-4ccc-8ccc-cccccccccccc","nome":"Vaso recomendado","descricao":"Sintetico","preco":89.9,"categoriaId":"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb","tecnicaId":"tecnica-modelagem-argila","regiaoId":"regiao-pilar-recife","artesaoId":"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb","fotos":["url"],"quantidadeEstoque":4,"quantidadeVendida":10,"notaMedia":4.5,"ativo":true,"criadoEm":"2026-10-14T00:00:00.000Z"}]}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita resposta fora do contrato: {"estrategia":"categoria","itens":[{"id":"cccccccc-cccc-4ccc-8ccc-cccccccccccc","nome":"Vaso recomendado","descricao":"Sintetico","preco":89.9,"categoriaId":"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb","tecnicaId":"tecnica-modelagem-argila","regiaoId":"regiao-pilar-recife","artesaoId":"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb","fotos":[{"url":"/produtos/fixture.svg","ordem":0}],"quantidadeEstoque":4,"quantidadeVendida":10,"notaMedia":7,"ativo":true,"criadoEm":"2026-10-14T00:00:00.000Z"}]}
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > senha curta bloqueia envio e mostra erro no campo 596ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita contexto invalido antes da rede: {"produtoId":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","usuarioId":"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb"}
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > foca o primeiro campo invalido apos tentativa de envio
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita contexto invalido antes da rede: {"produtoId":""}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita contexto invalido antes da rede: {"produtoId":"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa","extra":true}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita contexto invalido antes da rede: {"usuarioId":[]}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > rejeita contexto invalido antes da rede: {"produtoId":"x&usuarioId=y"}
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > propaga HTTP 400 sem fallback fake
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > mostra loading e desabilita o botao durante o envio 537ms
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > propaga HTTP 404 sem fallback fake
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > propaga HTTP 503 sem fallback fake
+ ✓ tests/services/http/recomendacoes.adapter.test.ts > HttpRecommendationAdapter no container > propaga falha de rede
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > email ja cadastrado associa a mensagem ao campo email 630ms
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm > mostra erro recuperavel quando o service falha 587ms
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm com adapters reais > fake cadastra 'comprador', persiste sessao e navega para '/' 628ms
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm com adapters reais > fake cadastra 'artesao', persiste sessao e navega para '/painel-artesao' 586ms
+ ✓ tests/components/cadastro-form.test.tsx > CadastroForm com adapters reais > HTTP hidrata sessao pelo cadastro sem chamar login nem usar storage local 573ms
+
+ Test Files  4 passed (4)
+      Tests  56 passed (56)
+   Start at  13:53:49
+   Duration  11.51s (transform 933ms, setup 2.35s, collect 3.77s, tests 10.11s, environment 13.30s, prepare 961ms)
+
