@@ -1,0 +1,9 @@
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma\schema.prisma.
+Datasource "db": PostgreSQL database "qa_20261110_backend_e2f0c990", schema "public" at "ep-shy-bird-acvlr2gl.sa-east-1.aws.neon.tech"
+
+13 migrations found in prisma/migrations
+
+
+No pending migrations to apply.

@@ -1,0 +1,98 @@
+{
+  "metodologia": "Next dev e API local, PostgreSQL real em schema E2E isolado. Uma navegacao inicial de aquecimento; dez recargas completas autenticadas em 1280px. performance.now desde navigationStart ate quatro valores e time visiveis, mais dois requestAnimationFrame. Sem interceptar respostas ou simular rede. Cache-Control no-store.",
+  "medicoes": [
+    {
+      "recarga": 1,
+      "tempoMs": 752.2999999523163,
+      "apiMs": 194.69999992847443,
+      "status": 200
+    },
+    {
+      "recarga": 2,
+      "tempoMs": 757.8999999761581,
+      "apiMs": 190,
+      "status": 200
+    },
+    {
+      "recarga": 3,
+      "tempoMs": 751.1000000238419,
+      "apiMs": 190.10000002384186,
+      "status": 200
+    },
+    {
+      "recarga": 4,
+      "tempoMs": 765.3999999761581,
+      "apiMs": 192.79999995231628,
+      "status": 200
+    },
+    {
+      "recarga": 5,
+      "tempoMs": 737.6000000238419,
+      "apiMs": 193.29999995231628,
+      "status": 200
+    },
+    {
+      "recarga": 6,
+      "tempoMs": 744.1000000238419,
+      "apiMs": 192,
+      "status": 200
+    },
+    {
+      "recarga": 7,
+      "tempoMs": 769.9000000953674,
+      "apiMs": 190.29999995231628,
+      "status": 200
+    },
+    {
+      "recarga": 8,
+      "tempoMs": 744.6999999284744,
+      "apiMs": 193,
+      "status": 200
+    },
+    {
+      "recarga": 9,
+      "tempoMs": 751.5,
+      "apiMs": 192,
+      "status": 200
+    },
+    {
+      "recarga": 10,
+      "tempoMs": 764.7999999523163,
+      "apiMs": 201.60000002384186,
+      "status": 200
+    }
+  ],
+  "responsividade": [
+    {
+      "largura": 360,
+      "viewport": 360,
+      "documento": 360,
+      "corpo": 360
+    },
+    {
+      "largura": 768,
+      "viewport": 768,
+      "documento": 768,
+      "corpo": 768
+    },
+    {
+      "largura": 1280,
+      "viewport": 1280,
+      "documento": 1280,
+      "corpo": 1280
+    }
+  ],
+  "network": {
+    "method": "GET",
+    "path": "/api/admin/indicadores",
+    "status": 200,
+    "cacheControl": "no-store",
+    "body": {
+      "artesaosAtivos": 3,
+      "produtosAtivos": 30,
+      "pedidosConfirmados": 40,
+      "receitaTotal": "3097.50",
+      "atualizadoEm": "2026-11-10T15:56:00.906Z"
+    }
+  }
+}

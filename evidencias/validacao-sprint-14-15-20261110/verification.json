@@ -1,0 +1,111 @@
+{
+  "at": "2026-11-10T16:17:30.999Z",
+  "suites": [
+    {
+      "label": "frontend-network",
+      "passed": 1031,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "backend",
+      "passed": 837,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "label": "micro",
+      "passed": 116,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "e2e",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 1,
+      "flaky": 0
+    }
+  ],
+  "totalPassed": 1991,
+  "totalSkipped": 2,
+  "finalChecks": [
+    {
+      "label": "frontend-lint",
+      "code": 0,
+      "durationMs": 7459
+    },
+    {
+      "label": "frontend-typecheck",
+      "code": 0,
+      "durationMs": 5737
+    },
+    {
+      "label": "frontend-network-tests",
+      "code": 0,
+      "durationMs": 30436
+    },
+    {
+      "label": "frontend-network-build",
+      "code": 0,
+      "durationMs": 17558
+    },
+    {
+      "label": "backend-migrations",
+      "code": 0,
+      "durationMs": 13940
+    },
+    {
+      "label": "backend-lint",
+      "code": 0,
+      "durationMs": 4891
+    },
+    {
+      "label": "backend-typecheck",
+      "code": 0,
+      "durationMs": 3807
+    },
+    {
+      "label": "backend-tests",
+      "code": 0,
+      "durationMs": 751566
+    },
+    {
+      "label": "backend-generate",
+      "code": 0,
+      "durationMs": 1504
+    },
+    {
+      "label": "backend-build",
+      "code": 0,
+      "durationMs": 4270
+    },
+    {
+      "label": "micro-lint",
+      "code": 0,
+      "durationMs": 2841
+    },
+    {
+      "label": "micro-typecheck",
+      "code": 0,
+      "durationMs": 1688
+    },
+    {
+      "label": "micro-tests",
+      "code": 0,
+      "durationMs": 168357
+    },
+    {
+      "label": "micro-build",
+      "code": 0,
+      "durationMs": 1331
+    },
+    {
+      "label": "e2e-tests",
+      "code": 0,
+      "durationMs": 102122
+    }
+  ],
+  "scannedTextFiles": 43,
+  "issues": []
+}

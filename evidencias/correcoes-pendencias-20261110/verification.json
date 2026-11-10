@@ -1,0 +1,125 @@
+{
+  "at": "2026-11-10T16:46:39.563Z",
+  "suites": [
+    {
+      "label": "frontend",
+      "passed": 1041,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "backend",
+      "passed": 837,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "label": "micro",
+      "passed": 116,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "label": "e2e",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 1,
+      "flaky": 0
+    }
+  ],
+  "totalPassed": 2003,
+  "totalSkipped": 2,
+  "checks": [
+    {
+      "label": "frontend-lint",
+      "code": 0,
+      "durationMs": 3205
+    },
+    {
+      "label": "frontend-typecheck",
+      "code": 0,
+      "durationMs": 1997
+    },
+    {
+      "label": "frontend-tests",
+      "code": 0,
+      "durationMs": 30614
+    },
+    {
+      "label": "frontend-build",
+      "code": 0,
+      "durationMs": 14747
+    },
+    {
+      "label": "backend-migrations",
+      "code": 0,
+      "durationMs": 6401
+    },
+    {
+      "label": "backend-lint",
+      "code": 0,
+      "durationMs": 6815
+    },
+    {
+      "label": "backend-typecheck",
+      "code": 0,
+      "durationMs": 8015
+    },
+    {
+      "label": "backend-tests",
+      "code": 0,
+      "durationMs": 691002
+    },
+    {
+      "label": "backend-generate",
+      "code": 0,
+      "durationMs": 1567
+    },
+    {
+      "label": "backend-build",
+      "code": 0,
+      "durationMs": 4603
+    },
+    {
+      "label": "micro-lint",
+      "code": 0,
+      "durationMs": 4388
+    },
+    {
+      "label": "micro-typecheck",
+      "code": 0,
+      "durationMs": 2470
+    },
+    {
+      "label": "micro-tests",
+      "code": 0,
+      "durationMs": 152897
+    },
+    {
+      "label": "micro-build",
+      "code": 0,
+      "durationMs": 1312
+    },
+    {
+      "label": "e2e-tests",
+      "code": 0,
+      "durationMs": 99805
+    }
+  ],
+  "microHttpCalls": 23,
+  "databaseConsistency": {
+    "estoque_negativo": 0,
+    "pedido_pagamento_divergente": 0,
+    "pedido_itens_divergentes": 0,
+    "subtotal_divergente": 0,
+    "envio_sem_data": 0,
+    "avaliacao_sem_compra_confirmada": 0
+  },
+  "activeMigrations": 13,
+  "legacyReviewRemoved": 1,
+  "scannedTextFiles": 71,
+  "credentialFilesIgnored": true,
+  "secretsFound": 0,
+  "brokenLinks": 0,
+  "whitespaceCheck": "passed; CRLF existing files accepted"
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "label": "frontend-lint",
+    "code": 0,
+    "durationMs": 7459
+  },
+  {
+    "label": "frontend-typecheck",
+    "code": 0,
+    "durationMs": 5737
+  },
+  {
+    "label": "frontend-tests",
+    "code": 1,
+    "durationMs": 37367
+  },
+  {
+    "label": "frontend-build",
+    "code": 1,
+    "durationMs": 6265
+  }
+]

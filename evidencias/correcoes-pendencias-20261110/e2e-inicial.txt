@@ -1,0 +1,130 @@
+[WebServer] (node:22548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:40924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+  -   1 [360px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras
+  x   2 [360px] › e2e\filtros-rapidos.spec.ts:3:1 › preserva filtros rapidos, recarga e navegacao no historico (1.5m)
+  x   3 [360px] › e2e\filtros-rapidos.spec.ts:3:1 › preserva filtros rapidos, recarga e navegacao no historico (retry #1) (152ms)
+  ok  4 [360px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (9.9s)
+  x   5 [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (1.5m)
+  x   6 [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (retry #1) (124ms)
+  ok  7 [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (4.3s)
+  ok  8 [1280px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras (10.0s)
+  ok  9 [1280px] › e2e\filtros-rapidos.spec.ts:3:1 › preserva filtros rapidos, recarga e navegacao no historico (2.4s)
+  ok 10 [1280px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (6.9s)
+  ok 11 [1280px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (12.0s)
+  ok 12 [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (4.3s)
+
+
+  1) [360px] › e2e\filtros-rapidos.spec.ts:3:1 › preserva filtros rapidos, recarga e navegacao no historico 
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.click: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Filtros', exact: true })
+
+
+      31 |   await page.reload();
+      32 |   if (mobile)
+    > 33 |     await page.getByRole("button", { name: "Filtros", exact: true }).click();
+         |                                                                      ^
+      34 |   await expect(categoria).toHaveValue(categoriaId);
+      35 |   await expect(tecnica).toHaveValue(tecnicaId);
+      36 |   await page
+        at C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\filtros-rapidos.spec.ts:33:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\filtros-rapidos-preserva-f-7ec1d-ga-e-navegacao-no-historico-360px\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\filtros-rapidos-preserva-f-7ec1d-ga-e-navegacao-no-historico-360px\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserContext.newPage: Executable doesn't exist at C:\Users\Pedro\AppData\Local\ms-playwright\ffmpeg-1013\ffmpeg-win64.exe
+    ╔═════════════════════════════════════════════════════════════════╗
+    ║ Video rendering requires ffmpeg binary.                         ║
+    ║ Downloading it will not affect any of the system-wide settings. ║
+    ║ Please run the following command:                               ║
+    ║                                                                 ║
+    ║     npx playwright install ffmpeg                               ║
+    ║                                                                 ║
+    ║ <3 Playwright Team                                              ║
+    ╚═════════════════════════════════════════════════════════════════╝
+
+    Error Context: ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\filtros-rapidos-preserva-f-7ec1d-ga-e-navegacao-no-historico-360px-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\filtros-rapidos-preserva-f-7ec1d-ga-e-navegacao-no-historico-360px-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\filtros-rapidos-preserva-f-7ec1d-ga-e-navegacao-no-historico-360px-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado ──────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.fill: Test ended.
+    Call log:
+      - waiting for getByLabel('Nome', { exact: true })
+
+
+      31 |       await page
+      32 |         .getByLabel("Nome", { exact: true })
+    > 33 |         .fill("Pessoa sintética E2E");
+         |          ^
+      34 |       await page.getByLabel("E-mail", { exact: true }).fill(email);
+      35 |       await page.getByLabel("Senha", { exact: true }).fill(senha);
+      36 |       await page
+        at C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\fluxos.spec.ts:33:10
+        at cadastrar (C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\fluxos.spec.ts:29:5)
+        at C:\Users\Pedro\Desktop\Projeto integrador\frontend\e2e\fluxos.spec.ts:184:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-360px\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-360px\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-360px\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: browserContext.newPage: Executable doesn't exist at C:\Users\Pedro\AppData\Local\ms-playwright\ffmpeg-1013\ffmpeg-win64.exe
+    ╔═════════════════════════════════════════════════════════════════╗
+    ║ Video rendering requires ffmpeg binary.                         ║
+    ║ Downloading it will not affect any of the system-wide settings. ║
+    ║ Please run the following command:                               ║
+    ║                                                                 ║
+    ║     npx playwright install ffmpeg                               ║
+    ║                                                                 ║
+    ║ <3 Playwright Team                                              ║
+    ╚═════════════════════════════════════════════════════════════════╝
+
+    Error Context: ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-360px-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-360px-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\results\fluxos--b-artesao-envia-e-comprador-acompanha-Enviado-360px-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [360px] › e2e\filtros-rapidos.spec.ts:3:1 › preserva filtros rapidos, recarga e navegacao no historico 
+    [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado ───────────
+  1 skipped
+  7 passed (4.5m)
+Schema E2E removido e ausencia confirmada.
+Chamadas ao microsservico E2E: 24
+Traces ZIP sanitizados: 4
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\correcoes-pendencias-20261110\e2e\08e5beef61d94431a3089d899b7bd05f\html\index.html

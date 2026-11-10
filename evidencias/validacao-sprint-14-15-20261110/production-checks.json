@@ -1,0 +1,281 @@
+{
+  "at": "2026-11-10T16:13:07.443Z",
+  "http": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "durationMs": 613,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 401,
+      "durationMs": 259,
+      "location": null,
+      "cache": "no-store"
+    },
+    {
+      "path": "/api/carrinho",
+      "status": 401,
+      "durationMs": 299,
+      "location": null,
+      "cache": "no-store"
+    },
+    {
+      "path": "/api/admin/indicadores",
+      "status": 401,
+      "durationMs": 204,
+      "location": null,
+      "cache": "no-store"
+    },
+    {
+      "path": "/api/produtos",
+      "status": 200,
+      "durationMs": 233,
+      "location": null,
+      "cache": "no-store"
+    },
+    {
+      "path": "/api/produtos/invalido",
+      "status": 400,
+      "durationMs": 252,
+      "location": null,
+      "cache": "no-store"
+    },
+    {
+      "path": "/api/produtos/55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+      "status": 404,
+      "durationMs": 342,
+      "location": null,
+      "cache": "no-store"
+    },
+    {
+      "path": "/api/recomendacoes",
+      "status": 200,
+      "durationMs": 702,
+      "location": null,
+      "cache": "no-store",
+      "estrategia": "misto",
+      "total": 7,
+      "ids": [
+        "b0000000-0000-4000-8000-000000000001",
+        "b0000000-0000-4000-8000-000000000007",
+        "b0000000-0000-4000-8000-000000000006",
+        "b0000000-0000-4000-8000-000000000005",
+        "b0000000-0000-4000-8000-000000000003",
+        "b0000000-0000-4000-8000-000000000002",
+        "b0000000-0000-4000-8000-000000000008"
+      ]
+    },
+    {
+      "path": "/api/recomendacoes?produtoId=b0000000-0000-4000-8000-000000000001",
+      "status": 200,
+      "durationMs": 831,
+      "location": null,
+      "cache": "no-store",
+      "estrategia": "misto",
+      "total": 6,
+      "ids": [
+        "b0000000-0000-4000-8000-000000000002",
+        "b0000000-0000-4000-8000-000000000007",
+        "b0000000-0000-4000-8000-000000000003",
+        "b0000000-0000-4000-8000-000000000005",
+        "b0000000-0000-4000-8000-000000000006",
+        "b0000000-0000-4000-8000-000000000008"
+      ]
+    },
+    {
+      "path": "/api/docs",
+      "status": 308,
+      "durationMs": 97,
+      "location": "/api/docs/",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/api/docs/",
+      "status": 200,
+      "durationMs": 370,
+      "location": null,
+      "cache": "public, max-age=0, must-revalidate"
+    }
+  ],
+  "foreignKeys": [
+    {
+      "tabela": "Avaliacao",
+      "conname": "Avaliacao_compradorId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Avaliacao",
+      "conname": "Avaliacao_produtoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Carrinho",
+      "conname": "Carrinho_usuarioId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "IntencaoNotificacao",
+      "conname": "IntencaoNotificacao_pedidoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "ItemCarrinho",
+      "conname": "ItemCarrinho_carrinhoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "ItemCarrinho",
+      "conname": "ItemCarrinho_produtoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "ItemPedido",
+      "conname": "ItemPedido_pedidoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "ItemPedido",
+      "conname": "ItemPedido_produtoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Notificacao",
+      "conname": "Notificacao_pedidoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Notificacao",
+      "conname": "Notificacao_usuarioId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Pagamento",
+      "conname": "Pagamento_pedidoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Pedido",
+      "conname": "Pedido_compradorId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "PerfilArtesao",
+      "conname": "PerfilArtesao_regiaoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "PerfilArtesao",
+      "conname": "PerfilArtesao_tecnicaPrincipalId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "PerfilArtesao",
+      "conname": "PerfilArtesao_usuarioId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Produto",
+      "conname": "Produto_artesaoId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Produto",
+      "conname": "Produto_categoriaId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "Produto",
+      "conname": "Produto_tecnicaId_fkey",
+      "coberta": true
+    },
+    {
+      "tabela": "ProdutoFoto",
+      "conname": "ProdutoFoto_produtoId_fkey",
+      "coberta": true
+    }
+  ],
+  "migrations": [
+    {
+      "migration_name": "20260914000000_init_fccpd",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20260915023849_add_intencao_notificacao",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20260915154901_add_dominio_completo",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20260915163805_add_dominio_not_null",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261013213237_reconciliar_modelo_logico",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261013230000_tecnica_regiao_referencias",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261013230100_add_notificacao",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261014010000_indices_consultas",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261014160000_checkout_web09",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261025160000_status_item_pedido",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261104160116_views_contrato_recomendacao",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261104160302_views_contrato_recomendacao",
+      "aplicada": true,
+      "revertida": true
+    },
+    {
+      "migration_name": "20261104165644_indice_perfil_tecnica_principal",
+      "aplicada": true,
+      "revertida": false
+    },
+    {
+      "migration_name": "20261105031508_remover_pedido_comprador_ref",
+      "aplicada": true,
+      "revertida": false
+    }
+  ],
+  "missingMigrations": [],
+  "consistency": {
+    "estoque_negativo": 0,
+    "pedido_pagamento_divergente": 0,
+    "pedido_itens_divergentes": 0,
+    "subtotal_divergente": 0,
+    "envio_sem_data": 0,
+    "avaliacao_sem_compra_confirmada": 1
+  }
+}

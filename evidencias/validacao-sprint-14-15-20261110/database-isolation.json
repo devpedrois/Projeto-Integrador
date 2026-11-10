@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "backend",
+    "name": "qa_20261110_backend_e2f0c990",
+    "tables": 0,
+    "createdAt": "2026-11-10T15:51:55.633Z",
+    "freshDatabase": true,
+    "separateFromConfiguredDatabase": true
+  },
+  {
+    "mode": "micro",
+    "name": "qa_20261110_micro_65da4571",
+    "tables": 0,
+    "createdAt": "2026-11-10T15:51:56.394Z",
+    "freshDatabase": true,
+    "separateFromConfiguredDatabase": true
+  },
+  {
+    "mode": "e2e",
+    "name": "qa_20261110_e2e_67d65091",
+    "tables": 0,
+    "createdAt": "2026-11-10T15:51:56.942Z",
+    "freshDatabase": true,
+    "separateFromConfiguredDatabase": true
+  }
+]

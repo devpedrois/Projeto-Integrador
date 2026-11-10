@@ -1,0 +1,79 @@
+{
+  "at": "2026-11-10T16:34:38.270Z",
+  "results": [
+    {
+      "label": "sem-token",
+      "status": 401,
+      "codigo": "TOKEN_SERVICO_INVALIDO"
+    },
+    {
+      "label": "geral",
+      "status": 200,
+      "estrategia": "fallback-geral",
+      "produtoIds": [
+        "b0000000-0000-4000-8000-000000000001",
+        "b0000000-0000-4000-8000-000000000007",
+        "b0000000-0000-4000-8000-000000000006",
+        "b0000000-0000-4000-8000-000000000003",
+        "b0000000-0000-4000-8000-000000000005",
+        "b0000000-0000-4000-8000-000000000002",
+        "b0000000-0000-4000-8000-000000000008"
+      ]
+    },
+    {
+      "label": "produto",
+      "status": 200,
+      "estrategia": "categoria",
+      "produtoIds": [
+        "b0000000-0000-4000-8000-000000000002"
+      ]
+    },
+    {
+      "label": "historico",
+      "status": 200,
+      "estrategia": "historico-compra",
+      "produtoIds": [
+        "b0000000-0000-4000-8000-000000000001",
+        "b0000000-0000-4000-8000-000000000002"
+      ]
+    },
+    {
+      "label": "uuid-invalido",
+      "status": 400,
+      "error": {
+        "code": "VALIDACAO",
+        "message": "Contexto de recomendacao invalido."
+      }
+    },
+    {
+      "label": "cliente-api-http-real",
+      "estrategia": "categoria",
+      "produtoIds": [
+        "b0000000-0000-4000-8000-000000000002"
+      ]
+    },
+    {
+      "label": "banco-com-credencial-corrigida",
+      "reachable": true,
+      "produtosElegiveis": 10
+    },
+    {
+      "label": "isolamento-tabelas-api",
+      "denied": true
+    },
+    {
+      "label": "microsservico-publicado-autenticado",
+      "status": 200,
+      "estrategia": "fallback-geral",
+      "produtoIds": [
+        "b0000000-0000-4000-8000-000000000001",
+        "b0000000-0000-4000-8000-000000000007",
+        "b0000000-0000-4000-8000-000000000006",
+        "b0000000-0000-4000-8000-000000000003",
+        "b0000000-0000-4000-8000-000000000005",
+        "b0000000-0000-4000-8000-000000000002",
+        "b0000000-0000-4000-8000-000000000008"
+      ]
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import { LayoutAutenticacao } from "@/components/autenticacao/LayoutAutenticacao
 import { Icone, type NomeIcone } from "@/components/vitrine/Icone";
 import { useSessao, useEstadoSessao } from "@/hooks/use-sessao";
 import { SessaoIndisponivel } from "@/components/layout/SessaoIndisponivel";
+import { RestaurandoSessao } from "@/components/layout/RestaurandoSessao";
 import { AlertaErro } from "@/components/feedback/AlertaErro";
 import { AvisosCarrinho } from "@/components/carrinho/AvisosCarrinho";
 import { useCarrinho } from "@/hooks/use-carrinho";
@@ -108,7 +109,7 @@ export function GateAcesso({ children }: GateAcessoProps) {
     setModoVisitante(true);
   }
 
-  if (restaurando) return null;
+  if (restaurando) return <RestaurandoSessao />;
   if (estado.erro && !naRotaDeAutenticacao && sessionStore)
     return <SessaoIndisponivel store={sessionStore} />;
 

@@ -1,0 +1,16 @@
+(node:38152) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"servico":"recomendacao","requestId":"69b8cefd-5e5f-45ac-b472-61e4b8d10fbc","metodo":"GET","rota":"/health","status":200,"duracaoMs":481.248}
+{"servico":"recomendacao","requestId":"bd2bff5f-bfa8-4e0d-9f33-fac2a8d38b7b","metodo":"GET","rota":"[sem-rota]","status":401,"duracaoMs":0.898}
+{"servico":"recomendacao","requestId":"1a4628d0-418f-4350-9488-d9c7fb66ddfb","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":51.952}
+{"servico":"recomendacao","requestId":"a321e353-b7dd-4e93-98ac-7c2bde4dcae1","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":100.685}
+{"servico":"recomendacao","requestId":"2e4ad9ab-cb17-459b-8963-e2ecb9e78012","metodo":"GET","rota":"/recomendacoes/historico","status":200,"duracaoMs":52.195}
+{"servico":"recomendacao","requestId":"40fc5034-8a11-4ff9-90c3-e57f7b1c66e7","metodo":"GET","rota":"/recomendacoes","status":400,"duracaoMs":0.788}
+{"servico":"recomendacao","requestId":"f995cd99-816d-4d83-9be7-25c44e1ae3e8","metodo":"GET","rota":"/recomendacoes","status":200,"duracaoMs":101.095}

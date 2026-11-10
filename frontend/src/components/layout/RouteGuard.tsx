@@ -10,6 +10,7 @@ import {
 } from "@/components/vitrine/EsqueletoProdutos";
 import { useSessao, useEstadoSessao } from "@/hooks/use-sessao";
 import { SessaoIndisponivel } from "@/components/layout/SessaoIndisponivel";
+import { RestaurandoSessao } from "@/components/layout/RestaurandoSessao";
 import type { SessionStore } from "@/store/sessao.store";
 import type { Papel } from "@/types/usuario";
 import { paraDestinoSeguro } from "@/utils/rota-segura";
@@ -56,7 +57,8 @@ export function RouteGuard({
     }
   }, [semSessao, router, pathname]);
 
-  if (restaurando || semSessao) return null;
+  if (restaurando) return <RestaurandoSessao />;
+  if (semSessao) return null;
   if (estado.erro && sessionStore)
     return <SessaoIndisponivel store={sessionStore} />;
 

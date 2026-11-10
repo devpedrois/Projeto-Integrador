@@ -14,6 +14,13 @@ import { validarCadastro } from "@/validators/cadastro.validator";
 import { validarLogin } from "@/validators/login.validator";
 import { objeto, respostaInvalida } from "./catalogo-response";
 
+const INTERVALOS_RECUPERACAO_SESSAO_MS = [1000, 2000, 4000] as const;
+const ERROS_TRANSITORIOS_SESSAO = new Set([
+  "TIMEOUT",
+  "ERRO_REDE",
+  "SERVICO_INDISPONIVEL",
+]);
+
 function sessaoPublica(value: unknown): UsuarioSessao {
   if (typeof value !== "object" || value === null)
     throw new ServiceError(
@@ -125,7 +132,22 @@ export class HttpUsuariosService implements UsuariosSessaoService {
   }
 
   async me(): Promise<UsuarioSessao> {
-    return sessaoPublica(await this.api.request<unknown>("/auth/me"));
+    let tentativa = 0;
+    for (;;) {
+      try {
+        return sessaoPublica(await this.api.request<unknown>("/auth/me"));
+      } catch (error: unknown) {
+        const intervalo = INTERVALOS_RECUPERACAO_SESSAO_MS[tentativa];
+        if (
+          intervalo === undefined ||
+          !(error instanceof ServiceError) ||
+          !ERROS_TRANSITORIOS_SESSAO.has(error.code)
+        )
+          throw error;
+        tentativa += 1;
+        await new Promise<void>((resolve) => setTimeout(resolve, intervalo));
+      }
+    }
   }
   async logout(): Promise<void> {
     await this.api.request<void>("/auth/logout", { method: "POST" });

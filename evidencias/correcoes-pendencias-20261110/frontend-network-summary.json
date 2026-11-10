@@ -1,0 +1,12 @@
+[
+  {
+    "label": "frontend-network-tests",
+    "code": 0,
+    "durationMs": 31248
+  },
+  {
+    "label": "frontend-network-build",
+    "code": 0,
+    "durationMs": 15680
+  }
+]

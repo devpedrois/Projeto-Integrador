@@ -1,0 +1,22 @@
+[
+  {
+    "label": "micro-lint",
+    "code": 0,
+    "durationMs": 2841
+  },
+  {
+    "label": "micro-typecheck",
+    "code": 0,
+    "durationMs": 1688
+  },
+  {
+    "label": "micro-tests",
+    "code": 0,
+    "durationMs": 168357
+  },
+  {
+    "label": "micro-build",
+    "code": 0,
+    "durationMs": 1331
+  }
+]

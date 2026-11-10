@@ -1,0 +1,98 @@
+{
+  "metodologia": "Next dev e API local, PostgreSQL real em schema E2E isolado. Uma navegacao inicial de aquecimento; dez recargas completas autenticadas em 1280px. performance.now desde navigationStart ate quatro valores e time visiveis, mais dois requestAnimationFrame. Sem interceptar respostas ou simular rede. Cache-Control no-store.",
+  "medicoes": [
+    {
+      "recarga": 1,
+      "tempoMs": 774.1000000238419,
+      "apiMs": 167.29999995231628,
+      "status": 200
+    },
+    {
+      "recarga": 2,
+      "tempoMs": 761.3000000715256,
+      "apiMs": 178.39999997615814,
+      "status": 200
+    },
+    {
+      "recarga": 3,
+      "tempoMs": 757.3999999761581,
+      "apiMs": 167.20000004768372,
+      "status": 200
+    },
+    {
+      "recarga": 4,
+      "tempoMs": 757.3999999761581,
+      "apiMs": 168.5,
+      "status": 200
+    },
+    {
+      "recarga": 5,
+      "tempoMs": 749.8999999761581,
+      "apiMs": 162.60000002384186,
+      "status": 200
+    },
+    {
+      "recarga": 6,
+      "tempoMs": 729.8999999761581,
+      "apiMs": 164.80000007152557,
+      "status": 200
+    },
+    {
+      "recarga": 7,
+      "tempoMs": 730.8000000715256,
+      "apiMs": 167.5,
+      "status": 200
+    },
+    {
+      "recarga": 8,
+      "tempoMs": 671.3999999761581,
+      "apiMs": 162.5,
+      "status": 200
+    },
+    {
+      "recarga": 9,
+      "tempoMs": 702.0999999046326,
+      "apiMs": 162.69999992847443,
+      "status": 200
+    },
+    {
+      "recarga": 10,
+      "tempoMs": 653.8000000715256,
+      "apiMs": 163,
+      "status": 200
+    }
+  ],
+  "responsividade": [
+    {
+      "largura": 360,
+      "viewport": 360,
+      "documento": 360,
+      "corpo": 360
+    },
+    {
+      "largura": 768,
+      "viewport": 768,
+      "documento": 768,
+      "corpo": 768
+    },
+    {
+      "largura": 1280,
+      "viewport": 1280,
+      "documento": 1280,
+      "corpo": 1280
+    }
+  ],
+  "network": {
+    "method": "GET",
+    "path": "/api/admin/indicadores",
+    "status": 200,
+    "cacheControl": "no-store",
+    "body": {
+      "artesaosAtivos": 3,
+      "produtosAtivos": 30,
+      "pedidosConfirmados": 40,
+      "receitaTotal": "3097.50",
+      "atualizadoEm": "2026-11-10T16:39:58.670Z"
+    }
+  }
+}

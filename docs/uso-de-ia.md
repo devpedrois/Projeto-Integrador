@@ -1708,3 +1708,20 @@ Atualizou o cronograma e o status por disciplina em `CLAUDE.md`.
 Alinhou os documentos da sprint à referência de paralelismo vigente.
 Preservou as pendências de CI, deploy, smoke e apresentação.
 Configurou `CLAUDE.md` como arquivo local, excluído do versionamento.
+
+### Validação funcional publicada da Sprint 14–15
+
+O Codex validou os três perfis no navegador publicado.
+Conferiu operações e persistência através de consultas PostgreSQL.
+Executou suítes locais, E2E e testes do microsserviço.
+Registrou falhas reproduzíveis, dados legados e limitações observadas.
+Evidências: [validação funcional](../evidencias/validacao-sprint-14-15-20261110/README.md).
+
+### Correção das pendências da validação funcional
+
+O Codex corrigiu filtros concorrentes e recuperação da sessão.
+Sincronizou credenciais locais, preservando as configurações publicadas.
+Removeu uma avaliação legada após autorização e backup.
+Reexecutou testes, builds e validações com PostgreSQL real.
+A revisão de segurança ocorreu nesta conversa.
+Evidências: [correções validadas](../evidencias/correcoes-pendencias-20261110/README.md).

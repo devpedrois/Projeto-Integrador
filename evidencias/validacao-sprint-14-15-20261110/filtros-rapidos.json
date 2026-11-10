@@ -1,0 +1,22 @@
+{
+  "url": "https://origem-marketplace.vercel.app/?tecnica=tecnica-torno-ceramico",
+  "selects": [
+    {
+      "label": "Todas as categorias",
+      "value": ""
+    },
+    {
+      "label": "Torno Cerâmico",
+      "value": "tecnica-torno-ceramico"
+    },
+    {
+      "label": "Todas as regiões",
+      "value": ""
+    },
+    {
+      "label": "Todos os artesãos",
+      "value": ""
+    }
+  ],
+  "result": "Vaso de Barro Trancoso\npor Maria do Pilar\nR$ 89,90\nAdicionar ao carrinho"
+}

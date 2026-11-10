@@ -1,0 +1,298 @@
+{
+  "runTag": "qa-20261110-mwavhh9l",
+  "qaArtEmail": "qa-20261110-mwavhh9l-artesao@teste.origem",
+  "qaBuyEmail": "qa-20261110-mwavhh9l-comprador@teste.origem",
+  "qaProductName": "Vaso QA Sprint 1415 qa-20261110-mwavhh9l Editado",
+  "qaProductUrl": "https://origem-marketplace.vercel.app/produto/55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+  "qaOrderNumber": "ORG-2026-002981",
+  "at": "2026-11-10T16:15:27.523Z",
+  "audit": [
+    {
+      "case": "busca-sem-resultados",
+      "status": "passou"
+    },
+    {
+      "case": "login-vazio",
+      "status": "passou"
+    },
+    {
+      "case": "senha-incorreta",
+      "status": "passou"
+    },
+    {
+      "case": "login-Ana",
+      "status": "passou"
+    },
+    {
+      "case": "comprador-admin-negado",
+      "status": "passou"
+    },
+    {
+      "case": "comprador-painel-artesao-negado",
+      "status": "passou"
+    },
+    {
+      "case": "logout-Ana",
+      "status": "passou"
+    },
+    {
+      "case": "login-Bruno Lima",
+      "status": "passou"
+    },
+    {
+      "case": "login-João Artesão",
+      "status": "passou"
+    },
+    {
+      "case": "Joao-indicadores-notificacoes-vazios",
+      "status": "passou"
+    },
+    {
+      "case": "artesao-admin-negado",
+      "status": "passou"
+    },
+    {
+      "case": "login-Maria Artesã",
+      "status": "passou"
+    },
+    {
+      "case": "Maria-perfil-carregado",
+      "status": "passou"
+    },
+    {
+      "case": "login-Admin Origem",
+      "status": "passou"
+    },
+    {
+      "case": "admin-indicadores-lista-artesaos",
+      "status": "passou"
+    },
+    {
+      "case": "admin-busca-e-abas",
+      "status": "passou"
+    },
+    {
+      "case": "cadastro-validacoes",
+      "status": "passou"
+    },
+    {
+      "case": "cadastro-artesao-sessao-automatica",
+      "status": "passou"
+    },
+    {
+      "case": "perfil-vazio-validacoes",
+      "status": "passou"
+    },
+    {
+      "case": "upload-foto-perfil",
+      "status": "passou"
+    },
+    {
+      "case": "perfil-foto-persistente-apos-reload",
+      "status": "passou"
+    },
+    {
+      "case": "produto-validacoes-campos-obrigatorios",
+      "status": "passou"
+    },
+    {
+      "case": "publicar-produto",
+      "status": "passou"
+    },
+    {
+      "case": "edicao-preco-zero-negado",
+      "status": "passou"
+    },
+    {
+      "case": "produto-edicao-persistente",
+      "status": "passou"
+    },
+    {
+      "case": "artesao-compra-bloqueada",
+      "status": "passou"
+    },
+    {
+      "case": "cadastro-comprador-sessao-automatica",
+      "status": "passou"
+    },
+    {
+      "case": "carrinho-estoque-insuficiente",
+      "status": "passou"
+    },
+    {
+      "case": "carrinho-quantidade-persistente",
+      "status": "passou"
+    },
+    {
+      "case": "remover-item-carrinho",
+      "status": "passou"
+    },
+    {
+      "case": "checkout-pagamento-simulado",
+      "status": "passou",
+      "pedido": "ORG-2026-002981"
+    },
+    {
+      "case": "pedido-confirmado-persistente",
+      "status": "passou"
+    },
+    {
+      "case": "avaliacao-compra-verificada-publicada",
+      "status": "passou"
+    },
+    {
+      "case": "login-Artesão QA Sprint 1415",
+      "status": "passou"
+    },
+    {
+      "case": "indicadores-atualizados-apos-compra",
+      "status": "passou",
+      "vendidas": 2,
+      "receita": "31.50"
+    },
+    {
+      "case": "notificacao-entregue-pg-boss",
+      "status": "passou"
+    },
+    {
+      "case": "notificacao-marcar-lida",
+      "status": "passou"
+    },
+    {
+      "case": "envio-item-persistente",
+      "status": "passou"
+    },
+    {
+      "case": "login-Comprador QA Sprint 1415",
+      "status": "passou"
+    },
+    {
+      "case": "comprador-acompanha-envio",
+      "status": "passou"
+    },
+    {
+      "case": "login-Admin Origem",
+      "status": "passou"
+    },
+    {
+      "case": "avaliacao-duplicada-bloqueada-interface",
+      "status": "passou"
+    },
+    {
+      "case": "admin-indicadores-atualizados",
+      "status": "passou",
+      "pedidos": 3,
+      "receita": "790.50"
+    },
+    {
+      "case": "admin-desativar-produto",
+      "status": "passou"
+    },
+    {
+      "case": "produto-moderado-indisponivel",
+      "status": "passou"
+    },
+    {
+      "case": "admin-reativar-produto",
+      "status": "passou"
+    },
+    {
+      "case": "admin-desativar-artesao-oculta-produtos",
+      "status": "passou"
+    },
+    {
+      "case": "login-artesao-desativado-negado",
+      "status": "passou"
+    },
+    {
+      "case": "admin-reativar-artesao",
+      "status": "passou"
+    },
+    {
+      "case": "viewport-IAB",
+      "status": "limitacao",
+      "detail": "Override solicitado não alterou largura efetiva de 1101px. Responsividade validada pelo E2E local."
+    },
+    {
+      "case": "login-Artesão QA Sprint 1415",
+      "status": "passou"
+    },
+    {
+      "case": "remocao-logica-produto-vendido",
+      "status": "passou"
+    },
+    {
+      "case": "anonimo-/painel-artesao",
+      "status": "passou",
+      "url": "https://origem-marketplace.vercel.app/login?retorno=%2Fpainel-artesao"
+    },
+    {
+      "case": "anonimo-/minha-conta",
+      "status": "passou",
+      "url": "https://origem-marketplace.vercel.app/login?retorno=%2Fminha-conta"
+    },
+    {
+      "case": "filtros-individuais-combinados-reload",
+      "status": "passou",
+      "url": "https://origem-marketplace.vercel.app/?termo=Vaso&categoria=c0000000-0000-4000-8000-000000000001&tecnica=tecnica-torno-ceramico&regiao=regiao-pilar-recife&artesao=a0000000-0000-4000-8000-000000000002"
+    },
+    {
+      "case": "filtros-alteracoes-rapidas",
+      "status": "falhou",
+      "reproducao": {
+        "url": "https://origem-marketplace.vercel.app/?tecnica=tecnica-torno-ceramico",
+        "selects": [
+          {
+            "label": "Todas as categorias",
+            "value": ""
+          },
+          {
+            "label": "Torno Cerâmico",
+            "value": "tecnica-torno-ceramico"
+          },
+          {
+            "label": "Todas as regiões",
+            "value": ""
+          },
+          {
+            "label": "Todos os artesãos",
+            "value": ""
+          }
+        ]
+      }
+    },
+    {
+      "case": "limpar-filtros",
+      "status": "passou"
+    },
+    {
+      "case": "avaliacao-legada-sem-compra-confirmada",
+      "status": "inconsistencia-preexistente",
+      "avaliacaoId": "fb000000-0000-4000-8000-000000000004"
+    },
+    {
+      "case": "swagger-publicado",
+      "status": "passou"
+    }
+  ],
+  "layouts": [
+    {
+      "page": "admin",
+      "corpo": 1086,
+      "documento": 1086,
+      "viewport": 1101
+    },
+    {
+      "page": "admin",
+      "corpo": 1086,
+      "documento": 1086,
+      "viewport": 1101
+    },
+    {
+      "page": "admin",
+      "corpo": 1086,
+      "documento": 1086,
+      "viewport": 1101
+    }
+  ]
+}

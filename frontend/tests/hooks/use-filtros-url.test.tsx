@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
-import { renderHook } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { useFiltrosUrl } from "@/hooks/use-filtros-url";
 
 const pushMock = vi.fn();
@@ -17,6 +17,73 @@ beforeEach(() => {
 });
 
 describe("useFiltrosUrl", () => {
+  it("preserva filtros selecionados antes da navegacao terminar", () => {
+    const { result } = renderHook(() => useFiltrosUrl());
+
+    act(() => {
+      result.current.atualizar({ categoriaId: "cat-1" });
+      result.current.atualizar({ tecnicaId: "tec-1" });
+    });
+
+    expect(pushMock).toHaveBeenLastCalledWith(
+      "/?categoria=cat-1&tecnica=tec-1",
+      { scroll: false },
+    );
+    expect(result.current.query).toEqual({
+      categoriaId: "cat-1",
+      tecnicaId: "tec-1",
+    });
+  });
+
+  it("mantem alteracoes pendentes quando uma URL intermediaria chega", () => {
+    const { result, rerender } = renderHook(() => useFiltrosUrl());
+    act(() => {
+      result.current.atualizar({ categoriaId: "cat-1" });
+      result.current.atualizar({ tecnicaId: "tec-1" });
+    });
+    searchParamsAtual = new URLSearchParams("categoria=cat-1");
+    rerender();
+
+    act(() => result.current.atualizar({ regiaoId: "reg-1" }));
+
+    expect(pushMock).toHaveBeenLastCalledWith(
+      "/?categoria=cat-1&tecnica=tec-1&regiao=reg-1",
+      { scroll: false },
+    );
+  });
+
+  it("limpar descarta alteracoes pendentes antes de outro filtro", () => {
+    searchParamsAtual = new URLSearchParams("termo=vaso");
+    const { result } = renderHook(() => useFiltrosUrl());
+
+    act(() => {
+      result.current.atualizar({ categoriaId: "cat-1" });
+      result.current.limpar();
+      result.current.atualizar({ tecnicaId: "tec-1" });
+    });
+
+    expect(pushMock).toHaveBeenLastCalledWith("/?tecnica=tec-1", {
+      scroll: false,
+    });
+    expect(result.current.query).toEqual({ tecnicaId: "tec-1" });
+  });
+
+  it("restaura filtros ao voltar no historico apos concluir a navegacao", () => {
+    searchParamsAtual = new URLSearchParams("termo=vaso");
+    const { result, rerender } = renderHook(() => useFiltrosUrl());
+    act(() => result.current.atualizar({ categoriaId: "cat-1" }));
+    searchParamsAtual = new URLSearchParams("termo=vaso&categoria=cat-1");
+    rerender();
+    searchParamsAtual = new URLSearchParams("termo=vaso");
+    rerender();
+
+    expect(result.current.query).toEqual({ termo: "vaso" });
+    act(() => result.current.atualizar({ regiaoId: "reg-1" }));
+    expect(pushMock).toHaveBeenLastCalledWith("/?termo=vaso&regiao=reg-1", {
+      scroll: false,
+    });
+  });
+
   it("inicializa a consulta a partir dos parametros presentes na URL", () => {
     searchParamsAtual = new URLSearchParams(
       "termo=vaso&categoria=categoria-ceramica-barro"

@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-10T16:44:10.504Z",
+  "sessionStatuses": [
+    503,
+    503,
+    401,
+    401
+  ],
+  "recuperacaoSemCliqueManual": true,
+  "filtersBeforeReload": {
+    "url": "http://127.0.0.1:3443/?categoria=de5eee0a-2a66-5362-94d7-0fea750da385&tecnica=tecnica-torno-ceramico",
+    "selecoes": [
+      {
+        "label": "Cerâmica e Barro",
+        "value": "de5eee0a-2a66-5362-94d7-0fea750da385"
+      },
+      {
+        "label": "Torno Cerâmico",
+        "value": "tecnica-torno-ceramico"
+      },
+      {
+        "label": "Todas as regiões",
+        "value": ""
+      },
+      {
+        "label": "Todos os artesãos",
+        "value": ""
+      }
+    ]
+  },
+  "filtersAfterReload": {
+    "url": "http://127.0.0.1:3443/?categoria=de5eee0a-2a66-5362-94d7-0fea750da385&tecnica=tecnica-torno-ceramico",
+    "selecoes": [
+      {
+        "label": "Cerâmica e Barro",
+        "value": "de5eee0a-2a66-5362-94d7-0fea750da385"
+      },
+      {
+        "label": "Torno Cerâmico",
+        "value": "tecnica-torno-ceramico"
+      },
+      {
+        "label": "Todas as regiões",
+        "value": ""
+      },
+      {
+        "label": "Todos os artesãos",
+        "value": ""
+      }
+    ]
+  },
+  "avaliacaoLegadaPublicaRemovida": true
+}

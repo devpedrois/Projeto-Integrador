@@ -1,0 +1,83 @@
+{
+  "at": "2026-11-10T16:03:59.767Z",
+  "results": [
+    {
+      "label": "health",
+      "path": "/health",
+      "status": 200,
+      "durationMs": 300,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "label": "token-ausente",
+      "path": "/recomendacoes",
+      "status": 401,
+      "durationMs": 140,
+      "body": {
+        "codigo": "TOKEN_SERVICO_INVALIDO"
+      }
+    },
+    {
+      "label": "recomendacao-geral",
+      "path": "/recomendacoes",
+      "status": 401,
+      "durationMs": 136,
+      "body": {
+        "codigo": "TOKEN_SERVICO_INVALIDO"
+      }
+    },
+    {
+      "label": "recomendacao-produto",
+      "path": "/recomendacoes?produtoId=b0000000-0000-4000-8000-000000000001",
+      "status": 401,
+      "durationMs": 128,
+      "body": {
+        "codigo": "TOKEN_SERVICO_INVALIDO"
+      }
+    },
+    {
+      "label": "uuid-invalido",
+      "path": "/recomendacoes?produtoId=invalido",
+      "status": 401,
+      "durationMs": 138,
+      "body": {
+        "codigo": "TOKEN_SERVICO_INVALIDO"
+      }
+    },
+    {
+      "label": "api-publica-integrada",
+      "status": 200,
+      "estrategia": "fallback-geral",
+      "bodyKeys": [
+        "estrategia",
+        "itens"
+      ]
+    },
+    {
+      "label": "papel-microsservico",
+      "check": "view-permitida",
+      "connectionErrorCode": "28P01"
+    },
+    {
+      "label": "papel-api",
+      "check": "schema-privado-negado",
+      "rows": [
+        {
+          "permitido": false
+        }
+      ]
+    },
+    {
+      "label": "permissoes-catalogo-postgresql",
+      "rows": [
+        {
+          "view_permitida": true,
+          "usuario_permitido": false,
+          "api_schema_privado_permitido": false
+        }
+      ]
+    }
+  ]
+}

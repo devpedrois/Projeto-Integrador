@@ -1,0 +1,16 @@
+[WebServer] (node:41076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:31180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+  ok 1 [360px] › e2e\filtros-rapidos.spec.ts:3:1 › preserva filtros rapidos, recarga e navegacao no historico (2.4s)
+  ok 2 [360px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (10.0s)
+  ok 3 [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (12.5s)
+
+  3 passed (58.9s)
+Schema E2E removido e ausencia confirmada.
+Chamadas ao microsservico E2E: 9
+Traces ZIP sanitizados: 0
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\correcoes-pendencias-20261110\e2e\e9d4bc723c144e128d23d8efa8aa3eef\html\index.html

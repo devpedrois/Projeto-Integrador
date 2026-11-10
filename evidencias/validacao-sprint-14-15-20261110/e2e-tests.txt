@@ -1,0 +1,22 @@
+[WebServer] (node:53256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:24476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+  -  1 [360px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras
+  ok 2 [360px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (9.8s)
+  ok 3 [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (11.9s)
+  ok 4 [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (4.7s)
+  ok 5 [1280px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras (10.3s)
+  ok 6 [1280px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (6.6s)
+  ok 7 [1280px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (10.6s)
+  ok 8 [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (4.8s)
+
+  1 skipped
+  7 passed (1.7m)
+Schema E2E removido e ausencia confirmada.
+Chamadas ao microsservico E2E: 22
+Traces ZIP sanitizados: 0
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\validacao-sprint-14-15-20261110\e2e\a847b42c7bac4f42aab5b6114e60bcfe\html\index.html

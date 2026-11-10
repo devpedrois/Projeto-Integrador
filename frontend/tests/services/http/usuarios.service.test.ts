@@ -19,7 +19,91 @@ async function service() {
   )) as typeof import("@/services/http/usuarios.service");
   return new HttpUsuariosService();
 }
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.useRealTimers();
+});
+
+it("restaura sessao quando o servidor inicia apos falhas transitorias", async () => {
+  const api = await service();
+  vi.useFakeTimers();
+  const fetchMock = vi
+    .fn()
+    .mockRejectedValueOnce(new TypeError("servico iniciando"))
+    .mockResolvedValueOnce(Response.json({}, { status: 503 }))
+    .mockResolvedValueOnce(Response.json(usuario));
+  vi.stubGlobal("fetch", fetchMock);
+
+  const assertion = expect(api.me()).resolves.toEqual(usuario);
+  await vi.advanceTimersByTimeAsync(3000);
+  await assertion;
+});
+
+it("recupera sessao apos abortar a primeira consulta por timeout", async () => {
+  const { ApiClient } = await import("@/services/http/api-client");
+  const { HttpUsuariosService } =
+    await import("@/services/http/usuarios.service");
+  const api = new HttpUsuariosService(new ApiClient({ timeoutMs: 50 }));
+  vi.useFakeTimers();
+  let primeiraConsulta: AbortSignal | undefined;
+  vi.stubGlobal(
+    "fetch",
+    vi.fn()
+      .mockImplementationOnce((_url: string, options: RequestInit) => {
+        primeiraConsulta = options.signal as AbortSignal;
+        return new Promise<Response>(() => {});
+      })
+      .mockResolvedValueOnce(Response.json(usuario)),
+  );
+
+  const assertion = expect(api.me()).resolves.toEqual(usuario);
+  await vi.advanceTimersByTimeAsync(1050);
+  await assertion;
+  expect(primeiraConsulta?.aborted).toBe(true);
+});
+
+it("encerra recuperacao automatica se o servidor continua indisponivel", async () => {
+  const api = await service();
+  vi.useFakeTimers();
+  const fetchMock = vi.fn().mockRejectedValue(new TypeError("sem rede"));
+  vi.stubGlobal("fetch", fetchMock);
+
+  const assertion = expect(api.me()).rejects.toMatchObject({
+    code: "ERRO_REDE",
+  });
+  await vi.advanceTimersByTimeAsync(7000);
+  await assertion;
+  const chamadasAoEncerrar = fetchMock.mock.calls.length;
+  await vi.advanceTimersByTimeAsync(60000);
+  expect(fetchMock).toHaveBeenCalledTimes(chamadasAoEncerrar);
+  expect(chamadasAoEncerrar).toBeGreaterThan(1);
+});
+
+it("sessao ausente nao dispara novas tentativas de autenticacao", async () => {
+  const api = await service();
+  vi.useFakeTimers();
+  const fetchMock = vi
+    .fn()
+    .mockResolvedValue(Response.json({}, { status: 401 }));
+  vi.stubGlobal("fetch", fetchMock);
+
+  await expect(api.me()).rejects.toMatchObject({ code: "NAO_AUTENTICADO" });
+  await vi.advanceTimersByTimeAsync(60000);
+  expect(fetchMock).toHaveBeenCalledTimes(1);
+});
+
+it("falha de login nao repete envio de credenciais automaticamente", async () => {
+  const api = await service();
+  vi.useFakeTimers();
+  const fetchMock = vi.fn().mockRejectedValue(new TypeError("sem rede"));
+  vi.stubGlobal("fetch", fetchMock);
+
+  await expect(
+    api.login({ email: usuario.email, senha: "senha-sintetica" }),
+  ).rejects.toMatchObject({ code: "ERRO_REDE" });
+  await vi.advanceTimersByTimeAsync(60000);
+  expect(fetchMock).toHaveBeenCalledTimes(1);
+});
 
 it("cadastro usa auth/register e retorna usuario publico ativo", async () => {
   const fetchMock = vi

@@ -1,0 +1,24 @@
+[WebServer] (node:25948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:32060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+  -   1 [360px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras
+  ok  2 [360px] › e2e\filtros-rapidos.spec.ts:3:1 › preserva filtros rapidos, recarga e navegacao no historico (2.3s)
+  ok  3 [360px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (10.2s)
+  ok  4 [360px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (11.7s)
+  ok  5 [360px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (4.0s)
+  ok  6 [1280px] › e2e\admin-indicadores.spec.ts:5:1 › 32.1 indicadores reais: dez recargas e tres larguras (10.3s)
+  ok  7 [1280px] › e2e\filtros-rapidos.spec.ts:3:1 › preserva filtros rapidos, recarga e navegacao no historico (2.4s)
+  ok  8 [1280px] › e2e\fluxos.spec.ts:167:1 › (a) cadastro autenticado ate Meus pedidos sem login separado (7.2s)
+  ok  9 [1280px] › e2e\fluxos.spec.ts:173:1 › (b) artesao envia e comprador acompanha Enviado (10.7s)
+  ok 10 [1280px] › e2e\produto-avaliacoes.spec.ts:3:1 › 32.2 produto demo mostra quatro paginas de avaliacoes reais (4.0s)
+
+  1 skipped
+  9 passed (1.6m)
+Schema E2E removido e ausencia confirmada.
+Chamadas ao microsservico E2E: 23
+Traces ZIP sanitizados: 0
+Relatorio E2E: C:\Users\Pedro\Desktop\Projeto integrador\evidencias\correcoes-pendencias-20261110\e2e\301b1b469cdc4361ace87c0907d9e054\html\index.html

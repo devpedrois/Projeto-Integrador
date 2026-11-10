@@ -1,0 +1,22 @@
+[
+  {
+    "label": "backend-migrations",
+    "code": 0,
+    "durationMs": 13940
+  },
+  {
+    "label": "backend-lint",
+    "code": 0,
+    "durationMs": 4891
+  },
+  {
+    "label": "backend-typecheck",
+    "code": 0,
+    "durationMs": 3807
+  },
+  {
+    "label": "backend-tests",
+    "code": 0,
+    "durationMs": 751566
+  }
+]

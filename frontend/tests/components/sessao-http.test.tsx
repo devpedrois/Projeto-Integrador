@@ -53,11 +53,37 @@ it("guarda aguarda me sem redirecionar nem revelar conteudo", async () => {
   );
   expect(navigation.replace).not.toHaveBeenCalled();
   expect(screen.queryByText("Conteudo protegido")).not.toBeInTheDocument();
+  expect(screen.getByRole("status")).toHaveTextContent(/conectando/i);
   await act(async () => {
     resolve(sessao);
     await pending;
   });
   expect(screen.getByText("Conteudo protegido")).toBeInTheDocument();
+});
+
+it("Gate informa carregamento enquanto restaura a sessao remota", async () => {
+  let resolve!: (value: typeof sessao) => void;
+  store = new SessionStore(null, {
+    me: () =>
+      new Promise((done) => {
+        resolve = done;
+      }),
+    logout: async () => {},
+  });
+  const pending = store.hidratar();
+  render(
+    <GateAcesso>
+      <div>Area autenticada</div>
+    </GateAcesso>,
+  );
+
+  expect(screen.getByRole("status")).toHaveTextContent(/conectando/i);
+  expect(screen.queryByText("Area autenticada")).not.toBeInTheDocument();
+  await act(async () => {
+    resolve(sessao);
+    await pending;
+  });
+  expect(screen.getByText("Area autenticada")).toBeInTheDocument();
 });
 
 it("falha de me oferece recuperacao sem tratar como visitante", async () => {

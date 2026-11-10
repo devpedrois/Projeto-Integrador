@@ -1,0 +1,462 @@
+[
+  {
+    "checkpoint": "cadastro-perfil",
+    "at": "2026-11-10T15:57:38.069Z",
+    "users": [
+      {
+        "id": "9f7f0372-5404-47a5-89a2-f11c76af627d",
+        "nome": "Artesão QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-artesao@teste.origem",
+        "papel": "artesao",
+        "ativo": true,
+        "historia": "Perfil sintético para validar publicação, edição, venda e envio na Sprint 14 e 15. Produção artesanal de teste, sem comercialização real.",
+        "tecnicaPrincipalId": "tecnica-modelagem-argila",
+        "regiaoId": "regiao-tracunhaem",
+        "completo": true,
+        "foto": null,
+        "temCarrinho": false
+      }
+    ],
+    "products": [],
+    "cart": [],
+    "orders": [],
+    "items": [],
+    "notifications": [],
+    "reviews": []
+  },
+  {
+    "checkpoint": "produto-editado",
+    "at": "2026-11-10T16:02:57.310Z",
+    "users": [
+      {
+        "id": "9f7f0372-5404-47a5-89a2-f11c76af627d",
+        "nome": "Artesão QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-artesao@teste.origem",
+        "papel": "artesao",
+        "ativo": true,
+        "historia": "Perfil sintético para validar publicação, edição, venda e envio na Sprint 14 e 15. Produção artesanal de teste, sem comercialização real.",
+        "tecnicaPrincipalId": "tecnica-modelagem-argila",
+        "regiaoId": "regiao-tracunhaem",
+        "completo": true,
+        "foto": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/perfis/9f7f0372-5404-47a5-89a2-f11c76af627d/c6d09a6e-cf38-4e0e-aa10-52ca9eadb009.png",
+        "temCarrinho": false
+      }
+    ],
+    "products": [
+      {
+        "id": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nome": "Vaso QA Sprint 1415 qa-20261110-mwavhh9l Editado",
+        "descricao": "Produto sintético da bateria de testes. Pagamento simulado e estoque exclusivo para validação.",
+        "preco": "15.75",
+        "quantidadeEstoque": 6,
+        "quantidadeVendida": 0,
+        "ativo": true,
+        "desativadoPorAdmin": false,
+        "tecnicaId": "tecnica-modelagem-argila",
+        "categoriaId": "c0000000-0000-4000-8000-000000000001",
+        "fotos": 1
+      }
+    ],
+    "cart": [],
+    "orders": [],
+    "items": [],
+    "notifications": [],
+    "reviews": []
+  },
+  {
+    "checkpoint": "carrinho-quantidade-dois",
+    "at": "2026-11-10T16:04:35.143Z",
+    "users": [
+      {
+        "id": "9f7f0372-5404-47a5-89a2-f11c76af627d",
+        "nome": "Artesão QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-artesao@teste.origem",
+        "papel": "artesao",
+        "ativo": true,
+        "historia": "Perfil sintético para validar publicação, edição, venda e envio na Sprint 14 e 15. Produção artesanal de teste, sem comercialização real.",
+        "tecnicaPrincipalId": "tecnica-modelagem-argila",
+        "regiaoId": "regiao-tracunhaem",
+        "completo": true,
+        "foto": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/perfis/9f7f0372-5404-47a5-89a2-f11c76af627d/c6d09a6e-cf38-4e0e-aa10-52ca9eadb009.png",
+        "temCarrinho": false
+      },
+      {
+        "id": "d3a3f3ca-5c6a-4b50-9504-8a1ddffc5f5b",
+        "nome": "Comprador QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-comprador@teste.origem",
+        "papel": "comprador",
+        "ativo": true,
+        "historia": null,
+        "tecnicaPrincipalId": null,
+        "regiaoId": null,
+        "completo": null,
+        "foto": null,
+        "temCarrinho": true
+      }
+    ],
+    "products": [
+      {
+        "id": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nome": "Vaso QA Sprint 1415 qa-20261110-mwavhh9l Editado",
+        "descricao": "Produto sintético da bateria de testes. Pagamento simulado e estoque exclusivo para validação.",
+        "preco": "15.75",
+        "quantidadeEstoque": 6,
+        "quantidadeVendida": 0,
+        "ativo": true,
+        "desativadoPorAdmin": false,
+        "tecnicaId": "tecnica-modelagem-argila",
+        "categoriaId": "c0000000-0000-4000-8000-000000000001",
+        "fotos": 1
+      }
+    ],
+    "cart": [
+      {
+        "produtoId": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "quantidade": 2,
+        "precoUnitario": "15.75"
+      }
+    ],
+    "orders": [],
+    "items": [],
+    "notifications": [],
+    "reviews": []
+  },
+  {
+    "checkpoint": "compra-confirmada",
+    "at": "2026-11-10T16:05:19.086Z",
+    "users": [
+      {
+        "id": "9f7f0372-5404-47a5-89a2-f11c76af627d",
+        "nome": "Artesão QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-artesao@teste.origem",
+        "papel": "artesao",
+        "ativo": true,
+        "historia": "Perfil sintético para validar publicação, edição, venda e envio na Sprint 14 e 15. Produção artesanal de teste, sem comercialização real.",
+        "tecnicaPrincipalId": "tecnica-modelagem-argila",
+        "regiaoId": "regiao-tracunhaem",
+        "completo": true,
+        "foto": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/perfis/9f7f0372-5404-47a5-89a2-f11c76af627d/c6d09a6e-cf38-4e0e-aa10-52ca9eadb009.png",
+        "temCarrinho": false
+      },
+      {
+        "id": "d3a3f3ca-5c6a-4b50-9504-8a1ddffc5f5b",
+        "nome": "Comprador QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-comprador@teste.origem",
+        "papel": "comprador",
+        "ativo": true,
+        "historia": null,
+        "tecnicaPrincipalId": null,
+        "regiaoId": null,
+        "completo": null,
+        "foto": null,
+        "temCarrinho": true
+      }
+    ],
+    "products": [
+      {
+        "id": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nome": "Vaso QA Sprint 1415 qa-20261110-mwavhh9l Editado",
+        "descricao": "Produto sintético da bateria de testes. Pagamento simulado e estoque exclusivo para validação.",
+        "preco": "15.75",
+        "quantidadeEstoque": 4,
+        "quantidadeVendida": 2,
+        "ativo": true,
+        "desativadoPorAdmin": false,
+        "tecnicaId": "tecnica-modelagem-argila",
+        "categoriaId": "c0000000-0000-4000-8000-000000000001",
+        "fotos": 1
+      }
+    ],
+    "cart": [],
+    "orders": [
+      {
+        "id": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "numero": "ORG-2026-002981",
+        "status": "confirmado",
+        "total": "31.50",
+        "metodo": "pix_simulado",
+        "valor": "31.50",
+        "pagamentoStatus": "aprovado",
+        "notificacaoStatus": "processada",
+        "tentativas": 1
+      }
+    ],
+    "items": [
+      {
+        "pedidoId": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "produtoId": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "quantidade": 2,
+        "precoUnitario": "15.75",
+        "subtotal": "31.50",
+        "status": "aguardando_envio",
+        "enviadoEm": null
+      }
+    ],
+    "notifications": [
+      {
+        "pedidoId": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "tipo": "novo_pedido",
+        "lida": false
+      }
+    ],
+    "reviews": []
+  },
+  {
+    "checkpoint": "moderacao-produto-inativo",
+    "at": "2026-11-10T16:08:00.370Z",
+    "users": [
+      {
+        "id": "9f7f0372-5404-47a5-89a2-f11c76af627d",
+        "nome": "Artesão QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-artesao@teste.origem",
+        "papel": "artesao",
+        "ativo": true,
+        "historia": "Perfil sintético para validar publicação, edição, venda e envio na Sprint 14 e 15. Produção artesanal de teste, sem comercialização real.",
+        "tecnicaPrincipalId": "tecnica-modelagem-argila",
+        "regiaoId": "regiao-tracunhaem",
+        "completo": true,
+        "foto": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/perfis/9f7f0372-5404-47a5-89a2-f11c76af627d/c6d09a6e-cf38-4e0e-aa10-52ca9eadb009.png",
+        "temCarrinho": false
+      },
+      {
+        "id": "d3a3f3ca-5c6a-4b50-9504-8a1ddffc5f5b",
+        "nome": "Comprador QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-comprador@teste.origem",
+        "papel": "comprador",
+        "ativo": true,
+        "historia": null,
+        "tecnicaPrincipalId": null,
+        "regiaoId": null,
+        "completo": null,
+        "foto": null,
+        "temCarrinho": true
+      }
+    ],
+    "products": [
+      {
+        "id": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nome": "Vaso QA Sprint 1415 qa-20261110-mwavhh9l Editado",
+        "descricao": "Produto sintético da bateria de testes. Pagamento simulado e estoque exclusivo para validação.",
+        "preco": "15.75",
+        "quantidadeEstoque": 4,
+        "quantidadeVendida": 2,
+        "ativo": true,
+        "desativadoPorAdmin": true,
+        "tecnicaId": "tecnica-modelagem-argila",
+        "categoriaId": "c0000000-0000-4000-8000-000000000001",
+        "fotos": 1
+      }
+    ],
+    "cart": [],
+    "orders": [
+      {
+        "id": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "numero": "ORG-2026-002981",
+        "status": "confirmado",
+        "total": "31.50",
+        "metodo": "pix_simulado",
+        "valor": "31.50",
+        "pagamentoStatus": "aprovado",
+        "notificacaoStatus": "processada",
+        "tentativas": 1
+      }
+    ],
+    "items": [
+      {
+        "pedidoId": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "produtoId": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "quantidade": 2,
+        "precoUnitario": "15.75",
+        "subtotal": "31.50",
+        "status": "enviado",
+        "enviadoEm": "2026-11-10T16:06:47.374Z"
+      }
+    ],
+    "notifications": [
+      {
+        "pedidoId": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "tipo": "novo_pedido",
+        "lida": true
+      }
+    ],
+    "reviews": [
+      {
+        "produtoId": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nota": 4,
+        "comentario": "Avaliação sintética QA: publicação, edição e compra validadas no navegador."
+      }
+    ]
+  },
+  {
+    "checkpoint": "artesao-desativado",
+    "at": "2026-11-10T16:09:05.021Z",
+    "users": [
+      {
+        "id": "9f7f0372-5404-47a5-89a2-f11c76af627d",
+        "nome": "Artesão QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-artesao@teste.origem",
+        "papel": "artesao",
+        "ativo": false,
+        "historia": "Perfil sintético para validar publicação, edição, venda e envio na Sprint 14 e 15. Produção artesanal de teste, sem comercialização real.",
+        "tecnicaPrincipalId": "tecnica-modelagem-argila",
+        "regiaoId": "regiao-tracunhaem",
+        "completo": true,
+        "foto": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/perfis/9f7f0372-5404-47a5-89a2-f11c76af627d/c6d09a6e-cf38-4e0e-aa10-52ca9eadb009.png",
+        "temCarrinho": false
+      },
+      {
+        "id": "d3a3f3ca-5c6a-4b50-9504-8a1ddffc5f5b",
+        "nome": "Comprador QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-comprador@teste.origem",
+        "papel": "comprador",
+        "ativo": true,
+        "historia": null,
+        "tecnicaPrincipalId": null,
+        "regiaoId": null,
+        "completo": null,
+        "foto": null,
+        "temCarrinho": true
+      }
+    ],
+    "products": [
+      {
+        "id": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nome": "Vaso QA Sprint 1415 qa-20261110-mwavhh9l Editado",
+        "descricao": "Produto sintético da bateria de testes. Pagamento simulado e estoque exclusivo para validação.",
+        "preco": "15.75",
+        "quantidadeEstoque": 4,
+        "quantidadeVendida": 2,
+        "ativo": true,
+        "desativadoPorAdmin": false,
+        "tecnicaId": "tecnica-modelagem-argila",
+        "categoriaId": "c0000000-0000-4000-8000-000000000001",
+        "fotos": 1
+      }
+    ],
+    "cart": [],
+    "orders": [
+      {
+        "id": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "numero": "ORG-2026-002981",
+        "status": "confirmado",
+        "total": "31.50",
+        "metodo": "pix_simulado",
+        "valor": "31.50",
+        "pagamentoStatus": "aprovado",
+        "notificacaoStatus": "processada",
+        "tentativas": 1
+      }
+    ],
+    "items": [
+      {
+        "pedidoId": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "produtoId": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "quantidade": 2,
+        "precoUnitario": "15.75",
+        "subtotal": "31.50",
+        "status": "enviado",
+        "enviadoEm": "2026-11-10T16:06:47.374Z"
+      }
+    ],
+    "notifications": [
+      {
+        "pedidoId": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "tipo": "novo_pedido",
+        "lida": true
+      }
+    ],
+    "reviews": [
+      {
+        "produtoId": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nota": 4,
+        "comentario": "Avaliação sintética QA: publicação, edição e compra validadas no navegador."
+      }
+    ]
+  },
+  {
+    "checkpoint": "produto-removido-historico-preservado",
+    "at": "2026-11-10T16:10:40.743Z",
+    "users": [
+      {
+        "id": "9f7f0372-5404-47a5-89a2-f11c76af627d",
+        "nome": "Artesão QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-artesao@teste.origem",
+        "papel": "artesao",
+        "ativo": true,
+        "historia": "Perfil sintético para validar publicação, edição, venda e envio na Sprint 14 e 15. Produção artesanal de teste, sem comercialização real.",
+        "tecnicaPrincipalId": "tecnica-modelagem-argila",
+        "regiaoId": "regiao-tracunhaem",
+        "completo": true,
+        "foto": "https://peqzo3marpkt7bsh.public.blob.vercel-storage.com/perfis/9f7f0372-5404-47a5-89a2-f11c76af627d/c6d09a6e-cf38-4e0e-aa10-52ca9eadb009.png",
+        "temCarrinho": false
+      },
+      {
+        "id": "d3a3f3ca-5c6a-4b50-9504-8a1ddffc5f5b",
+        "nome": "Comprador QA Sprint 1415",
+        "email": "qa-20261110-mwavhh9l-comprador@teste.origem",
+        "papel": "comprador",
+        "ativo": true,
+        "historia": null,
+        "tecnicaPrincipalId": null,
+        "regiaoId": null,
+        "completo": null,
+        "foto": null,
+        "temCarrinho": true
+      }
+    ],
+    "products": [
+      {
+        "id": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nome": "Vaso QA Sprint 1415 qa-20261110-mwavhh9l Editado",
+        "descricao": "Produto sintético da bateria de testes. Pagamento simulado e estoque exclusivo para validação.",
+        "preco": "15.75",
+        "quantidadeEstoque": 4,
+        "quantidadeVendida": 2,
+        "ativo": false,
+        "desativadoPorAdmin": false,
+        "tecnicaId": "tecnica-modelagem-argila",
+        "categoriaId": "c0000000-0000-4000-8000-000000000001",
+        "fotos": 1
+      }
+    ],
+    "cart": [],
+    "orders": [
+      {
+        "id": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "numero": "ORG-2026-002981",
+        "status": "confirmado",
+        "total": "31.50",
+        "metodo": "pix_simulado",
+        "valor": "31.50",
+        "pagamentoStatus": "aprovado",
+        "notificacaoStatus": "processada",
+        "tentativas": 1
+      }
+    ],
+    "items": [
+      {
+        "pedidoId": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "produtoId": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "quantidade": 2,
+        "precoUnitario": "15.75",
+        "subtotal": "31.50",
+        "status": "enviado",
+        "enviadoEm": "2026-11-10T16:06:47.374Z"
+      }
+    ],
+    "notifications": [
+      {
+        "pedidoId": "83a47403-c971-4f3c-a4da-b9e356dc1ba9",
+        "tipo": "novo_pedido",
+        "lida": true
+      }
+    ],
+    "reviews": [
+      {
+        "produtoId": "55d2e34f-9d26-4f03-9d9b-aaba65b38ebb",
+        "nota": 4,
+        "comentario": "Avaliação sintética QA: publicação, edição e compra validadas no navegador."
+      }
+    ]
+  }
+]

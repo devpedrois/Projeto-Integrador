@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-10T16:27:57.995Z",
+  "avaliacaoId": "fb000000-0000-4000-8000-000000000004",
+  "removed": 1,
+  "before": {
+    "pedidos": 4,
+    "pagamentos": 4,
+    "avaliacoes": 5
+  },
+  "after": {
+    "pedidos": 4,
+    "pagamentos": 4,
+    "avaliacoes": 4
+  },
+  "backup": "avaliacao-legada-backup.json"
+}
