@@ -28,6 +28,7 @@ docs/*
 !docs/modulo-recomendacao-u2.md
 !docs/cache-u2.md
 !docs/fake-api.md
+!docs/revisao-code-smells-sergio-luiza.md
 !docs/docs auxiliares/
 docs/docs auxiliares/*
 !docs/docs auxiliares/LOGINS_TESTE.md

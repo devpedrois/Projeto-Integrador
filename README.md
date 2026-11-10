@@ -670,6 +670,7 @@ npm run lint
 | [`docs/metricas-recomendacao-u2.md`](docs/metricas-recomendacao-u2.md)                                     | Métricas v0 da recomendação na massa de 1.000 produtos         |
 | [`docs/matriz-aceitacao-u2.md`](docs/matriz-aceitacao-u2.md)                                               | Critérios de aceite × teste × resultado                        |
 | [`docs/refatoracoes-u2.md`](docs/refatoracoes-u2.md)                                                       | Refatorações justificadas da U2                                |
+| [`docs/revisao-code-smells-sergio-luiza.md`](docs/revisao-code-smells-sergio-luiza.md)                     | Revisão de code smells (Sérgio e Luiza) e decisão de não refatorar |
 | [Relatório de testes da Sprint 12–13](evidencias/PI4-31-W12-Testes-Executados/31.6-relatorio/00-resumo.md) | Resumo versionado e resultados da entrega histórica            |
 | [`docs/fake-api.md`](docs/fake-api.md)                                                                     | Fake API da Avaliação 1 (histórico; hoje só para dev offline)  |
 | [`docs/uso-de-ia.md`](docs/uso-de-ia.md)                                                                   | Declaração de uso de IA no desenvolvimento                     |
