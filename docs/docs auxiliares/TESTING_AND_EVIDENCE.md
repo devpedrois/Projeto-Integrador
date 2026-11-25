@@ -231,3 +231,28 @@ Evidências: `evidencias/PI4-31-W12-Testes-Executados/31.3-e2e/`.
 - [ ] Passo 9 aprovado ou registrado como “pendente WEB-11”.
 - [ ] Vídeo vinculado, com Network aberto e evidências sanitizadas.
 - [ ] Bugs registrados e passos reprovados reexecutados.
+
+## Validação dos scripts da AV2 de BD
+
+O procedimento aplica-se quando os scripts previstos em `database/av2/` estiverem disponíveis. Use um container Docker **local e descartável** de PostgreSQL 16 e bancos exclusivos para esta execução. A validação recria o schema `origem`. É proibido usar Neon, Render ou qualquer servidor remoto. O ambiente não deve herdar as conexões da aplicação.
+
+1. Confirme a versão do servidor e o destino local. Abra um banco vazio para o modo psql. Use dados sintéticos.
+2. Execute `ddl.sql` duas vezes nesse banco. Execute depois `seed_dml.sql` e `testes_restricoes.sql`. Use `psql -X -v ON_ERROR_STOP=1` em cada arquivo. Interrompa a sequência se algum processo devolver erro.
+3. Repita a sequência em outro banco vazio do mesmo ambiente. Envie cada arquivo completo em uma chamada de consulta simples. Esse modo reproduz a execução em cliente gráfico.
+4. Confira as quinze tabelas em `origem` e três registros válidos ou mais por tabela. Compare tipos, PKs, FKs, ações referenciais, índices, UNIQUEs, obrigatoriedade e CHECKs com o [dicionário v2](../../sprints/semana-16-18/01-Modelo-Logico-BD-v2.md). Teste produto repetido em linhas distintas do mesmo pedido.
+5. Confira que cada teste negativo registrou o erro esperado. A demonstração manual usa `demo_erros.sql` separadamente. Esses erros propositais devem ser identificados na evidência.
+6. Salve versão, modo, ordem dos arquivos, códigos de saída, contagens e resultados em `evidencias/bd-av2/validacao-<data>.txt`. O fechamento usa `evidencias/bd-av2/validacao-final-<data>.txt`. Omita credenciais e URLs de conexão.
+
+Exemplo de chamada pelo PowerShell, após disponibilizar os arquivos no diretório `/av2` do container. Neste exemplo, o container local chama-se `origem-av2-local`. O banco vazio chama-se `av2_psql`. O cliente usa o socket local do container.
+
+```powershell
+$arquivosAv2 = 'ddl.sql', 'ddl.sql', 'seed_dml.sql', 'testes_restricoes.sql'
+foreach ($arquivoAv2 in $arquivosAv2) {
+    docker exec origem-av2-local psql -X -v ON_ERROR_STOP=1 -U postgres -d av2_psql -f "/av2/$arquivoAv2"
+    if ($LASTEXITCODE -ne 0) {
+        throw "Falha na validação de $arquivoAv2."
+    }
+}
+```
+
+A validação estrutural e a execução dos scripts pertencem às próximas etapas. Este commit documenta o procedimento.

@@ -1725,3 +1725,7 @@ Removeu uma avaliação legada após autorização e backup.
 Reexecutou testes, builds e validações com PostgreSQL real.
 A revisão de segurança ocorreu nesta conversa.
 Evidências: [correções validadas](../evidencias/correcoes-pendencias-20261110/README.md).
+
+### AV2 de BD · Modelo lógico v2 · 25/11/2026
+
+O Codex comparou os atributos do ER avaliado com a auditoria física. Documentou a numeração de itens aprovada para produtos repetidos. Conferiu as restrições e renderizou o diagrama das quinze tabelas. A revisão da rubrica ocorreu neste chat. [Modelo lógico v2](../sprints/semana-16-18/01-Modelo-Logico-BD-v2.md)
