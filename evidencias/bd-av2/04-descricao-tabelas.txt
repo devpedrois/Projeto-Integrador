@@ -1,0 +1,77 @@
+Origem | AV2 de Banco de Dados | 25/11/2026
+16.15 (Debian 16.15-1.pgdg13+2)
+
+\d+ origem.itens_pedido
+                                                                      Table "origem.itens_pedido"
+     Column     |           Type            | Collation | Nullable |                    Default                    | Storage | Compression | Stats target | Description
+----------------+---------------------------+-----------+----------+-----------------------------------------------+---------+-------------+--------------+-------------
+ pedido_id      | uuid                      |           | not null |                                               | plain   |             |              |
+ numero_item    | smallint                  |           | not null |                                               | plain   |             |              |
+ produto_id     | uuid                      |           | not null |                                               | plain   |             |              |
+ quantidade     | integer                   |           | not null |                                               | plain   |             |              |
+ preco_unitario | numeric(10,2)             |           | not null |                                               | main    |             |              |
+ subtotal       | numeric(10,2)             |           | not null |                                               | main    |             |              |
+ status         | origem.status_item_pedido |           | not null | 'aguardando_envio'::origem.status_item_pedido | plain   |             |              |
+ enviado_em     | timestamp with time zone  |           |          |                                               | plain   |             |              |
+Indexes:
+    "pk_itens_pedido" PRIMARY KEY, btree (pedido_id, numero_item)
+    "ix_itens_pedido_produto_id" btree (produto_id)
+Check constraints:
+    "ck_itens_pedido_data_envio_status" CHECK ((status = 'enviado'::origem.status_item_pedido) = (enviado_em IS NOT NULL))
+    "ck_itens_pedido_numero_item_positivo" CHECK (numero_item > 0)
+    "ck_itens_pedido_preco_unitario_positivo" CHECK (preco_unitario > 0::numeric)
+    "ck_itens_pedido_quantidade_positiva" CHECK (quantidade > 0)
+    "ck_itens_pedido_subtotal_calculado" CHECK (subtotal = (quantidade::numeric * preco_unitario))
+Foreign-key constraints:
+    "fk_itens_pedido_pedido_id" FOREIGN KEY (pedido_id) REFERENCES origem.pedidos(id) ON UPDATE RESTRICT ON DELETE RESTRICT
+    "fk_itens_pedido_produto_id" FOREIGN KEY (produto_id) REFERENCES origem.produtos(id) ON UPDATE RESTRICT ON DELETE RESTRICT
+Access method: heap
+
+
+\d+ origem.perfis_artesao
+                                                                Table "origem.perfis_artesao"
+        Column        |         Type          | Collation | Nullable |             Default             | Storage  | Compression | Stats target | Description
+----------------------+-----------------------+-----------+----------+---------------------------------+----------+-------------+--------------+-------------
+ usuario_id           | uuid                  |           | not null |                                 | plain    |             |              |
+ papel                | origem.papel_usuario  |           | not null | 'artesao'::origem.papel_usuario | plain    |             |              |
+ historia             | text                  |           |          |                                 | extended |             |              |
+ tecnica_principal_id | character varying(40) |           |          |                                 | extended |             |              |
+ regiao_id            | character varying(40) |           |          |                                 | extended |             |              |
+ foto_url             | text                  |           |          |                                 | extended |             |              |
+ completo             | boolean               |           | not null | false                           | plain    |             |              |
+Indexes:
+    "pk_perfis_artesao" PRIMARY KEY, btree (usuario_id)
+    "ix_perfis_artesao_regiao_id" btree (regiao_id)
+    "ix_perfis_artesao_tecnica_principal_id" btree (tecnica_principal_id)
+    "ix_perfis_artesao_usuario_id_papel" btree (usuario_id, papel)
+Check constraints:
+    "ck_perfis_artesao_papel_artesao" CHECK (papel = 'artesao'::origem.papel_usuario)
+Foreign-key constraints:
+    "fk_perfis_artesao_regiao_id" FOREIGN KEY (regiao_id) REFERENCES origem.regioes(id) ON UPDATE CASCADE ON DELETE RESTRICT
+    "fk_perfis_artesao_tecnica_principal_id" FOREIGN KEY (tecnica_principal_id) REFERENCES origem.tecnicas(id) ON UPDATE CASCADE ON DELETE RESTRICT
+    "fk_perfis_artesao_usuario_id_papel" FOREIGN KEY (usuario_id, papel) REFERENCES origem.usuarios(id, papel) ON UPDATE RESTRICT ON DELETE CASCADE
+Access method: heap
+
+
+\d+ origem.intencoes_notificacao
+                                                           Table "origem.intencoes_notificacao"
+    Column     |           Type           | Collation | Nullable |              Default               | Storage | Compression | Stats target | Description
+---------------+--------------------------+-----------+----------+------------------------------------+---------+-------------+--------------+-------------
+ id            | uuid                     |           | not null | gen_random_uuid()                  | plain   |             |              |
+ pedido_id     | uuid                     |           | not null |                                    | plain   |             |              |
+ status        | origem.status_intencao   |           | not null | 'pendente'::origem.status_intencao | plain   |             |              |
+ tentativas    | integer                  |           | not null | 0                                  | plain   |             |              |
+ criado_em     | timestamp with time zone |           | not null | CURRENT_TIMESTAMP                  | plain   |             |              |
+ atualizado_em | timestamp with time zone |           | not null | CURRENT_TIMESTAMP                  | plain   |             |              |
+ processada_em | timestamp with time zone |           |          |                                    | plain   |             |              |
+Indexes:
+    "pk_intencoes_notificacao" PRIMARY KEY, btree (id)
+    "uq_intencoes_notificacao_pedido_id" UNIQUE CONSTRAINT, btree (pedido_id)
+Check constraints:
+    "ck_intencoes_notificacao_cronologia_atualizacao" CHECK (atualizado_em >= criado_em)
+    "ck_intencoes_notificacao_cronologia_processamento" CHECK (processada_em >= criado_em)
+    "ck_intencoes_notificacao_data_processamento_status" CHECK ((status = 'processada'::origem.status_intencao) = (processada_em IS NOT NULL))
+    "ck_intencoes_notificacao_tentativas_nao_negativas" CHECK (tentativas >= 0)
+Foreign-key constraints:
+    "fk_intencoes_notificacao_pedido_id" FOREIGN KEY (pedido_id) REFERENCES origem.pedidos(id) ON UPDATE RESTRICT ON DELETE RESTRICT
+Access method: heap

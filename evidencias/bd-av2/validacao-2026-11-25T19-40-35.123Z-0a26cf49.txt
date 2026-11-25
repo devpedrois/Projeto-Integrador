@@ -1,0 +1,65 @@
+Origem | Validação BD AV2 | 2026-11-25T19:40:35.123Z
+Destino: loopback. Parâmetros de conexão omitidos.
+D11 OK: ddl.sql
+D11 OK: seed_dml.sql
+D11 OK: demo_erros.sql
+D11 OK: testes_restricoes.sql
+Servidor PostgreSQL 16 local confirmado.
+psql: banco novo criado.
+psql: ddl.sql
+psql: ddl.sql
+psql: seed_dml.sql
+psql: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+avaliacoes: 0 linha(s)
+psql: Mínimo de três linhas: avaliacoes
+pg: banco novo criado.
+pg: ddl.sql
+pg: ddl.sql
+pg: seed_dml.sql
+pg: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+avaliacoes: 0 linha(s)
+pg: Mínimo de três linhas: avaliacoes
+Validação reprovada.
+Código de saída: 1

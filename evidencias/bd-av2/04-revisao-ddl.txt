@@ -1,0 +1,63 @@
+Origem | AV2 de Banco de Dados | Revisão do DDL | 25/11/2026
+
+Resultado no PostgreSQL 16.15 local
+O comando npm --prefix backend run bd:av2:validar executou ddl.sql duas vezes
+em cada banco descartável. O psql usou ON_ERROR_STOP=1. O cliente pg enviou
+cada arquivo inteiro. As quatro verificações estáticas D11 passaram.
+Os 21 testes de restrição passaram em cada cliente. A primeira contagem
+encontrou zero avaliações. Essa foi a única falha em cada modo, código 1.
+Registro bruto: validacao-2026-11-25T19-40-35.123Z-0a26cf49.txt
+
+Comparação com as seções 2 e 4 do modelo lógico v2
+A revisão ocorreu neste chat, como nos commits 02 e 03.
+O catálogo confirmou as colunas na ordem prevista, com os respectivos tipos,
+defaults e nulabilidade. A revisão conferiu cada definição de constraint no
+CREATE TABLE e as ações e chaves registradas pelo PostgreSQL. Os nomes nn_
+foram conferidos no SQL. O PostgreSQL 16 registra a obrigatoriedade da coluna
+em pg_attribute.attnotnull. Os índices dedicados aparecem na última coluna.
+
+Tabela                 Colunas  NOT NULL   PK   FK  UNIQUE  CHECK     ix_
+regioes                      2        2    1    0       1      2       0
+tecnicas                     2        2    1    0       1      2       0
+categorias                   2        2    1    0       1      1       0
+usuarios                     7        7    1    0       2      4       0
+perfis_artesao               7        3    1    3       0      1       3
+carrinhos                    3        3    1    1       0      1       1
+produtos                    12       12    1    3       0      4       4
+produto_fotos                4        4    1    1       1      1       0
+itens_carrinho               4        4    1    2       0      2       1
+pedidos                      6        6    1    1       1      2       1
+itens_pedido                 8        7    1    2       0      5       1
+pagamentos                   6        6    1    1       1      1       0
+avaliacoes                   6        5    1    2       1      2       1
+intencoes_notificacao        7        6    1    1       1      4       0
+notificacoes                 6        6    1    2       1      0       1
+TOTAL                       82       75   15   19      11     32      13
+
+As 15 tabelas possuem comentário e seguem a ordem D8. Cada FK encontra a
+tabela pai já criada. As chaves compostas são (carrinho_id, produto_id) e
+(pedido_id, numero_item). A segunda admite o mesmo produto em duas posições.
+O catálogo confirmou a ordem dos valores dos sete enums e o predicado da
+vitrine, incluindo a ordenação decrescente por criado_em.
+
+O validador interrompe a auditoria na primeira tabela sem três linhas.
+Em outro banco criado a partir de template0, a consulta estrutural de
+bd-av2-catalogo.ts produziu a saída abaixo sobre o DDL entregue.
+
+Nomes de constraints inválidos | Ações DELETE inválidas | FKs sem índice
+0                              | 0                     | 0
+
+Nenhuma relação de aplicação apareceu fora de origem. Os dois bancos
+temporários do validador foram removidos. A inspeção das três tabelas por
+psql está em 04-descricao-tabelas.txt.
+
+Valores válidos exercitados no banco de inspeção
+O banco aceitou preço de 0,01, estoque zero e email com sinal de mais.
+Aceitou notas 1 e 5, comentário nulo e comentário de 500 caracteres.
+O item enviado aceitou sua data. A intenção processada aceitou as datas de
+criação, atualização e processamento iguais. Renomear o slug da técnica
+atualizou a FK do produto. Após o ROLLBACK, as 15 tabelas tinham zero linhas.
+
+A sequência BIGINT pertence a pedidos.numero, vai de 1 a 999999 e não cicla.
+Duas inserções com o default geraram o ano corrente e os sufixos 000001 e
+000002. A inspeção usou um contêiner descartável com a imagem postgres:16.
