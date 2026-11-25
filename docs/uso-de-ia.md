@@ -1729,3 +1729,7 @@ Evidências: [correções validadas](../evidencias/correcoes-pendencias-20261110
 ### AV2 de BD · Modelo lógico v2 · 25/11/2026
 
 O Codex comparou os atributos do ER avaliado com a auditoria física. Documentou a numeração de itens aprovada para produtos repetidos. Conferiu as restrições e renderizou o diagrama das quinze tabelas. A revisão da rubrica ocorreu neste chat. [Modelo lógico v2](../sprints/semana-16-18/01-Modelo-Logico-BD-v2.md)
+
+### AV2 de BD · Testes de restrição · 25/11/2026
+
+O Codex preparou os testes transacionais do modelo lógico. Executou o validador com dois clientes no PostgreSQL 16. Ambos apontaram a ausência esperada de `origem.usuarios`. A revisão verificou o isolamento local e os registros. [Evidência da execução vermelha](../evidencias/bd-av2/03-aceite-vermelho.txt)

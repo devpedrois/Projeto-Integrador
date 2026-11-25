@@ -1,0 +1,8 @@
+Origem | Validação BD AV2 | 2026-11-25T18:00:10.798Z
+Destino: loopback. Parâmetros de conexão omitidos.
+D11 OK: ddl.sql
+D11 OK: seed_dml.sql
+D11 OK: demo_erros.sql
+D11 OK: testes_restricoes.sql
+Docker exige um socket local.
+Código de saída: 1

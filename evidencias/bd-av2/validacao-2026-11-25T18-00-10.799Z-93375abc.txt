@@ -1,0 +1,3 @@
+Origem | Validação BD AV2 | 2026-11-25T18:00:10.799Z
+BD_AV2_DATABASE_URL recusada.
+Código de saída: 1

@@ -1,0 +1,21 @@
+Origem | Validação BD AV2 | 2026-11-25T18:00:16.970Z
+Destino: loopback. Parâmetros de conexão omitidos.
+D11 OK: ddl.sql
+D11 OK: seed_dml.sql
+D11 OK: demo_erros.sql
+D11 OK: testes_restricoes.sql
+Servidor PostgreSQL 16 local confirmado.
+psql: banco novo criado.
+psql: ddl.sql
+psql: ddl.sql
+psql: seed_dml.sql
+psql: testes_restricoes.sql
+psql: SQLSTATE 42P01
+pg: banco novo criado.
+pg: ddl.sql
+pg: ddl.sql
+pg: seed_dml.sql
+pg: testes_restricoes.sql
+pg: SQLSTATE 42P01
+Validação reprovada.
+Código de saída: 1

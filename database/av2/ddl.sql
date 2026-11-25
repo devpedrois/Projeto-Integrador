@@ -1,0 +1,4 @@
+-- Modelo físico da AV2
+-- Projeto Origem | AV2 de Banco de Dados | 25/11/2026
+-- Requer PostgreSQL 13 ou superior, testado em 16.
+-- Ordem: ddl.sql, seed_dml.sql, testes_restricoes.sql. Demo separada, após o seed.

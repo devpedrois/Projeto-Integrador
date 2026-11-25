@@ -1,0 +1,53 @@
+Origem | AV2 de Banco de Dados | Commit 03 | 25/11/2026
+
+Execução vermelha no PostgreSQL 16
+
+Comando na raiz do projeto: npm --prefix backend run bd:av2:validar
+Ambiente: imagem postgres:16 local, com porta publicada em 127.0.0.1.
+BD_AV2_DATABASE_URL identifica o banco administrativo local. O usuário precisa
+de CREATEDB. Cada modo cria seu próprio banco a partir de template0.
+
+Modo    DDL 1   DDL 2   Seed   Testes de restrição
+psql    passou  passou  passou  SQLSTATE 42P01
+pg      passou  passou  passou  SQLSTATE 42P01
+
+Os dois arquivos contêm somente comentários. A primeira inserção dos testes
+exige origem.usuarios, ainda ausente. O processo terminou com código 1.
+O psql usou ON_ERROR_STOP=1. O pg recebeu cada arquivo inteiro.
+A consulta final a pg_database encontrou zero bancos av2_ remanescentes.
+Registro: validacao-2026-11-25T18-00-16.970Z-2db48b13.txt
+
+Restrições e catálogo
+
+O PostgreSQL 16 compilou os 21 corpos PL/pgSQL em funções temporárias.
+A execução das regras e as contagens das 15 tabelas dependem do DDL e do seed.
+Em duas tabelas descartáveis, a consulta do catálogo identificou uma FK
+composta sem índice. Após indexar suas duas colunas, detectou zero pendências.
+Ambas as provas auxiliares terminaram com ROLLBACK.
+
+Portabilidade D11
+
+Resultado da leitura dos arquivos pela função verificarD11:
+tests/fixtures/bd-av2-d11-invalido.sql  metacomando psql, CREATE EXTENSION
+database/av2/ddl.sql                    D11 OK
+database/av2/seed_dml.sql               D11 OK
+A fixture contém \echo e CREATE EXTENSION. Foi recusada antes da execução.
+Os quatro arquivos da AV2 passaram na verificação estática.
+
+Revisão de segurança neste chat
+
+O comando recusou o host Neon de teste antes de abrir uma conexão.
+Registro: validacao-2026-11-25T18-00-10.799Z-93375abc.txt
+Com URL local, o comando também recusou um endpoint Docker via SSH.
+Registro: validacao-2026-11-25T18-00-10.798Z-57114d7f.txt
+Ambas as recusas terminaram com código 1. Os testes também cobrem Render,
+hosts externos e parâmetros de URL que tentam substituir o destino.
+O cliente pg usa 127.0.0.1. O psql usa loopback dentro do contêiner.
+Sua senha segue pelo ambiente. Os registros omitem URL e credenciais.
+
+Verificações do backend
+
+npm --prefix backend test -- tests/unit/bd-av2-validar.test.ts  23 testes passaram
+npm --prefix backend run typecheck                             passou
+npm --prefix backend run lint                                  passou
+Prettier nos quatro arquivos TypeScript da subtarefa           passou
