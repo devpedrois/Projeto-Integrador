@@ -221,12 +221,10 @@ A suíte completa do backend também provisiona schemas temporários.
 Execute-a com uma conexão administrativa exclusiva do processo de testes.
 Não substitua a conexão restrita persistida no runtime da API.
 
-O job `recomendacao` usa a branch Neon de CI existente.
-Reutiliza `DIRECT_URL_TEST` e `DATABASE_URL_TEST`.
-O primeiro precisa continuar administrativo para migrations e bootstrap.
-O job gera senhas efêmeras e mascara seus valores.
-Nenhum secret novo é necessário.
-As credenciais locais não alteram configurações do Render ou Vercel.
+O job `recomendacao` inicia um PostgreSQL 16 exclusivo.
+A conexão administrativa prepara as migrations e os papéis.
+O microsserviço usa o papel restrito com senha efêmera.
+O GitHub descarta o banco ao finalizar o job.
 
 ## Integração e E2E da API
 

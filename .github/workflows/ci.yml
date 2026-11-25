@@ -15,13 +15,26 @@ jobs:
   recomendacao:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    services: &servicos_postgres
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: origem_ci
+          POSTGRES_PASSWORD: ci-${{ github.run_id }}-${{ github.run_attempt }}
+        ports:
+          - "127.0.0.1:5432:5432"
+        options: >-
+          --health-cmd "pg_isready -h 127.0.0.1 -U postgres -d origem_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
     defaults:
       run:
         working-directory: services/recomendacao
     env:
       NODE_ENV: test
-      BOOTSTRAP_DATABASE_URL: ${{ secrets.DIRECT_URL_TEST }}
-      DIRECT_URL: ${{ secrets.DIRECT_URL_TEST }}
+      BOOTSTRAP_DATABASE_URL: &conexao_ci postgresql://postgres:ci-${{ github.run_id }}-${{ github.run_attempt }}@127.0.0.1:5432/origem_ci
+      DIRECT_URL: *conexao_ci
       API_SCHEMA: public
       RECOMENDACAO_SCHEMA: rec_ci_${{ github.run_id }}_${{ github.run_attempt }}
       RECOMENDACAO_DATABASE_ROLE: rec_ci_${{ github.run_id }}_${{ github.run_attempt }}
@@ -41,7 +54,7 @@ jobs:
       - name: Preparar migrations e referencia do backend
         working-directory: backend
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+          DATABASE_URL: *conexao_ci
         run: |
           npm ci
           npx prisma generate
@@ -72,36 +85,6 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
-      - name: Remover schema e papeis efemeros do job
-        if: always()
-        run: |
-          node --input-type=module <<'NODE'
-          import { Pool, escapeIdentifier as ident } from 'pg';
-          const role = process.env.RECOMENDACAO_DATABASE_ROLE;
-          const api = process.env.API_DATABASE_ROLE;
-          const schema = process.env.RECOMENDACAO_SCHEMA;
-          if (![role, api, schema].every(name => /^(rec|api)_ci_[0-9]+_[0-9]+$/.test(name))) process.exit(1);
-          const pool = new Pool({ connectionString: process.env.BOOTSTRAP_DATABASE_URL });
-          const client = await pool.connect();
-          try {
-            await client.query('BEGIN');
-            const { rows: [identity] } = await client.query('SELECT current_user AS name');
-            const existing = await client.query('SELECT rolname FROM pg_roles WHERE rolname = ANY($1::text[])', [[role, api]]);
-            for (const { rolname } of existing.rows) {
-              await client.query(`GRANT ${ident(rolname)} TO ${ident(identity.name)} WITH SET TRUE, INHERIT TRUE`);
-            }
-            await client.query(`DROP SCHEMA IF EXISTS ${ident(schema)} CASCADE`);
-            for (const { rolname } of existing.rows) {
-              await client.query(`DROP OWNED BY ${ident(rolname)}`);
-              await client.query(`DROP ROLE ${ident(rolname)}`);
-            }
-            await client.query('COMMIT');
-          } catch {
-            await client.query('ROLLBACK');
-            console.error('Falha na limpeza dos objetos efemeros do job.');
-            process.exitCode = 1;
-          } finally { client.release(); await pool.end(); }
-          NODE
 
   frontend:
     runs-on: ubuntu-latest
@@ -136,13 +119,14 @@ jobs:
   backend:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    services: *servicos_postgres
     defaults:
       run:
         working-directory: backend
     env:
       NODE_ENV: test
-      DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
-      DIRECT_URL: ${{ secrets.DIRECT_URL_TEST }}
+      DATABASE_URL: *conexao_ci
+      DIRECT_URL: *conexao_ci
       HOST: 127.0.0.1
       FRONTEND_ORIGIN: http://localhost:3000
       COOKIE_SECURE: "false"
@@ -188,6 +172,7 @@ jobs:
         run: npm ci
       - run: npx prisma generate
       - run: npx prisma migrate deploy
+      - run: npm run db:seed
       - run: npm run lint
       - run: npm run typecheck
       - name: Testar sem cargas e benchmarks

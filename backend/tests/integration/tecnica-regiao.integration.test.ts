@@ -56,16 +56,16 @@ describe("BD-03: referencias Tecnica e Regiao no PostgreSQL", () => {
     },
   );
 
-  it("resolve tecnica e regiao de todos os produtos existentes", async () => {
-    const result = await client.query<{ semTecnica: number; semRegiao: number }>(`
+  it("resolve a tecnica e toda regiao informada nos produtos existentes", async () => {
+    const result = await client.query<{ semTecnica: number; regiaoInvalida: number }>(`
       SELECT count(*) FILTER (WHERE t."id" IS NULL)::int AS "semTecnica",
-             count(*) FILTER (WHERE r."id" IS NULL)::int AS "semRegiao"
+             count(*) FILTER (WHERE r."id" IS DISTINCT FROM pa."regiaoId")::int AS "regiaoInvalida"
       FROM "Produto" p
       LEFT JOIN "Tecnica" t ON t."id" = p."tecnicaId"
       LEFT JOIN "PerfilArtesao" pa ON pa."usuarioId" = p."artesaoId"
       LEFT JOIN "Regiao" r ON r."id" = pa."regiaoId"
     `);
-    expect(result.rows[0]).toEqual({ semTecnica: 0, semRegiao: 0 });
+    expect(result.rows[0]).toEqual({ semTecnica: 0, regiaoInvalida: 0 });
   });
 
   it("bloqueia exclusao de tecnica referenciada por produto", async () => {

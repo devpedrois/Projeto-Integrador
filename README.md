@@ -589,21 +589,16 @@ Frontend e backend usam Node.js 22 e caches npm separados.
 O frontend passa por lint, typecheck, testes e build.
 Seus testes de contrato exigem dependências e tipos do backend.
 Essa preparação gera o Prisma sem conexão ou credenciais.
-O backend gera o Prisma, aplica migrations e executa verificações.
+O backend gera o cliente Prisma e aplica as migrations.
+Antes dos testes, carrega o catálogo sintético de demonstração.
 Prazos padrão na CI: 60s/teste e 120s/preparação.
 O job backend tem limite total de 30 minutos.
 
-Configure estes repository secrets em **Settings → Secrets and variables → Actions**:
-
-| Secret              | Valor                                             |
-| ------------------- | ------------------------------------------------- |
-| `DATABASE_URL_TEST` | Conexão PostgreSQL da branch Neon exclusiva de CI |
-| `DIRECT_URL_TEST`   | Conexão direta da mesma branch, sem pooler        |
-
-O `JWT_SECRET` é gerado com `openssl rand` no job backend.
-As credenciais ficam restritas ao job backend e são mascaradas.
-Pull requests de forks não recebem os secrets do repositório.
-Nesse caso, o backend informa somente a variável ausente.
+Backend e recomendação usam instâncias separadas do PostgreSQL 16.
+Cada job aguarda seu banco aceitar conexões no runner.
+O GitHub descarta os bancos ao finalizar os jobs.
+O backend gera seu `JWT_SECRET` durante a execução.
+Os testes também funcionam em forks sem credenciais externas.
 
 A CI não executa scripts de concorrência, benchmarks ou seed de volume.
 Também exclui quatro testes de integração que acionam essas cargas:

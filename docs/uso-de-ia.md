@@ -1745,3 +1745,7 @@ O Codex ajustou a primeira instrução da demonstração. O PostgreSQL rejeitou 
 ### AV2 de BD · Restrições de nomes e valores monetários · 25/11/2026
 
 O Codex reproduziu as duas falhas com o DDL anterior. Atualizou os CHECKs e testou valores válidos e inválidos. Os 24 testes passaram nos dois clientes, em PostgreSQL 13 e 16. O relatório registra a aprovação dos cinco arquivos em C1. [Revisão final](../evidencias/bd-av2/revisao-final-2026-11-25.md)
+
+### CI do backend e da recomendação · 25/11/2026
+
+O Codex identificou a falha de conexão nas migrações. O teste de métricas excedia trinta segundos. Cada job passou a usar seu próprio PostgreSQL 16. O catálogo sintético revelou outra falha no backend. O teste agora aceita perfis sem região cadastrada. [Execução que motivou a correção](https://github.com/devpedrois/Projeto-Integrador/actions/runs/45698902385)
