@@ -1,0 +1,123 @@
+Origem | Validação BD AV2 | 2026-11-25T20:38:22.744Z
+Destino: loopback. Parâmetros de conexão omitidos.
+D11 OK: ddl.sql
+D11 OK: seed_dml.sql
+D11 OK: demo_erros.sql
+D11 OK: testes_restricoes.sql
+Servidor PostgreSQL 16 local confirmado (160015).
+psql: banco novo criado.
+psql: guarda OK: Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)
+psql: ddl.sql
+psql: ddl.sql
+psql: seed_dml.sql
+psql: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+OK valores_monetarios_nan
+OK nomes_em_branco
+OK limites_monetarios_validos
+avaliacoes: 3 linha(s)
+carrinhos: 3 linha(s)
+categorias: 6 linha(s)
+intencoes_notificacao: 3 linha(s)
+itens_carrinho: 3 linha(s)
+itens_pedido: 7 linha(s)
+notificacoes: 6 linha(s)
+pagamentos: 4 linha(s)
+pedidos: 4 linha(s)
+perfis_artesao: 3 linha(s)
+produto_fotos: 7 linha(s)
+produtos: 6 linha(s)
+regioes: 3 linha(s)
+tecnicas: 6 linha(s)
+usuarios: 7 linha(s)
+Catálogo: 15 tabelas, PKs, ações DELETE, nomes e índices conferidos.
+Coerência OK: total_pedido
+Coerência OK: pagamento_pedido
+Coerência OK: vendas_confirmadas
+Coerência OK: artesao_produto
+Coerência OK: comprador_pedido
+Coerência OK: comprador_avaliacao
+Coerência OK: compra_avaliada
+Coerência OK: preco_carrinho
+Coerência OK: intencao_confirmacao
+Coerência OK: avisos_artesaos
+psql: aprovado.
+pg: banco novo criado.
+pg: guarda OK: Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)
+pg: ddl.sql
+pg: ddl.sql
+pg: seed_dml.sql
+pg: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+OK valores_monetarios_nan
+OK nomes_em_branco
+OK limites_monetarios_validos
+avaliacoes: 3 linha(s)
+carrinhos: 3 linha(s)
+categorias: 6 linha(s)
+intencoes_notificacao: 3 linha(s)
+itens_carrinho: 3 linha(s)
+itens_pedido: 7 linha(s)
+notificacoes: 6 linha(s)
+pagamentos: 4 linha(s)
+pedidos: 4 linha(s)
+perfis_artesao: 3 linha(s)
+produto_fotos: 7 linha(s)
+produtos: 6 linha(s)
+regioes: 3 linha(s)
+tecnicas: 6 linha(s)
+usuarios: 7 linha(s)
+Catálogo: 15 tabelas, PKs, ações DELETE, nomes e índices conferidos.
+Coerência OK: total_pedido
+Coerência OK: pagamento_pedido
+Coerência OK: vendas_confirmadas
+Coerência OK: artesao_produto
+Coerência OK: comprador_pedido
+Coerência OK: comprador_avaliacao
+Coerência OK: compra_avaliada
+Coerência OK: preco_carrinho
+Coerência OK: intencao_confirmacao
+Coerência OK: avisos_artesaos
+pg: aprovado.
+Validação aprovada nos dois modos.
+Código de saída: 0

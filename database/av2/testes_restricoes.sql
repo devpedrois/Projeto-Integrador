@@ -506,4 +506,94 @@ BEGIN
 END
 $perfil_em_cascata$;
 
+DO $valores_monetarios_nan$
+DECLARE
+    caso record;
+    alvo text;
+BEGIN
+    FOR caso IN
+        SELECT * FROM (VALUES
+            ('ck_produtos_preco_positivo',
+             'UPDATE origem.produtos SET preco = $1 WHERE id = (SELECT produto FROM pg_temp.av2_caso)'),
+            ('ck_itens_carrinho_preco_unitario_positivo',
+             'UPDATE origem.itens_carrinho SET preco_unitario = $1 WHERE carrinho_id = (SELECT comprador FROM pg_temp.av2_caso)'),
+            ('ck_pedidos_total_nao_negativo',
+             'UPDATE origem.pedidos SET total = $1 WHERE id = (SELECT pedido FROM pg_temp.av2_caso)'),
+            ('ck_itens_pedido_preco_unitario_positivo',
+             'UPDATE origem.itens_pedido SET preco_unitario = $1, subtotal = $1 WHERE pedido_id = (SELECT pedido FROM pg_temp.av2_caso)'),
+            ('ck_itens_pedido_subtotal_calculado',
+             'UPDATE origem.itens_pedido SET subtotal = $1 WHERE pedido_id = (SELECT pedido FROM pg_temp.av2_caso)'),
+            ('ck_pagamentos_valor_positivo',
+             'UPDATE origem.pagamentos SET valor = $1 WHERE pedido_id = (SELECT pedido FROM pg_temp.av2_caso)')
+        ) AS casos(restricao, comando)
+    LOOP
+        BEGIN
+            EXECUTE caso.comando USING 'NaN'::numeric;
+        EXCEPTION
+            WHEN check_violation THEN
+                GET STACKED DIAGNOSTICS alvo = CONSTRAINT_NAME;
+                IF alvo IS DISTINCT FROM caso.restricao THEN
+                    RAISE EXCEPTION 'caso valores_monetarios_nan: esperado %, recebido %', caso.restricao, alvo;
+                END IF;
+                CONTINUE;
+            WHEN OTHERS THEN
+                RAISE EXCEPTION 'caso valores_monetarios_nan: % retornou %', caso.restricao, SQLSTATE USING ERRCODE = SQLSTATE;
+        END;
+        RAISE EXCEPTION 'caso valores_monetarios_nan: % não rejeitou NaN', caso.restricao;
+    END LOOP;
+    RAISE NOTICE 'OK valores_monetarios_nan';
+END
+$valores_monetarios_nan$;
+
+DO $nomes_em_branco$
+DECLARE
+    caso record;
+    comando text;
+    entrada text;
+    alvo text;
+BEGIN
+    INSERT INTO origem.regioes (id, nome)
+    SELECT tecnica, 'Região ' || tecnica FROM pg_temp.av2_caso;
+
+    FOR caso IN
+        SELECT * FROM (VALUES
+            ('regioes', 'tecnica'), ('tecnicas', 'tecnica'), ('categorias', 'categoria'),
+            ('usuarios', 'comprador'), ('produtos', 'produto')
+        ) AS casos(tabela, chave_de_teste)
+    LOOP
+        comando := format('UPDATE origem.%I SET nome = $1 WHERE id = (SELECT %I FROM pg_temp.av2_caso)',
+                          caso.tabela, caso.chave_de_teste);
+        FOREACH entrada IN ARRAY ARRAY['', '   ', chr(9), ' ' || chr(9) || ' '] LOOP
+            BEGIN
+                EXECUTE comando USING entrada;
+            EXCEPTION
+                WHEN check_violation THEN
+                    GET STACKED DIAGNOSTICS alvo = CONSTRAINT_NAME;
+                    IF alvo IS DISTINCT FROM format('ck_%s_nome_preenchido', caso.tabela) THEN
+                        RAISE EXCEPTION 'caso nomes_em_branco: alvo inesperado % em %', alvo, caso.tabela;
+                    END IF;
+                    CONTINUE;
+                WHEN OTHERS THEN
+                    RAISE EXCEPTION 'caso nomes_em_branco: % retornou %', caso.tabela, SQLSTATE USING ERRCODE = SQLSTATE;
+            END;
+            RAISE EXCEPTION 'caso nomes_em_branco: % aceitou um nome em branco', caso.tabela;
+        END LOOP;
+        EXECUTE comando USING '  Ateliê' || chr(9) || 'do Pilar  ';
+    END LOOP;
+    RAISE NOTICE 'OK nomes_em_branco';
+END
+$nomes_em_branco$;
+
+DO $limites_monetarios_validos$
+BEGIN
+    UPDATE origem.produtos SET preco = 0.01 WHERE id = (SELECT produto FROM pg_temp.av2_caso);
+    UPDATE origem.itens_carrinho SET preco_unitario = 0.01 WHERE carrinho_id = (SELECT comprador FROM pg_temp.av2_caso);
+    UPDATE origem.itens_pedido SET preco_unitario = 0.01, subtotal = quantidade * 0.01
+    WHERE pedido_id = (SELECT pedido FROM pg_temp.av2_caso);
+    UPDATE origem.pedidos SET total = 0 WHERE id = (SELECT pedido FROM pg_temp.av2_caso);
+    UPDATE origem.pagamentos SET valor = 0.01 WHERE pedido_id = (SELECT pedido FROM pg_temp.av2_caso);
+    RAISE NOTICE 'OK limites_monetarios_validos';
+END
+$limites_monetarios_validos$;
+
 ROLLBACK;

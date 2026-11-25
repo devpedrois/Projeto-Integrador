@@ -1741,3 +1741,7 @@ O Codex preparou a carga sintética e as consultas de coerência. Conferiu compr
 ### AV2 de BD · Inserção de item com produto inexistente · 25/11/2026
 
 O Codex ajustou a primeira instrução da demonstração. O PostgreSQL rejeitou o produto inexistente. A inserção passou ao retirar apenas a FK, e o `ROLLBACK` restaurou os dados e a restrição. [Prova transacional](../evidencias/bd-av2/demo-erros-insert-2026-11-25.txt)
+
+### AV2 de BD · Restrições de nomes e valores monetários · 25/11/2026
+
+O Codex reproduziu as duas falhas com o DDL anterior. Atualizou os CHECKs e testou valores válidos e inválidos. Os 24 testes passaram nos dois clientes, em PostgreSQL 13 e 16. O relatório registra a aprovação dos cinco arquivos em C1. [Revisão final](../evidencias/bd-av2/revisao-final-2026-11-25.md)

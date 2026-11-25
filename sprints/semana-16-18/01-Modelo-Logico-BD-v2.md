@@ -17,7 +17,7 @@ O registro da AV1 confirma ausência de correções formais. A versão avaliada 
 | Exigência da rubrica AV2 | Tipos e domínios | Email recebe formato e minúsculas obrigatórias. Nota e ordem usam SMALLINT. Slugs e nomes recebem limites explícitos. O perfil adota foto_url. |
 | Exigência da rubrica AV2 | Defaults e chaves alternativas | O banco gera UUID sem extensão. Estoque começa em zero. PKs, FKs, UNIQUEs, NOT NULL e CHECKs recebem nomes. |
 | Exigência da rubrica AV2 | Ações referenciais | A exclusão preserva o histórico. Atualizações propagam renomeações dos slugs e restringem mudanças de UUID. |
-| Exigência da rubrica AV2 | Consistência | CHECKs validam textos, faixas, subtotal, estados e cronologia. Os enums preservam os domínios fechados. |
+| Exigência da rubrica AV2 | Consistência | CHECKs validam textos, faixas, subtotal, estados e cronologia. Os enums preservam os domínios fechados. A revisão de 25/11 exclui `NaN` de todo valor monetário e exige ao menos um caractere diferente de espaço em branco nos nomes. |
 | Evolução do sistema real | Numeração e consultas | Uma sequência gera o número legível. Índices cobrem as FKs e a vitrine cronológica. |
 | Exigência da rubrica AV2 | Isolamento e rastreabilidade | A entrega usa origem, nomes lógicos e dependências ordenadas. O ER de 20/08 fundamenta a correspondência da seção 8. |
 
@@ -206,7 +206,7 @@ Vocabulário regional compartilhado pelos perfis.
 |---|---|
 | `pk_regioes` | `PRIMARY KEY (id)` |
 | `uq_regioes_nome` | `UNIQUE (nome)` |
-| `ck_regioes_nome_preenchido` | `CHECK (length(trim(nome)) > 0)` |
+| `ck_regioes_nome_preenchido` | `CHECK (nome ~ '[^[:space:]]')` |
 | `ck_regioes_slug_valido` | `CHECK (id ~ '^[a-z0-9]+(-[a-z0-9]+)*$')` |
 
 **Índices.** A PK e as UNIQUEs cobrem as chaves desta tabela.
@@ -226,7 +226,7 @@ Vocabulário das técnicas usadas nas peças e nos perfis.
 |---|---|
 | `pk_tecnicas` | `PRIMARY KEY (id)` |
 | `uq_tecnicas_nome` | `UNIQUE (nome)` |
-| `ck_tecnicas_nome_preenchido` | `CHECK (length(trim(nome)) > 0)` |
+| `ck_tecnicas_nome_preenchido` | `CHECK (nome ~ '[^[:space:]]')` |
 | `ck_tecnicas_slug_valido` | `CHECK (id ~ '^[a-z0-9]+(-[a-z0-9]+)*$')` |
 
 **Índices.** A PK e as UNIQUEs cobrem as chaves desta tabela.
@@ -246,7 +246,7 @@ Classificação das peças no catálogo.
 |---|---|
 | `pk_categorias` | `PRIMARY KEY (id)` |
 | `uq_categorias_nome` | `UNIQUE (nome)` |
-| `ck_categorias_nome_preenchido` | `CHECK (length(trim(nome)) > 0)` |
+| `ck_categorias_nome_preenchido` | `CHECK (nome ~ '[^[:space:]]')` |
 
 **Índices.** A PK e as UNIQUEs cobrem as chaves desta tabela.
 
@@ -274,7 +274,7 @@ Identidade comum a compradores, artesãos e administradores.
 | `ck_usuarios_email_minusculo` | `CHECK (email = lower(email))` |
 | `ck_usuarios_email_formato` | `CHECK (email ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$')` |
 | `ck_usuarios_hash_preenchido` | `CHECK (length(senha_hash) > 0)` |
-| `ck_usuarios_nome_preenchido` | `CHECK (length(trim(nome)) > 0)` |
+| `ck_usuarios_nome_preenchido` | `CHECK (nome ~ '[^[:space:]]')` |
 
 **Índices.** A PK e as UNIQUEs cobrem as chaves desta tabela.
 
@@ -361,10 +361,10 @@ Peça publicada por artesão e classificada no catálogo.
 | `fk_produtos_artesao_id` | `FOREIGN KEY (artesao_id) → usuarios (id) ON DELETE RESTRICT ON UPDATE RESTRICT` |
 | `fk_produtos_categoria_id` | `FOREIGN KEY (categoria_id) → categorias (id) ON DELETE RESTRICT ON UPDATE RESTRICT` |
 | `fk_produtos_tecnica_id` | `FOREIGN KEY (tecnica_id) → tecnicas (id) ON DELETE RESTRICT ON UPDATE CASCADE` |
-| `ck_produtos_preco_positivo` | `CHECK (preco > 0)` |
+| `ck_produtos_preco_positivo` | `CHECK (preco > 0 AND preco <> 'NaN'::numeric)` |
 | `ck_produtos_estoque_nao_negativo` | `CHECK (quantidade_estoque >= 0)` |
 | `ck_produtos_vendas_nao_negativas` | `CHECK (quantidade_vendida >= 0)` |
-| `ck_produtos_nome_preenchido` | `CHECK (length(trim(nome)) > 0)` |
+| `ck_produtos_nome_preenchido` | `CHECK (nome ~ '[^[:space:]]')` |
 
 **Índices.** Os índices dedicados atendem às consultas abaixo.
 
@@ -416,7 +416,7 @@ Associação entre carrinho e produto com quantidade e preço.
 | `fk_itens_carrinho_carrinho_id` | `FOREIGN KEY (carrinho_id) → carrinhos (usuario_id) ON DELETE CASCADE ON UPDATE RESTRICT` |
 | `fk_itens_carrinho_produto_id` | `FOREIGN KEY (produto_id) → produtos (id) ON DELETE RESTRICT ON UPDATE RESTRICT` |
 | `ck_itens_carrinho_quantidade_positiva` | `CHECK (quantidade > 0)` |
-| `ck_itens_carrinho_preco_unitario_positivo` | `CHECK (preco_unitario > 0)` |
+| `ck_itens_carrinho_preco_unitario_positivo` | `CHECK (preco_unitario > 0 AND preco_unitario <> 'NaN'::numeric)` |
 
 **Índices.** A PK começa em carrinho_id e cobre essa FK.
 
@@ -445,7 +445,7 @@ Cabeçalho da compra efetuada pelo comprador.
 | `uq_pedidos_numero` | `UNIQUE (numero)` |
 | `fk_pedidos_comprador_id` | `FOREIGN KEY (comprador_id) → usuarios (id) ON DELETE RESTRICT ON UPDATE RESTRICT` |
 | `ck_pedidos_numero_formato` | `CHECK (numero ~ '^ORG-[0-9]{4}-[0-9]{6}$')` |
-| `ck_pedidos_total_nao_negativo` | `CHECK (total >= 0)` |
+| `ck_pedidos_total_nao_negativo` | `CHECK (total >= 0 AND total <> 'NaN'::numeric)` |
 
 **Índices.** Os índices dedicados atendem às consultas abaixo.
 
@@ -477,8 +477,8 @@ Entidade fraca identificada pelo pedido e pela posição da linha.
 | `fk_itens_pedido_produto_id` | `FOREIGN KEY (produto_id) → produtos (id) ON DELETE RESTRICT ON UPDATE RESTRICT` |
 | `ck_itens_pedido_numero_item_positivo` | `CHECK (numero_item > 0)` |
 | `ck_itens_pedido_quantidade_positiva` | `CHECK (quantidade > 0)` |
-| `ck_itens_pedido_preco_unitario_positivo` | `CHECK (preco_unitario > 0)` |
-| `ck_itens_pedido_subtotal_calculado` | `CHECK (subtotal = quantidade * preco_unitario)` |
+| `ck_itens_pedido_preco_unitario_positivo` | `CHECK (preco_unitario > 0 AND preco_unitario <> 'NaN'::numeric)` |
+| `ck_itens_pedido_subtotal_calculado` | `CHECK (subtotal = quantidade * preco_unitario AND subtotal <> 'NaN'::numeric)` |
 | `ck_itens_pedido_data_envio_status` | `CHECK ((status = 'enviado') = (enviado_em IS NOT NULL))` |
 
 **Índices.** A PK começa em pedido_id e cobre essa FK.
@@ -507,7 +507,7 @@ Resultado do pagamento simulado de um pedido.
 | `pk_pagamentos` | `PRIMARY KEY (id)` |
 | `uq_pagamentos_pedido_id` | `UNIQUE (pedido_id)` |
 | `fk_pagamentos_pedido_id` | `FOREIGN KEY (pedido_id) → pedidos (id) ON DELETE RESTRICT ON UPDATE RESTRICT` |
-| `ck_pagamentos_valor_positivo` | `CHECK (valor > 0)` |
+| `ck_pagamentos_valor_positivo` | `CHECK (valor > 0 AND valor <> 'NaN'::numeric)` |
 
 **Índices.** A UNIQUE sobre pedido_id também cobre a FK.
 

@@ -378,7 +378,7 @@ Evidencias: [PI4-33.4](../../evidencias/PI4-33/33.4/README.md).
 
 ## Modelo físico da AV2 de BD
 
-O [modelo lógico v2](../../sprints/semana-16-18/01-Modelo-Logico-BD-v2.md) orienta os scripts previstos em `database/av2/`. A decisão D1 separa o DDL acadêmico das migrations Prisma. A aplicação publicada continua usando seu schema de produção. Os scripts acadêmicos criam os objetos no schema dedicado `origem` de um PostgreSQL local descartável.
+O [modelo lógico v2](../../sprints/semana-16-18/01-Modelo-Logico-BD-v2.md) orienta os scripts previstos em `database/av2/`. A decisão D1 separa o DDL acadêmico das migrations Prisma. A aplicação publicada continua usando seu schema de produção. Os scripts acadêmicos criam os objetos no schema dedicado `origem` de um PostgreSQL local descartável. Nesse schema, preços, subtotais, totais e pagamentos rejeitam `NaN`. Cada nome exige ao menos um caractere diferente de espaço em branco.
 
 A primeira coluna usa o nome acadêmico. A segunda identifica o modelo Prisma publicado. A correspondência de campos usa “lógico → Prisma”. Campos com grafia idêntica aparecem uma vez. A última coluna registra diferenças de representação ou integridade.
 

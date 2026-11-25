@@ -32,7 +32,7 @@ CREATE TABLE regioes (
 
     CONSTRAINT pk_regioes PRIMARY KEY (id),
     CONSTRAINT uq_regioes_nome UNIQUE (nome),
-    CONSTRAINT ck_regioes_nome_preenchido CHECK (length(trim(nome)) > 0),
+    CONSTRAINT ck_regioes_nome_preenchido CHECK (nome ~ '[^[:space:]]'),
     CONSTRAINT ck_regioes_slug_valido CHECK (id ~ '^[a-z0-9]+(-[a-z0-9]+)*$')
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE tecnicas (
 
     CONSTRAINT pk_tecnicas PRIMARY KEY (id),
     CONSTRAINT uq_tecnicas_nome UNIQUE (nome),
-    CONSTRAINT ck_tecnicas_nome_preenchido CHECK (length(trim(nome)) > 0),
+    CONSTRAINT ck_tecnicas_nome_preenchido CHECK (nome ~ '[^[:space:]]'),
     CONSTRAINT ck_tecnicas_slug_valido CHECK (id ~ '^[a-z0-9]+(-[a-z0-9]+)*$')
 );
 
@@ -52,7 +52,7 @@ CREATE TABLE categorias (
 
     CONSTRAINT pk_categorias PRIMARY KEY (id),
     CONSTRAINT uq_categorias_nome UNIQUE (nome),
-    CONSTRAINT ck_categorias_nome_preenchido CHECK (length(trim(nome)) > 0)
+    CONSTRAINT ck_categorias_nome_preenchido CHECK (nome ~ '[^[:space:]]')
 );
 
 CREATE TABLE usuarios (
@@ -70,7 +70,7 @@ CREATE TABLE usuarios (
     CONSTRAINT ck_usuarios_email_minusculo CHECK (email = lower(email)),
     CONSTRAINT ck_usuarios_email_formato CHECK (email ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$'),
     CONSTRAINT ck_usuarios_hash_preenchido CHECK (length(senha_hash) > 0),
-    CONSTRAINT ck_usuarios_nome_preenchido CHECK (length(trim(nome)) > 0)
+    CONSTRAINT ck_usuarios_nome_preenchido CHECK (nome ~ '[^[:space:]]')
 );
 
 CREATE TABLE perfis_artesao (
@@ -124,10 +124,10 @@ CREATE TABLE produtos (
         REFERENCES categorias (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
     CONSTRAINT fk_produtos_tecnica_id FOREIGN KEY (tecnica_id)
         REFERENCES tecnicas (id) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT ck_produtos_preco_positivo CHECK (preco > 0),
+    CONSTRAINT ck_produtos_preco_positivo CHECK (preco > 0 AND preco <> 'NaN'::numeric),
     CONSTRAINT ck_produtos_estoque_nao_negativo CHECK (quantidade_estoque >= 0),
     CONSTRAINT ck_produtos_vendas_nao_negativas CHECK (quantidade_vendida >= 0),
-    CONSTRAINT ck_produtos_nome_preenchido CHECK (length(trim(nome)) > 0)
+    CONSTRAINT ck_produtos_nome_preenchido CHECK (nome ~ '[^[:space:]]')
 );
 
 CREATE TABLE produto_fotos (
@@ -155,7 +155,7 @@ CREATE TABLE itens_carrinho (
     CONSTRAINT fk_itens_carrinho_produto_id FOREIGN KEY (produto_id)
         REFERENCES produtos (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
     CONSTRAINT ck_itens_carrinho_quantidade_positiva CHECK (quantidade > 0),
-    CONSTRAINT ck_itens_carrinho_preco_unitario_positivo CHECK (preco_unitario > 0)
+    CONSTRAINT ck_itens_carrinho_preco_unitario_positivo CHECK (preco_unitario > 0 AND preco_unitario <> 'NaN'::numeric)
 );
 
 CREATE TABLE pedidos (
@@ -173,7 +173,7 @@ CREATE TABLE pedidos (
     CONSTRAINT fk_pedidos_comprador_id FOREIGN KEY (comprador_id)
         REFERENCES usuarios (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
     CONSTRAINT ck_pedidos_numero_formato CHECK (numero ~ '^ORG-[0-9]{4}-[0-9]{6}$'),
-    CONSTRAINT ck_pedidos_total_nao_negativo CHECK (total >= 0)
+    CONSTRAINT ck_pedidos_total_nao_negativo CHECK (total >= 0 AND total <> 'NaN'::numeric)
 );
 
 ALTER SEQUENCE pedidos_numero_seq OWNED BY pedidos.numero;
@@ -195,9 +195,9 @@ CREATE TABLE itens_pedido (
         REFERENCES produtos (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
     CONSTRAINT ck_itens_pedido_numero_item_positivo CHECK (numero_item > 0),
     CONSTRAINT ck_itens_pedido_quantidade_positiva CHECK (quantidade > 0),
-    CONSTRAINT ck_itens_pedido_preco_unitario_positivo CHECK (preco_unitario > 0),
+    CONSTRAINT ck_itens_pedido_preco_unitario_positivo CHECK (preco_unitario > 0 AND preco_unitario <> 'NaN'::numeric),
     CONSTRAINT ck_itens_pedido_subtotal_calculado
-        CHECK (subtotal = quantidade * preco_unitario),
+        CHECK (subtotal = quantidade * preco_unitario AND subtotal <> 'NaN'::numeric),
     CONSTRAINT ck_itens_pedido_data_envio_status
         CHECK ((status = 'enviado') = (enviado_em IS NOT NULL))
 );
@@ -214,7 +214,7 @@ CREATE TABLE pagamentos (
     CONSTRAINT uq_pagamentos_pedido_id UNIQUE (pedido_id),
     CONSTRAINT fk_pagamentos_pedido_id FOREIGN KEY (pedido_id)
         REFERENCES pedidos (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
-    CONSTRAINT ck_pagamentos_valor_positivo CHECK (valor > 0)
+    CONSTRAINT ck_pagamentos_valor_positivo CHECK (valor > 0 AND valor <> 'NaN'::numeric)
 );
 
 CREATE TABLE avaliacoes (

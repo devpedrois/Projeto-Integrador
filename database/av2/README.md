@@ -24,7 +24,7 @@ psql -d origem_av2 -v ON_ERROR_STOP=1 -f seed_dml.sql
 psql -d origem_av2 -v ON_ERROR_STOP=1 -f testes_restricoes.sql
 ```
 
-**pgAdmin ou DBeaver.** Abra o Query Tool ou editor SQL conectado ao banco escolhido. Abra o DDL e execute o arquivo inteiro. Repita com o seed. A última grade mostra `tabela` e `linhas`. Para testar as restrições, execute o terceiro arquivo inteiro e consulte as mensagens do servidor. São esperados 21 avisos `OK`. O `ROLLBACK` final preserva a carga.
+**pgAdmin ou DBeaver.** Abra o Query Tool ou editor SQL conectado ao banco escolhido. Abra o DDL e execute o arquivo inteiro. Repita com o seed. A última grade mostra `tabela` e `linhas`. Para testar as restrições, execute o terceiro arquivo inteiro e consulte as mensagens do servidor. São esperados 24 avisos `OK`. O `ROLLBACK` final preserva a carga.
 
 **Demonstração em vídeo.** Abra `demo_erros.sql` após o seed. Com a confirmação automática de transações ativa, selecione uma instrução comentada por vez e execute a seleção. No psql interativo, cole uma instrução por vez. O PostgreSQL rejeita os seis comandos. Entre eles estão um produto inexistente, uma nota 6 e um email repetido.
 
@@ -42,7 +42,7 @@ O ano da mostra é fixo. Os quatro sufixos consomem a sequência de pedidos para
 | O perfil pertence a uma conta de artesão. | `ck_perfis_artesao_papel_artesao` e `fk_perfis_artesao_usuario_id_papel` |
 | O carrinho pertence a uma conta de comprador. | `ck_carrinhos_papel_comprador` e `fk_carrinhos_usuario_id_papel` |
 | Cada peça referencia uma técnica cadastrada. | `fk_produtos_tecnica_id` |
-| O preço de catálogo é positivo. | `ck_produtos_preco_positivo` |
+| O preço de catálogo é positivo e rejeita `NaN`. | `ck_produtos_preco_positivo` |
 | O estoque disponível pode chegar a zero. | `ck_produtos_estoque_nao_negativo` |
 | Cada posição de foto é exclusiva por produto. | `uq_produto_fotos_produto_id_ordem` |
 | O carrinho reúne cada produto em uma linha. | `pk_itens_carrinho`, sobre `carrinho_id, produto_id` |
