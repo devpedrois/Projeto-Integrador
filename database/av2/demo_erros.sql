@@ -5,10 +5,12 @@
 
 -- Execute uma instrução por vez, após a carga válida.
 
--- Produto inexistente na linha de venda: fk_itens_pedido_produto_id.
-UPDATE origem.itens_pedido SET produto_id = gen_random_uuid()
-WHERE (pedido_id, numero_item) = (
-    SELECT pedido_id, numero_item FROM origem.itens_pedido ORDER BY pedido_id, numero_item LIMIT 1
+-- Inserir um item com produto inexistente: fk_itens_pedido_produto_id.
+INSERT INTO origem.itens_pedido (
+    pedido_id, numero_item, produto_id, quantidade, preco_unitario, subtotal
+) VALUES (
+    '00000000-0000-4000-8000-000000000501', 99,
+    '00000000-0000-4000-8000-000000000399', 1, 10.00, 10.00
 );
 
 -- Nota acima de cinco: ck_avaliacoes_nota_valida.

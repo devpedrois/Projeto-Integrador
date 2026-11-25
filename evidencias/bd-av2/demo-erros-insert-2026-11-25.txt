@@ -1,0 +1,215 @@
+Origem | AV2 de Banco de Dados | 25/11/2026
+Demonstração de FK inexistente por INSERT
+
+DDL e seed aplicados no banco descartável av2_demonstracao.
+A demonstração foi executada inteira em psql, com autocommit.
+A comparação dos cinco comandos seguintes usa o commit f381881.
+O registro abaixo reúne a saída da demonstração e do validador.
+
+PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2)
+ddl.sql | saída 0
+seed_dml.sql | saída 0
+DO
+SET
+BEGIN
+INSERT 0 3
+INSERT 0 6
+INSERT 0 6
+INSERT 0 7
+INSERT 0 3
+INSERT 0 3
+INSERT 0 6
+INSERT 0 7
+INSERT 0 3
+INSERT 0 4
+INSERT 0 7
+INSERT 0 4
+INSERT 0 3
+INSERT 0 3
+INSERT 0 6
+COMMIT
+avaliacoes|3
+carrinhos|3
+categorias|6
+intencoes_notificacao|3
+itens_carrinho|3
+itens_pedido|7
+notificacoes|6
+pagamentos|4
+pedidos|4
+perfis_artesao|3
+produto_fotos|7
+produtos|6
+regioes|3
+tecnicas|6
+usuarios|7
+
+Demonstração completa | psql sem ON_ERROR_STOP, com autocommit
+psql:<stdin>:14: ERROR:  23503: insert or update on table "itens_pedido" violates foreign key constraint "fk_itens_pedido_produto_id"
+DETAIL:  Key (produto_id)=(00000000-0000-4000-8000-000000000399) is not present in table "produtos".
+SCHEMA NAME:  origem
+TABLE NAME:  itens_pedido
+CONSTRAINT NAME:  fk_itens_pedido_produto_id
+LOCATION:  ri_ReportViolation, ri_triggers.c:2608
+psql:<stdin>:18: ERROR:  23514: new row for relation "avaliacoes" violates check constraint "ck_avaliacoes_nota_valida"
+DETAIL:  Failing row contains (00000000-0000-4000-8000-000000000701, 00000000-0000-4000-8000-000000000121, 00000000-0000-4000-8000-000000000301, 6, O acabamento fosco valorizou o relevo., 2026-11-13 15:00:00+00).
+SCHEMA NAME:  origem
+TABLE NAME:  avaliacoes
+CONSTRAINT NAME:  ck_avaliacoes_nota_valida
+LOCATION:  ExecConstraints, execMain.c:2109
+psql:<stdin>:23: ERROR:  23505: duplicate key value violates unique constraint "uq_usuarios_email"
+DETAIL:  Key (email)=(admin@example.com) already exists.
+SCHEMA NAME:  origem
+TABLE NAME:  usuarios
+CONSTRAINT NAME:  uq_usuarios_email
+LOCATION:  _bt_check_unique, nbtinsert.c:666
+psql:<stdin>:27: ERROR:  23502: null value in column "total" of relation "pedidos" violates not-null constraint
+DETAIL:  Failing row contains (00000000-0000-4000-8000-000000000501, 00000000-0000-4000-8000-000000000121, ORG-2026-000001, confirmado, null, 2026-11-05 13:00:00+00).
+SCHEMA NAME:  origem
+TABLE NAME:  pedidos
+COLUMN NAME:  total
+LOCATION:  ExecConstraints, execMain.c:2057
+psql:<stdin>:31: ERROR:  23503: update or delete on table "categorias" violates foreign key constraint "fk_produtos_categoria_id" on table "produtos"
+DETAIL:  Key (id)=(00000000-0000-4000-8000-000000000201) is still referenced from table "produtos".
+SCHEMA NAME:  origem
+TABLE NAME:  produtos
+CONSTRAINT NAME:  fk_produtos_categoria_id
+LOCATION:  ri_ReportViolation, ri_triggers.c:2621
+psql:<stdin>:37: ERROR:  23514: new row for relation "itens_pedido" violates check constraint "ck_itens_pedido_data_envio_status"
+DETAIL:  Failing row contains (00000000-0000-4000-8000-000000000501, 1, 00000000-0000-4000-8000-000000000301, 2, 48.50, 97.00, enviado, null).
+SCHEMA NAME:  origem
+TABLE NAME:  itens_pedido
+CONSTRAINT NAME:  ck_itens_pedido_data_envio_status
+LOCATION:  ExecConstraints, execMain.c:2109
+Comandos 2 a 6: SQL e diagnósticos idênticos aos da versão anterior.
+
+Prova transacional | apenas fk_itens_pedido_produto_id removida
+O comando executado entre ALTER TABLE e ROLLBACK foi extraído de demo_erros.sql.
+Registro: item | numero_item | produto_id | quantidade | preco_unitario | subtotal | status | enviado_em IS NULL
+antes|pedido=1|item=0|produto=0|fk=1
+BEGIN
+ALTER TABLE
+INSERT 0 1
+item|99|00000000-0000-4000-8000-000000000399|1|10.00|10.00|aguardando_envio|t
+ROLLBACK
+depois|item=0|fk=1
+
+> origem-backend@1.0.0 bd:av2:validar
+> tsx scripts/bd-av2-validar.ts
+
+Destino: loopback. Parâmetros de conexão omitidos.
+D11 OK: ddl.sql
+D11 OK: seed_dml.sql
+D11 OK: demo_erros.sql
+D11 OK: testes_restricoes.sql
+Servidor PostgreSQL 16 local confirmado (160015).
+psql: banco novo criado.
+psql: guarda OK: Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)
+psql: ddl.sql
+psql: ddl.sql
+psql: seed_dml.sql
+psql: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+avaliacoes: 3 linha(s)
+carrinhos: 3 linha(s)
+categorias: 6 linha(s)
+intencoes_notificacao: 3 linha(s)
+itens_carrinho: 3 linha(s)
+itens_pedido: 7 linha(s)
+notificacoes: 6 linha(s)
+pagamentos: 4 linha(s)
+pedidos: 4 linha(s)
+perfis_artesao: 3 linha(s)
+produto_fotos: 7 linha(s)
+produtos: 6 linha(s)
+regioes: 3 linha(s)
+tecnicas: 6 linha(s)
+usuarios: 7 linha(s)
+Catálogo: 15 tabelas, PKs, ações DELETE, nomes e índices conferidos.
+Coerência OK: total_pedido
+Coerência OK: pagamento_pedido
+Coerência OK: vendas_confirmadas
+Coerência OK: artesao_produto
+Coerência OK: comprador_pedido
+Coerência OK: comprador_avaliacao
+Coerência OK: compra_avaliada
+Coerência OK: preco_carrinho
+Coerência OK: intencao_confirmacao
+Coerência OK: avisos_artesaos
+psql: aprovado.
+pg: banco novo criado.
+pg: guarda OK: Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)
+pg: ddl.sql
+pg: ddl.sql
+pg: seed_dml.sql
+pg: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+avaliacoes: 3 linha(s)
+carrinhos: 3 linha(s)
+categorias: 6 linha(s)
+intencoes_notificacao: 3 linha(s)
+itens_carrinho: 3 linha(s)
+itens_pedido: 7 linha(s)
+notificacoes: 6 linha(s)
+pagamentos: 4 linha(s)
+pedidos: 4 linha(s)
+perfis_artesao: 3 linha(s)
+produto_fotos: 7 linha(s)
+produtos: 6 linha(s)
+regioes: 3 linha(s)
+tecnicas: 6 linha(s)
+usuarios: 7 linha(s)
+Catálogo: 15 tabelas, PKs, ações DELETE, nomes e índices conferidos.
+Coerência OK: total_pedido
+Coerência OK: pagamento_pedido
+Coerência OK: vendas_confirmadas
+Coerência OK: artesao_produto
+Coerência OK: comprador_pedido
+Coerência OK: comprador_avaliacao
+Coerência OK: compra_avaliada
+Coerência OK: preco_carrinho
+Coerência OK: intencao_confirmacao
+Coerência OK: avisos_artesaos
+pg: aprovado.
+Validação aprovada nos dois modos.
+Código de saída: 0

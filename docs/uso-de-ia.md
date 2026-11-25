@@ -1737,3 +1737,7 @@ O Codex preparou os testes transacionais do modelo lógico. Executou o validador
 ### AV2 de BD · Carga inicial e fechamento · 25/11/2026
 
 O Codex preparou a carga sintética e as consultas de coerência. Conferiu compras, pagamentos e avisos nas duas versões do PostgreSQL. A revisão neste chat introduziu divergências e confirmou sua detecção. Os seis erros da demonstração também foram reproduzidos. [Evidência final](../evidencias/bd-av2/validacao-final-2026-11-25.txt)
+
+### AV2 de BD · Inserção de item com produto inexistente · 25/11/2026
+
+O Codex ajustou a primeira instrução da demonstração. O PostgreSQL rejeitou o produto inexistente. A inserção passou ao retirar apenas a FK, e o `ROLLBACK` restaurou os dados e a restrição. [Prova transacional](../evidencias/bd-av2/demo-erros-insert-2026-11-25.txt)
