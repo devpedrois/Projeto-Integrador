@@ -454,7 +454,20 @@ O arquivo 00 registra **zero correções formais**. A nota oficial permanece des
 | R7 | Estrutura preparada para schema vazio, com FKs posteriores. Depende de pg_trgm. Uma segunda execução encontra tipos e sequência existentes. O arquivo não contém povoamento. | Criar tipos, depois pais e filhos, depois índices. Recriar somente origem. Executar DDL e seed em sequência, com três ou mais registros válidos por tabela. Validar execução e repetição no PostgreSQL 16 descartável, conforme D2/D8/D11. |
 | Critério 2 | Os 4,0 pontos dependem do lógico revisado. O físico nomeia PK/FK/CHECK, usa índices para unicidade e declara NOT NULL nas colunas. | Nomear PK, FK, UNIQUE e CHECK conforme D8. Nomear no texto do DDL cada declaração NOT NULL exigida pela rubrica. Verificar obrigatoriedade, ações, tipos, sintaxe e ordem no PostgreSQL 16. |
 
-A execução do futuro DDL e sua pontuação pertencem às próximas entregas. O critério 3 exige demonstração prática posterior. [Rubrica transcrita, seção 0](../PROMPTS_EXECUCAO_BD_AV2.md)
+### Fechamento da entrega AV2 em 25/11/2026
+
+| Requisito | Resultado verificado | Arquivo e linha |
+|---|---|---|
+| R1 · Fidelidade | As 15 tabelas implementam o v2. As especializações usam a chave do usuário. A linha de venda identifica cada ocorrência do produto. | [Relações do v2, L600](../../sprints/semana-16-18/01-Modelo-Logico-BD-v2.md#L600) · [Perfil, L76](../../database/av2/ddl.sql#L76) · [Itens do pedido, L181](../../database/av2/ddl.sql#L181) |
+| R2 · Tipos | Sete enums fecham os estados e os papéis. UUID, VARCHAR, NUMERIC, SMALLINT e TIMESTAMPTZ preservam os domínios. | [Enums, L16](../../database/av2/ddl.sql#L16) · [Referências, L29](../../database/av2/ddl.sql#L29) · [Tipos da venda, L181](../../database/av2/ddl.sql#L181) |
+| R3 · Identidade | As 15 PKs são nomeadas. As PKs compostas distinguem o produto no carrinho e a posição no pedido. | [Carrinho, L152](../../database/av2/ddl.sql#L152) · [Pedido, L191](../../database/av2/ddl.sql#L191) |
+| R4 · Referências | As 19 FKs declaram as duas ações e têm índice compatível. Excluir um usuário remove sua especialização. Renomear um slug propaga a referência. | [Especialização, L86](../../database/av2/ddl.sql#L86) · [Slug, L88](../../database/av2/ddl.sql#L88) · [Inventário, L35](../../evidencias/bd-av2/04-revisao-ddl.txt#L35) |
+| R5 · Domínio | As 75 colunas obrigatórias têm NOT NULL nomeado no script. Há 11 UNIQUEs e defaults para identidade, numeração, status e datas. | [Usuários, L58](../../database/av2/ddl.sql#L58) · [Pedidos, L161](../../database/av2/ddl.sql#L161) |
+| R6 · Semântica | Os 32 CHECKs cobrem faixas, textos, subtotal, especialização e cronologia. | [Subtotal e envio, L199](../../database/av2/ddl.sql#L199) · [Nota, L234](../../database/av2/ddl.sql#L234) · [Processamento, L256](../../database/av2/ddl.sql#L256) |
+| R7 · Execução | DDL executado duas vezes. A carga confirmou 71 registros nas 15 tabelas. Psql e pg passaram em PostgreSQL 13.23 e 16.15. | [Recriação, L11](../../database/av2/ddl.sql#L11) · [Carga, L20](../../database/av2/seed_dml.sql#L20) · [Contagem, L217](../../database/av2/seed_dml.sql#L217) |
+| Critério 2 · DDL | Tipos, obrigatoriedade, nomes, expressões e ações foram conferidos por tabela. As quatro execuções confirmaram sintaxe e ordem. | [Revisão estrutural, L18](../../evidencias/bd-av2/04-revisao-ddl.txt#L18) · [Registro final](../../evidencias/bd-av2/validacao-final-2026-11-25.txt) |
+
+Os seis comandos do roteiro produziram os erros previstos. A apresentação individual em vídeo continua como etapa da avaliação. [Roteiro de execução](../../database/av2/README.md) · [Rubrica](../PROMPTS_EXECUCAO_BD_AV2.md)
 
 ## 5. Checkout e chave de itens_pedido
 

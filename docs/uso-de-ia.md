@@ -1733,3 +1733,7 @@ O Codex comparou os atributos do ER avaliado com a auditoria física. Documentou
 ### AV2 de BD · Testes de restrição · 25/11/2026
 
 O Codex preparou os testes transacionais do modelo lógico. Executou o validador com dois clientes no PostgreSQL 16. Ambos apontaram a ausência esperada de `origem.usuarios`. A revisão verificou o isolamento local e os registros. [Evidência da execução vermelha](../evidencias/bd-av2/03-aceite-vermelho.txt)
+
+### AV2 de BD · Carga inicial e fechamento · 25/11/2026
+
+O Codex preparou a carga sintética e as consultas de coerência. Conferiu compras, pagamentos e avisos nas duas versões do PostgreSQL. A revisão neste chat introduziu divergências e confirmou sua detecção. Os seis erros da demonstração também foram reproduzidos. [Evidência final](../evidencias/bd-av2/validacao-final-2026-11-25.txt)

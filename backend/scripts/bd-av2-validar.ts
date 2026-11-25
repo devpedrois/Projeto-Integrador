@@ -4,10 +4,13 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 import { Client } from "pg";
 import { auditarCatalogo, FalhaValidacao } from "./lib/bd-av2-catalogo.js";
+import { auditarCoerencia } from "./lib/bd-av2-coerencia.js";
 import { verificarD11 } from "./lib/bd-av2-d11.js";
 
 export { verificarD11 };
 const entregaveis = ["ddl.sql", "seed_dml.sql", "demo_erros.sql"] as const;
+const mensagemOrdem =
+  "Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)";
 const sequencia = [
   "ddl.sql",
   "ddl.sql",
@@ -205,10 +208,38 @@ function executarPsql(
     if (m[1]) avisos.add(m[1]);
   if (r.status !== 0) {
     const estado = /(?:ERROR|FATAL):\s+([A-Z0-9]{5}):/.exec(diagnostico)?.[1];
+    if (
+      estado === "P0001" &&
+      diagnostico
+        .split(/\r?\n/)
+        .some((linha) => linha.endsWith("P0001: " + mensagemOrdem))
+    )
+      throw new FalhaValidacao(mensagemOrdem);
     throw new FalhaValidacao(
       estado ? "SQLSTATE " + estado : "psql local falhou.",
     );
   }
+}
+
+async function testarOrdem(
+  executar: (sql: string) => Promise<unknown>,
+  seed: string,
+) {
+  try {
+    await executar(seed);
+  } catch (erro) {
+    if (
+      erro instanceof Error &&
+      erro.message === mensagemOrdem &&
+      (erro instanceof FalhaValidacao ||
+        ("code" in erro && erro.code === "P0001"))
+    )
+      return;
+    throw new FalhaValidacao(
+      "Seed fora de ordem retornou diagnóstico inesperado.",
+    );
+  }
+  throw new FalhaValidacao("Seed aceito antes do DDL.");
 }
 
 async function executarModo(
@@ -230,14 +261,22 @@ async function executarModo(
   try {
     await cliente.connect();
     registrar(modo + ": banco novo criado.");
+    const executar = async (sql: string) => {
+      if (modo === "psql") executarPsql(exec, config, banco, sql, avisos);
+      else await cliente.query(sql);
+    };
+    const seed = fontes.get("seed_dml.sql");
+    if (seed === undefined)
+      throw new FalhaValidacao("Arquivo ausente: seed_dml.sql");
+    await testarOrdem(executar, seed);
+    registrar(modo + ": guarda OK: " + mensagemOrdem);
     for (const nome of sequencia) {
       const sql = fontes.get(nome);
       if (sql === undefined)
         throw new FalhaValidacao("Arquivo ausente: " + nome);
       registrar(modo + ": " + nome);
       avisos.clear();
-      if (modo === "psql") executarPsql(exec, config, banco, sql, avisos);
-      else await cliente.query(sql);
+      await executar(sql);
       if (nome === "testes_restricoes.sql") {
         const esperados = [
           ...sql.matchAll(/RAISE NOTICE 'OK ([a-z0-9_]+)'/g),
@@ -248,6 +287,7 @@ async function executarModo(
       }
     }
     await auditarCatalogo(cliente, registrar);
+    await auditarCoerencia(cliente, registrar);
   } finally {
     try {
       await cliente.end();
@@ -265,12 +305,22 @@ async function validar(registrar: Registrar) {
   const admin = novoCliente(config);
   try {
     await admin.connect();
+    const args = process.argv.slice(2);
+    if (args.length > 1 || (args.length === 1 && args[0] !== "--postgres13"))
+      throw new FalhaValidacao("Opção permitida: --postgres13.");
+    const versao = args[0] === "--postgres13" ? 13 : 16;
     const ver = await admin.query<{ server_version_num: string }>(
       "SHOW server_version_num",
     );
-    if (Math.floor(Number(ver.rows[0]?.server_version_num) / 10000) !== 16)
-      throw new FalhaValidacao("A validação exige PostgreSQL 16.");
-    registrar("Servidor PostgreSQL 16 local confirmado.");
+    if (Math.floor(Number(ver.rows[0]?.server_version_num) / 10000) !== versao)
+      throw new FalhaValidacao("A validação exige PostgreSQL " + versao + ".");
+    registrar(
+      "Servidor PostgreSQL " +
+        versao +
+        " local confirmado (" +
+        Number(ver.rows[0]?.server_version_num) +
+        ").",
+    );
     let falhou = false;
     for (const modo of ["psql", "pg"] as const) {
       try {

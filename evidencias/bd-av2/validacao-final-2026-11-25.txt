@@ -1,0 +1,308 @@
+Origem | AV2 de Modelagem e Projeto de Banco de Dados | 25/11/2026
+Fechamento do commit 05
+
+Ambiente: contêineres locais descartáveis das imagens oficiais postgres:16 e postgres:13.
+Cada modo criou seu próprio banco vazio. O modo pg enviou cada arquivo inteiro
+em uma única consulta simples. Os nomes automáticos de evidência no terminal
+identificam os registros reunidos neste arquivo.
+
+POSTGRESQL 16.15 | imagem nova | saída completa de npm --prefix backend run bd:av2:validar
+
+> origem-backend@1.0.0 bd:av2:validar
+> tsx scripts/bd-av2-validar.ts
+
+Destino: loopback. Parâmetros de conexão omitidos.
+D11 OK: ddl.sql
+D11 OK: seed_dml.sql
+D11 OK: demo_erros.sql
+D11 OK: testes_restricoes.sql
+Servidor PostgreSQL 16 local confirmado (160015).
+psql: banco novo criado.
+psql: guarda OK: Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)
+psql: ddl.sql
+psql: ddl.sql
+psql: seed_dml.sql
+psql: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+avaliacoes: 3 linha(s)
+carrinhos: 3 linha(s)
+categorias: 6 linha(s)
+intencoes_notificacao: 3 linha(s)
+itens_carrinho: 3 linha(s)
+itens_pedido: 7 linha(s)
+notificacoes: 6 linha(s)
+pagamentos: 4 linha(s)
+pedidos: 4 linha(s)
+perfis_artesao: 3 linha(s)
+produto_fotos: 7 linha(s)
+produtos: 6 linha(s)
+regioes: 3 linha(s)
+tecnicas: 6 linha(s)
+usuarios: 7 linha(s)
+Catálogo: 15 tabelas, PKs, ações DELETE, nomes e índices conferidos.
+Coerência OK: total_pedido
+Coerência OK: pagamento_pedido
+Coerência OK: vendas_confirmadas
+Coerência OK: artesao_produto
+Coerência OK: comprador_pedido
+Coerência OK: comprador_avaliacao
+Coerência OK: compra_avaliada
+Coerência OK: preco_carrinho
+Coerência OK: intencao_confirmacao
+Coerência OK: avisos_artesaos
+psql: aprovado.
+pg: banco novo criado.
+pg: guarda OK: Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)
+pg: ddl.sql
+pg: ddl.sql
+pg: seed_dml.sql
+pg: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+avaliacoes: 3 linha(s)
+carrinhos: 3 linha(s)
+categorias: 6 linha(s)
+intencoes_notificacao: 3 linha(s)
+itens_carrinho: 3 linha(s)
+itens_pedido: 7 linha(s)
+notificacoes: 6 linha(s)
+pagamentos: 4 linha(s)
+pedidos: 4 linha(s)
+perfis_artesao: 3 linha(s)
+produto_fotos: 7 linha(s)
+produtos: 6 linha(s)
+regioes: 3 linha(s)
+tecnicas: 6 linha(s)
+usuarios: 7 linha(s)
+Catálogo: 15 tabelas, PKs, ações DELETE, nomes e índices conferidos.
+Coerência OK: total_pedido
+Coerência OK: pagamento_pedido
+Coerência OK: vendas_confirmadas
+Coerência OK: artesao_produto
+Coerência OK: comprador_pedido
+Coerência OK: comprador_avaliacao
+Coerência OK: compra_avaliada
+Coerência OK: preco_carrinho
+Coerência OK: intencao_confirmacao
+Coerência OK: avisos_artesaos
+pg: aprovado.
+Validação aprovada nos dois modos.
+Código de saída: 0
+Evidência: evidencias/bd-av2/validacao-2026-11-25T20-02-33.432Z-78267b41.txt
+Bancos temporários restantes: 0
+
+POSTGRESQL 13.23 | imagem nova | saída completa de npm --prefix backend run bd:av2:validar -- --postgres13
+
+> origem-backend@1.0.0 bd:av2:validar
+> tsx scripts/bd-av2-validar.ts --postgres13
+
+Destino: loopback. Parâmetros de conexão omitidos.
+D11 OK: ddl.sql
+D11 OK: seed_dml.sql
+D11 OK: demo_erros.sql
+D11 OK: testes_restricoes.sql
+Servidor PostgreSQL 13 local confirmado (130023).
+psql: banco novo criado.
+psql: guarda OK: Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)
+psql: ddl.sql
+psql: ddl.sql
+psql: seed_dml.sql
+psql: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+avaliacoes: 3 linha(s)
+carrinhos: 3 linha(s)
+categorias: 6 linha(s)
+intencoes_notificacao: 3 linha(s)
+itens_carrinho: 3 linha(s)
+itens_pedido: 7 linha(s)
+notificacoes: 6 linha(s)
+pagamentos: 4 linha(s)
+pedidos: 4 linha(s)
+perfis_artesao: 3 linha(s)
+produto_fotos: 7 linha(s)
+produtos: 6 linha(s)
+regioes: 3 linha(s)
+tecnicas: 6 linha(s)
+usuarios: 7 linha(s)
+Catálogo: 15 tabelas, PKs, ações DELETE, nomes e índices conferidos.
+Coerência OK: total_pedido
+Coerência OK: pagamento_pedido
+Coerência OK: vendas_confirmadas
+Coerência OK: artesao_produto
+Coerência OK: comprador_pedido
+Coerência OK: comprador_avaliacao
+Coerência OK: compra_avaliada
+Coerência OK: preco_carrinho
+Coerência OK: intencao_confirmacao
+Coerência OK: avisos_artesaos
+psql: aprovado.
+pg: banco novo criado.
+pg: guarda OK: Execute ddl.sql antes de seed_dml.sql (schema origem nao encontrado)
+pg: ddl.sql
+pg: ddl.sql
+pg: seed_dml.sql
+pg: testes_restricoes.sql
+OK produto_repetido
+OK produto_inexistente
+OK nota_seis
+OK estoque_negativo
+OK preco_zero
+OK email_duplicado_normalizado
+OK email_duplicado_em_maiusculas
+OK email_em_maiusculas
+OK subtotal_incoerente
+OK envio_sem_data
+OK perfil_de_comprador
+OK item_carrinho_duplicado
+OK numero_item_duplicado
+OK numero_pedido_invalido
+OK status_pedido_invalido
+OK total_obrigatorio
+OK pedido_com_itens
+OK segundo_pagamento
+OK processada_sem_data
+OK processada_antes_da_criacao
+OK perfil_em_cascata
+avaliacoes: 3 linha(s)
+carrinhos: 3 linha(s)
+categorias: 6 linha(s)
+intencoes_notificacao: 3 linha(s)
+itens_carrinho: 3 linha(s)
+itens_pedido: 7 linha(s)
+notificacoes: 6 linha(s)
+pagamentos: 4 linha(s)
+pedidos: 4 linha(s)
+perfis_artesao: 3 linha(s)
+produto_fotos: 7 linha(s)
+produtos: 6 linha(s)
+regioes: 3 linha(s)
+tecnicas: 6 linha(s)
+usuarios: 7 linha(s)
+Catálogo: 15 tabelas, PKs, ações DELETE, nomes e índices conferidos.
+Coerência OK: total_pedido
+Coerência OK: pagamento_pedido
+Coerência OK: vendas_confirmadas
+Coerência OK: artesao_produto
+Coerência OK: comprador_pedido
+Coerência OK: comprador_avaliacao
+Coerência OK: compra_avaliada
+Coerência OK: preco_carrinho
+Coerência OK: intencao_confirmacao
+Coerência OK: avisos_artesaos
+pg: aprovado.
+Validação aprovada nos dois modos.
+Código de saída: 0
+Evidência: evidencias/bd-av2/validacao-2026-11-25T19-59-48.803Z-fcd05e71.txt
+
+DEMONSTRAÇÃO | PostgreSQL 16.15 | demo_erros.sql em autocommit
+
+Demo 1 | SQLSTATE 23503 | insert or update on table "itens_pedido" violates foreign key constraint "fk_itens_pedido_produto_id"
+Demo 2 | SQLSTATE 23514 | new row for relation "avaliacoes" violates check constraint "ck_avaliacoes_nota_valida"
+Demo 3 | SQLSTATE 23505 | duplicate key value violates unique constraint "uq_usuarios_email"
+Demo 4 | SQLSTATE 23502 | null value in column "total" of relation "pedidos" violates not-null constraint
+Demo 5 | SQLSTATE 23503 | update or delete on table "categorias" violates foreign key constraint "fk_produtos_categoria_id" on table "produtos"
+Demo 6 | SQLSTATE 23514 | new row for relation "itens_pedido" violates check constraint "ck_itens_pedido_data_envio_status"
+
+REVISÃO ADVERSARIAL NESTE CHAT | PostgreSQL 16.15
+
+Cada transação introduziu uma divergência permitida pelas constraints.
+A consulta de coerência identificou a regra esperada. Cada caso terminou
+com ROLLBACK. Os dois últimos casos removem um pagamento e trocam o
+destinatário de um aviso, respectivamente.
+
+OK mutação revertida: total_pedido
+OK mutação revertida: pagamento_pedido
+OK mutação revertida: vendas_confirmadas
+OK mutação revertida: artesao_produto
+OK mutação revertida: comprador_pedido
+OK mutação revertida: comprador_avaliacao
+OK mutação revertida: compra_avaliada
+OK mutação revertida: preco_carrinho
+OK mutação revertida: intencao_confirmacao
+OK mutação revertida: avisos_artesaos
+OK mutação revertida: pagamento_pedido
+OK mutação revertida: avisos_artesaos
+OK massa original depois das reversões.
+
+Conferências adicionais sobre o seed válido. A marca t significa verdadeiro.
+Contas e perfis|t
+Pedidos, intenções e estados|t
+Artesãos, categorias e fotos|t
+Estoque disponível e carrinhos|t
+Datas e envio de pedidos|t
+Contas sintéticas de demonstração|t
+Próximo número padrão|t
+Sete endereços reservados para exemplos, distintos dos contatos do seed Prisma.
+OK guarda em schema existente sem a tabela usuarios.
+
+Foram conferidos os seis nomes de categoria no documento de domínio.
+As contas representam oficinas e compradores fictícios. A coluna senha_hash
+contém apenas um marcador de bloqueio, sem hash utilizável.
+
+BACKEND
+npm --prefix backend run lint                                    saída 0
+npm --prefix backend run typecheck                               saída 0
+npm --prefix backend test -- tests/unit/bd-av2-validar.test.ts   23 testes aprovados
+
+LIMPEZA
+PostgreSQL 13: zero bancos de validação remanescentes. Contêiner descartável removido.
+PostgreSQL 16: zero bancos de validação remanescentes. Contêiner descartável removido.

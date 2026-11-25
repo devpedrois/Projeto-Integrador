@@ -1,6 +1,6 @@
 -- Projeto Origem | AV2 de Modelagem e Projeto de Banco de Dados | 25/11/2026
 -- Modelo físico relacional. Requer PostgreSQL 13 ou superior, testado em 16.
--- SQL sem extensões. Execute ddl.sql antes de seed_dml.sql.
+-- SQL sem extensões. Exige CREATE no banco. Execute ddl.sql antes de seed_dml.sql.
 -- Atenção: cada execução recria o schema origem e apaga seus dados.
 -- psql: psql -v ON_ERROR_STOP=1 -f ddl.sql
 -- pgAdmin/DBeaver: abra o arquivo e execute o script inteiro.
