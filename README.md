@@ -6,6 +6,8 @@ Marketplace web full stack que conecta artesãos e produtores criativos de Perna
 
 Projeto Integrador do 4º semestre de Análise e Desenvolvimento de Sistemas — **CESAR School**, 2026.2.
 
+[Relatório de FCCPD](#fccpd--parte-2)
+
 ## Acesse a aplicação
 
 **Frontend publicado:** <https://origem-marketplace.vercel.app/>
@@ -52,9 +54,7 @@ Monorepo com `frontend/`, `backend/` e `services/recomendacao/` independentes.
 Frontend, API e recomendação comunicam-se por HTTP.
 API e worker utilizam a fila persistente pg-boss.
 
-![Arquitetura distribuída e protocolos](docs/arquitetura-distribuida.png)
-
-Diagrama completo, com justificativa de cada componente e limites do deploy, em [`docs/arquitetura-distribuida.md`](docs/arquitetura-distribuida.md).
+Consulte o [diagrama no relatório de FCCPD](#fccpd--parte-2) ou a [descrição completa da arquitetura](docs/arquitetura-distribuida.md).
 
 **Camadas do backend:** `routes` → `controllers` → `services` → `repositories`, com `middlewares` para cross-cutting concerns e `validators` para DTO/validação na borda (Zod). Padrões aplicados de forma pontual e justificada — Repository, Service layer, Strategy (integração de recomendação) e a chain de middlewares do Express — sem Clean Architecture completa, CQRS ou framework de DI, que não se justificam para o tamanho do projeto.
 
@@ -74,41 +74,40 @@ Quando necessário, a API aplica fallback local identificado.
 
 ## FCCPD — Parte 2
 
-O relatório está organizado pelos itens da rubrica distribuída.
+### Arquitetura distribuída
 
-| Item exigido                                 | Documento ou implementação                                                               |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Diagrama, responsabilidades e justificativas | [Arquitetura distribuída](docs/arquitetura-distribuida.md)                               |
-| Propriedade dos dados e isolamento           | [Dados por serviço](docs/arquitetura-distribuida.md#dados-por-serviço-e-contrato-sql)    |
-| Metodologia, resultados e interpretação      | [Relatório de desempenho](docs/relatorio-desempenho-u2.md)                               |
-| Sequencial versus paralelo                   | [B2 histórico e após extração](docs/relatorio-desempenho-u2.md#b2-recomendações-em-lote) |
-| Evidência funcional da comunicação           | [Capturas e logs correlacionados](evidencias/PI4-35/35.5-comunicacao/README.md)          |
+![Arquitetura distribuída do Origem com chamadas HTTP, PostgreSQL e fila de notificações](docs/arquitetura-distribuida.png)
 
-Trecho paralelo do commit 14, `62991ad`:
+A vitrine consulta a API por HTTP. A API confirma pedidos e atualiza estoques na mesma transação.
+O microsserviço calcula recomendações e pode ser publicado separadamente.
+A fila permite confirmar pedidos sem aguardar a notificação.
+O worker consome a fila e notifica o artesão. [Responsabilidades de cada serviço](docs/arquitetura-distribuida.md)
 
-- [`services/recomendacao/src/lote/pool.ts`](services/recomendacao/src/lote/pool.ts): `executarPool`, com concorrência limitada e `Promise.all`.
-- [`services/recomendacao/src/lote/index.ts`](services/recomendacao/src/lote/index.ts): operação `gerarRecomendacoesEmLote`.
-- [`services/recomendacao/scripts/metricas.ts`](services/recomendacao/scripts/metricas.ts): consumo real dessa operação.
+### Recomendações em lote
 
-Comunicação do commit 04, `8e17cab`, e commit 16, `001c6e7`:
+O benchmark B2 mediu recomendações para os mesmos 1.000 produtos.
+A função `gerarRecomendacoesEmLote` usa `executarPool` para limitar consultas simultâneas.
+[Operação de lote](services/recomendacao/src/lote/index.ts) e [trecho paralelo](services/recomendacao/src/lote/pool.ts).
 
-- [`backend/src/integrations/recommendation/http-recomendacao.client.ts`](backend/src/integrations/recommendation/http-recomendacao.client.ts): `HttpRecomendacaoClient.obter`, HTTP autenticado e propagação do `X-Request-Id`.
-- [`backend/src/middlewares/request-logging.middleware.ts`](backend/src/middlewares/request-logging.middleware.ts) e [`services/recomendacao/src/middlewares/request-logging.middleware.ts`](services/recomendacao/src/middlewares/request-logging.middleware.ts): logs REST correlacionados.
-- [`backend/src/queues/notificacao.publisher.ts`](backend/src/queues/notificacao.publisher.ts): `publicarIntencoesPendentes`.
-- [`backend/src/jobs/notificar-artesao.worker.ts`](backend/src/jobs/notificar-artesao.worker.ts): `registerNotificarArtesaoWorker` e registro do resultado.
+Cada configuração teve um aquecimento e quatro rodadas medidas.
+O tempo cobre a seleção no PostgreSQL remoto, sem HTTP.
 
-Evidências do commit 16:
+| Execução   | Tarefas simultâneas | Tempo mediano do lote | Produtos/s |
+| ---------- | ------------------: | --------------------: | ---------: |
+| Sequencial |                   1 |             123,248 s |      8,114 |
+| Paralela   |                   4 |              25,960 s |     38,521 |
+| Paralela   |                   8 |              13,273 s |     75,339 |
 
-- [Estados e identificadores reais](evidencias/PI4-35/35.5-comunicacao/fluxos.json).
-- [Vitrine e chamada REST](evidencias/PI4-35/35.5-comunicacao/01-vitrine-rest.png), [logs REST](evidencias/PI4-35/35.5-comunicacao/03-logs-rest.png).
-- [Pedido confirmado](evidencias/PI4-35/35.5-comunicacao/02-checkout-confirmado.png), [logs e estados da fila](evidencias/PI4-35/35.5-comunicacao/04-logs-mensageria.png).
-- [Log API](evidencias/PI4-35/35.5-comunicacao/logs-api.txt), [log recomendação](evidencias/PI4-35/35.5-comunicacao/logs-recomendacao.txt), [log worker](evidencias/PI4-35/35.5-comunicacao/logs-worker.txt).
+Com oito tarefas, a vazão aumentou cerca de 9,3 vezes.
+As esperas pelo banco remoto se sobrepuseram.
+As três configurações recomendaram os mesmos produtos na mesma ordem. [Medições por rodada](evidencias/PI4-35/35.6-lote/execucao-2026-11-07T19-45-53-648Z/rodadas.csv)
 
-O B2 comprova ganho no lote com os resultados preservados.
-O salto HTTP apresenta custo na latência individual.
-A separação permite isolamento de falha e deploy independente.
-Também permite escalar o lote conforme as conexões disponíveis.
-Valores e limites estão vinculados no relatório de desempenho.
+### Comunicação observada no Docker Compose
+
+- **Vitrine.** API e microsserviço registraram o mesmo `requestId`. Ambos responderam HTTP 200. A vitrine exibiu oito recomendações. [Logs da chamada HTTP](evidencias/PI4-35/35.5-comunicacao/03-logs-rest.png)
+- **Checkout.** A API confirmou o pedido com o worker parado. Após reiniciar, o worker gerou exatamente uma notificação. [Estados da fila antes e depois](evidencias/PI4-35/35.5-comunicacao/fluxos.json)
+
+**[Ler o relatório completo de FCCPD](docs/relatorio-desempenho-u2.md)**
 
 ## Decisões de stack
 
