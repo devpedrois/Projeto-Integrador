@@ -1749,3 +1749,7 @@ O Codex reproduziu as duas falhas com o DDL anterior. Atualizou os CHECKs e test
 ### CI do backend e da recomendação · 25/11/2026
 
 O Codex identificou a falha de conexão nas migrações. O teste de métricas excedia trinta segundos. Cada job passou a usar seu próprio PostgreSQL 16. O catálogo sintético revelou outra falha no backend. O teste agora aceita perfis sem região cadastrada. [Execução que motivou a correção](https://github.com/devpedrois/Projeto-Integrador/actions/runs/45698902385)
+
+### Requisitos · Revisão de code smells 2 e 3 · 27/11/2026
+
+Luiza Vieira complementou a revisão dos smells 2 e 3, com apoio do Claude Code. O Claude conferiu no `HEAD` `0fe2819` os números citados e corrigiu a contagem de testes que dependem da Fake API. Também corrigiu o número de validadores duplicados. Comparou a semântica da paginação entre pedidos e catálogo e registrou um esboço de helper para a v2, sem alterar código. Luiza revisou o texto e manteve a decisão de não refatorar. [Revisão de code smells](revisao-code-smells-sergio-luiza.md)

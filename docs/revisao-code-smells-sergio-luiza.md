@@ -3,6 +3,7 @@
 Desafio da disciplina **Requisitos, Projeto de Software e Validação** · 10/11/2026.
 Responsáveis: Sérgio Chousinho ([@sergiochou](https://github.com/sergiochou)) e Luiza Vieira ([@vbluuiza](https://github.com/vbluuiza)).
 Base analisada: `738bb1b` (posterior à tag `v1.0.0`).
+Complemento de Luiza Vieira: 27/11/2026, base `0fe2819` (subseções "Evidências e verificação" dos smells 2 e 3).
 
 ## Escopo e resultado
 
@@ -10,11 +11,11 @@ O desafio pede que cada integrante revise uma parte do código, aponte pelo meno
 
 Revisamos o fluxo de criação de pedido (checkout) no backend, a composição de serviços no frontend e os validadores de paginação de pedidos.
 
-| # | Code smell | Local | Decisão |
-|---|------------|-------|---------|
-| 1 | Long Method com regra de negócio no repositório | `backend/src/repositories/pedido.repository.ts`, `PrismaPedidoRepository.criar` (linhas 326–464) | **Não refatorar** |
-| 2 | Condicionais repetidas e implementação legada no container | `frontend/src/services/fake/container.ts` e `frontend/src/services/data-source.ts` | **Não refatorar** |
-| 3 | Código duplicado e paginação inconsistente | `backend/src/validators/pedido.validator.ts` (linhas 16–46) | **Não refatorar** |
+| # | Code smell | Local | Responsável | Decisão |
+|---|------------|-------|-------------|---------|
+| 1 | Long Method com regra de negócio no repositório | `backend/src/repositories/pedido.repository.ts`, `PrismaPedidoRepository.criar` (linhas 326–464) | Sérgio Chousinho | **Não refatorar** |
+| 2 | Condicionais repetidas e implementação legada no container | `frontend/src/services/fake/container.ts` e `frontend/src/services/data-source.ts` | Luiza Vieira | **Não refatorar** |
+| 3 | Código duplicado e paginação inconsistente | `backend/src/validators/pedido.validator.ts` (linhas 16–46) | Luiza Vieira | **Não refatorar** |
 
 Esta intervenção **não altera código executável**. Como o enunciado pede para os casos sem refatoração, a análise e as justificativas ficam registradas neste arquivo versionado. O comportamento do software continua exatamente o mesmo.
 
@@ -114,6 +115,49 @@ Os smells presentes são **condicionais repetidas (Switch Statements)**, **Shotg
 - **Replace Conditional with Polymorphism:** criar uma `HttpServiceFactory` e uma `FakeServiceFactory`, escolhidas uma única vez na inicialização.
 - **Remove Dead Code:** remover a Fake API.
 
+### Evidências e verificação (Luiza Vieira)
+
+Conferi a análise no `HEAD` atual (`0fe2819`). O ponto central do smell está em poucas linhas do container:
+
+```ts
+// frontend/src/services/fake/container.ts:50-54
+export const PENDENTES_HTTP: readonly string[] = [];
+
+function modoHttp(): boolean {
+  return obterFonteDados() === "http";
+}
+```
+
+Cada `obter...Service()` repete a mesma decisão, por exemplo:
+
+```ts
+export function obterProdutosService(): ProdutosService {
+  if (modoHttp()) return produtosHttp;
+  // ... monta a implementação fake
+}
+```
+
+E a fonte de dados cai em `"fake"` quando a variável não está definida:
+
+```ts
+// frontend/src/services/data-source.ts:3-7
+export function obterFonteDados(): "http" | "fake" {
+  const source = process.env.NEXT_PUBLIC_DATA_SOURCE;
+  if (source === undefined || source === "" || source === "fake") return "fake";
+  if (source === "http") return "http";
+  throw new ServiceError("CONFIGURACAO_INVALIDA", "Fonte de dados inválida.");
+}
+```
+
+| Verificação | Resultado |
+|-------------|-----------|
+| Chamadas de `modoHttp()` em `container.ts` | 15, o mesmo número citado acima |
+| `PENDENTES_HTTP` | Vazio: nenhum serviço depende só da Fake API |
+| Arquivos de teste (`src/`, `tests/`, `e2e/`) que importam a Fake API ou dependem de `NEXT_PUBLIC_DATA_SOURCE` | 58 no `HEAD` atual. A diferença para os 59 da base `738bb1b` vem da evolução dos testes; o argumento continua valendo |
+| Serviços sem implementação fake | `obterPedidosArtesaoService`, `obterNotificacoesService` e `obterIndicadoresAdminService` devolvem `null` no modo fake |
+
+O último item é uma observação nova. O modo fake **já não tem paridade completa** com o HTTP: as telas de pedidos do artesão, notificações e indicadores do admin precisam tratar `null`. Isso não muda a decisão, porque as telas já tratam o caso: `app/admin/page.tsx` e `app/painel-artesao/page.tsx` escondem o card, e `app/painel-artesao/pedidos/page.tsx` mostra "Pedidos recebidos disponíveis com a API conectada.". Mas mostra que a Fake API está ficando para trás à medida que a AV2 avança. É mais um motivo para a recomendação futura de mudar o padrão para `http`.
+
 ### Decisão: não refatorar
 
 1. **A Fake API não é código morto.** Ela é usada em 59 arquivos de teste do frontend e é o modo de desenvolvimento offline documentado no README e em [`fake-api.md`](fake-api.md). Removê-la exigiria reescrever boa parte da base de testes do frontend.
@@ -147,6 +191,64 @@ Os smells presentes são **Duplicated Code** e **inconsistência de nomenclatura
 - **Extract Function:** criar um helper comum de inteiro em query string, reaproveitado por todos os validadores.
 - **Renomear parâmetros:** padronizar tudo como `limit`/`offset`.
 
+### Evidências e verificação (Luiza Vieira)
+
+Conferi o arquivo no `HEAD` atual (`0fe2819`). A cadeia `string → regex → default → transform → pipe` aparece, na verdade, **quatro vezes** em `pedido.validator.ts`. As três linhas citadas acima usam a mesma regex, e o `offset` repete a estrutura com outra regex:
+
+```ts
+// backend/src/validators/pedido.validator.ts:16-46 (resumido)
+export const paginacaoPedidoSchema = z.strictObject({
+  pagina: z.string().regex(/^[1-9]\d*$/).default("1")
+    .transform(Number).pipe(z.number().int().max(10_000)),
+  limite: z.string().regex(/^[1-9]\d*$/).default("10")
+    .transform(Number).pipe(z.number().int().max(100)),
+});
+
+export const paginacaoPedidosArtesaoSchema = z.strictObject({
+  limit:  z.string().regex(/^[1-9]\d*$/).default("10")
+    .transform(Number).pipe(z.number().int().max(100)),
+  offset: z.string().regex(/^\d+$/).default("0")
+    .transform(Number).pipe(z.number().int().max(10_000)),
+});
+```
+
+O helper do catálogo já resolve o mesmo problema, mas de outro jeito:
+
+```ts
+// backend/src/validators/catalogo.validator.ts:8-18
+const inteiroQuery = (minimo: number, maximo: number, padrao: number) =>
+  z.string().regex(/^\d+$/).transform(Number)
+    .pipe(z.number().int().min(minimo).max(maximo))
+    .default(padrao)
+    .meta({ default: String(padrao), description: `Inteiro entre ${minimo} e ${maximo}.` });
+```
+
+Comparação das semânticas, que sustenta o argumento 2 da decisão:
+
+| Aspecto | `pagina`, `limite`, `limit` (pedidos) | `offset` (pedidos do artesão) | `inteiroQuery` (catálogo) |
+|---------|---------------------------------------|-------------------------------|---------------------------|
+| Regex | `/^[1-9]\d*$/` (rejeita `0` e zeros à esquerda) | `/^\d+$/` (aceita `0` e `007`) | `/^\d+$/` (aceita `0` e `007`) |
+| Valor mínimo | Garantido pela regex | `0` | Parâmetro `minimo`, aplicado no `pipe` |
+| Ordem do `default` | Antes do `transform` (default em string) | Antes do `transform` | Depois do `pipe` (default numérico) |
+| Mensagem de erro para `0` | Falha de regex | Aceito | Falha de `min`, com mensagem diferente |
+| Metadados OpenAPI | Nenhum | Nenhum | `.meta()` com `default` e `description` |
+
+Trocar os campos de pedido por `inteiroQuery(1, 100, 10)` aceitaria `limite=010`, que hoje dá 400, mudaria a mensagem de erro e acrescentaria campos na especificação OpenAPI gerada. Ou seja, mudaria o comportamento observável, o que confirma que unificar as cópias não seria uma refatoração pura.
+
+Esboço do helper para uma v2 (**apenas registro, não aplicado no código**):
+
+```ts
+// proposta futura: um helper só, parametrizado pelo mínimo
+const inteiroPaginacao = (minimo: 0 | 1, maximo: number, padrao: number) =>
+  z.string()
+    .regex(minimo === 1 ? /^[1-9]\d*$/ : /^(0|[1-9]\d*)$/)
+    .default(String(padrao))
+    .transform(Number)
+    .pipe(z.number().int().max(maximo));
+```
+
+Ele precisaria vir junto com testes de contrato para `0`, zeros à esquerda e valores acima do máximo em todas as rotas paginadas, antes de substituir qualquer cópia.
+
 ### Decisão: não refatorar
 
 1. **Os nomes fazem parte do contrato público.** `pagina`/`limite` aparecem na especificação OpenAPI gerada em `backend/src/docs/openapi.ts`, em `frontend/src/services/http/pedidos.service.ts`, em `frontend/src/domain/paginacao-pedidos` e nos testes de "Meus pedidos". Renomear depois da `v1.0.0` é uma *breaking change*. O caminho correto seria versionar a API ou aceitar os dois nomes durante uma deprecação, o que custa mais do que o problema.
@@ -166,7 +268,7 @@ O tópico 3 do desafio pede:
 
 | Exigência | Como foi atendida |
 |-----------|-------------------|
-| Pelo menos um commit individual no repositório | Commits de Sérgio Chousinho e de Luiza Vieira que adicionam e complementam este arquivo e o link no README |
+| Pelo menos um commit individual no repositório | Sérgio Chousinho: commit `a767863`, que cria este arquivo e o link no README. Luiza Vieira: commit que acrescenta as subseções "Evidências e verificação" dos smells 2 e 3 (trechos de código, números conferidos no `HEAD`, comparação de semântica da paginação e esboço do helper da v2) |
 | Mensagem do commit identificando o smell e a decisão | Mensagem sugerida abaixo, citando os três smells e a decisão de não refatorar |
 | Casos sem refatoração registrados em Markdown versionado | Este arquivo, `docs/revisao-code-smells-sergio-luiza.md`, liberado no `.gitignore` e linkado na seção **Documentação** do README |
 | Refatorações preservando o comportamento, com testes quando aplicável | Nenhum código executável foi alterado, então não há mudança de comportamento a validar |
